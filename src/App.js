@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {Route, BrowserRouter as Router, Navigate, Routes} from 'react-router-dom'
+import {isLogin, GetLanguage} from './utils/utils'
+import RouterConfig from './main/router'
+import APIService from "./utils/api.services";
+import {useTranslation} from 'react-i18next';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function App(props) {
+    const {t, i18n} = useTranslation();
+    const changeLanguage = (lng) => {
+        i18n.changeLanguage(lng);
+    };
+    console.log(GetLanguage());
+
+    if (isLogin()) {
+        return (
+            <Router>
+                <Routes>
+                    <Route exact path={`/auth/login`} component={() => <div>{t('description.part1')}</div>}/>
+                    <Route path="*" element={<Navigate to ="/auth/login" />}/>
+                </Routes>
+            </Router>
+        )
+    } else {
+        return (
+            <Router>
+                <div>{t('title')}</div>
+                <button type="button" onClick={() => changeLanguage('fa')}>
+                    fa
+                </button>
+                <button type="button" onClick={() => changeLanguage('en')}>
+                    en
+                </button>
+                <div>{t('description.part1')}</div>
+                <RouterConfig props={props}/>
+            </Router>
+        )
+    }
 }
 
 export default App;
