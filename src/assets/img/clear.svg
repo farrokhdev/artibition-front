@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="10.313" height="10.313" viewBox="0 0 10.313 10.313">
+    <defs>
+        <style>
+            .prefix__cls-1{fill:none;stroke:#141414;stroke-linecap:round;stroke-width:1.4px}
+        </style>
+    </defs>
+    <g id="prefix__Group_4949" data-name="Group 4949" transform="translate(.99 .99)">
+        <g id="prefix__Group_2073" data-name="Group 2073">
+            <path id="prefix__Line_37" d="M0 0L11.785 0" class="prefix__cls-1" data-name="Line 37" transform="rotate(45)"/>
+            <path id="prefix__Line_38" d="M0 0L11.785 0" class="prefix__cls-1" data-name="Line 38" transform="rotate(-45 10.059 4.167)"/>
+        </g>
+    </g>
+</svg>

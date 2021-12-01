@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="prefix__gift" width="22.4" height="21.7" viewBox="0 0 22.4 21.7">
+    <defs>
+        <style>
+            .prefix__cls-6{fill:#ffc143}
+        </style>
+    </defs>
+    <g id="prefix__gift_1_" data-name="gift (1)">
+        <path id="prefix__Path_20063" fill="#926bf2" d="M3.507 129.245H.329a.329.329 0 0 0-.329.329v15.738a.329.329 0 0 0 .329.329h3.178z" data-name="Path 20063" transform="translate(0 -123.941)"/>
+        <path id="prefix__Path_20064" fill="#b191ff" d="M93.088 145.306v-15.732a.329.329 0 0 0-.329-.329h-12.6v16.4h12.6a.329.329 0 0 0 .329-.329v-.01z" data-name="Path 20064" transform="translate(-76.649 -123.941)"/>
+        <path id="prefix__Path_20065" fill="#9370eb" d="M339.814 145.306v-15.732a.329.329 0 0 0-.329-.329h-1.315a.329.329 0 0 1 .329.329V145.312a.329.329 0 0 1-.329.329h1.315a.329.329 0 0 0 .329-.329v-.006z" data-name="Path 20065" transform="translate(-323.375 -123.941)"/>
+        <path id="prefix__Path_20066" fill="#2d3034" d="M80.156 13.308h.658v-2.345a2.3 2.3 0 0 1 4.6 0v2.345h.658v-2.344a2.959 2.959 0 1 0-5.918 0z" data-name="Path 20066" transform="translate(-76.649 -8.004)"/>
+        <path id="prefix__Path_20068" fill="#ffd367" d="M248.184 281.837h-11.4a.329.329 0 0 1-.329-.329v-2.63a.329.329 0 0 1 .329-.329h11.4a.329.329 0 0 1 .329.329v2.63a.329.329 0 0 1-.329.329z" data-name="Path 20068" transform="translate(-226.113 -266.713)"/>
+        <g id="prefix__Group_10566" data-name="Group 10566" transform="translate(11.2 11.836)">
+            <path id="prefix__Path_20069" d="M475.738 278.55h-1.315a.329.329 0 0 1 .329.329v2.63a.329.329 0 0 1-.329.329h1.315a.329.329 0 0 0 .329-.329v-2.63a.329.329 0 0 0-.329-.329z" class="prefix__cls-6" data-name="Path 20069" transform="translate(-464.867 -278.55)"/>
+            <path id="prefix__Path_20070" d="M256.5 353.7v6.247a.329.329 0 0 0 .329.329h9.644a.329.329 0 0 0 .329-.329V353.7z" class="prefix__cls-6" data-name="Path 20070" transform="translate(-256.497 -350.41)"/>
+        </g>
+        <path id="prefix__Path_20071" fill="#f3a10a" d="M454.712 353.7v6.247a.329.329 0 0 1-.329.329h1.317a.329.329 0 0 0 .329-.329V353.7z" data-name="Path 20071" transform="translate(-434.504 -338.574)"/>
+        <path id="prefix__Rectangle_4907" fill="#f9293e" d="M0 0H3.044V6.575H0z" data-name="Rectangle 4907" transform="translate(15.12 15.124)"/>
+        <path id="prefix__Path_20073" fill="#e52642" d="M381.48 211.478h1.774a1.862 1.862 0 0 0-1.419-3.069 2.4 2.4 0 0 0-2.173 1.329 2.087 2.087 0 0 1 1.818 1.74z" data-name="Path 20073" transform="translate(-363.612 -199.642)"/>
+        <path id="prefix__Path_20074" fill="#f33350" d="M278.724 211.479h.026a2.086 2.086 0 0 1 1.818-1.739 2.4 2.4 0 0 0-2.173-1.329 1.862 1.862 0 0 0-1.419 3.069z" data-name="Path 20074" transform="translate(-263.314 -199.642)"/>
+        <path id="prefix__Path_20075" fill="#6744d1" d="M1.753 129.245H.329a.329.329 0 0 0-.329.329v15.738a.329.329 0 0 0 .329.329h1.424z" data-name="Path 20075" transform="translate(0 -123.941)"/>
+        <path id="prefix__Path_20076" fill="#5c4aac" d="M2.421 468.619H5.6L4.078 467.1a.327.327 0 0 0-.1-.068h-.01a.355.355 0 0 0-.122-.032h-.009a.336.336 0 0 0-.054.006h-.007a.324.324 0 0 0-.083.03l-.009.005a.328.328 0 0 0-.071.054l-1.425 1.425a.328.328 0 0 0 .233.099z" data-name="Path 20076" transform="translate(-2.092 -446.919)"/>
+        <path id="prefix__Path_20090" fill="#ff4458" d="M329.674 240.552c0-1.15-.681-2.082-1.522-2.082s-1.522.932-1.522 2.082v2.958h3.044v-2.958z" data-name="Path 20090" transform="translate(-311.51 -228.386)"/>
+    </g>
+    <circle id="prefix__Ellipse_468" cx=".8" cy=".8" r=".8" fill="#323c3c" data-name="Ellipse 468" transform="translate(6.52 7.2)"/>
+    <circle id="prefix__Ellipse_469" cx=".8" cy=".8" r=".8" fill="#343434" data-name="Ellipse 469" transform="translate(11.8 7.2)"/>
+    <path id="prefix__Path_20091" fill="#404751" d="M166.24 10.963a2.959 2.959 0 0 0-5.918 0v4.819a.329.329 0 1 0 .658 0v-4.819a2.3 2.3 0 0 1 4.6 0v4.821a.329.329 0 1 0 .658 0v-4.821z" data-name="Path 20091" transform="translate(-153.308 -8.006)"/>
+</svg>

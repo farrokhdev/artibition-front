@@ -1,6 +1,6 @@
 import React, {Suspense} from 'react';
 import ReactDOM from 'react-dom';
-import './assets/css/main.css';
+import './assets/style/main.scss';
 import App from './App';
 import './i18n';
 

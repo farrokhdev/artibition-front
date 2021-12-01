@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+    <g id="message" transform="translate(-664 -301)">
+        <path id="Path_20057" fill="#141414" stroke="#141414" stroke-width="0.2px" d="M307.474 412.5h-18.948a.528.528 0 0 0-.526.529v12.706a.529.529 0 0 0 .526.529h9.288l5.119 4.12a.526.526 0 0 0 .74-.083.529.529 0 0 0 .116-.331v-3.706h3.684a.529.529 0 0 0 .526-.529v-12.706a.529.529 0 0 0-.525-.529zm-1.534 1.059L298 419.77l-7.94-6.211zm1.007 11.647h-4.211v3.662l-4.408-3.547a.526.526 0 0 0-.328-.115h-8.947v-11.093l8.624 6.746a.522.522 0 0 0 .647 0l8.623-6.747z" data-name="Path 20057" transform="translate(380.501 -106)"/>
+        <path id="Rectangle_4895" fill="none" d="M0 0H28V28H0z" data-name="Rectangle 4895" transform="translate(664 301)"/>
+    </g>
+</svg>

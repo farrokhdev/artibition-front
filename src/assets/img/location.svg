@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+    <defs>
+        <style>
+            .cls-1{fill:#adafb3}
+        </style>
+    </defs>
+    <g id="location" transform="translate(-1368 -556)">
+        <g id="place" transform="translate(1370.5 556)">
+            <g id="Group_9693">
+                <g id="Group_9692">
+                    <path id="Path_8746" d="M63.3 3.4a7.9 7.9 0 0 0-12.992 0 7.9 7.9 0 0 0-.92 7.281 6.224 6.224 0 0 0 1.147 1.894l5.748 6.752a.684.684 0 0 0 1.042 0l5.746-6.75a6.23 6.23 0 0 0 1.147-1.891A7.9 7.9 0 0 0 63.3 3.4zm-.363 6.807a4.882 4.882 0 0 1-.9 1.478L56.8 17.831l-5.23-6.143a4.884 4.884 0 0 1-.9-1.483 6.537 6.537 0 0 1 .764-6.024 6.533 6.533 0 0 1 10.74 0 6.538 6.538 0 0 1 .762 6.028z" class="cls-1" transform="translate(-48.886)"/>
+                </g>
+            </g>
+            <g id="Group_9695" transform="translate(4.085 4.06)">
+                <g id="Group_9694">
+                    <path id="Path_8747" d="M159.586 106.219a3.832 3.832 0 1 0 3.832 3.832 3.836 3.836 0 0 0-3.832-3.832zm0 6.3a2.463 2.463 0 1 1 2.463-2.463 2.466 2.466 0 0 1-2.463 2.458z" class="cls-1" transform="translate(-155.754 -106.219)"/>
+                </g>
+            </g>
+        </g>
+        <path id="Rectangle_365" fill="none" d="M0 0H20V20H0z" transform="translate(1368 556)"/>
+    </g>
+</svg>

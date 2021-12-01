@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .cls-2{fill:none;stroke:#adafb3;stroke-linecap:round;stroke-width:2px}
+        </style>
+    </defs>
+    <g id="remove" transform="translate(-12 -39)">
+        <g id="Back" transform="translate(12 39)"/>
+        <g id="Group_4949" transform="translate(19 46)">
+            <g id="Group_2073">
+                <path id="Line_37" d="M0 0L14.142 0" class="cls-2" transform="rotate(45)"/>
+                <path id="Line_38" d="M0 0L14.142 0" class="cls-2" transform="rotate(-45 12.071 5)"/>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 65 65">
+    <defs>
+        <linearGradient id="loi0hvegna" x1=".5" x2=".5" y2="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#af7aff"/>
+            <stop offset="1" stop-color="#7039c2"/>
+        </linearGradient>
+    </defs>
+    <g>
+        <g transform="translate(-511.5 -445.5)">
+            <rect width="64" height="64" fill="url(#loi0hvegna)" stroke="rgba(0,0,0,0)" opacity="0.06" rx="20" transform="translate(512 446)"/>
+        </g>
+        <g>
+            <path fill="url(#loi0hvegna)" d="M34.142 5.858A20 20 0 0 0 5.858 34.142 20 20 0 0 0 34.142 5.858zM20 18.75a5.624 5.624 0 0 1 1.538 11.035.393.393 0 0 0-.288.376v1.054a1.273 1.273 0 0 1-1.19 1.285 1.25 1.25 0 0 1-1.31-1.249v-1.09a.392.392 0 0 0-.286-.376 5.634 5.634 0 0 1-4.088-5.375 1.27 1.27 0 0 1 1.213-1.284 1.25 1.25 0 0 1 1.287 1.249A3.125 3.125 0 1 0 20 21.25a5.624 5.624 0 0 1-1.538-11.035.393.393 0 0 0 .288-.376V8.785A1.273 1.273 0 0 1 19.94 7.5a1.25 1.25 0 0 1 1.31 1.25v1.089a.392.392 0 0 0 .286.376 5.634 5.634 0 0 1 4.088 5.375 1.27 1.27 0 0 1-1.213 1.284 1.25 1.25 0 0 1-1.287-1.249A3.125 3.125 0 1 0 20 18.75z" transform="translate(-511.5 -445.5) translate(524 458)"/>
+        </g>
+    </g>
+</svg>

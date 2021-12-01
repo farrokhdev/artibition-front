@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .prefix__cls-2{fill:#fff}
+        </style>
+    </defs>
+    <g id="prefix__view" transform="translate(-830 -3876)">
+        <path id="prefix__Rectangle_4891" fill="none" d="M0 0H24V24H0z" data-name="Rectangle 4891" transform="translate(830 3876)"/>
+        <g id="prefix__view-2" data-name="view" transform="translate(522.401 3449.851)">
+            <path id="prefix__Path_20052" d="M319.623 431.149h-.295c-5.538.143-8.773 5.113-9.633 6.633a.739.739 0 0 0 0 .728c.626 1.108 4.047 6.635 9.93 6.635h.245c5.536-.143 8.773-5.113 9.634-6.632a.744.744 0 0 0 0-.728c-.628-1.107-4.056-6.636-9.881-6.636zm8.306 7.174a13.88 13.88 0 0 1-2.838 3.272 8.528 8.528 0 0 1-5.261 2.089h-.184c-4.42 0-7.33-3.755-8.376-5.369l-.109-.17.107-.171a13.957 13.957 0 0 1 2.838-3.271 8.526 8.526 0 0 1 5.259-2.089h.2c4.408 0 7.315 3.756 8.362 5.37l.109.17z" class="prefix__cls-2" data-name="Path 20052"/>
+            <path id="prefix__Path_20053" d="M319.4 434.65a3.344 3.344 0 1 0 3.3 3.343 3.325 3.325 0 0 0-3.3-3.343zm0 5.225a1.881 1.881 0 1 1 1.856-1.881 1.871 1.871 0 0 1-1.856 1.881z" class="prefix__cls-2" data-name="Path 20053" transform="translate(.201 .157)"/>
+        </g>
+    </g>
+</svg>

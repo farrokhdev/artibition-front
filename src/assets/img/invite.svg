@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+    <defs>
+        <style>
+            .cls-1,.cls-2{fill:none}.cls-2{stroke:#ec008c;stroke-linecap:round;stroke-linejoin:round}.cls-3{stroke:none}
+        </style>
+    </defs>
+    <g id="invite" transform="translate(-1512 -679)">
+        <g id="profile" transform="translate(1512 679)">
+            <g id="Group_10620" data-name="Group 10620">
+                <path id="Rectangle_4952" d="M0 0H20V20H0z" class="cls-1" data-name="Rectangle 4952"/>
+            </g>
+        </g>
+        <g id="Group_14483" data-name="Group 14483" transform="translate(1515.333 682.333)">
+            <g id="Ellipse_1395" class="cls-2" data-name="Ellipse 1395" transform="translate(0 4.444)">
+                <circle cx="2.222" cy="2.222" r="2.222" class="cls-3"/>
+                <circle cx="2.222" cy="2.222" r="1.722" class="cls-1"/>
+            </g>
+            <g id="Ellipse_1396" class="cls-2" data-name="Ellipse 1396" transform="translate(8.889)">
+                <circle cx="2.222" cy="2.222" r="2.222" class="cls-3"/>
+                <circle cx="2.222" cy="2.222" r="1.722" class="cls-1"/>
+            </g>
+            <g id="Ellipse_1397" class="cls-2" data-name="Ellipse 1397" transform="translate(8.889 8.889)">
+                <circle cx="2.222" cy="2.222" r="2.222" class="cls-3"/>
+                <circle cx="2.222" cy="2.222" r="1.722" class="cls-1"/>
+            </g>
+            <path id="Line_783" d="M0 2.519L4.889 0" class="cls-2" data-name="Line 783" transform="translate(4.222 3.185)"/>
+            <path id="Line_784" d="M0 0L4.889 2.519" class="cls-2" data-name="Line 784" transform="translate(4.222 7.63)"/>
+        </g>
+    </g>
+</svg>

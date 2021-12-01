@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+    <g id="delete" transform="translate(-32 -294)">
+        <g id="Group_14315" data-name="Group 14315" transform="translate(32 294)">
+            <path id="Rectangle_5025" fill="none" d="M0 0H32V32H0z" data-name="Rectangle 5025"/>
+        </g>
+        <path id="Fill_1166" fill="#adafb3" d="M11.368 17.867H4.632a2.4 2.4 0 0 1-2.386-2.136L.884 4.8H.8a.8.8 0 1 1 0-1.6h4v-.8A2.4 2.4 0 0 1 7.2 0h1.6a2.4 2.4 0 0 1 2.4 2.4v.8h4a.8.8 0 1 1 0 1.6h-.084l-1.364 10.931a2.4 2.4 0 0 1-2.384 2.136zM2.494 4.8l1.342 10.754a.8.8 0 0 0 .8.712h6.736a.8.8 0 0 0 .8-.712L13.506 4.8zM7.2 1.6a.8.8 0 0 0-.8.8v.8h3.2v-.8a.8.8 0 0 0-.8-.8zm2.4 10.933a.8.8 0 0 1-.8-.8V8a.8.8 0 1 1 1.6 0v3.733a.8.8 0 0 1-.8.8zm-3.2 0a.8.8 0 0 1-.8-.8V8a.8.8 0 1 1 1.6 0v3.733a.8.8 0 0 1-.8.8z" data-name="Fill 1166" transform="translate(40 300.667)"/>
+    </g>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <g id="prefix__done" transform="translate(-824 -237)">
+        <g id="prefix__Rectangle_4918" fill="none" stroke="#15aa56" stroke-width="1.3px" data-name="Rectangle 4918" transform="translate(824 237)">
+            <rect width="24" height="24" stroke="none" rx="12"/>
+            <rect width="22.7" height="22.7" x=".65" y=".65" rx="11.35"/>
+        </g>
+        <path id="prefix__Union_8" fill="#15aa56" d="M2.952 7.615L0 4.676l1.392-1.384L4.345 6.23 10.608 0 12 1.384 4.345 9z" data-name="Union 8" transform="translate(830 244.5)"/>
+    </g>
+</svg>

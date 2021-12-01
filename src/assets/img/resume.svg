@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 65 65">
+    <defs>
+        <linearGradient id="linear-gradient" x1=".5" x2=".5" y2="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#af7aff"/>
+            <stop offset="1" stop-color="#7039c2"/>
+        </linearGradient>
+        <linearGradient id="linear-gradient-3" x1="1" x2=".446" y1=".955" y2=".042" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#8f59e0"/>
+            <stop offset="1" stop-color="#481c8b"/>
+        </linearGradient>
+        <style>
+            .cls-2{fill:url(#linear-gradient)}.cls-4{fill:#fff}
+        </style>
+    </defs>
+    <g id="resume" transform="translate(-265.5 -439.5)">
+        <g id="Group_14826" data-name="Group 14826" transform="translate(-242 -68)">
+            <rect id="Rectangle_5317" width="64" height="64" fill="url(#linear-gradient)" stroke="rgba(0,0,0,0)" data-name="Rectangle 5317" opacity="0.06" rx="20" transform="translate(508 508)"/>
+        </g>
+        <g id="Group_14846" data-name="Group 14846">
+            <g id="empty_list" transform="translate(-646.857 -33)">
+                <g id="new_form" transform="translate(928.857 483)">
+                    <path id="Path_20139" d="M1.455 0h19.636L32 10.067v31.64a1.446 1.446 0 0 1-1.455 1.438H1.455A1.446 1.446 0 0 1 0 41.707V1.438A1.446 1.446 0 0 1 1.455 0z" class="cls-2" data-name="Path 20139"/>
+                    <g id="Group_14570" data-name="Group 14570" transform="translate(5.455)">
+                        <path id="Path_20140" fill="url(#linear-gradient-3)" d="M-14093.514 1780.986l9.266.724v12.445z" data-name="Path 20140" transform="translate(14110.781 -1771.643)"/>
+                        <path id="Path_20141" d="M0 0l10.909 10.067H3.636A3.616 3.616 0 0 1 0 6.472z" class="cls-2" data-name="Path 20141" transform="translate(15.636)"/>
+                    </g>
+                </g>
+            </g>
+            <g id="Group_14828" data-name="Group 14828" transform="translate(2 -2)">
+                <path id="Union_22" d="M13655.492 7401.2a4 4 0 1 1-4-4.01 4 4 0 0 1 4 4.01z" class="cls-4" data-name="Union 22" transform="translate(-13355.492 -6931.188)"/>
+                <path id="Rectangle_5322" d="M6 0h4a6 6 0 0 1 6 6H0a6 6 0 0 1 6-6z" class="cls-4" data-name="Rectangle 5322" transform="translate(288 477)"/>
+            </g>
+        </g>
+    </g>
+</svg>

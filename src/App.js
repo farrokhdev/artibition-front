@@ -12,7 +12,7 @@ function App(props) {
     };
     console.log(GetLanguage());
 
-    if (isLogin()) {
+    if (!isLogin()) {
         return (
             <Router>
                 <Routes>
@@ -23,17 +23,19 @@ function App(props) {
         )
     } else {
         return (
-            <Router>
-                <div>{t('title')}</div>
-                <button type="button" onClick={() => changeLanguage('fa')}>
-                    fa
-                </button>
-                <button type="button" onClick={() => changeLanguage('en')}>
-                    en
-                </button>
-                <div>{t('description.part1')}</div>
-                <RouterConfig props={props}/>
-            </Router>
+
+            <RouterConfig/>
+            // <Router>
+            //     <div>{t('title')}</div>
+            //     <button type="button" onClick={() => changeLanguage('fa')}>
+            //         fa
+            //     </button>
+            //     <button type="button" onClick={() => changeLanguage('en')}>
+            //         en
+            //     </button>
+            //     <div>{t('description.part1')}</div>
+            //     <RouterConfig props={props}/>
+            // </Router>
         )
     }
 }

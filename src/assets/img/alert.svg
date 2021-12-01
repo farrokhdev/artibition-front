@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+    <defs>
+        <style>
+            .cls-2{fill:#e96710}
+        </style>
+    </defs>
+    <g id="alert" transform="translate(-419 -804)">
+        <g id="done" transform="translate(-407 565)">
+            <g id="Rectangle_4918" fill="none" stroke="#e96710" stroke-width="1.3px" transform="translate(826 239)">
+                <rect width="20" height="20" stroke="none" rx="10"/>
+                <rect width="18.7" height="18.7" x=".65" y=".65" rx="9.35"/>
+            </g>
+        </g>
+        <path id="Path_20104" d="M0 0l7 .028V2l-7-.028z" class="cls-2" transform="rotate(90 -189 619)"/>
+        <path id="Path_20105" d="M0 0l1.8.028V2L0 1.972z" class="cls-2" transform="rotate(90 -193.599 623.599)"/>
+    </g>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <defs>
+        <style>
+            .prefix__cls-2{fill:none}
+        </style>
+    </defs>
+    <g id="prefix__search" transform="translate(-1312 -110)">
+        <g id="prefix__Group_10153" data-name="Group 10153" transform="translate(1317 115)">
+            <path id="prefix__Union_2" fill="#141414" stroke="#fff" stroke-width="0.3px" d="M13.169 14.188l-3.263-3.265A6.13 6.13 0 1 1 10.922 9.9l3.263 3.263a.72.72 0 0 1-1.017 1.02zM1.44 6.118A4.679 4.679 0 1 0 6.119 1.44 4.685 4.685 0 0 0 1.44 6.118z" data-name="Union 2"/>
+            <path id="prefix__Rectangle_59" d="M0 0H14.398V14.398H0z" class="prefix__cls-2" data-name="Rectangle 59" transform="translate(.001)"/>
+        </g>
+        <path id="prefix__Rectangle_4765" d="M0 0H24V24H0z" class="prefix__cls-2" data-name="Rectangle 4765" transform="translate(1312 110)"/>
+    </g>
+</svg>

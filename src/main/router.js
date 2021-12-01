@@ -1,32 +1,30 @@
-import React from 'react'
-import {Routes, Route} from 'react-router-dom'
+import React from 'react';
+import {Routes, Route , BrowserRouter} from 'react-router-dom';
+import Home from '../pages/Home.jsx/Home';
+import Login from '../pages/Login/Login';
 
 const RouterConfig = (props) => {
     return (
-        <Routes>
-            <>
-                <Route exact path={`/`} component={(router) =>
-                    <div {...props} {...router} />
-                }/>
-                <Route exact path={`/result/:id`} component={(router) =>
-                    <div {...props} {...router} />
-                }/>
 
-                <Route path="/samples"
-                       render={({match: {url}}) => (
-                           <>
-                               <Route exact path={`${url}/`}
-                                      component={(router) =>
-                                          <div {...props} {...router} />
-                                      }
-                               />
-                           </>
-                       )}
-                />
-            </>
+        <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<Home />} animate={true} >
+                        <Route path="home" element={<Home />} />
+                    </Route>
+                </Routes>
 
-        </Routes>
+                <Routes>
+                    <Route path="auth" element={<Login />} animate={true}>
+                        <Route path="login" element={<Login />} />
+                    </Route>
+                </Routes>
+
+                
+        </BrowserRouter>
+
+
     )
 }
 
 export default RouterConfig
+ 

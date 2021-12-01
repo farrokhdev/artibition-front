@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="72" height="72" viewBox="0 0 72 72">
+    <defs>
+        <linearGradient id="linear-gradient" x1=".037" x2=".962" y1=".022" y2="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#e0e5f1"/>
+            <stop offset="1" stop-color="#a6b1c7"/>
+        </linearGradient>
+        <linearGradient id="linear-gradient-2" x1=".258" x2="1" y1="-.047" y2="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-opacity=".42"/>
+            <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+        </linearGradient>
+        <radialGradient id="radial-gradient" cx=".5" cy=".5" r=".5" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-opacity=".161"/>
+            <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+        </radialGradient>
+        <style>
+            .cls-1{fill:url(#linear-gradient)}.cls-3{fill:#fff}
+        </style>
+    </defs>
+    <g id="empty_list" transform="translate(-921 -483)">
+        <g id="new_form" transform="translate(935.143 483)">
+            <path id="Path_20139" d="M2 0h27.037l15.019 13.86v43.56a1.991 1.991 0 0 1-2 1.98H2a1.991 1.991 0 0 1-2-1.98V1.98A1.991 1.991 0 0 1 2 0z" class="cls-1"/>
+            <g id="Group_14570" transform="translate(7.51)">
+                <path id="Path_20140" fill="url(#linear-gradient-2)" d="M-14093.514 1780.986l12.758 1v17.134z" transform="translate(14117.287 -1768.123)"/>
+                <path id="Path_20141" d="M0 0l15.019 13.86H5.006A4.978 4.978 0 0 1 0 8.91z" class="cls-1" transform="translate(21.527)"/>
+                <g id="Group_14569" transform="translate(0 23.265)">
+                    <rect id="Rectangle_5208" width="22.028" height="2.97" class="cls-3" rx="1.485" transform="translate(0 6.93)"/>
+                    <rect id="Rectangle_5209" width="22.028" height="2.97" class="cls-3" rx="1.485" transform="translate(0 13.86)"/>
+                    <rect id="Rectangle_5210" width="22.028" height="2.97" class="cls-3" rx="1.485" transform="translate(0 20.79)"/>
+                    <rect id="Rectangle_5211" width="22.028" height="2.97" class="cls-3" rx="1.485"/>
+                    <rect id="Rectangle_5212" width="3.004" height="2.97" class="cls-3" rx="1.485" transform="translate(26.033 6.93)"/>
+                    <rect id="Rectangle_5213" width="3.004" height="2.97" class="cls-3" rx="1.485" transform="translate(26.033 13.86)"/>
+                    <rect id="Rectangle_5214" width="3.004" height="2.97" class="cls-3" rx="1.485" transform="translate(26.033 20.79)"/>
+                    <rect id="Rectangle_5215" width="3.004" height="2.97" class="cls-3" rx="1.485" transform="translate(26.033)"/>
+                </g>
+            </g>
+        </g>
+        <ellipse id="Ellipse_1398" cx="36" cy="2.571" fill="url(#radial-gradient)" rx="36" ry="2.571" transform="translate(921 549.857)"/>
+    </g>
+</svg>
