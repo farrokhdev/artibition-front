@@ -1219,7 +1219,7 @@
 
     .carousel-txt button {
         margin-top: 0;
-        position: absolute;
+        // position: absolute;
         left: 0;
         top: 10px;
     }
@@ -1486,9 +1486,9 @@
         bottom: -35px;
     }
 
-    .container {
-        width: 1246px;
-    }
+    // .container {
+    //     width: 1246px;
+    // }
 }
 
 @media (min-width: 1400px) {

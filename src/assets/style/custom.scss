@@ -6698,6 +6698,28 @@ p.upload-size {
     margin-top: 24px;
 }
 
+.owl-carousel .img-responsive{
+    min-width: 245px;
+    max-width: 245px;
+    min-height: 280px;
+    max-height: 280px;
+}
+.owl-carousel .events{
+    min-width: 356.8px !important;
+    max-width: 356.8px !important;
+    min-height: 356.8px !important;
+    max-height: 356.8px !important;
+}
+
+.img-responsive.clolection-image{
+    min-width: 122px !important;
+    min-height: 122px !important;
+    max-width: 122px !important;
+    max-height: 122px !important;
+}
+
+
+
 .collection-list-row {
     margin-bottom: 40px;
 }

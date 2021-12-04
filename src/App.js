@@ -12,7 +12,7 @@ function App(props) {
     };
     console.log(GetLanguage());
 
-    if (!isLogin()) {
+    if (isLogin()) {
         return (
             <Router>
                 <Routes>

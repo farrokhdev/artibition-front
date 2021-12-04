@@ -258,7 +258,8 @@ function Header() {
                     </div>
                 </div>
             </div>
-            <div class="col-md-4 col-sm-4 ">
+            {/* <div class="col-md-4 col-sm-4 bg-warning"> */}
+            <div class="col ">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
                         <span class="icon-bar"></span>
