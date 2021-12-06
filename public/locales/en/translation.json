@@ -1,7 +1,116 @@
 {
-  "title": "Welcome to react using react-i18next",
-  "description": {
-    "part1": "To get started, edit <1>src/App.js</1> and save to reload.",
-    "part2": "Switch language between english and german using buttons above."
+
+
+  "empty-error" : {
+    "username" : "Please input your username!",
+    "password" : "Please input your password!",
+    "activation-code" : "Please input your activation code!"
+  },
+
+
+  "login_Title": "Login",
+  "placeholder-username": "Email or mobile number",
+  
+  "placeholder-password": "Password",
+  "placeholder-confirm-password": "Confirm password",
+  
+  "forget-title": "Forget password",
+  "login-btn-text": "Login",
+  "google-login-text-button": "Login with google",
+  "is-registered-question": "Not register yet",
+  "signup-text": "Register",
+  
+  "show-password": "Show",
+  "hidden-password": "Hidden",
+
+
+  "signup_title" : "Join Arthibition" ,
+  "signup_btn-text" : "Register" ,
+  "describtion-low" : {
+    "text-link" : "terms and conditions",
+    "text-info-part1" : "You have accepted the",
+    "text-info-part2" : " by becoming a member."
+  },
+  "forget-signup-text" : {
+      "text" : "Already a member?",
+      "link" : "Login"
+  },
+
+
+
+  "confirm-mobile-title" : "Verification Mobile" ,
+  "text-btn-verification-submit" : "Get activation code" ,
+
+  "recovery-password-title" : "Password Recovery",
+  "text-btn-recovery-password" : "Password Recovery",
+
+  "membership-title" : "Membership" , 
+  "membership-info-signup" : "To join, first enter the 4-digit code that sent to your mobile number." , 
+  "membership-info" : "To recover the password, first enter the 4-digit code that sent to your mobile number." , 
+  "placeholder-activation-code" : "Enter activation code" ,
+  "text-btn-confirm-mobile-number" : "Confirm mobile number" ,
+
+  "title_lang-header": "Fa",
+  "nav-menu-artworks": "Artworks",
+  "nav-menu-showroom": "Showroom",
+  "nav-menu-online-exhibition": "Online exhibition",
+  "nav-menu-blog": "Blog",
+  "nav-menu-sales-advisor": "Sales Advisor",
+  "redirect-login-header": "Sign up/Login",
+
+  "text-statistics-purchase": "PURCHASE",
+  "text-statistics-artworks": "ARTWORKS",
+  "text-statistics-artists": "ARTISTS",
+  "text-statistics-users": "USERS",
+  "text-footer-auth": {
+    "info": "If you have any questions, contact us  : ",
+    "mobile": "+98 21 229 22538"
+  },
+
+  "category": "Category",
+  "galleries": "Galleries",
+  "events": "Events",
+
+  "nav-submenu": {
+    "artworks": {
+      "artField": {
+        "title": "Art field",
+        "all": "all",
+        "painting": "Painting",
+        "calligraphy": "Calligraphy",
+        "photography": "Photography",
+        "sculpture": "Sculpture",
+        "calligram": "Calligram",
+        "graphic": "Graphic",
+        "printmaking": "Printmaking",
+        "cartoon": "Cartoon",
+        "drawing": "Drawing"
+      },
+      "subject": {
+        "title": "Subject"
+      },
+      "budget": {
+        "title": "Based on your budget"
+      },
+      "discounts": {
+        "title": "Discounts"
+      }
+    },
+
+    "showroom": {
+      "category": {
+        "all": "all",
+        "painter": "Painter",
+        "calligrapher": "Calligrapher",
+        "photographer": "Photographer",
+        "sculptor": "Sculptor",
+        "calligramer": "Calligramer",
+
+        "graphist": "Graphist",
+        "printmaker": "Printmaker",
+        "cartoonist": "Cartoonist",
+        "sketcher": "Sketcher"
+      }
+    }
   }
 }

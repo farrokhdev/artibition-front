@@ -2345,7 +2345,7 @@ ansi-styles@^5.0.0:
 
 antd@^4.17.2:
   version "4.17.2"
-  resolved "https://registry.npmjs.org/antd/-/antd-4.17.2.tgz"
+  resolved "https://registry.yarnpkg.com/antd/-/antd-4.17.2.tgz#c50123e6da990d8a41bc1ed6fbfc6d587b014ae0"
   integrity sha512-1/xwj72mzg2ly5byvnxsgucEL5JMrinlsaAr4Y+vjobmTBSI9l9zOVkwwOG8kPIrFkhrzC1I42n6GZKnTwfZmg==
   dependencies:
     "@ant-design/colors" "^6.0.0"

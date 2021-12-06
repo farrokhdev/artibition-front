@@ -2,17 +2,28 @@ import React from 'react';
 import searchIcon from '../../assets/img/search.svg';
 import filterIcon from '../../assets/img/Filter.svg';
 import logo from '../../assets/img/logo.svg';
+import {Link} from 'react-router-dom';
+import {useTranslation} from 'react-i18next';
+import {isLogin, GetLanguage} from '../../utils/utils'
 
 function Header() {
+    
+    const {t, i18n} = useTranslation();
+    const handleChangeLanguage = (lng) => {
+        i18n.changeLanguage(lng)
+    }
+
+
+
     return (
        
     <div class="default-header ">
         <div class="row">
             <div class="col-md-4 col-sm-3 col-xs-6">
                 <div class="artibition-logo">
-                    <a href="#">
+                    <Link to="/">
                         <img src={logo} width="160" height="42" alt="Artibition-logo"/>
-                    </a>
+                    </Link>
                 </div>
             </div>
             <div class="col-md-4 col-sm-5 hidden-xs">
@@ -268,7 +279,7 @@ function Header() {
                     </button>
                 </div>
                 <div class="head-leftbtn hidden-xs">
-                    <button type="button" class="btn-changelang pull-left">En. Version</button>
+                    <button onClick={()=>handleChangeLanguage('fa')} type="button" class="btn-changelang pull-left">{t("title_lang-heade")}</button>
                     <button type="button" class="btn-login pull-left">عضویت / ورود</button>
                 </div>
             </div>

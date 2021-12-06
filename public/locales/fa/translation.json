@@ -1,7 +1,120 @@
 {
-  "title": "خوش آمدید",
-  "description": {
-    "part1": "توضیح 1",
-    "part2": "توضیح 2"
+
+
+  "empty-error" : {
+    "username" : "شماره همراه یا ایمیل وارد نشده است!",
+    "password" : "رمز عبور وارد نشده است!",
+    "activation-code" : "کد فعالسازی وارد نشده است!"
+  },
+
+
+
+  "login_Title": "وارد شوید",
+  "placeholder-username": "شماره همراه یا ایمیل",
+  
+  "placeholder-password": "رمز عبور",
+  "placeholder-confirm-password": "تکرار رمز عبور",
+  "forget-title": "رمز عبورم را فراموش کردم",
+  "login-btn-text": "ورود",
+  "google-login-text-button": "لاگین با گوگل",
+  "is-registered-question": "تاکنون ثبت‌نام نکردید؟",
+  "signup-text": "ثبت‌نام کنید",
+  "show-password": "نمایش",
+  "hidden-password": "مخفی کردن",
+  
+  
+  
+  
+  
+  "signup_title" : "عضو آرتیبشن شوید" ,
+  "signup_btn-text" : "ثبت‌نام" ,
+  "describtion-low" : {
+    "text-link" : "شرایط و قوانین",
+    "text-info-part1" : "با عضویت شما",
+    "text-info-part2" : "استفاده از سرویس آرتیبیشن را قبول کرده‌اید."
+  },
+  "forget-signup-text" : {
+    "text" : "قبلا ثبت‌نام کرده‌اید؟",
+    "link" : "وارد شوید"
+},
+
+
+
+"confirm-mobile-title" : "تایید شماره همراه" ,
+"text-btn-verification-submit" : "دریافت کد فعالسازی" ,
+  
+
+"recovery-password-title" : "بازیابی رمز عبور",
+"text-btn-recovery-password" : "بازیابی رمز عبور",
+
+"membership-title" : "عضویت" , 
+"membership-info-signup" : "جهت عضویت ابتدا کد 4 رقمی ارسال شده به شماره همراه خود را وارد نمایید." , 
+"membership-info" : "جهت بازیابی رمز عبور ابتدا کد 4 رقمی ارسال شده به شماره همراه خود را وارد نمایید." , 
+"placeholder-activation-code" : "کد فعالسازی" ,
+"text-btn-confirm-mobile-number" : "تایید شماره همراه" ,
+
+  "title_lang-header": "En. Versio",
+  "nav-menu-artworks": "آثار هنری",
+  "nav-menu-showroom": "تالار",
+  "nav-menu-online-exhibition": "نمایشگاه مجازی",
+  "nav-menu-blog": "بلاگ",
+  "nav-menu-sales-advisor": "مشاوره خرید",
+  "redirect-login-header": "عضویت / ورود",
+  "text-statistics-purchase": "خرید موفق",
+  "text-statistics-artworks": "اثرهنری",
+  "text-statistics-artists": "هنرمند",
+  "text-statistics-users": "کاربر",
+
+  "text-footer-auth": {
+    "info": "در صورت ایجاد هر گونه سوال با ما تماس بگیرید : ",
+    "mobile": "۲۲۵۳۸ ۲۲۹ ۰۲۱"
+  },
+
+  "category": "دسته‌بندی",
+  "galleries": "گالری‌ها",
+  "events": "رویدادها",
+
+  "nav-submenu": {
+    "artworks": {
+      "artField": {
+        "title": "رشته هنری",
+        "all": "همه آثار",
+        "painting": "نقاشی",
+        "calligraphy": "خوشنویسی",
+        "photography": "عکاسی",
+        "sculpture": "مجسمه",
+        "calligram": "نقاشی خط",
+        "graphic": "گرافیک",
+        "printmaking": "چاپ دستی",
+        "cartoon": "کاریکاتور",
+        "drawing": "طراحی"
+      },
+
+      "subject": {
+        "title": "موضوع"
+      },
+
+      "budget": {
+        "title": "مناسب بودجه شما"
+      },
+      "discounts": {
+        "title": "تخفیف‌ها"
+      }
+    },
+
+    "showroom": {
+      "category": {
+        "all": "همه هنرمندان",
+        "painter": "نقاش",
+        "calligrapher": "خوشنویس",
+        "photographer": "عکاس",
+        "sculptor": "مجسمه ساز",
+        "calligramer": "نقاش خط",
+        "graphist": "گرافیست",
+        "printmaker": "چاپ دستی",
+        "cartoonist": "کاریکاتوریست",
+        "sketcher": "طراح"
+      }
+    }
   }
 }
