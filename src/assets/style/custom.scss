@@ -4834,7 +4834,7 @@ ul.vertical-nav > li > a {
 
 .btn-gift {
     width: 100%;
-    padding: 14px 32px;
+    padding: 14px 7px;
     border: 1px solid #141414;
     margin-top: 32px;
 }
@@ -8146,8 +8146,9 @@ textarea {
 }
 
 .custom-dimention {
-    padding: 16px 100px;
+    padding: 16px 80px;
 }
+
 
 
 span.unit-dimention {
@@ -8343,6 +8344,8 @@ span.unit-dimention {
 .btn-close-modal{
     width: 17px !important;
     height: 17px !important;
+    position: absolute;
+    left: 10px !important;
 }
 
 .ant-modal-footer {

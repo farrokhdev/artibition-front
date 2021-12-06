@@ -13,7 +13,11 @@ import AllProducts from "./AllProducts";
 import Slider from "./Slider";
 import Menu from "./Menu";
 
+
 function Home() {
+
+
+
   return (
     <>
       <div className="container mx-auto px-0 w-100">

@@ -33,7 +33,7 @@ function ModalOtp(props) {
             footer={[]}
             // header={[]}
         >
-                <div class="modal-content px-5">
+                <div className="modal-content px-5">
                         <div className="d-flex justify-content-end">
                             <button>
                             <span  onClick={handleClose}  aria-hidden="true" aria-label="Close">
@@ -41,8 +41,8 @@ function ModalOtp(props) {
                             </span>
                             </button>
                         </div>
-                        <div class="modal-body">
-                            <div class="row">
+                        <div className="modal-body">
+                            <div className="row">
                                 <div className="col px-5">
                                     <div className="d-flex justify-content-center mb-5">
                                         <h1>{t("membership-title")}</h1>

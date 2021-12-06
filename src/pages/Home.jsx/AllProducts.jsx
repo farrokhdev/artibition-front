@@ -1,6 +1,7 @@
 import React from 'react';
 import hnrpqkfiup from '../../assets/img/mainpage/hnrpqkfiup@3x.jpg';
 import mainpage from '../../assets/img/mainpage/2.jpg';
+import { t } from 'i18next';
 
 export default function AllProducts() {
     return (
@@ -10,22 +11,22 @@ export default function AllProducts() {
                 <div className="col-xs-8 visible-sm visible-xs">
                     <h2 className="default-title">آثار</h2>
                 </div>
-                <a href="#" className="btn-readmore pull-left">مشاهده همه</a>
+                <a href="#" className="btn-readmore pull-left">{t("see-all")}</a>
             </div>
             <div className="clearfix"></div>
             <div className="col-sm-12">
                 <div className="default-tab tab-1 tab-interval">
                     <div className="tab-overflow">
                         <ul className="nav nav-tabs alltab-1" id="alltab-1">
-                            <li className="active"><a data-toggle="tab" href="#home">همه آثار</a></li>
-                            <li><a data-toggle="tab" href="#menu1">نقاشی</a></li>
-                            <li><a data-toggle="tab" href="#menu2">عکاسی</a></li>
-                            <li><a data-toggle="tab" href="#menu3">مجسمه</a></li>
-                            <li><a data-toggle="tab" href="#menu4">نقاشی خط</a></li>
-                            <li><a data-toggle="tab" href="#menu5">خوشنویسی</a></li>
-                            <li><a data-toggle="tab" href="#menu6">چاپ دستی</a></li>
-                            <li><a data-toggle="tab" href="#menu7">گرافیک</a></li>
-                            <li><a data-toggle="tab" href="#menu8">طراحی</a></li>
+                            <li className="active"><a data-toggle="tab" href="#home">{t("nav-submenu.artworks.artField.all")}</a></li>
+                            <li><a data-toggle="tab" href="#menu1">{t("nav-submenu.artworks.artField.painting")}</a></li>
+                            <li><a data-toggle="tab" href="#menu2">{t("nav-submenu.artworks.artField.calligraphy")}</a></li>
+                            <li><a data-toggle="tab" href="#menu3">{t("nav-submenu.artworks.artField.photography")}</a></li>
+                            <li><a data-toggle="tab" href="#menu4">{t("nav-submenu.artworks.artField.sculpture")}</a></li>
+                            <li><a data-toggle="tab" href="#menu5">{t("nav-submenu.artworks.artField.calligram")}</a></li>
+                            <li><a data-toggle="tab" href="#menu6">{t("nav-submenu.artworks.artField.graphic")}</a></li>
+                            <li><a data-toggle="tab" href="#menu7">{t("nav-submenu.artworks.artField.printmaking")}</a></li>
+                            <li><a data-toggle="tab" href="#menu8">{t("nav-submenu.artworks.artField.drawing")}</a></li>
                         </ul>
                     </div>
                     <div className="tab-content">
@@ -44,10 +45,10 @@ export default function AllProducts() {
                                         <div className="tab-overly">
                                             <span className="btn-see hidden-xs hidden-sm">
                                                 <span className="view-icon pull-right"></span>
-                                                <span>مشاهده اثر</span>
+                                                <span>{t("artwork.view-artwork")}</span>
                                             </span>
                                             <button type="button" className="btn-sale">
-                                                <span className="hidden-xs hidden-sm">درخواست خرید</span>
+                                                <span className="hidden-xs hidden-sm">{t("artwork.btn-action-to-shop")}</span>
                                                 <span className="shopping-cart-xs visible-xs visible-sm"></span>
                                             </button>
                                             <button type="button" className="like-icon isLike"></button>
@@ -83,10 +84,10 @@ export default function AllProducts() {
                                         <div className="tab-overly">
                                             <span className="btn-see hidden-xs hidden-sm">
                                                 <span className="view-icon pull-right"></span>
-                                                <span>مشاهده اثر</span>
+                                                <span>{t("artwork.view-artwork")}</span>
                                             </span>
                                             <button type="button" className="btn-sale">
-                                                <span className="hidden-xs hidden-sm">درخواست خرید</span>
+                                                <span className="hidden-xs hidden-sm">{t("artwork.btn-action-to-shop")}</span>
                                                 <span className="shopping-cart-xs visible-xs visible-sm"></span>
                                             </button>
                                             <button type="button" className="like-icon isLike"></button>
@@ -121,10 +122,10 @@ export default function AllProducts() {
                                         <div className="tab-overly">
                                             <span className="btn-see hidden-xs hidden-sm">
                                                 <span className="view-icon pull-right"></span>
-                                                <span>مشاهده اثر</span>
+                                                <span>{t("artwork.view-artwork")}</span>
                                             </span>
                                             <button type="button" className="btn-sale">
-                                                <span className="hidden-xs hidden-sm">درخواست خرید</span>
+                                                <span className="hidden-xs hidden-sm">{t("artwork.btn-action-to-shop")}</span>
                                                 <span className="shopping-cart-xs visible-xs visible-sm"></span>
                                             </button>
                                             <button type="button" className="like-icon isLike"></button>
@@ -159,10 +160,10 @@ export default function AllProducts() {
                                         <div className="tab-overly">
                                             <span className="btn-see hidden-xs hidden-sm">
                                                 <span className="view-icon pull-right"></span>
-                                                <span>مشاهده اثر</span>
+                                                <span>{t("artwork.view-artwork")}</span>
                                             </span>
                                             <button type="button" className="btn-sale">
-                                                <span className="hidden-xs hidden-sm">درخواست خرید</span>
+                                                <span className="hidden-xs hidden-sm">{t("artwork.btn-action-to-shop")}</span>
                                                 <span className="shopping-cart-xs visible-xs visible-sm"></span>
                                             </button>
                                             <button type="button" className="like-icon isLike"></button>

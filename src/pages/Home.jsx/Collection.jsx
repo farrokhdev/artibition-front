@@ -13,6 +13,7 @@ import mainpage4_2 from '../../assets/img/mainpage/4-2.jpg';
 import mainpage4_3 from '../../assets/img/mainpage/4-3.jpg';
 import mainpage1_2 from '../../assets/img/mainpage/1-2.jpg';
 import tip from '../../assets/img/tip.svg';
+import { t } from 'i18next';
 
 
 export default function Collection() {
@@ -24,7 +25,7 @@ export default function Collection() {
         <div className="public-header d-flex">
             <div className="col-6 col-md-8 ">
                 <div className="d-flex">
-                    <h2 className="default-title pull-right px-4 ">کالکشن آثار</h2>
+                    <h2 className="default-title pull-right px-4 ">{t("collection-artworks-home.title")}</h2>
                     <div className="popover-collection">
                         <a title="کالکشن آثار" data-toggle="popover" data-placement="left">
                             <img src={tip} width="18" height="18" alt="کالکشن آثار"/>
@@ -40,7 +41,7 @@ export default function Collection() {
                 </div>
             </div>
             <div className="col-6 col-md-4 ">
-                <div className="btn-readmore pull-left ">همه کالکشن‌ها</div>
+                <div className="btn-readmore pull-left ">{t("collection-all")}</div>
             </div>
         </div>
 

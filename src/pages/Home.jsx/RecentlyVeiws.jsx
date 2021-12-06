@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import React from 'react';
 import hnrpqkfiup from '../../assets/img/mainpage/hnrpqkfiup@3x.jpg';
 
@@ -6,21 +7,21 @@ export default function RecentlyNews() {
         <div className="recently-view">
         <div className="row">
             <div className="col-sm-12">
-                <h2 className="default-title text-right">بازدیدهای اخیر من</h2>
+                <h2 className="default-title text-right">{t("my-recent-views-home.title")}</h2>
             </div>
             <div className="col-xs-12">
                 <div className="default-tab tab-3 tab-interval">
                     <div className="tab-overflow">
                         <ul className="nav nav-tabs" id="alltab-3">
-                            <li className="active"><a data-toggle="tab" href="#view">همه آثار</a></li>
-                            <li><a data-toggle="tab" href="#view1">نقاشی</a></li>
-                            <li><a data-toggle="tab" href="#view2">عکاسی</a></li>
-                            <li><a data-toggle="tab" href="#view3">مجسمه</a></li>
-                            <li><a data-toggle="tab" href="#view3">نقاشی خط</a></li>
-                            <li><a data-toggle="tab" href="#view3">خوشنویسی</a></li>
-                            <li><a data-toggle="tab" href="#view3">چاپ دستی</a></li>
-                            <li><a data-toggle="tab" href="#view3">گرافیک</a></li>
-                            <li><a data-toggle="tab" href="#view3">طراحی</a></li>
+                        <li className="active"><a data-toggle="tab" href="#home">{t("nav-submenu.artworks.artField.all")}</a></li>
+                            <li><a data-toggle="tab" href="#menu1">{t("nav-submenu.artworks.artField.painting")}</a></li>
+                            <li><a data-toggle="tab" href="#menu2">{t("nav-submenu.artworks.artField.calligraphy")}</a></li>
+                            <li><a data-toggle="tab" href="#menu3">{t("nav-submenu.artworks.artField.photography")}</a></li>
+                            <li><a data-toggle="tab" href="#menu4">{t("nav-submenu.artworks.artField.sculpture")}</a></li>
+                            <li><a data-toggle="tab" href="#menu5">{t("nav-submenu.artworks.artField.calligram")}</a></li>
+                            <li><a data-toggle="tab" href="#menu6">{t("nav-submenu.artworks.artField.graphic")}</a></li>
+                            <li><a data-toggle="tab" href="#menu7">{t("nav-submenu.artworks.artField.printmaking")}</a></li>
+                            <li><a data-toggle="tab" href="#menu8">{t("nav-submenu.artworks.artField.drawing")}</a></li>
                         </ul>
                     </div>
                     <div className="tab-content">

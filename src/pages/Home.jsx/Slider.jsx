@@ -3,6 +3,7 @@ import slider1 from '../../assets/img/mainpage/slider-1.jpg';
 import slider2 from '../../assets/img/mainpage/slider-2.jpg';
 import previousIcon from '../../assets/img/previous.svg';
 import nextIcon from '../../assets/img/next.svg';
+import { t } from 'i18next';
 
 export default function Slider() {
     return (
@@ -13,7 +14,7 @@ export default function Slider() {
                     <img src={slider1} width="3648" height="1200" alt="آرتیبیشن"/>
                     <div className="carousel-txt">
                         <div className="coundown">
-                            <h6 className="countdown-title hidden-sm hidden-xs">مهلت ارسال آثار:</h6>
+                            <h6 className="countdown-title hidden-sm hidden-xs">{t("deadline-send-artwroks")}</h6>
                             <div className="timers" data-newdate="september 16, 2020 12:00 PDT">
                                 <div className="days"></div>
                                 <div className="hours"></div>
@@ -21,7 +22,7 @@ export default function Slider() {
                             </div>
                         </div>
                         <div className="clearfix"></div>
-                        <button type="button" className="btn btn-default">مشاهده جزئیات</button>
+                        <button type="button" className="btn btn-default">{t("show-details")}</button>
                     </div>
                 </div>
                 <div className="item">

@@ -3,15 +3,17 @@ import React from 'react';
 import logo from '../../assets/img/logo.svg'
 import logonamad from '../../assets/img/logo@3x.jpg'
 import logomelihonar from '../../assets/img/melihonar@3x.jpg'
+import love from '../../assets/img/love.svg'
+import { t } from 'i18next';
 
 export default function Footer() {
     return (
         <footer>
-            <div class="container">
-                <div class="d-block d-md-flex flex-row-reverse row-footer ">
-                    {/* <div class="col-sm-6 col-sm-push-6"> */}
-                    <div class="col  my-auto">
-                        <ul class="social">
+            <div className="container">
+                <div className="d-block d-md-flex flex-row-reverse row-footer ">
+                    {/* <div className="col-sm-6 col-sm-push-6"> */}
+                    <div className="col  my-auto">
+                        <ul className="social">
                             <li><a href="#" id="twitter"></a></li>
                             <li><a href="#" id="aparat"></a></li>
                             <li><a href="#" id="instagram"></a></li>
@@ -20,97 +22,91 @@ export default function Footer() {
                             <li><a href="#" id="youtube"></a></li>
                         </ul>
                     </div>
-                    {/* <div class="col-sm-6 col-sm-pull-6 "> */}
-                    <div class="col">
-                        <div class="max-w490">
-                            <div class="nl-input">
-                                <input placeholder="ایمیل خود را وارد نمایید"/>
-                                <button type="button">ثبت ایمیل</button>
+                    {/* <div className="col-sm-6 col-sm-pull-6 "> */}
+                    <div className="col">
+                        <div className="max-w490">
+                            <div className="nl-input">
+                                <input placeholder={t("subscribe-newsletter-home.placeholder-email")}/>
+                                <button type="button">{t("subscribe-newsletter-home.submit-email-btn")}</button>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="d-block d-md-flex">
-                    <div class="col">
-                        <div class="max-w490 text-right">
-                            <img src={logo} width="160" height="42" alt="لوگو آرتیبیشن" class="logo-footer"/>
+                <div className="d-block d-lg-flex">
+                    <div className="col">
+                        <div className="text-right">
+                            <img src={logo} width="160" height="42" alt="لوگو آرتیبیشن" className="logo-footer"/>
                             <p>
-                                آرتیبیشن نمایشگاه و بازار آنلاین هنرهای تجسمی با محوریت هنر اصیل ایرانی است که با ایجاد دسترسی
-                                آسان،
-                                طراحی زیبا، ارائه‌‌‌ی بین‌ المللی و به صورت دو زبانه و نیز حضور در شبکه‌های اجتماعی توانسته است
-                                اعتماد بسیاری از هنرمندان ممتاز ایرانی را بدست آورد. آرتیبیشن در زمستان ۱۳۹۳ برای وصل کردن
-                                هنرمندان
-                                توانمند، مجموعه‌داران و گالری‌ها به هنر دوستان و خریداران آثار هنری که ارزش گران‌بهای هنر را
-                                می‌دانند در تهران / ایران خلق شده است
+                                {t("footer.text-info")}
                             </p>
                         </div>
                     </div>
-                    <div class="col">
-                        <div class="row ">
-                            <div class="col-md-4 col-xs-5">
-                                <div class="footer-nav text-right">
-                                    <h6 class="footer-nav-header">راهنما</h6>
-                                    <ul class="footer-nav-body">
-                                        <li><a href="#">راهنمای عضویت</a></li>
-                                        <li><a href="#">راهنمای عضویت هنرمند</a></li>
-                                        <li><a href="#">راهنمای ساخت گالری</a></li>
-                                        <li><a href="#">راهنمای خرید از سایت</a></li>
-                                        <li><a href="#">سوالات متداول</a></li>
+                    <div className="col">
+                        <div className="row ">
+                            <div className="col-md-4 col-xs-5">
+                                <div className="footer-nav text-right">
+                                    <h6 className="footer-nav-header">{t("footer.guid.title")}</h6>
+                                    <ul className="footer-nav-body">
+                                        <li><a href="#">{t("footer.guid.signup-login")}</a></li>
+                                        <li><a href="#">{t("footer.guid.artist-register")}</a></li>
+                                        <li><a href="#">{t("footer.guid.create-gallery")}</a></li>
+                                        <li><a href="#">{t("footer.guid.purchase")}</a></li>
+                                        <li><a href="#">{t("footer.guid.faq")}</a></li>
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-md-4 col-xs-3">
-                                <div class="footer-nav text-right">
-                                    <h6 class="footer-nav-header">مقررات</h6>
-                                    <ul class="footer-nav-body">
-                                        <li><a href="#">کپی رایت</a></li>
-                                        <li><a href="#">قوانین</a></li>
-                                        <li><a href="#">حریم خصوصی</a></li>
+                            <div className="col-md-4 col-xs-3">
+                                <div className="footer-nav text-right">
+                                    <h6 className="footer-nav-header">{t("footer.terms-of-use.title")}</h6>
+                                    <ul className="footer-nav-body">
+                                        <li><a href="#">{t("footer.terms-of-use.copyright")}</a></li>
+                                        <li><a href="#">{t("footer.terms-of-use.terms-and-conditional")}</a></li>
+                                        <li><a href="#">{t("footer.terms-of-use.policy")}</a></li>
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-md-4 col-xs-4">
-                                <div class="footer-nav text-right">
-                                    <h6 class="footer-nav-header">درباره</h6>
-                                    <ul class="footer-nav-body">
-                                        <li><a href="#">درباره ما</a></li>
-                                        <li><a href="#">تماس با ما</a></li>
-                                        <li><a href="#">همکاری با ما</a></li>
-                                        <li><a href="#">همکاران</a></li>
+                            <div className="col-md-4 col-xs-4">
+                                <div className="footer-nav text-right">
+                                    <h6 className="footer-nav-header">{t("footer.artibition.title")}</h6>
+                                    <ul className="footer-nav-body">
+                                        <li><a href="#">{t("footer.artibition.about-us")}</a></li>
+                                        <li><a href="#">{t("footer.artibition.contact-us")}</a></li>
+                                        <li><a href="#">{t("footer.artibition.collabration")}</a></li>
+                                        <li><a href="#">{t("footer.artibition.collabrators")}</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="d-flex justify-content-center">
-                    <ul class="certification">
+                <div className="d-flex justify-content-center">
+                    <ul className="certification">
                         <li><a href="#">
-                            <img src={logonamad} width="375" height="" class="img-responsive"
+                            <img src={logonamad} width="375" height="" className="img-responsive"
                                             alt="نماد اعتماد الکترونیکی آرتیبیشن"/></a></li>
                         <li><a href="#">
                             <img src={logomelihonar} 
                                 width="375" height="" 
-                                class="img-responsive"
+                                className="img-responsive"
                                         alt="شبکه ملی فرهنگ آرتیبیشن"/>
                             </a>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="reserve">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-8">
-                            <span>کلیه حقوق مادی و معنوی این سایت و برند آرتیبیشن متعلق به</span>
-                            <a href="#">شرکت گالری آرتیبیشن</a>
-                            <span>می‌باشد.</span>
+            <div className="reserve">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-sm-8">
+                            <span>{t("footer.text-copyright.text")}</span>
+                            <a href="#">{t("footer.text-copyright.link-gallery")}</a>
+                            <span>{t("footer.text-copyright.text2")}</span>
                         </div>
-                        <div class="col-sm-4 text-left hidden-xs">
-                            <span>ساخته شده با</span>
-                            <span><img src="img/love.svg" width="14" height="13" alt="آرتیبیشن" class="love"/> </span>
-                            <span>توسط گالری</span>
-                            <span><img src="img/logo.svg" width="94" height="26" alt="لوگو آرتیبیشن" class="smalllogo"/> </span>
+                        <div className="col-sm-4 text-left hidden-xs">
+                            <span>{t("footer.text-build.text1")}</span>
+                            <span><img src={love} width="14" height="13" alt="آرتیبیشن" className="love"/> </span>
+                            <span>{t("footer.text-build.text2")}</span>
+                            <span><img src={logo} width="94" height="26" alt="لوگو آرتیبیشن" className="smalllogo"/> </span>
                         </div>
                     </div>
                 </div>

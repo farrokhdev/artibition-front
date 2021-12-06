@@ -1,3 +1,4 @@
+import { t } from 'i18next';
 import React from 'react';
 import lfpqikbjzo from '../../assets/img/mainpage/lfpqikbjzo@3x.jpg';
 import pqjkkwfnml from '../../assets/img/mainpage/pqjkkwfnml@3x.jpg';
@@ -8,7 +9,7 @@ export default function News() {
         <div  className="row">
             <div className="public-header">
                 <div className="d-flex">
-                    <h2 className="default-title">اخبار و مقالات هنر</h2>
+                    <h2 className="default-title">{t("news-and-article-art.title")}</h2>
                 </div>
             </div>
             <div style={{overflowX : 'hidden'}} className="d-flex news-body">
@@ -34,7 +35,7 @@ export default function News() {
                                 پیگیر
                                 یادگیری هنرهای تجسمی بود. او برای تحصیل وارد دانشگـاه سن خوزه‌ی ایالت کالیفرنیا شد.
                             </p>
-                            <div className="btn-readmore-black">مطالعه خبر</div>
+                            <div className="btn-readmore-black">{t("news-and-article-art.more")}</div>
                         </div>
                     </div>
                 </a>
@@ -61,7 +62,7 @@ export default function News() {
                                 پیگیر
                                 یادگیری هنرهای تجسمی بود. او برای تحصیل وارد دانشگـاه سن خوزه‌ی ایالت کالیفرنیا شد.
                             </p>
-                            <div className="btn-readmore-black">مطالعه خبر</div>
+                            <div className="btn-readmore-black">{t("news-and-article-art.more")}</div>
                         </div>
                     </div>
                 </a>

@@ -1,17 +1,71 @@
 {
-
-
-  "empty-error" : {
-    "username" : "شماره همراه یا ایمیل وارد نشده است!",
-    "password" : "رمز عبور وارد نشده است!",
-    "activation-code" : "کد فعالسازی وارد نشده است!"
+  "empty-error": {
+    "username": "شماره همراه یا ایمیل وارد نشده است!",
+    "password": "رمز عبور وارد نشده است!",
+    "activation-code": "کد فعالسازی وارد نشده است!"
   },
 
+  "filter-header": {
+    "title": "فیلتر",
+    "placeholder-input-search": "جستجوی نام اثر، نام هنرمند، گالری و غیره",
+    "category": {
+      "title": "رشته هنری",
+      "all": "همه رشته‌ها",
+      "painting": "نقاشی",
+      "photography": "عکاسی",
+      "sculpture": "مجسمه",
+      "calligram": "نقاشی خط",
+      "calligraphy": "خوشنویسی",
+      "printmaking": "چاپ دستی",
+      "graphic": "گرافیک",
+      "drawing": "طراحی"
+    },
+    "size": {
+      "title": "ابعاد",
+      "small": "کوچک",
+      "medium": "متوسط",
+      "large": "بزرگ",
+      "custom": "ابعاد دلخواه",
+      "dimention": {
+        "unit": "سانتی متر",
+        "to": "تا",
+        "width": "عرض",
+        "length": "طول",
+        "height": "ارتفاع",
 
+        "select-custom-size": {
+          "title": "انتخاب ابعاد دلخواه برای اثر",
+          "to": "تا",
+          "submit" : "ثبت" ,
+          "min-width": "حداقل عرض (سانتی‌متر)",
+          "max-width": "حداکثر عرض (سانتی‌متر)",
+          "min-length": "حداقل طول (سانتی‌متر)",
+          "max-length": "حداکثر طول (سانتی‌متر)",
+          "max-height": "حداکثر ارتفاع (سانتی‌متر)",
+          "min-height": "حداقل ارتفاع (سانتی‌متر)"
+        }
+      }
+    },
+    "discount": {
+      "title": "تخفیف",
+      "text-switch": "نمایش آثار تخفیف دار",
+      "more-than-20": "تخفیف بالای 20 درصد",
+      "more-than-30": "تخفیف بالای 30 درصد",
+      "more-than-50": "تخفیف بالای 50 درصد"
+    },
+    "color": {
+      "title": "رنگ"
+    },
+    "price": {
+      "title": "قیمت",
+      "min": "حداقل قیمت (تومان)",
+      "max": "حداکثر قیمت (تومان)"
+    }
+  },
 
   "login_Title": "وارد شوید",
   "placeholder-username": "شماره همراه یا ایمیل",
-  
+
   "placeholder-password": "رمز عبور",
   "placeholder-confirm-password": "تکرار رمز عبور",
   "forget-title": "رمز عبورم را فراموش کردم",
@@ -19,39 +73,33 @@
   "google-login-text-button": "لاگین با گوگل",
   "is-registered-question": "تاکنون ثبت‌نام نکردید؟",
   "signup-text": "ثبت‌نام کنید",
+  "show-details": "مشاهده جزییات",
   "show-password": "نمایش",
   "hidden-password": "مخفی کردن",
-  
-  
-  
-  
-  
-  "signup_title" : "عضو آرتیبشن شوید" ,
-  "signup_btn-text" : "ثبت‌نام" ,
-  "describtion-low" : {
-    "text-link" : "شرایط و قوانین",
-    "text-info-part1" : "با عضویت شما",
-    "text-info-part2" : "استفاده از سرویس آرتیبیشن را قبول کرده‌اید."
+
+  "signup_title": "عضو آرتیبشن شوید",
+  "signup_btn-text": "ثبت‌نام",
+  "describtion-low": {
+    "text-link": "شرایط و قوانین",
+    "text-info-part1": "با عضویت شما",
+    "text-info-part2": "استفاده از سرویس آرتیبیشن را قبول کرده‌اید."
   },
-  "forget-signup-text" : {
-    "text" : "قبلا ثبت‌نام کرده‌اید؟",
-    "link" : "وارد شوید"
-},
+  "forget-signup-text": {
+    "text": "قبلا ثبت‌نام کرده‌اید؟",
+    "link": "وارد شوید"
+  },
 
+  "confirm-mobile-title": "تایید شماره همراه",
+  "text-btn-verification-submit": "دریافت کد فعالسازی",
 
+  "recovery-password-title": "بازیابی رمز عبور",
+  "text-btn-recovery-password": "بازیابی رمز عبور",
 
-"confirm-mobile-title" : "تایید شماره همراه" ,
-"text-btn-verification-submit" : "دریافت کد فعالسازی" ,
-  
-
-"recovery-password-title" : "بازیابی رمز عبور",
-"text-btn-recovery-password" : "بازیابی رمز عبور",
-
-"membership-title" : "عضویت" , 
-"membership-info-signup" : "جهت عضویت ابتدا کد 4 رقمی ارسال شده به شماره همراه خود را وارد نمایید." , 
-"membership-info" : "جهت بازیابی رمز عبور ابتدا کد 4 رقمی ارسال شده به شماره همراه خود را وارد نمایید." , 
-"placeholder-activation-code" : "کد فعالسازی" ,
-"text-btn-confirm-mobile-number" : "تایید شماره همراه" ,
+  "membership-title": "عضویت",
+  "membership-info-signup": "جهت عضویت ابتدا کد 4 رقمی ارسال شده به شماره همراه خود را وارد نمایید.",
+  "membership-info": "جهت بازیابی رمز عبور ابتدا کد 4 رقمی ارسال شده به شماره همراه خود را وارد نمایید.",
+  "placeholder-activation-code": "کد فعالسازی",
+  "text-btn-confirm-mobile-number": "تایید شماره همراه",
 
   "title_lang-header": "En. Versio",
   "nav-menu-artworks": "آثار هنری",
@@ -74,6 +122,12 @@
   "galleries": "گالری‌ها",
   "events": "رویدادها",
 
+  "see-all": "مشاهده همه",
+  "event-all": "همه رویدادها",
+  "collection-all": "همه کالکشن‌ها",
+  "deadline-send-artwroks": "مهلت ارسال آثار : ",
+  "upload": "آپلود اثر",
+
   "nav-submenu": {
     "artworks": {
       "artField": {
@@ -87,7 +141,8 @@
         "graphic": "گرافیک",
         "printmaking": "چاپ دستی",
         "cartoon": "کاریکاتور",
-        "drawing": "طراحی"
+        "drawing": "طراحی",
+        "art-for-gift": "هنر برای هدیه"
       },
 
       "subject": {
@@ -115,6 +170,82 @@
         "cartoonist": "کاریکاتوریست",
         "sketcher": "طراح"
       }
+    }
+  },
+
+  "artibition-artists-home": {
+    "title": "هنرمندان آرتیبیشن",
+    "text-info": "در آرتیبیشن می‌توانید به لیست هنرمندان برجسته ایرانی و تمامی آثار آن‌ها دسترسی داشته باشید. همچنین در صورتی که خالق و یا صاحب اثـر هنری هستید می‌توانید با عضویت در آرتیبیشن آن را در معـرض .نمایش برای عموم کاربران قرار دهید",
+    "btn-text": "مشاهده هنرمندان",
+    "action-text": "ارسال و ثبت اثر"
+  },
+
+  "artibition-events": {
+    "title": "رویدادهای آرتیبیشن"
+  },
+
+  "news-and-article-art": {
+    "title": "اخبار و مقالات هنر",
+    "more": "مطالعه خبر"
+  },
+
+  "suggestion-home": {
+    "title": "آثار پیشنهادی"
+  },
+  "my-recent-views-home": {
+    "title": "بازدیدهای اخیر من"
+  },
+
+  "subscribe-newsletter-home": {
+    "title": "عضویت در خبرنامه آرتیبیشن",
+    "text-info": "با عضویت از جدیدترین اخبار و آثار منتشر شده با خبر شوید",
+    "submit-email-btn": "ثبت ایمیل",
+    "placeholder-email": "ایمیل خود را وارد نمایید"
+  },
+
+  "collection-artworks-home": {
+    "title": "کالکشن آثار"
+  },
+
+  "artwork": {
+    "view-artwork": "مشاهده اثر",
+    "btn-action-to-shop": "درخواست خرید"
+  },
+
+  "footer": {
+    "text-info": "آرتیبیشن نمایشگاه و بازار آنلاین هنرهای تجسمی با محوریت هنر اصیل ایرانی است که با ایجاد دسترسی آسان، طراحی زیبا، ارائه‌‌‌ی بین‌ المللی و به صورت دو زبانه و نیز حضور در شبکه‌های اجتماعی توانسته است اعتماد بسیاری از هنرمندان ممتاز ایرانی را بدست آورد. آرتیبیشن در زمستان ۱۳۹۳ برای وصل کردن هنرمندان توانمند، مجموعه‌داران و گالری‌ها به هنر دوستان و خریداران آثار هنری که ارزش گران‌بهای هنر را می‌دانند در تهران / ایران خلق شده است",
+    "guid": {
+      "title": "راهنما",
+      "signup-login": "راهنمای عضویت",
+      "artist-register": "راهنمای عضویت هنرمند",
+      "create-gallery": "راهنمای ساخت گالری",
+      "purchase": "راهنمای خرید از سایت",
+      "faq": "سوالات متداول"
+    },
+    "terms-of-use": {
+      "title": "مقررات",
+      "copyright": "کپی رایت",
+      "terms-and-conditional": "قوانین",
+      "policy": "حریم خصوصی"
+    },
+
+    "artibition": {
+      "title": "درباره",
+      "about-us": "درباره ما",
+      "contact-us": "تماس با ما",
+      "collabration": "همکاری با ما",
+      "collabrators": "همکاران"
+    },
+
+    "text-copyright": {
+      "text": "کلیه حقوق مادی و معنوی این سایت و برند آرتیبیشن متعلق به",
+      "link-gallery": "شرکت گالری آرتیبیشن",
+      "text2": "می‌باشد"
+    },
+
+    "text-build": {
+      "text1": "ساخته شده با",
+      "text2": "توسط گالری"
     }
   }
 }

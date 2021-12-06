@@ -1,54 +1,106 @@
 {
-
-
-  "empty-error" : {
-    "username" : "Please input your username!",
-    "password" : "Please input your password!",
-    "activation-code" : "Please input your activation code!"
+  "empty-error": {
+    "username": "Please input your username!",
+    "password": "Please input your password!",
+    "activation-code": "Please input your activation code!"
   },
 
+  "filter-header": {
+    "title": "Filter",
+    "placeholder-input-search": "Search artwork, artist, gallery, etc.",
+    "category": {
+      "title": "Category",
+      "all": "All",
+      "painting": "Painting",
+      "photography": "Photography",
+      "sculpture": "Sculpture",
+      "calligram": "Calligram",
+      "calligraphy": "Calligraphy",
+      "printmaking": "Printmaking",
+      "graphic": "Graphic",
+      "drawing": "Drawing"
+    },
+    "size": {
+      "title": "Size",
+      "small": "Small",
+      "medium": "Medium",
+      "large": "Large",
+      "custom": "Custom size",
+      "dimention": {
+        "unit": "cm",
+        "to": "to",
+        "width": "Width",
+        "length": "Length",
+        "height": "Height",
+
+        "select-custom-size": {
+          "title": "Select custom size",
+          "to": "to",
+          "submit" : "Submit" ,
+          "min-width": "Min width (cm)",
+          "max-width": "Max width (cm)",
+          "min-length": "Min length (cm)",
+          "max-length": "Max length (cm)",
+          "min-height": "Min height (cm)",
+          "max-height": "Max height (cm)"
+        }
+      }
+    },
+    "discount": {
+      "title": "Discount",
+      "text-switch": "Show discounted artworks",
+      "more-than-20": "More than 20%",
+      "more-than-30": "More than 30%",
+      "more-than-50": "More than 50%"
+    },
+    "color": {
+      "title": "Color"
+    },
+    "price": {
+      "title": "Price",
+      "min": "Min (USD)",
+      "max": "Max (USD)"
+    }
+  },
 
   "login_Title": "Login",
   "placeholder-username": "Email or mobile number",
-  
+
   "placeholder-password": "Password",
   "placeholder-confirm-password": "Confirm password",
-  
+
   "forget-title": "Forget password",
   "login-btn-text": "Login",
   "google-login-text-button": "Login with google",
   "is-registered-question": "Not register yet",
   "signup-text": "Register",
-  
+  "show-details": "Details",
   "show-password": "Show",
   "hidden-password": "Hidden",
 
-
-  "signup_title" : "Join Arthibition" ,
-  "signup_btn-text" : "Register" ,
-  "describtion-low" : {
-    "text-link" : "terms and conditions",
-    "text-info-part1" : "You have accepted the",
-    "text-info-part2" : " by becoming a member."
+  "signup_title": "Join Arthibition",
+  "signup_btn-text": "Register",
+  "describtion-low": {
+    "text-link": "terms and conditions",
+    "text-info-part1": "You have accepted the",
+    "text-info-part2": " by becoming a member."
   },
-  "forget-signup-text" : {
-      "text" : "Already a member?",
-      "link" : "Login"
+  "forget-signup-text": {
+    "text": "Already a member?",
+    "link": "Login"
   },
 
+  "confirm-mobile-title": "Verification Mobile",
+  "text-btn-verification-submit": "Get activation code",
 
+  "recovery-password-title": "Password Recovery",
+  "text-btn-recovery-password": "Password Recovery",
 
-  "confirm-mobile-title" : "Verification Mobile" ,
-  "text-btn-verification-submit" : "Get activation code" ,
-
-  "recovery-password-title" : "Password Recovery",
-  "text-btn-recovery-password" : "Password Recovery",
-
-  "membership-title" : "Membership" , 
-  "membership-info-signup" : "To join, first enter the 4-digit code that sent to your mobile number." , 
-  "membership-info" : "To recover the password, first enter the 4-digit code that sent to your mobile number." , 
-  "placeholder-activation-code" : "Enter activation code" ,
-  "text-btn-confirm-mobile-number" : "Confirm mobile number" ,
+  "membership-title": "Membership",
+  "membership-info-signup": "To join, first enter the 4-digit code that sent to your mobile number.",
+  "membership-info": "To recover the password, first enter the 4-digit code that sent to your mobile number.",
+  "placeholder-activation-code": "Enter activation code",
+  "text-btn-confirm-mobile-number": "Confirm mobile number",
 
   "title_lang-header": "Fa",
   "nav-menu-artworks": "Artworks",
@@ -71,6 +123,12 @@
   "galleries": "Galleries",
   "events": "Events",
 
+  "see-all": "View all",
+  "event-all": "View all",
+  "collection-all": "View all",
+  "deadline-send-artwroks": "Deadline : ",
+  "upload": "Upload",
+
   "nav-submenu": {
     "artworks": {
       "artField": {
@@ -84,7 +142,8 @@
         "graphic": "Graphic",
         "printmaking": "Printmaking",
         "cartoon": "Cartoon",
-        "drawing": "Drawing"
+        "drawing": "Drawing",
+        "art-for-gift": "Art for gifts"
       },
       "subject": {
         "title": "Subject"
@@ -111,6 +170,82 @@
         "cartoonist": "Cartoonist",
         "sketcher": "Sketcher"
       }
+    }
+  },
+
+  "artibition-artists-home": {
+    "title": "ARTHIBITION ARTISTS",
+    "text-info": "you could access a list of exceptional Iranian artists and all of their artworks at Arthibition. in case you are tthe creator or owner of an artwork, you could present it to our users by becoming a member at Arthibition.",
+    "btn-text": "See artists",
+    "action-text": "Register artwork"
+  },
+
+  "artibition-events": {
+    "title": "ARTHIBITION ARTISTS"
+  },
+
+  "news-and-article-art": {
+    "title": "ART NEWS AND EVENTS",
+    "more": "Read more"
+  },
+  "suggestion-home": {
+    "title": "SUGGESTED ARTWORKS"
+  },
+
+  "my-recent-views-home": {
+    "title": "MY RECENT VISITS"
+  },
+
+  "subscribe-newsletter-home": {
+    "title": "SUBSCRIBE TO NEWSLETTER",
+    "text-info": "Get update with latest news.",
+    "submit-email-btn": "Subscribe",
+    "placeholder-email": "Enter your e-mail"
+  },
+
+  "collection-artworks-home": {
+    "title": "ARTWORKS COLLECTION"
+  },
+
+  "artwork": {
+    "view-artwork": "view",
+    "btn-action-to-shop": "Shop now"
+  },
+
+  "footer": {
+    "text-info": "Arthibition is the online exhibition and market of visual arts based on original Iranian art which has successfully gained trust of many unique Iranian artists by presenting a combination of ease of access, beautiful design, international presentation and bilingual website while a vast presence in various social media. Arthibition was created in winter 2015, Tehran/ Iran, to connect talented artists, collectors and galleries to art lovers and buyers who value art immensely.",
+    "guid": {
+      "title": "GUIDELINE",
+      "signup-login": "Sign up/Login",
+      "artist-register": "Artists register",
+      "create-gallery": "Create a gallery",
+      "purchase": "Purchase",
+      "faq": "FAQ"
+    },
+    "terms-of-use": {
+      "title": "TERMS OF USE",
+      "copyright": "Copy right",
+      "terms-and-conditional": "Terms and conditions",
+      "policy": "Privacy policy"
+    },
+
+    "artibition": {
+      "title": "ARTHIBITION",
+      "about-us": "About us",
+      "contact-us": "Contact us",
+      "collabration": "Collabration with us",
+      "collabrators": "Collabrators"
+    },
+
+    "text-copyright": {
+      "text": "Copyright © 2020, All rights reserved by",
+      "link-gallery": "Arthibition Gallery",
+      "text2": ""
+    },
+
+    "text-build": {
+      "text1": "Built with",
+      "text2": "by"
     }
   }
 }
