@@ -10,7 +10,7 @@ export default function NavbarMenuHeader(props) {
   
 
     return (
-        <nav className="navbar">
+        <nav className="navbar ">
         <div className="collapse navbar-collapse" id="menu">
             <button className="nav-close" type="button"></button>
             {/* <ul className="nav navbar-nav"> */}
@@ -42,7 +42,6 @@ export default function NavbarMenuHeader(props) {
                                                     <li><a href="#">{t("nav-submenu.artworks.artField.calligram")}</a></li>
                                                     <li><a href="#">{t("nav-submenu.artworks.artField.graphic")}</a></li>
                                                     <li><a href="#">{t("nav-submenu.artworks.artField.printmaking")}</a></li>
-                                                    <li><a href="#">{t("nav-submenu.artworks.artField.cartoon")}</a></li>
                                                     <li><a href="#">{t("nav-submenu.artworks.artField.drawing")}</a></li>
                                                 </ul>
                                             </div>
@@ -52,7 +51,7 @@ export default function NavbarMenuHeader(props) {
                                                 <button type="button" className="btn-gift">
                                                     <img src={gift} width="22" height="22" alt=""
                                                          className=""/>
-                                                    <span>هنر برای هدیه</span>
+                                                    <span>{t("nav-submenu.artworks.artField.art-for-gift")}</span>
                                                     <i className="glyphicon glyphicon-chevron-left"></i>
                                                 </button>
                                             </div>

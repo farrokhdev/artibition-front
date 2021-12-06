@@ -3,6 +3,7 @@ import skorupskas from '../../assets/img/mainpage/paul-skorupskas-7KLa-xLbSXA-un
 import YeUVDKZWSZ4 from '../../assets/img/mainpage/rene-bohmer-YeUVDKZWSZ4-unsplash@3x.jpg';
 import mainpage1x from '../../assets/img/mainpage/1@3x.jpg';
 import gogh from '../../assets/img/mainpage/van-gogh-white@3x.jpg';
+import { t } from 'i18next';
 
 export default function Events() {
     return (
@@ -10,10 +11,10 @@ export default function Events() {
         <div className="row">
             <div className="d-flex public-header">
                 <div className="col-xs-8">
-                    <h2 className="text-right default-title">رویدادهای آرتیبیشن</h2>
+                    <h2 className="text-right default-title">{t("artibition-events.title")}</h2>
                 </div>
                 <div className="col-xs-4">
-                    <a href="#" className="btn-readmore pull-left">همه رویدادها</a>
+                    <a href="#" className="btn-readmore pull-left">{t("event-all")}</a>
                 </div>
             </div>
             <div className="clearfix"></div>

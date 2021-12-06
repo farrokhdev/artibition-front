@@ -1,45 +1,53 @@
-import React from 'react';
+import React , {useState} from 'react';
 import searchIcon from '../../assets/img/search.svg';
 import filterIcon from '../../assets/img/Filter.svg';
 import logo from '../../assets/img/logo.svg';
 import {Link} from 'react-router-dom';
 import {useTranslation} from 'react-i18next';
-import {isLogin, GetLanguage} from '../../utils/utils'
-
+import ModalSetDimention from './ModalSetDimention';
 function Header() {
     
     const {t, i18n} = useTranslation();
-    const handleChangeLanguage = (lng) => {
-        i18n.changeLanguage(lng)
+
+    const [visibleSetDimentionModal, setVisibleSetDimentionModal] = useState(false)
+    
+    const changeLanguage = (lng) => {
+        i18n.changeLanguage(lng);
+    };
+    
+    const handleShowModalsetDimention = () => {
+        setTimeout(() => {
+            setVisibleSetDimentionModal(true)
+        }, 300);
     }
 
 
 
     return (
        
-    <div class="default-header ">
-        <div class="row">
-            <div class="col-md-4 col-sm-3 col-xs-6">
-                <div class="artibition-logo">
+    <div className="default-header ">
+        <div className="row">
+            <div className="col-md-4 col-sm-3 col-xs-6">
+                <div className="artibition-logo">
                     <Link to="/">
                         <img src={logo} width="160" height="42" alt="Artibition-logo"/>
                     </Link>
                 </div>
             </div>
-            <div class="col-md-4 col-sm-5 hidden-xs">
-                <div class="search-container dropdown">
-                    <input type="text" placeholder="جستجوی نام اثر، نام هنرمند، گالری و غیره" name="search"
-                           autocomplete="off" class="mainsearch"/>
-                    <button class="btn-searchicon" type="submit">
+            <div className="col-md-4 col-sm-5 col-lg-5 hidden-xs">
+                <div className="search-container dropdown">
+                    <input type="text" placeholder={t("filter-header.placeholder-input-search")} name="search"
+                           autocomplete="off" className="mainsearch"/>
+                    <button className="btn-searchicon" type="submit">
                         <img src={searchIcon} width="24" height="24" alt="جستجو"/></button>
-                    <button class="btn-searchfilter hidden-sm" type="button" data-toggle="collapse"
+                    <button className="btn-searchfilter hidden-sm" type="button" data-toggle="collapse"
                             data-target="#top-filter">
                         <img src={filterIcon} height="15" width="16" alt="فیلتر"/>
-                        <span>فیلتر</span>
+                        <span>{t("filter-header.title")}</span>
                     </button>
                 </div>
-                <div class="autocomplete">
-                    <ul class="predict">
+                <div className="autocomplete">
+                    <ul className="predict">
                         <li><a href="#">پرویز تناولی</a></li>
                         <li><a href="#">پرویز اعتصامی</a></li>
                         <li><a href="#">پرتو فرومنش</a></li>
@@ -48,8 +56,8 @@ function Header() {
                         <li><a href="#">گالری هان - نمایشگاه عکاسی پرندگان</a></li>
                         <li><a href="#">گالری آرتیبیشن - نمایشگاه نقاشی آبرنگ پرتره</a></li>
                     </ul>
-                    <div class="predict-cat">
-                        <span class="graycolor">فیلتر نتایج بر اساس:</span>
+                    <div className="predict-cat">
+                        <span className="graycolor">فیلتر نتایج بر اساس:</span>
                         <ul>
                             <li><a href="#">هنرمند</a></li>
                             <li><a href="#">نام اثر</a></li>
@@ -59,82 +67,74 @@ function Header() {
                     </div>
                 </div>
             </div>
-            <div class="collapse filter-dropdown hidden-sm bg-filter-header" id="top-filter">
-                <div  class="container ">
+            <div className="collapse filter-dropdown hidden-sm bg-filter-header" id="top-filter">
+                <div  className="container ">
 
-
-     
-
-                   
-
-                   
-
-                    
-
-                    <div class="col-md-2 ">
+                    <div className="col-md-2 ">
                         
-                        <h3 class="filter-menu-title">ابعاد</h3>
-                        <div class="filter-menu-body">
-                            <label class="lable-checkbox">
+                        <h3 className="filter-menu-title">{t("filter-header.size.title")}</h3>
+                        <div className="filter-menu-body">
+                            <label className="lable-checkbox">
                                 <input type="checkbox" value=""/>
-                                <span>کوچک</span>
-                                <span class="checkmark"></span>
+                                <span>{t("filter-header.size.small")}</span>
+                                <span className="checkmark"></span>
                             </label>
-                            <label class="lable-checkbox">
+                            <label className="lable-checkbox">
                                 <input type="checkbox" value=""/>
-                                <span>متوسط</span>
-                                <span class="checkmark"></span>
+                                <span>{t("filter-header.size.medium")}</span>
+                                <span className="checkmark"></span>
                             </label>
-                            <label class="lable-checkbox">
+                            <label className="lable-checkbox">
                                 <input type="checkbox" value=""/>
-                                <span>بزرگ</span>
-                                <span class="checkmark"></span>
+                                <span>{t("filter-header.size.large")}</span>
+                                <span className="checkmark"></span>
                             </label>
-                            <label class="lable-checkbox">
+                            <label className="lable-checkbox">
                                 <input type="checkbox" value="" id="custom-dim"/>
-                                <span>ابعاد دلخواه</span>
-                                <span class="checkmark"></span>
+                                <span>{t("filter-header.size.custom")}</span>
+                                <span className="checkmark"></span>
                             </label>
-                            <div class="add-dimention">
-                                <div class="add-dimention-row">
-                                    <div class="graycolor">عرض
-                                        <span data-toggle="modal" data-target="#select-dimention"
-                                              class="edit-dimention"></span>
+                            <div className="add-dimention ">
+                                <div className="add-dimention-row">
+                                    <div className="graycolor">{t("filter-header.size.dimention.width")}
+                                        <span onClick={handleShowModalsetDimention} data-toggle="modal" data-target="#select-dimention"
+                                            className="edit-dimention">
+                                        </span>
                                     </div>
-                                    <span class="persian-num">60</span>
-                                    <span>تا</span>
-                                    <span class="persian-num">90</span>
-                                    <span>سانتی‌متر</span>
+                                    <span className="persian-num">60</span>
+                                    <span>{t("filter-header.size.dimention.to")}</span>
+                                    <span className="persian-num">90</span>
+                                    <span>{t("filter-header.size.dimention.unit")}</span>
                                 </div>
-                                <div class="add-dimention-row">
-                                    <div class="graycolor">طول
-                                        <span data-toggle="modal" data-target="#select-dimention"
-                                              class="edit-dimention"></span>
+                                <div className="add-dimention-row">
+                                    <div className="graycolor">{t("filter-header.size.dimention.length")}
+                                        <span onClick={handleShowModalsetDimention} data-toggle="modal" data-target="#select-dimention"
+                                              className="edit-dimention"></span>
                                     </div>
-                                    <span class="persian-num">60</span>
-                                    <span>تا</span>
-                                    <span class="persian-num">90</span>
-                                    <span>سانتی‌متر</span>
+                                    <span className="persian-num">60</span>
+                                    <span>{t("filter-header.size.dimention.to")}</span>
+                                    <span className="persian-num">90</span>
+                                    <span>{t("filter-header.size.dimention.unit")}</span>
                                 </div>
-                                <div class="add-dimention-row">
-                                    <div class="graycolor">ارتفاع
-                                        <span data-toggle="modal" data-target="#select-dimention"
-                                              class="edit-dimention"></span>
+                                <div className="add-dimention-row">
+                                    <div className="graycolor">{t("filter-header.size.dimention.height")}
+                                        <span onClick={handleShowModalsetDimention} data-toggle="modal" data-target="#select-dimention"
+                                              className="edit-dimention"></span>
                                     </div>
-                                    <span class="persian-num">60</span>
-                                    <span>تا</span>
-                                    <span class="persian-num">90</span>
-                                    <span>سانتی‌متر</span>
+                                    <span className="persian-num">60</span>
+                                    <span>{t("filter-header.size.dimention.to")}</span>
+                                    <span className="persian-num">90</span>
+                                    <span>{t("filter-header.size.dimention.unit")}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-2 ">
+                    <div className="col-md-2 ">
                         
-                        <h3 class="filter-menu-title">رنگ</h3>
-                        <div class="filter-menu-body">
-                            <table class="table table-responsive color">
+                        <h3 className="filter-menu-title">{t("filter-header.color.title")}</h3>
+                        <div className="filter-menu-body">
+                            <table className="table table-responsive color">
                                 <tbody>
                                 <tr>
                                     <td id="color201"></td>
@@ -159,131 +159,142 @@ function Header() {
                         </div>
                     </div>
 
-                     {/* <div class="col-md-3 col-md-offset-1 bg-primary"> */}
-                     <div class="col-md-3 ">
+                     <div className="col-md-3 ">
                         
-                        <h3 class="filter-menu-title">تخفیف</h3>
-                        <div class="filter-menu-body">
-                            <label class="switch pull-right">
+                        <h3 className="filter-menu-title">{t("filter-header.discount.title")}</h3>
+                        <div className="filter-menu-body">
+                            <label className="switch pull-right">
                                 <input type="checkbox" checked/>
-                                <span class="switchbtn round"></span>
-                                <span class="label-switchbtn">نمایش آثار تخفیف‌دار</span>
+                                <span className="switchbtn round"></span>
+                                <span className="label-switchbtn">{t("filter-header.discount.text-switch")}</span>
                             </label>
-                            <div class="clearfix"></div>
-                            <div class="md-mrgt30">
-                                <label class="lable-checkbox">
+                            <div className="clearfix"></div>
+                            <div className="md-mrgt30">
+                                <label className="lable-checkbox">
                                     <input type="checkbox" value=""/>
-                                    <span>تخفیف بالای 20 درصد</span>
-                                    <span class="checkmark"></span>
+                                    <span>{t("filter-header.discount.more-than-20")}</span>
+                                    <span className="checkmark"></span>
                                 </label>
-                                <label class="lable-checkbox">
+                                <label className="lable-checkbox">
                                     <input type="checkbox" value=""/>
-                                    <span>تخفیف بالای 30 درصد</span>
-                                    <span class="checkmark"></span>
+                                    <span>{t("filter-header.discount.more-than-30")}</span>
+                                    <span className="checkmark"></span>
                                 </label>
-                                <label class="lable-checkbox">
+                                <label className="lable-checkbox">
                                     <input type="checkbox" value=""/>
-                                    <span>تخفیف بالای 50 درصد</span>
-                                    <span class="checkmark"></span>
+                                    <span>{t("filter-header.discount.more-than-50")}</span>
+                                    <span className="checkmark"></span>
                                 </label>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-2 ">
+                    <div className="col-md-2 ">
                        
-                        <h3 class="filter-menu-title">قیمت</h3>
-                        <div class="filter-menu-body">
-                            <div class="rangeslider">
+                        <h3 className="filter-menu-title">{t("filter-header.price.title")}</h3>
+                        <div className="filter-menu-body">
+                            <div className="rangeslider">
                                 <div id="slider" dir="rtl"></div>
                             </div>
-                            <div class="row row-inputs">
-                                <div class="col-xs-12 ">
-                                    <label>حداقل قیمت (تومان)</label>
-                                    <input type="text" class="value persian-num" data-index="0" value="0"/>
+                            <div className="row row-inputs">
+                                <div className="col-xs-12 ">
+                                    <label>{t("filter-header.price.min")}</label>
+                                    <input type="text" className="value persian-num" data-index="0" value="0"/>
                                 </div>
-                                <div class="col-xs-12 mrgt16">
-                                    <label>حداکثر قیمت (تومان)</label>
-                                    <input type="text" class="value  persian-num" data-index="1" value="4"/>
+                                <div className="col-xs-12 mrgt16">
+                                    <label>{t("filter-header.price.max")}</label>
+                                    <input type="text" className="value  persian-num" data-index="1" value="4"/>
                                 </div>
                             </div>
                         </div>
                     </div>
 
 
-                    <div class="col-md-2 ">
+                    <div className="col-md-2 ">
                         
-                        <h3 class="filter-menu-title">رشته‌ هنری</h3>
-                        <div class="filter-menu-body">
-                            <label class="lable-checkbox">
+                        <h3 className="filter-menu-title">{t("filter-header.category.title")}</h3>
+                        <div className="filter-menu-body">
+                            <label className="lable-checkbox">
                                 <input type="checkbox" checked value=""/>
-                                <span>همه رشته‌ها</span>
-                                <span class="checkmark"></span>
+                                <span>{t("filter-header.category.all")}</span>
+                                <span className="checkmark"></span>
                             </label>
-                            <label class="lable-checkbox">
+                            <label className="lable-checkbox">
                                 <input type="checkbox" value=""/>
-                                <span>نقاشی</span>
-                                <span class="checkmark"></span>
+                                <span>{t("filter-header.category.painting")}</span>
+                                <span className="checkmark"></span>
                             </label>
-                            <label class="lable-checkbox">
+                            <label className="lable-checkbox">
                                 <input type="checkbox" value=""/>
-                                <span>عکاسی</span>
-                                <span class="checkmark"></span>
+                                <span>{t("filter-header.category.photography")}</span>
+                                <span className="checkmark"></span>
                             </label>
-                            <label class="lable-checkbox">
+                            <label className="lable-checkbox">
                                 <input type="checkbox" value=""/>
-                                <span>مجسمه</span>
-                                <span class="checkmark"></span>
+                                <span>{t("filter-header.category.sculpture")}</span>
+                                <span className="checkmark"></span>
                             </label>
-                            <label class="lable-checkbox">
+                            <label className="lable-checkbox">
                                 <input type="checkbox" value=""/>
-                                <span>نقاشی خط</span>
-                                <span class="checkmark"></span>
+                                <span>{t("filter-header.category.calligram")}</span>
+                                <span className="checkmark"></span>
                             </label>
-                            <label class="lable-checkbox">
+                            <label className="lable-checkbox">
                                 <input type="checkbox" value=""/>
-                                <span>خوشنویسی</span>
-                                <span class="checkmark"></span>
+                                <span>{t("filter-header.category.calligraphy")}</span>
+                                <span className="checkmark"></span>
                             </label>
-                            <label class="lable-checkbox">
+                            <label className="lable-checkbox">
                                 <input type="checkbox" value=""/>
-                                <span>چاپ دستی</span>
-                                <span class="checkmark"></span>
+                                <span>{t("filter-header.category.printmaking")}</span>
+                                <span className="checkmark"></span>
                             </label>
-                            <label class="lable-checkbox">
+                            <label className="lable-checkbox">
                                 <input type="checkbox" value=""/>
-                                <span>گرافیک</span>
-                                <span class="checkmark"></span>
+                                <span>{t("filter-header.category.graphic")}</span>
+                                <span className="checkmark"></span>
                             </label>
-                            <label class="lable-checkbox">
+                            <label className="lable-checkbox">
                                 <input type="checkbox" value=""/>
-                                <span>طراحی</span>
-                                <span class="checkmark"></span>
+                                <span>{t("filter-header.category.drawing")}</span>
+                                <span className="checkmark"></span>
                             </label>
                         </div>
                     </div>
                     
-                    <div class="clearfix"></div>
-                    <div class="col-md-4 col-md-offset-4">
-                        <button type="button" class="btn-black btn-doFilter">اعمال فیلتر</button>
+                    <div className="clearfix"></div>
+                    <div className="col-md-4 col-md-offset-4">
+                        <button type="button" className="btn-black btn-doFilter">اعمال فیلتر</button>
                     </div>
                 </div>
             </div>
-            {/* <div class="col-md-4 col-sm-4 bg-warning"> */}
-            <div class="col ">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+            <div className="col ">
+                <div className="navbar-header">
+                    <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                        <span className="icon-bar"></span>
+                        <span className="icon-bar"></span>
+                        <span className="icon-bar"></span>
                     </button>
                 </div>
-                <div class="head-leftbtn hidden-xs">
-                    <button onClick={()=>handleChangeLanguage('fa')} type="button" class="btn-changelang pull-left">{t("title_lang-heade")}</button>
-                    <button type="button" class="btn-login pull-left">عضویت / ورود</button>
+                <div className="head-leftbtn hidden-xs">
+
+                    <button 
+                        onClick={()=>changeLanguage(i18n.language !== 'fa-IR' ? 'fa-IR' : 'en-US' )} 
+                        type="button" 
+                        classNameName="btn-changelang pull-left">
+
+                        {t("title_lang-header")}
+
+                    </button>
+
                 </div>
             </div>
         </div>
+
+        <ModalSetDimention
+            visibleSetDimentionModal={visibleSetDimentionModal}
+            setVisibleSetDimentionModal={setVisibleSetDimentionModal}
+        />
     </div>
     )
 }

@@ -65,15 +65,10 @@ function HeaderAuthPages() {
 
                     <div className="col-sm-2   hidden-xs px-0 ">
                         <div className="head-leftbtn hidden-xs">
-                            {/* <button type="button" className="btn-changelang pull-left">En<span className="hidden-sm">.Version</span> */}
-                            
-                                {/* <button onClick={()=>changeLanguage(i18n.language === 'en-US' ? 'fa-IR' : 'en-US' )} type="button" className="btn-changelang pull-left">{t("title_lang-header")}</button> */}
-                                <button onClick={()=>changeLanguage(i18n.language !== 'fa-IR' ? 'fa-IR' : 'en-US' )} type="button" className="btn-changelang pull-left">{t("title_lang-header")}</button>
-                            
-                        
+                            <button onClick={()=>changeLanguage(i18n.language !== 'fa-IR' ? 'fa-IR' : 'en-US' )} type="button" className="btn-changelang pull-left">{t("title_lang-header")}</button>
                             <button type="button" className="btn-login pull-left">{t("redirect-login-header")}</button>
                         </div>
-            </div>
+                    </div>
         </>
     )
 }

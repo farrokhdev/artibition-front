@@ -8,6 +8,7 @@ import mainpage10 from '../../assets/img/mainpage/10.jpg';
 import mainpage11 from '../../assets/img/mainpage/11.jpg';
 import mainpage12 from '../../assets/img/mainpage/12.jpg';
 import Aydin_Aghdashloo from '../../assets/img/Aydin_Aghdashloo_04@3x.jpg';
+import { t } from 'i18next';
 
 export default function Artists() {
     return (
@@ -147,16 +148,13 @@ export default function Artists() {
             </div>
             <div className="col col-lg-4 ">
                 {/* <h5 className="artists-title hidden-xs">هنرمندان آرتیبشن</h5> */}
-                <h5 className="artists-title d-flex">هنرمندان آرتیبشن</h5>
+                <h5 className="artists-title d-flex">{t("artibition-artists-home.title")}</h5>
                 <p className="artists-body">
-                    در آرتیبیشن می‌توانید به لیست هنرمندان برجسته ایرانی و تمامی آثار آن‌ها دسترسی داشته باشید. همچنین
-                    در صورتی که خالق و یا صاحب
-                    اثـر هنری هستید می‌توانید با عضویت در آرتیبیشن آن را در معـرض
-                    .نمایش برای عموم کاربران قرار دهید
+                    {t("artibition-artists-home.text-info")}
                 </p>
                 <div className="artists-btngroup">
-                    <button className="btn btn-default">مشاهده هنرمندان</button>
-                    <button className="btn btn-primary">ارسال و ثبت اثر</button>
+                    <button className="btn btn-default">{t("artibition-artists-home.btn-text")}</button>
+                    <button className="btn btn-primary">{t("artibition-artists-home.action-text")}</button>
                 </div>
             </div>
         </div>
