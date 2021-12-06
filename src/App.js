@@ -16,8 +16,8 @@ function App(props) {
         return (
             <Router>
                 <Routes>
-                    <Route exact path={`/auth/login`} component={() => <div>{t('description.part1')}</div>}/>
-                    <Route path="*" element={<Navigate to ="/auth/login" />}/>
+                    <Route exact path={`/auth/signup`} component={() => <div>{t('description.part1')}</div>}/>
+                    <Route path="*" element={<Navigate to ="/auth/signup" />}/>
                 </Routes>
             </Router>
         )
@@ -25,6 +25,8 @@ function App(props) {
         return (
 
             <RouterConfig/>
+
+
             // <Router>
             //     <div>{t('title')}</div>
             //     <button type="button" onClick={() => changeLanguage('fa')}>

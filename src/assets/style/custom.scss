@@ -32,9 +32,10 @@
 
 
 body {
-    font-family: Tahrir_Medium, sans-serif;
+    font-family: Tahrir_Medium, sans-serif !important;
     font-size: 18px;
 }
+
 
 
 input,
@@ -2850,6 +2851,9 @@ button.close {
     font-size: 60px;
 }
 
+
+
+
 .modal-footer {
     text-align: center;
     padding: 50px 15px;
@@ -4282,7 +4286,7 @@ button.close {
 
 .form-control.input-public {
     border: 0;
-    border-bottom: 1px solid #e4e6e9;
+    border-bottom: 1px solid #e4e6e9 ;
     height: 44px;
     padding: 12px 20px 12px 0;
 }
@@ -4297,6 +4301,7 @@ button.close {
 
 .form-control.input-public::placeholder {
     font-size: 18px;
+    
 }
 
 .form-control.input-public#login-username {
@@ -8293,4 +8298,53 @@ span.unit-dimention {
 .artist-avatar .btn-follow {
     margin-top: 16px;
     background-color: transparent;
+}
+
+.modal-otp .modal-body{
+    padding: 0px 70px 0px;
+}
+
+.btn-confirm-phone{
+    height: 50px !important;
+    background-color: black !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    color: #ffffff;
+    min-width: 200px ;
+    font-size: 20px;
+}
+
+
+// -------- Custom ui ant desing ------
+
+.ant-modal-close-x{
+    display: none !important;
+}
+
+.ant-input{
+    font-size: 22px !important;
+}
+
+.ant-input::placeholder{
+    font-size: 22px !important;
+}
+
+.ant-form-item-explain-error{
+    font-size: 18px !important;
+}
+
+.ant-input-affix-wrapper.default-input.border-0.px-2 {
+    // box-shadow: none !important;
+    // outline: none !important;
+    border-bottom: 2px solid black !important;
+}
+
+.btn-close-modal{
+    width: 17px !important;
+    height: 17px !important;
+}
+
+.ant-modal-footer {
+    border-top: none !important;
 }
