@@ -2,12 +2,13 @@
   "empty-error": {
     "username": "Please input your username!",
     "password": "Please input your password!",
+    "repeat-password": "Please input your confirm password!",
     "activation-code": "Please input your activation code!"
   },
 
   "filter-header": {
     "title": "Filter",
-    "placeholder-input-search": "Search artwork, artist, gallery, etc.",
+    "placeholder-input-search": ".Search artwork, artist, gallery, etc",
     "category": {
       "title": "Category",
       "all": "All",
@@ -115,8 +116,8 @@
   "text-statistics-artists": "ARTISTS",
   "text-statistics-users": "USERS",
   "text-footer-auth": {
-    "info": "If you have any questions, contact us  : ",
-    "mobile": "+98 21 229 22538"
+    "info": " :  If you have any questions, contact us",
+    "mobile": " 22538 229 21 98+ "
   },
 
   "category": "Category",
@@ -126,7 +127,7 @@
   "see-all": "View all",
   "event-all": "View all",
   "collection-all": "View all",
-  "deadline-send-artwroks": "Deadline : ",
+  "deadline-send-artwroks": ": Deadline",
   "upload": "Upload",
 
   "nav-submenu": {
@@ -198,7 +199,7 @@
 
   "subscribe-newsletter-home": {
     "title": "SUBSCRIBE TO NEWSLETTER",
-    "text-info": "Get update with latest news.",
+    "text-info": ".Get update with latest news",
     "submit-email-btn": "Subscribe",
     "placeholder-email": "Enter your e-mail"
   },

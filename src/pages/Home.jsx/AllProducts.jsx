@@ -40,7 +40,7 @@ export default function AllProducts() {
                                         <img  
                                            
                                             src={hnrpqkfiup} 
-                                             alt="آرتیبیشن"
+                                             alt="artibition"
                                              className="img-responsive"/>
                                         <div className="tab-overly">
                                             <span className="btn-see hidden-xs hidden-sm">

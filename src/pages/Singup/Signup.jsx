@@ -32,7 +32,7 @@ export default function Signup() {
         <div className="page-fixed">
             <div className="container container-fixed">
                 <div className="default-header promotion-head">
-                    <div className="row">
+                    <div className="d-flex content-box-header-auth">
 
                         <HeaderAuthPages/>
                    
@@ -40,7 +40,7 @@ export default function Signup() {
                 </div>
                 <div className="d-block  login-content">
 
-                        <div className="d-flex">
+                        <div className="row content-auth-page">
                             <div className="col-lg-5 col-lg-offset-1  col-md-offset-1">
                                 <h2 className="login-title">{t("signup_title")}</h2>
 
