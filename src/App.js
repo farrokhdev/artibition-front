@@ -5,6 +5,8 @@ import RouterConfig from './main/router'
 import APIService from "./utils/api.services";
 import {useTranslation} from 'react-i18next';
 
+
+
 function App(props) {
     const {t, i18n} = useTranslation();
     const changeLanguage = (lng) => {
@@ -12,12 +14,14 @@ function App(props) {
     };
     console.log(GetLanguage());
 
+    
+
     if (isLogin()) {
         return (
             <Router>
                 <Routes>
-                    <Route exact path={`/auth/signup`} component={() => <div>{t('description.part1')}</div>}/>
-                    <Route path="*" element={<Navigate to ="/auth/signup" />}/>
+                    <Route exact path={`/auth/login`} component={() => <div>{t('description.part1')}</div>}/>
+                    <Route path="*" element={<Navigate to ="/auth/login" />}/>
                 </Routes>
             </Router>
         )
@@ -26,18 +30,6 @@ function App(props) {
 
             <RouterConfig/>
 
-
-            // <Router>
-            //     <div>{t('title')}</div>
-            //     <button type="button" onClick={() => changeLanguage('fa')}>
-            //         fa
-            //     </button>
-            //     <button type="button" onClick={() => changeLanguage('en')}>
-            //         en
-            //     </button>
-            //     <div>{t('description.part1')}</div>
-            //     <RouterConfig props={props}/>
-            // </Router>
         )
     }
 }

@@ -102,7 +102,7 @@ export default function Footer() {
                             <a href="#">{t("footer.text-copyright.link-gallery")}</a>
                             <span>{t("footer.text-copyright.text2")}</span>
                         </div>
-                        <div className="col-sm-4 text-left hidden-xs">
+                        <div className="col-sm-4 text-left hidden-xs content-builder-text">
                             <span>{t("footer.text-build.text1")}</span>
                             <span><img src={love} width="14" height="13" alt="آرتیبیشن" className="love"/> </span>
                             <span>{t("footer.text-build.text2")}</span>

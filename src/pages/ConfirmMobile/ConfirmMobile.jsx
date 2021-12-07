@@ -24,13 +24,13 @@ function ConfirmMobile() {
         <div className="page-fixed">
         <div className="container container-fixed ">
             <div className="default-header promotion-head">
-                <div className="d-flex">
+                <div className="d-flex content-box-header-auth">
                     <HeaderAuthPages/>
                 </div>
             </div>
             <div className="d-block login-content">
 
-                <div className="d-flex">
+                <div className="row content-auth-page">
                     <div className="col-lg-5 col-lg-offset-1  col-md-offset-1 ">
                         <h2 className="login-title">{t("confirm-mobile-title")}</h2>
 
@@ -51,11 +51,11 @@ function ConfirmMobile() {
                                                 }
                                             ]}>
                                                 <Input
-                                                iconRender={visible => (visible ? "مخفی کردن" : "نمایش ")}
-                                                // prefix={<img src={lock_icon}/>}
-                                                type="number"
-                                                className="input-public form-control border-0 px-2  d-flex"
-                                                placeholder={t("placeholder-username")}
+                                                    iconRender={visible => (visible ? t("hidden-password") :  t("show-password"))}
+                                                    // prefix={<img src={lock_icon}/>}
+                                                    type="number"
+                                                    className="input-public form-control border-0 px-2  d-flex"
+                                                    placeholder={t("placeholder-username")}
                                             />
 
                                         </Form.Item>

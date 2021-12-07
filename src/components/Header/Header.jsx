@@ -5,6 +5,7 @@ import logo from '../../assets/img/logo.svg';
 import {Link} from 'react-router-dom';
 import {useTranslation} from 'react-i18next';
 import ModalSetDimention from './ModalSetDimention';
+
 function Header() {
     
     const {t, i18n} = useTranslation();
@@ -13,6 +14,10 @@ function Header() {
     
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);
+
+        setTimeout(() => {
+            window.location.reload()
+        }, 100);
     };
     
     const handleShowModalsetDimention = () => {
@@ -26,11 +31,11 @@ function Header() {
     return (
        
     <div className="default-header ">
-        <div className="row">
+        <div className="row content-header-site">
             <div className="col-md-4 col-sm-3 col-xs-6">
-                <div className="artibition-logo">
+                <div className="d-flex artibition-logo">
                     <Link to="/">
-                        <img src={logo} width="160" height="42" alt="Artibition-logo"/>
+                        <img src={logo}  alt="Artibition-logo"/>
                     </Link>
                 </div>
             </div>
@@ -276,8 +281,9 @@ function Header() {
                         <span className="icon-bar"></span>
                     </button>
                 </div>
-                <div className="head-leftbtn hidden-xs">
+                <div className="head-leftbtn d-flex content-box-action-header hidden-xs">
 
+                    <button type="button" className="btn-login pull-left mx-2">{t("redirect-login-header")}</button>
                     <button 
                         onClick={()=>changeLanguage(i18n.language !== 'fa-IR' ? 'fa-IR' : 'en-US' )} 
                         type="button" 
@@ -286,7 +292,6 @@ function Header() {
                         {t("title_lang-header")}
 
                     </button>
-
                 </div>
             </div>
         </div>

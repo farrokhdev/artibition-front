@@ -24,13 +24,13 @@ function RecoveryPassword() {
         <div className="page-fixed">
         <div className="container container-fixed ">
             <div className="default-header promotion-head">
-                <div className="d-flex">
+                <div className="d-flex content-box-header-auth">
                     <HeaderAuthPages/>
                 </div>
             </div>
             <div className="d-block login-content">
 
-                <div className="d-flex">
+                <div className="row content-auth-page">
                     <div className="col-lg-5 col-lg-offset-1  col-md-offset-1 ">
                         <h2 className="login-title">{t("recovery-password-title")}</h2>
 
@@ -67,7 +67,7 @@ function RecoveryPassword() {
                                             rules={[
                                                 {
                                                     required: true,
-                                                    message: "تکرار رمز عبور وارد نشده است",
+                                                    message: t("empty-error.repeat-password"),
                                                 }
                                             ]}>
                                                 <Input.Password

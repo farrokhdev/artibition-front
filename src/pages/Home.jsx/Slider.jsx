@@ -1,5 +1,5 @@
 import React from 'react';
-import slider1 from '../../assets/img/mainpage/slider-1.jpg';
+import slider1 from '../../assets/img/slider-en-1.jpg';
 import slider2 from '../../assets/img/mainpage/slider-2.jpg';
 import previousIcon from '../../assets/img/previous.svg';
 import nextIcon from '../../assets/img/next.svg';
