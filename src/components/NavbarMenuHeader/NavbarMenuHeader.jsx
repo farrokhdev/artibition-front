@@ -4,19 +4,40 @@ import vitrin from '../../assets/img/mainpage/menu-vitrin.jpg';
 import bohmer from '../../assets/img/mainpage/rene-bohmer-YeUVDKZWSZ4-unsplash@3x.jpg';
 import gift from '../../assets/img/gift.svg';
 import { t } from 'i18next';
+import { Tabs, Radio, Space } from 'antd';
 
+const { TabPane } = Tabs;
 export default function NavbarMenuHeader(props) {
 
   
 
     return (
-        <nav className="navbar ">
-        <div className="collapse navbar-collapse" id="menu">
+
+
+
+
+        // <Tabs tabPosition="top">
+        //   <TabPane tab={t("nav-menu-artworks")} key="1">
+        //     Content of Tab 1
+        //   </TabPane>
+        //   <TabPane tab={t("nav-menu-showroom")} key="2">
+        //     Content of Tab 2
+        //   </TabPane>
+        //   <TabPane tab={t("nav-menu-online-exhibition")} key="3">
+        //     Content of Tab 3
+        //   </TabPane>
+        // </Tabs>
+
+
+
+        <nav className="navbar w-100 margin-dir">
+        <div className=" collapse navbar-collapse  px-0 w-100" id="menu">
             <button className="nav-close" type="button"></button>
-            {/* <ul className="nav navbar-nav"> */}
-            <ul className="nav ">
+            <ul className=" nav box-dir-reverse">
                 
-                <li className="dropdown mega-dropdown ">
+ 
+
+            <li className="dropdown mega-dropdown ">
                     <a href="#" className="dropdown-toggle" data-toggle="dropdown">{t("nav-menu-artworks")}</a>
                     <div className="dropdown-menu mega-dropdown-menu vertical-tabs bg-dropdown-menu">
                         <div className="row ">
@@ -242,12 +263,16 @@ export default function NavbarMenuHeader(props) {
                         </div>
                     </div>
                 </li>
-                <li>
-                    <a href="#">{t("nav-menu-blog")}</a>
+           
+              
+                <li className="dropdown mega-dropdown">
+                    <a className='dropdown-toggle' href="#">{t("nav-menu-blog")}</a>
                 </li>
-                <li>
-                    <a href="#" className="sales">{t('nav-menu-sales-advisor')}</a>
+                <li className="dropdown mega-dropdown">
+                    <a href="#" className="dropdown-toggle sales">{t('nav-menu-sales-advisor')}</a>
                 </li>
+            
+             
             </ul>
         </div>
 

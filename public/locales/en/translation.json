@@ -248,5 +248,54 @@
       "text1": "Built with",
       "text2": "by"
     }
+  },
+
+  "drawer-panel" : {
+    "nav-mypurchases" : "My purchases",
+    "nav-wallet" : "Wallet",
+    "nav-favorits" : "Favorites",
+    "nav-messages" : "Messages",
+    "nav-profile" : "Profile",
+    "invite" : {
+     "btn" :  "Invite friends" , 
+     "text" : ""
+    }
+  },
+
+  "content-panel-profile" : {
+    "info-box" : {
+      "register" : {
+        "title" : "Register gallery",
+        "text" : ".In case you own a gallery, register it"
+      },
+      "artists" : {
+        "title" : "Register artists",
+        "text" : "Work as an artist in Arthibition"
+      },
+      "seller" : {
+        "title" : "Become a seller",
+        "text" : "Sell your artworks"
+      }
+    },
+
+    "personal-info" : {
+      "title" : "PERSONAL INFO",
+      "fullname" : "Full name",
+      "phone" : "Phone number" ,
+      "national" : "National code",
+      "email" : "Email" ,
+      "date" : "Date of birth" ,
+      "username" : "Username" , 
+      "address" : {
+        "title" : "ADDRESS" , 
+        "btn" : "New address" ,
+        "default" : "(Default address)"
+
+      }
+
+    }
   }
+
+
+
 }

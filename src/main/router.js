@@ -4,6 +4,7 @@ import App from '../App';
 import ConfirmMobile from '../pages/ConfirmMobile/ConfirmMobile';
 import Home from '../pages/Home.jsx/Home';
 import Login from '../pages/Login/Login';
+import Panelprofile from '../pages/PanelProfile/PanelProfile';
 import SetPassword from '../pages/RecoveryPassword/RecoveryPassword';
 import Signup from '../pages/Singup/Signup';
 
@@ -17,14 +18,21 @@ const RouterConfig = (props) => {
                 </Route>
             </Routes>
 
-                <Routes>
-                    <Route path="auth" animate={true}>
-                        <Route index path="signup" element={<Signup />} />
-                        <Route path="login" element={<Login />} />
-                        <Route path="confirm-mobile" element={<ConfirmMobile />} />
-                        <Route path="recovery-password" element={<SetPassword />} />
-                    </Route>
-                </Routes>
+            <Routes>
+                <Route path="auth" animate={true}>
+                    <Route index path="signup" element={<Signup />} />
+                    <Route path="login" element={<Login />} />
+                    <Route path="confirm-mobile" element={<ConfirmMobile />} />
+                    <Route path="recovery-password" element={<SetPassword />} />
+                </Route>
+            </Routes>
+
+            <Routes>
+                <Route path="panel" animate={true}>
+                    <Route index path="profile" element={<Panelprofile />} />
+                    
+                </Route>
+            </Routes>
 
             
 
