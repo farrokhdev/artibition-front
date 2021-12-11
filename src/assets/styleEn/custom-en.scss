@@ -4,6 +4,11 @@ input:focus {
     border: 2px solid #f1f2f4;
 }
 
+html{
+    background-color: var(--light) !important;
+    
+}
+
 p {
     line-height: 1.5;
     margin: 0;
@@ -3690,8 +3695,14 @@ select.input-public:valid {
     /*display: block;*/
 }
 
+// .dropdown .dropdown-toggle{
+//     padding: 10px 4px !important;
+// }
+
 .dropdown-menu.mega-dropdown-menu {
     border: 0;
+    padding: 15px !important;
+    background-color: rgb(247, 247, 247) !important;
 }
 
 .dropdown-menu {
@@ -3790,7 +3801,7 @@ ul.vertical-nav > li > a {
 
 .btn-gift {
     width: 100%;
-    padding: 14px 32px;
+    padding: 12px;
     border: 1px solid #141414;
     margin-top: 32px;
 }
@@ -4042,7 +4053,7 @@ a.sec-timeline {
 }
 
 .panel-style {
-    background: #f7f7f7;
+    // background: #f7f7f7;
     position: relative;
     margin-top: 96px;
 }
@@ -4843,8 +4854,21 @@ a.sec-timeline {
     padding-right: 40px;
 }
 
+.sidebar-nav-margin{
+    margin-left: 40px !important;
+}
+
 .sidebar-icon#home {
     background: url("../img/home.svg") no-repeat left center;
+}
+
+.sidebar-nav-margin:hover{
+    color: #089df2 !important;
+}
+
+.sidebar-icon.active .sidebar-nav-margin{
+    color: #089df2 !important;
+
 }
 
 .sidebar-icon#home:hover,
@@ -8364,4 +8388,60 @@ button.btn-searchfilter.hidden-sm{
 .ant-input-affix-wrapper > input.ant-input{
     padding : 10px  !important;
 }
+
+.text-dir{
+    text-align: left;
+}
+
+.pull-dir{
+    float : left;
+}
+
+.margin-dir{
+    margin-left: 60px !important;
+}
+
+.box-dir-reverse{
+    flex-direction: row-reverse !important;
+}
+
+.justify-custom{
+    justify-content: start !important;
+}
+
+// -------- Custom ui ant desing ------
+
+.ant-modal-close-x{
+    display: none !important;
+}
+
+.ant-input{
+    font-size: 22px !important;
+}
+
+.ant-input::placeholder{
+    font-size: 22px !important;
+}
+
+.ant-form-item-explain-error{
+    font-size: 18px !important;
+}
+
+.ant-input-affix-wrapper.default-input.border-0.px-2 {
+    // box-shadow: none !important;
+    // outline: none !important;
+    border-bottom: 2px solid black !important;
+}
+
+.btn-close-modal{
+    width: 17px !important;
+    height: 17px !important;
+    position: absolute;
+    left: 10px !important;
+}
+
+.ant-modal-footer {
+    border-top: none !important;
+}
+
 
