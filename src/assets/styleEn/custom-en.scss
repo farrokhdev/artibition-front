@@ -297,6 +297,7 @@ a:hover {
     color: #141414;
 }
 
+
 .btn-readmore-black {
     color: #141414;
     font-family: "Roboto Black", Arial, sans-serif;
@@ -8470,5 +8471,39 @@ button.btn-searchfilter.hidden-sm{
 .ant-tabs-nav-wrap{
     direction: ltr !important;
 }
+
+.ant-pagination {
+    display: flex !important;
+    flex-direction: row-reverse;
+    justify-content: center;
+}
+
+.ant-pagination-item {
+    border: none !important;
+    color: gray;
+}
+
+.ant-pagination-item:hover {
+    border: none !important;
+    color: gray;
+    border-top: 3px solid #ed0980 !important;
+}
+
+.ant-pagination-item-active{
+    border-top: 3px solid #ed0980 !important;
+    outline: none !important;
+    color: #ed0980 !important ;
+}
+
+.ant-pagination-item-active:hover{
+    border: none !important;
+    background-color: #2f74c0 !important;
+    color: white !important;
+}
+
+.ant-pagination-item-link{
+    border: none !important;
+}
+
 
 
