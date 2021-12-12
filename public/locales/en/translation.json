@@ -129,6 +129,9 @@
   "collection-all": "View all",
   "deadline-send-artwroks": ": Deadline",
   "upload": "Upload",
+  "toman" : "Toman" ,
+  "dollar" : "USD" ,
+
 
   "nav-submenu": {
     "artworks": {
@@ -294,6 +297,53 @@
       }
 
     }
+  },
+
+
+  "content-panel-mypurchases" : {
+
+    "title" : "MY PURCHASE",
+    "artwork-title" : "Artwork title",
+    "owner" : "Owner",
+    "code" : "Code",
+    "size" : "Size",
+    "order" : ".Order No",
+    "price-artwork" : "Price",
+    "your-bidding" : "Your bidding",
+    "artist-bidding" : "Artist bidding",
+    "payment-date" : "Payment date",
+    "status" : "Status",
+    "order-details" : "Order detail",
+    "x" : "x",
+    "btn-sell" : "Sales in Artibition",
+    "artwok-return" : "Buy Artwork",
+
+    "paid" : {
+      "title" : "Paid",
+      "empty" : {
+        "title" : "!There is no order",
+        "text1" : "There are no active orders right now",
+        "text2" : "To purchase Arthibition artworks please click on the \"purchase\" button",
+        "btn" : "Veiw Artworks"
+      }
+    },
+
+    "delivered" : {
+      "title" : "Delivered"
+    },
+
+    "bidding" : {
+      "title" : "Bidding"
+    },
+
+    "returned" : {
+      "title" : "Returned"
+    },
+
+    "canceled" : {
+      "title" : "Canceled"
+    }
+
   }
 
 
