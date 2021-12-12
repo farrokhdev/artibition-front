@@ -2070,6 +2070,12 @@ div .gallery-daterow:nth-child(1) {
     width: 100%;
 }
 
+@media(max-width : 992px){
+    .basket-price {
+        border: none !important;
+    }
+}
+
 .btm-absolute {
     position: absolute;
     bottom: 0;
@@ -4502,7 +4508,7 @@ a.sec-timeline {
 }
 
 .empty-paid .btn-default {
-    width: 100%;
+    // width: 100%;
     padding: 12px 16px;
     margin-top: 56px;
 }
@@ -4803,7 +4809,7 @@ a.sec-timeline {
 }
 
 .purchase .price-row .btn {
-    width: 100%;
+    // width: 100%;
     padding: 4px 15px;
 }
 
@@ -8409,6 +8415,11 @@ button.btn-searchfilter.hidden-sm{
     justify-content: start !important;
 }
 
+.show-detail-arrow{
+    transform: rotate(180deg) !important;
+    margin-top: 4px !important;
+}
+
 // -------- Custom ui ant desing ------
 
 .ant-modal-close-x{
@@ -8442,6 +8453,22 @@ button.btn-searchfilter.hidden-sm{
 
 .ant-modal-footer {
     border-top: none !important;
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn , .ant-tabs-ink-bar{
+    color: #141414 !important;
+}
+
+.ant-tabs-ink-bar{
+    background-color: #141414 !important;
+}
+
+.ant-tabs-tab {
+    margin: 0px 15px !important;
+}
+
+.ant-tabs-nav-wrap{
+    direction: ltr !important;
 }
 
 

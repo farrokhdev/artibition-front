@@ -128,6 +128,8 @@
   "collection-all": "همه کالکشن‌ها",
   "deadline-send-artwroks": "مهلت ارسال آثار : ",
   "upload": "آپلود اثر",
+  "toman" : "تومان" ,
+  "dollar" : "دلار" ,
 
   "nav-submenu": {
     "artworks": {
@@ -293,6 +295,52 @@
       }
 
     }
+  },
+
+  "content-panel-mypurchases" : {
+
+    "title" : "خریدهای من",
+    "artwork-title" : "عنوان اثر",
+    "owner" : "صاحب اثر",
+    "code" : "کد اثر",
+    "size" : "ابعاد",
+    "order" : "شماره سفارش",
+    "price-artwork" : "قیمت اثر",
+    "your-bidding" : "پیشنهاد شما",
+    "artist-bidding" : "پیشنهاد هنرمند",
+    "payment-date" : "تاریخ پرداخت",
+    "status" : "وضعیت",
+    "order-details" : "جزییات بیشتر",
+    "x" : "در",
+    "btn-sell" : "فروش در آرتیبیشن",
+    "artwok-return" : "خرید اثر",
+
+    "paid" : {
+      "title" : "پرداخت شده",
+      "empty" : {
+        "title" : "سفارش فعالی وجود ندارد!",
+        "text1" : "هم اکنون سفارش فعالی وجود ندارد. جهت خرید آثار آرتیبیشن",
+        "text2" : "با زدن دکمه \"درخواست خرید اثر\" اقدام به خرید آن نمایید",
+        "btn" : "مشاهده آثار آرتیبیشن"
+      }
+    },
+
+    "delivered" : {
+      "title" : "تحویل شده"
+    },
+
+    "bidding" : {
+      "title" : "پیشنهاد قیمت"
+    },
+
+    "returned" : {
+      "title" : "مرجوعی"
+    },
+
+    "canceled" : {
+      "title" : "لغو شده"
+    }
+
   }
 
 

@@ -4,6 +4,7 @@ import profile_pic from '../../assets/img/profile_pic.svg';
 import edit from '../../assets/img/edit.svg';
 import invite from '../../assets/img/invite.svg';
 import { t } from 'i18next';
+import { Link } from 'react-router-dom';
 
 function SidebarPanel() {
     return (
@@ -28,11 +29,11 @@ function SidebarPanel() {
 
                 <div className="d-block mt-5">
                 <ul className="text-dir">
-                    <li className="sidebar-icon" id="mypurchase"><a href="#"><span className="sidebar-nav-margin">{t("drawer-panel.nav-mypurchases")}</span></a></li>
+                    <li className="sidebar-icon" id="mypurchase"><Link to="/panel/purchases"><span className="sidebar-nav-margin">{t("drawer-panel.nav-mypurchases")}</span></Link></li>
                     <li className="sidebar-icon my-4" id="wallet"><a href="#"><span className="sidebar-nav-margin">{t("drawer-panel.nav-wallet")}</span></a></li>
                     <li className="sidebar-icon my-4" id="liked"><a href="#"><span className="sidebar-nav-margin">{t("drawer-panel.nav-favorits")}</span></a></li>
                     <li className="sidebar-icon my-4 " id="messages"><a href="#"><span className="sidebar-nav-margin">{t("drawer-panel.nav-messages")}</span></a></li>
-                    <li className="sidebar-icon active" id="profile"><a href="#"><span className="sidebar-nav-margin">{t("drawer-panel.nav-profile")}</span></a></li>
+                    <li className="sidebar-icon active" id="profile"><Link to="/panel/profile"><span className="sidebar-nav-margin">{t("drawer-panel.nav-profile")}</span></Link></li>
                 </ul>
                 </div>
 

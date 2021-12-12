@@ -5318,6 +5318,9 @@ a.sec-timeline {
 .box.basket-footer {
     margin-top: 128px;
     margin-bottom: 0;
+    bottom: 0px !important;
+    position: fixed !important;
+    width: 100% !important;
 }
 
 .sec2-emptybody p {
@@ -5757,7 +5760,7 @@ a.sec-timeline {
 }
 
 .empty-paid .btn-default {
-    width: 100%;
+    // width: 100%;
     padding: 12px 16px;
     margin-top: 56px;
 }
@@ -6139,7 +6142,7 @@ a.sec-timeline {
 }
 
 .purchase .price-row .btn {
-    width: 100%;
+    // width: 100%;
     padding: 4px 15px;
 }
 
@@ -8391,4 +8394,20 @@ span.unit-dimention {
 .ant-input-affix-wrapper > input.ant-input{
     padding : 17px !important;
     
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn , .ant-tabs-ink-bar{
+    color: #141414 !important;
+}
+
+.ant-tabs > .ant-tabs-nav .ant-tabs-nav-wrap, .ant-tabs > div > .ant-tabs-nav .ant-tabs-nav-wrap {
+    display: block !important;
+}
+
+.ant-tabs-ink-bar{
+    background-color: #141414 !important;
+}
+
+.ant-tabs-tab {
+    margin: 0px 15px !important;
 }
