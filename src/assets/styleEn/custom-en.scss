@@ -4628,10 +4628,10 @@ a.sec-timeline {
     font-family: "Roboto Black", Arial, sans-serif;
 }
 
-.ticket-status {
-    padding: 6px;
-    margin-left: 25px;
-}
+// .ticket-status {
+//     padding: 6px;
+//     margin-left: 25px;
+// }
 
 .inprogress .ticket-status {
     background: #f3fff8;
@@ -8317,6 +8317,17 @@ button.close {
     top: -105px;
 }
 
+.btn-add-new-ticket{
+    min-width: 110px !important;
+    max-width: 110px !important;
+}
+
+.btn-add-new-ticket img{
+    width: 12px !important;
+    height: 12px !important;
+    margin: auto;
+}
+
 
 .modal-footer .btn-blue {
     display: inline-block;
@@ -8419,6 +8430,10 @@ button.btn-searchfilter.hidden-sm{
 .show-detail-arrow{
     transform: rotate(180deg) !important;
     margin-top: 4px !important;
+}
+
+.send-icon-message{
+    transform: rotate(180deg) !important;
 }
 
 // -------- Custom ui ant desing ------

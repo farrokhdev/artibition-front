@@ -5899,6 +5899,17 @@ a.sec-timeline {
     top: -105px;
 }
 
+.btn-add-new-ticket{
+    min-width: 100px !important;
+    max-width: 100px !important;
+}
+
+.btn-add-new-ticket img{
+    width: 12px !important;
+    height: 12px !important;
+    margin: auto;
+}
+
 .ticket-btn img {
     margin-left: 6px;
 }
@@ -5909,11 +5920,11 @@ a.sec-timeline {
     font-family: "Tahrir_Extra Bold", sans-serif;
 }
 
-.ticket-status {
-    font-size: 15px;
-    padding: 6px;
-    margin-right: 25px;
-}
+// .ticket-status {
+//     font-size: 15px;
+//     padding: 6px;
+//     margin-right: 25px;
+// }
 
 .inprogress .ticket-status {
     background: #f3fff8;

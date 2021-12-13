@@ -357,6 +357,34 @@
       "followers" : "Followers",
       "collections" : "Collections"
     }
+  },
+
+
+  "content-panel-messages" : {
+
+    "title" : "MESSAGES",
+    "new" : "New",
+    "today" : "Today",
+    "veiw" : "Veiw",
+    "inprogress" : "In progress",
+    "waiting" : "Waiting to respond",
+    "closed" : "Closed",
+    "tabs" : {
+      "notifications" : "Notifications",
+      "members" : {
+        "title" : "Members",
+        "title_modal" : "Messages",
+        "subject" : "Subject",
+        "palaceholder_message" : "Write your message here"
+      },
+      "tickets" : {
+        "title" : "Tickets",
+        "new_ticket" : "New ticket",
+        "subject" : "Subject",
+        "text-ticket" : "Your message",
+        "send" : "Send"
+      }
+    }
   }
 
 
