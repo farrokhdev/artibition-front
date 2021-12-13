@@ -353,8 +353,33 @@
       "followers" : "دنبال کنندگان",
       "collections" : "کالکشن‌ها"
     }
+  },
 
+  "content-panel-messages" : {
 
+    "title" : "پیام‌ها",
+    "new" : "پیام جدید",
+    "today" : "امروز",
+    "veiw" : "مشاهده",
+    "inprogress" : "در حال پیگیری",
+    "waiting" : "منتظر پاسخ شما",
+    "closed" : "بسته شده",
+    "tabs" : {
+      "notifications" : "اعلانات",
+      "members" : {
+        "title" : "پیام اعضا",
+        "title_modal" : "پیام‌ها",
+        "subject" : "موضوع",
+        "palaceholder_message" : "پیام خود را اینجا بنویسید"
+      },
+      "tickets" : {
+        "title" : "تیکت‌ها",
+        "new_ticket" : "تیکت جدید",
+        "subject" : "موضوع تیکت",
+        "text-ticket" : "متن تیکت",
+        "send" : "ارسال"
+      }
+    }
   }
 
 
