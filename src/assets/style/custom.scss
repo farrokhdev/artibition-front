@@ -413,7 +413,7 @@ padding: 10px 6px !important;
     font-family: "Glyphicons Halflings", sans-serif;
     font-size: 10px;
     position: relative;
-    top: 1px;
+    top: 4px !important;
     margin-right: 5px;
 }
 
@@ -6640,7 +6640,7 @@ p.upload-size {
 }
 
 .btn-follow {
-    padding: 4px 36px 4px 16px;
+    padding: 4px 54px 4px 7px;
     margin-top: 12px;
     background: url("../img/circle-plus.png") no-repeat right center #fff;
     border: 1px solid #141414;
@@ -8410,4 +8410,37 @@ span.unit-dimention {
 
 .ant-tabs-tab {
     margin: 0px 15px !important;
+}
+
+.ant-pagination {
+    display: flex !important;
+    flex-direction: row-reverse;
+    justify-content: center;
+}
+
+.ant-pagination-item {
+    border: none !important;
+    color: gray;
+}
+
+.ant-pagination-item:hover {
+    border: none !important;
+    color: gray;
+    border-top: 3px solid #ed0980 !important;
+}
+
+.ant-pagination-item-active{
+    border-top: 3px solid #ed0980 !important;
+    outline: none !important;
+    color: #ed0980 !important ;
+}
+
+.ant-pagination-item-active:hover{
+    border: none !important;
+    background-color: #2f74c0 !important;
+    color: white !important;
+}
+
+.ant-pagination-item-link{
+    border: none !important;
 }
