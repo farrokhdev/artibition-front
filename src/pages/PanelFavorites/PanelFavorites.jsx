@@ -27,7 +27,7 @@ function PanelFavorites() {
             <div className="sec6">
                 <div className="public-header">
                     <div className="pull-dir">
-                        <h2 className="default-title">{t("content-panel-mypurchases.title")}</h2>
+                        <h2 className="default-title">{t("content-panel-favorites.title")}</h2>
                     </div>
                 </div>
 
@@ -35,13 +35,13 @@ function PanelFavorites() {
                 <div className="default-tab tab-3 tab-interval purchase ">
 
                     <Tabs className='' defaultActiveKey="1" onChange={callback}>
-                            <TabPane className="mx-4" tab="آثار مورد علاقه" key="1">
+                            <TabPane className="mx-4" tab={t("content-panel-favorites.tabs.artworks")} key="1">
                                 <ArtworksTab/>
                             </TabPane>
-                            <TabPane tab="دنبال کنندگان" key="2">
+                            <TabPane tab={t("content-panel-favorites.tabs.followers")} key="2">
                                 <FollowersTab/>
                             </TabPane>
-                            <TabPane tab="کالکشن‌ها" key="3">
+                            <TabPane tab={t("content-panel-favorites.tabs.collections")} key="3">
                                 <PanelCollectionsTab/>
                             </TabPane>   
                             

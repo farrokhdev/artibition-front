@@ -213,7 +213,9 @@
 
   "artwork": {
     "view-artwork": "view",
-    "btn-action-to-shop": "Shop now"
+    "btn-action-to-shop": "Shop now",
+    "follow" : "Follow",
+    "following" : "Following"
   },
 
   "footer": {
@@ -344,6 +346,17 @@
       "title" : "Canceled"
     }
 
+  },
+
+  
+  "content-panel-favorites" : {
+
+    "title" : "FAVORITES",
+    "tabs" : {
+      "artworks" : "Artworks",
+      "followers" : "Followers",
+      "collections" : "Collections"
+    }
   }
 
 

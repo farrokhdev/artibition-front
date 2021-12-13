@@ -212,7 +212,9 @@
 
   "artwork": {
     "view-artwork": "مشاهده اثر",
-    "btn-action-to-shop": "درخواست خرید"
+    "btn-action-to-shop": "درخواست خرید",
+    "follow" : "دنبال کردن",
+    "following" : "دنبال شده"
   },
 
   "footer": {
@@ -340,6 +342,18 @@
     "canceled" : {
       "title" : "لغو شده"
     }
+
+  },
+
+  "content-panel-favorites" : {
+
+    "title" : "لیست علاقه‌مندی‌ها",
+    "tabs" : {
+      "artworks" : "آثار مورد علاقه",
+      "followers" : "دنبال کنندگان",
+      "collections" : "کالکشن‌ها"
+    }
+
 
   }
 
