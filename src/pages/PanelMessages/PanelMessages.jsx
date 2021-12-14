@@ -20,7 +20,7 @@ function PanelMessages() {
         <>
     <HeaderPanel t={t} />
 
-    <div className="panel-style ">
+    <div className="panel-style margin-top-fa">
         <SidebarPanel />
         <div className="custom-container " id="main">
         <div className="box box-2">

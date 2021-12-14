@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '../../assets/img/logo.svg';
-
+import { t } from 'i18next';
 
 function BasketFooterPanel() {
     return (
@@ -8,8 +8,8 @@ function BasketFooterPanel() {
             <div className="d-flex custom-container justify-content-between box-dir-reverse">
                 <div className="col-sm-9">
                     <div className="d-flex box-dir-reverse">
-                        <span>در صورت ایجاد هر گونه سوال با ما تماس بگیرید:</span>
-                        <span class="persian-num">۲۲۵۳۸ ۲۲۹ ۰۲۱</span>
+                        <span>{t("text-footer-auth.info")}</span>
+                        <span class="persian-num">{t("text-footer-auth.mobile")}</span>
                     </div>
                 </div>
                 <div className="col-sm-3 hidden-xs">

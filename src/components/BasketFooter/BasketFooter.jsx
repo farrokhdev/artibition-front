@@ -5,7 +5,7 @@ import logo from '../../assets/img/logo.svg';
 
 function BasketFooter() {
     return (
-        <div className="basket-footer">
+        <div className="box basket-footer">
             <div className="container">
                 <div className="d-flex content-box-basket-footer">
                     <div className="col-sm-9">

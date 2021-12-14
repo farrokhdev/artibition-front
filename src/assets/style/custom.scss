@@ -343,6 +343,10 @@ display: block !important;
 padding: 10px 6px !important;
 }
 
+.nav-header-menu{
+    margin-top: -26px;
+}
+
 .col-title .col-name {
     font-family: "Tahrir_Extra Bold", sans-serif;
     font-size: 19px;
@@ -5191,7 +5195,11 @@ a.sec-timeline {
 .panel-style {
     background: #f7f7f7;
     position: relative;
-    margin-top: 96px;
+    margin-top: 75px;
+}
+
+.margin-top-fa{
+    padding-top: 20px !important;
 }
 
 .box {
@@ -5388,6 +5396,7 @@ a.sec-timeline {
     z-index: 10;
     right: -280px;
     transition: right 0.5s;
+    box-shadow: 5px 10px 18px #8888884a;
 }
 
 .sidebar.active {

@@ -13,27 +13,10 @@ export default function NavbarMenuHeader(props) {
 
     return (
 
-
-
-
-        // <Tabs tabPosition="top">
-        //   <TabPane tab={t("nav-menu-artworks")} key="1">
-        //     Content of Tab 1
-        //   </TabPane>
-        //   <TabPane tab={t("nav-menu-showroom")} key="2">
-        //     Content of Tab 2
-        //   </TabPane>
-        //   <TabPane tab={t("nav-menu-online-exhibition")} key="3">
-        //     Content of Tab 3
-        //   </TabPane>
-        // </Tabs>
-
-
-
         <nav className="navbar w-100 margin-dir">
         <div className=" collapse navbar-collapse  px-0 w-100" id="menu">
             <button className="nav-close" type="button"></button>
-            <ul className=" nav box-dir-reverse">
+            <ul className=" nav nav-header-menu box-dir-reverse">
                 
  
 
