@@ -24,68 +24,120 @@ function HeaderPanel(props) {
     };
 
     return (
-        <div className="d-flex header panel-header box-dir-reverse py=5  ">
+        <div className="d-flex header panel-header box-dir-reverse ">
 
-        <div className="col col-md-9 pl-0 ">
-            <div className="d-flex box-dir-reverse">
-                <div className="col-2 ">
-                    <div class="artibition-logo pull-dir">
-                        <Link to="/">
-                            <img src={logo} width="240" height="62" className="img-responsive hidden-sm" alt="آرتیبیشن" />
-                            <img src={logo_icon} width="1079" height="1079" className="img-responsive visible-sm"
-                                alt="آرتیبیشن" />
-                        </Link>
-                    </div>
-                </div>
-                        
-               <div className="col ">
-                    <div className="d-none d-xl-flex  justify-content-center align-items-center ">
-                        <NavbarMenuHeader t={t} />
-                    </div>
-               </div>
-            </div>
-        </div>
-
-
-        <div className="col  col-md-3 px-0">
-            <div className="d-flex head-leftbtn pull-dir justify-custom  w-100">
-                <div className="btn-panel-header visible-xs">
-                    <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#panel-navbar">
-                        <span className="icon-bar"></span>
-                        <span className="icon-bar"></span>
-                        <span className="icon-bar"></span>
-                    </button>
-                </div>
-              
-              
+            <div className="col col-lg-2  px-0">
                 <div className="d-flex box-dir-reverse">
-                    <a href="#" className="btn-panel-header btn-shoppingcard">
-                        <img src={shopping_basket} width="24" height="24" alt="" />
-                        <div className="basket-notification ">
-                            <span className="persian-num">2</span>
+                    <div class="artibition-logo pull-dir">
+                            <Link to="/">
+                                <img src={logo} width="240" height="62" className="img-responsive hidden-sm" alt="آرتیبیشن" />
+                                <img src={logo_icon} width="1079" height="1079" className="img-responsive visible-sm"
+                                    alt="آرتیبیشن" />
+                            </Link>
                         </div>
-                    </a>
-                    <a href="#" className="btn-panel-header">
-                        <img src={search} width="24" height="24" alt="pull-dir" />
-                    </a>
-                    <a href="#" className="btn-panel-header btn-sidebar hidden-lg hidden-md">
-                        <img src={profile} width="24" height="24" alt="پروفایل کاربری آرتیبیشن" className="pull-dir" />
-                    </a>
-                    <a href="#" className="btn-panel-header hidden-sm hidden-xs">
-                        <img src={message} width="24" height="24" alt="pull-dir" />
-                    </a>
-                    <a href="#"  className="btn-panel-header btn-changelang"> 
-                    <button onClick={()=>changeLanguage(i18n.language !== 'fa-IR' ? 'fa-IR' : 'en-US' )}>En</button>
-                    
-                    </a>
                 </div>
-
-
             </div>
+            <div className="col col-lg-8  px-0">
+                <div className="d-none d-lg-flex box-dir-reverse justify-content-center ">
+                    <NavbarMenuHeader t={t} />
+                </div>
+            </div>
+            <div className="col col-lg-2  px-0">
+                <div className="d-flex box-dir-reverse ">
+                    
+                
+                
+                    <div className="d-flex box-dir-reverse">
+                        <a href="#" className="btn-panel-header btn-shoppingcard">
+                            <img src={shopping_basket} width="24" height="24" alt="" />
+                            <div className="basket-notification ">
+                                <span className="persian-num">2</span>
+                            </div>
+                        </a>
+                        <a href="#" className="btn-panel-header">
+                            <img src={search} width="24" height="24" alt="pull-dir" />
+                        </a>
+                        <a href="#" className="btn-panel-header btn-sidebar hidden-lg hidden-md">
+                            <img src={profile} width="24" height="24" alt="پروفایل کاربری آرتیبیشن" className="pull-dir" />
+                        </a>
+                        <a href="#" className="btn-panel-header hidden-sm hidden-xs">
+                            <img src={message} width="24" height="24" alt="pull-dir" />
+                        </a>
+                        <a href="#"  className="btn-panel-header btn-changelang"> 
+                        <button onClick={()=>changeLanguage(i18n.language !== 'fa-IR' ? 'fa-IR' : 'en-US' )}>En</button>
+                        
+                        </a>
+                    </div>
+                    <div className="btn-panel-header visible-xs">
+                        <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#panel-navbar">
+                            <span className="icon-bar"></span>
+                            <span className="icon-bar"></span>
+                            <span className="icon-bar"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            {/* <div className="col col-md-9 pl-0 ">
+                <div className="d-flex box-dir-reverse">
+                    <div className="col-2 ">
+                        <div class="artibition-logo pull-dir">
+                            <Link to="/">
+                                <img src={logo} width="240" height="62" className="img-responsive hidden-sm" alt="آرتیبیشن" />
+                                <img src={logo_icon} width="1079" height="1079" className="img-responsive visible-sm"
+                                    alt="آرتیبیشن" />
+                            </Link>
+                        </div>
+                    </div>
+                            
+                <div className="col bg-danger">
+                        <div className="d-none d-xl-flex  justify-content-center align-items-center ">
+                            <NavbarMenuHeader t={t} />
+                        </div>
+                </div>
+                </div>
+            </div>
+
+
+            <div className="col  col-md-3 px-0">
+                <div className="d-flex head-leftbtn pull-dir justify-custom  w-100">
+                    <div className="btn-panel-header visible-xs">
+                        <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#panel-navbar">
+                            <span className="icon-bar"></span>
+                            <span className="icon-bar"></span>
+                            <span className="icon-bar"></span>
+                        </button>
+                    </div>
+                
+                
+                    <div className="d-flex box-dir-reverse">
+                        <a href="#" className="btn-panel-header btn-shoppingcard">
+                            <img src={shopping_basket} width="24" height="24" alt="" />
+                            <div className="basket-notification ">
+                                <span className="persian-num">2</span>
+                            </div>
+                        </a>
+                        <a href="#" className="btn-panel-header">
+                            <img src={search} width="24" height="24" alt="pull-dir" />
+                        </a>
+                        <a href="#" className="btn-panel-header btn-sidebar hidden-lg hidden-md">
+                            <img src={profile} width="24" height="24" alt="پروفایل کاربری آرتیبیشن" className="pull-dir" />
+                        </a>
+                        <a href="#" className="btn-panel-header hidden-sm hidden-xs">
+                            <img src={message} width="24" height="24" alt="pull-dir" />
+                        </a>
+                        <a href="#"  className="btn-panel-header btn-changelang"> 
+                        <button onClick={()=>changeLanguage(i18n.language !== 'fa-IR' ? 'fa-IR' : 'en-US' )}>En</button>
+                        
+                        </a>
+                    </div>
+
+
+                </div>
+            </div> */}
+
+
         </div>
-
-
-    </div>
     )
 }
 
