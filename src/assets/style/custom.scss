@@ -7139,7 +7139,9 @@ table {
 }
 
 table tr {
-    padding: .35em;
+    // padding: .35em;
+    // display: inline-block !important;
+    min-width: 100% !important;
 }
 
 table th,
@@ -7645,7 +7647,7 @@ textarea {
 
 .content-type li {
     display: inline-block;
-    margin-left: 50px;
+    // margin-left: 50px;
 }
 
 .wallet .default-title {
@@ -7709,8 +7711,8 @@ textarea {
 }
 
 .wallet-table td {
-    padding-top: 15px !important;
-    padding-bottom: 15px !important;
+    // padding-top: 15px !important;
+    // padding-bottom: 15px !important;
 }
 
 .wallet-table td.status {

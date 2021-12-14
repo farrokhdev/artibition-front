@@ -130,6 +130,7 @@
   "upload": "آپلود اثر",
   "toman" : "تومان" ,
   "dollar" : "دلار" ,
+  "or" : "یا",
 
   "nav-submenu": {
     "artworks": {
@@ -380,6 +381,48 @@
         "send" : "ارسال"
       }
     }
+  },
+
+  
+  "content-panel-wallet" : {
+
+    "inventory" : {
+      "title" : "موجودی کیف پول",
+      "text_gift" : {
+        "text1" : "شامل",
+        "text2" : "هدیه آرتیبیشن"
+      },
+      "buy_btn" : "خرید اثر",
+      "withdrawal" : "برداشت",
+      "withdrawal_title_modal" : "برداشت وجه",
+      "increasse_title_modal" : "واریز وجه",
+      "modal_inventory" : "موجودی کیف پول : " ,
+      "increase" : "افزایش اعتبار",
+      "placeholder_input" : "مبلغ مورد نظر خود را وارد نمایید",
+        "saturday" : "شنبه",
+        "sunday" : "یکشنبه",
+        "monday" : "دوشنبه",
+        "tuesday" : "سه‌شنبه",
+        "pay" : "انتقال به درگاه"
+    },
+    "trades" :{
+      "title" : "لیست واریزها و برداشت‌ها",
+      "filters" : {
+        "all" : "همه تراکنش‌ها",
+        "deposited" : "واریز شده",
+        "withdrawaled" : "برداشت شده"
+      },
+
+      "table_headers" : {
+        "type" : "نوع",
+        "price" : "قیمت(تومان)",
+        "account_no" : "شماره حساب",
+        "request_date" : "تاریخ درخواست",
+        "status" : "وضعیت"
+      }
+    }
+    
+    
   }
 
 

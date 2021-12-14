@@ -6002,7 +6002,7 @@ textarea {
 
 .content-type li {
     display: inline-block;
-    margin-right: 50px;
+    // margin-right: 50px;
 }
 
 .wallet .default-title {
@@ -8405,6 +8405,10 @@ button.btn-searchfilter.hidden-sm{
 
 .ant-input-affix-wrapper > input.ant-input{
     padding : 10px  !important;
+}
+
+.dir{
+    direction: ltr !important;
 }
 
 .text-dir{
