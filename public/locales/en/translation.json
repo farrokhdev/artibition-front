@@ -131,7 +131,7 @@
   "upload": "Upload",
   "toman" : "Toman" ,
   "dollar" : "USD" ,
-
+  "or" : "or",
 
   "nav-submenu": {
     "artworks": {
@@ -385,6 +385,49 @@
         "send" : "Send"
       }
     }
+  },
+
+
+  "content-panel-wallet" : {
+
+    "inventory" : {
+      "title" : "WALLET INVENTORY",
+      "text_gift" : {
+        "text1" : "Gift for you",
+        "text2" : ""
+      },
+      "buy_btn" : "Buy artwork",
+      "withdrawal" : "Withdrawal",
+      "withdrawal_title_modal" : "Withdrawal",
+      "increasse_title_modal" : "Increase credit",
+      "modal_inventory" : " : WALLET INVENTORY" , 
+      "increase" : "Increase credit",
+      "placeholder_input" : "Enter price",
+        "saturday" : "Saturday",
+        "sunday" : "Sunday",
+        "monday" : "Monday",
+        "tuesday" : "Tuesday",
+        "pay" : "Pay"
+    },
+
+    "trades" :{
+      "title" : "DEPOSIT AND WITHDRAWAL LIST",
+      "filters" : {
+        "all" : "All",
+        "deposited" : "Deposited",
+        "withdrawaled" : "Withdrawaled"
+      },
+
+      "table_headers" : {
+        "type" : "Type",
+        "price" : "Price (USD)",
+        "account_no" : ".Account No",
+        "request_date" : "Request date",
+        "status" : "Status"
+      }
+    }
+    
+    
   }
 
 
