@@ -256,6 +256,7 @@
   },
 
   "drawer-panel" : {
+    "nav-dashboard" : "Dashboard",
     "nav-mypurchases" : "My purchases",
     "nav-wallet" : "Wallet",
     "nav-favorits" : "Favorites",
@@ -428,7 +429,92 @@
     }
     
     
+  },
+
+  "content-panel-dashboard" : {
+
+    "box_gallery" : {
+      "gallery" : "Arthibition gallery" ,
+      "order" : "Orders" ,
+      "new_gallery" : "New gallery" ,
+      "info_gallery" : "In case you own another gallery, you could register it" 
+    },
+
+    "box_status" : {
+      "btn" : "New artwork",
+      "approved" : "Approved",
+      "not_approved" : "Not approved",
+      "modification" : "Require modification",
+      "pending" : "Pending",
+      "user_status" : "User status",
+      "contact_status" : "Contract status" , 
+      "email_status" : "Email",
+      "resume" : "CV" ,
+      "veiw" : "Veiw"
+    },
+
+    "promotion" : {
+      "title" : "LEADING PROMOTIONS",
+      "veiw_more" : "Veiw more"
+    },
+
+    "veiw_artwork" : {
+      "title" : "VIEW ARTWORKS",
+      "text_info" : "Monitor users view by uploading your artworks",
+      "btn" : "New artwork"
+    },
+
+    "my_income" : {
+      "title" : "MY INCOME",
+      "detail" : "Details"
+    },
+
+    "tables" : {
+      "orders" : "ORDERS" ,
+      "order_active" : "ACTIVE ORDERS",
+      "suggestion_artwork" : "PRICE OFFERS FOR YOUR ARTWORKS",
+      "veiw_artworks" : "VIEW ARTWORKS",
+      "row" : "#",
+      "image" : "Image",
+      "code" : "Code",
+      "edition" : "Edition",
+      "price" : "Price (USD)",
+      "discount" : "Discount",
+      "paid" : "Paid",
+      "status" : "Status",
+      "details" : "Details",
+      "suggested" : "Suggested",
+      "date_registration" : "Date of registration",
+      "your_respond" : "Your respond",
+      "action" : "Actions",
+      "offers_artwork_title" : "PRICE OFFERS FOR YOUR ARTWORKS",
+      "empty_active_order" : {
+        "title" : ".No order has been registered for you yet",
+        "info" : {
+          "text1" : "in case you have never added an artwork to Arthibition" , 
+          "text2" : "add a new one by clicking the button below"
+        }
+      },
+      "empty_offers_artworks" : {
+        "title" : "!There has been no offer for your artworks yet"
+      }
+    },
+
+    "alerts" : {
+      "info_notice" : {
+        "text1" : "to confirm your account as a vendor, upload scanned and signed contract",
+        "text2" : "(all pages must be signed)",
+        "text3" : "after you read the contract"
+      },
+      "info_success" : "Your account has been confirmed as a vendor.",
+      "here" : "here",
+      "this_contract" : "file",
+      "btn_upload" : "Upload",
+      "text_upload" : "Upload your first artwork"
+    }
+
   }
+
 
 
 
