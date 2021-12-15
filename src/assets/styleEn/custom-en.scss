@@ -4155,8 +4155,8 @@ a.sec-timeline {
 .box.basket-footer {
     margin-top: 128px;
     margin-bottom: 0;
-    bottom: 0px !important;
-    position: fixed !important;
+    // bottom: 0px !important;
+    // position: fixed !important;
     width: 100% !important;
 }
 
@@ -7012,7 +7012,7 @@ label {
     top: 0;
     width: 280px;
     background: #fff;
-    height: 100vh;
+    height: 100vh !important;
     z-index: 10;
     left: -280px;
     transition: left 0.5s;
@@ -8322,7 +8322,7 @@ button.close {
 }
 
 .btn-add-new-ticket{
-    min-width: 110px !important;
+    min-width: 115px !important;
     max-width: 110px !important;
 }
 

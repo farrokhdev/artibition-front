@@ -5326,8 +5326,8 @@ a.sec-timeline {
 .box.basket-footer {
     margin-top: 128px;
     margin-bottom: 0;
-    bottom: 0px !important;
-    position: fixed !important;
+    // bottom: 0px !important;
+    // position: fixed !important;
     width: 100% !important;
 }
 
@@ -5909,8 +5909,9 @@ a.sec-timeline {
 }
 
 .btn-add-new-ticket{
-    min-width: 100px !important;
-    max-width: 100px !important;
+    min-width: 115px !important;
+    max-width: 110px !important;
+    font-size: 18px !important;
 }
 
 .btn-add-new-ticket img{
@@ -6116,7 +6117,7 @@ a.sec-timeline {
 }
 
 .purchase .persian-num {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 24px;
 }
 
@@ -8432,6 +8433,7 @@ span.unit-dimention {
 
 .ant-tabs-tab {
     margin: 0px 15px !important;
+    font-size: 18px !important;
 }
 
 .ant-pagination {
@@ -8466,3 +8468,4 @@ span.unit-dimention {
 .ant-pagination-item-link{
     border: none !important;
 }
+
