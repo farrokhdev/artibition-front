@@ -2,6 +2,7 @@ import React from 'react';
 import {Routes, Route , BrowserRouter} from 'react-router-dom';
 import App from '../App';
 import ConfirmMobile from '../pages/ConfirmMobile/ConfirmMobile';
+import DashboardPanel from '../pages/DashboarPanel/DashboardPanel';
 import Home from '../pages/Home.jsx/Home';
 import Login from '../pages/Login/Login';
 import PanelFavorites from '../pages/PanelFavorites/PanelFavorites';
@@ -38,6 +39,7 @@ const RouterConfig = (props) => {
                     <Route index path="favorites" element={<PanelFavorites />} />
                     <Route index path="messages" element={<PanelMessages />} />
                     <Route index path="wallet" element={<PanelWallet />} />
+                    <Route index path="dashboard" element={<DashboardPanel />} />
                     
                 </Route>
             </Routes>

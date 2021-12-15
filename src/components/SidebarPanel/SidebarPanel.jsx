@@ -29,7 +29,8 @@ function SidebarPanel() {
 
                 <div className="d-block mt-5">
                 <ul className="text-dir">
-                    <li className="sidebar-icon" id="mypurchase"><Link to="/panel/purchases"><span className="sidebar-nav-margin">{t("drawer-panel.nav-mypurchases")}</span></Link></li>
+                    <li className="sidebar-icon" id="home"><Link to="/panel/dashboard"><span className="sidebar-nav-margin">{t("drawer-panel.nav-dashboard")}</span></Link></li>
+                    <li className="sidebar-icon my-4" id="mypurchase"><Link to="/panel/purchases"><span className="sidebar-nav-margin">{t("drawer-panel.nav-mypurchases")}</span></Link></li>
                     <li className="sidebar-icon my-4" id="wallet"><Link to="/panel/wallet"><span className="sidebar-nav-margin">{t("drawer-panel.nav-wallet")}</span></Link></li>
                     <li className="sidebar-icon my-4" id="liked"><Link to="/panel/favorites"><span className="sidebar-nav-margin">{t("drawer-panel.nav-favorits")}</span></Link></li>
                     <li className="sidebar-icon my-4 " id="messages"><Link to="/panel/messages"><span className="sidebar-nav-margin">{t("drawer-panel.nav-messages")}</span></Link></li>
