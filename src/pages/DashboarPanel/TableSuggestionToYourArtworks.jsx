@@ -7,10 +7,10 @@ import empty_list_icon from '../../assets/img/empty_list.svg';
 
 function TableSuggestionToYourArtworks() {
     return (
-        <div class=" box artistpanel-3 ">
+        <div className=" box artistpanel-3 ">
                         <div className="col w-100">
-                        <div class="public-header">
-                            <h2 class="default-title pull-dir">{t("content-panel-dashboard.tables.suggestion_artwork")}</h2>
+                        <div className="public-header">
+                            <h2 className="default-title pull-dir">{t("content-panel-dashboard.tables.suggestion_artwork")}</h2>
                         </div>
                         <div>
                         <div className="d-flex box-dir-reverse">
@@ -32,78 +32,78 @@ function TableSuggestionToYourArtworks() {
                                         </tr>
                                         </thead>
                                         <tbody>
-                                            <tr class="failed-state">
-                                                <td data-label={t("content-panel-dashboard.tables.row")} class="persian-num">1</td>
+                                            <tr className="failed-state">
+                                                <td data-label={t("content-panel-dashboard.tables.row")} className="persian-num">1</td>
                                                 <td data-label={t("content-panel-dashboard.tables.image")}><img src={artwork1} width="1776" height="1776"
                                                                             alt=""
-                                                                            class="img-responsive"/></td>
-                                                <td data-label={t("content-panel-dashboard.tables.code")} class="persian-num">۱۲۷۵</td>
-                                                <td data-label={t("content-panel-dashboard.tables.price")} class="persian-num">۴,۰۰۰,۰۰۰</td>
-                                                <td data-label={t("content-panel-dashboard.tables.discount")} class="persian-num">۰</td>
-                                                <td data-label={t("content-panel-dashboard.tables.suggested")} class="persian-num">۴,۰۰۰,۰۰۰</td>
-                                                <td data-label={t("content-panel-dashboard.tables.date_registration")} class="persian-num">۹۹/۰۵/۲۰</td>
-                                                <td data-label={t("content-panel-dashboard.tables.your_respond")} class="persian-num"></td>
-                                                <td data-label={t("content-panel-dashboard.tables.status")} class="persian-num status text-center">رد شده</td>
-                                                <td data-label={t("content-panel-dashboard.tables.details")} class="status"></td>
+                                                                            className="img-responsive"/></td>
+                                                <td data-label={t("content-panel-dashboard.tables.code")} className="persian-num">۱۲۷۵</td>
+                                                <td data-label={t("content-panel-dashboard.tables.price")} className="persian-num">۴,۰۰۰,۰۰۰</td>
+                                                <td data-label={t("content-panel-dashboard.tables.discount")} className="persian-num">۰</td>
+                                                <td data-label={t("content-panel-dashboard.tables.suggested")} className="persian-num">۴,۰۰۰,۰۰۰</td>
+                                                <td data-label={t("content-panel-dashboard.tables.date_registration")} className="persian-num">۹۹/۰۵/۲۰</td>
+                                                <td data-label={t("content-panel-dashboard.tables.your_respond")} className="persian-num"></td>
+                                                <td data-label={t("content-panel-dashboard.tables.status")} className="persian-num status text-center">رد شده</td>
+                                                <td data-label={t("content-panel-dashboard.tables.details")} className="status"></td>
                                                 <td>
-                                                    <button class="btn-outline-blue" type="button" data-toggle="modal"
+                                                    <button className="btn-outline-blue" type="button" data-toggle="modal"
                                                             data-target="#modal-replied-suggestion">{t("content-panel-dashboard.tables.reply")}
                                                     </button>
                                                 </td>
                                             </tr>
-                                            <tr class="replied-state">
-                                            <td data-label={t("content-panel-dashboard.tables.row")} class="persian-num">1</td>
+                                            <tr className="replied-state">
+                                            <td data-label={t("content-panel-dashboard.tables.row")} className="persian-num">1</td>
                                                 <td data-label={t("content-panel-dashboard.tables.image")}><img src={artwork1} width="1776" height="1776"
                                                                             alt=""
-                                                                            class="img-responsive"/></td>
-                                                <td data-label={t("content-panel-dashboard.tables.code")} class="persian-num">۱۲۷۵</td>
-                                                <td data-label={t("content-panel-dashboard.tables.price")} class="persian-num">۴,۰۰۰,۰۰۰</td>
-                                                <td data-label={t("content-panel-dashboard.tables.discount")} class="persian-num">۰</td>
-                                                <td data-label={t("content-panel-dashboard.tables.suggested")} class="persian-num">۴,۰۰۰,۰۰۰</td>
-                                                <td data-label={t("content-panel-dashboard.tables.date_registration")} class="persian-num">۹۹/۰۵/۲۰</td>
-                                                <td data-label={t("content-panel-dashboard.tables.your_respond")} class="persian-num"></td>
-                                                <td data-label={t("content-panel-dashboard.tables.status")} class="persian-num status text-center">رد شده</td>
-                                                <td data-label={t("content-panel-dashboard.tables.details")} class="status"></td>
+                                                                            className="img-responsive"/></td>
+                                                <td data-label={t("content-panel-dashboard.tables.code")} className="persian-num">۱۲۷۵</td>
+                                                <td data-label={t("content-panel-dashboard.tables.price")} className="persian-num">۴,۰۰۰,۰۰۰</td>
+                                                <td data-label={t("content-panel-dashboard.tables.discount")} className="persian-num">۰</td>
+                                                <td data-label={t("content-panel-dashboard.tables.suggested")} className="persian-num">۴,۰۰۰,۰۰۰</td>
+                                                <td data-label={t("content-panel-dashboard.tables.date_registration")} className="persian-num">۹۹/۰۵/۲۰</td>
+                                                <td data-label={t("content-panel-dashboard.tables.your_respond")} className="persian-num"></td>
+                                                <td data-label={t("content-panel-dashboard.tables.status")} className="persian-num status text-center">رد شده</td>
+                                                <td data-label={t("content-panel-dashboard.tables.details")} className="status"></td>
                                                 <td>
-                                                    <button class="btn-outline-blue" type="button" data-toggle="modal"
+                                                    <button className="btn-outline-blue" type="button" data-toggle="modal"
                                                             data-target="#modal-replied-suggestion">{t("content-panel-dashboard.tables.reply")}
                                                     </button>
                                                 </td>
                                             </tr>
-                                            <tr class="delivered-state">
-                                            <td data-label={t("content-panel-dashboard.tables.row")} class="persian-num">1</td>
+                                            <tr className="delivered-state">
+                                            <td data-label={t("content-panel-dashboard.tables.row")} className="persian-num">1</td>
                                                 <td data-label={t("content-panel-dashboard.tables.image")}><img src={artwork1} width="1776" height="1776"
                                                                             alt=""
-                                                                            class="img-responsive"/></td>
-                                                <td data-label={t("content-panel-dashboard.tables.code")} class="persian-num">۱۲۷۵</td>
-                                                <td data-label={t("content-panel-dashboard.tables.price")} class="persian-num">۴,۰۰۰,۰۰۰</td>
-                                                <td data-label={t("content-panel-dashboard.tables.discount")} class="persian-num">۰</td>
-                                                <td data-label={t("content-panel-dashboard.tables.suggested")} class="persian-num">۴,۰۰۰,۰۰۰</td>
-                                                <td data-label={t("content-panel-dashboard.tables.date_registration")} class="persian-num">۹۹/۰۵/۲۰</td>
-                                                <td data-label={t("content-panel-dashboard.tables.your_respond")} class="persian-num"></td>
-                                                <td data-label={t("content-panel-dashboard.tables.status")} class="persian-num status text-center">رد شده</td>
-                                                <td data-label={t("content-panel-dashboard.tables.details")} class="status"></td>
+                                                                            className="img-responsive"/></td>
+                                                <td data-label={t("content-panel-dashboard.tables.code")} className="persian-num">۱۲۷۵</td>
+                                                <td data-label={t("content-panel-dashboard.tables.price")} className="persian-num">۴,۰۰۰,۰۰۰</td>
+                                                <td data-label={t("content-panel-dashboard.tables.discount")} className="persian-num">۰</td>
+                                                <td data-label={t("content-panel-dashboard.tables.suggested")} className="persian-num">۴,۰۰۰,۰۰۰</td>
+                                                <td data-label={t("content-panel-dashboard.tables.date_registration")} className="persian-num">۹۹/۰۵/۲۰</td>
+                                                <td data-label={t("content-panel-dashboard.tables.your_respond")} className="persian-num"></td>
+                                                <td data-label={t("content-panel-dashboard.tables.status")} className="persian-num status text-center">رد شده</td>
+                                                <td data-label={t("content-panel-dashboard.tables.details")} className="status"></td>
                                                 <td>
-                                                    <button class="btn-outline-blue" type="button" data-toggle="modal"
+                                                    <button className="btn-outline-blue" type="button" data-toggle="modal"
                                                             data-target="#modal-replied-suggestion">{t("content-panel-dashboard.tables.reply")}
                                                     </button>
                                                 </td>
                                             </tr>
-                                            <tr class="pending-state">
-                                            <td data-label={t("content-panel-dashboard.tables.row")} class="persian-num">1</td>
+                                            <tr className="pending-state">
+                                            <td data-label={t("content-panel-dashboard.tables.row")} className="persian-num">1</td>
                                                 <td data-label={t("content-panel-dashboard.tables.image")}><img src={artwork1} width="1776" height="1776"
                                                                             alt=""
-                                                                            class="img-responsive"/></td>
-                                                <td data-label={t("content-panel-dashboard.tables.code")} class="persian-num">۱۲۷۵</td>
-                                                <td data-label={t("content-panel-dashboard.tables.price")} class="persian-num">۴,۰۰۰,۰۰۰</td>
-                                                <td data-label={t("content-panel-dashboard.tables.discount")} class="persian-num">۰</td>
-                                                <td data-label={t("content-panel-dashboard.tables.suggested")} class="persian-num">۴,۰۰۰,۰۰۰</td>
-                                                <td data-label={t("content-panel-dashboard.tables.date_registration")} class="persian-num">۹۹/۰۵/۲۰</td>
-                                                <td data-label={t("content-panel-dashboard.tables.your_respond")} class="persian-num"></td>
-                                                <td data-label={t("content-panel-dashboard.tables.status")} class="persian-num status text-center">رد شده</td>
-                                                <td data-label={t("content-panel-dashboard.tables.details")} class="status"></td>
+                                                                            className="img-responsive"/></td>
+                                                <td data-label={t("content-panel-dashboard.tables.code")} className="persian-num">۱۲۷۵</td>
+                                                <td data-label={t("content-panel-dashboard.tables.price")} className="persian-num">۴,۰۰۰,۰۰۰</td>
+                                                <td data-label={t("content-panel-dashboard.tables.discount")} className="persian-num">۰</td>
+                                                <td data-label={t("content-panel-dashboard.tables.suggested")} className="persian-num">۴,۰۰۰,۰۰۰</td>
+                                                <td data-label={t("content-panel-dashboard.tables.date_registration")} className="persian-num">۹۹/۰۵/۲۰</td>
+                                                <td data-label={t("content-panel-dashboard.tables.your_respond")} className="persian-num"></td>
+                                                <td data-label={t("content-panel-dashboard.tables.status")} className="persian-num status text-center">رد شده</td>
+                                                <td data-label={t("content-panel-dashboard.tables.details")} className="status"></td>
                                                 <td>
-                                                    <button class="btn-outline-blue" type="button" data-toggle="modal"
+                                                    <button className="btn-outline-blue" type="button" data-toggle="modal"
                                                             data-target="#modal-replied-suggestion">{t("content-panel-dashboard.tables.reply")}
                                                     </button>
                                                 </td>
@@ -114,10 +114,10 @@ function TableSuggestionToYourArtworks() {
                                 </div>
                         </div>
 
-                        <div class="empty-order box">
+                        <div className="empty-order box">
                             <img src={empty_list_icon} width="72" height="72" alt="empty-icon"
-                                class="center-block img-responsive"/>
-                            <span class="bolder-title">{t("content-panel-dashboard.tables.empty_offers_artworks.title")}</span>
+                                className="center-block img-responsive"/>
+                            <span className="bolder-title">{t("content-panel-dashboard.tables.empty_offers_artworks.title")}</span>
                             
                         </div>
                         </div>

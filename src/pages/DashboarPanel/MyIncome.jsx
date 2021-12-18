@@ -7,27 +7,27 @@ import cash_icon from '../../assets/img/cash.png';
 
 function MyIncome() {
   return (
-    <div class="box artistpanel-7 ">
-      <div class="public-header">
-        <h2 class="default-title text-dir">
+    <div className="box artistpanel-7 ">
+      <div className="public-header">
+        <h2 className="default-title text-dir">
           {t("content-panel-dashboard.my_income.title")}
         </h2>
       </div>
-      <div class="cash-state">
+      <div className="cash-state">
         <img
           src={cash_icon}
           width="64"
           height="64"
           alt=""
-          class="center-block"
+          className="center-block"
         />
         <div className="d-flex box-dir-reverse justify-content-center align-items-center">
-          <span class="persian-num mx-2">۴,۵۰۰,۰۰۰</span>
+          <span className="persian-num mx-2">۴,۵۰۰,۰۰۰</span>
           <span>تومان</span>
         </div>
-        <button type="button" class="btn-back-blue">
+        <button type="button" className="btn-back-blue">
           {t("content-panel-dashboard.my_income.detail")}
-          <i class="glyphicon glyphicon-chevron-left"></i>
+          <i className="glyphicon glyphicon-chevron-left"></i>
         </button>
       </div>
     </div>

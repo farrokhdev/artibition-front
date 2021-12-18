@@ -8,46 +8,46 @@ import { t } from 'i18next';
 
 function Promotions() {
     return (
-        <div class="box artistpanel-4 ">
-                        <div class="d-flex box-dir-reverse justify-content-between public-header ">
-                            <div class="pull-dir">
-                                <h2 class="d-flex default-title box-dir-reverse "><span className="mx-2">{t("content-panel-dashboard.promotion.title")}</span>
+        <div className="box artistpanel-4 ">
+                        <div className="d-flex box-dir-reverse justify-content-between public-header ">
+                            <div className="pull-dir">
+                                <h2 className="d-flex default-title box-dir-reverse "><span className="mx-2">{t("content-panel-dashboard.promotion.title")}</span>
                                     <a href="#">
                                         <img src={tip_icon} width="18" height="18" alt=""/>
                                     </a>
                                 </h2>
                             </div>
-                            <div class="pull-dir ">
+                            <div className="pull-dir ">
                                 <a href="#">
                                     <img src={dates_icon} width="20" height="20" alt="dates-icon"/>
                                 </a>
                             </div>
                         </div>
-                        <div class="promotion-blocks">
-                            <div class="promotion-block">
-                                <h3 class="d-flex box-dir-reverse pink-title">
-                                    <img src={info_pink_icon} width="16" height="16" alt="" class="mx-2"/>
+                        <div className="promotion-blocks">
+                            <div className="promotion-block">
+                                <h3 className="d-flex box-dir-reverse pink-title">
+                                    <img src={info_pink_icon} width="16" height="16" alt="" className="mx-2"/>
                                     <span>تخفیف ویژه یلدای ۹۹</span>
                                 </h3>
-                                <h3 class="d-flex box-dir-reverse gray-title">
-                                    <i class="glyphicon glyphicon-time mx-2"></i>
+                                <h3 className="d-flex box-dir-reverse gray-title">
+                                    <i className="glyphicon glyphicon-time mx-2"></i>
                                     <span>۲۵ آذر الی ۱ دی ماه</span>
                                 </h3>
-                                <p class="text-dir">
+                                <p className="text-dir">
                                     به مناسبت شب یلدا تمامی آثار در آرتیبیش با ۲۵ درصد تخفیف در
                                     .سایت قرار خواهند گرفت
                                 </p>
                             </div>
-                            <div class="promotion-block">
-                                <h3 class="d-flex box-dir-reverse pink-title">
-                                    <img src={info_pink_icon} width="16" height="16" alt="" class="mx-2"/>
+                            <div className="promotion-block">
+                                <h3 className="d-flex box-dir-reverse pink-title">
+                                    <img src={info_pink_icon} width="16" height="16" alt="" className="mx-2"/>
                                     <span>کمپین آثار نقاشی آرتیبیشن</span>
                                 </h3>
-                                <h3 class="d-flex box-dir-reverse gray-title">
-                                    <i class="glyphicon glyphicon-time mx-1"></i>
+                                <h3 className="d-flex box-dir-reverse gray-title">
+                                    <i className="glyphicon glyphicon-time mx-1"></i>
                                     <span>۱۹ الی ۲۶ مرداد ماه</span>
                                 </h3>
-                                <p class="text-dir">
+                                <p className="text-dir">
                                     در کمپین نقاشی آرتیبیشن قصد داریم از با تبلیغ آثار نقاشی آن‌ها را
                                     در معرض دید مخاطبان بیشتری قرار دهیم. با انتشار اثر جدید و یا
                                     گذاشتن تخفیف برای آثار نقاشی خود می‌توانید بیشتر دیده شوید
@@ -55,7 +55,7 @@ function Promotions() {
                                 </p>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-more">{t("content-panel-dashboard.promotion.veiw_more")}</button>
+                        <button type="button" className="btn btn-more">{t("content-panel-dashboard.promotion.veiw_more")}</button>
                     </div>
     )
 }
