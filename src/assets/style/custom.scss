@@ -4204,7 +4204,7 @@ button.close {
 }
 
 .adv-btn {
-    background: #fff;
+    // background: #fff;
     position: sticky;
     bottom: 0;
     display: inline-block;
@@ -8524,4 +8524,71 @@ span.unit-dimention {
 
 .ant-alert-icon {
     margin-right: 0px !important; 
+}
+
+.ant-steps{
+    margin-top: 100px !important;
+    max-width: 60vw !important;
+    margin: 0px auto;
+}
+
+@media (min-width : '992px'){
+    .ant-steps{
+        margin-top: 100px !important;
+        max-width: 40vw !important;
+        margin: 0px auto;
+    }
+}
+
+@media (min-width : '1200px'){
+    .ant-steps{
+        margin-top: 100px !important;
+        max-width: 30vw !important;
+        margin: 0px auto;
+    }
+}
+
+
+.ant-steps-dot .ant-steps-item-tail::after, .ant-steps-dot.ant-steps-small .ant-steps-item-tail::after{
+    height: 4px !important;
+}
+.ant-steps-item-finish > .ant-steps-item-container > .ant-steps-item-tail::after {
+    background-color: #28a745 !important;
+}
+
+.ant-steps-item-process .ant-steps-item-icon > .ant-steps-icon .ant-steps-icon-dot {
+    background: #28a745 !important;
+}
+
+.ant-steps-item-process .ant-steps-item-icon > .ant-steps-icon .ant-steps-icon-dot {
+    background: #28a745 !important;
+}
+
+.ant-steps-item-finish .ant-steps-item-icon > .ant-steps-icon .ant-steps-icon-dot {
+    background: #28a745 !important;
+}
+
+
+.ant-steps-item-icon{
+    width: 16px !important;
+    height: 16px !important;
+}
+
+.ant-steps-item-tail{
+    width: calc(100% + 23px ) !important;
+    left: 0px !important;
+    top: 6px !important;
+    margin: 0px !important;
+    right: 0px !important;
+    margin-right: 6px !important;
+}
+
+.ant-steps-item-title{
+    left: 60px !important;
+}
+
+@media(max-width : '575px'){
+    .ant-steps-item-title{
+        left: 0px !important;
+    }
 }

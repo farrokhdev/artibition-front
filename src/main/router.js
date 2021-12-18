@@ -1,6 +1,7 @@
 import React from 'react';
 import {Routes, Route , BrowserRouter} from 'react-router-dom';
 import App from '../App';
+import AddArtwork from '../pages/AddArtwork/AddArtwork';
 import ConfirmMobile from '../pages/ConfirmMobile/ConfirmMobile';
 import DashboardPanel from '../pages/DashboarPanel/DashboardPanel';
 import Home from '../pages/Home.jsx/Home';
@@ -19,7 +20,8 @@ const RouterConfig = (props) => {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Home />}>
-                    <Route path="home" element={<Home />} />
+                    <Route index path="home" element={<Home />} />
+                    
                 </Route>
             </Routes>
 
@@ -31,16 +33,17 @@ const RouterConfig = (props) => {
                     <Route path="recovery-password" element={<SetPassword />} />
                 </Route>
             </Routes>
+            
 
             <Routes>
                 <Route path="panel" animate={true}>
-                    <Route index path="profile" element={<Panelprofile />} />
-                    <Route index path="purchases" element={<PanelMyPurchases />} />
-                    <Route index path="favorites" element={<PanelFavorites />} />
-                    <Route index path="messages" element={<PanelMessages />} />
-                    <Route index path="wallet" element={<PanelWallet />} />
-                    <Route index path="dashboard" element={<DashboardPanel />} />
-                    
+                    <Route path="profile" element={<Panelprofile />} />
+                    <Route path="purchases" element={<PanelMyPurchases />} />
+                    <Route path="favorites" element={<PanelFavorites />} />
+                    <Route path="messages" element={<PanelMessages />} />
+                    <Route path="wallet" element={<PanelWallet />} />
+                    <Route path="dashboard" element={<DashboardPanel />} />
+                    <Route path="add-artwork" element={<AddArtwork />} />
                 </Route>
             </Routes>
 
