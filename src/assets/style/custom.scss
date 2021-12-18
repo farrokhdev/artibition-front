@@ -2973,7 +2973,7 @@ button.close {
 .container-radio {
     display: block;
     position: relative;
-    padding-right: 35px;
+    padding-right: 27px;
     margin-bottom: 20px;
     cursor: pointer;
     -webkit-user-select: none;
@@ -6744,6 +6744,10 @@ p.upload-size {
 
 .collection-list-row .owl-carousel {
     margin-top: 24px;
+}
+
+td .img-responsive{
+    display: inline-block !important;
 }
 
 .owl-carousel .img-responsive{

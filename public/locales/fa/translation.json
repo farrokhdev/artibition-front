@@ -258,6 +258,7 @@
   "drawer-panel" : {
     "nav-dashboard" : "داشبورد",
     "nav-mypurchases" : "خریدهای من",
+    "nav-orders" : "سفارشات",
     "nav-wallet" : "کیف پول",
     "nav-favorits" : "علاقه‌مندی‌ها",
     "nav-messages" : "پیام‌ها",
@@ -509,7 +510,17 @@
       "text_upload" : "اولین اثر خود را آپلود نمایید."
     }
 
+  },
+
+  "content-panel-orders" : {
+    "filters" : {
+      "all" : "همه سفارش‌ها",
+      "to_artibition" : "منتظر ارسال اثر به آرتیبیشن",
+      "artibition_to_customer" : "درحال ارسال از آرتیبیشن به مشتری",
+      "delivered" : "تحویل شده به مشتری"
+    }
   }
+
 
 
 }

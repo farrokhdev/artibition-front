@@ -9,6 +9,7 @@ import Login from '../pages/Login/Login';
 import PanelFavorites from '../pages/PanelFavorites/PanelFavorites';
 import PanelMessages from '../pages/PanelMessages/PanelMessages';
 import PanelMyPurchases from '../pages/PanelMyPurchases/PanelMyPurchases';
+import PanelOrders from '../pages/PanelOrders/PanelOrders';
 import Panelprofile from '../pages/PanelProfile/PanelProfile';
 import PanelWallet from '../pages/PanelWallet/PanelWallet';
 import SetPassword from '../pages/RecoveryPassword/RecoveryPassword';
@@ -37,13 +38,16 @@ const RouterConfig = (props) => {
 
             <Routes>
                 <Route path="panel" animate={true}>
-                    <Route path="profile" element={<Panelprofile />} />
-                    <Route path="purchases" element={<PanelMyPurchases />} />
-                    <Route path="favorites" element={<PanelFavorites />} />
-                    <Route path="messages" element={<PanelMessages />} />
-                    <Route path="wallet" element={<PanelWallet />} />
-                    <Route path="dashboard" element={<DashboardPanel />} />
+
+                    <Route index path="profile" element={<Panelprofile />} />
+                    <Route index path="purchases" element={<PanelMyPurchases />} />
+                    <Route index path="favorites" element={<PanelFavorites />} />
+                    <Route index path="messages" element={<PanelMessages />} />
+                    <Route index path="wallet" element={<PanelWallet />} />
+                    <Route index path="dashboard" element={<DashboardPanel />} />
+                    <Route index path="orders" element={<PanelOrders />} />
                     <Route path="add-artwork" element={<AddArtwork />} />
+                    
                 </Route>
             </Routes>
 

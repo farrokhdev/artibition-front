@@ -8380,6 +8380,11 @@ input{
   text-align: left !important;
 }
 
+td .img-responsive{
+    display: inline-block !important;
+}
+
+
 .owl-carousel .img-responsive{
     min-width: 245px;
     max-width: 245px;
