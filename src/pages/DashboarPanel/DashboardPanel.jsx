@@ -30,16 +30,16 @@ function DashboardPanel() {
         <div className="custom-container">
 
             {alertNotice(
-                //className
+                //classNameName
                 "d-flex box-dir-reverse  alert alert-notice text-dir" , 
                 //icon
-                <img src={financial_reports_orange} width="24" height="24" alt="report-icon" class=""/> ,
+                <img src={financial_reports_orange} width="24" height="24" alt="report-icon" className=""/> ,
                 //content-description
                 <>
-                    <span class="d-block d-xl-flex box-dir-reverse text-dir"> 
+                    <span className="d-block d-xl-flex box-dir-reverse text-dir"> 
                         <p>{t("content-panel-dashboard.alerts.info_notice.text1")} <a href="#">{t("content-panel-dashboard.alerts.this_contract")}</a>{t("content-panel-dashboard.alerts.info_notice.text2")}<a href="#">{t("content-panel-dashboard.alerts.here")}</a> {t("content-panel-dashboard.alerts.info_notice.text3")}</p>
-                        <button type="button" class="btn-blue mx-2 mt-3 mt-xl-0">
-                            <img src={new_artwork} width="20" height="20" alt="new-artwork" class="mx-2" />
+                        <button type="button" className="btn-blue mx-2 mt-3 mt-xl-0">
+                            <img src={new_artwork} width="20" height="20" alt="new-artwork" className="mx-2" />
                             <span >{t("content-panel-dashboard.alerts.btn_upload")}</span>
                         </button>
                     </span>
@@ -50,10 +50,10 @@ function DashboardPanel() {
 
 
             {alertSuccess(  
-                //className
+                //classNameName
                 "d-flex box-dir-reverse  alert alert-success" ,
                 //icon
-                <img src={done_icon} width="24" height="24" alt="" class=""/> ,
+                <img src={done_icon} width="24" height="24" alt="" className=""/> ,
                  //content-description
                 <p className=" text-dir">{t("content-panel-dashboard.alerts.info_success")}
                 <a href="#">{t("content-panel-dashboard.alerts.text_upload")}</a></p> , 
@@ -64,20 +64,20 @@ function DashboardPanel() {
         
                 <BoxGallery/>
                 
-            <div class="row box-dir-reverse ">
-                <div class="col-lg-8 ">
+            <div className="row box-dir-reverse ">
+                <div className="col-lg-8 ">
                     <BoxStatusArtwork/>
                 </div>
-                <div class="col-lg-4">
+                <div className="col-lg-4">
                     <StatusSection/>
                 </div>
-                <div class="col-lg-8 ">
+                <div className="col-lg-8 ">
                     <TableOrders/>
                     <TableActiveOrders/>
                     <TableSuggestionToYourArtworks/>
                     <VeiwArtworks/>
                 </div>
-                <div class="col-lg-4">
+                <div className="col-lg-4">
                     <MyIncome/>
                     <Promotions/>
                 </div>

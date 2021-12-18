@@ -258,6 +258,7 @@
   "drawer-panel" : {
     "nav-dashboard" : "Dashboard",
     "nav-mypurchases" : "My purchases",
+    "nav-orders" : "Orders",
     "nav-wallet" : "Wallet",
     "nav-favorits" : "Favorites",
     "nav-messages" : "Messages",
@@ -515,6 +516,15 @@
       "text_upload" : "Upload your first artwork"
     }
 
+  },
+
+  "content-panel-orders" : {
+    "filters" : {
+      "all" : "All",
+      "to_artibition" : "To Arthibition",
+      "artibition_to_customer" : "Arthibition to customer",
+      "delivered" : "Delivered"
+    }
   }
 
 
