@@ -8501,3 +8501,27 @@ span.unit-dimention {
     border: none !important;
 }
 
+.ant-alert-with-description p{
+    font-size: 17px !important;
+}
+.ant-alert-with-description {
+    /* align-items: flex-start; */
+    padding: 15px !important;
+    border: 1px solid #adfed0;
+    background: #eefff5;
+    // color: #15aa56;
+}
+
+.ant-alert-close-icon svg {
+    width: 17px !important;
+    height: 17px !important;
+    margin: 0px !important;
+}
+
+.ant-alert-close-icon{
+    margin: 0px !important;
+}
+
+.ant-alert-icon {
+    margin-right: 0px !important; 
+}

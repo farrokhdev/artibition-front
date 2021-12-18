@@ -474,6 +474,7 @@
       "order_active" : "ACTIVE ORDERS",
       "suggestion_artwork" : "PRICE OFFERS FOR YOUR ARTWORKS",
       "veiw_artworks" : "VIEW ARTWORKS",
+      "veiw" : "VIEW",
       "row" : "#",
       "image" : "Image",
       "code" : "Code",
@@ -487,6 +488,7 @@
       "date_registration" : "Date of registration",
       "your_respond" : "Your respond",
       "action" : "Actions",
+      "reply" : "Reply" ,
       "offers_artwork_title" : "PRICE OFFERS FOR YOUR ARTWORKS",
       "empty_active_order" : {
         "title" : ".No order has been registered for you yet",

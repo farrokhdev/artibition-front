@@ -468,6 +468,7 @@
       "order_active" : "سفارش‌های فعال",
       "suggestion_artwork" : "پیشنهاد قیمت به آثار شما",
       "veiw_artworks" : "بازدید آثار",
+      "veiw" : "مشاهده",
       "row" : "ردیف",
       "image" : "تصویر",
       "code" : "کد اثر",
@@ -481,6 +482,7 @@
       "date_registration" : "تاریخ ثبت",
       "your_respond" : "پاسخ شما",
       "action" : "عملیات",
+      "reply" : "پاسخ" ,
       "offers_artwork_title" : "پیشنهاد قیمت به آثار شما",
       "empty_active_order" : {
         "title" : "تاکنون سفارشی برای شما ثبت نشده است",
