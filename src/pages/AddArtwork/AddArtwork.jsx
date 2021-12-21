@@ -27,7 +27,7 @@ function AddArtwork() {
         <Popover
           content={
             <span>
-              step {index} status: {status}
+              مرحله {index} وضعیت: {status}
             </span>
           }
         >
@@ -44,7 +44,7 @@ function AddArtwork() {
         },
         {
           title: 'تکمیل اطلاعات فروش',
-          content: <SellInformation prev={prev}/>,
+          content: <SellInformation prev={prev} next={next}/>,
           icon : false
         }
       ];
@@ -55,23 +55,34 @@ function AddArtwork() {
 
     <div className="panel-style container mx-auto px-0 w-100 bg-white ">
 
-        <Steps 
+        {/* <Steps 
             className='d-flex box-dir-reverse'
             progressDot={customDot}
             current={current}>
             {steps.map(item => (
             <Step key={item.title} title={item.title} />
             ))}
-        </Steps>
+        </Steps> */}
 
-        <div className="steps-content pt-5">{steps[current].content}</div>
+
+        
+    <Steps 
+      className='d-flex dir'
+      progressDot current={current}
+      >
+        {steps.map(item => (
+            <Step key={item.title} title={item.title} />
+        ))}
+    </Steps>
+
+        <div className="steps-content pt-5 px-4 px-sm-0">{steps[current].content}</div>
         <div className="steps-action">
-            {current < steps.length - 2 && (
+            {current < steps.length - 1 && (
             <Button type="success" onClick={() => next()}>
                 Next
             </Button>
             )}
-            {current === steps.length - 2 && (
+            {current === steps.length - 1 && (
             <Button type="success" onClick={() => message.success('Processing complete!')}>
                 Done
             </Button>

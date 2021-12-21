@@ -4206,6 +4206,8 @@ button.close {
 .adv-btn {
     // background: #fff;
     position: sticky;
+    display: flex !important;
+    justify-content: space-between !important;
     bottom: 0;
     display: inline-block;
     width: 100%;
@@ -5326,8 +5328,8 @@ a.sec-timeline {
 .box.basket-footer {
     margin-top: 128px;
     margin-bottom: 0;
-    bottom: 0px !important;
-    position: fixed !important;
+    // bottom: 0px !important;
+    // position: fixed !important;
     width: 100% !important;
 }
 
@@ -6511,6 +6513,8 @@ p.upload-size {
     font-size: 15px !important;
     color: #adafb3;
     display: block;
+    position: absolute;
+    top: 45px;
 }
 
 .upload-section {
@@ -8554,7 +8558,7 @@ span.unit-dimention {
 
 
 .ant-steps-dot .ant-steps-item-tail::after, .ant-steps-dot.ant-steps-small .ant-steps-item-tail::after{
-    height: 4px !important;
+    height: 5px !important;
 }
 .ant-steps-item-finish > .ant-steps-item-container > .ant-steps-item-tail::after {
     background-color: #28a745 !important;
@@ -8572,6 +8576,17 @@ span.unit-dimention {
     background: #28a745 !important;
 }
 
+.ant-steps-item-wait .ant-steps-item-icon > .ant-steps-icon .ant-steps-icon-dot {
+    background: #dee2e6;
+}
+
+.ant-steps-item-process > .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-title {
+    color: #28a745;
+}
+
+.ant-steps-item-finish > .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-title {
+    color: #28a745;
+}
 
 .ant-steps-item-icon{
     width: 16px !important;
@@ -8581,9 +8596,9 @@ span.unit-dimention {
 .ant-steps-item-tail{
     width: calc(100% + 23px ) !important;
     left: 0px !important;
-    top: 6px !important;
+    top: 5px !important;
     margin: 0px !important;
-    right: 0px !important;
+    right: 13px !important;
     margin-right: 6px !important;
 }
 
@@ -8596,3 +8611,23 @@ span.unit-dimention {
         left: 0px !important;
     }
 }
+
+.ant-select-selector {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.ant-select-selection-item {
+    flex: none !important;
+}
+
+.lable-checkbox .ant-checkbox-wrapper-checked ~ span{
+    color: black !important;
+}
+
+.lable-checkbox .ant-form-item .ant-form-item-control .ant-form-item-control-input .ant-form-item-control-input-content .ant-switch-checked ~ .label-switchbtn{
+    color: black !important;
+}
+
+
+
