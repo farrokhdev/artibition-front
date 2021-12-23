@@ -36,12 +36,11 @@ body {
     font-size: 18px;
 }
 
-
-
 input,
 input:focus {
     border: 2px solid #f1f2f4;
 }
+
 
 label {
     font-size: 16px;
@@ -1605,6 +1604,11 @@ input:checked + .switchbtn:before {
     position: absolute;
     left: 0;
     bottom: 4px;
+}
+
+.position-gift-card-artwork{
+    float: left !important;
+    // margin-left: 30px !important;
 }
 
 .row-pagination {
@@ -3447,13 +3451,16 @@ button.close {
 .table.color td {
     background: #e4e6e9;
     cursor: pointer;
-    padding: 0;
+    padding: 0px !important;
     text-align: center;
     border: 2px solid #fff;
     transform: scale(1);
     transition: all .2s ease 0s;
     position: relative;
-    height: 20px;
+    min-width: 23px !important;
+    max-width: 23px !important;
+    min-height: 15px !important;
+    max-height: 15px !important;
 }
 
 .table.color td:hover {
@@ -3461,485 +3468,609 @@ button.close {
     z-index: 2;
 }
 
+.table.color.table-responsive{
+    // display: contents !important;
+}
+
 
 .table.color td#color1 {
-    background: #283e0f
+    background: #283e0f !important;
+    color: transparent!important;
 }
 
 .table.color td#color2 {
-    background: #283e0f
+    background: #283e0f !important;
+    color: transparent !important;
 }
 
 .table.color td#color3 {
-    background: #666002
+    background: #666002 !important;
+    color: transparent !important;
 }
 
 .table.color td#color4 {
-    background: #553d00
+    background: #553d00 !important;
+    color: transparent !important;
 }
 
 .table.color td#color5 {
-    background: #583400
+    background: #583400 !important;
+    color: transparent !important;
 }
 
 .table.color td#color6 {
-    background: #591c00
+    background: #591c00 !important;
+    color: transparent !important;
 }
 
 .table.color td#color7 {
-    background: #5b0601
+    background: #5b0601 !important;
+    color: transparent !important;
 }
 
 .table.color td#color8 {
-    background: #3f051b
+    background: #3f051b !important;
+    color: transparent !important;
 }
 
 .table.color td#color9 {
-    background: #2e0843
+    background: #2e0843 !important;
+    color: transparent !important;
 }
 
 .table.color td#color10 {
-    background: #12053d
+    background: #12053d !important;
+    color: transparent !important;
 }
 
 .table.color td#color11 {
-    background: #001e5a
+    background: #001e5a !important;
+    color: transparent !important;
 }
 
 .table.color td#color12 {
-    background: #00374b
+    background: #00374b !important;
+    color: transparent !important;
 }
 
 .table.color td#color13 {
-    background: #3b571c
+    background: #3b571c !important;
+    color: transparent !important;
 }
 
 .table.color td#color14 {
-    background: #717507
+    background: #717507 !important;
+    color: transparent !important;
 }
 
 .table.color td#color15 {
-    background: #888901
+    background: #888901 !important;
+    color: transparent !important;
 }
 
 .table.color td#color16 {
-    background: #765700
+    background: #765700 !important;
+    color: transparent !important;
 }
 
 .table.color td#color17 {
-    background: #794803
+    background: #794803 !important;
+    color: transparent !important;
 }
 
 .table.color td#color18 {
-    background: #792a01
+    background: #792a01 !important;
+    color: transparent !important;
 }
 
 .table.color td#color19 {
-    background: #830d00
+    background: #830d00 !important;
+    color: transparent !important;
 }
 
 .table.color td#color20 {
-    background: #551126
+    background: #551126 !important;
+    color: transparent !important;
 }
 
 .table.color td#color21 {
-    background: #450f5d
+    background: #450f5d !important;
+    color: transparent !important;
 }
 
 .table.color td#color22 {
-    background: #180b51
+    background: #180b51 !important;
+    color: transparent !important;
 }
 
 .table.color td#color23 {
-    background: #013078
+    background: #013078 !important;
+    color: transparent !important;
 }
 
 .table.color td#color24 {
-    background: #004b63
+    background: #004b63 !important;
+    color: transparent !important;
 }
 
 .table.color td#color25 {
-    background: #457125
+    background: #457125 !important;
+    color: transparent !important;
 }
 
 .table.color td#color26 {
-    background: #9ca50c
+    background: #9ca50c !important;
+    color: transparent !important;
 }
 
 .table.color td#color27 {
-    background: #c2bd00
+    background: #c2bd00 !important;
+    color: transparent !important;
 }
 
 .table.color td#color28 {
-    background: #a57c00
+    background: #a57c00 !important;
+    color: transparent !important;
 }
 
 .table.color td#color29 {
-    background: #ab6702
+    background: #ab6702 !important;
+    color: transparent !important;
 }
 
 .table.color td#color30 {
-    background: #ac3f00
+    background: #ac3f00 !important;
+    color: transparent !important;
 }
 
 .table.color td#color31 {
-    background: #b51902
+    background: #b51902 !important;
+    color: transparent !important;
 }
 
 .table.color td#color32 {
-    background: #7a193c
+    background: #7a193c !important;
+    color: transparent !important;
 }
 
 .table.color td#color33 {
-    background: #63167e
+    background: #63167e !important;
+    color: transparent !important;
 }
 
 .table.color td#color34 {
-    background: #2c1378
+    background: #2c1378 !important;
+    color: transparent !important;
 }
 
 .table.color td#color35 {
-    background: #0142a6
+    background: #0142a6 !important;
+    color: transparent !important;
 }
 
 .table.color td#color36 {
-    background: #00728b
+    background: #00728b !important;
+    color: transparent !important;
 }
 
 .table.color td#color37 {
-    background: #58882b
+    background: #58882b !important;
+    color: transparent !important;
 }
 
 .table.color td#color38 {
-    background: #c6ce16
+    background: #c6ce16 !important;
+    color: transparent !important;
 }
 
 .table.color td#color39 {
-    background: #d9d411
+    background: #d9d411 !important;
+    color: transparent !important;
 }
 
 .table.color td#color40 {
-    background: #d5a209
+    background: #d5a209 !important;
+    color: transparent !important;
 }
 
 .table.color td#color41 {
-    background: #d38306
+    background: #d38306 !important;
+    color: transparent !important;
 }
 
 .table.color td#color42 {
-    background: #dc5100
+    background: #dc5100 !important;
+    color: transparent !important;
 }
 
 .table.color td#color43 {
-    background: #e12300
+    background: #e12300 !important;
+    color: transparent !important;
 }
 
 .table.color td#color44 {
-    background: #97274f
+    background: #97274f !important;
+    color: transparent !important;
 }
 
 .table.color td#color45 {
-    background: #77239d
+    background: #77239d !important;
+    color: transparent !important;
 }
 
 .table.color td#color46 {
-    background: #391b95
+    background: #391b95 !important;
+    color: transparent !important;
 }
 
 .table.color td#color47 {
-    background: #0460ff
+    background: #0460ff !important;
+    color: transparent !important;
 }
 
 .table.color td#color48 {
-    background: #038dbb
+    background: #038dbb !important;
+    color: transparent !important;
 }
 
 .table.color td#color49 {
-    background: #68a53c
+    background: #68a53c !important;
+    color: transparent !important;
 }
 
 .table.color td#color50 {
-    background: #dae229
+    background: #dae229 !important;
+    color: transparent !important;
 }
 
 .table.color td#color51 {
-    background: #e8e337
+    background: #e8e337 !important;
+    color: transparent !important;
 }
 
 .table.color td#color52 {
-    background: #e9b61d
+    background: #e9b61d !important;
+    color: transparent !important;
 }
 
 .table.color td#color53 {
-    background: #ffaa00
+    background: #ffaa00 !important;
+    color: transparent !important;
 }
 
 .table.color td#color54 {
-    background: #fd6b00
+    background: #fd6b00 !important;
+    color: transparent !important;
 }
 
 .table.color td#color55 {
-    background: #fe4310
+    background: #fe4310 !important;
+    color: transparent !important;
 }
 
 .table.color td#color56 {
-    background: #bb2a61
+    background: #bb2a61 !important;
+    color: transparent !important;
 }
 
 .table.color td#color57 {
-    background: #9a2aba
+    background: #9a2aba !important;
+    color: transparent !important;
 }
 
 .table.color td#color58 {
-    background: #4a24b7
+    background: #4a24b7 !important;
+    color: transparent !important;
 }
 
 .table.color td#color59 {
-    background: #0460ff
+    background: #0460ff !important;
+    color: transparent !important;
 }
 
 .table.color td#color60 {
-    background: #00a2d8
+    background: #00a2d8 !important;
+    color: transparent !important;
 }
 
 .table.color td#color61 {
-    background: #76bc42
+    background: #76bc42 !important;
+    color: transparent !important;
 }
 
 .table.color td#color62 {
-    background: #e0e839
+    background: #e0e839 !important;
+    color: transparent !important;
 }
 
 .table.color td#color63 {
-    background: #e9e549
+    background: #e9e549 !important;
+    color: transparent !important;
 }
 
 .table.color td#color64 {
-    background: #f3c539
+    background: #f3c539 !important;
+    color: transparent !important;
 }
 
 .table.color td#color65 {
-    background: #ffb23c
+    background: #ffb23c !important;
+    color: transparent !important;
 }
 
 .table.color td#color66 {
-    background: #ff8448
+    background: #ff8448 !important;
+    color: transparent !important;
 }
 
 .table.color td#color67 {
-    background: #fe634d
+    background: #fe634d !important;
+    color: transparent !important;
 }
 
 .table.color td#color68 {
-    background: #e73a79
+    background: #e73a79 !important;
+    color: transparent !important;
 }
 
 .table.color td#color69 {
-    background: #9a2aba
+    background: #9a2aba !important;
+    color: transparent !important;
 }
 
 .table.color td#color70 {
-    background: #5a32eb
+    background: #5a32eb !important;
+    color: transparent !important;
 }
 
 .table.color td#color71 {
-    background: #3689ff
+    background: #3689ff !important;
+    color: transparent !important;
 }
 
 .table.color td#color72 {
-    background: #00c7ff
+    background: #00c7ff !important;
+    color: transparent !important;
 }
 
 .table.color td#color73 {
-    background: #91df59
+    background: #91df59 !important;
+    color: transparent !important;
 }
 
 .table.color td#color74 {
-    background: #f0f66d
+    background: #f0f66d !important;
+    color: transparent !important;
 }
 
 .table.color td#color75 {
-    background: #fefb94
+    background: #fefb94 !important;
+    color: transparent !important;
 }
 
 .table.color td#color76 {
-    background: #f9d465
+    background: #f9d465 !important;
+    color: transparent !important;
 }
 
 .table.color td#color77 {
-    background: #ffc878
+    background: #ffc878 !important;
+    color: transparent !important;
 }
 
 .table.color td#color78 {
-    background: #ffa47d
+    background: #ffa47d !important;
+    color: transparent !important;
 }
 
 .table.color td#color79 {
-    background: #ff8c85
+    background: #ff8c85 !important;
+    color: transparent !important;
 }
 
 .table.color td#color80 {
-    background: #ef6f9f
+    background: #ef6f9f !important;
+    color: transparent !important;
 }
 
 .table.color td#color81 {
-    background: #d456ff
+    background: #d456ff !important;
+    color: transparent !important;
 }
 
 .table.color td#color82 {
-    background: #854ffb
+    background: #854ffb !important;
+    color: transparent !important;
 }
 
 .table.color td#color83 {
-    background: #75a7fe
+    background: #75a7fe !important;
+    color: transparent !important;
 }
 
 .table.color td#color84 {
-    background: #55d6fe
+    background: #55d6fe !important;
+    color: transparent !important;
 }
 
 .table.color td#color85 {
-    background: #9fec65
+    background: #9fec65 !important;
+    color: transparent !important;
 }
 
 .table.color td#color86 {
-    background: #f1f7b7
+    background: #f1f7b7 !important;
+    color: transparent !important;
 }
 
 .table.color td#color87 {
-    background: #fffcb5
+    background: #fffcb5 !important;
+    color: transparent !important;
 }
 
 .table.color td#color88 {
-    background: #fde5a7
+    background: #fde5a7 !important;
+    color: transparent !important;
 }
 
 .table.color td#color89 {
-    background: #ffd8a8
+    background: #ffd8a8 !important;
+    color: transparent !important;
 }
 
 .table.color td#color90 {
-    background: #ffc4a8
+    background: #ffc4a8 !important;
+    color: transparent !important;
 }
 
 .table.color td#color91 {
-    background: #fcb5af
+    background: #fcb5af !important;
+    color: transparent !important;
 }
 
 .table.color td#color92 {
-    background: #f6a3bf
+    background: #f6a3bf !important;
+    color: transparent !important;
 }
 
 .table.color td#color93 {
-    background: #e395fb
+    background: #e395fb !important;
+    color: transparent !important;
 }
 
 .table.color td#color94 {
-    background: #b28cfb
+    background: #b28cfb !important;
+    color: transparent !important;
 }
 
 .table.color td#color95 {
-    background: #aac4fd
+    background: #aac4fd !important;
+    color: transparent !important;
 }
 
 .table.color td#color96 {
-    background: #90e4fe
+    background: #90e4fe !important;
+    color: transparent !important;
 }
 
 .table.color td#color97 {
-    background: #bfff8f
+    background: #bfff8f !important;
+    color: transparent !important;
 }
 
 .table.color td#color98 {
-    background: #f9f9dd
+    background: #f9f9dd !important;
+    color: transparent !important;
 }
 
 .table.color td#color99 {
-    background: #fffcdb
+    background: #fffcdb !important;
+    color: transparent !important;
 }
 
 .table.color td#color100 {
-    background: #fef3d5
+    background: #fef3d5 !important;
+    color: transparent !important;
 }
 
 .table.color td#color101 {
-    background: #ffebd3
+    background: #ffebd3 !important;
+    color: transparent !important;
 }
 
 .table.color td#color102 {
-    background: #fee2d6
+    background: #fee2d6 !important;
+    color: transparent !important;
 }
 
 .table.color td#color103 {
-    background: #ffd8d9
+    background: #ffd8d9 !important;
+    color: transparent !important;
 }
 
 .table.color td#color104 {
-    background: #f8d4e0
+    background: #f8d4e0 !important;
+    color: transparent !important;
 }
 
 .table.color td#color105 {
-    background: #f1c9fe
+    background: #f1c9fe !important;
+    color: transparent !important;
 }
 
 .table.color td#color106 {
-    background: #dacafb
+    background: #dacafb !important;
+    color: transparent !important;
 }
 
 .table.color td#color107 {
-    background: #d4e4fb
+    background: #d4e4fb !important;
+    color: transparent !important;
 }
 
 .table.color td#color108 {
-    background: #caf2fe
+    background: #caf2fe !important;
+    color: transparent !important;
 }
 
 .table.color td#color201 {
-    background: #9a2aba
+    background: #9a2aba !important;
+    color: transparent !important;
 }
 
 .table.color td#color202 {
-    background: #4a24b7
+    background: #4a24b7 !important;
+    color: transparent !important;
 }
 
 .table.color td#color203 {
-    background: #0460ff
+    background: #0460ff !important;
+    color: transparent !important;
 }
 
 .table.color td#color204 {
-    background: #00a2d8
+    background: #00a2d8 !important;
+    color: transparent !important;
 }
 
 .table.color td#color205 {
-    background: #ffaa00
+    background: #ffaa00 !important;
+    color: transparent !important;
 }
 
 .table.color td#color206 {
-    background: #fd6b00
+    background: #fd6b00 !important;
+    color: transparent !important;
 }
 
 .table.color td#color207 {
-    background: #fe4310
+    background: #fe4310 !important;
+    color: transparent !important;
 }
 
 .table.color td#color208 {
-    background: #bb2a61
+    background: #bb2a61 !important;
+    color: transparent !important;
 }
 
 .table.color td#color209 {
-    background: #68a53c
+    background: #68a53c !important;
+    color: transparent !important;
 }
 
 .table.color td#color210 {
-    background: #dae229
+    background: #dae229 !important;
+    color: transparent !important;
 }
 
 .table.color td#color211 {
-    background: #e8e337
+    background: #e8e337 !important;
+    color: transparent !important;
 }
 
 .table.color td#color212 {
-    background: #e9b61d
+    background: #e9b61d !important;
+    color: transparent !important;
 }
 
 .result-name {
@@ -5341,7 +5472,6 @@ a.sec-timeline {
     margin-left: 16px;
     margin-right: 16px;
     transition: margin-right 0.5s;
-
 }
 
 .panel-header {

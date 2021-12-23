@@ -27,9 +27,9 @@ function DashboardPanel() {
       <div className="panel-style margin-top-fa">
         <SidebarPanel />
 
-        <div className="custom-container">
+        <div className="custom-container pt-4">
 
-            {alertNotice(
+            {/* {alertNotice(
                 //classNameName
                 "d-flex box-dir-reverse  alert alert-notice text-dir" , 
                 //icon
@@ -59,7 +59,7 @@ function DashboardPanel() {
                 <a href="#">{t("content-panel-dashboard.alerts.text_upload")}</a></p> , 
                 //closable
                 true
-            )}
+            )} */}
 
         
                 <BoxGallery/>
