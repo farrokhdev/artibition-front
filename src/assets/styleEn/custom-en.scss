@@ -1,12 +1,11 @@
 
+body {
+    font-size: 18px;
+}
+
 input,
 input:focus {
     border: 2px solid #f1f2f4;
-}
-
-html{
-    background-color: var(--light) !important;
-    
 }
 
 p {
@@ -4073,7 +4072,7 @@ a.sec-timeline {
 .panel-style {
     background: #f7f7f7;
     position: relative;
-    margin-top: 96px;
+    margin-top: 75px;
 }
 
 .box {
@@ -7527,9 +7526,13 @@ select.input-public {
 
 
 .tag-gift {
-    position: absolute;
-    right: 0;
+    position: absolute !important;
+    margin-right: 50px !important;
     bottom: 4px;
+}
+
+.position-gift-card-artwork{
+    margin-right: 30px !important;
 }
 
 .tags.tags-off {

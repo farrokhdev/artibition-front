@@ -255,6 +255,106 @@
     }
   },
 
+
+  "artworkList" : {
+    "box-banner" : {
+      "title" : "ART, THE ETERNAL CAPITAL",
+      "text" : "There is a limited time to select among artworks! you could easily select your favorite artworks in \"Arthibition\" in no time.",
+      "btn" : "Search" , 
+      "placeholder" : "Search artist name"
+    }, 
+
+    "filter" : {
+
+      "title" : "Filter",
+      "remove_all" : "Remove all",
+      "artist_name" : "Artist name",
+      "placeholder_artist" : "Enter artist name",
+      "last_update" : "Last update",
+      "visite" : "visite",
+      "sell" : "sell",
+
+      "artField": {
+        "title": "Art field",
+        "all": "All",
+        "painting": "Painting",
+        "calligraphy": "Calligraphy",
+        "photography": "Photography",
+        "sculpture": "Sculpture",
+        "calligram": "Calligram",
+        "graphic": "Graphic",
+        "printmaking": "Printmaking",
+        "cartoon": "Cartoon",
+        "drawing": "Drawing"
+      },
+
+      "price" : {
+        "title" : "Price",
+        "min" : "Min (USD)",
+        "max" : "Max (USD)",
+        "to" : "to",
+        "action" : "submit"
+      },
+
+      "discount" : {
+        "title" : "Discount",
+        "show" : "Show discounted artworks",
+        "up20" : "More than 20%",
+        "up30" : "More than 30%",
+        "up50" : "More than 50%"
+      },
+
+      "art_for_gift" : {
+        "title" : "Art to gift",
+        "show" : "Suitable artworks for gift"
+      },
+
+      "color" : "Color" , 
+
+      "technique" : {
+        "title" : "Technique", 
+        "placeholder" : "Search Technique",
+        "watercolor" : "Watercolor",
+        "acrylic" : "Acrylic",
+        "pastel" : "Pastel",
+        "composition" : "Composition"
+      },
+
+      "subject" : {
+        "title" : "subject"
+      },
+
+      "material" : {
+        "title" : "Material",
+        "placeholder" : "Search material" , 
+        "rapid" : "Rapid",
+        "watercolor" : "Watercolor",
+        "govash" : "Govash",
+        "acrylic" : "Acrylic",
+        "pastel" : "Pastel",
+        "collage" : "Collage",
+        "crayons" : "Crayons"
+      },
+
+      "size" : {
+        "title" : "Size",
+        "small" : "Small",
+        "medium" : "Medium",
+        "large" : "Large",
+        "custom" : "Custom size",
+        "min_width" : "Min width (cm)",
+        "max_width" : "Max width (cm)",
+        "min_length" : "Min length (cm)",
+        "max_length" : "Max length (cm)",
+        "min_height" : "Min height (cm)",
+        "max_height" : "Max height (cm)",
+        "in" : "-", 
+        "submit" : "Submit"
+      }
+
+    }
+  },
+
   "drawer-panel" : {
     "nav-dashboard" : "Dashboard",
     "nav-mypurchases" : "My purchases",
@@ -301,6 +401,18 @@
       }
 
     }
+  },
+
+  "card_artwork" : {
+    "veiw" : "veiw",
+    "request_buy" : "Shop now",
+    "size" : {
+      "title" : " : Size",
+      "in" : " x "
+    },
+
+    "special" : "Special",
+    "sold" : "Sold out"
   },
 
 

@@ -255,6 +255,117 @@
     }
   },
 
+  "artworkList" : {
+    "box-banner" : {
+      "title" : "هنر سرمایه ماندگار",
+      "text" : "وقت برای انتخاب میان آثار هنری کم است! با \"آرتیبیشن\" به راحتی .می توانید اثر مورد نظر خود را در کم ترین زمان بیابید",
+      "btn" : "جستجو" , 
+      "placeholder" : "جستجوی نام هنرمند"
+    },
+
+    "filter" : {
+
+      "title" : "فیلتر",
+      "remove_all" : "حذف همه",
+      "artist_name" : "نام هنرمند",
+      "placeholder_artist" : "نام هنرمند را وارد نمایید",
+      "last_update" : "محبوب ترین‌ها",
+      "visite" : "پربازدید",
+      "sell" : "پرفروش",
+
+      "artField": {
+        "title": "رشته هنری",
+        "all": "همه رشته‌ها",
+        "painting": "نقاشی",
+        "calligraphy": "خوشنویسی",
+        "photography": "عکاسی",
+        "sculpture": "مجسمه",
+        "calligram": "نقاشی خط",
+        "graphic": "گرافیک",
+        "printmaking": "چاپ دستی",
+        "drawing": "طراحی"
+      },
+
+      "price" : {
+        "title" : "قیمت",
+        "min" : "حداقل قیمت (تومان)",
+        "max" : "حداکثر قیمت (تومان)",
+        "to" : "تا",
+        "action" : "اعمال"
+      },
+
+      "discount" : {
+        "title" : "تخفیف",
+        "show" : "نمایش آثار تخفیف‌دار",
+        "up20" : "تخفیف بالای 20 درصد",
+        "up30" : "تخفیف بالای 30 درصد",
+        "up50" : "تخفیف بالای 50 درصد"
+      },
+
+      "art_for_gift" : {
+        "title" : "هدیه برای هنر",
+        "show" : "نمایش آثار مناسب برای هدیه"
+      },
+
+      "color" : "رنگ" , 
+
+      "technique" : {
+        "title" : "تکنیک", 
+        "placeholder" : "تکنیک مورد نظر را جستجو کنید",
+        "watercolor" : "آبرنگ",
+        "acrylic" : "آکرلیک",
+        "pastel" : "پاستل",
+        "composition" : "ترکیب مواد"
+      },
+
+      "subject" : {
+        "title" : "موضوع"
+      },
+
+      "material" : {
+        "title" : "",
+        "placeholder" : "" , 
+        "rapid" : "راپید",
+        "watercolor" : "آبرنگ",
+        "govash" : "گواش",
+        "acrylic" : "آکرلیک",
+        "pastel" : "پاستل",
+        "collage" : "کلاژ",
+        "crayons" : "مداد رنگی"
+      },
+
+      "size" : {
+        "title" : "ابعاد",
+        "small" : "کوچک",
+        "medium" : "متوسط",
+        "large" : "بزرگ",
+        "custom" : "ابعاد دلخواه",
+        "min_width" : "حداقل عرض(cm)",
+        "max_width" : "حداکثر عرض(cm)",
+        "min_length" : "حداقل طول(cm)",
+        "max_length" : "حداکثر طول(cm)",
+        "min_height" : "حداقل ارتفاع(cm)",
+        "max_height" : "حداکثر ارتفاع(cm)",
+        "in" : "در", 
+        "submit" : "اعمال"
+      }
+
+    }
+  },
+
+  
+  "card_artwork" : {
+    "veiw" : "مشاهده اثر",
+    "request_buy" : "درخواست خرید",
+    "size" : {
+      "title" : "ابعاد : ",
+      "in" : " در "
+    },
+
+    "special" : "ویژه",
+    "sold" : "فروخته شد"
+  },
+
   "drawer-panel" : {
     "nav-dashboard" : "داشبورد",
     "nav-mypurchases" : "خریدهای من",
