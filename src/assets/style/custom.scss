@@ -2391,6 +2391,18 @@ div .gallery-daterow:nth-child(1) {
     margin-left: 6px;
 }
 
+@media(max-width : '992px'){
+    .artwork-price .artwork-pricenum {
+        font-size: 20px !important;
+    }
+}
+
+@media(max-width : '768px'){
+    .artwork-price .artwork-pricenum {
+        font-size: 25px !important;
+    }
+}
+
 .artwork-price span {
     color: #fff;
     font-size: 20px;
@@ -2599,7 +2611,7 @@ div .gallery-daterow:nth-child(1) {
 }
 
 .artwork-defaultpadding {
-    padding: 20px 72px;
+    padding: 20px 60px;
 }
 
 

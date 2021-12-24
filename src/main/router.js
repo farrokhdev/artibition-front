@@ -5,6 +5,7 @@ import AddArtwork from '../pages/AddArtwork/AddArtwork';
 import ArtworksPage from '../pages/ArtworksPage/ArtworksPage';
 import ConfirmMobile from '../pages/ConfirmMobile/ConfirmMobile';
 import DashboardPanel from '../pages/DashboarPanel/DashboardPanel';
+import DetailsArtwork from '../pages/DetailsArtwork/DetailsArtwork';
 import Home from '../pages/Home.jsx/Home';
 import Login from '../pages/Login/Login';
 import PanelFavorites from '../pages/PanelFavorites/PanelFavorites';
@@ -28,7 +29,8 @@ const RouterConfig = (props) => {
 
             <Routes>
                 <Route path="site" animate={true}>
-                    <Route exact path="artworks" element={<ArtworksPage />} />
+                    <Route  path="artworks" element={<ArtworksPage />}/>
+                    <Route  path="artworks/:id" element={<DetailsArtwork />} />
                 </Route>
             </Routes>
 

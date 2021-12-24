@@ -73,9 +73,189 @@ function Header() {
                 </div>
             </div>
             <div className="collapse filter-dropdown hidden-sm bg-filter-header" id="top-filter">
-                <div  className="container ">
+                <div  className="d-flex box-dir-reverse container">
 
                     <div className="col-md-2 ">
+                        <h3 className="filter-menu-title text-dir">{t("filter-header.category.title")}</h3>
+                        <div className="filter-menu-body">
+                            <label className="lable-checkbox text-dir">
+                                <input type="checkbox" checked value=""/>
+                                <span>{t("filter-header.category.all")}</span>
+                                <span className="checkmark"></span>
+                            </label>
+                            <label className="lable-checkbox text-dir">
+                                <input type="checkbox" value=""/>
+                                <span>{t("filter-header.category.painting")}</span>
+                                <span className="checkmark"></span>
+                            </label>
+                            <label className="lable-checkbox text-dir">
+                                <input type="checkbox" value=""/>
+                                <span>{t("filter-header.category.photography")}</span>
+                                <span className="checkmark"></span>
+                            </label>
+                            <label className="lable-checkbox text-dir">
+                                <input type="checkbox" value=""/>
+                                <span>{t("filter-header.category.sculpture")}</span>
+                                <span className="checkmark"></span>
+                            </label>
+                            <label className="lable-checkbox text-dir">
+                                <input type="checkbox" value=""/>
+                                <span>{t("filter-header.category.calligram")}</span>
+                                <span className="checkmark"></span>
+                            </label>
+                            <label className="lable-checkbox text-dir">
+                                <input type="checkbox" value=""/>
+                                <span>{t("filter-header.category.calligraphy")}</span>
+                                <span className="checkmark"></span>
+                            </label>
+                            <label className="lable-checkbox text-dir">
+                                <input type="checkbox" value=""/>
+                                <span>{t("filter-header.category.printmaking")}</span>
+                                <span className="checkmark"></span>
+                            </label>
+                            <label className="lable-checkbox text-dir">
+                                <input type="checkbox" value=""/>
+                                <span>{t("filter-header.category.graphic")}</span>
+                                <span className="checkmark"></span>
+                            </label>
+                            <label className="lable-checkbox text-dir">
+                                <input type="checkbox" value=""/>
+                                <span>{t("filter-header.category.drawing")}</span>
+                                <span className="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div className="col-md-2 ">
+                        <h3 className="filter-menu-title text-dir">{t("filter-header.price.title")}</h3>
+                        <div className="filter-menu-body">
+                            <div className="rangeslider">
+                                <div id="slider" dir="rtl"></div>
+                            </div>
+                            <div className="row row-inputs">
+                                <div className="col-xs-12 text-dir">
+                                    <label>{t("filter-header.price.min")}</label>
+                                    <input type="text" className="value persian-num" data-index="0" value="0"/>
+                                </div>
+                                <div className="col-xs-12 mrgt16 text-dir">
+                                    <label>{t("filter-header.price.max")}</label>
+                                    <input type="text" className="value  persian-num" data-index="1" value="4"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-md-3 mx-5">
+                    <h3 className="filter-menu-title text-dir">{t("filter-header.discount.title")}</h3>
+                        <div className="filter-menu-body">
+                            <label className="switch pull-dir">
+                                <input type="checkbox" checked/>
+                                <span className="switchbtn round"></span>
+                                <span className="label-switchbtn">{t("filter-header.discount.text-switch")}</span>
+                            </label>
+                            <div className="clearfix"></div>
+                            <div className="md-mrgt30">
+                                <label className="lable-checkbox text-dir">
+                                    <input type="checkbox" value=""/>
+                                    <span>{t("filter-header.discount.more-than-20")}</span>
+                                    <span className="checkmark"></span>
+                                </label>
+                                <label className="lable-checkbox text-dir">
+                                    <input type="checkbox" value=""/>
+                                    <span>{t("filter-header.discount.more-than-30")}</span>
+                                    <span className="checkmark"></span>
+                                </label>
+                                <label className="lable-checkbox text-dir">
+                                    <input type="checkbox" value=""/>
+                                    <span>{t("filter-header.discount.more-than-50")}</span>
+                                    <span className="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-md-2 "><h3 className="filter-menu-title text-dir">{t("filter-header.color.title")}</h3>
+                        <div className="filter-menu-body ">
+                            <table className="table  color ">
+                                <tbody>
+                                <tr >
+                                    <td id="color201">#9a2aba</td>
+                                    <td id="color202">#4a24b7</td>
+                                    <td id="color203">#0460ff</td>
+                                    <td id="color204">#00a2d8</td>
+                                </tr>
+                                <tr>
+                                    <td id="color205">#ffaa00</td>
+                                    <td id="color206">#fd6b00</td>
+                                    <td id="color207">#fe4310</td>
+                                    <td id="color208">#bb2a61</td>
+                                </tr>
+                                <tr>
+                                    <td id="color209">#68a53c</td>
+                                    <td id="color210">#dae229</td>
+                                    <td id="color211">#e8e337</td>
+                                    <td id="color212">#e9b61d</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div></div>
+                    <div className="col-md-2 ">
+                    <h3 className="filter-menu-title text-dir">{t("filter-header.size.title")}</h3>
+                        <div className="filter-menu-body">
+                            <label className="lable-checkbox text-dir">
+                                <input type="checkbox" value=""/>
+                                <span>{t("filter-header.size.small")}</span>
+                                <span className="checkmark"></span>
+                            </label>
+                            <label className="lable-checkbox text-dir">
+                                <input type="checkbox" value=""/>
+                                <span>{t("filter-header.size.medium")}</span>
+                                <span className="checkmark"></span>
+                            </label>
+                            <label className="lable-checkbox text-dir">
+                                <input type="checkbox" value=""/>
+                                <span>{t("filter-header.size.large")}</span>
+                                <span className="checkmark"></span>
+                            </label>
+                            <label className="lable-checkbox text-dir">
+                                <input type="checkbox" value="" id="custom-dim"/>
+                                <span>{t("filter-header.size.custom")}</span>
+                                <span className="checkmark"></span>
+                            </label>
+                            <div className="add-dimention text-dir">
+                                <div className="add-dimention-row">
+                                    <div className="graycolor">{t("filter-header.size.dimention.width")}
+                                        <span onClick={handleShowModalsetDimention} data-toggle="modal" data-target="#select-dimention"
+                                            className="edit-dimention">
+                                        </span>
+                                    </div>
+                                    <span className="persian-num">60</span>
+                                    <span>{t("filter-header.size.dimention.to")}</span>
+                                    <span className="persian-num">90</span>
+                                    <span>{t("filter-header.size.dimention.unit")}</span>
+                                </div>
+                                <div className="add-dimention-row">
+                                    <div className="graycolor">{t("filter-header.size.dimention.length")}
+                                        <span onClick={handleShowModalsetDimention} data-toggle="modal" data-target="#select-dimention"
+                                              className="edit-dimention"></span>
+                                    </div>
+                                    <span className="persian-num">60</span>
+                                    <span>{t("filter-header.size.dimention.to")}</span>
+                                    <span className="persian-num">90</span>
+                                    <span>{t("filter-header.size.dimention.unit")}</span>
+                                </div>
+                                <div className="add-dimention-row">
+                                    <div className="graycolor">{t("filter-header.size.dimention.height")}
+                                        <span onClick={handleShowModalsetDimention} data-toggle="modal" data-target="#select-dimention"
+                                              className="edit-dimention"></span>
+                                    </div>
+                                    <span className="persian-num">60</span>
+                                    <span>{t("filter-header.size.dimention.to")}</span>
+                                    <span className="persian-num">90</span>
+                                    <span>{t("filter-header.size.dimention.unit")}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* <div className="col-md-2">
                         
                         <h3 className="filter-menu-title">{t("filter-header.size.title")}</h3>
                         <div className="filter-menu-body">
@@ -265,7 +445,7 @@ function Header() {
                                 <span className="checkmark"></span>
                             </label>
                         </div>
-                    </div>
+                    </div> */}
                     
                     <div className="clearfix"></div>
                     <div className="col-md-4 col-md-offset-4">

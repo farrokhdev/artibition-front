@@ -816,10 +816,13 @@ footer .nl-input input:focus {
     color: #141414;
 }
 
-.breadcrumb > li + li:before {
+.breadcrumb > li + li::before {
     content: "\203A";
     font-size: 12px;
+    // transform: rotate(180deg) !important;
 }
+
+
 
 .artist-cover {
     background: url("../img/teal-watercolor-background-texture@3x.jpg") no-repeat top center;
@@ -1987,7 +1990,7 @@ div .gallery-daterow:nth-child(1) {
 }
 
 .artwork-defaultpadding {
-    padding: 20px 72px;
+    padding: 20px 60px;
 }
 
 
@@ -3071,51 +3074,63 @@ div .gallery-daterow:nth-child(1) {
 }
 
 .table.color td#color201 {
-    background: #9a2aba
+    background: #9a2aba !important;
+    color: transparent !important;
 }
 
 .table.color td#color202 {
-    background: #4a24b7
+    background: #4a24b7 !important;
+    color: transparent !important;
 }
 
 .table.color td#color203 {
-    background: #0460ff
+    background: #0460ff !important;
+    color: transparent !important;
 }
 
 .table.color td#color204 {
-    background: #00a2d8
+    background: #00a2d8 !important;
+    color: transparent !important;
 }
 
 .table.color td#color205 {
-    background: #ffaa00
+    background: #ffaa00 !important;
+    color: transparent !important;
 }
 
 .table.color td#color206 {
-    background: #fd6b00
+    background: #fd6b00 !important;
+    color: transparent !important;
 }
 
 .table.color td#color207 {
-    background: #fe4310
+    background: #fe4310 !important;
+    color: transparent !important;
 }
 
 .table.color td#color208 {
-    background: #bb2a61
+    background: #bb2a61 !important;
+    color: transparent !important;
 }
 
 .table.color td#color209 {
-    background: #68a53c
+    background: #68a53c !important;
+    color: transparent !important;
 }
 
 .table.color td#color210 {
-    background: #dae229
+    background: #dae229 !important;
+    color: transparent !important;
 }
 
 .table.color td#color211 {
-    background: #e8e337
+    background: #e8e337 !important;
+    color: transparent !important;
 }
 
 .table.color td#color212 {
-    background: #e9b61d
+    background: #e9b61d !important;
+    color: transparent !important;
 }
 
 .result-name {
@@ -7822,8 +7837,20 @@ button.close {
 
 .artwork-price .artwork-pricenum {
     font-family: "Roboto Black", Arial, sans-serif;
-    font-size: 25px;
+    font-size: 25px !important;
     margin-left: 6px;
+}
+
+@media(max-width : '992px'){
+    .artwork-price .artwork-pricenum {
+        font-size: 20px !important;
+    }
+}
+
+@media(max-width : '768px'){
+    .artwork-price .artwork-pricenum {
+        font-size: 25px !important;
+    }
 }
 
 .artwork-property ul li:before {
@@ -8660,4 +8687,11 @@ textarea.ant-input {
     text-align: end !important;
 }
 
+.ant-breadcrumb-separator {
+    content: "\203A";
+    // width: 13px !important;
+    // height: 20px !important;
+    color: #ccc;
+    transform: rotate(180deg);
+}
 
