@@ -742,6 +742,12 @@ padding: 10px 6px !important;
     border: 1px solid #ec008c;
 }
 
+@media (max-width: '992px'){
+    .btn-sale, .btn-sale:hover, .btn-sale:focus {
+        padding: 0px !important;
+    }
+}
+
 .like-icon,
 .like-icon:hover,
 .like-icon:focus {
@@ -2527,7 +2533,16 @@ div .gallery-daterow:nth-child(1) {
     width: 32px !important;
     position: absolute;
     left: 0;
-    bottom: 27px;
+    bottom: 12px;
+}
+
+@media(max-width : "992px"){
+    .artwork-options {
+        position: relative !important;
+        display: flex !important;
+        align-items: center !important;
+        bottom: 0px !important;
+    }
 }
 
 .artwork-options > div {
@@ -6870,6 +6885,12 @@ p.upload-size {
     font-size: 20px;
 }
 
+@media(max-width : "575px"){
+    .fontbold20 {
+        font-size: 18px !important;
+    }
+}
+
 .fontbold28 {
     font-family: "Tahrir_Extra Bold", sans-serif;
     font-size: 28px;
@@ -8590,6 +8611,13 @@ span.unit-dimention {
     left: 10px !important;
 }
 
+@media(max-width : "575px"){
+    .btn-close-modal{
+        top : 20px !important;
+        left: 20px !important;
+    }
+}
+
 .ant-modal-footer {
     border-top: none !important;
 }
@@ -8771,5 +8799,10 @@ span.unit-dimention {
     color: black !important;
 }
 
+@media(max-width : "575px") {
+    .ant-modal-body{
+        padding: 0px !important;
+    }
+}
 
 

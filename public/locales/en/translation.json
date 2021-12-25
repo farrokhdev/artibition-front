@@ -212,10 +212,95 @@
   },
 
   "artwork": {
+    "artibition" : "Artibition",
     "view-artwork": "view",
     "btn-action-to-shop": "Shop now",
     "follow" : "Follow",
-    "following" : "Following"
+    "following" : "Following",
+    "ask_me" : "Ask me",
+    "untitle" : "Untitle",
+    "field" : {
+      "title" : "Category",
+      "painting": "Painting",
+      "photography": "Photography",
+      "sculpture": "Sculpture",
+      "calligram": "Calligram",
+      "calligraphy": "Calligraphy",
+      "printmaking": "Printmaking",
+      "graphic": "Graphic",
+      "drawing": "Drawing"
+    },
+    "code" : "Code",
+    "technique" : "Technique",
+    "material" : "Material",
+    "create_date" : "Date of creation",
+    "size" : "Size",
+    "count" : {
+      "title" : "Number",
+      "number" : ""
+    },
+    "alarm" : "More than a year has passed since the pricing of this work",
+    "request_buy" : "Shop now",
+    "sold_out" : "Sold out",
+    "bid_artwork" : {
+      "text1" : "You have offered",
+      "text2" : "for this artwork"
+    },
+    "veiw_home" : "View at home",
+    "shipment" : "1 to 3 day shipment",
+    "show_collector" : "Show by collector",
+    "visit_artwork" : "Visit artwork at arthibition before buying",
+    "bidding" : "Bidding",
+    "simillar_artworks" : "Similar artworks",
+    "veiw_simillar_artworks" : "See similar artworks",
+    "delivery" : "Delivery by Arthibition" , 
+    "referral" : "7 days referral and return" , 
+    "safe_payment" : "Safe payment",
+    "originality_guaranteed" : "Originality guaranteed by Arthibition",
+    "about_artwork" : {
+      "tab_title" : "About artwork",
+      "text_title" : "",
+      "text" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.",
+      "more" : "More"
+    },
+    "about_artist" : {
+      "tab_title" : "About artist",
+      "text_title" : "Menu 1",
+      "text" : "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    "tags" : {
+      "title" : "TAGS",
+      "calligram" : "Calligram",
+      "composition" : "Composition",
+      "canvas" : "Canvas"
+    },
+     "other_artworks" : "OTHER ARTWORKS",
+     "all_artworks_artist" : {
+       "text1" : "Veiw all",
+       "text2" : ""
+     },
+
+     "modal_edit_offer" : {
+       "title" : "Edit your offer" , 
+       "subtitle" : ".You can edit your offer or cancel it" , 
+       "previous_offer" : "Your previous offer" , 
+       "placeholder" : "Submit your new offer" , 
+       "submit" : "Submit" , 
+       "cancel_offer" : "Cancel the offer" 
+     },
+
+     "modal_similar_artwork" : {
+       "title" : "Similar artworks"
+     },
+
+     "modal_bidding_artwork" : {
+      "title" : "Send offer",
+      "subtitle" : "Enter your suggested price" ,
+      "current_price" : " : Price",
+      "placeholder" : " ...Your offer" ,
+      "submit" : "Submit" 
+    }
+
   },
 
   "footer": {
