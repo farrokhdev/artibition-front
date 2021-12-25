@@ -442,9 +442,11 @@
 
   "drawer-panel" : {
     "nav-dashboard" : "Dashboard",
+    "nav-art-management" : "Artworks",
     "nav-mypurchases" : "My purchases",
     "nav-orders" : "Orders",
     "nav-wallet" : "Wallet",
+    "nav-my-albums" : "My albums",
     "nav-favorits" : "Favorites",
     "nav-messages" : "Messages",
     "nav-profile" : "Profile",

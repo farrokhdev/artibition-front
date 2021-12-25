@@ -450,9 +450,11 @@
 
   "drawer-panel" : {
     "nav-dashboard" : "داشبورد",
+    "nav-art-management" : "مدیریت آثار",
     "nav-mypurchases" : "خریدهای من",
     "nav-orders" : "سفارشات",
     "nav-wallet" : "کیف پول",
+    "nav-my-albums" : "مجموعه‌های من",
     "nav-favorits" : "علاقه‌مندی‌ها",
     "nav-messages" : "پیام‌ها",
     "nav-profile" : "پروفایل",
