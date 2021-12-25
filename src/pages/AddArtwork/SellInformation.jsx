@@ -42,6 +42,7 @@ function SellInformation({prev , next}) {
                                     <Form.Item
                                         className="w-100"
                                         name="weight"
+                                        // label="شماره ادیشن"
                                         rules={[
                                             {
                                                 required: true,
@@ -53,13 +54,13 @@ function SellInformation({prev , next}) {
                                             type="text"
                                             id="info-207"
                                             className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                            // placeholder='عنوان اثر' 
+                                            placeholder='شماره ادیشن' 
                                         />
 
                                     </Form.Item>
 
                             {/* <input class="form-control input-public " required placeholder="" value=""/> */}
-                            <label class="lable-public">شماره ادیشن</label>
+                            {/* <label class="lable-public">شماره ادیشن</label> */}
                         </div>
                     </div>
                     <div class="col-sm-4">
@@ -78,14 +79,14 @@ function SellInformation({prev , next}) {
                                             type="text"
                                             id="info-207"
                                             className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                            // placeholder='عنوان اثر' 
+                                            placeholder='قیمت اثر به تومان' 
                                         />
 
                                     </Form.Item>
 
                             {/* <input class="form-control input-public " required placeholder=""
                                    value=""/> */}
-                            <label class="lable-public">قیمت اثر به تومان</label>
+                            {/* <label class="lable-public">قیمت اثر به تومان</label> */}
                         </div>
                         <a href="#" class="btn-change">
                             <img src={change_icon} width="24" height="24" alt="" class=""/>
@@ -107,13 +108,13 @@ function SellInformation({prev , next}) {
                                             type="text"
                                             id="info-207"
                                             className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                            // placeholder='عنوان اثر' 
+                                            placeholder='معادل قیمت به دلار' 
                                         />
 
                                     </Form.Item>
                             {/* <input class="form-control input-public " required placeholder=""
                                    value=""/> */}
-                            <label class="lable-public">معادل قیمت به دلار</label>
+                            {/* <label class="lable-public">معادل قیمت به دلار</label> */}
                         </div>
                     </div>
                 </div>
@@ -134,12 +135,12 @@ function SellInformation({prev , next}) {
                                             type="text"
                                             id="info-207"
                                             className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                            // placeholder='عنوان اثر' 
+                                            placeholder='شماره ادیشن' 
                                         />
 
                                     </Form.Item>
                             {/* <input class="form-control input-public " required placeholder="" value=""/> */}
-                            <label class="lable-public">شماره ادیشن</label>
+                            {/* <label class="lable-public">شماره ادیشن</label> */}
                         </div>
                     </div>
                     <div class="col-sm-4">
@@ -158,13 +159,13 @@ function SellInformation({prev , next}) {
                                             type="text"
                                             id="info-207"
                                             className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                            // placeholder='عنوان اثر' 
+                                            placeholder='قیمت اثر به تومان' 
                                         />
 
                                     </Form.Item>
                             {/* <input class="form-control input-public " required placeholder=""
                                    value=""/> */}
-                            <label class="lable-public">قیمت اثر به تومان</label>
+                            {/* <label class="lable-public">قیمت اثر به تومان</label> */}
                         </div>
                         <a href="#" class="btn-change">
                             <img src={change_icon} width="24" height="24" alt="" class=""/>
@@ -187,13 +188,13 @@ function SellInformation({prev , next}) {
                                             type="text"
                                             id="info-207"
                                             className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                            // placeholder='عنوان اثر' 
+                                            placeholder='معادل قیمت به دلار' 
                                         />
 
                                     </Form.Item>
                             {/* <input class="form-control input-public " required placeholder=""
                                    value=""/> */}
-                            <label class="lable-public">معادل قیمت به دلار</label>
+                            {/* <label class="lable-public">معادل قیمت به دلار</label> */}
                         </div>
                     </div>
                 </div>
@@ -215,12 +216,12 @@ function SellInformation({prev , next}) {
                                             type="text"
                                             id="info-207"
                                             className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                            // placeholder='عنوان اثر' 
+                                            placeholder='شماره ادیشن' 
                                         />
 
                                     </Form.Item>
                             {/* <input class="form-control input-public " required placeholder="" value=""/> */}
-                            <label class="lable-public">شماره ادیشن</label>
+                            {/* <label class="lable-public">شماره ادیشن</label> */}
                         </div>
                     </div>
                     <div class="col-sm-4">
@@ -240,13 +241,13 @@ function SellInformation({prev , next}) {
                                             type="text"
                                             id="info-207"
                                             className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                            // placeholder='عنوان اثر' 
+                                            placeholder='قیمت اثر به تومان' 
                                         />
 
                                     </Form.Item>
                             {/* <input class="form-control input-public " required placeholder=""
                                    value=""/> */}
-                            <label class="lable-public">قیمت اثر به تومان</label>
+                            {/* <label class="lable-public">قیمت اثر به تومان</label> */}
                         </div>
                         <a href="#" class="btn-change">
                             <img src={change_icon} width="24" height="24" alt="" class=""/>
@@ -269,20 +270,20 @@ function SellInformation({prev , next}) {
                                             type="text"
                                             id="info-207"
                                             className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                            // placeholder='عنوان اثر' 
+                                            placeholder='معادل قیمت به دلار' 
                                         />
 
                                     </Form.Item>
                             {/* <input class="form-control input-public " required placeholder=""
                                    value=""/> */}
-                            <label class="lable-public">معادل قیمت به دلار</label>
+                            {/* <label class="lable-public">معادل قیمت به دلار</label> */}
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
                         <label class="lable-checkbox public-group text-dir pr-0">
-                                    <Form.Item name="remember" valuePropName="checked" noStyle>
+                                    <Form.Item name="sold_out" valuePropName="checked" noStyle>
                                         <Checkbox type="checkbox"></Checkbox>
                                     </Form.Item>
                             {/* <input type="checkbox" value=""/> */}
@@ -293,7 +294,7 @@ function SellInformation({prev , next}) {
                     <div class="col-sm-12">
                         <label class="lable-checkbox public-group text-dir pr-0">
                             {/* <input type="checkbox" checked value=""/> */}
-                                    <Form.Item name="remember" valuePropName="checked" noStyle>
+                                    <Form.Item name="send_bid" valuePropName="checked" noStyle>
                                         <Checkbox type="checkbox"></Checkbox>
                                     </Form.Item>
                             <span className='mx-2'>امکان ارسال پیشنهاد قیمت</span>
@@ -313,20 +314,62 @@ function SellInformation({prev , next}) {
                     </div>
                     <div class="col-sm-12">
                         <div class="form-group public-group">
-                            <select class="form-control" id="sel1">
+                            <Form.Item
+                                name="discount_price"
+                                rules={[
+                                    {
+                                        required: true,
+                                    },
+                                ]}
+                            >
+                                <Select
+                                    className='form-control'
+                                    id="sel1"
+                                    placeholder="تخفیف براساس درصد"
+                                    allowClear
+                                >
+                                <Option value="تخفیف براساس درصد">تخفیف براساس درصد</Option>
+                                <Option value="تخفیف براساس درصد">تخفیف براساس درصد</Option>
+                                <Option value="تخفیف براساس درصد">تخفیف براساس درصد</Option>
+                                </Select>
+                            </Form.Item>
+
+
+
+
+
+                            {/* <select class="form-control" id="sel1">
                                 <option>تخفیف براساس درصد</option>
                                 <option>تخفیف براساس درصد</option>
                                 <option>تخفیف براساس درصد</option>
-                            </select>
+                            </select> */}
                         </div>
                     </div>
                 </div>
                 <div class="d-flex box-dir-reverse">
                     <div class="col-sm-6">
                         <div class="public-group">
-                            <input class="form-control input-public " required placeholder=""
-                                   value=""/>
-                            <label class="lable-public">درصد تخفیف قیمت ریالی</label>
+                                    <Form.Item
+                                        className="w-100"
+                                        name="percent_discount_rial"
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message: 'required',
+                                            }
+                                        ]}>
+                                    
+                                        <Input
+                                            type="text"
+                                            id="info-207"
+                                            className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
+                                            placeholder='درصد تخفیف قیمت ریالی' 
+                                        />
+
+                                    </Form.Item>
+                            {/* <input class="form-control input-public " required placeholder=""
+                                   value=""/> */}
+                            {/* <label class="lable-public">درصد تخفیف قیمت ریالی</label> */}
                         </div>
                         <a href="#" class="btn-change">
                             <img src={change_icon} width="24" height="24" alt="" class=""/>
@@ -334,9 +377,27 @@ function SellInformation({prev , next}) {
                     </div>
                     <div class="col-sm-6">
                         <div class="public-group">
-                            <input class="form-control input-public " required placeholder=""
-                                   value=""/>
-                            <label class="lable-public">درصد تخفیف قمیت دلاری</label>
+                                    <Form.Item
+                                        className="w-100"
+                                        name="percent_discount_dolar"
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message: 'required',
+                                            }
+                                        ]}>
+                                    
+                                        <Input
+                                            type="text"
+                                            id="info-207"
+                                            className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
+                                            placeholder='درصد تخفیف قمیت دلاری' 
+                                        />
+
+                                    </Form.Item>
+                            {/* <input class="form-control input-public " required placeholder=""
+                                   value=""/> */}
+                            {/* <label class="lable-public">درصد تخفیف قمیت دلاری</label> */}
                         </div>
                     </div>
                 </div>
@@ -344,8 +405,26 @@ function SellInformation({prev , next}) {
                     <div class="col-sm-4">
                         <h4 class="bolder-title mrgt10">مدت زمان تخفیف</h4>
                         <div class="public-group">
-                            <input class="form-control input-public persian-num " required placeholder="" value="1368/06/21"/>
-                            <label class="lable-public">تاریخ</label>
+                                    <Form.Item
+                                        className="w-100"
+                                        name="date"
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message: 'required',
+                                            }
+                                        ]}>
+                                    
+                                        <Input
+                                            type="text"
+                                            id="info-207"
+                                            className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
+                                            placeholder='تاریخ' 
+                                        />
+
+                                    </Form.Item>
+                            {/* <input class="form-control input-public persian-num " required placeholder="" value="1368/06/21"/> */}
+                            {/* <label class="lable-public">تاریخ</label> */}
                         </div>
                     </div>
                 </div>
