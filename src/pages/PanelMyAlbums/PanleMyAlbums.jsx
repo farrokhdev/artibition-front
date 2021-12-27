@@ -1,42 +1,73 @@
-import React from 'react';
+import React , {useState} from 'react';
 import BasketFooterPanel from '../../components/BasketFooterPanel/BasketFooterPanel';
 import HeaderPanel from '../../components/HeaderPanel/HeaderPanel';
 import SidebarPanel from '../../components/SidebarPanel/SidebarPanel';
 import { t } from 'i18next';
+import {GetLanguage} from '../../utils/utils'
+import classnames from 'classnames';
+
+import flesh_left from '../../assets/img/felsh-left.png';
+import edit_icon from '../../assets/img/edit_name.svg';
+import rdbewaopdm840 from '../../assets/img/mainpage/rdbewaopdm840.jpg';
+import ModalAddGallery from './ModalAddGallery';
+import RecentlyVeiws from './RecentlyVeiws';
+import Suggestions from './Suggestions';
 
 function PanleMyAlbums() {
+
+
+    const [visibleAddGallery, setVisibleAddGallery] = useState(false);
+
+    const handleShowAddGallery = () => {
+        setVisibleAddGallery(true)
+    }
+
     return (
         <>
         <HeaderPanel t={t} />
-        <div className="panel-style margin-top-fa">
+        <div className="panel-style margin-top-20">
           <SidebarPanel />
           <div className="custom-container">
-  
-          <div class="box box-1">
-            <div class="pull-right">
-                <h2 class="greencolor">ثبت گالری</h2>
-                <p>اگر صاحب گالری هستید آن را ثبت نمایید</p>
+
+
+            <div className="d-flex box-dir-reverse box box-1">
+                <div className="text-dir">
+                    <h2 class="greencolor text-dir">ثبت گالری</h2>
+                    <p class="text-dir">اگر صاحب گالری هستید آن را ثبت نمایید</p>
+                </div>
+                <a href="#" className="btn-box-1 btn-green pull-left">
+                    <img src={flesh_left} width="16" height="16" className="center-block"/>
+                </a>
+                <div className="clearfix"></div>
             </div>
-            <a href="#" class="btn-box btn-green pull-left">
-                <img src="img/felsh-left.png" width="16" height="16" class="center-block"/>
-            </a>
-            <div class="clearfix"></div>
-        </div>
+  
+
         <div class="row">
             <div class="col-lg-8">
                 <div class="box box-2">
                     <div class="sec4">
                         <div class="public-header">
-                            <div class="pull-right">
-                                <h2 class="default-title">مجموعه‌ها</h2>
+
+                            <div className="d-flex box-dir-reverse">
+                                <div className="col">
+                                    <div class="d-flex pull-dir">
+                                        <h2 class="default-title ">مجموعه‌ها</h2>
+                                    </div>
+                                </div>
+                                <div className="col w-100">
+                                    <div className="d-flex justify-custom w-100">
+                                        <button onClick={handleShowAddGallery} type="button" class="btn btn-more" data-target="#addnewcollection"
+                                                data-toggle="modal">افزودن مجموعه
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="pull-left">
-                                <button type="button" class="btn btn-more" data-target="#addnewcollection"
-                                        data-toggle="modal">افزودن مجموعه
-                                </button>
+                            
+                            <div class="pull-dir">
+                                
                             </div>
                         </div>
-                        <table class="table upload-art">
+                        <table class="table upload-art dir">
                             <thead>
                             <tr>
                                 <th scope="col">ردیف</th>
@@ -75,18 +106,31 @@ function PanleMyAlbums() {
                 </div>
             </div>
             <div class="col-lg-4">
-                <div class="box box-3">
-                    <div class="public-header">
-                        <h2 class="default-title pull-right">اطلاعات هنری</h2>
-                        <div class="pull-left">
-                            <a href="#">
-                                <img src="img/edit_name.svg" width="32" height="32"/>
-                            </a>
+                <div class=" box box-3">
+                    <div class="d-flex box-dir-reverse public-header">
+                        <div className="col-9">
+                            <div className="d-flex pull-dir">
+                                <h2 class="default-title text-dir">اطلاعات هنری</h2>
+                            </div>
+                        </div>
+                        <div className="col">
+                            <div className="d-flex justify-custom">
+                                <a href="#">
+                                    <img src={edit_icon} width="32" height="32"/>
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div class="box3-body">
-                        <div class="fa-resume">
-                            <span class="bolder-title">رزومه</span>
+                        <div 
+                        
+                            className={classnames("", {
+                                "fa-resume": GetLanguage() === 'fa-IR',
+                                "d-none": GetLanguage() === 'en-US'
+                            })}
+                        // class="fa-resume"
+                        >
+                            <div class="bolder-title text-dir">رزومه</div>
                             <p class="text-justify">
                                 ،آیدین آغداشلو (زاده ۸ آبان ۱۳۱۹ در رشت) نقاش، گرافیست
                                 نویسنده، منتقد فیلم تصویرگر کتاب‌های درسی ایران، مجلات،
@@ -126,7 +170,7 @@ function PanleMyAlbums() {
                 </div>
             </div>
         </div>
-        <div class="box box-4">
+        {/* <div class="box box-4">
             <div class="suggestions">
                 <div class="row">
                     <div class="col-sm-12">
@@ -153,7 +197,7 @@ function PanleMyAlbums() {
                                         <div class="cols">
                                             <div class="col-img">
                                                 <div class="tags tags-off persian-num">30 %</div>
-                                                <img src="img/mainpage/rdbewaopdm840.jpg" width="840" height="840"
+                                                <img src={rdbewaopdm840} width="840" height="840"
                                                      alt="آرتیبیشن"
                                                      class="img-responsive"/>
                                                 <div class="tab-overly">
@@ -313,203 +357,16 @@ function PanleMyAlbums() {
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="box box-5">
-            <div class="recently-view">
-                <div class="row">
-                    <div class="col-sm-12">
-                        <h2 class="default-title">بازدیدهای اخیر من</h2>
-                    </div>
-                    <div class="col-xs-12">
-                        <div class="default-tab tab-3 tab-interval">
-                            <div class="tab-overflow">
-                                <ul class="nav nav-tabs" id="alltab-3">
-                                    <li class="active"><a data-toggle="tab" href="#view">همه آثار</a></li>
-                                    <li><a data-toggle="tab" href="#view1">نقاشی</a></li>
-                                    <li><a data-toggle="tab" href="#view2">عکاسی</a></li>
-                                    <li><a data-toggle="tab" href="#view3">مجسمه</a></li>
-                                    <li><a data-toggle="tab" href="#view3">نقاشی خط</a></li>
-                                    <li><a data-toggle="tab" href="#view3">خوشنویسی</a></li>
-                                    <li><a data-toggle="tab" href="#view3">چاپ دستی</a></li>
-                                    <li><a data-toggle="tab" href="#view3">گرافیک</a></li>
-                                    <li><a data-toggle="tab" href="#view3">طراحی</a></li>
-                                </ul>
-                            </div>
-                            <div class="tab-content">
-                                <div id="view" class="tab-pane fade in active">
-                                    <div class="owl-carousel" id="tab4">
-                                        <div class="cols">
-                                            <div class="col-img">
-                                                <img src="img/mainpage/ayvglbkdfo@3x.jpg" width="840" height="840"
-                                                     alt="آرتیبیشن"
-                                                     class="img-responsive"/>
-                                                <div class="tab-overly">
-                                                    <a href="#" class="btn-see">
-                                                        <span class="view-icon pull-right"></span>
-                                                        <span>مشاهده اثر</span>
-                                                    </a>
-                                                    <a href="#" class="btn-sale">درخواست خرید</a>
-                                                    <a href="#" class="like-icon"></a>
-                                                </div>
-                                            </div>
-                                            <div class="col-body">
-                                                <h6 class="col-title">
-                                                    <span class="col-name">مجید</span>
-                                                    <span class="col-name">کورنگ بهشتی</span>
-                                                </h6>
-                                                <div class="col-dimension">
-                                                    <span class="col-dimension-title">ابعاد:</span>
-                                                    <span class="col-dimension-body">
-                                        <span class="dimension-width">60</span>
-                                        <span> در </span>
-                                        <span class="dimension-height">60</span>
-                                    </span>
-                                                </div>
-                                                <div class="col-price">
-                                                    <span class="col-price-num">2.100.000</span>
-                                                    <span class="col-price-unit">تومان</span>
-                                                    <span class="persian-num col-price-off">5.000.000</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="cols">
-                                            <div class="col-img">
-                                                <div class="tags tags-spacial">ویژه</div>
-                                                <div class="tags tags-off persian-num">30 %</div>
-                                                <img src="img/mainpage/3.jpg" width="840" height="840" alt="آرتیبیشن"
-                                                     class="img-responsive"/>
-                                                <div class="tab-overly">
-                                                    <a href="#" class="btn-see">
-                                                        <span class="view-icon pull-right"></span>
-                                                        <span>مشاهده اثر</span>
-                                                    </a>
-                                                    <a href="#" class="btn-sale">درخواست خرید</a>
-                                                    <a href="#" class="like-icon"></a>
-                                                </div>
-                                                <div class="tab-overly">
-                                                    <a href="#" class="btn-see">
-                                                        <span class="view-icon pull-right"></span>
-                                                        <span>مشاهده اثر</span>
-                                                    </a>
-                                                    <a href="#" class="btn-sale">درخواست خرید</a>
-                                                    <a href="#" class="like-icon"></a>
-                                                </div>
-                                            </div>
-                                            <div class="col-body">
-                                                <h6 class="col-title">
-                                                    <span class="col-name">مرتضی</span>
-                                                    <span class="col-name">گودرزی دیباج</span>
-                                                </h6>
-                                                <div class="col-dimension">
-                                                    <span class="col-dimension-title">ابعاد:</span>
-                                                    <span class="col-dimension-body">
-                                        <span class="dimension-width">60</span>
-                                        <span> در </span>
-                                        <span class="dimension-height">60</span>
-                                    </span>
-                                                </div>
-                                                <div class="col-price">
-                                                    <span class="col-price-num">22.000.000</span>
-                                                    <span class="col-price-unit">تومان</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="cols finished">
-                                            <div class="col-img">
-                                                <img src="img/mainpage/rdbewaopdm840.jpg" width="840" height="840"
-                                                     alt="آرتیبیشن"
-                                                     class="img-responsive"/>
-                                                <div class="tab-overly">
-                                                    <a href="#" class="btn-see">
-                                                        <span class="view-icon pull-right"></span>
-                                                        <span>مشاهده اثر</span>
-                                                    </a>
-                                                    <a href="#" class="btn-sale">درخواست خرید</a>
-                                                    <a href="#" class="like-icon"></a>
-                                                </div>
-                                            </div>
-                                            <div class="col-body ">
-                                                <div class="finished-tag">فروخته شد</div>
-                                                <h6 class="col-title">
-                                                    <span class="col-name">بهنام</span>
-                                                    <span class="col-name">کامرانی</span>
-                                                </h6>
-                                                <div class="col-dimension">
-                                                    <span class="col-dimension-title">ابعاد:</span>
-                                                    <span class="col-dimension-body">
-                                        <span class="dimension-width">60</span>
-                                        <span> در </span>
-                                        <span class="dimension-height">60</span>
-                                    </span>
-                                                </div>
-                                                <div class="col-price">
-                                                    <span class="col-price-num">1.400.000</span>
-                                                    <span class="col-price-unit">تومان</span>
-                                                    <span class="persian-num col-price-off">2.000.000</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="cols">
-                                            <div class="col-img">
-                                                <img src="img/mainpage/hezvtaokhv840.jpg" width="840" height="840"
-                                                     alt="آرتیبیشن"
-                                                     class="img-responsive"/>
-                                                <div class="tab-overly">
-                                                    <a href="#" class="btn-see">
-                                                        <span class="view-icon pull-right"></span>
-                                                        <span>مشاهده اثر</span>
-                                                    </a>
-                                                    <a href="#" class="btn-sale">درخواست خرید</a>
-                                                    <a href="#" class="like-icon"></a>
-                                                </div>
-                                            </div>
-                                            <div class="col-body">
-                                                <h6 class="col-title">
-                                                    <span class="col-name">سعید</span>
-                                                    <span class="col-name">امدادیان</span>
-                                                </h6>
-                                                <div class="col-dimension">
-                                                    <span class="col-dimension-title">ابعاد:</span>
-                                                    <span class="col-dimension-body">
-                                        <span class="dimension-width">60</span>
-                                        <span> در </span>
-                                        <span class="dimension-height">60</span>
-                                    </span>
-                                                </div>
-                                                <div class="col-price">
-                                                    <span class="col-price-num">6.000.000</span>
-                                                    <span class="col-price-unit">تومان</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div id="view1" class="tab-pane fade">
-                                    <h3>Menu 1</h3>
-                                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                        aliquip ex ea
-                                        commodo
-                                        consequat.</p>
-                                </div>
-                                <div id="view2" class="tab-pane fade">
-                                    <h3>Menu 2</h3>
-                                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                                        doloremque
-                                        laudantium,
-                                        totam rem aperiam.</p>
-                                </div>
-                                <div id="view3" class="tab-pane fade">
-                                    <h3>Menu 3</h3>
-                                    <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
-                                        dicta sunt
-                                        explicabo.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </div> */}
+
+
+        <Suggestions />
+        <RecentlyVeiws/>
+
+        <ModalAddGallery
+            setVisibleAddGallery={setVisibleAddGallery}
+            visibleAddGallery={visibleAddGallery}
+        />
   
       
           </div>

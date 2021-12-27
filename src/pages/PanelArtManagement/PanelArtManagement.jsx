@@ -12,7 +12,7 @@ function PanelArtManagement() {
     return (
         <>
       <HeaderPanel t={t} />
-      <div className="panel-style margin-top-fa">
+      <div className="panel-style margin-top-20">
         <SidebarPanel />
         <div className="custom-container">
 
@@ -22,62 +22,66 @@ function PanelArtManagement() {
                 <h2 className=" default-title text-dir">{t("content-panel-dashboard.tables.orders")}</h2>
             </div> */}
 
-            <div class="public-header mrgb32">
-                <div class="pull-right">
-                    <h2 class="default-title text-dir">لیست آثار</h2>
+            <div class="d-flex box-dir-reverse public-header mrgb32">
+                <div class="col">
+                    <div className="d-flex justify-custom">
+                        <h2 class="default-title w-100 text-dir">{t("content-panel-manage-artworks.title")}</h2>
+                    </div>
                 </div>
-                <div class="pull-left">
-                    <button type="button" class="btn-outline-blue">
-                        <img src={add_icon} width="12" height="12" alt="" class=""/>
-                        <span>افزودن اثر جدید</span>
-                    </button>
+                <div class="col ">
+                    <div className="d-flex justify-custom">
+                        <button type="button" class="btn-outline-blue">
+                            <img src={add_icon} width="12" height="12" alt="" class="mx-2"/>
+                            <span>{t("content-panel-manage-artworks.btn")}</span>
+                        </button>
+                    </div>
                 </div>
             </div>
             <div className="row box-dir-reverse text-dir">
-                <div className="col-12 col-sm-6 col-xl-2 px-0">
-                    <label className="container-radio">همه آثار من
+                <div className="col-12 col-sm-6 col-xl-3 ">
+                    <label className="container-radio">{t("content-panel-manage-artworks.filters.all")}
                         <input type="radio" checked="checked" name="radio"/>
                         <span className="checkmark-radio"></span>
                     </label>
                     <p className='text-dir mx-4 px-3'>1</p>
                 </div>
-                <div className="col-12 col-sm-6 col-xl-2 px-0">
-                    <label className="container-radio">آثار تایید شده
+                <div className="col-12 col-sm-6 col-xl-3 ">
+                    <label className="container-radio">{t("content-panel-manage-artworks.filters.approved")}
                         <input type="radio" name="radio"/>
                         <span className="checkmark-radio"></span>
                     </label>
                     <p className='text-dir mx-4 px-3'>1</p>
                 </div>
-                <div className="col-12 col-sm-6 col-xl-2 px-0">
-                    <label className="container-radio">آثار نیازمند اصلاح
+                <div className="col-12 col-sm-6 col-xl-3 ">
+                    <label className="container-radio">{t("content-panel-manage-artworks.filters.modification")}
                         <input type="radio" name="radio"/>
                         <span className="checkmark-radio"></span>
                     </label>
                     <p className='text-dir mx-4 px-3'>1</p>
                 </div>
-                <div className="col-12 col-sm-6 col-xl-2 px-0">
-                    <label className="container-radio">آثار در حال بررسی
+                <div className="col-12 col-sm-6 col-xl-3 ">
+                    <label className="container-radio">{t("content-panel-manage-artworks.filters.pending")}
                         <input type="radio" name="radio"/>
                         <span className="checkmark-radio"></span>
                     </label>
                     <p className='text-dir mx-4 px-3'>1</p>
                 </div>
-                <div className="col-12 col-sm-6 col-xl-2 px-0">
-                    <label className="container-radio">تایید نشده
+                <div className="col-12 col-sm-6 col-xl-3 ">
+                    <label className="container-radio">{t("content-panel-manage-artworks.filters.not_approved")}
                         <input type="radio" name="radio"/>
                         <span className="checkmark-radio"></span>
                     </label>
                     <p className='text-dir mx-4 px-3'>1</p>
                 </div>
-                <div className="col-12 col-sm-6 col-xl-2 px-0">
-                    <label className="container-radio">فروخته شده
+                <div className="col-12 col-sm-6 col-xl-3 ">
+                    <label className="container-radio">{t("content-panel-manage-artworks.filters.sold")}
                         <input type="radio" name="radio"/>
                         <span className="checkmark-radio"></span>
                     </label>
                     <p className='text-dir mx-4 px-3'>1</p>
                 </div>
-                <div className="col-12 col-sm-6 col-xl-2 px-0">
-                    <label className="container-radio">فعالیت در سایت
+                <div className="col-12 col-sm-6 col-xl-3 ">
+                    <label className="container-radio">{t("content-panel-manage-artworks.filters.active")}
                         <input type="radio" name="radio"/>
                         <span className="checkmark-radio"></span>
                     </label>

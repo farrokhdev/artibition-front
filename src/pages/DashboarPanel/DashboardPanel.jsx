@@ -24,10 +24,10 @@ function DashboardPanel() {
     <>
       <HeaderPanel t={t} />
 
-      <div className="panel-style margin-top-fa">
+      <div className="panel-style margin-top-20">
         <SidebarPanel />
 
-        <div className="custom-container pt-4">
+        <div className="custom-container ">
 
             {/* {alertNotice(
                 //classNameName
