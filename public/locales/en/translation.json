@@ -37,7 +37,7 @@
         "select-custom-size": {
           "title": "Select custom size",
           "to": "to",
-          "submit" : "Submit" ,
+          "submit": "Submit",
           "min-width": "Min width (cm)",
           "max-width": "Max width (cm)",
           "min-length": "Min length (cm)",
@@ -129,9 +129,9 @@
   "collection-all": "View all",
   "deadline-send-artwroks": ": Deadline",
   "upload": "Upload",
-  "toman" : "Toman" ,
-  "dollar" : "USD" ,
-  "or" : "or",
+  "toman": "Toman",
+  "dollar": "USD",
+  "or": "or",
 
   "nav-submenu": {
     "artworks": {
@@ -212,15 +212,15 @@
   },
 
   "artwork": {
-    "artibition" : "Artibition",
+    "artibition": "Artibition",
     "view-artwork": "view",
     "btn-action-to-shop": "Shop now",
-    "follow" : "Follow",
-    "following" : "Following",
-    "ask_me" : "Ask me",
-    "untitle" : "Untitle",
-    "field" : {
-      "title" : "Category",
+    "follow": "Follow",
+    "following": "Following",
+    "ask_me": "Ask me",
+    "untitle": "Untitle",
+    "field": {
+      "title": "Category",
       "painting": "Painting",
       "photography": "Photography",
       "sculpture": "Sculpture",
@@ -230,75 +230,75 @@
       "graphic": "Graphic",
       "drawing": "Drawing"
     },
-    "code" : "Code",
-    "technique" : "Technique",
-    "material" : "Material",
-    "create_date" : "Date of creation",
-    "size" : "Size",
-    "count" : {
-      "title" : "Number",
-      "number" : ""
+    "code": "Code",
+    "technique": "Technique",
+    "material": "Material",
+    "create_date": "Date of creation",
+    "size": "Size",
+    "count": {
+      "title": "Number",
+      "number": ""
     },
-    "alarm" : "More than a year has passed since the pricing of this work",
-    "request_buy" : "Shop now",
-    "sold_out" : "Sold out",
-    "bid_artwork" : {
-      "text1" : "You have offered",
-      "text2" : "for this artwork"
+    "alarm": "More than a year has passed since the pricing of this work",
+    "request_buy": "Shop now",
+    "sold_out": "Sold out",
+    "bid_artwork": {
+      "text1": "You have offered",
+      "text2": "for this artwork"
     },
-    "veiw_home" : "View at home",
-    "shipment" : "1 to 3 day shipment",
-    "show_collector" : "Show by collector",
-    "visit_artwork" : "Visit artwork at arthibition before buying",
-    "bidding" : "Bidding",
-    "simillar_artworks" : "Similar artworks",
-    "veiw_simillar_artworks" : "See similar artworks",
-    "delivery" : "Delivery by Arthibition" , 
-    "referral" : "7 days referral and return" , 
-    "safe_payment" : "Safe payment",
-    "originality_guaranteed" : "Originality guaranteed by Arthibition",
-    "about_artwork" : {
-      "tab_title" : "About artwork",
-      "text_title" : "",
-      "text" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.",
-      "more" : "More"
+    "veiw_home": "View at home",
+    "shipment": "1 to 3 day shipment",
+    "show_collector": "Show by collector",
+    "visit_artwork": "Visit artwork at arthibition before buying",
+    "bidding": "Bidding",
+    "simillar_artworks": "Similar artworks",
+    "veiw_simillar_artworks": "See similar artworks",
+    "delivery": "Delivery by Arthibition",
+    "referral": "7 days referral and return",
+    "safe_payment": "Safe payment",
+    "originality_guaranteed": "Originality guaranteed by Arthibition",
+    "about_artwork": {
+      "tab_title": "About artwork",
+      "text_title": "",
+      "text": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.",
+      "more": "More"
     },
-    "about_artist" : {
-      "tab_title" : "About artist",
-      "text_title" : "Menu 1",
-      "text" : "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    "about_artist": {
+      "tab_title": "About artist",
+      "text_title": "Menu 1",
+      "text": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
     },
-    "tags" : {
-      "title" : "TAGS",
-      "calligram" : "Calligram",
-      "composition" : "Composition",
-      "canvas" : "Canvas"
+    "tags": {
+      "title": "TAGS",
+      "calligram": "Calligram",
+      "composition": "Composition",
+      "canvas": "Canvas"
     },
-     "other_artworks" : "OTHER ARTWORKS",
-     "all_artworks_artist" : {
-       "text1" : "Veiw all",
-       "text2" : ""
-     },
+    "other_artworks": "OTHER ARTWORKS",
+    "all_artworks_artist": {
+      "text1": "Veiw all",
+      "text2": ""
+    },
 
-     "modal_edit_offer" : {
-       "title" : "Edit your offer" , 
-       "subtitle" : ".You can edit your offer or cancel it" , 
-       "previous_offer" : "Your previous offer" , 
-       "placeholder" : "Submit your new offer" , 
-       "submit" : "Submit" , 
-       "cancel_offer" : "Cancel the offer" 
-     },
+    "modal_edit_offer": {
+      "title": "Edit your offer",
+      "subtitle": ".You can edit your offer or cancel it",
+      "previous_offer": "Your previous offer",
+      "placeholder": "Submit your new offer",
+      "submit": "Submit",
+      "cancel_offer": "Cancel the offer"
+    },
 
-     "modal_similar_artwork" : {
-       "title" : "Similar artworks"
-     },
+    "modal_similar_artwork": {
+      "title": "Similar artworks"
+    },
 
-     "modal_bidding_artwork" : {
-      "title" : "Send offer",
-      "subtitle" : "Enter your suggested price" ,
-      "current_price" : " : Price",
-      "placeholder" : " ...Your offer" ,
-      "submit" : "Submit" 
+    "modal_bidding_artwork": {
+      "title": "Send offer",
+      "subtitle": "Enter your suggested price",
+      "current_price": " : Price",
+      "placeholder": " ...Your offer",
+      "submit": "Submit"
     }
 
   },
@@ -341,23 +341,23 @@
   },
 
 
-  "artworkList" : {
-    "box-banner" : {
-      "title" : "ART, THE ETERNAL CAPITAL",
-      "text" : "There is a limited time to select among artworks! you could easily select your favorite artworks in \"Arthibition\" in no time.",
-      "btn" : "Search" , 
-      "placeholder" : "Search artist name"
-    }, 
+  "artworkList": {
+    "box-banner": {
+      "title": "ART, THE ETERNAL CAPITAL",
+      "text": "There is a limited time to select among artworks! you could easily select your favorite artworks in \"Arthibition\" in no time.",
+      "btn": "Search",
+      "placeholder": "Search artist name"
+    },
 
-    "filter" : {
+    "filter": {
 
-      "title" : "Filter",
-      "remove_all" : "Remove all",
-      "artist_name" : "Artist name",
-      "placeholder_artist" : "Enter artist name",
-      "last_update" : "Last update",
-      "visite" : "visite",
-      "sell" : "sell",
+      "title": "Filter",
+      "remove_all": "Remove all",
+      "artist_name": "Artist name",
+      "placeholder_artist": "Enter artist name",
+      "last_update": "Last update",
+      "visite": "visite",
+      "sell": "sell",
 
       "artField": {
         "title": "Art field",
@@ -373,355 +373,474 @@
         "drawing": "Drawing"
       },
 
-      "price" : {
-        "title" : "Price",
-        "min" : "Min (USD)",
-        "max" : "Max (USD)",
-        "to" : "to",
-        "action" : "submit"
+      "price": {
+        "title": "Price",
+        "min": "Min (USD)",
+        "max": "Max (USD)",
+        "to": "to",
+        "action": "submit"
       },
 
-      "discount" : {
-        "title" : "Discount",
-        "show" : "Show discounted artworks",
-        "up20" : "More than 20%",
-        "up30" : "More than 30%",
-        "up50" : "More than 50%"
+      "discount": {
+        "title": "Discount",
+        "show": "Show discounted artworks",
+        "up20": "More than 20%",
+        "up30": "More than 30%",
+        "up50": "More than 50%"
       },
 
-      "art_for_gift" : {
-        "title" : "Art to gift",
-        "show" : "Suitable artworks for gift"
+      "art_for_gift": {
+        "title": "Art to gift",
+        "show": "Suitable artworks for gift"
       },
 
-      "color" : "Color" , 
+      "color": "Color",
 
-      "technique" : {
-        "title" : "Technique", 
-        "placeholder" : "Search Technique",
-        "watercolor" : "Watercolor",
-        "acrylic" : "Acrylic",
-        "pastel" : "Pastel",
-        "composition" : "Composition"
+      "technique": {
+        "title": "Technique",
+        "placeholder": "Search Technique",
+        "watercolor": "Watercolor",
+        "acrylic": "Acrylic",
+        "pastel": "Pastel",
+        "composition": "Composition"
       },
 
-      "subject" : {
-        "title" : "subject"
+      "subject": {
+        "title": "subject"
       },
 
-      "material" : {
-        "title" : "Material",
-        "placeholder" : "Search material" , 
-        "rapid" : "Rapid",
-        "watercolor" : "Watercolor",
-        "govash" : "Govash",
-        "acrylic" : "Acrylic",
-        "pastel" : "Pastel",
-        "collage" : "Collage",
-        "crayons" : "Crayons"
+      "material": {
+        "title": "Material",
+        "placeholder": "Search material",
+        "rapid": "Rapid",
+        "watercolor": "Watercolor",
+        "govash": "Govash",
+        "acrylic": "Acrylic",
+        "pastel": "Pastel",
+        "collage": "Collage",
+        "crayons": "Crayons"
       },
 
-      "size" : {
-        "title" : "Size",
-        "small" : "Small",
-        "medium" : "Medium",
-        "large" : "Large",
-        "custom" : "Custom size",
-        "min_width" : "Min width (cm)",
-        "max_width" : "Max width (cm)",
-        "min_length" : "Min length (cm)",
-        "max_length" : "Max length (cm)",
-        "min_height" : "Min height (cm)",
-        "max_height" : "Max height (cm)",
-        "in" : "-", 
-        "submit" : "Submit"
+      "size": {
+        "title": "Size",
+        "small": "Small",
+        "medium": "Medium",
+        "large": "Large",
+        "custom": "Custom size",
+        "min_width": "Min width (cm)",
+        "max_width": "Max width (cm)",
+        "min_length": "Min length (cm)",
+        "max_length": "Max length (cm)",
+        "min_height": "Min height (cm)",
+        "max_height": "Max height (cm)",
+        "in": "-",
+        "submit": "Submit"
       }
 
     }
   },
 
-  "drawer-panel" : {
-    "nav-dashboard" : "Dashboard",
-    "nav-mypurchases" : "My purchases",
-    "nav-orders" : "Orders",
-    "nav-wallet" : "Wallet",
-    "nav-favorits" : "Favorites",
-    "nav-messages" : "Messages",
-    "nav-profile" : "Profile",
-    "invite" : {
-     "btn" :  "Invite friends" , 
-     "text" : ""
+  "drawer-panel": {
+    "nav-dashboard": "Dashboard",
+    "nav-art-management": "Artworks",
+    "nav-mypurchases": "My purchases",
+    "nav-orders": "Orders",
+    "nav-wallet": "Wallet",
+    "nav-my-albums": "My albums",
+    "nav-favorits": "Favorites",
+    "nav-messages": "Messages",
+    "nav-profile": "Profile",
+    "invite": {
+      "btn": "Invite friends",
+      "text": ""
     }
   },
 
-  "content-panel-profile" : {
-    "info-box" : {
-      "register" : {
-        "title" : "Register gallery",
-        "text" : ".In case you own a gallery, register it"
+  "content-panel-profile": {
+    "info-box": {
+      "register": {
+        "title": "Register gallery",
+        "text": ".In case you own a gallery, register it"
       },
-      "artists" : {
-        "title" : "Register artists",
-        "text" : "Work as an artist in Arthibition"
+      "artists": {
+        "title": "Register artists",
+        "text": "Work as an artist in Arthibition"
       },
-      "seller" : {
-        "title" : "Become a seller",
-        "text" : "Sell your artworks"
+      "seller": {
+        "title": "Become a seller",
+        "text": "Sell your artworks"
       }
     },
 
-    "personal-info" : {
-      "title" : "PERSONAL INFO",
-      "fullname" : "Full name",
-      "phone" : "Phone number" ,
-      "national" : "National code",
-      "email" : "Email" ,
-      "date" : "Date of birth" ,
-      "username" : "Username" , 
-      "address" : {
-        "title" : "ADDRESS" , 
-        "btn" : "New address" ,
-        "default" : "(Default address)"
+    "personal-info": {
+      "title": "PERSONAL INFO",
+      "fullname": "Full name",
+      "phone": "Phone number",
+      "national": "National code",
+      "email": "Email",
+      "date": "Date of birth",
+      "username": "Username",
+      "address": {
+        "title": "ADDRESS",
+        "btn": "New address",
+        "default": "(Default address)"
 
       }
 
     }
   },
 
-  "card_artwork" : {
-    "veiw" : "veiw",
-    "request_buy" : "Shop now",
-    "size" : {
-      "title" : " : Size",
-      "in" : " x "
+  "card_artwork": {
+    "veiw": "veiw",
+    "request_buy": "Shop now",
+    "size": {
+      "title": " : Size",
+      "in": " x "
     },
 
-    "special" : "Special",
-    "sold" : "Sold out"
+    "special": "Special",
+    "sold": "Sold out"
   },
 
 
-  "content-panel-mypurchases" : {
+  "content-panel-mypurchases": {
 
-    "title" : "MY PURCHASE",
-    "artwork-title" : "Artwork title",
-    "owner" : "Owner",
-    "code" : "Code",
-    "size" : "Size",
-    "order" : ".Order No",
-    "price-artwork" : "Price",
-    "your-bidding" : "Your bidding",
-    "artist-bidding" : "Artist bidding",
-    "payment-date" : "Payment date",
-    "status" : "Status",
-    "order-details" : "Order detail",
-    "x" : "x",
-    "btn-sell" : "Sales in Artibition",
-    "artwok-return" : "Buy Artwork",
+    "title": "MY PURCHASE",
+    "artwork-title": "Artwork title",
+    "owner": "Owner",
+    "code": "Code",
+    "size": "Size",
+    "order": ".Order No",
+    "price-artwork": "Price",
+    "your-bidding": "Your bidding",
+    "artist-bidding": "Artist bidding",
+    "payment-date": "Payment date",
+    "status": "Status",
+    "order-details": "Order detail",
+    "x": "x",
+    "btn-sell": "Sales in Artibition",
+    "artwok-return": "Buy Artwork",
 
-    "paid" : {
-      "title" : "Paid",
-      "empty" : {
-        "title" : "!There is no order",
-        "text1" : "There are no active orders right now",
-        "text2" : "To purchase Arthibition artworks please click on the \"purchase\" button",
-        "btn" : "Veiw Artworks"
+    "paid": {
+      "title": "Paid",
+      "empty": {
+        "title": "!There is no order",
+        "text1": "There are no active orders right now",
+        "text2": "To purchase Arthibition artworks please click on the \"purchase\" button",
+        "btn": "Veiw Artworks"
       }
     },
 
-    "delivered" : {
-      "title" : "Delivered"
+    "delivered": {
+      "title": "Delivered"
     },
 
-    "bidding" : {
-      "title" : "Bidding"
+    "bidding": {
+      "title": "Bidding"
     },
 
-    "returned" : {
-      "title" : "Returned"
+    "returned": {
+      "title": "Returned"
     },
 
-    "canceled" : {
-      "title" : "Canceled"
+    "canceled": {
+      "title": "Canceled"
     }
 
   },
 
-  
-  "content-panel-favorites" : {
 
-    "title" : "FAVORITES",
-    "tabs" : {
-      "artworks" : "Artworks",
-      "followers" : "Followers",
-      "collections" : "Collections"
+  "content-panel-favorites": {
+
+    "title": "FAVORITES",
+    "tabs": {
+      "artworks": "Artworks",
+      "followers": "Followers",
+      "collections": "Collections"
     }
   },
 
 
-  "content-panel-messages" : {
+  "content-panel-messages": {
 
-    "title" : "MESSAGES",
-    "new" : "New",
-    "today" : "Today",
-    "veiw" : "Veiw",
-    "inprogress" : "In progress",
-    "waiting" : "Waiting to respond",
-    "closed" : "Closed",
-    "tabs" : {
-      "notifications" : "Notifications",
-      "members" : {
-        "title" : "Members",
-        "title_modal" : "Messages",
-        "subject" : "Subject",
-        "palaceholder_message" : "Write your message here"
+    "title": "MESSAGES",
+    "new": "New",
+    "today": "Today",
+    "veiw": "Veiw",
+    "inprogress": "In progress",
+    "waiting": "Waiting to respond",
+    "closed": "Closed",
+    "tabs": {
+      "notifications": "Notifications",
+      "members": {
+        "title": "Members",
+        "title_modal": "Messages",
+        "subject": "Subject",
+        "palaceholder_message": "Write your message here"
       },
-      "tickets" : {
-        "title" : "Tickets",
-        "new_ticket" : "New ticket",
-        "subject" : "Subject",
-        "text-ticket" : "Your message",
-        "send" : "Send"
+      "tickets": {
+        "title": "Tickets",
+        "new_ticket": "New ticket",
+        "subject": "Subject",
+        "text-ticket": "Your message",
+        "send": "Send"
       }
     }
   },
 
 
-  "content-panel-wallet" : {
+  "content-panel-wallet": {
 
-    "inventory" : {
-      "title" : "WALLET INVENTORY",
-      "text_gift" : {
-        "text1" : "Gift for you",
-        "text2" : ""
+    "inventory": {
+      "title": "WALLET INVENTORY",
+      "text_gift": {
+        "text1": "Gift for you",
+        "text2": ""
       },
-      "buy_btn" : "Buy artwork",
-      "withdrawal" : "Withdrawal",
-      "withdrawal_title_modal" : "Withdrawal",
-      "increasse_title_modal" : "Increase credit",
-      "modal_inventory" : " : WALLET INVENTORY" , 
-      "increase" : "Increase credit",
-      "placeholder_input" : "Enter price",
-        "saturday" : "Saturday",
-        "sunday" : "Sunday",
-        "monday" : "Monday",
-        "tuesday" : "Tuesday",
-        "pay" : "Pay"
+      "buy_btn": "Buy artwork",
+      "withdrawal": "Withdrawal",
+      "withdrawal_title_modal": "Withdrawal",
+      "increasse_title_modal": "Increase credit",
+      "modal_inventory": " : WALLET INVENTORY",
+      "increase": "Increase credit",
+      "placeholder_input": "Enter price",
+      "saturday": "Saturday",
+      "sunday": "Sunday",
+      "monday": "Monday",
+      "tuesday": "Tuesday",
+      "pay": "Pay"
     },
 
-    "trades" :{
-      "title" : "DEPOSIT AND WITHDRAWAL LIST",
-      "filters" : {
-        "all" : "All",
-        "deposited" : "Deposited",
-        "withdrawaled" : "Withdrawaled"
+    "trades": {
+      "title": "DEPOSIT AND WITHDRAWAL LIST",
+      "filters": {
+        "all": "All",
+        "deposited": "Deposited",
+        "withdrawaled": "Withdrawaled"
       },
 
-      "table_headers" : {
-        "type" : "Type",
-        "price" : "Price (USD)",
-        "account_no" : ".Account No",
-        "request_date" : "Request date",
-        "status" : "Status"
+      "table_headers": {
+        "type": "Type",
+        "price": "Price (USD)",
+        "account_no": ".Account No",
+        "request_date": "Request date",
+        "status": "Status"
       }
     }
-    
-    
+
+
   },
 
-  "content-panel-dashboard" : {
+  "content-panel-dashboard": {
 
-    "box_gallery" : {
-      "gallery" : "Arthibition gallery" ,
-      "order" : "Orders" ,
-      "new_gallery" : "New gallery" ,
-      "info_gallery" : "In case you own another gallery, you could register it" 
+    "box_gallery": {
+      "gallery": "Arthibition gallery",
+      "order": "Orders",
+      "new_gallery": "New gallery",
+      "info_gallery": "In case you own another gallery, you could register it"
     },
 
-    "box_status" : {
-      "btn" : "New artwork",
-      "approved" : "Approved",
-      "not_approved" : "Not approved",
-      "modification" : "Require modification",
-      "pending" : "Pending",
-      "user_status" : "User status",
-      "contact_status" : "Contract status" , 
-      "email_status" : "Email",
-      "resume" : "CV" ,
-      "veiw" : "Veiw"
+    "box_status": {
+      "btn": "New artwork",
+      "approved": "Approved",
+      "not_approved": "Not approved",
+      "modification": "Require modification",
+      "pending": "Pending",
+      "user_status": "User status",
+      "contact_status": "Contract status",
+      "email_status": "Email",
+      "resume": "CV",
+      "veiw": "Veiw"
     },
 
-    "promotion" : {
-      "title" : "LEADING PROMOTIONS",
-      "veiw_more" : "Veiw more"
+    "promotion": {
+      "title": "LEADING PROMOTIONS",
+      "veiw_more": "Veiw more"
     },
 
-    "veiw_artwork" : {
-      "title" : "VIEW ARTWORKS",
-      "text_info" : "Monitor users view by uploading your artworks",
-      "btn" : "New artwork"
+    "veiw_artwork": {
+      "title": "VIEW ARTWORKS",
+      "text_info": "Monitor users view by uploading your artworks",
+      "btn": "New artwork"
     },
 
-    "my_income" : {
-      "title" : "MY INCOME",
-      "detail" : "Details"
+    "my_income": {
+      "title": "MY INCOME",
+      "detail": "Details"
     },
 
-    "tables" : {
-      "orders" : "ORDERS" ,
-      "order_active" : "ACTIVE ORDERS",
-      "suggestion_artwork" : "PRICE OFFERS FOR YOUR ARTWORKS",
-      "veiw_artworks" : "VIEW ARTWORKS",
-      "veiw" : "VIEW",
-      "row" : "#",
-      "image" : "Image",
-      "code" : "Code",
-      "edition" : "Edition",
-      "price" : "Price (USD)",
-      "discount" : "Discount",
-      "paid" : "Paid",
-      "status" : "Status",
-      "details" : "Details",
-      "suggested" : "Suggested",
-      "date_registration" : "Date of registration",
-      "your_respond" : "Your respond",
-      "action" : "Actions",
-      "reply" : "Reply" ,
-      "offers_artwork_title" : "PRICE OFFERS FOR YOUR ARTWORKS",
-      "empty_active_order" : {
-        "title" : ".No order has been registered for you yet",
-        "info" : {
-          "text1" : "in case you have never added an artwork to Arthibition" , 
-          "text2" : "add a new one by clicking the button below"
+    "tables": {
+      "orders": "ORDERS",
+      "order_active": "ACTIVE ORDERS",
+      "suggestion_artwork": "PRICE OFFERS FOR YOUR ARTWORKS",
+      "veiw_artworks": "VIEW ARTWORKS",
+      "veiw": "VIEW",
+      "row": "#",
+      "image": "Image",
+      "code": "Code",
+      "edition": "Edition",
+      "price": "Price (USD)",
+      "discount": "Discount",
+      "paid": "Paid",
+      "status": "Status",
+      "details": "Details",
+      "suggested": "Suggested",
+      "date_registration": "Date of registration",
+      "your_respond": "Your respond",
+      "action": "Actions",
+      "reply": "Reply",
+      "offers_artwork_title": "PRICE OFFERS FOR YOUR ARTWORKS",
+      "empty_active_order": {
+        "title": ".No order has been registered for you yet",
+        "info": {
+          "text1": "in case you have never added an artwork to Arthibition",
+          "text2": "add a new one by clicking the button below"
         }
       },
-      "empty_offers_artworks" : {
-        "title" : "!There has been no offer for your artworks yet"
+      "empty_offers_artworks": {
+        "title": "!There has been no offer for your artworks yet"
       }
     },
 
-    "alerts" : {
-      "info_notice" : {
-        "text1" : "to confirm your account as a vendor, upload scanned and signed contract",
-        "text2" : "(all pages must be signed)",
-        "text3" : "after you read the contract"
+    "alerts": {
+      "info_notice": {
+        "text1": "to confirm your account as a vendor, upload scanned and signed contract",
+        "text2": "(all pages must be signed)",
+        "text3": "after you read the contract"
       },
-      "info_success" : "Your account has been confirmed as a vendor.",
-      "here" : "here",
-      "this_contract" : "file",
-      "btn_upload" : "Upload",
-      "text_upload" : "Upload your first artwork"
+      "info_success": "Your account has been confirmed as a vendor.",
+      "here": "here",
+      "this_contract": "file",
+      "btn_upload": "Upload",
+      "text_upload": "Upload your first artwork"
     }
 
   },
 
-  "content-panel-orders" : {
-    "filters" : {
-      "all" : "All",
-      "to_artibition" : "To Arthibition",
-      "artibition_to_customer" : "Arthibition to customer",
-      "delivered" : "Delivered"
+  "content-panel-orders": {
+    "filters": {
+      "all": "All",
+      "to_artibition": "To Arthibition",
+      "artibition_to_customer": "Arthibition to customer",
+      "delivered": "Delivered"
     }
+  },
+
+  "content-panel-manage-artworks": {
+
+    "title" : "ARTWORKS LIST" , 
+    "btn" : "New artwork",
+
+    "filters" : {
+        "all" : "All",
+        "approved" : "Approved",
+        "modification" : "Require modification",
+        "pending" : "Pending",
+        "not_approved" : "Not approved",
+        "sold" : "Sold",
+        "active" : "Active"
+    },
+
+    "tables": {
+      "orders": "ORDERS",
+      "order_active": "ACTIVE ORDERS",
+      "suggestion_artwork": "PRICE OFFERS FOR YOUR ARTWORKS",
+      "veiw_artworks": "VIEW ARTWORKS",
+      "veiw": "VIEW",
+      "row": "#",
+      "image": "Image",
+      "code": "Code",
+      "edition": "Edition",
+      "size": "Size",
+      "price": "Price (USD)",
+      "discount": "Discount",
+      "last_edition": "Last edition",
+      "paid": "Paid",
+      "status": "Status",
+      "details": "Details",
+      "suggested": "Suggested",
+      "date_registration": "Date of registration",
+      "your_respond": "Your respond",
+      "action": "Actions",
+      "reply": "Reply",
+      "Waiting_to_send": "Waiting to send the artwork to Arthibition",
+      "pending": "Pending",
+      "active": "Active",
+      "not_approved": "Not approved",
+      "review": "Review",
+      "deactive": "Deactive",
+      "sold": "Sold",
+      "uneditable": "Uneditable"
+
+
+    }
+
+  },
+
+  "content-panel-my-albums" : {
+    "gallery_box" : {
+      "title" : "",
+      "text" : ""
+    },
+
+    "collections" : {
+      "title" : "",
+      "btn" : "",
+      "row" : "",
+      "subject" : "",
+      "count_artwork" : "",
+      "last_edition" : "",
+      "details" : ""
+    },
+
+    "art_info" : {
+      "title" : "",
+      "btn" : ""
+    }
+  },
+
+  "content-panel-contents" : {
+    "title" : "CONTENT LIST" , 
+    "create_content" : "Create content",
+
+    "table" : {
+      "row" : "#", 
+      "image" : "Image",
+      "subject" : "Title",
+      "type" : "Content type",
+      "date_publish" : "Publication date",
+      "status" : "Status",
+      "details" : "Details",
+      "active" : "Active",
+      "edit" : "Edit",
+      "video" : "Video"
+    }
+  },
+
+  "content-panel-create-content" : {
+    "title" : "CREATE CONTENT",
+    "upload_poster" : {
+      "title" : "Content type", 
+      "report" : "Visual report", 
+      "text_content" : "Text", 
+      "link" : "Link"
+    },
+
+    "upload" : {
+      "title" : "Upload image or video",
+      "text" : "Drag and drop here",
+      "or" : "or",
+      "btn" : "Select file",
+      "tip" : "All pictures must be PNG or JPG and video must be in MP4 format"
+    },
+
+    "subject_fa" : "",
+    "subject_en" : "Title",
+    "placeholder_fa" : "",
+    "placeholder_en" : "Enter details",
+    "link" : "Link",
+    "btn_create_content"  : "Create content", 
+    "btn_cancel" : "Cancel"
   }
 
 

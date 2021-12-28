@@ -8,8 +8,12 @@ import DashboardPanel from '../pages/DashboarPanel/DashboardPanel';
 import DetailsArtwork from '../pages/DetailsArtwork/DetailsArtwork';
 import Home from '../pages/Home.jsx/Home';
 import Login from '../pages/Login/Login';
+import PanelArtManagement from '../pages/PanelArtManagement/PanelArtManagement';
+import PanelContentList from '../pages/PanelContentList/PanelContentList';
+import PanelCreateContent from '../pages/PanelCreateContent/PanelCreateContent';
 import PanelFavorites from '../pages/PanelFavorites/PanelFavorites';
 import PanelMessages from '../pages/PanelMessages/PanelMessages';
+import PanleMyAlbums from '../pages/PanelMyAlbums/PanleMyAlbums';
 import PanelMyPurchases from '../pages/PanelMyPurchases/PanelMyPurchases';
 import PanelOrders from '../pages/PanelOrders/PanelOrders';
 import Panelprofile from '../pages/PanelProfile/PanelProfile';
@@ -55,6 +59,10 @@ const RouterConfig = (props) => {
                     <Route index path="dashboard" element={<DashboardPanel />} />
                     <Route index path="orders" element={<PanelOrders />} />
                     <Route path="add-artwork" element={<AddArtwork />} />
+                    <Route path="art-management" element={<PanelArtManagement />} />
+                    <Route path="my-albums" element={<PanleMyAlbums />} />
+                    <Route path="contents" element={<PanelContentList />} />
+                    <Route path="create-content" element={<PanelCreateContent />} />
                     
                 </Route>
             </Routes>

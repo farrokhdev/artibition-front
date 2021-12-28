@@ -34,6 +34,11 @@
 body {
     font-family: Tahrir_Medium, sans-serif !important;
     font-size: 18px;
+
+}
+
+html{
+    overflow-x: hidden !important;
 }
 
 input,
@@ -3005,7 +3010,7 @@ button.close {
     display: block;
     position: relative;
     padding-right: 27px;
-    margin-bottom: 20px;
+    margin-bottom: 8px;
     cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -5358,7 +5363,7 @@ a.sec-timeline {
     margin-top: 75px;
 }
 
-.margin-top-fa{
+.margin-top-20{
     padding-top: 20px !important;
 }
 
@@ -8578,6 +8583,14 @@ span.unit-dimention {
 
 .min-width-td-8{
     min-width: 26rem !important;
+}
+
+.min-width-td-9{
+    min-width: 30rem !important;
+}
+
+.min-width-td-10{
+    min-width: 34rem !important;
 }
 
 // -------- Custom ui ant desing ------

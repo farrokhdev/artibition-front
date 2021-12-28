@@ -11,7 +11,7 @@ function PanelOrders() {
     return (
         <>
       <HeaderPanel t={t} />
-      <div className="panel-style margin-top-fa">
+      <div className="panel-style margin-top-20">
         <SidebarPanel />
         <div className="custom-container">
 
