@@ -440,6 +440,33 @@
     }
   },
 
+
+  "artists" : {
+    "filter" : {
+      "expert" : {
+        "title" : "Artist's expertise",
+        "all": "All",
+        "painting": "Painting",
+        "calligraphy": "Calligraphy",
+        "photography": "Photography",
+        "sculpture": "Sculpture",
+        "calligram": "Calligram",
+        "graphic": "Graphic",
+        "printmaking": "Printmaking",
+        "cartoon": "Cartoon",
+        "drawing": "Drawing"
+      },
+
+      "artist" : {
+        "title" : "Artist",
+        "all" : "All",
+        "special" : "Special",
+        "verified" : "Verified"
+      }
+    }
+  },
+
+
   "drawer-panel": {
     "nav-dashboard": "Dashboard",
     "nav-art-management": "Artworks",
@@ -842,6 +869,8 @@
     "btn_create_content"  : "Create content", 
     "btn_cancel" : "Cancel"
   }
+
+
 
 
 
