@@ -786,6 +786,51 @@
       "title" : "",
       "btn" : ""
     }
+  },
+
+  "content-panel-contents" : {
+    "title" : "لیست محتوا" , 
+    "create_content" : "ایجاد محتوا",
+
+    "table" : {
+      "row" : "ردیف", 
+      "image" : "تصویر",
+      "subject" : "عنوان",
+      "type" : "نوع محتوا",
+      "date_publish" : "تاریخ انتشار",
+      "status" : "وضعیت",
+      "details" : "جزئیات",
+      "active" : "فعال",
+      "edit" : "ویرایش",
+      "video" : "ویدیوئی"
+    }
+  },
+
+  
+  "content-panel-create-content" : {
+    "title" : "ایجاد محتوا",
+    "upload_poster" : {
+      "title" : "آپلود تصویر پوستر", 
+      "report" : "گزارش تصویری", 
+      "text_content" : "محتوای متنی", 
+      "link" : "لینک"
+    },
+
+    "upload" : {
+      "title" : "آپلود عکس یا ویدیو",
+      "text" : "عکس‌ها و یا ویدیوهای خود را بگیرید و در اینجا بیاندازید ",
+      "or" : " یا ",
+      "btn" : "انتخاب فایل از سیستم",
+      "tip" : "ابعاد عکس ها می‌بایست حداقل ۹۶۰ در ۹۶۰ و با فرمت  PNG و یا JPG باشند"
+    },
+
+    "subject_fa" : "عنوان",
+    "subject_en" : "Title",
+    "placeholder_fa" : "توضیحات محتوا را به فارسی وارد نمایید",
+    "placeholder_en" : "توضیحات محتوا را به انگلیسی وارد نمایید",
+    "link" : "لینک",
+    "btn_create_content"  : "ایجاد محتوا", 
+    "btn_cancel" : "انصراف"
   }
 
 

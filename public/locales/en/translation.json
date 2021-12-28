@@ -797,6 +797,50 @@
       "title" : "",
       "btn" : ""
     }
+  },
+
+  "content-panel-contents" : {
+    "title" : "CONTENT LIST" , 
+    "create_content" : "Create content",
+
+    "table" : {
+      "row" : "#", 
+      "image" : "Image",
+      "subject" : "Title",
+      "type" : "Content type",
+      "date_publish" : "Publication date",
+      "status" : "Status",
+      "details" : "Details",
+      "active" : "Active",
+      "edit" : "Edit",
+      "video" : "Video"
+    }
+  },
+
+  "content-panel-create-content" : {
+    "title" : "CREATE CONTENT",
+    "upload_poster" : {
+      "title" : "Content type", 
+      "report" : "Visual report", 
+      "text_content" : "Text", 
+      "link" : "Link"
+    },
+
+    "upload" : {
+      "title" : "Upload image or video",
+      "text" : "Drag and drop here",
+      "or" : "or",
+      "btn" : "Select file",
+      "tip" : "All pictures must be PNG or JPG and video must be in MP4 format"
+    },
+
+    "subject_fa" : "",
+    "subject_en" : "Title",
+    "placeholder_fa" : "",
+    "placeholder_en" : "Enter details",
+    "link" : "Link",
+    "btn_create_content"  : "Create content", 
+    "btn_cancel" : "Cancel"
   }
 
 
