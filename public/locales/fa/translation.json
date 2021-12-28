@@ -436,6 +436,31 @@
   },
 
 
+  "artists" : {
+    "filter" : {
+      "expert" : {
+        "title" : "تخصص هنرمند",
+        "all": "همه زمینه‌ها",
+        "painting": "نقاشی",
+        "calligraphy": "خوشنویسی",
+        "photography": "عکاسی",
+        "sculpture": "مجسمه",
+        "calligram": "نقاشی خط",
+        "graphic": "گرافیک",
+        "printmaking": "چاپ دستی",
+        "drawing": "طراحی"
+      },
+
+      "artist" : {
+        "title" : "هنرمند",
+        "all" : "همه هنرمندان",
+        "special" : "هنرمندان ویژه",
+        "verified" : "هنرمندان رسمی"
+      }
+    }
+  },
+
+
   "card_artwork": {
     "veiw": "مشاهده اثر",
     "request_buy": "درخواست خرید",

@@ -2,6 +2,7 @@ import React from 'react';
 import {Routes, Route , BrowserRouter} from 'react-router-dom';
 import App from '../App';
 import AddArtwork from '../pages/AddArtwork/AddArtwork';
+import ArtistsPage from '../pages/ArtistsPage/ArtistsPage';
 import ArtworksPage from '../pages/ArtworksPage/ArtworksPage';
 import ConfirmMobile from '../pages/ConfirmMobile/ConfirmMobile';
 import DashboardPanel from '../pages/DashboarPanel/DashboardPanel';
@@ -35,6 +36,7 @@ const RouterConfig = (props) => {
                 <Route path="site" animate={true}>
                     <Route  path="artworks" element={<ArtworksPage />}/>
                     <Route  path="artworks/:id" element={<DetailsArtwork />} />
+                    <Route  path="artists" element={<ArtistsPage />} />
                 </Route>
             </Routes>
 
