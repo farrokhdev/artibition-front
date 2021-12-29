@@ -4825,6 +4825,7 @@ a.sec-timeline {
 
 }
 
+
 .ticket-more span {
     color: #089df2;
 }
@@ -6846,9 +6847,10 @@ html, body {
     content: "\e258";
     font-family: "Glyphicons Halflings", sans-serif;
     font-size: 10px;
-    position: relative;
+    // position: relative;
     top: 4px !important;
     margin-left: 5px;
+    vertical-align: middle !important;
 }
 
 .tags {
@@ -6965,6 +6967,10 @@ html, body {
 
 .pad-r2 {
     padding-right: 2px !important;
+}
+
+.mar-r2{
+    margin-right : 8px !important;
 }
 
 .footer-nav-header {
@@ -7953,7 +7959,7 @@ select.input-public {
 }
 
 #modal-listalbum1 .modal-artwork-list .artist-avatar {
-    padding-right: 32px;
+    padding-right: 32px !important;
     box-sizing: content-box;
 }
 
@@ -8705,7 +8711,8 @@ button.btn-searchfilter.hidden-sm{
     width: 17px !important;
     height: 17px !important;
     position: absolute;
-    left: 10px !important;
+    left: 1px !important;
+    top: 2px !important;
 }
 
 @media(max-width : "575px"){
@@ -8894,3 +8901,7 @@ textarea.ant-input {
     background: transparent !important;
 }
 
+.btn-close-modal-ant{
+    width: 17px !important;
+    height: 17px !important;
+}

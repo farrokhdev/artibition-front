@@ -517,6 +517,34 @@
     }
   },
 
+
+  "artist_profile" : {
+    "artists" : "Artists",
+    "text_banner" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl",
+    "send_message" : "Send message",
+    "send" : "Send" ,
+    "placeholder_message" : ".In case you have any message or question form the artist, send them a message",
+    "tabs" : {
+        "artworks" : "Artworks",
+        "albums" : "Albums",
+        "biography" : "Biography",
+        "exhibitions" : "Exhibitions",
+        "content" : "Content"
+    },
+    "smileys" : "Smileys",
+    "veiw" : "Veiw" , 
+    "more_paint" : "More paint",
+    "introduction" : "Introduction",
+    "style" : "Style",
+    "activities" : "Activities",
+    "versions" : "Versions",
+    "aknon_gallery" : "Aknon gallery",
+    "collection" : "Collection",
+    "COLLECTION" : "COLLECTION",
+    "man" : "Man",
+    "local" : "Local"
+  },
+
   "card_artwork": {
     "veiw": "veiw",
     "request_buy": "Shop now",

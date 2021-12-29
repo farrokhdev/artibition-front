@@ -30,7 +30,7 @@ function DashboardPanel() {
         <div className="custom-container ">
 
             {/* {alertNotice(
-                //classNameName
+                //className
                 "d-flex box-dir-reverse  alert alert-notice text-dir" , 
                 //icon
                 <img src={financial_reports_orange} width="24" height="24" alt="report-icon" className=""/> ,
@@ -50,7 +50,7 @@ function DashboardPanel() {
 
 
             {alertSuccess(  
-                //classNameName
+                //className
                 "d-flex box-dir-reverse  alert alert-success" ,
                 //icon
                 <img src={done_icon} width="24" height="24" alt="" className=""/> ,

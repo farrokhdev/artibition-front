@@ -19,6 +19,7 @@ import PanelMyPurchases from '../pages/PanelMyPurchases/PanelMyPurchases';
 import PanelOrders from '../pages/PanelOrders/PanelOrders';
 import Panelprofile from '../pages/PanelProfile/PanelProfile';
 import PanelWallet from '../pages/PanelWallet/PanelWallet';
+import ProfileArtist from '../pages/ProfileArtist/ProfileArtist';
 import SetPassword from '../pages/RecoveryPassword/RecoveryPassword';
 import Signup from '../pages/Singup/Signup';
 
@@ -37,6 +38,7 @@ const RouterConfig = (props) => {
                     <Route  path="artworks" element={<ArtworksPage />}/>
                     <Route  path="artworks/:id" element={<DetailsArtwork />} />
                     <Route  path="artists" element={<ArtistsPage />} />
+                    <Route  path="artist-profile" element={<ProfileArtist />} />
                 </Route>
             </Routes>
 

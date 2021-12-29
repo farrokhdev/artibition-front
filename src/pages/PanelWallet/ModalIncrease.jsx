@@ -38,64 +38,64 @@ return (
                     </span>
                 </button>
             </div>
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">{t("content-panel-wallet.inventory.increasse_title_modal")}</h5>
+            <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLabel">{t("content-panel-wallet.inventory.increasse_title_modal")}</h5>
             </div>
-            <div class="modal-body">
-                <div class="cachein-wallet">
-                <div class="wallet-row">
+            <div className="modal-body">
+                <div className="cachein-wallet">
+                <div className="wallet-row">
                         <div className="d-flex align-items-center justify-content-center box-dir-reverse">
-                            <span class="default-title">{t("content-panel-wallet.inventory.modal_inventory")}</span>
-                            <div class="d-flex box-dir-reverse cash-state align-items-center">
-                                <span class="persian-num mx-2">۸۶۰,۰۰۰</span>
+                            <span className="default-title">{t("content-panel-wallet.inventory.modal_inventory")}</span>
+                            <div className="d-flex box-dir-reverse cash-state align-items-center">
+                                <span className="persian-num mx-2">۸۶۰,۰۰۰</span>
                                 <span>{t("toman")}</span>
                             </div>
                         </div>
                     </div>
-                    <div class="public-group">
-                        <input class="form-control input-public persian-num "
+                    <div className="public-group">
+                        <input className="form-control input-public persian-num "
                             placeholder={t("content-panel-wallet.inventory.placeholder_input")} />
-                        <span class="price-unit">{t("toman")}</span>
+                        <span className="price-unit">{t("toman")}</span>
                     </div>
-                    <span class="aligncenter center-block">{t("or")}</span>
-                    <div class="content-type mrgt40">
-                        <div class="col-sm-6">
-                            <label class="d-flex box-dir-reverse container-radio pull-dir">
-                                <span class="persian-num">1,000,000</span>
-                                <span class="">{t("toman")}</span>
+                    <span className="aligncenter center-block">{t("or")}</span>
+                    <div className="content-type mrgt40">
+                        <div className="col-sm-6">
+                            <label className="d-flex box-dir-reverse container-radio pull-dir">
+                                <span className="persian-num">1,000,000</span>
+                                <span className="">{t("toman")}</span>
                                 <input type="radio" checked="checked" name="radio"/>
-                                <span class="checkmark-radio"></span>
+                                <span className="checkmark-radio"></span>
                             </label>
                         </div>
-                        <div class="col-sm-6">
-                            <label class="d-flex box-dir-reverse container-radio pull-dir">
-                                <span class="persian-num">1,500,000</span>
-                                <span class="">{t("toman")}</span>
+                        <div className="col-sm-6">
+                            <label className="d-flex box-dir-reverse container-radio pull-dir">
+                                <span className="persian-num">1,500,000</span>
+                                <span className="">{t("toman")}</span>
                                 <input type="radio" name="radio"/>
-                                <span class="checkmark-radio"></span>
+                                <span className="checkmark-radio"></span>
                             </label>
                         </div>
-                        <div class="col-sm-6">
-                            <label class="d-flex box-dir-reverse container-radio pull-dir">
-                                <span class="persian-num">2,000,000</span>
-                                <span class="">{t("toman")}</span>
+                        <div className="col-sm-6">
+                            <label className="d-flex box-dir-reverse container-radio pull-dir">
+                                <span className="persian-num">2,000,000</span>
+                                <span className="">{t("toman")}</span>
                                 <input type="radio" name="radio"/>
-                                <span class="checkmark-radio"></span>
+                                <span className="checkmark-radio"></span>
                             </label>
                         </div>
-                        <div class="col-sm-6">
-                            <label class="d-flex box-dir-reverse container-radio pull-dir">
-                                <span class="persian-num">2,500,000</span>
-                                <span class="">{t("toman")}</span>
+                        <div className="col-sm-6">
+                            <label className="d-flex box-dir-reverse container-radio pull-dir">
+                                <span className="persian-num">2,500,000</span>
+                                <span className="">{t("toman")}</span>
                                 <input type="radio" name="radio"/>
-                                <span class="checkmark-radio"></span>
+                                <span className="checkmark-radio"></span>
                             </label>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="d-flex justify-content-center modal-footer">
-                <button type="button" class="btn btn-black">{t("content-panel-wallet.inventory.pay")}</button>
+            <div className="d-flex justify-content-center modal-footer">
+                <button type="button" className="btn btn-black">{t("content-panel-wallet.inventory.pay")}</button>
             </div>
         </div>
 
