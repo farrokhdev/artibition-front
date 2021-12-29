@@ -420,9 +420,10 @@ padding: 10px 6px !important;
     content: "\e257";
     font-family: "Glyphicons Halflings", sans-serif;
     font-size: 10px;
-    position: relative;
+    // position: relative;
     top: 4px !important;
     margin-right: 5px;
+    vertical-align: middle !important;
 }
 
 .btn-readmore-black {
@@ -725,7 +726,7 @@ padding: 10px 6px !important;
     display: inline-block;
     color: #fff;
     padding: 8px 18px;
-    max-width: 135px;
+    min-width: 70px !important;
 }
 
 /* .view-icon {
@@ -762,8 +763,25 @@ padding: 10px 6px !important;
     height: 24px;
     position: absolute;
     left: 18px;
-    bottom: 18px;
+    bottom: 18px !important;
+    padding: 15px !important;
 }
+
+// @media(min-width : '575px'){
+//     .like-icon,
+//     .like-icon:hover,
+//     .like-icon:focus {
+//         left: 35px !important;
+//     }
+// }
+
+// @media(max-width : '575px'){
+//     .like-icon,
+//     .like-icon:hover,
+//     .like-icon:focus {
+//         left: 18px !important;
+//     }
+// }
 
 .tab-3 {
     margin: 35px 0 60px 0;
@@ -908,6 +926,10 @@ padding: 10px 6px !important;
 
 .pad-r2 {
     padding-right: 2px !important;
+}
+
+.mar-r2{
+    margin-right : 8px !important;
 }
 
 .collection-secondrow > div {
@@ -5225,7 +5247,7 @@ a.sec-timeline {
 }
 
 #modal-listalbum1 .modal-artwork-list .artist-avatar {
-    padding-left: 32px;
+    padding-left: 32px !important;
     box-sizing: content-box;
 }
 
@@ -8621,7 +8643,8 @@ span.unit-dimention {
     width: 17px !important;
     height: 17px !important;
     position: absolute;
-    left: 10px !important;
+    left: 1px !important;
+    top: 2px !important;
 }
 
 @media(max-width : "575px"){
@@ -8820,6 +8843,11 @@ span.unit-dimention {
 
 .ant-select:not(.ant-select-customize-input) .ant-select-selector{
     background: transparent !important;
+}
+
+.btn-close-modal-ant{
+    width: 17px !important;
+    height: 17px !important;
 }
 
 
