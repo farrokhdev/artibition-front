@@ -3,6 +3,7 @@ import { Form, Input, Select , Checkbox , Switch} from 'antd';
 import change_icon from '../../assets/img/change.png';
 import classnames from 'classnames';
 import {GetLanguage} from '../../utils/utils'
+import { t } from 'i18next';
 const { Option } = Select;
 
 function SellInformation({prev , next}) {
@@ -16,7 +17,7 @@ function SellInformation({prev , next}) {
     return (
         <>
             <div className="enter-price">
-                <h3 className="infotitle-default text-dir">اطلاعات فروش</h3>
+                <h3 className="infotitle-default text-dir">{t("content-panel-add-artwork.sale_info")}</h3>
 
                 <Form 
                     className="" 
@@ -25,18 +26,18 @@ function SellInformation({prev , next}) {
                 >
                 <div className="row">
                     <div className="col-sm-12">
-                        <label className="lable-checkbox public-group text-dir pr-0">
+                        <label className="d-flex box-dir-reverse lable-checkbox public-group text-dir pr-0">
                             {/* <input type="checkbox" value=""/> */}
                                     <Form.Item name="remember" valuePropName="checked" noStyle>
                                         <Checkbox type="checkbox"></Checkbox>
                                     </Form.Item>
-                            <span className='mx-2'>برای نمایش</span>
+                            <span className='mx-2'>{t("content-panel-add-artwork.display_only")}</span>
                             {/* <span className="checkmark"></span> */}
-                            <span className="input-help">با انتخاب این گزینه اثر تنها برای نمایش در سایت قرار می‌گیرد</span>
+                            <span className="input-help">{t("content-panel-add-artwork.display_only_text")}</span>
                         </label>
                     </div>
                 </div>
-                <div className="row">
+                <div className="d-flex box-dir-reverse">
                     <div className="col-sm-4">
                         <div className="public-group">
                                     <Form.Item
@@ -54,7 +55,7 @@ function SellInformation({prev , next}) {
                                             type="text"
                                             id="info-207"
                                             className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                            placeholder='شماره ادیشن' 
+                                            placeholder={t("content-panel-add-artwork.edition")} 
                                         />
 
                                     </Form.Item>
@@ -79,7 +80,7 @@ function SellInformation({prev , next}) {
                                             type="text"
                                             id="info-207"
                                             className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                            placeholder='قیمت اثر به تومان' 
+                                            placeholder={t("content-panel-add-artwork.price_ir")} 
                                         />
 
                                     </Form.Item>
@@ -108,7 +109,7 @@ function SellInformation({prev , next}) {
                                             type="text"
                                             id="info-207"
                                             className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                            placeholder='معادل قیمت به دلار' 
+                                            placeholder={t("content-panel-add-artwork.edition_usd")}  
                                         />
 
                                     </Form.Item>
@@ -118,12 +119,13 @@ function SellInformation({prev , next}) {
                         </div>
                     </div>
                 </div>
-                <div className="row">
+                <div className="d-flex box-dir-reverse">
                     <div className="col-sm-4">
                         <div className="public-group">
                                     <Form.Item
                                         className="w-100"
                                         name="weight"
+                                        // label="شماره ادیشن"
                                         rules={[
                                             {
                                                 required: true,
@@ -135,10 +137,11 @@ function SellInformation({prev , next}) {
                                             type="text"
                                             id="info-207"
                                             className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                            placeholder='شماره ادیشن' 
+                                            placeholder={t("content-panel-add-artwork.edition")} 
                                         />
 
                                     </Form.Item>
+
                             {/* <input className="form-control input-public " required placeholder="" value=""/> */}
                             {/* <label className="lable-public">شماره ادیشن</label> */}
                         </div>
@@ -159,10 +162,11 @@ function SellInformation({prev , next}) {
                                             type="text"
                                             id="info-207"
                                             className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                            placeholder='قیمت اثر به تومان' 
+                                            placeholder={t("content-panel-add-artwork.price_ir")} 
                                         />
 
                                     </Form.Item>
+
                             {/* <input className="form-control input-public " required placeholder=""
                                    value=""/> */}
                             {/* <label className="lable-public">قیمت اثر به تومان</label> */}
@@ -173,7 +177,6 @@ function SellInformation({prev , next}) {
                     </div>
                     <div className="col-sm-4">
                         <div className="public-group">
-
                                     <Form.Item
                                         className="w-100"
                                         name="weight"
@@ -188,7 +191,7 @@ function SellInformation({prev , next}) {
                                             type="text"
                                             id="info-207"
                                             className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                            placeholder='معادل قیمت به دلار' 
+                                            placeholder={t("content-panel-add-artwork.edition_usd")}  
                                         />
 
                                     </Form.Item>
@@ -198,13 +201,13 @@ function SellInformation({prev , next}) {
                         </div>
                     </div>
                 </div>
-                <div className="row">
+                <div className="d-flex box-dir-reverse">
                     <div className="col-sm-4">
                         <div className="public-group">
-
                                     <Form.Item
                                         className="w-100"
                                         name="weight"
+                                        // label="شماره ادیشن"
                                         rules={[
                                             {
                                                 required: true,
@@ -216,17 +219,17 @@ function SellInformation({prev , next}) {
                                             type="text"
                                             id="info-207"
                                             className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                            placeholder='شماره ادیشن' 
+                                            placeholder={t("content-panel-add-artwork.edition")} 
                                         />
 
                                     </Form.Item>
+
                             {/* <input className="form-control input-public " required placeholder="" value=""/> */}
                             {/* <label className="lable-public">شماره ادیشن</label> */}
                         </div>
                     </div>
                     <div className="col-sm-4">
                         <div className="public-group">
-
                                     <Form.Item
                                         className="w-100"
                                         name="weight"
@@ -241,10 +244,11 @@ function SellInformation({prev , next}) {
                                             type="text"
                                             id="info-207"
                                             className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                            placeholder='قیمت اثر به تومان' 
+                                            placeholder={t("content-panel-add-artwork.price_ir")} 
                                         />
 
                                     </Form.Item>
+
                             {/* <input className="form-control input-public " required placeholder=""
                                    value=""/> */}
                             {/* <label className="lable-public">قیمت اثر به تومان</label> */}
@@ -255,7 +259,6 @@ function SellInformation({prev , next}) {
                     </div>
                     <div className="col-sm-4">
                         <div className="public-group">
-
                                     <Form.Item
                                         className="w-100"
                                         name="weight"
@@ -270,7 +273,7 @@ function SellInformation({prev , next}) {
                                             type="text"
                                             id="info-207"
                                             className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                            placeholder='معادل قیمت به دلار' 
+                                            placeholder={t("content-panel-add-artwork.edition_usd")}  
                                         />
 
                                     </Form.Item>
@@ -282,38 +285,44 @@ function SellInformation({prev , next}) {
                 </div>
                 <div className="row">
                     <div className="col-sm-12">
-                        <label className="lable-checkbox public-group text-dir pr-0">
+                        <label className="d-flex box-dir-reverse lable-checkbox public-group text-dir pr-0">
                                     <Form.Item name="sold_out" valuePropName="checked" noStyle>
                                         <Checkbox type="checkbox"></Checkbox>
                                     </Form.Item>
                             {/* <input type="checkbox" value=""/> */}
-                            <span className='mx-2'>این اثر فروخته شده</span>
+                            <span className='mx-2'>{t("content-panel-add-artwork.artwork_sold")}</span>
                             {/* <span className="checkmark"></span> */}
                         </label>
                     </div>
                     <div className="col-sm-12">
-                        <label className="lable-checkbox public-group text-dir pr-0">
+                        <label className="d-flex box-dir-reverse lable-checkbox public-group text-dir pr-0">
                             {/* <input type="checkbox" checked value=""/> */}
                                     <Form.Item name="send_bid" valuePropName="checked" noStyle>
                                         <Checkbox type="checkbox"></Checkbox>
                                     </Form.Item>
-                            <span className='mx-2'>امکان ارسال پیشنهاد قیمت</span>
+                            <span className='mx-2'>{t("content-panel-add-artwork.could_offer")}</span>
                             {/* <span className="checkmark"></span> */}
-                            <span className="input-help">از طریق این قابلیت مشتریان شما می‌توانند پیشنهاد قیمتی خود را به شما ارسال نمایند</span>
+                            <span className="input-help">{t("content-panel-add-artwork.could_offer_text")}</span>
                         </label>
                     </div>
                     <div className="col-sm-12">
-                        <label className="lable-checkbox public-group text-dir pr-0 pull-dir mt-5">
+                        <label className=" lable-checkbox public-group text-dir pr-0  mt-5">
                             {/* <input type="checkbox"/> */}
                             <Form.Item  valuePropName="checked">
                                 <Switch type="checkbox"></Switch>
                             </Form.Item>
                             {/* <span className="switchbtn round"></span> */}
-                            <span className="label-switchbtn">تخفیف قیمت</span>
+                            <span className="label-switchbtn">{t("content-panel-add-artwork.discount_price")}</span>
                         </label>
                     </div>
-                    <div className="col-sm-12">
-                        <div className="form-group public-group">
+                    <div className="col-sm-12  ">
+                        <div 
+                            className={classnames("d-flex  form-group public-group", {
+                                "justify-content-start": GetLanguage() === 'fa-IR',
+                                "justify-content-end": GetLanguage() === 'en-US'
+                            })}
+                                                
+                        >
                             <Form.Item
                                 name="discount_price"
                                 rules={[
@@ -325,7 +334,7 @@ function SellInformation({prev , next}) {
                                 <Select
                                     className='form-control'
                                     id="sel1"
-                                    placeholder="تخفیف براساس درصد"
+                                    placeholder={t("content-panel-add-artwork.discount_base")}
                                     allowClear
                                 >
                                 <Option value="تخفیف براساس درصد">تخفیف براساس درصد</Option>
@@ -363,7 +372,7 @@ function SellInformation({prev , next}) {
                                             type="text"
                                             id="info-207"
                                             className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                            placeholder='درصد تخفیف قیمت ریالی' 
+                                            placeholder={t("content-panel-add-artwork.discount_percent_ir")} 
                                         />
 
                                     </Form.Item>
@@ -391,7 +400,7 @@ function SellInformation({prev , next}) {
                                             type="text"
                                             id="info-207"
                                             className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                            placeholder='درصد تخفیف قمیت دلاری' 
+                                            placeholder={t("content-panel-add-artwork.discount_percent_usd")} 
                                         />
 
                                     </Form.Item>
@@ -403,7 +412,7 @@ function SellInformation({prev , next}) {
                 </div>
                 <div className="d-flex box-dir-reverse">
                     <div className="col-sm-4">
-                        <h4 className="bolder-title mrgt10">مدت زمان تخفیف</h4>
+                        <h4 className="bolder-title mrgt10">{t("content-panel-add-artwork.discount_period")}</h4>
                         <div className="public-group">
                                     <Form.Item
                                         className="w-100"
@@ -419,7 +428,7 @@ function SellInformation({prev , next}) {
                                             type="text"
                                             id="info-207"
                                             className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                            placeholder='تاریخ' 
+                                            placeholder={t("content-panel-add-artwork.date")} 
                                         />
 
                                     </Form.Item>
@@ -430,8 +439,8 @@ function SellInformation({prev , next}) {
                 </div>
                 <div className="clearfix"></div>
                 <div className="adv-btn">
-                    <button onClick={() => prev()} type="button" className="btn-prev ">مرحله قبل</button>
-                    <button htmlType="submit" type="button" className="btn-next pull-left">ثبت اثر</button>
+                    <button onClick={() => prev()} type="button" className="btn-prev ">{t("content-panel-add-artwork.previous_step")}</button>
+                    <button htmlType="submit" type="button" className="btn-next pull-left">{t("content-panel-add-artwork.submit_artwork")}</button>
                 </div>
                 </Form>
             </div>
