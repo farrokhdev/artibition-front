@@ -38,12 +38,12 @@ function AddArtwork() {
 
     const steps = [
         {
-          title: 'تکمیل اطلاعات اثر',
+          title: t("content-panel-add-artwork.step1"),
           content: <ArtworkInformation next={next} />,
           icon : false
         },
         {
-          title: 'تکمیل اطلاعات فروش',
+          title: t("content-panel-add-artwork.step2"),
           content: <SellInformation prev={prev} next={next}/>,
           icon : false
         }
@@ -76,7 +76,7 @@ function AddArtwork() {
     </Steps>
 
         <div className="steps-content pt-5 px-4 px-sm-0">{steps[current].content}</div>
-        <div className="steps-action">
+        {/* <div className="steps-action">
             {current < steps.length - 1 && (
             <Button type="success" onClick={() => next()}>
                 Next
@@ -92,18 +92,7 @@ function AddArtwork() {
                 Previous
             </Button>
             )}
-        </div>
-
-
-
-
-
-
-
-
-
-
-
+        </div> */}
 
         <BasketFooterPanel />
     </div>
