@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="236" height="213" viewBox="0 0 236 213">
+    <defs>
+        <filter id="Rectangle_4973" width="236" height="172" x="0" y="41" filterUnits="userSpaceOnUse">
+            <feOffset dx="4" dy="4"/>
+            <feGaussianBlur result="blur" stdDeviation="6"/>
+            <feFlood flood-opacity=".322"/>
+            <feComposite in2="blur" operator="in"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+        <filter id="Ellipse_1555" width="48" height="48" x="94" y="0" filterUnits="userSpaceOnUse">
+            <feOffset dx="4" dy="4"/>
+            <feGaussianBlur result="blur-2" stdDeviation="6"/>
+            <feFlood flood-opacity=".322"/>
+            <feComposite in2="blur-2" operator="in"/>
+            <feComposite in="SourceGraphic"/>
+        </filter>
+        <linearGradient id="linear-gradient" x1=".5" x2=".5" y2="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#fafafa"/>
+            <stop offset="1" stop-color="#f2f2f2"/>
+        </linearGradient>
+        <style>
+            .cls-1{fill:#202020}.cls-4{fill:none;stroke:#202020;stroke-width:2px}
+        </style>
+    </defs>
+    <g id="_404_error" transform="translate(-846 -267)">
+        <g id="_404_error-2">
+            <g id="Group_10668" transform="translate(-242 -30)">
+                <g filter="url(#Rectangle_4973)" transform="translate(1088 297)">
+                    <path id="Rectangle_4973-2" d="M0 0H200V136H0z" class="cls-1" transform="translate(14 55)"/>
+                </g>
+                <path id="Rectangle_4974" fill="url(#linear-gradient)" d="M0 0H192V128H0z" transform="translate(1106.001 356)"/>
+            </g>
+            <path id="Path_22204" fill="#141414" d="M-40 0v-13.6h-25.6v-3.2l26.4-36h6.4v36h7.2v3.2h-7.2V0zm-20.8-16.8H-40v-28.32zM0 1.6q-19.2 0-19.2-28T0-54.4q19.2 0 19.2 28T0 1.6zm0-3.2a8.749 8.749 0 0 0 6.76-2.64q2.44-2.64 3.44-8.04a80.411 80.411 0 0 0 1-14.12 80.411 80.411 0 0 0-1-14.12q-1-5.4-3.44-8.04A8.749 8.749 0 0 0 0-51.2a8.749 8.749 0 0 0-6.76 2.64q-2.44 2.64-3.44 8.04a80.41 80.41 0 0 0-1 14.12 80.41 80.41 0 0 0 1 14.12q1 5.4 3.44 8.04A8.749 8.749 0 0 0 0-1.6zM50.4 0v-13.6H24.8v-3.2l26.4-36h6.4v36h7.2v3.2h-7.2V0zM29.6-16.8h20.8v-28.32z" transform="translate(960 416.4)"/>
+        </g>
+        <g filter="url(#Ellipse_1555)" transform="translate(846 267)">
+            <circle id="Ellipse_1555-2" cx="6" cy="6" r="6" class="cls-1" transform="translate(108 14)"/>
+        </g>
+        <path id="Line_797" d="M0 0L0 56" class="cls-4" transform="rotate(45 136.342 1300.602)"/>
+        <path id="Line_798" d="M0 56L0 0" class="cls-4" transform="rotate(-45 823.457 -1016.558)"/>
+    </g>
+</svg>

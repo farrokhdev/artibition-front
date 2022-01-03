@@ -1,0 +1,1586 @@
+@media (max-width: 450px) {
+    .nopadrl {
+        padding-right: 0;
+    }
+
+    .artist-upload {
+        height: 130px;
+    }
+
+    .empty-paid {
+        width: 100%;
+    }
+
+    .artwork-priceblock > .row > .col-xs-6 {
+        width: 100%;
+        text-align: center;
+    }
+
+    .btn-artwork-sell {
+        width: 100%;
+    }
+
+    .artwork-property > .row > .col-xs-6 {
+        padding: 0 10px;
+    }
+
+    .artwork-property > .row > .col-xs-6 > .btn-artworksimilar {
+        padding: 10px 5px;
+    }
+
+
+    .btn-panel-header {
+        padding: 10px 10px 10px 0;
+    }
+}
+
+@media (max-width: 590px) {
+    .artibition-logo > a > img {
+        max-width: 120px;
+        margin-top: 5px;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 590px) {
+    .basket-nav li a {
+        padding: 10px 15px;
+    }
+
+    .basket-list-row h4 {
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 675px) {
+    .inner-tab .nav-tabs {
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 600px) {
+    .gallery-artistartworkname img {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .new-ticket-body {
+        padding: 0;
+    }
+
+    #ticket-modal .modal-body {
+        padding: 16px;
+    }
+
+    .ticket-modal-block-header .graycolor.pull-right {
+        float: left !important;
+    }
+
+    .sidebar.active ~ .box .custom-container {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .predict-cat {
+        padding: 16px;
+    }
+
+    .reserve a,
+    .reserve span {
+        font-size: 11px;
+    }
+
+    .footer-nav {
+        margin-top: 32px;
+    }
+
+    .footer-nav-header,
+    .footer-nav-body li a {
+        font-size: 13px;
+    }
+
+    .exhibition-list-body,
+    .new-ticket-bodyi,
+    .cacheout-wallet,
+    .cachein-wallet {
+        padding: 0;
+    }
+
+    .carousel-txt button {
+        padding: 5px 10px;
+    }
+
+    .nav-tabs > li:first-child > a {
+        padding-right: 3px;
+    }
+
+    .msg-title, .ticket-title {
+        margin-bottom: 10px;
+    }
+
+    .unread .msg-new {
+        margin-right: 0;
+        margin-top: 10px;
+    }
+
+    .ticket-date {
+        float: right !important;
+    }
+
+    .ticket-title span {
+        display: block;
+    }
+
+    .ticket-status {
+        display: inline-block !important;
+        margin-top: 10px;
+        margin-right: 0;
+    }
+
+    .ticket-btn, .ticket-btn:hover, .ticket-btn:focus {
+        position: relative;
+        top: 0;
+        display: block;
+        margin: 0 auto 32px;
+    }
+
+    .sec6 .tab-content {
+        margin-top: 32px;
+    }
+
+    .finished .finished-tag {
+        position: relative;
+        display: inline-block;
+        top: 0;
+        margin-bottom: 10px;
+    }
+
+    .table .center-block {
+        margin-right: 0 !important;
+    }
+
+    .contact-col .default-title {
+        margin-top: 32px;
+    }
+
+    .contact-social li {
+        margin: 0;
+    }
+
+    .contact-col {
+        padding: 16px;
+    }
+
+    .notification-signup .btn-noti {
+        margin: 0 auto;
+        display: block;
+    }
+
+    .notification-signup .remove-noti {
+        right: 15px;
+    }
+
+    .notification-signup p {
+        padding-right: 30px;
+    }
+
+    .about-page .nav-tabs {
+        white-space: nowrap;
+    }
+
+    .right-pro {
+        padding: 32px 16px;
+    }
+
+    .offer-code {
+        margin: 32px 0;
+    }
+
+    .notification-row .bolder-title {
+        width: 100%;
+    }
+
+    .alert-notification {
+        max-width: 100%;
+    }
+
+    .edit-profile-artist {
+        padding: 16px;
+    }
+
+    .content-carousel .carousel-indicators {
+        padding: 0 10px;
+        margin-top: 10px;
+    }
+
+    .content-carousel .carousel-indicators li {
+        padding: 0 5px;
+    }
+
+    .wallet-table td.status {
+        text-align: right;
+    }
+
+    .upload-exhibition-artist .default-title {
+        margin-top: 0;
+        margin-bottom: 32px;
+    }
+
+    .block-edit-price {
+        padding: 16px;
+    }
+
+    .block-edit-price > .row {
+        background: #f1f1f1;
+        margin-bottom: 3px;
+    }
+
+    .uploaded-sign {
+        right: 5px;
+        top: 5px;
+    }
+
+    .progress-uploading {
+        margin-top: 60px;
+    }
+
+    .upload-remove {
+        top: 0;
+        left: 0;
+    }
+
+    .artist-tags-row {
+        margin-top: 16px;
+    }
+
+    .nav-close,
+    .nav-close:hover,
+    .nav-close:focus {
+        background: url("../img/big-close.svg") no-repeat center;
+        width: 30px;
+        height: 30px;
+        display: inline-block;
+        float: right;
+    }
+
+    .menu .navbar-nav {
+        padding-top: 30px;
+    }
+
+    .artwork-filter-aria .filter-footer {
+        position: sticky;
+    }
+
+    .artwork-filter-aria .col-price {
+        margin-top: 0;
+    }
+
+    .artwork-filter-aria .col-price-num {
+        font-size: 14px;
+    }
+
+    .artwork-filter-aria .col-price-unit {
+        display: block;
+        font-size: 15px;
+    }
+
+    .artwork-filter-aria {
+        width: 100%;
+        padding: 16px;
+        left: 0;
+    }
+
+    .btn-box-1, .btn-box-1:hover, .btn-box-1:focus {
+        right: 35px;
+    }
+
+    .panel-selection li {
+        width: 49%;
+    }
+
+    .basket-moredetail {
+        margin-top: 32px;
+    }
+
+    .inner-vertical-tab .accordion-body .panel-body {
+        padding: 16px;
+    }
+
+    .inner-vertical-tab .accordion-body .panel-body p {
+        text-align: justify;
+    }
+
+    .basket-img {
+        margin: 0 auto;
+    }
+
+    #modal-replied-price .modal-footer button {
+        margin-bottom: 10px;
+    }
+
+    .table-order tbody tr:hover td,
+    .bidding-table tbody tr:hover td {
+        font-weight: normal;
+    }
+
+    .table-order button, .bidding-table button {
+        opacity: 1;
+        display: block;
+        width: 100%;
+    }
+
+    tr.pending-state > td:first-child:before {
+        display: none;
+    }
+
+    .table-order td img,
+    .bidding-table td img {
+        margin: 0 0 0 auto;
+        display: block;
+    }
+
+    .alert-notice {
+        padding-left: 16px;
+    }
+
+    .center-xs {
+        text-align: center;
+    }
+
+    .mrgt16-xs {
+        margin-top: 16px;
+    }
+
+    .basket-header .artibition-logo {
+        float: right;
+        width: 50px;
+    }
+
+    .basket-header .basket-nav {
+        float: left;
+    }
+
+    .basket-header .artibition-logo img {
+        max-width: 50px;
+        margin-top: 10px;
+    }
+
+    .basket-nav li {
+        width: auto;
+    }
+
+    .basket-total {
+        padding: 25px 0;
+    }
+
+    table {
+        border: 0;
+    }
+
+    table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    table tr {
+        display: block;
+        margin-bottom: 32px;
+        background: #f7f7f7;
+    }
+
+    table td {
+        border-bottom: 1px solid #ddd;
+        text-align: right;
+        display: block;
+    }
+
+    .color tr {
+        display: table-row;
+    }
+
+    .color td {
+        display: table-cell;
+    }
+
+    table td::before {
+        content: attr(data-label);
+        float: left;
+        font-weight: bold;
+    }
+
+    table td:last-child {
+        border-bottom: 0;
+    }
+
+
+    .table tr td:first-child {
+        border-top: 0;
+    }
+
+    tr.complete-row {
+        position: relative;
+    }
+
+    .complete-row:before {
+        display: block;
+        background: url(../img/check-white.png) no-repeat center center #15aa56;
+        padding: 16px;
+        border-radius: 100%;
+        position: absolute;
+        top: -20px;
+    }
+
+    .adv-btn button,
+    .adv-btn button:hover,
+    .adv-btn button:focus {
+        padding: 5px 10px;
+    }
+
+    .page-fixed {
+        display: block;
+    }
+
+    .info-sec .btn-black {
+        width: 100%;
+    }
+
+    .gallery-innerinfo {
+        margin-bottom: 15px;
+    }
+
+    .gallery-daterow {
+        display: inline-block;
+        width: 100%;
+        padding-right: 70px;
+    }
+
+    .gallery-date {
+        float: left;
+        margin-right: 10px;
+    }
+
+    .gallery-datenum {
+        float: left;
+    }
+
+    .gallery-banner {
+        margin-bottom: 0;
+    }
+
+    .event-title,
+    .event-select span {
+        text-align: center;
+    }
+
+    .gallery-banner-container > .col-md-6 {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .caleander-days li,
+    .caleander-days li.active {
+        width: 9.5%;
+        box-sizing: content-box;
+        padding: 5px 0;
+    }
+
+    .caleander-weekdays li {
+        width: 13.5%;
+    }
+
+    .gallery-banner > .container > .col-md-offset-1 {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .gallery-banner-container {
+        padding: 32px 16px;
+    }
+
+    .btn-askme {
+        float: right !important;
+        padding: 5px 0 0 0;
+    }
+
+    .artwork-name {
+        margin-top: 15px;
+    }
+
+    .btn-askme img {
+        max-width: 16px;
+    }
+
+    .artwork-detail .btn-galleryfollow {
+        padding-bottom: 0;
+        padding-top: 10px;
+    }
+
+    footer .social li a {
+        padding: 10px 15px;
+    }
+
+    .collection-list-row {
+        background: #f7f7f7;
+        padding: 16px;
+        margin-bottom: 16px;
+    }
+
+    .collection-list-row .btn-readmore {
+        margin-top: 10px;
+        float: right !important;
+    }
+
+    .box {
+        padding: 16px;
+    }
+
+    .menu .navbar-nav > li:hover > a, .menu .navbar-nav > li:focus > a {
+        border-bottom: 3px solid transparent;
+    }
+
+    .panel-header .artibition-logo img,
+    .promotion-header .artibition-logo img {
+        margin-left: 0;
+    }
+
+    .like-icon, .like-icon:hover, .like-icon:focus {
+        background: url("../img/liked_selected.svg") no-repeat center;
+    }
+
+    .event-control .carousel-control {
+        width: 0% !important;
+    }
+
+    .gallery-banner-container .event-control {
+        display: inline-block;
+        width: 100%;
+    }
+
+    .artist-bio {
+        margin-top: 32px;
+    }
+
+    .default-header ~ .menu .btn-shoppingcard {
+        padding-top: 18px;
+    }
+
+    .default-header ~ .menu .search-xs {
+        padding: 18px 0 15px 15px;
+    }
+
+    .default-header .navbar-header {
+        padding: 15px 0 15px 16px;
+        display: inline-block;
+        float: right;
+    }
+
+    .default-header {
+        padding: 15px 0;
+    }
+
+    #artist3 .mrgr104 {
+        margin-top: 32px;
+        margin-right: 0;
+    }
+
+    .panel-header .head {
+        display: table;
+        width: 100%;
+        padding: 15px 0;
+    }
+
+    .panel-header .navbar {
+        display: block;
+    }
+
+    .panel-header .navbar-header {
+        float: left;
+        margin-right: 16px;
+    }
+
+    .avatar-caption .btn-follow {
+        float: right;
+    }
+
+    .gallery-artistartworkname .btn-default {
+        opacity: 1;
+    }
+
+    .artist-list .cols {
+        margin-bottom: 64px;
+    }
+
+    .artists-overly .artist-avatar img {
+        width: auto;
+        height: auto;
+    }
+
+    .navbar-nav .open .dropdown-menu {
+        background: #eee;
+    }
+    .navbar-nav .dropdown-menu {
+        padding: 0;
+    }
+
+    .navbar-nav .open .dropdown-menu .nav-tabs {
+        width: 100%;
+    }
+    .vertical-tabs .nav-tabs li.active a, .vertical-tabs .nav-tabs li:hover a {
+        color: #141414;
+    }
+
+    .vertical-tabs .nav-tabs > li.active > a:before, .vertical-tabs .nav-tabs > li:hover > a:before,
+    .nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+        background: none;
+    }
+
+    .row-artist-exhibition .col-date {
+        margin-bottom: 10px;
+    }
+
+    .table-responsive {
+        border: 0;
+    }
+
+    .more-upload.btn-art-upload {
+        float: none !important;
+        clear: both;
+        display: block;
+        margin: 0 auto;
+    }
+
+    .statistics img {
+        margin-top: 32px;
+    }
+
+    .adv-content .btn-default {
+        padding: 16px 32px;
+    }
+
+    .adv-code > div > div {
+        margin-bottom: 16px;
+    }
+
+    .adv-code label {
+        text-align: right;
+    }
+
+    .coldetails-more {
+        display: block;
+    }
+
+    .coldetails-row {
+        white-space: normal;
+        width: 100%;
+    }
+
+    .art-gift-body .col-img {
+        margin-bottom: 32px;
+    }
+
+    .result-name {
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+
+    .proresult-img {
+        margin-bottom: 32px;
+    }
+
+    .promotions-banner > div:nth-child(2) {
+        text-align: center;
+        margin-top: 32px;
+    }
+
+    .basket-footer {
+        text-align: center;
+    }
+
+    .alerts {
+        left: 0;
+        right: 0;
+        top: 15px;
+        min-width: auto;
+        position: relative;
+        width: 100%;
+    }
+
+    .btn.new-address .glyphicon {
+        position: relative;
+        top: 0;
+        right: -1px;
+    }
+
+    .btn.new-address.pull-left {
+        float: right !important;
+        margin-right: 10px;
+    }
+
+    .btn-readmore .pull-left{
+        float: right !important;
+    }
+
+    .btn.new-address {
+        padding: 6px;
+    }
+
+    .address .basket-total {
+        margin-top: 32px !important;
+    }
+
+    .basket-moredetail {
+        margin-top: 32px;
+    }
+
+    .basket-price {
+        margin-top: 16px;
+        padding: 16px 0;
+    }
+
+    .basket-moredetail .btn-remove, .basket-moredetail .btn-remove:hover, .basket-moredetail .btn-remove:focus {
+        left: 0;
+    }
+
+    .artwork-priceblock .nl-input input, .artwork-priceblock .nl-input input:focus {
+        padding-left: 102px;
+    }
+
+    .artwork-priceblock .nl-input button {
+        padding: 11px 10px;
+    }
+
+    .row-property h6 {
+        padding: 12px 0;
+    }
+
+    .gallery-artistartworkname img {
+        margin-top: 16px;
+        max-width: 100px;
+        width: 100%;
+    }
+
+    .articles-block {
+        margin-bottom: 40px;
+    }
+
+    .articles-block .news-imgblock {
+        max-width: 100%;
+    }
+
+    .gallery-maxwidth {
+        padding: 16px 0 32px 0;
+    }
+
+    .galley-related-content > div:nth-child(odd) {
+        border: 0;
+    }
+
+    .gallery-innername {
+        text-align: center;
+        margin: 32px 0 16px 0;
+    }
+
+    .gallery-page .inner-tab .nav-tabs {
+        white-space: nowrap;
+    }
+
+    .artist-art .nav-tabs > li > a {
+        padding: 10px 13px;
+    }
+
+    .artist-avatar {
+        margin: 0 auto;
+        text-align: center;
+    }
+
+
+    .modal-similar-header .artist-avatar {
+        margin: 0;
+        text-align: right;
+    }
+
+    .carousel {
+        margin-bottom: 50px;
+    }
+
+    .reserve {
+        text-align: center;
+    }
+
+    .row-footer {
+        margin-bottom: 50px;
+    }
+
+    .logo-footer {
+        margin: 0 auto 30px;
+        display: block;
+    }
+
+    .max-w490 {
+        max-width: 100%;
+        margin-top: 50px;
+    }
+
+    footer {
+        padding-top: 50px;
+    }
+
+    .social {
+        text-align: center;
+    }
+
+    .news-body .news-col {
+        margin: 0 !important;
+        display: inline-block;
+    }
+
+    .news-col {
+        max-width: 360px;
+    }
+
+    .news-imgblock {
+        max-width: 300px;
+    }
+
+    .owl-carousel .owl-item .news-imgblock img {
+        max-width: 300px !important;
+    }
+
+    .news-title {
+        margin: 20px 0;
+    }
+
+    .artists-btngroup {
+        text-align: center;
+    }
+
+    .artists-title {
+        padding: 0 15px;
+        text-align: center;
+    }
+
+    .rowdesign:nth-child(1) > div {
+        margin: 0;
+    }
+
+    .menu,
+    .nav,
+    .news-body .btn-readmore,
+    .row-left-15,
+    .row-right-15 {
+        margin: 0;
+    }
+
+    .navbar-toggle {
+        margin: 0;
+        padding: 2px 0;
+    }
+
+    .show-xs {
+        position: absolute;
+        right: 50px;
+        top: 9px;
+        padding: 0;
+    }
+
+    .navbar-collapse {
+        width: 100%;
+        z-index: 1000;
+        background: #f7f7f7;
+        position: fixed;
+        left: 0;
+        right: 0;
+        height: 100vh;
+        top: 0;
+        padding: 32px;
+    }
+
+    .panel-header .navbar-collapse {
+        position: relative;
+    }
+
+    .panel-header .navbar {
+        position: absolute;
+        width: 100%;
+        top: 74px;
+        right: 0;
+    }
+
+    .menu .navbar-nav {
+        text-align: right;
+    }
+
+    .menu .navbar-nav li {
+        display: block;
+        text-align: left;
+    }
+
+    .navbar {
+        min-height: 0;
+    }
+
+    .artists-overly {
+        opacity: 1;
+        position: relative;
+    }
+
+    .artist-latest > img {
+        display: none !important;
+    }
+
+}
+
+@media (min-width: 768px) {
+    .mega-dropdown-menu {
+        padding: 40px 72px;
+    }
+
+    .nopadrl {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .nav-close {
+        display: none;
+    }
+
+    .gallery-page .inner-tab .nav-tabs {
+        width: 100% !important;
+    }
+
+    .pad-r0 {
+        padding-right: 0;
+    }
+
+    .pad-l0 {
+        padding-left: 0;
+    }
+
+    .inner-vertical-tab .nav-tabs li {
+        width: 100%;
+    }
+
+    .inner-vertical-tab .nav-tabs li a {
+        display: block;
+    }
+
+    .inner-vertical-tab .nav-tabs > li > a:before {
+        left: 0;
+        right: auto;
+        bottom: 7px;
+    }
+
+    .inner-vertical-tab .nav-tabs > li > a {
+        padding: 12px 0;
+    }
+
+    .inner-vertical-tab .nav-tabs > li.active > a {
+        font-weight: bold;
+        color: #141414;
+    }
+
+    .inner-vertical-tab .tab-content {
+        margin: 0;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+    .gallery-page .inner-tab .nav-tabs > li > a {
+        padding: 10px 25px;
+    }
+
+    .about-content .social li {
+        margin: 0 2px;
+    }
+
+    .contact-social li {
+        margin: 0;
+    }
+
+    .contact-col {
+        padding: 16px;
+    }
+
+    .purchase .basket-price {
+        padding: 5px 0;
+    }
+
+    .promotion-head .artibition-logo {
+        float: left;
+        display: inline-block;
+        max-width: 50px;
+        box-sizing: content-box;
+        margin-right: 10px;
+    }
+
+    .promotion-head .artibition-logo img {
+        max-width: 100%;
+        margin-left: 0;
+    }
+
+    .promotion-head .nav li a {
+        padding: 10px;
+    }
+
+    .btn-changelang {
+        padding-left: 16px;
+    }
+
+    .search-container input, .search-container input:focus {
+        padding-left: 30px;
+    }
+
+    .panel-header .artibition-logo img,
+    .promotion-header .artibition-logo img {
+        max-width: 50px;
+        margin-right: 0;
+    }
+
+    .btn-gift {
+        padding: 14px;
+    }
+
+    .promotion-detail {
+        padding: 32px;
+    }
+
+    .basket-nav li a {
+        padding: 10px;
+    }
+
+    .basket-price {
+        margin-top: 0;
+    }
+
+    .artwork-priceblock .nl-input button {
+        padding: 10px;
+    }
+
+    .artwork-priceblock .nl-input input, .artwork-priceblock .nl-input input:focus {
+        padding-left: 162px;
+    }
+
+
+    .row-property h6 {
+        height: 36px;
+        vertical-align: middle;
+        display: table-cell;
+    }
+
+    .row-property .col-sm-6:nth-child(1),
+    .row-property .col-sm-6:nth-child(2) {
+        margin-bottom: 10px;
+    }
+
+    .artwork-priceblock.artwork-defaultpadding {
+        padding: 43px 20px;
+    }
+
+    .artwork-price .artwork-pricenum {
+        font-size: 28px;
+    }
+
+    .row-sm {
+        padding: 0 15px;
+    }
+
+    .row-sm > div {
+        padding: 0;
+    }
+
+    .gallery-ex {
+        position: relative;
+    }
+
+    .sm-absolute {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .gallery-maxwidth {
+        padding: 16px 0;
+    }
+
+    .gallery-innername {
+        margin: 10px 0 12px 0;
+    }
+
+    .reserve .love, .reserve .smalllogo {
+        padding: 0;
+    }
+
+    footer .social li a {
+        padding: 10px 19px;
+    }
+
+    .articles-block {
+        display: block;
+        margin-bottom: 32px;
+    }
+
+    .gallery-txt p {
+        margin: 20px 0;
+    }
+
+    .row-galleryinfo {
+        padding: 20px 0 8px 0;
+    }
+
+    .menu .navbar-nav li a {
+        padding: 15px 20px;
+    }
+
+    .gallery-datenum {
+        margin-left: 0;
+        margin-top: 2px;
+    }
+
+    .menu .navbar-nav li:nth-child(1) a {
+        padding-left: 0;
+    }
+
+    .menu .navbar-nav {
+        text-align: left;
+    }
+
+    .smalllogo {
+        max-width: 74px;
+    }
+
+    .news-col {
+        margin-bottom: 30px !important;
+        display: table;
+        width: 100%;
+    }
+}
+
+@media (max-width: 992px) {
+    .artists-body {
+        margin-top: 10px;
+    }
+
+    .tab-overly {
+        position: relative;
+        background: none;
+        opacity: 1;
+        flex-direction: inherit;
+        justify-content: right;
+        margin-top: 16px;
+    }
+
+    .tab-overly .like-icon,
+    .tab-overly .like-icon:hover,
+    .tab-overly .like-icon:focus {
+        position: relative;
+        padding: 8px;
+        box-sizing: content-box;
+        left: 0;
+        top: 0;
+    }
+
+    .tab-overly .btn-see,
+    .tab-overly .btn-see:hover,
+    .tab-overly .btn-see:focus {
+        border: 1px solid #141414;
+        color: #141414;
+        padding: 8px;
+    }
+
+    .tab-overly .btn-see .view-icon {
+        display: none;
+    }
+
+    .shopping-cart-xs {
+        background: url("../img/shopping_basket.svg") no-repeat center;
+        width: 24px;
+        height: 24px;
+    }
+
+    .btn-sale,
+    .btn-sale:hover,
+    .btn-sale:focus {
+        background: none;
+        border: 0;
+        float: left;
+        margin: 0 auto 0 0;
+        padding: 10px;
+    }
+
+    .tab-overly button {
+        text-align: center;
+    }
+
+    .mrgt64-xs {
+        margin-top: 64px;
+    }
+
+    .partners p {
+        opacity: 1;
+    }
+
+    .promotion-popup.modal-dialog {
+        width: auto;
+    }
+
+    .alert .btn-blue {
+        float: none !important;
+    }
+
+    .panel-header .head {
+        padding: 10px 0;
+    }
+
+    .btn.clear-tag {
+        padding: 5px 10px;
+    }
+
+    .filter-side {
+        width: 100%;
+        display: none;
+        position: absolute;
+        z-index: 15;
+        left: 0;
+        box-shadow: -3px 0 9px 0px #e4e6e9;
+        background: #fff;
+    }
+
+    .tab-overflow {
+        overflow-x: scroll;
+    }
+
+    .tab-overflow::-webkit-scrollbar {
+        display: none;
+    }
+
+    .notification-signup button {
+        white-space: nowrap;
+    }
+
+    .page-fixed .container-fixed {
+        height: auto;
+    }
+
+    .modal-dialog,
+    .modal-dialog.width-600 {
+        width: auto;
+    }
+
+    .btm-absolute {
+        position: relative;
+        padding: 0 15px;
+    }
+
+    .row-artistartwork:last-child {
+        margin-bottom: 32px;
+    }
+
+    .carousel-txt button {
+        margin-top: 0;
+        position: absolute;
+        right: 0;
+        top: 10px;
+    }
+
+    .carousel-txt {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        left: 0;
+    }
+
+    .countdown-title {
+        display: inline;
+        position: relative;
+        top: -30px;
+    }
+
+    .carousel-txt .coundown .timers {
+        display: inline-block;
+        margin-top: 10px;
+    }
+
+    .artist-cover {
+        padding: 0 15px;
+    }
+
+    .btn {
+        padding: 10px 25px;
+    }
+
+    .artists-btngroup {
+        margin: 30px 0;
+    }
+
+    .news-title {
+        max-width: 100%;
+    }
+
+    .newsletter-right > img {
+        max-width: 70px;
+    }
+
+    .newsletter-right {
+        padding: 48px 30px;
+    }
+
+    .collection-firstrow {
+        height: auto;
+    }
+
+    footer {
+        margin-top: 32px;
+    }
+
+}
+
+@media (min-width: 992px) {
+    .partners:hover {
+        transform: scale(1.2);
+        border: 1px solid #efefef;
+        box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.04);
+    }
+
+    .partners:hover p {
+        height: auto;
+        opacity: 1;
+    }
+
+    .filter-side {
+        display: block;
+    }
+
+    .notification-signup button {
+        float: left;
+    }
+
+    .promotion-result > .row {
+        margin-left: -40px;
+        margin-right: -40px;
+    }
+
+    .promotion-result > .row > .col-sm-4 {
+        padding-right: 40px;
+        padding-left: 40px;
+    }
+
+    .artwork-imggallery {
+        height: 770px;
+    }
+
+    .allproducts {
+        position: relative;
+    }
+
+    .allproducts .public-header {
+        position: absolute;
+    }
+
+    .allproducts .public-header .btn-readmore {
+        position: relative;
+        z-index: 10;
+    }
+
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+    .promotion-head button {
+        padding: 7px 0 7px 16px;
+    }
+
+    .artibition-logo img {
+        margin-right: 50px;
+    }
+
+    .btn-gift {
+        padding: 16px;
+    }
+
+    .promotion-head .navbar-nav li a {
+        padding: 8px 12px;
+    }
+
+    .promotion-detail {
+        padding: 40px;
+    }
+
+    .price-row {
+        margin-bottom: 5px;
+    }
+
+    .basket-moredetail > .row {
+        height: 212px;
+    }
+
+    .row-listdetail {
+        margin-bottom: 0;
+    }
+
+    .basket-list-row h4 {
+        margin-bottom: 16px;
+    }
+
+    .artwork-priceblock .nl-input button {
+        padding: 10px;
+    }
+
+    .artwork-priceblock .nl-input input, .artwork-priceblock .nl-input input:focus {
+        padding-left: 162px;
+    }
+
+    .row-property h6 {
+        height: 36px;
+        vertical-align: middle;
+        display: table-cell;
+    }
+
+    .gallery-innername {
+        margin: 10px 0 12px 0;
+    }
+
+    .gallery-txt p {
+        margin: 10px 0;
+    }
+
+    .row-galleryinfo {
+        padding: 10px 0;
+    }
+
+    .gallery-maxwidth {
+        padding: 50px;
+    }
+
+
+    .carousel-txt button {
+        margin-top: 5px;
+        padding: 10px 30px;
+    }
+
+    .carousel-txt {
+        bottom: 0;
+        right: 105px;
+    }
+
+    .newsletter-right {
+        padding: 60px 30px;
+    }
+
+    .artists-btngroup {
+        margin-top: 35px;
+    }
+
+    .artists-btngroup .btn {
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .sidebar.active ~ .custom-container {
+        margin-left: 15px;
+    }
+
+    .sidebar.active ~ .box .custom-container {
+        margin-left: -15px;
+    }
+
+    .sidebar.active {
+        left: -280px;
+    }
+
+    .sidebar {
+        left: 0;
+        box-shadow: -3px 0 9px 0px #e4e6e9;
+    }
+
+
+    .artwork-defaultpadding {
+        padding: 20px;
+    }
+
+    .gallery-ex .btn-default {
+        display: block;
+        margin: 0 auto;
+    }
+
+    .btn-nlupload,
+    .btn-nlupload:hover,
+    .btn-nlupload:focus {
+        right: 15px;
+        bottom: 15px;
+    }
+
+
+}
+
+@media (min-width: 1200px) {
+
+    .md-padr100 {
+        padding-right: 100px;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1275px) {
+
+    .basket-moredetail > .row {
+        height: 262px;
+    }
+}
+
+@media (min-width: 1200px) and (max-width: 1400px) {
+    .wallet button {
+        padding: 4px 5px;
+    }
+
+    .table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+        padding: 8px 3px;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 1450px) {
+    .panel-selection li {
+        width: 28%;
+        margin-right: 0;
+    }
+}
+
+@media (min-width: 1276px) {
+    .basket-moredetail > .row {
+        height: 280px;
+    }
+
+    .basket-moredetail button,
+    .basket-moredetail button:hover,
+    .basket-moredetail button:focus {
+        bottom: -35px;
+    }
+
+    .container {
+        width: 1246px;
+    }
+}
+
+@media (min-width: 1400px) {
+    .purchase .row-listdetail:first-child {
+        margin-top: 32px;
+    }
+
+    .purchase .basket-price {
+        padding: 32px;
+    }
+}
+
+@media (min-width: 1100px) {
+    .partner-block.owl-carousel .owl-stage-outer {
+        overflow: visible;
+    }
+}

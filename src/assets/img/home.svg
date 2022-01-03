@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20.5 21.585">
+    <g id="Bold-Outline" transform="translate(-1.75 -1.165)">
+        <g id="home">
+            <path id="shape" fill="#141414" stroke="#fff" stroke-width="0.5px" d="M16 20.5h2a2 2 0 0 0 2-2V9.908a2 2 0 0 0-.818-1.613l-6-4.395a2 2 0 0 0-2.364 0l-6 4.395A2 2 0 0 0 4 9.908V18.5a2 2 0 0 0 2 2h2v-8a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1zm-2 0v-7h-4v7zM3.636 6.681l6-4.395a4 4 0 0 1 4.727 0l6 4.395A4 4 0 0 1 22 9.908V18.5a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V9.908a4 4 0 0 1 1.636-3.227z"/>
+        </g>
+    </g>
+</svg>

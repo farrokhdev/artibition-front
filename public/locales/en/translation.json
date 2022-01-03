@@ -1,7 +1,964 @@
 {
-  "title": "Welcome to react using react-i18next",
-  "description": {
-    "part1": "To get started, edit <1>src/App.js</1> and save to reload.",
-    "part2": "Switch language between english and german using buttons above."
+  "empty-error": {
+    "username": "Please input your username!",
+    "password": "Please input your password!",
+    "repeat-password": "Please input your confirm password!",
+    "activation-code": "Please input your activation code!"
+  },
+
+  "filter-header": {
+    "title": "Filter",
+    "placeholder-input-search": ".Search artwork, artist, gallery, etc",
+    "category": {
+      "title": "Category",
+      "all": "All",
+      "painting": "Painting",
+      "photography": "Photography",
+      "sculpture": "Sculpture",
+      "calligram": "Calligram",
+      "calligraphy": "Calligraphy",
+      "printmaking": "Printmaking",
+      "graphic": "Graphic",
+      "drawing": "Drawing"
+    },
+    "size": {
+      "title": "Size",
+      "small": "Small",
+      "medium": "Medium",
+      "large": "Large",
+      "custom": "Custom size",
+      "dimention": {
+        "unit": "cm",
+        "to": "to",
+        "width": "Width",
+        "length": "Length",
+        "height": "Height",
+
+        "select-custom-size": {
+          "title": "Select custom size",
+          "to": "to",
+          "submit": "Submit",
+          "min-width": "Min width (cm)",
+          "max-width": "Max width (cm)",
+          "min-length": "Min length (cm)",
+          "max-length": "Max length (cm)",
+          "min-height": "Min height (cm)",
+          "max-height": "Max height (cm)"
+        }
+      }
+    },
+    "discount": {
+      "title": "Discount",
+      "text-switch": "Show discounted artworks",
+      "more-than-20": "More than 20%",
+      "more-than-30": "More than 30%",
+      "more-than-50": "More than 50%"
+    },
+    "color": {
+      "title": "Color"
+    },
+    "price": {
+      "title": "Price",
+      "min": "Min (USD)",
+      "max": "Max (USD)"
+    }
+  },
+
+  "login_Title": "Login",
+  "placeholder-username": "Email or mobile number",
+
+  "placeholder-password": "Password",
+  "placeholder-confirm-password": "Confirm password",
+
+  "forget-title": "Forget password",
+  "login-btn-text": "Login",
+  "google-login-text-button": "Login with google",
+  "is-registered-question": "Not register yet",
+  "signup-text": "Register",
+  "show-details": "Details",
+  "show-password": "Show",
+  "hidden-password": "Hidden",
+
+  "signup_title": "Join Arthibition",
+  "signup_btn-text": "Register",
+  "describtion-low": {
+    "text-link": "terms and conditions",
+    "text-info-part1": "You have accepted the",
+    "text-info-part2": " by becoming a member."
+  },
+  "forget-signup-text": {
+    "text": "Already a member?",
+    "link": "Login"
+  },
+
+  "confirm-mobile-title": "Verification Mobile",
+  "text-btn-verification-submit": "Get activation code",
+
+  "recovery-password-title": "Password Recovery",
+  "text-btn-recovery-password": "Password Recovery",
+
+  "membership-title": "Membership",
+  "membership-info-signup": "To join, first enter the 4-digit code that sent to your mobile number.",
+  "membership-info": "To recover the password, first enter the 4-digit code that sent to your mobile number.",
+  "placeholder-activation-code": "Enter activation code",
+  "text-btn-confirm-mobile-number": "Confirm mobile number",
+
+  "title_lang-header": "Fa",
+  "nav-menu-artworks": "Artworks",
+  "nav-menu-showroom": "Showroom",
+  "nav-menu-online-exhibition": "Online exhibition",
+  "nav-menu-blog": "Blog",
+  "nav-menu-sales-advisor": "Sales Advisor",
+  "redirect-login-header": "Sign up/Login",
+
+  "text-statistics-purchase": "PURCHASE",
+  "text-statistics-artworks": "ARTWORKS",
+  "text-statistics-artists": "ARTISTS",
+  "text-statistics-users": "USERS",
+  "text-footer-auth": {
+    "info": " :  If you have any questions, contact us",
+    "mobile": " 22538 229 21 98+ "
+  },
+
+  "category": "Category",
+  "galleries": "Galleries",
+  "events": "Events",
+
+  "see-all": "View all",
+  "event-all": "View all",
+  "collection-all": "View all",
+  "deadline-send-artwroks": ": Deadline",
+  "upload": "Upload",
+  "toman": "Toman",
+  "dollar": "USD",
+  "or": "or",
+
+  "nav-submenu": {
+    "artworks": {
+      "artField": {
+        "title": "Art field",
+        "all": "all",
+        "painting": "Painting",
+        "calligraphy": "Calligraphy",
+        "photography": "Photography",
+        "sculpture": "Sculpture",
+        "calligram": "Calligram",
+        "graphic": "Graphic",
+        "printmaking": "Printmaking",
+        "cartoon": "Cartoon",
+        "drawing": "Drawing",
+        "art-for-gift": "Art for gifts"
+      },
+      "subject": {
+        "title": "Subject"
+      },
+      "budget": {
+        "title": "Based on your budget"
+      },
+      "discounts": {
+        "title": "Discounts"
+      }
+    },
+
+    "showroom": {
+      "category": {
+        "all": "all",
+        "painter": "Painter",
+        "calligrapher": "Calligrapher",
+        "photographer": "Photographer",
+        "sculptor": "Sculptor",
+        "calligramer": "Calligramer",
+
+        "graphist": "Graphist",
+        "printmaker": "Printmaker",
+        "cartoonist": "Cartoonist",
+        "sketcher": "Sketcher"
+      }
+    }
+  },
+
+  "artibition-artists-home": {
+    "title": "ARTHIBITION ARTISTS",
+    "text-info": "you could access a list of exceptional Iranian artists and all of their artworks at Arthibition. in case you are tthe creator or owner of an artwork, you could present it to our users by becoming a member at Arthibition.",
+    "btn-text": "See artists",
+    "action-text": "Register artwork"
+  },
+
+  "artibition-events": {
+    "title": "ARTHIBITION ARTISTS"
+  },
+
+  "news-and-article-art": {
+    "title": "ART NEWS AND EVENTS",
+    "more": "Read more"
+  },
+  "suggestion-home": {
+    "title": "SUGGESTED ARTWORKS"
+  },
+
+  "my-recent-views-home": {
+    "title": "MY RECENT VISITS"
+  },
+
+  "subscribe-newsletter-home": {
+    "title": "SUBSCRIBE TO NEWSLETTER",
+    "text-info": ".Get update with latest news",
+    "submit-email-btn": "Subscribe",
+    "placeholder-email": "Enter your e-mail"
+  },
+
+  "collection-artworks-home": {
+    "title": "ARTWORKS COLLECTION"
+  },
+
+  "artwork": {
+    "artibition": "Artibition",
+    "view-artwork": "view",
+    "btn-action-to-shop": "Shop now",
+    "follow": "Follow",
+    "following": "Following",
+    "ask_me": "Ask me",
+    "untitle": "Untitle",
+    "field": {
+      "title": "Category",
+      "painting": "Painting",
+      "photography": "Photography",
+      "sculpture": "Sculpture",
+      "calligram": "Calligram",
+      "calligraphy": "Calligraphy",
+      "printmaking": "Printmaking",
+      "graphic": "Graphic",
+      "drawing": "Drawing"
+    },
+    "code": "Code",
+    "technique": "Technique",
+    "material": "Material",
+    "create_date": "Date of creation",
+    "size": "Size",
+    "count": {
+      "title": "Number",
+      "number": ""
+    },
+    "alarm": "More than a year has passed since the pricing of this work",
+    "request_buy": "Shop now",
+    "sold_out": "Sold out",
+    "bid_artwork": {
+      "text1": "You have offered",
+      "text2": "for this artwork"
+    },
+    "veiw_home": "View at home",
+    "shipment": "1 to 3 day shipment",
+    "show_collector": "Show by collector",
+    "visit_artwork": "Visit artwork at arthibition before buying",
+    "bidding": "Bidding",
+    "simillar_artworks": "Similar artworks",
+    "veiw_simillar_artworks": "See similar artworks",
+    "delivery": "Delivery by Arthibition",
+    "referral": "7 days referral and return",
+    "safe_payment": "Safe payment",
+    "originality_guaranteed": "Originality guaranteed by Arthibition",
+    "about_artwork": {
+      "tab_title": "About artwork",
+      "text_title": "",
+      "text": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.",
+      "more": "More"
+    },
+    "about_artist": {
+      "tab_title": "About artist",
+      "text_title": "Menu 1",
+      "text": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    },
+    "tags": {
+      "title": "TAGS",
+      "calligram": "Calligram",
+      "composition": "Composition",
+      "canvas": "Canvas"
+    },
+    "other_artworks": "OTHER ARTWORKS",
+    "all_artworks_artist": {
+      "text1": "Veiw all",
+      "text2": ""
+    },
+
+    "modal_edit_offer": {
+      "title": "Edit your offer",
+      "subtitle": ".You can edit your offer or cancel it",
+      "previous_offer": "Your previous offer",
+      "placeholder": "Submit your new offer",
+      "submit": "Submit",
+      "cancel_offer": "Cancel the offer"
+    },
+
+    "modal_similar_artwork": {
+      "title": "Similar artworks"
+    },
+
+    "modal_bidding_artwork": {
+      "title": "Send offer",
+      "subtitle": "Enter your suggested price",
+      "current_price": " : Price",
+      "placeholder": " ...Your offer",
+      "submit": "Submit"
+    }
+
+  },
+
+  "footer": {
+    "text-info": "Arthibition is the online exhibition and market of visual arts based on original Iranian art which has successfully gained trust of many unique Iranian artists by presenting a combination of ease of access, beautiful design, international presentation and bilingual website while a vast presence in various social media. Arthibition was created in winter 2015, Tehran/ Iran, to connect talented artists, collectors and galleries to art lovers and buyers who value art immensely.",
+    "guid": {
+      "title": "GUIDELINE",
+      "signup-login": "Sign up/Login",
+      "artist-register": "Artists register",
+      "create-gallery": "Create a gallery",
+      "purchase": "Purchase",
+      "faq": "FAQ"
+    },
+    "terms-of-use": {
+      "title": "TERMS OF USE",
+      "copyright": "Copy right",
+      "terms-and-conditional": "Terms and conditions",
+      "policy": "Privacy policy"
+    },
+
+    "artibition": {
+      "title": "ARTHIBITION",
+      "about-us": "About us",
+      "contact-us": "Contact us",
+      "collabration": "Collabration with us",
+      "collabrators": "Collabrators"
+    },
+
+    "text-copyright": {
+      "text": "Copyright © 2020, All rights reserved by",
+      "link-gallery": "Arthibition Gallery",
+      "text2": ""
+    },
+
+    "text-build": {
+      "text1": "Built with",
+      "text2": "by"
+    }
+  },
+
+
+  "artworkList": {
+    "box-banner": {
+      "title": "ART, THE ETERNAL CAPITAL",
+      "text": "There is a limited time to select among artworks! you could easily select your favorite artworks in \"Arthibition\" in no time.",
+      "btn": "Search",
+      "placeholder": "Search artist name"
+    },
+
+    "filter": {
+
+      "title": "Filter",
+      "remove_all": "Remove all",
+      "artist_name": "Artist name",
+      "placeholder_artist": "Enter artist name",
+      "last_update": "Last update",
+      "visite": "visite",
+      "sell": "sell",
+
+      "artField": {
+        "title": "Art field",
+        "all": "All",
+        "painting": "Painting",
+        "calligraphy": "Calligraphy",
+        "photography": "Photography",
+        "sculpture": "Sculpture",
+        "calligram": "Calligram",
+        "graphic": "Graphic",
+        "printmaking": "Printmaking",
+        "cartoon": "Cartoon",
+        "drawing": "Drawing"
+      },
+
+      "price": {
+        "title": "Price",
+        "min": "Min (USD)",
+        "max": "Max (USD)",
+        "to": "to",
+        "action": "submit"
+      },
+
+      "discount": {
+        "title": "Discount",
+        "show": "Show discounted artworks",
+        "up20": "More than 20%",
+        "up30": "More than 30%",
+        "up50": "More than 50%"
+      },
+
+      "art_for_gift": {
+        "title": "Art to gift",
+        "show": "Suitable artworks for gift"
+      },
+
+      "color": "Color",
+
+      "technique": {
+        "title": "Technique",
+        "placeholder": "Search Technique",
+        "watercolor": "Watercolor",
+        "acrylic": "Acrylic",
+        "pastel": "Pastel",
+        "composition": "Composition"
+      },
+
+      "subject": {
+        "title": "subject"
+      },
+
+      "material": {
+        "title": "Material",
+        "placeholder": "Search material",
+        "rapid": "Rapid",
+        "watercolor": "Watercolor",
+        "govash": "Govash",
+        "acrylic": "Acrylic",
+        "pastel": "Pastel",
+        "collage": "Collage",
+        "crayons": "Crayons"
+      },
+
+      "size": {
+        "title": "Size",
+        "small": "Small",
+        "medium": "Medium",
+        "large": "Large",
+        "custom": "Custom size",
+        "min_width": "Min width (cm)",
+        "max_width": "Max width (cm)",
+        "min_length": "Min length (cm)",
+        "max_length": "Max length (cm)",
+        "min_height": "Min height (cm)",
+        "max_height": "Max height (cm)",
+        "in": "-",
+        "submit": "Submit"
+      }
+
+    }
+  },
+
+
+  "artists" : {
+    "filter" : {
+      "expert" : {
+        "title" : "Artist's expertise",
+        "all": "All",
+        "painting": "Painting",
+        "calligraphy": "Calligraphy",
+        "photography": "Photography",
+        "sculpture": "Sculpture",
+        "calligram": "Calligram",
+        "graphic": "Graphic",
+        "printmaking": "Printmaking",
+        "cartoon": "Cartoon",
+        "drawing": "Drawing"
+      },
+
+      "artist" : {
+        "title" : "Artist",
+        "all" : "All",
+        "special" : "Special",
+        "verified" : "Verified"
+      }
+    }
+  },
+
+
+  "drawer-panel": {
+    "nav-dashboard": "Dashboard",
+    "nav-art-management": "Artworks",
+    "nav-mypurchases": "My purchases",
+    "nav-orders": "Orders",
+    "nav-wallet": "Wallet",
+    "nav-my-albums": "My albums",
+    "nav-favorits": "Favorites",
+    "nav-messages": "Messages",
+    "nav-profile": "Profile",
+    "invite": {
+      "btn": "Invite friends",
+      "text": ""
+    }
+  },
+
+  "content-panel-profile": {
+    "info-box": {
+      "register": {
+        "title": "Register gallery",
+        "text": ".In case you own a gallery, register it"
+      },
+      "artists": {
+        "title": "Register artists",
+        "text": "Work as an artist in Arthibition"
+      },
+      "seller": {
+        "title": "Become a seller",
+        "text": "Sell your artworks"
+      }
+    },
+
+    "personal-info": {
+      "title": "PERSONAL INFO",
+      "fullname": "Full name",
+      "phone": "Phone number",
+      "national": "National code",
+      "email": "Email",
+      "date": "Date of birth",
+      "username": "Username",
+      "address": {
+        "title": "ADDRESS",
+        "btn": "New address",
+        "default": "(Default address)"
+
+      }
+
+    }
+  },
+
+
+  "artist_profile" : {
+    "artists" : "Artists",
+    "text_banner" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl",
+    "send_message" : "Send message",
+    "send" : "Send" ,
+    "placeholder_message" : ".In case you have any message or question form the artist, send them a message",
+    "tabs" : {
+        "artworks" : "Artworks",
+        "albums" : "Albums",
+        "biography" : "Biography",
+        "exhibitions" : "Exhibitions",
+        "content" : "Content"
+    },
+    "smileys" : "Smileys",
+    "veiw" : "Veiw" , 
+    "more_paint" : "More paint",
+    "introduction" : "Introduction",
+    "style" : "Style",
+    "activities" : "Activities",
+    "versions" : "Versions",
+    "aknon_gallery" : "Aknon gallery",
+    "collection" : "Collection",
+    "COLLECTION" : "COLLECTION",
+    "man" : "Man",
+    "local" : "Local"
+  },
+
+  "card_artwork": {
+    "veiw": "veiw",
+    "request_buy": "Shop now",
+    "size": {
+      "title": " : Size",
+      "in": " x "
+    },
+
+    "special": "Special",
+    "sold": "Sold out"
+  },
+
+
+  "content-panel-mypurchases": {
+
+    "title": "MY PURCHASE",
+    "artwork-title": "Artwork title",
+    "owner": "Owner",
+    "code": "Code",
+    "size": "Size",
+    "order": ".Order No",
+    "price-artwork": "Price",
+    "your-bidding": "Your bidding",
+    "artist-bidding": "Artist bidding",
+    "payment-date": "Payment date",
+    "status": "Status",
+    "order-details": "Order detail",
+    "x": "x",
+    "btn-sell": "Sales in Artibition",
+    "artwok-return": "Buy Artwork",
+
+    "paid": {
+      "title": "Paid",
+      "empty": {
+        "title": "!There is no order",
+        "text1": "There are no active orders right now",
+        "text2": "To purchase Arthibition artworks please click on the \"purchase\" button",
+        "btn": "Veiw Artworks"
+      }
+    },
+
+    "delivered": {
+      "title": "Delivered"
+    },
+
+    "bidding": {
+      "title": "Bidding"
+    },
+
+    "returned": {
+      "title": "Returned"
+    },
+
+    "canceled": {
+      "title": "Canceled"
+    }
+
+  },
+
+
+  "content-panel-favorites": {
+
+    "title": "FAVORITES",
+    "tabs": {
+      "artworks": "Artworks",
+      "followers": "Followers",
+      "collections": "Collections"
+    }
+  },
+
+
+  "content-panel-messages": {
+
+    "title": "MESSAGES",
+    "new": "New",
+    "today": "Today",
+    "veiw": "Veiw",
+    "inprogress": "In progress",
+    "waiting": "Waiting to respond",
+    "closed": "Closed",
+    "tabs": {
+      "notifications": "Notifications",
+      "members": {
+        "title": "Members",
+        "title_modal": "Messages",
+        "subject": "Subject",
+        "palaceholder_message": "Write your message here"
+      },
+      "tickets": {
+        "title": "Tickets",
+        "new_ticket": "New ticket",
+        "subject": "Subject",
+        "text-ticket": "Your message",
+        "send": "Send"
+      }
+    }
+  },
+
+
+  "content-panel-wallet": {
+
+    "inventory": {
+      "title": "WALLET INVENTORY",
+      "text_gift": {
+        "text1": "Gift for you",
+        "text2": ""
+      },
+      "buy_btn": "Buy artwork",
+      "withdrawal": "Withdrawal",
+      "withdrawal_title_modal": "Withdrawal",
+      "increasse_title_modal": "Increase credit",
+      "modal_inventory": " : WALLET INVENTORY",
+      "increase": "Increase credit",
+      "placeholder_input": "Enter price",
+      "saturday": "Saturday",
+      "sunday": "Sunday",
+      "monday": "Monday",
+      "tuesday": "Tuesday",
+      "pay": "Pay"
+    },
+
+    "trades": {
+      "title": "DEPOSIT AND WITHDRAWAL LIST",
+      "filters": {
+        "all": "All",
+        "deposited": "Deposited",
+        "withdrawaled": "Withdrawaled"
+      },
+
+      "table_headers": {
+        "type": "Type",
+        "price": "Price (USD)",
+        "account_no": ".Account No",
+        "request_date": "Request date",
+        "status": "Status"
+      }
+    }
+
+
+  },
+
+  "content-panel-dashboard": {
+
+    "box_gallery": {
+      "gallery": "Arthibition gallery",
+      "order": "Orders",
+      "new_gallery": "New gallery",
+      "info_gallery": "In case you own another gallery, you could register it"
+    },
+
+    "box_status": {
+      "btn": "New artwork",
+      "approved": "Approved",
+      "not_approved": "Not approved",
+      "modification": "Require modification",
+      "pending": "Pending",
+      "user_status": "User status",
+      "contact_status": "Contract status",
+      "email_status": "Email",
+      "resume": "CV",
+      "veiw": "Veiw"
+    },
+
+    "promotion": {
+      "title": "LEADING PROMOTIONS",
+      "veiw_more": "Veiw more"
+    },
+
+    "veiw_artwork": {
+      "title": "VIEW ARTWORKS",
+      "text_info": "Monitor users view by uploading your artworks",
+      "btn": "New artwork"
+    },
+
+    "my_income": {
+      "title": "MY INCOME",
+      "detail": "Details"
+    },
+
+    "tables": {
+      "orders": "ORDERS",
+      "order_active": "ACTIVE ORDERS",
+      "suggestion_artwork": "PRICE OFFERS FOR YOUR ARTWORKS",
+      "veiw_artworks": "VIEW ARTWORKS",
+      "veiw": "VIEW",
+      "row": "#",
+      "image": "Image",
+      "code": "Code",
+      "edition": "Edition",
+      "price": "Price (USD)",
+      "discount": "Discount",
+      "paid": "Paid",
+      "status": "Status",
+      "details": "Details",
+      "suggested": "Suggested",
+      "date_registration": "Date of registration",
+      "your_respond": "Your respond",
+      "action": "Actions",
+      "reply": "Reply",
+      "offers_artwork_title": "PRICE OFFERS FOR YOUR ARTWORKS",
+      "empty_active_order": {
+        "title": ".No order has been registered for you yet",
+        "info": {
+          "text1": "in case you have never added an artwork to Arthibition",
+          "text2": "add a new one by clicking the button below"
+        }
+      },
+      "empty_offers_artworks": {
+        "title": "!There has been no offer for your artworks yet"
+      }
+    },
+
+    "alerts": {
+      "info_notice": {
+        "text1": "to confirm your account as a vendor, upload scanned and signed contract",
+        "text2": "(all pages must be signed)",
+        "text3": "after you read the contract"
+      },
+      "info_success": "Your account has been confirmed as a vendor.",
+      "here": "here",
+      "this_contract": "file",
+      "btn_upload": "Upload",
+      "text_upload": "Upload your first artwork"
+    }
+
+  },
+
+  "content-panel-orders": {
+    "filters": {
+      "all": "All",
+      "to_artibition": "To Arthibition",
+      "artibition_to_customer": "Arthibition to customer",
+      "delivered": "Delivered"
+    }
+  },
+
+  "content-panel-manage-artworks": {
+
+    "title" : "ARTWORKS LIST" , 
+    "btn" : "New artwork",
+
+    "filters" : {
+        "all" : "All",
+        "approved" : "Approved",
+        "modification" : "Require modification",
+        "pending" : "Pending",
+        "not_approved" : "Not approved",
+        "sold" : "Sold",
+        "active" : "Active"
+    },
+
+    "tables": {
+      "orders": "ORDERS",
+      "order_active": "ACTIVE ORDERS",
+      "suggestion_artwork": "PRICE OFFERS FOR YOUR ARTWORKS",
+      "veiw_artworks": "VIEW ARTWORKS",
+      "veiw": "VIEW",
+      "row": "#",
+      "image": "Image",
+      "code": "Code",
+      "edition": "Edition",
+      "size": "Size",
+      "price": "Price (USD)",
+      "discount": "Discount",
+      "last_edition": "Last edition",
+      "paid": "Paid",
+      "status": "Status",
+      "details": "Details",
+      "suggested": "Suggested",
+      "date_registration": "Date of registration",
+      "your_respond": "Your respond",
+      "action": "Actions",
+      "reply": "Reply",
+      "Waiting_to_send": "Waiting to send the artwork to Arthibition",
+      "pending": "Pending",
+      "active": "Active",
+      "not_approved": "Not approved",
+      "review": "Review",
+      "deactive": "Deactive",
+      "sold": "Sold",
+      "uneditable": "Uneditable"
+
+
+    }
+
+  },
+
+  "content-panel-my-albums" : {
+    "gallery_box" : {
+      "title" : "",
+      "text" : ""
+    },
+
+    "collections" : {
+      "title" : "",
+      "btn" : "",
+      "row" : "",
+      "subject" : "",
+      "count_artwork" : "",
+      "last_edition" : "",
+      "details" : ""
+    },
+
+    "art_info" : {
+      "title" : "",
+      "btn" : ""
+    }
+  },
+
+  "content-panel-contents" : {
+    "title" : "CONTENT LIST" , 
+    "create_content" : "Create content",
+
+    "table" : {
+      "row" : "#", 
+      "image" : "Image",
+      "subject" : "Title",
+      "type" : "Content type",
+      "date_publish" : "Publication date",
+      "status" : "Status",
+      "details" : "Details",
+      "active" : "Active",
+      "edit" : "Edit",
+      "video" : "Video"
+    }
+  },
+
+  "content-panel-create-content" : {
+    "title" : "CREATE CONTENT",
+    "upload_poster" : {
+      "title" : "Content type", 
+      "report" : "Visual report", 
+      "text_content" : "Text", 
+      "link" : "Link"
+    },
+
+    "upload" : {
+      "title" : "Upload image or video",
+      "text" : "Drag and drop here",
+      "or" : "or",
+      "btn" : "Select file",
+      "tip" : "All pictures must be PNG or JPG and video must be in MP4 format"
+    },
+
+    "subject_fa" : "",
+    "subject_en" : "Title",
+    "placeholder_fa" : "",
+    "placeholder_en" : "Enter details",
+    "link" : "Link",
+    "btn_create_content"  : "Create content", 
+    "btn_cancel" : "Cancel"
+  },
+
+
+
+  "content-panel-add-artwork" : {
+    "step1" : "Artwork info",
+    "step2" : "Purchase info",
+
+    "upload" : {
+      "title" : "Upload photo",
+      "text" : "Select one or more pictures and drag them here",
+      "or" : " or ",
+      "btn" : "Select file",
+      "tip" : "All pictures must be PNG or JPG and video must be in MP4 format"
+    },
+
+    "art_info" : {
+      "title" : "Artwork info",
+      "artwork_name" : "",
+      "artwork_title" : "Artwork title",
+      "artwork_subject" : "Subject",
+      "artwork_field" : "Category",
+      "artwork_technique" : "Technique",
+      "artwork_material" : "Material",
+      "create_date" : "Creation date",
+      "length" : "Length",
+      "width" : "Width",
+      "weight" : "Weight",
+      "select_gallery" : "Select album",
+      "multi_edition" : "This artwork has multiple edition",
+      "description_fa" : "",
+      "description_en" : "Description of artowork",
+      "tag_fa" : "",
+      "text_tag_fa" : "",
+      "tag_en" : "Add tag",
+      "text_tag_en" : ".Adding one or multiple tags facilitates the process of receiving your artworks for your fans and audiences",
+      "next_step" : "Next",
+      "cencel" : "Cancel"
+    },
+
+    "sale_info" : "Sale info" ,
+    "display_only" : "For display only",
+    "display_only_text" : ".By selecting this option the artwork will only be displayed on website",
+    "edition" : "Edition",
+    "price_ir" : "Price(IRR)",
+    "price_usd" : "Price(USD)",
+    "artwork_sold" : "Artwork is sold",
+    "could_offer" : "Could offer a price",
+    "could_offer_text" : ".By selecting this option buyers are enable to send you their price offers",
+    "discount_price" : "Discount price",
+    "discount_base" : "Discount base of percent",
+    "discount_percent_ir" : "Discount percent (IRR)",
+    "discount_percent_usd" : "Discount percent (USD)",
+    "discount_period" : "Discount period",
+    "date" : "Date",
+    "previous_step" : "Previous step",
+    "submit_artwork" : "Submit"
+
   }
+
+
+
+
+
+
 }

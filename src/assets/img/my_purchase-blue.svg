@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+    <g id="my_purchase" transform="translate(-1512 -551)">
+        <path id="Fill_978" fill="#089df2" stroke="#fff" stroke-width="0.4px" d="M18.375 16.333H2.625A2.678 2.678 0 0 1 0 13.611V2.723A2.678 2.678 0 0 1 2.625 0h15.75A2.678 2.678 0 0 1 21 2.723v10.888a2.678 2.678 0 0 1-2.625 2.722zM1.75 5.444v8.167a.893.893 0 0 0 .876.908h15.75a.893.893 0 0 0 .875-.908V5.444zm.876-3.63a.893.893 0 0 0-.876.908v.908h17.5v-.907a.893.893 0 0 0-.875-.908zm7 7.889H4.375a.908.908 0 0 1 0-1.815h5.25a.908.908 0 0 1 0 1.815z" data-name="Fill 978" transform="translate(1515.5 556.833)"/>
+        <path id="Rectangle_5048" fill="none" d="M0 0H28V28H0z" data-name="Rectangle 5048" transform="translate(1512 551)"/>
+    </g>
+</svg>

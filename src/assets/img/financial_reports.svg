@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+    <defs>
+        <style>
+            .cls-2,.cls-3{fill:none}.cls-2{stroke:#141414;stroke-width:1.5px;stroke-linecap:round}
+        </style>
+    </defs>
+    <g id="financial_reports" transform="translate(-1860 -671)">
+        <g id="Group_14675" data-name="Group 14675" transform="translate(325 442)">
+            <g id="Rectangle_5263" fill="none" stroke="#141414" stroke-width="1.5px" data-name="Rectangle 5263" transform="translate(1541 234)">
+                <rect width="16" height="18" stroke="none" rx="3"/>
+                <rect width="17.5" height="19.5" x="-.75" y="-.75" class="cls-3" rx="3.75"/>
+            </g>
+            <path id="Line_803" d="M0 0L8 0" class="cls-2" data-name="Line 803" transform="translate(1545 239)"/>
+            <path id="Line_804" d="M0 0L8 0" class="cls-2" data-name="Line 804" transform="translate(1545 243)"/>
+            <path id="Line_805" d="M0 0L3 0" class="cls-2" data-name="Line 805" transform="translate(1550 247)"/>
+        </g>
+        <path id="Rectangle_5266" d="M0 0H28V28H0z" class="cls-3" data-name="Rectangle 5266" transform="translate(1860 671)"/>
+    </g>
+</svg>
