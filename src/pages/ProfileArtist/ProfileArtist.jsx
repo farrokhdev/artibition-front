@@ -124,6 +124,7 @@ function ProfileArtist() {
                                 <ContentTab/>
                             </TabPane>   
                             
+                            
                     </Tabs>
 
 

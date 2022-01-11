@@ -954,6 +954,13 @@
     "previous_step" : "Previous step",
     "submit_artwork" : "Submit"
 
+  },
+
+  "select_province" :{
+    "all_province" : "All city",
+    "tehran_city" : "Tehran",
+    "other_city" : "More"
+    
   }
 
 
