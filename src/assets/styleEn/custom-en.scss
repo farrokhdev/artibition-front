@@ -1450,7 +1450,7 @@ input:checked + .switchbtn:before {
 }
 
 .timers.timetoend .timer-status,
-.timers.timetoend .timer {
+.timers .timer {
     color: #e68515;
 }
 
@@ -1537,8 +1537,9 @@ div .gallery-daterow:nth-child(1) {
 }
 
 .gallery-txt p {
-    text-align: justify;
-    margin: 40px 0 45px 0;
+    text-align: justify !important;
+    margin: 40px 0 45px 30px !important;
+    font-size: 16px !important;
 }
 
 .gallery-page .tab-content {
@@ -5432,6 +5433,13 @@ p.upload-size {
 .fontbold19 {
     font-family: "Roboto Black", Arial, sans-serif;
     font-size: 19px;
+    display: flex;
+    justify-content: end;
+}
+
+.font-span{
+    display: flex;
+    justify-content: end;
 }
 
 .fontbold20 {
@@ -8626,7 +8634,7 @@ button.btn-searchfilter.hidden-sm{
 }
 
 .box-dir-reverse{
-    flex-direction: row-reverse !important;
+    flex-direction: inherit !important;
 }
 
 .justify-custom{

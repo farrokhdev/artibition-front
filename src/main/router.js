@@ -1,12 +1,14 @@
 import React from 'react';
-import {Routes, Route , BrowserRouter} from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import App from '../App';
 import AddArtwork from '../pages/AddArtwork/AddArtwork';
+import AllGallerysList from '../pages/AllGallerysList/AllGallerysList';
 import ArtistsPage from '../pages/ArtistsPage/ArtistsPage';
 import ArtworksPage from '../pages/ArtworksPage/ArtworksPage';
 import ConfirmMobile from '../pages/ConfirmMobile/ConfirmMobile';
 import DashboardPanel from '../pages/DashboarPanel/DashboardPanel';
 import DetailsArtwork from '../pages/DetailsArtwork/DetailsArtwork';
+import GalleryIntroduction from '../pages/GalleryIntroduction/GalleryIntroduction';
 import Home from '../pages/Home.jsx/Home';
 import Login from '../pages/Login/Login';
 import PanelArtManagement from '../pages/PanelArtManagement/PanelArtManagement';
@@ -35,10 +37,12 @@ const RouterConfig = (props) => {
 
             <Routes>
                 <Route path="site" animate={true}>
-                    <Route  path="artworks" element={<ArtworksPage />}/>
-                    <Route  path="artworks/:id" element={<DetailsArtwork />} />
-                    <Route  path="artists" element={<ArtistsPage />} />
-                    <Route  path="artist-profile" element={<ProfileArtist />} />
+                    <Route path="artworks" element={<ArtworksPage />} />
+                    <Route path="artworks/:id" element={<DetailsArtwork />} />
+                    <Route path="artists" element={<ArtistsPage />} />
+                    <Route path="artist-profile" element={<ProfileArtist />} />
+                    <Route path="all-galleris-list" element={<AllGallerysList />} />
+                    <Route path="gallery-introduction" element={<GalleryIntroduction />} />
                 </Route>
             </Routes>
 
@@ -50,7 +54,7 @@ const RouterConfig = (props) => {
                     <Route path="recovery-password" element={<SetPassword />} />
                 </Route>
             </Routes>
-            
+
 
             <Routes>
                 <Route path="panel" animate={true}>
@@ -67,13 +71,13 @@ const RouterConfig = (props) => {
                     <Route path="my-albums" element={<PanleMyAlbums />} />
                     <Route path="contents" element={<PanelContentList />} />
                     <Route path="create-content" element={<PanelCreateContent />} />
-                    
+
                 </Route>
             </Routes>
 
-            
 
-                
+
+
         </BrowserRouter>
 
 
@@ -81,4 +85,3 @@ const RouterConfig = (props) => {
 }
 
 export default RouterConfig
- 

@@ -9,6 +9,7 @@
   "filter-header": {
     "title": "فیلتر",
     "placeholder-input-search": "جستجوی نام اثر، نام هنرمند، گالری و غیره",
+
     "category": {
       "title": "رشته هنری",
       "all": "همه رشته‌ها",
@@ -941,8 +942,13 @@
     "previous_step" : "مرحله قبل",
     "submit_artwork" : "ثبت اثر"
 
+  },
+
+  "select_province" :{
+    "all_province" : "همه استان‌ها",
+    "tehran_city" : "تهران",
+    "other_city" : "همه"
+    
   }
-
-
 
 }
