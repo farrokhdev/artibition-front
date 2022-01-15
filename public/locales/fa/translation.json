@@ -5,7 +5,6 @@
     "repeat-password": "تکرار رمز عبور وارد نشده است!",
     "activation-code": "کد فعالسازی وارد نشده است!"
   },
-
   "filter-header": {
     "title": "فیلتر",
     "placeholder-input-search": "جستجوی نام اثر، نام هنرمند، گالری و غیره",
@@ -33,7 +32,6 @@
         "width": "عرض",
         "length": "طول",
         "height": "ارتفاع",
-
         "select-custom-size": {
           "title": "انتخاب ابعاد دلخواه برای اثر",
           "to": "تا",
@@ -63,10 +61,8 @@
       "max": "حداکثر قیمت (تومان)"
     }
   },
-
   "login_Title": "وارد شوید",
   "placeholder-username": "شماره همراه یا ایمیل",
-
   "placeholder-password": "رمز عبور",
   "placeholder-confirm-password": "تکرار رمز عبور",
   "forget-title": "رمز عبورم را فراموش کردم",
@@ -77,7 +73,6 @@
   "show-details": "مشاهده جزییات",
   "show-password": "نمایش",
   "hidden-password": "مخفی کردن",
-
   "signup_title": "عضو آرتیبشن شوید",
   "signup_btn-text": "ثبت‌نام",
   "describtion-low": {
@@ -89,19 +84,15 @@
     "text": "قبلا ثبت‌نام کرده‌اید؟",
     "link": "وارد شوید"
   },
-
   "confirm-mobile-title": "تایید شماره همراه",
   "text-btn-verification-submit": "دریافت کد فعالسازی",
-
   "recovery-password-title": "بازیابی رمز عبور",
   "text-btn-recovery-password": "بازیابی رمز عبور",
-
   "membership-title": "عضویت",
   "membership-info-signup": "جهت عضویت ابتدا کد 4 رقمی ارسال شده به شماره همراه خود را وارد نمایید.",
   "membership-info": "جهت بازیابی رمز عبور ابتدا کد 4 رقمی ارسال شده به شماره همراه خود را وارد نمایید.",
   "placeholder-activation-code": "کد فعالسازی",
   "text-btn-confirm-mobile-number": "تایید شماره همراه",
-
   "title_lang-header": "En. Versio",
   "nav-menu-artworks": "آثار هنری",
   "nav-menu-showroom": "تالار",
@@ -113,16 +104,13 @@
   "text-statistics-artworks": "اثرهنری",
   "text-statistics-artists": "هنرمند",
   "text-statistics-users": "کاربر",
-
   "text-footer-auth": {
     "info": "در صورت ایجاد هر گونه سوال با ما تماس بگیرید : ",
     "mobile": "۲۲۵۳۸ ۲۲۹ ۰۲۱"
   },
-
   "category": "دسته‌بندی",
   "galleries": "گالری‌ها",
   "events": "رویدادها",
-
   "see-all": "مشاهده همه",
   "event-all": "همه رویدادها",
   "collection-all": "همه کالکشن‌ها",
@@ -131,7 +119,6 @@
   "toman": "تومان",
   "dollar": "دلار",
   "or": "یا",
-
   "nav-submenu": {
     "artworks": {
       "artField": {
@@ -148,11 +135,9 @@
         "drawing": "طراحی",
         "art-for-gift": "هنر برای هدیه"
       },
-
       "subject": {
         "title": "موضوع"
       },
-
       "budget": {
         "title": "مناسب بودجه شما"
       },
@@ -160,7 +145,6 @@
         "title": "تخفیف‌ها"
       }
     },
-
     "showroom": {
       "category": {
         "all": "همه هنرمندان",
@@ -176,41 +160,34 @@
       }
     }
   },
-
   "artibition-artists-home": {
     "title": "هنرمندان آرتیبیشن",
     "text-info": "در آرتیبیشن می‌توانید به لیست هنرمندان برجسته ایرانی و تمامی آثار آن‌ها دسترسی داشته باشید. همچنین در صورتی که خالق و یا صاحب اثـر هنری هستید می‌توانید با عضویت در آرتیبیشن آن را در معـرض .نمایش برای عموم کاربران قرار دهید",
     "btn-text": "مشاهده هنرمندان",
     "action-text": "ارسال و ثبت اثر"
   },
-
   "artibition-events": {
     "title": "رویدادهای آرتیبیشن"
   },
-
   "news-and-article-art": {
     "title": "اخبار و مقالات هنر",
     "more": "مطالعه خبر"
   },
-
   "suggestion-home": {
     "title": "آثار پیشنهادی"
   },
   "my-recent-views-home": {
     "title": "بازدیدهای اخیر من"
   },
-
   "subscribe-newsletter-home": {
     "title": "عضویت در خبرنامه آرتیبیشن",
     "text-info": "با عضویت از جدیدترین اخبار و آثار منتشر شده با خبر شوید",
     "submit-email-btn": "ثبت ایمیل",
     "placeholder-email": "ایمیل خود را وارد نمایید"
   },
-
   "collection-artworks-home": {
     "title": "کالکشن آثار"
   },
-
   "artwork": {
     "artibition": "آرتیبیشن",
     "view-artwork": "مشاهده اثر",
@@ -277,7 +254,6 @@
       "text1": "همه آثار",
       "text2": "هنرمند"
     },
-
     "modal_edit_offer": {
       "title": "ویرایش پیشنهاد قیمت",
       "subtitle": "پیشنهاد خود را ویرایش نمایید. همچنین در صورت نیاز می‌توانید پیشنهاد خود را لغو کنید.",
@@ -286,11 +262,9 @@
       "submit": "اعمال تغییر",
       "cancel_offer": "رد پیشنهاد"
     },
-
     "modal_similar_artwork": {
       "title": "آثار مشابه"
     },
-
     "modal_bidding_artwork": {
       "title": "ارسال پیشنهاد به هنرمند",
       "subtitle": "مبلغ مورد نظر خود به مشتری را وارد نمایید",
@@ -299,7 +273,6 @@
       "submit": "ارسال پیشنهاد"
     }
   },
-
   "footer": {
     "text-info": "آرتیبیشن نمایشگاه و بازار آنلاین هنرهای تجسمی با محوریت هنر اصیل ایرانی است که با ایجاد دسترسی آسان، طراحی زیبا، ارائه‌‌‌ی بین‌ المللی و به صورت دو زبانه و نیز حضور در شبکه‌های اجتماعی توانسته است اعتماد بسیاری از هنرمندان ممتاز ایرانی را بدست آورد. آرتیبیشن در زمستان ۱۳۹۳ برای وصل کردن هنرمندان توانمند، مجموعه‌داران و گالری‌ها به هنر دوستان و خریداران آثار هنری که ارزش گران‌بهای هنر را می‌دانند در تهران / ایران خلق شده است",
     "guid": {
@@ -316,7 +289,6 @@
       "terms-and-conditional": "قوانین",
       "policy": "حریم خصوصی"
     },
-
     "artibition": {
       "title": "درباره",
       "about-us": "درباره ما",
@@ -324,19 +296,16 @@
       "collabration": "همکاری با ما",
       "collabrators": "همکاران"
     },
-
     "text-copyright": {
       "text": "کلیه حقوق مادی و معنوی این سایت و برند آرتیبیشن متعلق به",
       "link-gallery": "شرکت گالری آرتیبیشن",
       "text2": "می‌باشد"
     },
-
     "text-build": {
       "text1": "ساخته شده با",
       "text2": "توسط گالری"
     }
   },
-
   "artworkList": {
     "box-banner": {
       "title": "هنر سرمایه ماندگار",
@@ -344,9 +313,7 @@
       "btn": "جستجو",
       "placeholder": "جستجوی نام هنرمند"
     },
-
     "filter": {
-
       "title": "فیلتر",
       "remove_all": "حذف همه",
       "artist_name": "نام هنرمند",
@@ -354,7 +321,6 @@
       "last_update": "محبوب ترین‌ها",
       "visite": "پربازدید",
       "sell": "پرفروش",
-
       "artField": {
         "title": "رشته هنری",
         "all": "همه رشته‌ها",
@@ -367,7 +333,6 @@
         "printmaking": "چاپ دستی",
         "drawing": "طراحی"
       },
-
       "price": {
         "title": "قیمت",
         "min": "حداقل قیمت (تومان)",
@@ -375,7 +340,6 @@
         "to": "تا",
         "action": "اعمال"
       },
-
       "discount": {
         "title": "تخفیف",
         "show": "نمایش آثار تخفیف‌دار",
@@ -383,14 +347,11 @@
         "up30": "تخفیف بالای 30 درصد",
         "up50": "تخفیف بالای 50 درصد"
       },
-
       "art_for_gift": {
         "title": "هدیه برای هنر",
         "show": "نمایش آثار مناسب برای هدیه"
       },
-
       "color": "رنگ",
-
       "technique": {
         "title": "تکنیک",
         "placeholder": "تکنیک مورد نظر را جستجو کنید",
@@ -399,11 +360,9 @@
         "pastel": "پاستل",
         "composition": "ترکیب مواد"
       },
-
       "subject": {
         "title": "موضوع"
       },
-
       "material": {
         "title": "",
         "placeholder": "",
@@ -415,7 +374,6 @@
         "collage": "کلاژ",
         "crayons": "مداد رنگی"
       },
-
       "size": {
         "title": "ابعاد",
         "small": "کوچک",
@@ -431,15 +389,12 @@
         "in": "در",
         "submit": "اعمال"
       }
-
     }
   },
-
-
-  "artists" : {
-    "filter" : {
-      "expert" : {
-        "title" : "تخصص هنرمند",
+  "artists": {
+    "filter": {
+      "expert": {
+        "title": "تخصص هنرمند",
         "all": "همه زمینه‌ها",
         "painting": "نقاشی",
         "calligraphy": "خوشنویسی",
@@ -450,44 +405,40 @@
         "printmaking": "چاپ دستی",
         "drawing": "طراحی"
       },
-
-      "artist" : {
-        "title" : "هنرمند",
-        "all" : "همه هنرمندان",
-        "special" : "هنرمندان ویژه",
-        "verified" : "هنرمندان رسمی"
+      "artist": {
+        "title": "هنرمند",
+        "all": "همه هنرمندان",
+        "special": "هنرمندان ویژه",
+        "verified": "هنرمندان رسمی"
       }
     }
   },
-
-  "artist_profile" : {
-    "artists" : "هنرمندان",
-    "text_banner" : "آیدین آغداشلو (متولد ۸ آبان ۱۳۱۹ در رشت) نقاش، گـرافیست، نویسنده، منتقد فیلم، تصویرگر کتاب‌های درسی ایران و مؤسسه‌های خصوصی است. او همچنین مدتی مدیر امور فرهنگی و هنری «دفتر مخصوص شهبانو فرح پهلوی» و نیز از کارکنان موزه هنرهای معاصر تهران و موزه رضا عباسی بود. آغداشلو تاکنون تنها دو بار در ایران نمایشگـاه برگزار کرده است...",
-    "send_message" : "ارسال پیام",
-    "send" : "ارسال" ,
-    "placeholder_message" : "در صورتی که پیام و یا پرسشی از این هنرمند دارید، برای ایشان ارسال نمایید",
-    "tabs" : {
-      "artworks" : "آثار هنری",
-      "albums" : "مجموعه‌ها",
-      "biography" : "زندگی‌نامه",
-      "exhibitions" : "نمایشگاه‌ها",
-      "content" : "محتوا"
+  "artist_profile": {
+    "artists": "هنرمندان",
+    "text_banner": "آیدین آغداشلو (متولد ۸ آبان ۱۳۱۹ در رشت) نقاش، گـرافیست، نویسنده، منتقد فیلم، تصویرگر کتاب‌های درسی ایران و مؤسسه‌های خصوصی است. او همچنین مدتی مدیر امور فرهنگی و هنری «دفتر مخصوص شهبانو فرح پهلوی» و نیز از کارکنان موزه هنرهای معاصر تهران و موزه رضا عباسی بود. آغداشلو تاکنون تنها دو بار در ایران نمایشگـاه برگزار کرده است...",
+    "send_message": "ارسال پیام",
+    "send": "ارسال",
+    "placeholder_message": "در صورتی که پیام و یا پرسشی از این هنرمند دارید، برای ایشان ارسال نمایید",
+    "tabs": {
+      "artworks": "آثار هنری",
+      "albums": "مجموعه‌ها",
+      "biography": "زندگی‌نامه",
+      "exhibitions": "نمایشگاه‌ها",
+      "content": "محتوا"
+    },
+    "smileys": "صورتک‌ها",
+    "veiw": "مشاهده",
+    "more_paint": "نقاشی‌های متفرقه",
+    "introduction": "معرفی",
+    "style": "سبک",
+    "activities": "فعالیت‌ها",
+    "versions": "نسخه‌ها",
+    "aknon_gallery": "گالری اکنون",
+    "collection": "کلکسونر",
+    "COLLECTION": "کلکسونر",
+    "man": "من",
+    "local": "حضوری"
   },
-    "smileys" : "صورتک‌ها",
-    "veiw" : "مشاهده" , 
-    "more_paint" : "نقاشی‌های متفرقه",
-    "introduction" : "معرفی",
-    "style" : "سبک",
-    "activities" : "فعالیت‌ها",
-    "versions" : "نسخه‌ها",
-    "aknon_gallery" : "گالری اکنون",
-    "collection" : "کلکسونر",
-    "COLLECTION" : "کلکسونر",
-    "man" : "من",
-    "local" : "حضوری"
-  },
-
-
   "card_artwork": {
     "veiw": "مشاهده اثر",
     "request_buy": "درخواست خرید",
@@ -495,13 +446,12 @@
       "title": "ابعاد : ",
       "in": " در "
     },
-
     "special": "ویژه",
     "sold": "فروخته شد"
   },
-
   "drawer-panel": {
     "nav-dashboard": "داشبورد",
+    "nav-dashboard-gallery": "داشبورد گالری",
     "nav-art-management": "مدیریت آثار",
     "nav-mypurchases": "خریدهای من",
     "nav-orders": "سفارشات",
@@ -510,12 +460,12 @@
     "nav-favorits": "علاقه‌مندی‌ها",
     "nav-messages": "پیام‌ها",
     "nav-profile": "پروفایل",
+    "nav-exhibitions": "نمایشگاه ها",
     "invite": {
       "btn": "دعوت دوستان",
       "text": "با دعوت دوستان خود از آرتیبیشن حمایت نمایید"
     }
   },
-
   "content-panel-profile": {
     "info-box": {
       "register": {
@@ -531,7 +481,6 @@
         "text": "اثر هنری خود را به فروش برسانید"
       }
     },
-
     "personal-info": {
       "title": "اطلاعات شخصی",
       "fullname": "نام و نام خانوادگی",
@@ -545,12 +494,9 @@
         "btn": "افزودن آدرس جدید",
         "default": "(آدرس پیش‌فرض)"
       }
-
     }
   },
-
   "content-panel-mypurchases": {
-
     "title": "خریدهای من",
     "artwork-title": "عنوان اثر",
     "owner": "صاحب اثر",
@@ -566,7 +512,6 @@
     "x": "در",
     "btn-sell": "فروش در آرتیبیشن",
     "artwok-return": "خرید اثر",
-
     "paid": {
       "title": "پرداخت شده",
       "empty": {
@@ -576,27 +521,20 @@
         "btn": "مشاهده آثار آرتیبیشن"
       }
     },
-
     "delivered": {
       "title": "تحویل شده"
     },
-
     "bidding": {
       "title": "پیشنهاد قیمت"
     },
-
     "returned": {
       "title": "مرجوعی"
     },
-
     "canceled": {
       "title": "لغو شده"
     }
-
   },
-
   "content-panel-favorites": {
-
     "title": "لیست علاقه‌مندی‌ها",
     "tabs": {
       "artworks": "آثار مورد علاقه",
@@ -604,9 +542,7 @@
       "collections": "کالکشن‌ها"
     }
   },
-
   "content-panel-messages": {
-
     "title": "پیام‌ها",
     "new": "پیام جدید",
     "today": "امروز",
@@ -631,10 +567,7 @@
       }
     }
   },
-
-
   "content-panel-wallet": {
-
     "inventory": {
       "title": "موجودی کیف پول",
       "text_gift": {
@@ -661,7 +594,6 @@
         "deposited": "واریز شده",
         "withdrawaled": "برداشت شده"
       },
-
       "table_headers": {
         "type": "نوع",
         "price": "قیمت(تومان)",
@@ -671,16 +603,13 @@
       }
     }
   },
-
   "content-panel-dashboard": {
-
     "box_gallery": {
       "gallery": "گالری آرتیبیشن",
       "order": "سفارش فعال",
       "new_gallery": "ثبت گالری جدید",
       "info_gallery": "اگر گالری دیگری دارید آن را ثبت نمایید"
     },
-
     "box_status": {
       "btn": "افزودن اثر جدید",
       "approved": "اثر تایید شده",
@@ -691,26 +620,24 @@
       "contact_status": "وضعیت قرارداد",
       "email_status": "آدرس ایمیل",
       "resume": "رزومه",
-      "veiw": "مشاهده"
-
+      "veiw": "مشاهده",
+      "approved_artist": "هنرمند تایید شده",
+      "not_send": "ارسال نشده",
+      "approved_1": "تایید شده"
     },
-
     "promotion": {
       "title": "پروموشن‌های پیشرو",
       "veiw_more": "مشاهده بیشتر"
     },
-
     "veiw_artwork": {
       "title": "بازدید آثار",
       "text_info": "با آپلود آثار خود تعداد بازدید‌های کاربران را رصد نمایید",
       "btn": "افزودن اثر جدید"
     },
-
     "my_income": {
       "title": "موجودی من",
       "detail": "جزئیات"
     },
-
     "tables": {
       "orders": "سفارش‌ها",
       "order_active": "سفارش‌های فعال",
@@ -743,7 +670,6 @@
         "title": "تاکنون پیشنهادی به آثار شما نشده است!"
       }
     },
-
     "alerts": {
       "info_notice": {
         "text1": "جهت تأیید حساب خود به عنوان فروشنده، پس از مطالعه",
@@ -756,9 +682,7 @@
       "btn_upload": "آپلود قرارداد",
       "text_upload": "اولین اثر خود را آپلود نمایید."
     }
-
   },
-
   "content-panel-orders": {
     "filters": {
       "all": "همه سفارش‌ها",
@@ -767,24 +691,19 @@
       "delivered": "تحویل شده به مشتری"
     }
   },
-
   "content-panel-manage-artworks": {
-
-    "title" : "لیست آثار" , 
-    "btn" : "افزودن اثر جدید",
-    
-    "filters" : {
-        "all" : "همه آثار من",
-        "approved" : "آثار تایید شده",
-        "modification" : "آثار نیازمند اصلاح",
-        "pending" : "آثار در حال بررسی",
-        "not_approved" : "تایید نشده",
-        "sold" : "فروخته شده",
-        "active" : "فعال در سایت"
+    "title": "لیست آثار",
+    "btn": "افزودن اثر جدید",
+    "filters": {
+      "all": "همه آثار من",
+      "approved": "آثار تایید شده",
+      "modification": "آثار نیازمند اصلاح",
+      "pending": "آثار در حال بررسی",
+      "not_approved": "تایید نشده",
+      "sold": "فروخته شده",
+      "active": "فعال در سایت"
     },
-
     "tables": {
-
       "orders": "سفارش‌ها",
       "order_active": "سفارش‌های فعال",
       "suggestion_artwork": "پیشنهاد قیمت به آثار شما",
@@ -815,134 +734,320 @@
       "sold": "فروخته شد",
       "uneditable": "غیر قابل ویرایش"
     }
-
   },
-
-  "content-panel-my-albums" : {
-    "gallery_box" : {
-      "title" : "",
-      "text" : ""
+  "content-panel-my-albums": {
+    "gallery_box": {
+      "title": "",
+      "text": ""
     },
-
-    "collections" : {
-      "title" : "",
-      "btn" : "",
-      "row" : "",
-      "subject" : "",
-      "count_artwork" : "",
-      "last_edition" : "",
-      "details" : ""
+    "collections": {
+      "title": "",
+      "btn": "",
+      "row": "",
+      "subject": "",
+      "count_artwork": "",
+      "last_edition": "",
+      "details": ""
     },
-
-    "art_info" : {
-      "title" : "",
-      "btn" : ""
+    "art_info": {
+      "title": "",
+      "btn": ""
     }
   },
-
-  "content-panel-contents" : {
-    "title" : "لیست محتوا" , 
-    "create_content" : "ایجاد محتوا",
-
-    "table" : {
-      "row" : "ردیف", 
-      "image" : "تصویر",
-      "subject" : "عنوان",
-      "type" : "نوع محتوا",
-      "date_publish" : "تاریخ انتشار",
-      "status" : "وضعیت",
-      "details" : "جزئیات",
-      "active" : "فعال",
-      "edit" : "ویرایش",
-      "video" : "ویدیوئی"
+  "content-panel-contents": {
+    "title": "لیست محتوا",
+    "create_content": "ایجاد محتوا",
+    "table": {
+      "row": "ردیف",
+      "image": "تصویر",
+      "subject": "عنوان",
+      "type": "نوع محتوا",
+      "date_publish": "تاریخ انتشار",
+      "status": "وضعیت",
+      "details": "جزئیات",
+      "active": "فعال",
+      "edit": "ویرایش",
+      "video": "ویدیوئی"
     }
   },
-
-  
-  "content-panel-create-content" : {
-    "title" : "ایجاد محتوا",
-    "upload_poster" : {
-      "title" : "آپلود تصویر پوستر", 
-      "report" : "گزارش تصویری", 
-      "text_content" : "محتوای متنی", 
-      "link" : "لینک"
+  "content-panel-create-content": {
+    "title": "ایجاد محتوا",
+    "upload_poster": {
+      "title": "آپلود تصویر پوستر",
+      "report": "گزارش تصویری",
+      "text_content": "محتوای متنی",
+      "link": "لینک",
+      "image": "تصویر",
+      "video": "ویدیو"
     },
-
-    "upload" : {
-      "title" : "آپلود عکس یا ویدیو",
-      "text" : "عکس‌ها و یا ویدیوهای خود را بگیرید و در اینجا بیاندازید ",
-      "or" : " یا ",
-      "btn" : "انتخاب فایل از سیستم",
-      "tip" : "ابعاد عکس ها می‌بایست حداقل ۹۶۰ در ۹۶۰ و با فرمت  PNG و یا JPG باشند"
+    "upload": {
+      "title": "آپلود عکس یا ویدیو",
+      "text": "عکس‌ها و یا ویدیوهای خود را بگیرید و در اینجا بیاندازید ",
+      "or": " یا ",
+      "btn": "انتخاب فایل از سیستم",
+      "tip": "ابعاد عکس ها می‌بایست حداقل ۹۶۰ در ۹۶۰ و با فرمت  PNG و یا JPG باشند"
     },
-
-    "subject_fa" : "عنوان",
-    "subject_en" : "Title",
-    "placeholder_fa" : "توضیحات محتوا را به فارسی وارد نمایید",
-    "placeholder_en" : "توضیحات محتوا را به انگلیسی وارد نمایید",
-    "link" : "لینک",
-    "btn_create_content"  : "ایجاد محتوا", 
-    "btn_cancel" : "انصراف"
+    "subject_fa": "عنوان",
+    "subject_en": "Title",
+    "placeholder_fa": "توضیحات محتوا را به فارسی وارد نمایید",
+    "placeholder_en": "توضیحات محتوا را به انگلیسی وارد نمایید",
+    "link": "لینک",
+    "btn_create_content": "ایجاد محتوا",
+    "btn_cancel": "انصراف"
   },
-
-
-
-  "content-panel-add-artwork" : {
-    "step1" : "تکمیل اطلاعات اثر",
-    "step2" : "تکمیل اطلاعات فروش",
-
-    "upload" : {
-      "title" : "آپلود تصویر اثر",
-      "text" : "یک یا چند عکس را بگیرید و در اینجا بیاندازید",
-      "or" : " یا ",
-      "btn" : "انتخاب فایل از سیستم",
-      "tip" : "ابعاد عکس ها می‌بایست حداقل ۹۶۰ در ۹۶۰ و با فرمت  PNG و یا JPG باشند"
+  "content-panel-add-artwork": {
+    "step1": "تکمیل اطلاعات اثر",
+    "step2": "تکمیل اطلاعات فروش",
+    "upload": {
+      "title": "آپلود تصویر اثر",
+      "text": "یک یا چند عکس را بگیرید و در اینجا بیاندازید",
+      "or": " یا ",
+      "btn": "انتخاب فایل از سیستم",
+      "tip": "ابعاد عکس ها می‌بایست حداقل ۹۶۰ در ۹۶۰ و با فرمت  PNG و یا JPG باشند"
     },
-
-    "art_info" : {
-      "title" : "اطلاعات هنری",
-      "artwork_name" : "Artwork Name",
-      "artwork_title" : "عنوان اثر",
-      "artwork_subject" : "موضوع",
-      "artwork_field" : "رشته هنری",
-      "artwork_technique" : "تکنیک",
-      "artwork_material" : "متریال",
-      "create_date" : "تاریخ خلق اثر (شمسی)",
-      "length" : "طول",
-      "width" : "عرض",
-      "weight" : "وزن اثر",
-      "select_gallery" : "انتخاب مجموعه",
-      "multi_edition" : "این اثر دارای چند ادیشن است",
-      "description_fa" : "توضویحات اثر به فارسی",
-      "description_en" : "توضیحات اثر به انگلیسی",
-      "tag_fa" : "افزودن تگ (فارسی)",
-      "text_tag_fa" : "با افزودن یک یا چند تگ، اثر شما آسان‌تر توسط علاقه‌مندان و مخاطبان شما یافت می‌شود",
-      "tag_en" : "افزودن تگ (انگلیسی)",
-      "text_tag_en" : "تگ‌های انگلیسی به جستجوی آسان‌تر آثار شما توسط علاقه‌مندان خارجی زبان کمک می‌نماید",
-      "next_step" : "مرحله بعد",
-      "cencel" : "انصراف"
+    "art_info": {
+      "title": "اطلاعات هنری",
+      "artwork_name": "Artwork Name",
+      "artwork_title": "عنوان اثر",
+      "artwork_subject": "موضوع",
+      "artwork_field": "رشته هنری",
+      "artwork_technique": "تکنیک",
+      "artwork_material": "متریال",
+      "create_date": "تاریخ خلق اثر (شمسی)",
+      "length": "طول",
+      "width": "عرض",
+      "weight": "وزن اثر",
+      "select_gallery": "انتخاب مجموعه",
+      "multi_edition": "این اثر دارای چند ادیشن است",
+      "description_fa": "توضویحات اثر به فارسی",
+      "description_en": "توضیحات اثر به انگلیسی",
+      "tag_fa": "افزودن تگ (فارسی)",
+      "text_tag_fa": "با افزودن یک یا چند تگ، اثر شما آسان‌تر توسط علاقه‌مندان و مخاطبان شما یافت می‌شود",
+      "tag_en": "افزودن تگ (انگلیسی)",
+      "text_tag_en": "تگ‌های انگلیسی به جستجوی آسان‌تر آثار شما توسط علاقه‌مندان خارجی زبان کمک می‌نماید",
+      "next_step": "مرحله بعد",
+      "cencel": "انصراف"
     },
-
-    "sale_info" : "اطلاعات فروش" ,
-    "display_only" : "برای نمایش",
-    "display_only_text" : "با انتخاب این گزینه اثر تنها برای نمایش در سایت قرار می‌گیرد",
-    "edition" : "شماره ادیشن",
-    "price_ir" : "قیمت اثر به تومان",
-    "edition_usd" : "معادل قیمت به دلار",
-    "artwork_sold" : "این اثر فروخته شده",
-    "could_offer" : "امکان ارسال پیشنهاد قیمت",
-    "could_offer_text" : "از طریق این قابلیت مشتریان شما می‌توانند پیشنهاد قیمتی خود را به شما ارسال نمایند",
-    "discount_price" : "تخفیف قیمت",
-    "discount_base" : "تخفیف بر اساس درصد",
-    "discount_percent_ir" : "درصد تخفیف قیمت ریالی",
-    "discount_percent_usd" : "درصد تخفیف قیمت دلاری",
-    "discount_period" : "مدت زمان تخفیف",
-    "date" : "تاریخ",
-    "previous_step" : "مرحله قبل",
-    "submit_artwork" : "ثبت اثر"
-
+    "sale_info": "اطلاعات فروش",
+    "display_only": "برای نمایش",
+    "display_only_text": "با انتخاب این گزینه اثر تنها برای نمایش در سایت قرار می‌گیرد",
+    "edition": "شماره ادیشن",
+    "price_ir": "قیمت اثر به تومان",
+    "edition_usd": "معادل قیمت به دلار",
+    "artwork_sold": "این اثر فروخته شده",
+    "could_offer": "امکان ارسال پیشنهاد قیمت",
+    "could_offer_text": "از طریق این قابلیت مشتریان شما می‌توانند پیشنهاد قیمتی خود را به شما ارسال نمایند",
+    "discount_price": "تخفیف قیمت",
+    "discount_base": "تخفیف بر اساس درصد",
+    "discount_percent_ir": "درصد تخفیف قیمت ریالی",
+    "discount_percent_usd": "درصد تخفیف قیمت دلاری",
+    "discount_period": "مدت زمان تخفیف",
+    "date": "تاریخ",
+    "previous_step": "مرحله قبل",
+    "submit_artwork": "ثبت اثر"
+  },
+  "gallery-panel-dashboard": {
+    "title": "سفارش های فعال",
+    "counter_status": {
+      "exhibition": "نمایشگاه",
+      "online_exhibition": "نمایشگاه مجازی",
+      "approved": "اثر تایید شده",
+      "require_modification": "نیازمند اصلاح",
+      "pending": "در حال بررسی",
+      "not_approved": "تایید نشده",
+      "view": "مشاهده"
+    },
+    "tables": {
+      "orders": "سفارش‌ها",
+      "order_active": "سفارش‌های فعال",
+      "suggestion_artwork": "پیشنهاد قیمت به آثار شما",
+      "veiw_artworks": "بازدید آثار",
+      "veiw": "مشاهده",
+      "row": "ردیف",
+      "image": "تصویر",
+      "code": "کد اثر",
+      "edition": "ادیشن",
+      "price": "قیمت(تومان)",
+      "discount": "تخفیف",
+      "paid": "پرداخت شده",
+      "status": "وضعیت",
+      "details": "جزئیات",
+      "suggested": "پیشنهاد شده",
+      "date_registration": "تاریخ ثبت",
+      "your_respond": "پاسخ شما",
+      "action": "عملیات",
+      "reply": "پاسخ",
+      "size": "ابعاد",
+      "last_edition": "آخرین ویرایش",
+      "Waiting_to_send": "منتظر ارسال اثر به آرتیبیشن",
+      "delivered": "تحویل شده به مشتری",
+      "pending": "درحال بررسی",
+      "active": "فعال در سایت",
+      "not_approved": "تایید نشده",
+      "review": "بررسی مجدد",
+      "deactive": "غیر‌فعال",
+      "sold": "فروخته شد",
+      "uneditable": "غیر قابل ویرایش"
+    }
+  },
+  "gallery-panel-exhibition": {
+    "create_exhibition": "ایجاد نمایشگاه",
+    "title": "لیست نمایشگاه ها",
+    "table": {
+      "row": "ردیف",
+      "image": "تصویر",
+      "gallery_name": "نام گالری",
+      "type": "نوع",
+      "start": "شروع",
+      "end": "پایان",
+      "profile": "پروفایل",
+      "details": "جزئیات",
+      "edit": "ویرایش",
+      "upload_artwotk": "آپلود اثر",
+      "presence": "حضوری",
+      "virtual": "مجاری",
+      "presence_virtual": "حضوری/مجازی"
+    }
+  },
+  "gallery-panel-create-exhibition": {
+    "title": "ایجاد نمایشگاه",
+    "exhibition_info": "اطلاعات نمایشگاه",
+    "exhibition_type": "نوع نمایشگاه را مشخص نمایید",
+    "online_start": "تاریخ شروع مجازی",
+    "online_end": "تاریخ پایان مجازی",
+    "local_start": "تاریخ شروع حضوری",
+    "local_end": "تاریخ پایان حضوری",
+    "local_exhibition": "نمایشگاه آنلاین",
+    "online_exhibition": "نمایشگاه حضوری",
+    "local_online_exhibition": "نمایشگاه مجازی و حضوری",
+    "art_categories": "رشته هنری نمایشگاه",
+    "painting": "نقاشی",
+    "photography": "عکاسی",
+    "sculpture": "مجسمه",
+    "calligram": "نقاشی خط",
+    "calligraphy": "خوشنویسی",
+    "printmaking": "چاپ دستی",
+    "graphic": "گرافیک",
+    "drawing": "طراحی",
+    "artists": "لیست هنرمندان",
+    "enter_artist_name_fa": "نام هنرمند را وارد نمایید",
+    "enter_artist_name_en": "Enter artist name",
+    "exhibition_name_fa": "نام نمایشگاه",
+    "exhibition_name_en": "Exhibition Name",
+    "address_contact_info": "آدرس و اطلاعات تماس",
+    "notice_visiting_hours": "اعلامیه و ساعات مراجعه",
+    "submit": "ثبت",
+    "exhibition_contact_placeholder_fa": "اعلامیه نمایشگاه به فارسی",
+    "exhibition_contact_placeholder_en": "اعلامیه نمایشگاه به انگلیسی",
+    "exhibition_time_work_placeholder_fa": "ساعات کاری گالری (فارسی). نمونه: - همه روزه از ساعت ۱۰ الی ۲۱ - روزهای تعطیل ۱۴ الی ۲۰",
+    "exhibition_time_work_placeholder_en": "e.g.-All Days from 10 to 21 -Weekend From 14 to 19",
+    "select_on_map": "تعیین روی نقشه",
+    "address_en": "Address",
+    "address_fa": "آدرس",
+    "phone_number": "شماره تماس",
+    "btn_confirm_next": "تایید و مرحله بعد",
+    "upload_poster": {
+      "title": "آپلود تصویر پوستر",
+      "description": "تصویر از پوستر نمایشگاه (یکی مستطیلی و دیگری با ابعاد مربعی) آپلود نمایید",
+      "report": "گزارش تصویری",
+      "text_content": "محتوای متنی",
+      "link": "لینک",
+      "image": "تصویر",
+      "video": "ویدیو"
+    },
+    "upload": {
+      "title": "آپلود عکس یا ویدیو",
+      "text": "عکس‌ها و یا ویدیوهای خود را بگیرید و در اینجا بیاندازید ",
+      "or": " یا ",
+      "btn": "انتخاب فایل از سیستم",
+      "tip": "ابعاد عکس ها می‌بایست حداقل ۹۶۰ در ۹۶۰ و با فرمت  PNG و یا JPG باشند"
+    },
+    "subject_fa": "عنوان",
+    "subject_en": "Title",
+    "placeholder_fa": "توضیحات محتوا را به فارسی وارد نمایید",
+    "placeholder_en": "توضیحات محتوا را به انگلیسی وارد نمایید",
+    "link": "لینک",
+    "btn_create_content": "ایجاد محتوا",
+    "btn_cancel": "انصراف"
+  },
+  "gallery-panel-edit-gallery-info": {
+    "upload_gallery_cover_photo": "آپلود کاور و لوگوی گالری",
+    "gallery_info": "اطلاعات گالری",
+    "country_name": "نام کشور",
+    "city_name": "نام شهر",
+    "enter_artist_name_en": "Enter artist name",
+    "gallery_name_fa": "نام گالری",
+    "gallery_name_en": "Gallery Name",
+    "address_contact_info": "آدرس و اطلاعات تماس",
+    "notice_visiting_hours": "اعلامیه و ساعات مراجعه",
+    "submit": "ثبت",
+    "exhibition_contact_placeholder_fa": "اعلامیه نمایشگاه به فارسی",
+    "exhibition_contact_placeholder_en": "اعلامیه نمایشگاه به انگلیسی",
+    "exhibition_time_work_placeholder_fa": "ساعات کاری گالری (فارسی). نمونه: - همه روزه از ساعت ۱۰ الی ۲۱ - روزهای تعطیل ۱۴ الی ۲۰",
+    "exhibition_time_work_placeholder_en": "e.g.-All Days from 10 to 21 -Weekend From 14 to 19",
+    "exhibitions":"نمایشگاه‌ها",
+    "select_on_map": "تعیین روی نقشه",
+    "address_en": "Address",
+    "address_fa": "آدرس",
+    "phone_number": "شماره تماس",
+    "btn_confirm_info": "تایید اطلاعات",
+    "add_cover_photo": "افزودن عکس کاور",
+    "select_logo": "لوگو را انتخاب نمایید",
+    "exhibition_name": "نام نمایشگاه",
+    "from_date": "از تاریخ",
+    "to_date": "تا تاریخ",
+    "start_date": "تاریخ شروع",
+    "end_date": "تاریخ پایان",
+    "details":"جزئیات",
+    "upload_poster": {
+      "title": "آپلود تصویر پوستر",
+      "description": "تصویر از پوستر نمایشگاه (یکی مستطیلی و دیگری با ابعاد مربعی) آپلود نمایید",
+      "report": "گزارش تصویری",
+      "text_content": "محتوای متنی",
+      "link": "لینک",
+      "image": "تصویر",
+      "video": "ویدیو"
+    },
+    "upload": {
+      "title": "آپلود عکس یا ویدیو",
+      "text": "عکس‌ها و یا ویدیوهای خود را بگیرید و در اینجا بیاندازید ",
+      "or": " یا ",
+      "btn": "انتخاب فایل از سیستم",
+      "tip": "ابعاد عکس ها می‌بایست حداقل ۹۶۰ در ۹۶۰ و با فرمت  PNG و یا JPG باشند"
+    },
+    "subject_fa": "عنوان",
+    "subject_en": "Title",
+    "placeholder_fa": "توضیحات محتوا را به فارسی وارد نمایید",
+    "placeholder_en": "توضیحات محتوا را به انگلیسی وارد نمایید",
+    "link": "لینک",
+    "btn_create_content": "ایجاد محتوا",
+    "btn_cancel": "انصراف"
+  },
+  "gallery-panel-artist": {
+    "create_artist": "افزودن هنرمند",
+    "title": "لیست هنرمندان",
+    "table": {
+      "row": "ردیف",
+      "image": "تصویر",
+      "artist_name": "نام هنرمند",
+      "exhibitions": "نمایشگاه ها",
+      "exhibitions_list": "لیست نمایشگاه ها",
+      "details": "جزئیات",
+      "edit": "ویرایش"
+    }
+  },
+  "gallery-panel-my-gallery": {
+    "create_gallery": "ثبت گالری جدید",
+    "title": "گالری های من",
+    "table": {
+      "row": "ردیف",
+      "logo": "لوگو",
+      "gallery_name": "نام گالری",
+      "number_exhibition": "تعداد نمایشگاه ها",
+      "last_edition": "تاریخ آخرین ویرایش",
+      "profile": "پروفایل",
+      "details": "جزئیات",
+      "edit": "ویرایش"
+    }
   }
-
-
-
 }

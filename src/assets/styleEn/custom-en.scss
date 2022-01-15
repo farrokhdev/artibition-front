@@ -1934,6 +1934,22 @@ div .gallery-daterow:nth-child(1) {
     bottom: 10px;
 }
 
+
+// styled with mohsen-mahadi----------
+@media (min-width: 768px){
+    .col-md-4 {
+        flex: unset !important;
+        max-width: unset !important;
+    }
+    
+    .col-md-8 {
+        flex: unset !important;
+        max-width: unset !important;
+    }
+    }
+// styled with mohsen-mahadi----------
+
+
 @media(max-width : "992px"){
     .artwork-options {
         position: relative !important;
@@ -4562,6 +4578,10 @@ a.sec-timeline {
     margin-bottom: 4px;
 }
 
+.text-align{
+    text-align: right !important;
+}
+
 .artistpanel-3 table,
 .artistpanel-5 table,
 .artistpanel-6 table {
@@ -6110,7 +6130,7 @@ td[data-label] {
 }
 
 .addcover img {
-    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .no-cursor {
@@ -6223,6 +6243,16 @@ textarea {
 .wallet-table td {
     padding-top: 15px !important;
     padding-bottom: 15px !important;
+}
+
+@media(min-widht:768px){
+    .exhibition-table td.status {
+        text-align: center;
+    }
+}
+
+.exhibition-table td.status button {
+    margin: 0 2px;
 }
 
 
@@ -7063,7 +7093,7 @@ label {
 
 
 .radio label, .lable-checkbox {
-    // padding-left: 30px;
+    padding-left: 30px;
     color: #adafb3;
     cursor: pointer;
     font-size: 12px;
@@ -8904,4 +8934,8 @@ textarea.ant-input {
 .btn-close-modal-ant{
     width: 17px !important;
     height: 17px !important;
+}
+
+.d-table{
+    display: table !important;
 }

@@ -142,7 +142,7 @@ function TableArtworks() {
                                                 <td data-label={t("content-panel-manage-artworks.tables.paid")} className="persian-num">۴,۰۰۰,۰۰۰</td>
                                                 <td data-label={t("content-panel-manage-artworks.tables.status")} className="persian-num status text-dir text-md-center">
                                                     <span>{t("content-panel-manage-artworks.tables.not_approved")}</span>
-                                                    <span class="bluestyle">{t("content-panel-manage-artworks.tables.review")}</span>
+                                                    <span className="bluestyle">{t("content-panel-manage-artworks.tables.review")}</span>
                                                 </td>
                                                 <td data-label={t("content-panel-manage-artworks.tables.details")} className="">
                                                     {t("content-panel-manage-artworks.tables.details")}     
@@ -208,7 +208,7 @@ function TableArtworks() {
                                                     {t("content-panel-manage-artworks.tables.details")}     
                                                 </td>
                                                 <td data-label={t("content-panel-manage-artworks.tables.action")}>
-                                                    <button class="btn-outline-blue uneditable" type="button">
+                                                    <button className="btn-outline-blue uneditable" type="button">
                                                          {t("content-panel-manage-artworks.tables.uneditable")}
                                                     </button>
                                                 </td>

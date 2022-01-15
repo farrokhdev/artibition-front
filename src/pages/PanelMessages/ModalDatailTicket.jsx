@@ -33,25 +33,25 @@ function ModalDatailTicket(props) {
                             <img className="btn-close-modal" src={close_icon} alt="close-icon" />
                         </span>
                     </button>
-                    <div class="modal-header">
+                    <div className="modal-header">
                         <div className="col">
-                            <h5 class="modal-title " id="exampleModalLabel">{t("content-panel-messages.tabs.members.title_modal")}</h5>
+                            <h5 className="modal-title " id="exampleModalLabel">{t("content-panel-messages.tabs.members.title_modal")}</h5>
                     
-                            <div class="d-flex  ticket-subject  justify-custom">
+                            <div className="d-flex  ticket-subject  justify-custom">
                                <div className="col w-100">
-                                    <span class="font17 graycolor text-dir">{t("content-panel-messages.tabs.members.subject")}</span>
-                                    <span class="bolder-title text-dir">Referral request</span>
+                                    <span className="font17 graycolor text-dir">{t("content-panel-messages.tabs.members.subject")}</span>
+                                    <span className="bolder-title text-dir">Referral request</span>
                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-body">
+                    <div className="modal-body">
 
 
-                        <div class="ticket-modal-block">
-                            <div class="d-flex box-dir-reverse">
-                                <div class="col-sm-1 col-xs-2 nopadrl">
-                                    <img src={profile} width="56" height="56" class="img-responsive pull-left" alt='prifile-pic' />
+                        <div className="ticket-modal-block">
+                            <div className="d-flex box-dir-reverse">
+                                <div className="col-sm-1 col-xs-2 nopadrl">
+                                    <img src={profile} width="56" height="56" className="img-responsive pull-left" alt='prifile-pic' />
                                 </div>
                                 <div className="col">
                                     <div className="d-block d-md-flex box-dir-reverse">
@@ -60,12 +60,12 @@ function ModalDatailTicket(props) {
                                                 <div className="d-block w-100">
                                                     <div className="col  w-100">
                                                         <div className="d-flex w-100" >
-                                                            <h4 class="gallery-artist-name text-dir  w-100">Your account</h4>
+                                                            <h4 className="gallery-artist-name text-dir  w-100">Your account</h4>
                                                         </div>
                                                     </div>
                                                     <div className="col ">
                                                         <div className="d-flex">
-                                                            <span class=" graycolor text-dir w-100">0912071837</span>
+                                                            <span className=" graycolor text-dir w-100">0912071837</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -73,12 +73,12 @@ function ModalDatailTicket(props) {
                                         </div>
                                         <div className="col ">
                                             <div className="d-flex justify-custom">
-                                            <span class="pull-dir graycolor">19:04 - 2020/05/02</span>
+                                            <span className="pull-dir graycolor">19:04 - 2020/05/02</span>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="ticket-modal-block-body">
-                                        <p class="text-dir">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
+                                    <div className="ticket-modal-block-body">
+                                        <p className="text-dir">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
                                             diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
                                             volutpat</p>
                                     </div>
@@ -89,10 +89,10 @@ function ModalDatailTicket(props) {
 
 
 
-                        <div class="ticket-modal-block">
-                            <div class="d-flex box-dir-reverse">
-                                <div class="col-sm-1 col-xs-2 nopadrl">
-                                    <img src={profile_artibition} width="56" height="56" class="img-responsive pull-left" alt='prifile-pic' />
+                        <div className="ticket-modal-block">
+                            <div className="d-flex box-dir-reverse">
+                                <div className="col-sm-1 col-xs-2 nopadrl">
+                                    <img src={profile_artibition} width="56" height="56" className="img-responsive pull-left" alt='prifile-pic' />
                                 </div>
 
                                 <div className="col">
@@ -102,12 +102,12 @@ function ModalDatailTicket(props) {
                                                 <div className="d-block w-100">
                                                     <div className="col  w-100">
                                                         <div className="d-flex w-100" >
-                                                            <h4 class="gallery-artist-name text-dir  w-100">Arthibition support</h4>
+                                                            <h4 className="gallery-artist-name text-dir  w-100">Arthibition support</h4>
                                                         </div>
                                                     </div>
                                                     <div className="col ">
                                                         <div className="d-flex box-dir-reverse">
-                                                            <span class=" graycolor text-dir ">
+                                                            <span className=" graycolor text-dir ">
                                                                 Masoud Molaei
                                                             </span>
                                                                 <img src={blue_badge} height="20" width="20" alt=""/>
@@ -118,13 +118,13 @@ function ModalDatailTicket(props) {
                                         </div>
                                         <div className="col ">
                                             <div className="d-flex justify-custom">
-                                            <span class="pull-dir graycolor">19:04 - 2020/05/02</span>
+                                            <span className="pull-dir graycolor">19:04 - 2020/05/02</span>
                                             </div>
                                         </div>
                                         
                                     </div>
-                                    <div class="ticket-modal-block-body">
-                                        <p class="text-dir">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
+                                    <div className="ticket-modal-block-body">
+                                        <p className="text-dir">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
                                             diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
                                             volutpat</p>
                                     </div>
@@ -134,10 +134,10 @@ function ModalDatailTicket(props) {
 
 
 
-                        <div class="ticket-modal-block">
-                            <div class="d-flex box-dir-reverse">
-                                <div class="col-sm-1 col-xs-2 nopadrl">
-                                    <img src={profile} width="56" height="56" class="img-responsive pull-left" alt='prifile-pic' />
+                        <div className="ticket-modal-block">
+                            <div className="d-flex box-dir-reverse">
+                                <div className="col-sm-1 col-xs-2 nopadrl">
+                                    <img src={profile} width="56" height="56" className="img-responsive pull-left" alt='prifile-pic' />
                                 </div>
 
                                 <div className="col">
@@ -147,12 +147,12 @@ function ModalDatailTicket(props) {
                                                 <div className="d-block w-100">
                                                     <div className="col  w-100">
                                                         <div className="d-flex w-100" >
-                                                            <h4 class="gallery-artist-name text-dir  w-100">Your account</h4>
+                                                            <h4 className="gallery-artist-name text-dir  w-100">Your account</h4>
                                                         </div>
                                                     </div>
                                                     <div className="col ">
                                                         <div className="d-flex">
-                                                            <span class=" graycolor text-dir w-100">0912071837</span>
+                                                            <span className=" graycolor text-dir w-100">0912071837</span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -160,12 +160,12 @@ function ModalDatailTicket(props) {
                                         </div>
                                         <div className="col ">
                                             <div className="d-flex justify-custom">
-                                            <span class="pull-dir graycolor">19:04 - 2020/05/02</span>
+                                            <span className="pull-dir graycolor">19:04 - 2020/05/02</span>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="ticket-modal-block-body">
-                                        <p class="text-dir">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
+                                    <div className="ticket-modal-block-body">
+                                        <p className="text-dir">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
                                             diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
                                             volutpat</p>
                                     </div>
@@ -174,11 +174,11 @@ function ModalDatailTicket(props) {
                         </div>
 
 
-                        <div class="modal-footer">
-                            <div class="form-group w-100">
-                                <input class="form-control ticket-input w-100" placeholder={t("content-panel-messages.tabs.members.palaceholder_message")}/>
-                                <button type="button" class="btn-blue">
-                                    <img src={send_icon} width="34" height="34" alt="" class="center-block send-icon-message"/>
+                        <div className="modal-footer">
+                            <div className="form-group w-100">
+                                <input className="form-control ticket-input w-100" placeholder={t("content-panel-messages.tabs.members.palaceholder_message")}/>
+                                <button type="button" className="btn-blue">
+                                    <img src={send_icon} width="34" height="34" alt="" className="center-block send-icon-message"/>
                                 </button>
                             </div>
                         </div>

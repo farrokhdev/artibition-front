@@ -1,36 +1,35 @@
-import React from 'react';
-
-import info_pink_icon from '../../assets/img/info-pink.png';
-import dates_icon from '../../assets/img/dates.svg';
-import tip_icon from '../../assets/img/tip.svg';
-import { t } from 'i18next';
+import React from "react";
+import tip from "../../assets/img/tip.svg"
+import dates from "../../assets/img/dates.svg"
+import pinkInfo from "../../assets/img/info-pink.png"
 
 
-function Promotions() {
+
+function Promotion() {
     return (
-        <div className="box artistpanel-4 ">
+        <div className="box artistpanel-4">
             <div className="d-flex box-dir-reverse justify-content-between public-header ">
                 <div className="pull-dir">
-                    <h2 className="d-flex default-title box-dir-reverse "><span className="mx-2">{t("content-panel-dashboard.promotion.title")}</span>
+                    <h2 className="d-flex default-title box-dir-reverse ">پروموشن‌های پیشرو
                         <a href="#">
-                            <img src={tip_icon} width="18" height="18" alt="" />
+                            <img src={tip} width="18" height="18" alt="" />
                         </a>
                     </h2>
                 </div>
-                <div className="pull-dir ">
+                <div className="pull-dir">
                     <a href="#">
-                        <img src={dates_icon} width="20" height="20" alt="dates-icon" />
+                        <img src={dates} width="20" height="20" />
                     </a>
                 </div>
             </div>
             <div className="promotion-blocks">
                 <div className="promotion-block">
                     <h3 className="d-flex box-dir-reverse pink-title">
-                        <img src={info_pink_icon} width="16" height="16" alt="" className="mx-2" />
+                        <img src={pinkInfo} width="16" height="16" alt="" className="" />
                         <span>تخفیف ویژه یلدای ۹۹</span>
                     </h3>
                     <h3 className="d-flex box-dir-reverse gray-title">
-                        <i className="glyphicon glyphicon-time mx-2"></i>
+                        <i className="glyphicon glyphicon-time"></i>
                         <span>۲۵ آذر الی ۱ دی ماه</span>
                     </h3>
                     <p className="text-dir">
@@ -40,11 +39,11 @@ function Promotions() {
                 </div>
                 <div className="promotion-block">
                     <h3 className="d-flex box-dir-reverse pink-title">
-                        <img src={info_pink_icon} width="16" height="16" alt="" className="mx-2" />
+                        <img src={pinkInfo} width="16" height="16" alt="" className="" />
                         <span>کمپین آثار نقاشی آرتیبیشن</span>
                     </h3>
                     <h3 className="d-flex box-dir-reverse gray-title">
-                        <i className="glyphicon glyphicon-time mx-1"></i>
+                        <i className="glyphicon glyphicon-time"></i>
                         <span>۱۹ الی ۲۶ مرداد ماه</span>
                     </h3>
                     <p className="text-dir">
@@ -55,9 +54,9 @@ function Promotions() {
                     </p>
                 </div>
             </div>
-            <button type="button" className="btn btn-more">{t("content-panel-dashboard.promotion.veiw_more")}</button>
+            <button type="button" className="btn btn-more">مشاهده بیشتر</button>
         </div>
     )
 }
 
-export default Promotions
+export default Promotion

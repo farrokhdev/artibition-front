@@ -7,6 +7,12 @@ import ArtworksPage from '../pages/ArtworksPage/ArtworksPage';
 import ConfirmMobile from '../pages/ConfirmMobile/ConfirmMobile';
 import DashboardPanel from '../pages/DashboarPanel/DashboardPanel';
 import DetailsArtwork from '../pages/DetailsArtwork/DetailsArtwork';
+import GalleryPanelArtisit from '../pages/GalleryPanelArtist/GalleryPanelArtist';
+import GalleryPanelCreateExhibition from '../pages/GalleryPanelCreateExhibition/GalleryPanelCreateExhibition';
+import GalleryPanelDashboard from '../pages/GalleryPanelDashboard/GalleryPanelDashboard';
+import GalleryPanelEditGalleryInfo from '../pages/GalleryPanelEditGalleryInfo/GalleryPanelEditGalleryInfo';
+import GalleryPanelExhibition from '../pages/GalleryPanelExhibition/GalleryPanelExhibition';
+import GalleryPanelMyGallery from '../pages/GalleryPanelMyGallery/GalleryPanelMyGallery';
 import Home from '../pages/Home.jsx/Home';
 import Login from '../pages/Login/Login';
 import PanelArtManagement from '../pages/PanelArtManagement/PanelArtManagement';
@@ -67,7 +73,12 @@ const RouterConfig = (props) => {
                     <Route path="my-albums" element={<PanleMyAlbums />} />
                     <Route path="contents" element={<PanelContentList />} />
                     <Route path="create-content" element={<PanelCreateContent />} />
-                    
+                    <Route path="dashboard-gallery" element={<GalleryPanelDashboard />} />
+                    <Route path="exhibition-list-gallery" element={<GalleryPanelExhibition/>} />
+                    <Route path="artist-list-gallery" element={<GalleryPanelArtisit/>} />
+                    <Route path="my-gallery-list-gallery" element={<GalleryPanelMyGallery/>} />
+                    <Route path="create-exhibition" element={<GalleryPanelCreateExhibition/>} />
+                    <Route path="edite-gallery-info" element={<GalleryPanelEditGalleryInfo/>} />
                 </Route>
             </Routes>
 

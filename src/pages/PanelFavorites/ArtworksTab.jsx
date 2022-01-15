@@ -3,7 +3,7 @@ import CardArtwork from './CardArtwork';
 
 function ArtworksTab() {
 return (
-    <div class="row">
+    <div className="row">
 
         <CardArtwork/>
         <CardArtwork/>

@@ -28,7 +28,7 @@ function HeaderPanel(props) {
 
             <div className="col col-lg-2  px-0">
                 <div className="d-flex box-dir-reverse">
-                    <div class="artibition-logo pull-dir">
+                    <div className="artibition-logo pull-dir">
                             <Link to="/">
                                 <img src={logo} width="240" height="62" className="img-responsive hidden-sm" alt="آرتیبیشن" />
                                 <img src={logo_icon} width="1079" height="1079" className="img-responsive visible-sm"
@@ -81,7 +81,7 @@ function HeaderPanel(props) {
             {/* <div className="col col-md-9 pl-0 ">
                 <div className="d-flex box-dir-reverse">
                     <div className="col-2 ">
-                        <div class="artibition-logo pull-dir">
+                        <div className="artibition-logo pull-dir">
                             <Link to="/">
                                 <img src={logo} width="240" height="62" className="img-responsive hidden-sm" alt="آرتیبیشن" />
                                 <img src={logo_icon} width="1079" height="1079" className="img-responsive visible-sm"

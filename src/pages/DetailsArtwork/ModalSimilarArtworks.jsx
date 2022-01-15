@@ -40,32 +40,32 @@ function ModalSimilarArtworks(props) {
                             </span>
                             </button>
                         </div>
-                        <div class="modal-header">
-                            <h5 class="fontbold28 aligncenter" id="exampleModalLabel">{t("artwork.modal_similar_artwork.title")}</h5>
+                        <div className="modal-header">
+                            <h5 className="fontbold28 aligncenter" id="exampleModalLabel">{t("artwork.modal_similar_artwork.title")}</h5>
                         </div>
-                        <div class="modal-body">
-                            <div class="container modal-similar-artwork">
-                                <div class="row">
-                                    <div class="d-flex box-dir-reverse modal-similar-header">
-                                        <div class="col-xs-3 px-0">
+                        <div className="modal-body">
+                            <div className="container modal-similar-artwork">
+                                <div className="row">
+                                    <div className="d-flex box-dir-reverse modal-similar-header">
+                                        <div className="col-xs-3 px-0">
                                             <div className="d-flex pull-dir">
                                                 <img src={artwork1} width="1776" height="1776" alt=""
-                                                    class="img-responsive"/>
+                                                    className="img-responsive"/>
                                             </div>
                                         </div>
-                                        <div class="col-xs-9 px-0">
+                                        <div className="col-xs-9 px-0">
                                             <div className="d-flex">
                                                <div className="col-4 col-sm-3 col-md-2 ">
-                                                    <div class="artist-avatar">
+                                                    <div className="artist-avatar">
                                                         <img src={artist4} width="312" height="312" alt=""
-                                                            class="img-responsive pull-dir "/>
+                                                            className="img-responsive pull-dir "/>
                                                     </div>
                                                </div>
                                                 <div className="col">
-                                                    <h3 class="fontbold20 text-dir">Behrouz Zindashti</h3>
-                                                    <h4 class="fontbold20 text-dir">Untitle</h4>
-                                                    <button type="button" class="btn btn-galleryfollow pull-dir">
-                                                        <img src={circle_plus_icon} width="17" height="17" alt="" class="pull-left"/>
+                                                    <h3 className="fontbold20 text-dir">Behrouz Zindashti</h3>
+                                                    <h4 className="fontbold20 text-dir">Untitle</h4>
+                                                    <button type="button" className="btn btn-galleryfollow pull-dir">
+                                                        <img src={circle_plus_icon} width="17" height="17" alt="" className="pull-left"/>
                                                         <span >Follow</span>
                                                     </button>
                                                 </div>
@@ -73,100 +73,100 @@ function ModalSimilarArtworks(props) {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row-similar-artwork">
-                                    <div class="row">
-                                        <div class="col-sm-3">
-                                            <a class="cols" href="#">
-                                                <div class="col-img">
+                                <div className="row-similar-artwork">
+                                    <div className="row">
+                                        <div className="col-sm-3">
+                                            <a className="cols" href="#">
+                                                <div className="col-img">
                                                     <img src={artwork1} width="1776" height="1776" alt="Arthibition"
-                                                        class="img-responsive"/>
-                                                    <div class="tab-overly">
-                                                        <span class="btn-see">
-                                                            <span class="view-icon pull-left"></span>
+                                                        className="img-responsive"/>
+                                                    <div className="tab-overly">
+                                                        <span className="btn-see">
+                                                            <span className="view-icon pull-left"></span>
                                                             <span>view</span>
                                                         </span>
-                                                        <span class="btn-sale">Shop now</span>
-                                                        <span class="like-icon"></span>
+                                                        <span className="btn-sale">Shop now</span>
+                                                        <span className="like-icon"></span>
                                                     </div>
                                                 </div>
                                             </a>
                                         </div>
-                                        <div class="col-sm-3">
-                                            <a class="cols" href="#">
-                                                <div class="col-img">
+                                        <div className="col-sm-3">
+                                            <a className="cols" href="#">
+                                                <div className="col-img">
                                                     <img src={artwork11} width="840" height="1041" alt="Arthibition"
-                                                        class="img-responsive"/>
-                                                    <div class="tab-overly">
-                                                        <span class="btn-see">
-                                                            <span class="view-icon pull-left"></span>
+                                                        className="img-responsive"/>
+                                                    <div className="tab-overly">
+                                                        <span className="btn-see">
+                                                            <span className="view-icon pull-left"></span>
                                                             <span>view</span>
                                                         </span>
-                                                        <span class="btn-sale">Shop now</span>
-                                                        <span class="like-icon"></span>
+                                                        <span className="btn-sale">Shop now</span>
+                                                        <span className="like-icon"></span>
                                                     </div>
                                                 </div>
                                             </a>
                                         </div>
-                                        <div class="col-sm-3">
-                                            <a class="cols" href="#">
-                                                <div class="col-img">
+                                        <div className="col-sm-3">
+                                            <a className="cols" href="#">
+                                                <div className="col-img">
                                                     <img src={artwork1} width="1776" height="1776" alt="Arthibition"
-                                                        class="img-responsive"/>
-                                                    <div class="tab-overly">
-                                                        <span class="btn-see">
-                                                            <span class="view-icon pull-left"></span>
+                                                        className="img-responsive"/>
+                                                    <div className="tab-overly">
+                                                        <span className="btn-see">
+                                                            <span className="view-icon pull-left"></span>
                                                             <span>view</span>
                                                         </span>
-                                                        <span class="btn-sale">Shop now</span>
-                                                        <span class="like-icon"></span>
+                                                        <span className="btn-sale">Shop now</span>
+                                                        <span className="like-icon"></span>
                                                     </div>
                                                 </div>
                                             </a>
                                         </div>
-                                        <div class="col-sm-3">
-                                            <a class="cols" href="#">
-                                                <div class="col-img">
+                                        <div className="col-sm-3">
+                                            <a className="cols" href="#">
+                                                <div className="col-img">
                                                     <img src={artwork11} width="840" height="1041" alt="Arthibition"
-                                                        class="img-responsive"/>
-                                                    <div class="tab-overly">
-                                                        <span class="btn-see">
-                                                            <span class="view-icon pull-left"></span>
+                                                        className="img-responsive"/>
+                                                    <div className="tab-overly">
+                                                        <span className="btn-see">
+                                                            <span className="view-icon pull-left"></span>
                                                             <span>view</span>
                                                         </span>
-                                                        <span class="btn-sale">Shop now</span>
-                                                        <span class="like-icon"></span>
+                                                        <span className="btn-sale">Shop now</span>
+                                                        <span className="like-icon"></span>
                                                     </div>
                                                 </div>
                                             </a>
                                         </div>
-                                        <div class="col-sm-3">
-                                            <a class="cols" href="#">
-                                                <div class="col-img">
+                                        <div className="col-sm-3">
+                                            <a className="cols" href="#">
+                                                <div className="col-img">
                                                     <img src={artwork1} width="1776" height="1776" alt="Arthibition"
-                                                        class="img-responsive"/>
-                                                    <div class="tab-overly">
-                                                        <span class="btn-see">
-                                                            <span class="view-icon pull-left"></span>
+                                                        className="img-responsive"/>
+                                                    <div className="tab-overly">
+                                                        <span className="btn-see">
+                                                            <span className="view-icon pull-left"></span>
                                                             <span>view</span>
                                                         </span>
-                                                        <span class="btn-sale">Shop now</span>
-                                                        <span class="like-icon"></span>
+                                                        <span className="btn-sale">Shop now</span>
+                                                        <span className="like-icon"></span>
                                                     </div>
                                                 </div>
                                             </a>
                                         </div>
-                                        <div class="col-sm-3">
-                                            <a class="cols" href="#">
-                                                <div class="col-img">
+                                        <div className="col-sm-3">
+                                            <a className="cols" href="#">
+                                                <div className="col-img">
                                                     <img src={artwork11} width="840" height="1041" alt="Arthibition"
-                                                        class="img-responsive"/>
-                                                    <div class="tab-overly">
-                                                        <span class="btn-see">
-                                                            <span class="view-icon pull-left"></span>
+                                                        className="img-responsive"/>
+                                                    <div className="tab-overly">
+                                                        <span className="btn-see">
+                                                            <span className="view-icon pull-left"></span>
                                                             <span>view</span>
                                                         </span>
-                                                        <span class="btn-sale">Shop now</span>
-                                                        <span class="like-icon"></span>
+                                                        <span className="btn-sale">Shop now</span>
+                                                        <span className="like-icon"></span>
                                                     </div>
                                                 </div>
                                             </a>
