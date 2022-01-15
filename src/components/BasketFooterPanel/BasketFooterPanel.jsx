@@ -15,7 +15,7 @@ function BasketFooterPanel() {
                         </div>
                         <div className="col px-0 ">
                             <div className="d-flex justify-content-center">
-                                <span class="persian-num">{t("text-footer-auth.mobile")}</span>
+                                <span className="persian-num">{t("text-footer-auth.mobile")}</span>
                             </div>
                         </div>
                     </div>

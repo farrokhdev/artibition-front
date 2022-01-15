@@ -23,7 +23,7 @@ import ModalDatailTicket from './ModalDatailTicket';
     return (
     <>
     
-    <div class="tickets">
+    <div className="tickets">
     
         <div className="d-flex justify-custom mb-5">
             <button onClick={handleShowAddTicket} className='btn-blue btn-add-new-ticket'>
@@ -39,22 +39,22 @@ import ModalDatailTicket from './ModalDatailTicket';
 
 
 
-        <div class="ticket-block inprogress" data-toggle="modal" data-target="#ticket-modal">
-            <div class="ticket-header">
+        <div className="ticket-block inprogress" data-toggle="modal" data-target="#ticket-modal">
+            <div className="ticket-header">
                 <div className="d-block d-md-flex box-dir-reverse">
                     <div className="col ">
                         <div className="d-block d-md-flex box-dir-reverse ">
                             <div className="col px-0">
                                 <div className="d-flex box-dir-reverse">
-                                    <h3 class="ticket-title text-dir">
+                                    <h3 className="ticket-title text-dir">
                                     <span>درخواست مرجوعی اثر</span>
                             </h3> 
                                 </div>
                             </div>
                             <div className="col px-0">
                                 <div className="d-flex box-dir-reverse">
-                                    <h3 class="ticket-title text-dir">
-                                        <span class="ticket-status ">{t("content-panel-messages.inprogress")}</span>
+                                    <h3 className="ticket-title text-dir">
+                                        <span className="ticket-status ">{t("content-panel-messages.inprogress")}</span>
                                     </h3>  
                                 </div>
                             </div>
@@ -63,14 +63,14 @@ import ModalDatailTicket from './ModalDatailTicket';
                     
                     <div className="col">
                         <div className="d-flex box-dir-reverse   w-100  justify-content-md-end">
-                            <span class="ticket-date  persian-num text-dir">۱۳۹۹/۰۵/۰۲</span>
+                            <span className="ticket-date  persian-num text-dir">۱۳۹۹/۰۵/۰۲</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="ticket-body">
+            <div className="ticket-body">
                 <div className="d-flex box-dir-reverse mt-0 mt-lg-4">
-                    <p class="text-justify text-dir ">
+                    <p className="text-justify text-dir ">
                                 سلام من هفته گذشته از سایت شما خرید کردم امروز به دستم رسید. ولی فک
                                 نمیکردم
                                 تابلو انقد کوچیک ... باشه. میخواستم پس بدم اگه بشه. شماره سفارشمم
@@ -79,9 +79,9 @@ import ModalDatailTicket from './ModalDatailTicket';
                             </p>
                 </div>
                 <div className="d-flex box-dir-reverse">
-                    <div onClick={handleShowDetailTicket} class="ticket-more pull-dir">
+                    <div onClick={handleShowDetailTicket} className="ticket-more pull-dir">
                         <span>{t("content-panel-messages.veiw")}</span>
-                        <span class="glyphicon glyphicon-menu-left"></span>
+                        <span className="glyphicon glyphicon-menu-left"></span>
                     </div> 
                 </div>
             </div>
@@ -91,22 +91,22 @@ import ModalDatailTicket from './ModalDatailTicket';
 
 
 
-        <div class="ticket-block replied" data-toggle="modal" data-target="#ticket-modal">
-            <div class="ticket-header">
+        <div className="ticket-block replied" data-toggle="modal" data-target="#ticket-modal">
+            <div className="ticket-header">
                 <div className="d-block d-md-flex box-dir-reverse">
                     <div className="col ">
                         <div className="d-block d-md-flex box-dir-reverse ">
                             <div className="col px-0">
                                 <div className="d-flex box-dir-reverse">
-                                    <h3 class="ticket-title text-dir">
+                                    <h3 className="ticket-title text-dir">
                                     <span>مشکل خرید از سایت</span>
                             </h3> 
                                 </div>
                             </div>
                             <div className="col px-0">
                                 <div className="d-flex box-dir-reverse">
-                                    <h3 class="ticket-title text-dir">
-                                        <span class="ticket-status ">{t("content-panel-messages.waiting")}</span>
+                                    <h3 className="ticket-title text-dir">
+                                        <span className="ticket-status ">{t("content-panel-messages.waiting")}</span>
                                     </h3>  
                                 </div>
                             </div>
@@ -115,14 +115,14 @@ import ModalDatailTicket from './ModalDatailTicket';
                     
                     <div className="col">
                         <div className="d-flex box-dir-reverse   w-100  justify-content-md-end">
-                            <span class="ticket-date  persian-num text-dir">۱۳۹۹/۰۴/۲۲</span>
+                            <span className="ticket-date  persian-num text-dir">۱۳۹۹/۰۴/۲۲</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="ticket-body">
+            <div className="ticket-body">
                 <div className="d-flex box-dir-reverse mt-0 mt-lg-4">
-                    <p class="text-justify text-dir ">
+                    <p className="text-justify text-dir ">
                                 سلام من هفته گذشته از سایت شما خرید کردم امروز به دستم رسید. ولی فک
                                 نمیکردم
                                 تابلو انقد کوچیک ... باشه. میخواستم پس بدم اگه بشه. شماره سفارشمم
@@ -131,9 +131,9 @@ import ModalDatailTicket from './ModalDatailTicket';
                             </p>
                 </div>
                 <div className="d-flex box-dir-reverse">
-                    <div onClick={handleShowDetailTicket} class="ticket-more pull-dir">
+                    <div onClick={handleShowDetailTicket} className="ticket-more pull-dir">
                         <span>{t("content-panel-messages.veiw")}</span>
-                        <span class="glyphicon glyphicon-menu-left"></span>
+                        <span className="glyphicon glyphicon-menu-left"></span>
                     </div> 
                 </div>
             </div>
@@ -144,22 +144,22 @@ import ModalDatailTicket from './ModalDatailTicket';
 
 
 
-        <div class="ticket-block closed" data-toggle="modal" data-target="#ticket-modal">
-            <div class="ticket-header">
+        <div className="ticket-block closed" data-toggle="modal" data-target="#ticket-modal">
+            <div className="ticket-header">
                 <div className="d-block d-md-flex box-dir-reverse">
                     <div className="col ">
                         <div className="d-block d-md-flex box-dir-reverse ">
                             <div className="col px-0">
                                 <div className="d-flex box-dir-reverse">
-                                    <h3 class="ticket-title text-dir">
+                                    <h3 className="ticket-title text-dir">
                                     <span>مشکل خرید از سایت</span>
                             </h3> 
                                 </div>
                             </div>
                             <div className="col px-0">
                                 <div className="d-flex box-dir-reverse">
-                                    <h3 class="ticket-title text-dir">
-                                        <span class="ticket-status ">{t("content-panel-messages.closed")}</span>
+                                    <h3 className="ticket-title text-dir">
+                                        <span className="ticket-status ">{t("content-panel-messages.closed")}</span>
                                     </h3>  
                                 </div>
                             </div>
@@ -168,14 +168,14 @@ import ModalDatailTicket from './ModalDatailTicket';
                     
                     <div className="col">
                         <div className="d-flex box-dir-reverse   w-100  justify-content-md-end">
-                            <span class="ticket-date  persian-num text-dir">۱۳۹۹/۰۴/۲۲</span>
+                            <span className="ticket-date  persian-num text-dir">۱۳۹۹/۰۴/۲۲</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="ticket-body">
+            <div className="ticket-body">
                 <div className="d-flex box-dir-reverse mt-0 mt-lg-4">
-                    <p class="text-justify text-dir ">
+                    <p className="text-justify text-dir ">
                                 سلام من هفته گذشته از سایت شما خرید کردم امروز به دستم رسید. ولی فک
                                 نمیکردم
                                 تابلو انقد کوچیک ... باشه. میخواستم پس بدم اگه بشه. شماره سفارشمم
@@ -184,9 +184,9 @@ import ModalDatailTicket from './ModalDatailTicket';
                             </p>
                 </div>
                 <div className="d-flex box-dir-reverse">
-                    <div onClick={handleShowDetailTicket} class="ticket-more pull-dir">
+                    <div onClick={handleShowDetailTicket} className="ticket-more pull-dir">
                         <span>{t("content-panel-messages.veiw")}</span>
-                        <span class="glyphicon glyphicon-menu-left"></span>
+                        <span className="glyphicon glyphicon-menu-left"></span>
                     </div> 
                 </div>
             </div>

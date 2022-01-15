@@ -2564,6 +2564,19 @@ div .gallery-daterow:nth-child(1) {
     left: 0;
     bottom: 12px;
 }
+// styled with mohsen-mahadi----------
+@media (min-width: 768px){
+.col-md-4 {
+    flex: unset !important;
+    max-width: unset !important;
+}
+
+.col-md-8 {
+    flex: unset !important;
+    max-width: unset !important;
+}
+}
+// styled with mohsen-mahadi----------
 
 @media(max-width : "992px"){
     .artwork-options {
@@ -5815,6 +5828,10 @@ a.sec-timeline {
     margin-bottom: 4px;
 }
 
+.text-align{
+    text-align: right !important;
+}
+
 .artistpanel-3 table,
 .artistpanel-5 table,
 .artistpanel-6 table {
@@ -7938,6 +7955,16 @@ textarea {
     text-align: right;
 }
 
+@media(min-widht:768px){
+    .exhibition-table td.status {
+        text-align: center;
+    }
+}
+
+.exhibition-table td.status button {
+    margin: 0 2px;
+}
+
 .content-carousel .carousel-indicators {
     position: relative;
     right: auto;
@@ -8865,6 +8892,10 @@ span.unit-dimention {
 }
 
 
+.d-table{
+    display: table !important;
+
+}
 
 .inner-tab .ant-tabs-tab{
     padding: 12px 20px !important;
@@ -8876,4 +8907,5 @@ span.unit-dimention {
 
 .text-align{
     text-align: right !important;
+
 }

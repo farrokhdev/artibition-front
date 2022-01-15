@@ -5,7 +5,6 @@
     "repeat-password": "Please input your confirm password!",
     "activation-code": "Please input your activation code!"
   },
-
   "filter-header": {
     "title": "Filter",
     "placeholder-input-search": ".Search artwork, artist, gallery, etc",
@@ -33,7 +32,6 @@
         "width": "Width",
         "length": "Length",
         "height": "Height",
-
         "select-custom-size": {
           "title": "Select custom size",
           "to": "to",
@@ -63,13 +61,10 @@
       "max": "Max (USD)"
     }
   },
-
   "login_Title": "Login",
   "placeholder-username": "Email or mobile number",
-
   "placeholder-password": "Password",
   "placeholder-confirm-password": "Confirm password",
-
   "forget-title": "Forget password",
   "login-btn-text": "Login",
   "google-login-text-button": "Login with google",
@@ -78,7 +73,6 @@
   "show-details": "Details",
   "show-password": "Show",
   "hidden-password": "Hidden",
-
   "signup_title": "Join Arthibition",
   "signup_btn-text": "Register",
   "describtion-low": {
@@ -90,19 +84,15 @@
     "text": "Already a member?",
     "link": "Login"
   },
-
   "confirm-mobile-title": "Verification Mobile",
   "text-btn-verification-submit": "Get activation code",
-
   "recovery-password-title": "Password Recovery",
   "text-btn-recovery-password": "Password Recovery",
-
   "membership-title": "Membership",
   "membership-info-signup": "To join, first enter the 4-digit code that sent to your mobile number.",
   "membership-info": "To recover the password, first enter the 4-digit code that sent to your mobile number.",
   "placeholder-activation-code": "Enter activation code",
   "text-btn-confirm-mobile-number": "Confirm mobile number",
-
   "title_lang-header": "Fa",
   "nav-menu-artworks": "Artworks",
   "nav-menu-showroom": "Showroom",
@@ -110,7 +100,6 @@
   "nav-menu-blog": "Blog",
   "nav-menu-sales-advisor": "Sales Advisor",
   "redirect-login-header": "Sign up/Login",
-
   "text-statistics-purchase": "PURCHASE",
   "text-statistics-artworks": "ARTWORKS",
   "text-statistics-artists": "ARTISTS",
@@ -119,11 +108,9 @@
     "info": " :  If you have any questions, contact us",
     "mobile": " 22538 229 21 98+ "
   },
-
   "category": "Category",
   "galleries": "Galleries",
   "events": "Events",
-
   "see-all": "View all",
   "event-all": "View all",
   "collection-all": "View all",
@@ -132,7 +119,6 @@
   "toman": "Toman",
   "dollar": "USD",
   "or": "or",
-
   "nav-submenu": {
     "artworks": {
       "artField": {
@@ -159,7 +145,6 @@
         "title": "Discounts"
       }
     },
-
     "showroom": {
       "category": {
         "all": "all",
@@ -168,7 +153,6 @@
         "photographer": "Photographer",
         "sculptor": "Sculptor",
         "calligramer": "Calligramer",
-
         "graphist": "Graphist",
         "printmaker": "Printmaker",
         "cartoonist": "Cartoonist",
@@ -176,18 +160,15 @@
       }
     }
   },
-
   "artibition-artists-home": {
     "title": "ARTHIBITION ARTISTS",
     "text-info": "you could access a list of exceptional Iranian artists and all of their artworks at Arthibition. in case you are tthe creator or owner of an artwork, you could present it to our users by becoming a member at Arthibition.",
     "btn-text": "See artists",
     "action-text": "Register artwork"
   },
-
   "artibition-events": {
     "title": "ARTHIBITION ARTISTS"
   },
-
   "news-and-article-art": {
     "title": "ART NEWS AND EVENTS",
     "more": "Read more"
@@ -195,22 +176,18 @@
   "suggestion-home": {
     "title": "SUGGESTED ARTWORKS"
   },
-
   "my-recent-views-home": {
     "title": "MY RECENT VISITS"
   },
-
   "subscribe-newsletter-home": {
     "title": "SUBSCRIBE TO NEWSLETTER",
     "text-info": ".Get update with latest news",
     "submit-email-btn": "Subscribe",
     "placeholder-email": "Enter your e-mail"
   },
-
   "collection-artworks-home": {
     "title": "ARTWORKS COLLECTION"
   },
-
   "artwork": {
     "artibition": "Artibition",
     "view-artwork": "view",
@@ -279,7 +256,6 @@
       "text1": "Veiw all",
       "text2": ""
     },
-
     "modal_edit_offer": {
       "title": "Edit your offer",
       "subtitle": ".You can edit your offer or cancel it",
@@ -288,11 +264,9 @@
       "submit": "Submit",
       "cancel_offer": "Cancel the offer"
     },
-
     "modal_similar_artwork": {
       "title": "Similar artworks"
     },
-
     "modal_bidding_artwork": {
       "title": "Send offer",
       "subtitle": "Enter your suggested price",
@@ -300,9 +274,7 @@
       "placeholder": " ...Your offer",
       "submit": "Submit"
     }
-
   },
-
   "footer": {
     "text-info": "Arthibition is the online exhibition and market of visual arts based on original Iranian art which has successfully gained trust of many unique Iranian artists by presenting a combination of ease of access, beautiful design, international presentation and bilingual website while a vast presence in various social media. Arthibition was created in winter 2015, Tehran/ Iran, to connect talented artists, collectors and galleries to art lovers and buyers who value art immensely.",
     "guid": {
@@ -319,7 +291,6 @@
       "terms-and-conditional": "Terms and conditions",
       "policy": "Privacy policy"
     },
-
     "artibition": {
       "title": "ARTHIBITION",
       "about-us": "About us",
@@ -327,20 +298,16 @@
       "collabration": "Collabration with us",
       "collabrators": "Collabrators"
     },
-
     "text-copyright": {
       "text": "Copyright © 2020, All rights reserved by",
       "link-gallery": "Arthibition Gallery",
       "text2": ""
     },
-
     "text-build": {
       "text1": "Built with",
       "text2": "by"
     }
   },
-
-
   "artworkList": {
     "box-banner": {
       "title": "ART, THE ETERNAL CAPITAL",
@@ -348,9 +315,7 @@
       "btn": "Search",
       "placeholder": "Search artist name"
     },
-
     "filter": {
-
       "title": "Filter",
       "remove_all": "Remove all",
       "artist_name": "Artist name",
@@ -358,7 +323,6 @@
       "last_update": "Last update",
       "visite": "visite",
       "sell": "sell",
-
       "artField": {
         "title": "Art field",
         "all": "All",
@@ -372,7 +336,6 @@
         "cartoon": "Cartoon",
         "drawing": "Drawing"
       },
-
       "price": {
         "title": "Price",
         "min": "Min (USD)",
@@ -380,7 +343,6 @@
         "to": "to",
         "action": "submit"
       },
-
       "discount": {
         "title": "Discount",
         "show": "Show discounted artworks",
@@ -388,14 +350,11 @@
         "up30": "More than 30%",
         "up50": "More than 50%"
       },
-
       "art_for_gift": {
         "title": "Art to gift",
         "show": "Suitable artworks for gift"
       },
-
       "color": "Color",
-
       "technique": {
         "title": "Technique",
         "placeholder": "Search Technique",
@@ -404,11 +363,9 @@
         "pastel": "Pastel",
         "composition": "Composition"
       },
-
       "subject": {
         "title": "subject"
       },
-
       "material": {
         "title": "Material",
         "placeholder": "Search material",
@@ -420,7 +377,6 @@
         "collage": "Collage",
         "crayons": "Crayons"
       },
-
       "size": {
         "title": "Size",
         "small": "Small",
@@ -436,15 +392,12 @@
         "in": "-",
         "submit": "Submit"
       }
-
     }
   },
-
-
-  "artists" : {
-    "filter" : {
-      "expert" : {
-        "title" : "Artist's expertise",
+  "artists": {
+    "filter": {
+      "expert": {
+        "title": "Artist's expertise",
         "all": "All",
         "painting": "Painting",
         "calligraphy": "Calligraphy",
@@ -456,19 +409,17 @@
         "cartoon": "Cartoon",
         "drawing": "Drawing"
       },
-
-      "artist" : {
-        "title" : "Artist",
-        "all" : "All",
-        "special" : "Special",
-        "verified" : "Verified"
+      "artist": {
+        "title": "Artist",
+        "all": "All",
+        "special": "Special",
+        "verified": "Verified"
       }
     }
   },
-
-
   "drawer-panel": {
     "nav-dashboard": "Dashboard",
+    "nav-dashboard-gallery": "Gallery Dashborad",
     "nav-art-management": "Artworks",
     "nav-mypurchases": "My purchases",
     "nav-orders": "Orders",
@@ -477,12 +428,12 @@
     "nav-favorits": "Favorites",
     "nav-messages": "Messages",
     "nav-profile": "Profile",
+    "nav-exhibitions": "Exhibitions",
     "invite": {
       "btn": "Invite friends",
       "text": ""
     }
   },
-
   "content-panel-profile": {
     "info-box": {
       "register": {
@@ -498,7 +449,6 @@
         "text": "Sell your artworks"
       }
     },
-
     "personal-info": {
       "title": "PERSONAL INFO",
       "fullname": "Full name",
@@ -511,40 +461,35 @@
         "title": "ADDRESS",
         "btn": "New address",
         "default": "(Default address)"
-
       }
-
     }
   },
-
-
-  "artist_profile" : {
-    "artists" : "Artists",
-    "text_banner" : "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl",
-    "send_message" : "Send message",
-    "send" : "Send" ,
-    "placeholder_message" : ".In case you have any message or question form the artist, send them a message",
-    "tabs" : {
-        "artworks" : "Artworks",
-        "albums" : "Albums",
-        "biography" : "Biography",
-        "exhibitions" : "Exhibitions",
-        "content" : "Content"
+  "artist_profile": {
+    "artists": "Artists",
+    "text_banner": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl",
+    "send_message": "Send message",
+    "send": "Send",
+    "placeholder_message": ".In case you have any message or question form the artist, send them a message",
+    "tabs": {
+      "artworks": "Artworks",
+      "albums": "Albums",
+      "biography": "Biography",
+      "exhibitions": "Exhibitions",
+      "content": "Content"
     },
-    "smileys" : "Smileys",
-    "veiw" : "Veiw" , 
-    "more_paint" : "More paint",
-    "introduction" : "Introduction",
-    "style" : "Style",
-    "activities" : "Activities",
-    "versions" : "Versions",
-    "aknon_gallery" : "Aknon gallery",
-    "collection" : "Collection",
-    "COLLECTION" : "COLLECTION",
-    "man" : "Man",
-    "local" : "Local"
+    "smileys": "Smileys",
+    "veiw": "Veiw",
+    "more_paint": "More paint",
+    "introduction": "Introduction",
+    "style": "Style",
+    "activities": "Activities",
+    "versions": "Versions",
+    "aknon_gallery": "Aknon gallery",
+    "collection": "Collection",
+    "COLLECTION": "COLLECTION",
+    "man": "Man",
+    "local": "Local"
   },
-
   "card_artwork": {
     "veiw": "veiw",
     "request_buy": "Shop now",
@@ -552,14 +497,10 @@
       "title": " : Size",
       "in": " x "
     },
-
     "special": "Special",
     "sold": "Sold out"
   },
-
-
   "content-panel-mypurchases": {
-
     "title": "MY PURCHASE",
     "artwork-title": "Artwork title",
     "owner": "Owner",
@@ -575,7 +516,6 @@
     "x": "x",
     "btn-sell": "Sales in Artibition",
     "artwok-return": "Buy Artwork",
-
     "paid": {
       "title": "Paid",
       "empty": {
@@ -585,28 +525,20 @@
         "btn": "Veiw Artworks"
       }
     },
-
     "delivered": {
       "title": "Delivered"
     },
-
     "bidding": {
       "title": "Bidding"
     },
-
     "returned": {
       "title": "Returned"
     },
-
     "canceled": {
       "title": "Canceled"
     }
-
   },
-
-
   "content-panel-favorites": {
-
     "title": "FAVORITES",
     "tabs": {
       "artworks": "Artworks",
@@ -614,10 +546,7 @@
       "collections": "Collections"
     }
   },
-
-
   "content-panel-messages": {
-
     "title": "MESSAGES",
     "new": "New",
     "today": "Today",
@@ -642,10 +571,7 @@
       }
     }
   },
-
-
   "content-panel-wallet": {
-
     "inventory": {
       "title": "WALLET INVENTORY",
       "text_gift": {
@@ -665,7 +591,6 @@
       "tuesday": "Tuesday",
       "pay": "Pay"
     },
-
     "trades": {
       "title": "DEPOSIT AND WITHDRAWAL LIST",
       "filters": {
@@ -673,7 +598,6 @@
         "deposited": "Deposited",
         "withdrawaled": "Withdrawaled"
       },
-
       "table_headers": {
         "type": "Type",
         "price": "Price (USD)",
@@ -682,19 +606,14 @@
         "status": "Status"
       }
     }
-
-
   },
-
   "content-panel-dashboard": {
-
     "box_gallery": {
       "gallery": "Arthibition gallery",
       "order": "Orders",
       "new_gallery": "New gallery",
       "info_gallery": "In case you own another gallery, you could register it"
     },
-
     "box_status": {
       "btn": "New artwork",
       "approved": "Approved",
@@ -705,25 +624,24 @@
       "contact_status": "Contract status",
       "email_status": "Email",
       "resume": "CV",
-      "veiw": "Veiw"
+      "veiw": "Veiw",
+      "approved_artist": "Approved artist",
+      "not_send": "Not send",
+      "approved_1": "Approved"
     },
-
     "promotion": {
       "title": "LEADING PROMOTIONS",
       "veiw_more": "Veiw more"
     },
-
     "veiw_artwork": {
       "title": "VIEW ARTWORKS",
       "text_info": "Monitor users view by uploading your artworks",
       "btn": "New artwork"
     },
-
     "my_income": {
       "title": "MY INCOME",
       "detail": "Details"
     },
-
     "tables": {
       "orders": "ORDERS",
       "order_active": "ACTIVE ORDERS",
@@ -756,7 +674,6 @@
         "title": "!There has been no offer for your artworks yet"
       }
     },
-
     "alerts": {
       "info_notice": {
         "text1": "to confirm your account as a vendor, upload scanned and signed contract",
@@ -769,9 +686,7 @@
       "btn_upload": "Upload",
       "text_upload": "Upload your first artwork"
     }
-
   },
-
   "content-panel-orders": {
     "filters": {
       "all": "All",
@@ -780,22 +695,18 @@
       "delivered": "Delivered"
     }
   },
-
   "content-panel-manage-artworks": {
-
-    "title" : "ARTWORKS LIST" , 
-    "btn" : "New artwork",
-
-    "filters" : {
-        "all" : "All",
-        "approved" : "Approved",
-        "modification" : "Require modification",
-        "pending" : "Pending",
-        "not_approved" : "Not approved",
-        "sold" : "Sold",
-        "active" : "Active"
+    "title": "ARTWORKS LIST",
+    "btn": "New artwork",
+    "filters": {
+      "all": "All",
+      "approved": "Approved",
+      "modification": "Require modification",
+      "pending": "Pending",
+      "not_approved": "Not approved",
+      "sold": "Sold",
+      "active": "Active"
     },
-
     "tables": {
       "orders": "ORDERS",
       "order_active": "ACTIVE ORDERS",
@@ -826,51 +737,315 @@
       "deactive": "Deactive",
       "sold": "Sold",
       "uneditable": "Uneditable"
-
-
     }
-
   },
-
-  "content-panel-my-albums" : {
-    "gallery_box" : {
-      "title" : "",
-      "text" : ""
+  "content-panel-my-albums": {
+    "gallery_box": {
+      "title": "",
+      "text": ""
     },
-
-    "collections" : {
-      "title" : "",
-      "btn" : "",
-      "row" : "",
-      "subject" : "",
-      "count_artwork" : "",
-      "last_edition" : "",
-      "details" : ""
+    "collections": {
+      "title": "",
+      "btn": "",
+      "row": "",
+      "subject": "",
+      "count_artwork": "",
+      "last_edition": "",
+      "details": ""
     },
-
-    "art_info" : {
-      "title" : "",
-      "btn" : ""
+    "art_info": {
+      "title": "",
+      "btn": ""
+    }
+  },
+  "content-panel-contents": {
+    "title": "CONTENT LIST",
+    "create_content": "Create content",
+    "table": {
+      "row": "#",
+      "image": "Image",
+      "subject": "Title",
+      "type": "Content type",
+      "date_publish": "Publication date",
+      "status": "Status",
+      "details": "Details",
+      "active": "Active",
+      "edit": "Edit",
+      "video": "Video"
+    }
+  },
+  "content-panel-create-content": {
+    "title": "CREATE CONTENT",
+    "upload_poster": {
+      "title": "Content type",
+      "report": "Visual report",
+      "text_content": "Text",
+      "link": "Link",
+      "image": "Image",
+      "video": "Video"
+    },
+    "upload": {
+      "title": "Upload image or video",
+      "text": "Drag and drop here",
+      "or": "or",
+      "btn": "Select file",
+      "tip": "All pictures must be PNG or JPG and video must be in MP4 format"
+    },
+    "subject_fa": "",
+    "subject_en": "Title",
+    "placeholder_fa": "",
+    "placeholder_en": "Enter details",
+    "link": "Link",
+    "btn_create_content": "Create content",
+    "btn_cancel": "Cancel"
+  },
+  "content-panel-add-artwork": {
+    "step1": "Artwork info",
+    "step2": "Purchase info",
+    "upload": {
+      "title": "Upload photo",
+      "text": "Select one or more pictures and drag them here",
+      "or": " or ",
+      "btn": "Select file",
+      "tip": "All pictures must be PNG or JPG and video must be in MP4 format"
+    },
+    "art_info": {
+      "title": "Artwork info",
+      "artwork_name": "",
+      "artwork_title": "Artwork title",
+      "artwork_subject": "Subject",
+      "artwork_field": "Category",
+      "artwork_technique": "Technique",
+      "artwork_material": "Material",
+      "create_date": "Creation date",
+      "length": "Length",
+      "width": "Width",
+      "weight": "Weight",
+      "select_gallery": "Select album",
+      "multi_edition": "This artwork has multiple edition",
+      "description_fa": "",
+      "description_en": "Description of artowork",
+      "tag_fa": "",
+      "text_tag_fa": "",
+      "tag_en": "Add tag",
+      "text_tag_en": ".Adding one or multiple tags facilitates the process of receiving your artworks for your fans and audiences",
+      "next_step": "Next",
+      "cencel": "Cancel"
+    },
+    "sale_info": "Sale info",
+    "display_only": "For display only",
+    "display_only_text": ".By selecting this option the artwork will only be displayed on website",
+    "edition": "Edition",
+    "price_ir": "Price(IRR)",
+    "price_usd": "Price(USD)",
+    "artwork_sold": "Artwork is sold",
+    "could_offer": "Could offer a price",
+    "could_offer_text": ".By selecting this option buyers are enable to send you their price offers",
+    "discount_price": "Discount price",
+    "discount_base": "Discount base of percent",
+    "discount_percent_ir": "Discount percent (IRR)",
+    "discount_percent_usd": "Discount percent (USD)",
+    "discount_period": "Discount period",
+    "date": "Date",
+    "previous_step": "Previous step",
+    "submit_artwork": "Submit"
+  },
+  "gallery-panel-dashboard": {
+    "title": "ACTIVE ORDERS",
+    "counter_status": {
+      "exhibition": "Exhibition",
+      "online_exhibition": "Online exhibition",
+      "approved": "Approved",
+      "require_modification": "Require modification",
+      "pending": "Pending",
+      "not_approved": "Not approved",
+      "view": "View"
+    },
+    "tables": {
+      "orders": "ORDERS",
+      "order_active": "ACTIVE ORDERS",
+      "suggestion_artwork": "PRICE OFFERS FOR YOUR ARTWORKS",
+      "veiw_artworks": "VIEW ARTWORKS",
+      "veiw": "VIEW",
+      "row": "#",
+      "image": "Image",
+      "code": "Code",
+      "edition": "Edition",
+      "size": "Size",
+      "price": "Price (USD)",
+      "discount": "Discount",
+      "last_edition": "Last edition",
+      "paid": "Paid",
+      "status": "Status",
+      "details": "Details",
+      "suggested": "Suggested",
+      "date_registration": "Date of registration",
+      "your_respond": "Your respond",
+      "action": "Actions",
+      "reply": "Reply",
+      "Waiting_to_send": "Waiting to send the artwork to Arthibition",
+      "delivered": "Delivered",
+      "pending": "Pending",
+      "active": "Active",
+      "not_approved": "Not approved",
+      "review": "Review",
+      "deactive": "Deactive",
+      "sold": "Sold",
+      "uneditable": "Uneditable"
+    }
+  },
+  "gallery-panel-exhibition": {
+    "create_exhibition": "Create exhibition",
+    "title": "Exhibition List",
+    "table": {
+      "row": "#",
+      "image": "Image",
+      "gallery_name": "Exhibition name",
+      "type": "Type",
+      "start": "Start",
+      "end": "End",
+      "profile": "Profile",
+      "details": "Details",
+      "edit": "Edit",
+      "upload_artwotk": "Upload artwork",
+      "presence": "Presence",
+      "virtual": "Virtual",
+      "presence_virtual": "Presence / Virtual"
+    }
+  },
+  "gallery-panel-create-exhibition": {
+    "title": "CREATE EXHIBITION",
+    "exhibition_info": "Exhibition info",
+    "exhibition_type": "Exhibition type",
+    "online_start": "Online Start date",
+    "online_end": "Online End date",
+    "local_start": "Local Start date",
+    "local_end": "Local End date",
+    "local_exhibition": "Online exhibition",
+    "online_exhibition": "Local exhibition",
+    "local_online_exhibition": "Local and online exhibitions",
+    "art_categories": "Art categories",
+    "painting": "Painting",
+    "photography": "Photography",
+    "sculpture": "Sculpture",
+    "calligram": "Calligram",
+    "calligraphy": "Calligraphy",
+    "printmaking": "Printmaking",
+    "graphic": "Graphic",
+    "drawing": "Drawing",
+    "artists": "َArtists",
+    "enter_artist_name_en": "Enter artist name",
+    "exhibition_name_en": "Exhibition Name",
+    "address_contact_info": "Address and contact info",
+    "notice_visiting_hours": "Notice and visiting hours",
+    "submit": "Submit",
+    "exhibition_contact_placeholder_en": "Details",
+    "exhibition_time_work_placeholder_en": "e.g.-All Days from 10 to 21 -Weekend From 14 to 19",
+    "select_on_map": "Select on map",
+    "address_fa": "Address",
+    "address_en": "Address",
+    "phone_number": "Phone number",
+    "btn_confirm_next": "Confirm and next",
+    "upload_poster": {
+      "title": "Upload poster",
+      "description": "Upload tow files of exhibition's poster (one rectangular and one square picture)",
+      "report": "Visual report",
+      "text_content": "Text",
+      "link": "Link",
+      "image": "Image",
+      "video": "Video"
+    },
+    "upload": {
+      "title": "Upload image or video",
+      "text": "Drag and drop poster pictures",
+      "or": "or",
+      "btn": "Select file",
+      "tip": "All pictures must be PNG or JPG and video must be in MP4 format"
+    },
+    "subject_fa": "",
+    "subject_en": "Title",
+    "placeholder_fa": "",
+    "placeholder_en": "Enter details",
+    "link": "Link",
+    "btn_create_content": "Create content",
+    "btn_cancel": "Cancel"
+  },
+  "gallery-panel-edit-gallery-info": {
+    "upload_gallery_cover_photo": "Upload gallery's cover and photo",
+    "gallery_info": "Gallery info",
+    "country_name": "Country",
+    "city_name": "City",
+    "exhibition_name_en": "Exhibition Name",
+    "address_contact_info": "Address and contact info",
+    "notice_visiting_hours": "Notice and visiting hours",
+    "submit": "Submit",
+    "exhibition_contact_placeholder_en": "Details",
+    "exhibition_time_work_placeholder_en": "e.g.-All Days from 10 to 21 -Weekend From 14 to 19",
+    "exhibitions":"Exhibitions",
+    "select_on_map": "Select on map",
+    "address_fa": "Address",
+    "address_en": "Address",
+    "phone_number": "Phone number",
+    "btn_confirm_info": "Confirm info",
+    "add_cover_photo": "Add Cover photo",
+    "select_logo": "Select logo",
+    "exhibition_name": "Echibition name",
+    "from_date": "From",
+    "to_date": "To",
+    "start_date": "Start date",
+    "end_date": "End date",
+    "details":"Details",
+    "upload_poster": {
+      "title": "Upload poster",
+      "description": "Upload tow files of exhibition's poster (one rectangular and one square picture)",
+      "report": "Visual report",
+      "text_content": "Text",
+      "link": "Link",
+      "image": "Image",
+      "video": "Video"
+    },
+    "upload": {
+      "title": "Upload image or video",
+      "text": "Drag and drop poster pictures",
+      "or": "or",
+      "btn": "Select file",
+      "tip": "All pictures must be PNG or JPG and video must be in MP4 format"
+    },
+    "subject_fa": "",
+    "subject_en": "Title",
+    "placeholder_fa": "",
+    "placeholder_en": "Enter details",
+    "link": "Link",
+    "btn_create_content": "Create content",
+    "btn_cancel": "Cancel"
+  },
+  "gallery-panel-artist": {
+    "create_artist": "New artist",
+    "title": "ARTISTS",
+    "table": {
+      "row": "#",
+      "image": "Image",
+      "artist_name": "Artist name",
+      "exhibitions": "Exhibitions",
+      "exhibitions_list": "Exhibitions List",
+      "details": "Details",
+      "edit": "Edit"
     }
   },
 
-  "content-panel-contents" : {
-    "title" : "CONTENT LIST" , 
-    "create_content" : "Create content",
-
-    "table" : {
-      "row" : "#", 
-      "image" : "Image",
-      "subject" : "Title",
-      "type" : "Content type",
-      "date_publish" : "Publication date",
-      "status" : "Status",
-      "details" : "Details",
-      "active" : "Active",
-      "edit" : "Edit",
-      "video" : "Video"
-    }
-  },
+  "gallery-panel-my-gallery": {
+    "create_gallery": "New gallery",
+    "title": "MY GALLERIES",
+    "table": {
+      "row": "#",
+      "logo": "Logo",
+      "gallery_name": "Gallery name",
+      "number_exhibition": "Number of exhibitions",
+      "last_edition": "Last edition",
+      "profile": "Profile",
+      "details": "Details",
+      "edit": "Edit"
+    },
 
   "content-panel-create-content" : {
     "title" : "CREATE CONTENT",
@@ -962,10 +1137,4 @@
     "other_city" : "More"
     
   }
-
-
-
-
-
-
 }

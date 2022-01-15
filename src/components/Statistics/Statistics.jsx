@@ -9,37 +9,37 @@ import { t } from 'i18next';
 
 function Statistics() {
     return (
-        <div class="statistics col-md-8 col-md-offset-2">
-            <div class="col-sm-3 col-xs-6">
-                <img src={users_icon} width="64" height="64" alt="" class="img-responsive center-block"/>
-                <div class="statistic-num persian-num">
-                    <span class="counter">۸۵۶۴</span>
-                    <i class="glyphicon glyphicon-plus"></i>
-                    <span class="counter-unit">{t("text-statistics-users")}</span>
+        <div className="statistics col-md-8 col-md-offset-2">
+            <div className="col-sm-3 col-xs-6">
+                <img src={users_icon} width="64" height="64" alt="" className="img-responsive center-block"/>
+                <div className="statistic-num persian-num">
+                    <span className="counter">۸۵۶۴</span>
+                    <i className="glyphicon glyphicon-plus"></i>
+                    <span className="counter-unit">{t("text-statistics-users")}</span>
                 </div>
             </div>
-            <div class="col-sm-3 col-xs-6">
-                <img src={artist_icon} width="64" height="64" alt="" class="img-responsive center-block"/>
-                <div class="statistic-num persian-num">
-                    <span class="counter">۶۵۰</span>
-                    <i class="glyphicon glyphicon-plus"></i>
-                    <span class="counter-unit">{t("text-statistics-artists")}</span>
+            <div className="col-sm-3 col-xs-6">
+                <img src={artist_icon} width="64" height="64" alt="" className="img-responsive center-block"/>
+                <div className="statistic-num persian-num">
+                    <span className="counter">۶۵۰</span>
+                    <i className="glyphicon glyphicon-plus"></i>
+                    <span className="counter-unit">{t("text-statistics-artists")}</span>
                 </div>
             </div>
-            <div class="col-sm-3 col-xs-6">
-                <img src={art_icon} width="64" height="64" alt="" class="img-responsive center-block"/>
-                <div class="statistic-num persian-num">
-                    <span class="counter">۲۹۴۰</span>
-                    <i class="glyphicon glyphicon-plus"></i>
-                    <span class="counter-unit">{t("text-statistics-artworks")}</span>
+            <div className="col-sm-3 col-xs-6">
+                <img src={art_icon} width="64" height="64" alt="" className="img-responsive center-block"/>
+                <div className="statistic-num persian-num">
+                    <span className="counter">۲۹۴۰</span>
+                    <i className="glyphicon glyphicon-plus"></i>
+                    <span className="counter-unit">{t("text-statistics-artworks")}</span>
                 </div>
             </div>
-            <div class="col-sm-3 col-xs-6">
-                <img src={success_icon} width="64" height="64" alt="" class="img-responsive center-block"/>
-                <div class="statistic-num persian-num">
-                    <span class="counter">۱۲۸</span>
-                    <i class="glyphicon glyphicon-plus"></i>
-                    <span class="counter-unit">{t("text-statistics-purchase")}</span>
+            <div className="col-sm-3 col-xs-6">
+                <img src={success_icon} width="64" height="64" alt="" className="img-responsive center-block"/>
+                <div className="statistic-num persian-num">
+                    <span className="counter">۱۲۸</span>
+                    <i className="glyphicon glyphicon-plus"></i>
+                    <span className="counter-unit">{t("text-statistics-purchase")}</span>
                 </div>
             </div>
         </div>

@@ -42,26 +42,26 @@ function ModalAddTicket(props) {
                             </button>
                         </div>
 
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">{t("content-panel-messages.tabs.tickets.new_ticket")}</h5>
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLabel">{t("content-panel-messages.tabs.tickets.new_ticket")}</h5>
                         
                         </div>
-                        <div class="modal-body">
-                            <div class="new-ticket-body">
-                                <div class="public-group">
-                                    <input class="form-control input-public" required
+                        <div className="modal-body">
+                            <div className="new-ticket-body">
+                                <div className="public-group">
+                                    <input className="form-control input-public" required
                                         placeholder="" value=""/>
-                                    <label class="lable-public">{t("content-panel-messages.tabs.tickets.subject")}</label>
+                                    <label className="lable-public">{t("content-panel-messages.tabs.tickets.subject")}</label>
                                 </div>
-                                <div class=" public-group ">
-                                <textarea class="d-flex text-dir form-control"
+                                <div className=" public-group ">
+                                <textarea className="d-flex text-dir form-control"
                                         placeholder={t("content-panel-messages.tabs.tickets.text-ticket")}
                                         rows="12"></textarea>
                                 </div>
                             </div>
                         </div>
-                        <div class="d-flex justify-content-center modal-footer">
-                            <button type="button" class="btn btn-black">{t("content-panel-messages.tabs.tickets.send")}</button>
+                        <div className="d-flex justify-content-center modal-footer">
+                            <button type="button" className="btn btn-black">{t("content-panel-messages.tabs.tickets.send")}</button>
                         </div>
                     </div>
   
