@@ -750,7 +750,7 @@
     }
 
     .gallery-page .inner-tab .nav-tabs {
-        white-space: nowrap;
+        white-space: inherit;
     }
 
     .artist-art .nav-tabs > li > a {
@@ -1069,7 +1069,7 @@
     }
 
     .gallery-txt p {
-        margin: 20px 0;
+        margin: 20px 0 !important;
     }
 
     .row-galleryinfo {
@@ -1376,7 +1376,7 @@
     }
 
     .gallery-txt p {
-        margin: 10px 0;
+        margin: 10px 0 !important;
     }
 
     .row-galleryinfo {
@@ -1448,7 +1448,7 @@
 
 @media (min-width: 1200px) {
     .md-padr100 {
-        padding-right: 100px;
+        padding-right: 18px;
     }
 }
 

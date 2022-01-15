@@ -1032,6 +1032,7 @@
       "edit": "Edit"
     }
   },
+
   "gallery-panel-my-gallery": {
     "create_gallery": "New gallery",
     "title": "MY GALLERIES",
@@ -1044,6 +1045,96 @@
       "profile": "Profile",
       "details": "Details",
       "edit": "Edit"
-    }
+    },
+
+  "content-panel-create-content" : {
+    "title" : "CREATE CONTENT",
+    "upload_poster" : {
+      "title" : "Content type", 
+      "report" : "Visual report", 
+      "text_content" : "Text", 
+      "link" : "Link"
+    },
+
+    "upload" : {
+      "title" : "Upload image or video",
+      "text" : "Drag and drop here",
+      "or" : "or",
+      "btn" : "Select file",
+      "tip" : "All pictures must be PNG or JPG and video must be in MP4 format"
+    },
+
+    "subject_fa" : "",
+    "subject_en" : "Title",
+    "placeholder_fa" : "",
+    "placeholder_en" : "Enter details",
+    "link" : "Link",
+    "btn_create_content"  : "Create content", 
+    "btn_cancel" : "Cancel"
+  },
+
+
+
+  "content-panel-add-artwork" : {
+    "step1" : "Artwork info",
+    "step2" : "Purchase info",
+
+    "upload" : {
+      "title" : "Upload photo",
+      "text" : "Select one or more pictures and drag them here",
+      "or" : " or ",
+      "btn" : "Select file",
+      "tip" : "All pictures must be PNG or JPG and video must be in MP4 format"
+    },
+
+    "art_info" : {
+      "title" : "Artwork info",
+      "artwork_name" : "",
+      "artwork_title" : "Artwork title",
+      "artwork_subject" : "Subject",
+      "artwork_field" : "Category",
+      "artwork_technique" : "Technique",
+      "artwork_material" : "Material",
+      "create_date" : "Creation date",
+      "length" : "Length",
+      "width" : "Width",
+      "weight" : "Weight",
+      "select_gallery" : "Select album",
+      "multi_edition" : "This artwork has multiple edition",
+      "description_fa" : "",
+      "description_en" : "Description of artowork",
+      "tag_fa" : "",
+      "text_tag_fa" : "",
+      "tag_en" : "Add tag",
+      "text_tag_en" : ".Adding one or multiple tags facilitates the process of receiving your artworks for your fans and audiences",
+      "next_step" : "Next",
+      "cencel" : "Cancel"
+    },
+
+    "sale_info" : "Sale info" ,
+    "display_only" : "For display only",
+    "display_only_text" : ".By selecting this option the artwork will only be displayed on website",
+    "edition" : "Edition",
+    "price_ir" : "Price(IRR)",
+    "price_usd" : "Price(USD)",
+    "artwork_sold" : "Artwork is sold",
+    "could_offer" : "Could offer a price",
+    "could_offer_text" : ".By selecting this option buyers are enable to send you their price offers",
+    "discount_price" : "Discount price",
+    "discount_base" : "Discount base of percent",
+    "discount_percent_ir" : "Discount percent (IRR)",
+    "discount_percent_usd" : "Discount percent (USD)",
+    "discount_period" : "Discount period",
+    "date" : "Date",
+    "previous_step" : "Previous step",
+    "submit_artwork" : "Submit"
+
+  },
+
+  "select_province" :{
+    "all_province" : "All city",
+    "tehran_city" : "Tehran",
+    "other_city" : "More"
+    
   }
 }
