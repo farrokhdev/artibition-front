@@ -11,7 +11,7 @@ function NotificationTab() {
 return (
 <>
 
-    <div className="row mx-5">
+    <div className="row mx-3">
 
 
         <div className="message-block unread w-100">

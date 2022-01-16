@@ -23,7 +23,7 @@ function PanelMessages() {
     <div className="panel-style margin-top-20">
         <SidebarPanel />
         <div className="custom-container " id="main">
-        <div className="box box-2">
+        <div className="box box-2 dir">
             <div className="sec6">
                 <div className="public-header">
                     <div className="pull-dir">

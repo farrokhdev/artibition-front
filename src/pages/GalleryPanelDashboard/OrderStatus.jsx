@@ -89,7 +89,7 @@ function OrderStatus() {
                 </tbody>
             </table>
             <div className="row-pagination">
-                <Pagination total={50} />
+                <Pagination total={50}/>
             </div>
         </div>
     )

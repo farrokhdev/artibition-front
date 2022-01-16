@@ -8,7 +8,6 @@
   "filter-header": {
     "title": "فیلتر",
     "placeholder-input-search": "جستجوی نام اثر، نام هنرمند، گالری و غیره",
-
     "category": {
       "title": "رشته هنری",
       "all": "همه رشته‌ها",
@@ -771,7 +770,6 @@
       "video": "ویدیوئی"
     }
   },
-
   "content-panel-create-content": {
     "title": "ایجاد محتوا",
     "upload_poster": {
@@ -796,57 +794,6 @@
     "link": "لینک",
     "btn_create_content": "ایجاد محتوا",
     "btn_cancel": "انصراف"
-  },
-  "content-panel-add-artwork": {
-    "step1": "تکمیل اطلاعات اثر",
-    "step2": "تکمیل اطلاعات فروش",
-    "upload": {
-      "title": "آپلود تصویر اثر",
-      "text": "یک یا چند عکس را بگیرید و در اینجا بیاندازید",
-      "or": " یا ",
-      "btn": "انتخاب فایل از سیستم",
-      "tip": "ابعاد عکس ها می‌بایست حداقل ۹۶۰ در ۹۶۰ و با فرمت  PNG و یا JPG باشند"
-    },
-    "art_info": {
-      "title": "اطلاعات هنری",
-      "artwork_name": "Artwork Name",
-      "artwork_title": "عنوان اثر",
-      "artwork_subject": "موضوع",
-      "artwork_field": "رشته هنری",
-      "artwork_technique": "تکنیک",
-      "artwork_material": "متریال",
-      "create_date": "تاریخ خلق اثر (شمسی)",
-      "length": "طول",
-      "width": "عرض",
-      "weight": "وزن اثر",
-      "select_gallery": "انتخاب مجموعه",
-      "multi_edition": "این اثر دارای چند ادیشن است",
-      "description_fa": "توضویحات اثر به فارسی",
-      "description_en": "توضیحات اثر به انگلیسی",
-      "tag_fa": "افزودن تگ (فارسی)",
-      "text_tag_fa": "با افزودن یک یا چند تگ، اثر شما آسان‌تر توسط علاقه‌مندان و مخاطبان شما یافت می‌شود",
-      "tag_en": "افزودن تگ (انگلیسی)",
-      "text_tag_en": "تگ‌های انگلیسی به جستجوی آسان‌تر آثار شما توسط علاقه‌مندان خارجی زبان کمک می‌نماید",
-      "next_step": "مرحله بعد",
-      "cencel": "انصراف"
-    },
-    "sale_info": "اطلاعات فروش",
-    "display_only": "برای نمایش",
-    "display_only_text": "با انتخاب این گزینه اثر تنها برای نمایش در سایت قرار می‌گیرد",
-    "edition": "شماره ادیشن",
-    "price_ir": "قیمت اثر به تومان",
-    "edition_usd": "معادل قیمت به دلار",
-    "artwork_sold": "این اثر فروخته شده",
-    "could_offer": "امکان ارسال پیشنهاد قیمت",
-    "could_offer_text": "از طریق این قابلیت مشتریان شما می‌توانند پیشنهاد قیمتی خود را به شما ارسال نمایند",
-    "discount_price": "تخفیف قیمت",
-    "discount_base": "تخفیف بر اساس درصد",
-    "discount_percent_ir": "درصد تخفیف قیمت ریالی",
-    "discount_percent_usd": "درصد تخفیف قیمت دلاری",
-    "discount_period": "مدت زمان تخفیف",
-    "date": "تاریخ",
-    "previous_step": "مرحله قبل",
-    "submit_artwork": "ثبت اثر"
   },
   "gallery-panel-dashboard": {
     "title": "سفارش های فعال",
@@ -987,7 +934,7 @@
     "exhibition_contact_placeholder_en": "اعلامیه نمایشگاه به انگلیسی",
     "exhibition_time_work_placeholder_fa": "ساعات کاری گالری (فارسی). نمونه: - همه روزه از ساعت ۱۰ الی ۲۱ - روزهای تعطیل ۱۴ الی ۲۰",
     "exhibition_time_work_placeholder_en": "e.g.-All Days from 10 to 21 -Weekend From 14 to 19",
-    "exhibitions":"نمایشگاه‌ها",
+    "exhibitions": "نمایشگاه‌ها",
     "select_on_map": "تعیین روی نقشه",
     "address_en": "Address",
     "address_fa": "آدرس",
@@ -1000,7 +947,7 @@
     "to_date": "تا تاریخ",
     "start_date": "تاریخ شروع",
     "end_date": "تاریخ پایان",
-    "details":"جزئیات",
+    "details": "جزئیات",
     "upload_poster": {
       "title": "آپلود تصویر پوستر",
       "description": "تصویر از پوستر نمایشگاه (یکی مستطیلی و دیگری با ابعاد مربعی) آپلود نمایید",
@@ -1013,6 +960,59 @@
     "upload": {
       "title": "آپلود عکس یا ویدیو",
       "text": "عکس‌ها و یا ویدیوهای خود را بگیرید و در اینجا بیاندازید ",
+      "or": " یا ",
+      "btn": "انتخاب فایل از سیستم",
+      "tip": "ابعاد عکس ها می‌بایست حداقل ۹۶۰ در ۹۶۰ و با فرمت  PNG و یا JPG باشند"
+    },
+    "subject_fa": "عنوان",
+    "subject_en": "Title",
+    "placeholder_fa": "توضیحات محتوا را به فارسی وارد نمایید",
+    "placeholder_en": "توضیحات محتوا را به انگلیسی وارد نمایید",
+    "link": "لینک",
+    "btn_create_content": "ایجاد محتوا",
+    "btn_cancel": "انصراف"
+  },
+  "gallery-panel-create-artist-artwork": {
+    "title": "آپلود اثر هنرمند",
+    "upload_artwork": {
+      "title": "آپلود تصویر اثر",
+      "description": "تصویر از پوستر نمایشگاه (یکی مستطیلی و دیگری با ابعاد مربعی) آپلود نمایید",
+      "report": "گزارش تصویری",
+      "text_content": "محتوای متنی",
+      "link": "لینک",
+      "image": "تصویر",
+      "video": "ویدیو"
+    },
+    "artwork_info": {
+      "title": "اطلاعات هنری",
+      "artwork_name_fa": "عنوان اثر",
+      "artwork_name_en": "Artwork Name",
+      "category": "رشته هنری",
+      "subject": "موضوع",
+      "technique": "تکنیک",
+      "material": "متریال",
+      "creation_date": "تاریخ خلق اثر (شمسی)",
+      "width": "عرض",
+      "length": "طول",
+      "height": "ارتفاع",
+      "weight": "وزن اثر",
+      "multipl_edition": "این اثر دارای چند ادیشن است"
+    },
+    "sale_info": {
+      "title": "اطلاعات فروش",
+      "display_only": "برای نمایش",
+      "display_only_description": "با انتخاب این گزینه اثر تنها برای نمایش در سایت قرار می‌گیرد",
+      "price_irr": "قیمت اثر به تومان",
+      "price_usd": "معادل قیمت به دلار",
+      "artwork_sold": "این اثر فروخته شده",
+      "could_offer_price": "امکان ارسال پیشنهاد قیمت",
+      "could_offer_price_description": "از طریق این قابلیت مشتریان شما می‌توانند پیشنهاد قیمتی خود را به شما ارسال نمایند",
+      "upload_another_artwork": "آپلود اثر دیگر",
+      "btn": "پایان آپلود آثار هنرمند"
+    },
+    "upload": {
+      "title": "آپلود تصویر اثر",
+      "text": "یک یا چند عکس را بگیرید و در اینجا بیاندازید",
       "or": " یا ",
       "btn": "انتخاب فایل از سیستم",
       "tip": "ابعاد عکس ها می‌بایست حداقل ۹۶۰ در ۹۶۰ و با فرمت  PNG و یا JPG باشند"
@@ -1052,97 +1052,78 @@
       "edit": "ویرایش"
     }
   },
-  
-  "content-panel-create-content" : {
-    "title" : "ایجاد محتوا",
-    "upload_poster" : {
-      "title" : "آپلود تصویر پوستر", 
-      "report" : "گزارش تصویری", 
-      "text_content" : "محتوای متنی", 
-      "link" : "لینک"
+  "content-panel-add-artwork": {
+    "step1": "تکمیل اطلاعات اثر",
+    "step2": "تکمیل اطلاعات فروش",
+    "upload": {
+      "title": "آپلود تصویر اثر",
+      "text": "یک یا چند عکس را بگیرید و در اینجا بیاندازید",
+      "or": " یا ",
+      "btn": "انتخاب فایل از سیستم",
+      "tip": "ابعاد عکس ها می‌بایست حداقل ۹۶۰ در ۹۶۰ و با فرمت  PNG و یا JPG باشند"
     },
-
-    "upload" : {
-      "title" : "آپلود عکس یا ویدیو",
-      "text" : "عکس‌ها و یا ویدیوهای خود را بگیرید و در اینجا بیاندازید ",
-      "or" : " یا ",
-      "btn" : "انتخاب فایل از سیستم",
-      "tip" : "ابعاد عکس ها می‌بایست حداقل ۹۶۰ در ۹۶۰ و با فرمت  PNG و یا JPG باشند"
+    "art_info": {
+      "title": "اطلاعات هنری",
+      "artwork_name": "Artwork Name",
+      "artwork_title": "عنوان اثر",
+      "artwork_subject": "موضوع",
+      "artwork_field": "رشته هنری",
+      "artwork_technique": "تکنیک",
+      "artwork_material": "متریال",
+      "create_date": "تاریخ خلق اثر (شمسی)",
+      "length": "طول",
+      "width": "عرض",
+      "weight": "وزن اثر",
+      "select_gallery": "انتخاب مجموعه",
+      "multi_edition": "این اثر دارای چند ادیشن است",
+      "description_fa": "توضویحات اثر به فارسی",
+      "description_en": "توضیحات اثر به انگلیسی",
+      "tag_fa": "افزودن تگ (فارسی)",
+      "text_tag_fa": "با افزودن یک یا چند تگ، اثر شما آسان‌تر توسط علاقه‌مندان و مخاطبان شما یافت می‌شود",
+      "tag_en": "افزودن تگ (انگلیسی)",
+      "text_tag_en": "تگ‌های انگلیسی به جستجوی آسان‌تر آثار شما توسط علاقه‌مندان خارجی زبان کمک می‌نماید",
+      "next_step": "مرحله بعد",
+      "cencel": "انصراف"
     },
-
-    "subject_fa" : "عنوان",
-    "subject_en" : "Title",
-    "placeholder_fa" : "توضیحات محتوا را به فارسی وارد نمایید",
-    "placeholder_en" : "توضیحات محتوا را به انگلیسی وارد نمایید",
-    "link" : "لینک",
-    "btn_create_content"  : "ایجاد محتوا", 
-    "btn_cancel" : "انصراف"
+    "sale_info": "اطلاعات فروش",
+    "display_only": "برای نمایش",
+    "display_only_text": "با انتخاب این گزینه اثر تنها برای نمایش در سایت قرار می‌گیرد",
+    "edition": "شماره ادیشن",
+    "price_ir": "قیمت اثر به تومان",
+    "edition_usd": "معادل قیمت به دلار",
+    "artwork_sold": "این اثر فروخته شده",
+    "could_offer": "امکان ارسال پیشنهاد قیمت",
+    "could_offer_text": "از طریق این قابلیت مشتریان شما می‌توانند پیشنهاد قیمتی خود را به شما ارسال نمایند",
+    "discount_price": "تخفیف قیمت",
+    "discount_base": "تخفیف بر اساس درصد",
+    "discount_percent_ir": "درصد تخفیف قیمت ریالی",
+    "discount_percent_usd": "درصد تخفیف قیمت دلاری",
+    "discount_period": "مدت زمان تخفیف",
+    "date": "تاریخ",
+    "previous_step": "مرحله قبل",
+    "submit_artwork": "ثبت اثر"
   },
-
-
-
-  "content-panel-add-artwork" : {
-    "step1" : "تکمیل اطلاعات اثر",
-    "step2" : "تکمیل اطلاعات فروش",
-
-    "upload" : {
-      "title" : "آپلود تصویر اثر",
-      "text" : "یک یا چند عکس را بگیرید و در اینجا بیاندازید",
-      "or" : " یا ",
-      "btn" : "انتخاب فایل از سیستم",
-      "tip" : "ابعاد عکس ها می‌بایست حداقل ۹۶۰ در ۹۶۰ و با فرمت  PNG و یا JPG باشند"
-    },
-
-    "art_info" : {
-      "title" : "اطلاعات هنری",
-      "artwork_name" : "Artwork Name",
-      "artwork_title" : "عنوان اثر",
-      "artwork_subject" : "موضوع",
-      "artwork_field" : "رشته هنری",
-      "artwork_technique" : "تکنیک",
-      "artwork_material" : "متریال",
-      "create_date" : "تاریخ خلق اثر (شمسی)",
-      "length" : "طول",
-      "width" : "عرض",
-      "weight" : "وزن اثر",
-      "select_gallery" : "انتخاب مجموعه",
-      "multi_edition" : "این اثر دارای چند ادیشن است",
-      "description_fa" : "توضویحات اثر به فارسی",
-      "description_en" : "توضیحات اثر به انگلیسی",
-      "tag_fa" : "افزودن تگ (فارسی)",
-      "text_tag_fa" : "با افزودن یک یا چند تگ، اثر شما آسان‌تر توسط علاقه‌مندان و مخاطبان شما یافت می‌شود",
-      "tag_en" : "افزودن تگ (انگلیسی)",
-      "text_tag_en" : "تگ‌های انگلیسی به جستجوی آسان‌تر آثار شما توسط علاقه‌مندان خارجی زبان کمک می‌نماید",
-      "next_step" : "مرحله بعد",
-      "cencel" : "انصراف"
-    },
-
-    "sale_info" : "اطلاعات فروش" ,
-    "display_only" : "برای نمایش",
-    "display_only_text" : "با انتخاب این گزینه اثر تنها برای نمایش در سایت قرار می‌گیرد",
-    "edition" : "شماره ادیشن",
-    "price_ir" : "قیمت اثر به تومان",
-    "edition_usd" : "معادل قیمت به دلار",
-    "artwork_sold" : "این اثر فروخته شده",
-    "could_offer" : "امکان ارسال پیشنهاد قیمت",
-    "could_offer_text" : "از طریق این قابلیت مشتریان شما می‌توانند پیشنهاد قیمتی خود را به شما ارسال نمایند",
-    "discount_price" : "تخفیف قیمت",
-    "discount_base" : "تخفیف بر اساس درصد",
-    "discount_percent_ir" : "درصد تخفیف قیمت ریالی",
-    "discount_percent_usd" : "درصد تخفیف قیمت دلاری",
-    "discount_period" : "مدت زمان تخفیف",
-    "date" : "تاریخ",
-    "previous_step" : "مرحله قبل",
-    "submit_artwork" : "ثبت اثر"
-
+  "select_province": {
+    "all_province": "همه استان‌ها",
+    "tehran_city": "تهران",
+    "other_city": "همه"
   },
-
-  "select_province" :{
-    "all_province" : "همه استان‌ها",
-    "tehran_city" : "تهران",
-    "other_city" : "همه"
-    
+  "gallery-panel-select-artwork-source": {
+    "select_from_exist_artwork": "انتخاب از آثار موجود",
+    "add_new_artwork": "اضافه کردن اثر جدید"
+  },
+  "upload-exhibition-artwork": {
+    "title": "آپلود آثار هنرمندان",
+    "size": "ابعاد:",
+    "x": "در",
+    "price": "تومان",
+    "new_artist": "افزودن هنرمند جدید",
+    "confirm_gallery_info": "تأیید اطلاعات نمایشگاه",
+    "view":"مشاهده اثر",
+    "shop_now":"درخواست خرید"
+  },
+  "gallery-panel-select-artist-source":{
+    "select_from_exist_artist": "انتخاب از هنرمندان موجود",
+    "add_new_artist": "اضافه کردن هنرمند جدید"
   }
-
-
 }

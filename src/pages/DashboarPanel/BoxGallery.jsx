@@ -7,7 +7,7 @@ import logo_icon from '../../assets/img/logo-icon.png';
 
 function BoxGallery() {
     return (
-        <div className="row box-dir-reverse">
+        <div className="row box-dir-reverse dir">
             <div className="col-lg-8">
                 <div className="d-flex box-dir-reverse box box-1">
                     <div className="col">

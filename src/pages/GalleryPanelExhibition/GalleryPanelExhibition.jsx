@@ -13,7 +13,7 @@ function GalleryPanelExhibition() {
             <div className="panel-style margin-top-20">
                 <SidebarPanel />
                 <div className="custom-container" style={{ minHeight: "820px" }}>
-                    <div className="row box-dir-reverse">
+                    <div className="row box-dir-reverse dir">
                         <div className="col-md-8">
                             <GalleryPanelExhibitionList />
                         </div>

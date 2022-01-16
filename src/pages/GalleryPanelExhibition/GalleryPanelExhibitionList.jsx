@@ -4,6 +4,7 @@ import { t } from 'i18next';
 
 import viewBlue from '../../assets/img/view-blue.svg'
 import artwork1 from '../../assets/img/artworks/artwork-1.jpg';
+import { Link } from "react-router-dom";
 
 
 function GalleryPanelExhibitionList() {
@@ -36,10 +37,12 @@ function GalleryPanelExhibitionList() {
                         <td data-label={t("gallery-panel-exhibition.table.start")} className="persian-num">۹۹/۰۶/۱۰</td>
                         <td data-label={t("gallery-panel-exhibition.table.end")} className="persian-num">۹۹/۰۶/۱۰</td>
                         <td data-label={t("gallery-panel-exhibition.table.profile")} className="status">
-                        <a href="#"><img src={viewBlue} width="18" height="18" alt="" className=""/></a>
+                            <a href="#"><img src={viewBlue} width="18" height="18" alt="" className="" /></a>
                         </td>
                         <td data-label={t("gallery-panel-exhibition.table.details")} className="status">
-                            <button type="button" className="btn-outline-blue">{t("gallery-panel-exhibition.table.edit")}</button>
+                            <Link to={"/panel/create-exhibition"} className="btn-outline-blue">
+                                {t("gallery-panel-exhibition.table.edit")}
+                            </Link>
                             <button type="button" className="btn-outline-blue">{t("gallery-panel-exhibition.table.upload_artwotk")}</button>
                         </td>
                     </tr>
@@ -53,10 +56,12 @@ function GalleryPanelExhibitionList() {
                         <td data-label={t("gallery-panel-exhibition.table.start")} className="persian-num">۹۹/۰۶/۱۰</td>
                         <td data-label={t("gallery-panel-exhibition.table.end")} className="persian-num">۹۹/۰۶/۱۰</td>
                         <td data-label={t("gallery-panel-exhibition.table.profile")} className="status">
-                        <a href="#"><img src={viewBlue} width="18" height="18" alt="" className=""/></a>
+                            <a href="#"><img src={viewBlue} width="18" height="18" alt="" className="" /></a>
                         </td>
                         <td data-label={t("gallery-panel-exhibition.table.details")} className="status">
-                            <button type="button" className="btn-outline-blue">{t("gallery-panel-exhibition.table.edit")}</button>
+                            <Link to={"/panel/create-exhibition"} className="btn-outline-blue">
+                                {t("gallery-panel-exhibition.table.edit")}
+                            </Link>
                             <button type="button" className="btn-outline-blue">{t("gallery-panel-exhibition.table.upload_artwotk")}</button>
                         </td>
                     </tr>

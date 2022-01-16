@@ -12,7 +12,7 @@ function PersonalInfo(props) {
     }
 
     return (
-        <div className="box box-2 ">
+        <div className="box box-2 dir">
         <div className="sec1">
             <div className="d-flex public-header justify-content-between box-dir-reverse">
                 <div className="pull-dir">

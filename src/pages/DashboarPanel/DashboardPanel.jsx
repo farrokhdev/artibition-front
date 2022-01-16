@@ -64,7 +64,7 @@ function DashboardPanel() {
         
                 <BoxGallery/>
                 
-            <div className="row box-dir-reverse ">
+            <div className="row box-dir-reverse dir">
                 <div className="col-lg-8 ">
                     <BoxStatusArtwork/>
                 </div>

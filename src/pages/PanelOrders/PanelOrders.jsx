@@ -15,7 +15,7 @@ function PanelOrders() {
         <SidebarPanel />
         <div className="custom-container">
 
-        <div className="box artistpanel-5">
+        <div className="box artistpanel-5 dir">
 
             <div className="public-header mrgb32">
                 <h2 className=" default-title text-dir">{t("content-panel-dashboard.tables.orders")}</h2>

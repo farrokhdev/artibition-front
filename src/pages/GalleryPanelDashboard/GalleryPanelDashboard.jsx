@@ -21,7 +21,7 @@ function GalleryPanelDashboard() {
             <div className="panel-style margin-top-20">
                 <SidebarPanel />
                 <div className="custom-container">
-                    <div className="row box-dir-reverse">
+                    <div className="row box-dir-reverse dir">
                         <div className="col-md-8">
                             <CounterStatus />
                         </div>

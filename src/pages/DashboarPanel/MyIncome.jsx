@@ -1,5 +1,6 @@
 import { t } from "i18next";
 import React from "react";
+import { Link } from "react-router-dom";
 
 import cash_icon from '../../assets/img/cash.png';
 
@@ -25,10 +26,10 @@ function MyIncome() {
           <span className="persian-num mx-2">۴,۵۰۰,۰۰۰</span>
           <span>تومان</span>
         </div>
-        <button type="button" className="btn-back-blue">
+        <Link to={"/panel/wallet"} className="btn-back-blue">
           {t("content-panel-dashboard.my_income.detail")}
           <i className="glyphicon glyphicon-chevron-left"></i>
-        </button>
+        </Link>
       </div>
     </div>
   );
