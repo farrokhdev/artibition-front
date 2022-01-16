@@ -15,6 +15,7 @@ import GalleryPanelDashboard from '../pages/GalleryPanelDashboard/GalleryPanelDa
 import GalleryPanelEditGalleryInfo from '../pages/GalleryPanelEditGalleryInfo/GalleryPanelEditGalleryInfo';
 import GalleryPanelExhibition from '../pages/GalleryPanelExhibition/GalleryPanelExhibition';
 import GalleryPanelMyGallery from '../pages/GalleryPanelMyGallery/GalleryPanelMyGallery';
+import GalleryPanelSelectArtworkSource from '../pages/GalleryPanelSelectArtworkSource/GalleryPanelSelectArtworkSource';
 import GalleryIntroduction from '../pages/GalleryIntroduction/GalleryIntroduction';
 
 import Home from '../pages/Home.jsx/Home';
@@ -32,6 +33,9 @@ import PanelWallet from '../pages/PanelWallet/PanelWallet';
 import ProfileArtist from '../pages/ProfileArtist/ProfileArtist';
 import SetPassword from '../pages/RecoveryPassword/RecoveryPassword';
 import Signup from '../pages/Singup/Signup';
+import GalleryPanelCreateArtistArtwork from '../pages/GalleryPanelCreateArtistArtwork/GalleryPanelCreateArtistArtwork';
+import GalleryPanelUploadExhibitionArtwork from '../pages/GalleryPanelUploadExhibitionArtwork/GalleryPanelUploadExhibitionArtwork';
+import GalleryPanelSelectArtisitSource from '../pages/GalleryPanelSelectArtistSource/GalleryPanelSelectArtistSource';
 
 const RouterConfig = (props) => {
     return (
@@ -79,12 +83,17 @@ const RouterConfig = (props) => {
                     <Route path="my-albums" element={<PanleMyAlbums />} />
                     <Route path="contents" element={<PanelContentList />} />
                     <Route path="create-content" element={<PanelCreateContent />} />
+
                     <Route path="dashboard-gallery" element={<GalleryPanelDashboard />} />
                     <Route path="exhibition-list-gallery" element={<GalleryPanelExhibition/>} />
                     <Route path="artist-list-gallery" element={<GalleryPanelArtisit/>} />
                     <Route path="my-gallery-list-gallery" element={<GalleryPanelMyGallery/>} />
                     <Route path="create-exhibition" element={<GalleryPanelCreateExhibition/>} />
-                    <Route path="edite-gallery-info" element={<GalleryPanelEditGalleryInfo/>} />
+                    <Route path="edit-gallery-info" element={<GalleryPanelEditGalleryInfo/>} />
+                    <Route path="select-artwork-source" element={<GalleryPanelSelectArtworkSource/>} />
+                    <Route path="select-artist-source" element={<GalleryPanelSelectArtisitSource/>} />
+                    <Route path="create-artist-artwotk" element={<GalleryPanelCreateArtistArtwork/>} />
+                    <Route path="upload-exhibition-artwotk" element={<GalleryPanelUploadExhibitionArtwork/>} />
                 </Route>
             </Routes>
 

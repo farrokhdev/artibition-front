@@ -105,7 +105,7 @@
   "text-statistics-artists": "ARTISTS",
   "text-statistics-users": "USERS",
   "text-footer-auth": {
-    "info": " :  If you have any questions, contact us",
+    "info": "If you have any questions, contact us : ",
     "mobile": " 22538 229 21 98+ "
   },
   "category": "Category",
@@ -981,7 +981,7 @@
     "submit": "Submit",
     "exhibition_contact_placeholder_en": "Details",
     "exhibition_time_work_placeholder_en": "e.g.-All Days from 10 to 21 -Weekend From 14 to 19",
-    "exhibitions":"Exhibitions",
+    "exhibitions": "Exhibitions",
     "select_on_map": "Select on map",
     "address_fa": "Address",
     "address_en": "Address",
@@ -994,7 +994,7 @@
     "to_date": "To",
     "start_date": "Start date",
     "end_date": "End date",
-    "details":"Details",
+    "details": "Details",
     "upload_poster": {
       "title": "Upload poster",
       "description": "Upload tow files of exhibition's poster (one rectangular and one square picture)",
@@ -1019,6 +1019,49 @@
     "btn_create_content": "Create content",
     "btn_cancel": "Cancel"
   },
+  "gallery-panel-create-artist-artwork": {
+    "title": "Upload artist's artworks",
+    "artwork_info": {
+      "title": "Artwork info",
+      "artwork_name_en": "Artwork Name",
+      "category": "Category",
+      "subject": "Subject",
+      "technique": "Technique",
+      "material": "Material",
+      "creation_date": "Creation date",
+      "width": "Width",
+      "length": "Length",
+      "height": "Height",
+      "weight": "Weight",
+      "multipl_edition": "This artwork has multiple edition"
+    },
+    "sale_info": {
+      "title": "Sale info",
+      "display_only": "For display only",
+      "display_only_description": "By selecting this option the artwork will only be displayed on website. ",
+      "price_irr": "Price(IRR)",
+      "price_usd": "Price(USD)",
+      "artwork_sold": "Artwork is sold",
+      "could_offer_price": "Could offer a price",
+      "could_offer_price_description": "By selecting this option buyers are enable to send you their price offers. ",
+      "upload_another_artwork": "Upload another artwork",
+      "btn": "Finish uploading artwork"
+    },
+    "upload": {
+      "title": "Upload photo",
+      "text": "Select one or more pictures and drag them here",
+      "or": " or ",
+      "btn": "Select file",
+      "tip": "All pictures must be PNG or JPG and video must be in MP4 format"
+    },
+    "subject_fa": "عنوان",
+    "subject_en": "Title",
+    "placeholder_fa": "توضیحات محتوا را به فارسی وارد نمایید",
+    "placeholder_en": "توضیحات محتوا را به انگلیسی وارد نمایید",
+    "link": "لینک",
+    "btn_create_content": "ایجاد محتوا",
+    "btn_cancel": "انصراف"
+  },
   "gallery-panel-artist": {
     "create_artist": "New artist",
     "title": "ARTISTS",
@@ -1032,7 +1075,6 @@
       "edit": "Edit"
     }
   },
-
   "gallery-panel-my-gallery": {
     "create_gallery": "New gallery",
     "title": "MY GALLERIES",
@@ -1046,95 +1088,102 @@
       "details": "Details",
       "edit": "Edit"
     },
-
-  "content-panel-create-content" : {
-    "title" : "CREATE CONTENT",
-    "upload_poster" : {
-      "title" : "Content type", 
-      "report" : "Visual report", 
-      "text_content" : "Text", 
-      "link" : "Link"
+    "content-panel-create-content": {
+      "title": "CREATE CONTENT",
+      "upload_poster": {
+        "title": "Content type",
+        "report": "Visual report",
+        "text_content": "Text",
+        "link": "Link"
+      },
+      "upload": {
+        "title": "Upload image or video",
+        "text": "Drag and drop here",
+        "or": "or",
+        "btn": "Select file",
+        "tip": "All pictures must be PNG or JPG and video must be in MP4 format"
+      },
+      "subject_fa": "",
+      "subject_en": "Title",
+      "placeholder_fa": "",
+      "placeholder_en": "Enter details",
+      "link": "Link",
+      "btn_create_content": "Create content",
+      "btn_cancel": "Cancel"
     },
-
-    "upload" : {
-      "title" : "Upload image or video",
-      "text" : "Drag and drop here",
-      "or" : "or",
-      "btn" : "Select file",
-      "tip" : "All pictures must be PNG or JPG and video must be in MP4 format"
+    "content-panel-add-artwork": {
+      "step1": "Artwork info",
+      "step2": "Purchase info",
+      "upload": {
+        "title": "Upload photo",
+        "text": "Select one or more pictures and drag them here",
+        "or": " or ",
+        "btn": "Select file",
+        "tip": "All pictures must be PNG or JPG and video must be in MP4 format"
+      },
+      "art_info": {
+        "title": "Artwork info",
+        "artwork_name": "",
+        "artwork_title": "Artwork title",
+        "artwork_subject": "Subject",
+        "artwork_field": "Category",
+        "artwork_technique": "Technique",
+        "artwork_material": "Material",
+        "create_date": "Creation date",
+        "length": "Length",
+        "width": "Width",
+        "weight": "Weight",
+        "select_gallery": "Select album",
+        "multi_edition": "This artwork has multiple edition",
+        "description_fa": "",
+        "description_en": "Description of artowork",
+        "tag_fa": "",
+        "text_tag_fa": "",
+        "tag_en": "Add tag",
+        "text_tag_en": ".Adding one or multiple tags facilitates the process of receiving your artworks for your fans and audiences",
+        "next_step": "Next",
+        "cencel": "Cancel"
+      },
+      "sale_info": "Sale info",
+      "display_only": "For display only",
+      "display_only_text": ".By selecting this option the artwork will only be displayed on website",
+      "edition": "Edition",
+      "price_ir": "Price(IRR)",
+      "price_usd": "Price(USD)",
+      "artwork_sold": "Artwork is sold",
+      "could_offer": "Could offer a price",
+      "could_offer_text": ".By selecting this option buyers are enable to send you their price offers",
+      "discount_price": "Discount price",
+      "discount_base": "Discount base of percent",
+      "discount_percent_ir": "Discount percent (IRR)",
+      "discount_percent_usd": "Discount percent (USD)",
+      "discount_period": "Discount period",
+      "date": "Date",
+      "previous_step": "Previous step",
+      "submit_artwork": "Submit"
     },
-
-    "subject_fa" : "",
-    "subject_en" : "Title",
-    "placeholder_fa" : "",
-    "placeholder_en" : "Enter details",
-    "link" : "Link",
-    "btn_create_content"  : "Create content", 
-    "btn_cancel" : "Cancel"
+    "select_province": {
+      "all_province": "All city",
+      "tehran_city": "Tehran",
+      "other_city": "More"
+    }
   },
-
-
-
-  "content-panel-add-artwork" : {
-    "step1" : "Artwork info",
-    "step2" : "Purchase info",
-
-    "upload" : {
-      "title" : "Upload photo",
-      "text" : "Select one or more pictures and drag them here",
-      "or" : " or ",
-      "btn" : "Select file",
-      "tip" : "All pictures must be PNG or JPG and video must be in MP4 format"
-    },
-
-    "art_info" : {
-      "title" : "Artwork info",
-      "artwork_name" : "",
-      "artwork_title" : "Artwork title",
-      "artwork_subject" : "Subject",
-      "artwork_field" : "Category",
-      "artwork_technique" : "Technique",
-      "artwork_material" : "Material",
-      "create_date" : "Creation date",
-      "length" : "Length",
-      "width" : "Width",
-      "weight" : "Weight",
-      "select_gallery" : "Select album",
-      "multi_edition" : "This artwork has multiple edition",
-      "description_fa" : "",
-      "description_en" : "Description of artowork",
-      "tag_fa" : "",
-      "text_tag_fa" : "",
-      "tag_en" : "Add tag",
-      "text_tag_en" : ".Adding one or multiple tags facilitates the process of receiving your artworks for your fans and audiences",
-      "next_step" : "Next",
-      "cencel" : "Cancel"
-    },
-
-    "sale_info" : "Sale info" ,
-    "display_only" : "For display only",
-    "display_only_text" : ".By selecting this option the artwork will only be displayed on website",
-    "edition" : "Edition",
-    "price_ir" : "Price(IRR)",
-    "price_usd" : "Price(USD)",
-    "artwork_sold" : "Artwork is sold",
-    "could_offer" : "Could offer a price",
-    "could_offer_text" : ".By selecting this option buyers are enable to send you their price offers",
-    "discount_price" : "Discount price",
-    "discount_base" : "Discount base of percent",
-    "discount_percent_ir" : "Discount percent (IRR)",
-    "discount_percent_usd" : "Discount percent (USD)",
-    "discount_period" : "Discount period",
-    "date" : "Date",
-    "previous_step" : "Previous step",
-    "submit_artwork" : "Submit"
-
+  "gallery-panel-select-artwork-source": {
+    "select_from_exist_artwork": "Select from exist artwork",
+    "add_new_artwork": "Add new artwork"
   },
-
-  "select_province" :{
-    "all_province" : "All city",
-    "tehran_city" : "Tehran",
-    "other_city" : "More"
-    
+  "upload-exhibition-artwork": {
+    "title": "UPLOAD ARTISTS' ARTWORKS",
+    "size": "Size:",
+    "x": "x",
+    "price": "USD",
+    "new_artist": "Add new artist",
+    "confirm_gallery_info": "Confirm gallery info",
+    "view":"View",
+    "shop_now":"Shop now"
+  },
+  "gallery-panel-select-artist-source":{
+    "select_from_exist_artist": "Select from exist artist",
+    "add_new_artist": "Add new artist"
   }
 }

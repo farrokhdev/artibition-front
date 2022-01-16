@@ -1231,6 +1231,7 @@ input:checked + .switchbtn:before {
     border-top: 1px solid #e4e6e9;
     text-align: center;
     margin-top: 100px;
+    direction: rtl !important;
 }
 
 .row-pagination .pagination {
@@ -3517,6 +3518,16 @@ div .gallery-daterow:nth-child(1) {
     z-index: 100;
 }
 
+.adv-btn-orginal{
+    // background: #fff;
+    position: sticky;
+    bottom: 0;
+    display: inline-block;
+    width: 100%;
+    padding: 16px 0;
+    z-index: 100;
+}
+
 
 .adv-btn button i {
     font-size: 10px;
@@ -4232,6 +4243,10 @@ a.sec-timeline {
     padding-top: 20px !important;
 }
 
+.margin-top-100{
+    padding-top: 100px !important;
+}
+
 .panel-style {
     background: #f7f7f7;
     position: relative;
@@ -4370,6 +4385,7 @@ a.sec-timeline {
 }
 
 .panel-header {
+    z-index: 99999 !important;
     background: #fff;
     border-bottom: 1px solid #e4e6e9;
     position: fixed;
@@ -4755,6 +4771,11 @@ a.sec-timeline {
 
 #favorite-1 .cols {
     margin-bottom: 32px;
+}
+
+
+.margin-bottom-32{
+    margin-bottom: 32px !important;
 }
 
 
@@ -5407,6 +5428,10 @@ p.upload-size {
 
 .mrgt10 {
     margin-top: 10px;
+}
+
+.mrgt125 {
+    margin-top: 125px;
 }
 
 .col-image img {
@@ -6120,6 +6145,11 @@ td[data-label] {
 
 .upload-artist-artwork .btn-add-artist {
     margin: 64px 0;
+}
+
+
+.margin_top_bottom_64{
+    margin: 64px 0 !important
 }
 
 .logo-td img {
@@ -8659,6 +8689,14 @@ button.btn-searchfilter.hidden-sm{
     float : left;
 }
 
+.pull-dir-rev{
+    float : right;
+}
+
+.float-none{
+    float: none !important;
+}
+
 .margin-dir{
     margin-left: 60px !important;
 }
@@ -8946,4 +8984,12 @@ textarea.ant-input {
 
 .d-table{
     display: table !important;
+}
+
+.right-0{
+    right: 0!important;
+}
+
+.d-none{
+    display: none !important;
 }

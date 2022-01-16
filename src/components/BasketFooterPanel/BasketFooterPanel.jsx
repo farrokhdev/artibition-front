@@ -23,7 +23,7 @@ function BasketFooterPanel() {
                 <div className="col col-md-4 col-md-5 col-lg-6 hidden-xs px-0">
                     <div className="d-flex justify-content-center w-100">
                         <img src={logo} width="240" height="62" alt="لوگو-آرتیبیشن"
-                            className="img-responsive pull-left"/>
+                            className="img-responsive pull-left" />
                     </div>
                 </div>
                 <div className="clearfix"></div>
