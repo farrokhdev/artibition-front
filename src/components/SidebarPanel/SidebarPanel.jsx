@@ -6,7 +6,7 @@ import invite from '../../assets/img/invite.svg';
 import { t } from 'i18next';
 import { Link } from 'react-router-dom';
 
-function SidebarPanel() {
+function SidebarPanel(props) {
     return (
         
         <div className="sidebar active " id="mySidebar">
@@ -17,7 +17,7 @@ function SidebarPanel() {
                     <div className="sidebar-personal-info text-dir">
                         <span className="sidebar-name ">آیدین آغداشلو</span>
                         <div className="sidebar-mobile">
-                            <span className="persian-num pull-dir">۴۸۴۰۴۷۵ ۰۹۱۲</span>
+                            <span className="persian-num pull-dir">{props.items?.mobile}</span>
                             <a href="#">
                                 <img src={edit} width="32" height="32" alt="" className="pull-dir img-responsive"/>
                             </a>

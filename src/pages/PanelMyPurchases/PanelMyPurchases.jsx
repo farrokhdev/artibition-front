@@ -10,7 +10,7 @@ import Bidding from './Bidding';
 import Returned from './Returned';
 import Canceled from './Canceled';
 import apiServices from '../../utils/api.services';
-import {ORDERS_BUY} from '../../utils'
+import {ORDER_BUYERS} from '../../utils/index'
 import react from 'react';
 import queryString from 'query-string'
 
@@ -29,7 +29,7 @@ function PanelMyPurchases() {
     }
 
     const getMyPurchasesInPanel = () => {
-        apiServices.get(ORDERS_BUY, queryString.stringify(params))
+        apiServices.get(ORDER_BUYERS, queryString.stringify(params))
             .then(res => {
                 if (res.data){
                     // console.log(res.data.data.results)

@@ -5,6 +5,7 @@ import logo from '../../assets/img/logo.svg';
 import {Link} from 'react-router-dom';
 import {useTranslation} from 'react-i18next';
 import ModalSetDimention from './ModalSetDimention';
+import {isLogin} from "../../utils/utils";
 
 function Header() {
     
@@ -456,22 +457,31 @@ function Header() {
             <div className="col ">
                 <div className="navbar-header">
                     <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#menu">
-                        <span className="icon-bar"></span>
-                        <span className="icon-bar"></span>
-                        <span className="icon-bar"></span>
+                        <span className="icon-bar" />
+                        <span className="icon-bar" />
+                        <span className="icon-bar" />
                     </button>
                 </div>
                 <div className="head-leftbtn d-flex content-box-action-header hidden-xs">
 
-                    <button type="button" className="btn-login pull-left mx-2">{t("redirect-login-header")}</button>
+                    {isLogin() ?
+                        <Link to={"/panel/profile"}>
+                            <button type="button" className="btn-login pull-left mx-2">{t("panel")}</button>
+                        </Link>
+                        :
+                        <Link to={"/auth/login"}>
+                            <button type="button" className="btn-login pull-left mx-2">{t("redirect-login-header")}</button>
+                        </Link>
+                    }
                     <button 
                         onClick={()=>changeLanguage(i18n.language !== 'fa-IR' ? 'fa-IR' : 'en-US' )} 
                         type="button" 
-                        classNameName="btn-changelang pull-left">
+                        className="btn-changelang pull-left">
 
                         {t("title_lang-header")}
 
                     </button>
+
                 </div>
             </div>
         </div>
