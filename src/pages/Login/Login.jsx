@@ -9,7 +9,11 @@ import Statistics from '../../components/Statistics/Statistics';
 import BasketFooter from '../../components/BasketFooter/BasketFooter';
 import {useTranslation} from 'react-i18next';
 import HeaderAuthPages from '../../components/HeaderAuthPages/HeaderAuthPages';
-
+import APIService from '../../utils/api.services'
+import {LOGIN} from '../../utils/index'
+import {setToken} from '../../utils/utils'
+import 'antd/dist/antd.css';
+import { message } from 'antd';
 
 function Login() {
 
@@ -17,7 +21,21 @@ function Login() {
 
     const [form] = Form.useForm();
     const onFinish = (values) =>{
+        APIService.post(LOGIN, values)
+            .then(res => {
+                if (res.data) {
+                    console.log(res.data)
+                    setToken(res.data.data)
+                    message.success("به آرتیبیشن خوش آمدید")
+                    setTimeout(() => {
+                        window.location.href = "/panel"
+                    }, 500);
+                } else {
+                    console.log(res.response)
+                    message.error(res.response.data.message)
+                }
 
+            })
     }
 
 
