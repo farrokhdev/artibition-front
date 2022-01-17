@@ -21,30 +21,28 @@ function App(props) {
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);
     };
-    console.log(GetLanguage());
 
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<Home/>}>
+                    <Route index path="home" element={<Home/>}/>
+                </Route>
+            </Routes>
 
-    if (!isLogin()) {
-        return (
-            <BrowserRouter>
-
-                <Routes>
-                    <Route path="/" element={<Home />}>
-                        <Route index path="home" element={<Home />} />
-                    </Route>
-                </Routes>
-
-                <Routes>
-                    <Route path="site" animate={true}>
-                        <Route path="artworks" element={<ArtworksPage/>}/>
-                        <Route path="artworks/:id" element={<DetailsArtwork/>}/>
-                        <Route path="artists" element={<ArtistsPage/>}/>
-                        <Route path="artist-profile" element={<ProfileArtist/>}/>
-                        <Route path="all-galleris-list" element={<AllGallerysList/>}/>
-                        <Route path="gallery-introduction" element={<GalleryIntroduction/>}/>
-                    </Route>
-                </Routes>
-
+            <Routes>
+                <Route path="site" animate={true}>
+                    <Route path="artworks" element={<ArtworksPage/>}/>
+                    <Route path="artworks/:id" element={<DetailsArtwork/>}/>
+                    <Route path="artists" element={<ArtistsPage/>}/>
+                    <Route path="artist-profile" element={<ProfileArtist/>}/>
+                    <Route path="all-galleris-list" element={<AllGallerysList/>}/>
+                    <Route path="gallery-introduction" element={<GalleryIntroduction/>}/>
+                </Route>
+            </Routes>
+            {isLogin() ?
+                <RouterConfig/>
+                :
                 <Routes>
                     <Route path="auth" animate={true}>
                         <Route index path="signup" element={<Signup/>}/>
@@ -53,15 +51,9 @@ function App(props) {
                         <Route path="recovery-password" element={<SetPassword/>}/>
                     </Route>
                 </Routes>
-            </BrowserRouter>
-        )
-    } else {
-        return (
-
-            <RouterConfig/>
-
-        )
-    }
+            }
+        </BrowserRouter>
+    )
 }
 
 export default App;

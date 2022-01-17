@@ -35,29 +35,11 @@ import GalleryPanelSelectArtisitSource from '../pages/GalleryPanelSelectArtistSo
 const RouterConfig = (props) => {
     return (
 
-        <BrowserRouter>
-
-            <Routes>
-                <Route path="/" element={<Home />}>
-                    <Route index path="home" element={<Home />} />
-                </Route>
-            </Routes>
-
-            <Routes>
-                <Route path="site" animate={true}>
-                    <Route path="artworks" element={<ArtworksPage/>}/>
-                    <Route path="artworks/:id" element={<DetailsArtwork/>}/>
-                    <Route path="artists" element={<ArtistsPage/>}/>
-                    <Route path="artist-profile" element={<ProfileArtist/>}/>
-                    <Route path="all-galleris-list" element={<AllGallerysList/>}/>
-                    <Route path="gallery-introduction" element={<GalleryIntroduction/>}/>
-                </Route>
-            </Routes>
-
             <Routes>
                 <Route path="panel" animate={true}>
 
                     <Route index path="profile" element={<Panelprofile />} />
+                    <Route index path="artist-profile" element={<ProfileArtist />} />
                     <Route index path="purchases" element={<PanelMyPurchases />} />
                     <Route index path="favorites" element={<PanelFavorites />} />
                     <Route index path="messages" element={<PanelMessages />} />
@@ -82,12 +64,6 @@ const RouterConfig = (props) => {
                     <Route path="upload-exhibition-artwotk" element={<GalleryPanelUploadExhibitionArtwork/>} />
                 </Route>
             </Routes>
-
-
-
-
-        </BrowserRouter>
-
 
     )
 }
