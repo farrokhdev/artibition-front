@@ -16,7 +16,7 @@ function App(props) {
 
     
 
-    if (isLogin()) {
+    if (!isLogin()) {
         return (
             <Router>
                 <Routes>
