@@ -31,10 +31,13 @@ import ProfileArtist from '../pages/ProfileArtist/ProfileArtist';
 import GalleryPanelCreateArtistArtwork from '../pages/GalleryPanelCreateArtistArtwork/GalleryPanelCreateArtistArtwork';
 import GalleryPanelUploadExhibitionArtwork from '../pages/GalleryPanelUploadExhibitionArtwork/GalleryPanelUploadExhibitionArtwork';
 import GalleryPanelSelectArtisitSource from '../pages/GalleryPanelSelectArtistSource/GalleryPanelSelectArtistSource';
+import Advisory from '../pages/Advisory/Advisory';
 
 const RouterConfig = (props) => {
     return (
 
+
+        
             <Routes>
                 <Route path="panel" animate={true}>
 
