@@ -99,7 +99,7 @@ export default function Footer() {
                     <div className="row">
                         <div className="col-sm-8">
                             <span>{t("footer.text-copyright.text")}</span>
-                            <a href="#">{t("footer.text-copyright.link-gallery")}</a>
+                            <a href="#"> {t("footer.text-copyright.link-gallery")} </a>
                             <span>{t("footer.text-copyright.text2")}</span>
                         </div>
                         <div className="col-sm-4 text-left hidden-xs content-builder-text">

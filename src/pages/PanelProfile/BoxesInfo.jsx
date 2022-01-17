@@ -5,7 +5,7 @@ import felsh_left from '../../assets/img/felsh-left.png';
 
 function BoxesInfo() {
     return (
-        <div className="row ">
+        <div className="row dir">
         <div className="col-md-4 ">
             <div className="box box-1">
                 <div className="pull-dir">

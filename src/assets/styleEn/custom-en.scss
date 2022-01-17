@@ -1231,6 +1231,7 @@ input:checked + .switchbtn:before {
     border-top: 1px solid #e4e6e9;
     text-align: center;
     margin-top: 100px;
+    direction: rtl !important;
 }
 
 .row-pagination .pagination {
@@ -1450,7 +1451,7 @@ input:checked + .switchbtn:before {
 }
 
 .timers.timetoend .timer-status,
-.timers.timetoend .timer {
+.timers .timer {
     color: #e68515;
 }
 
@@ -1537,8 +1538,9 @@ div .gallery-daterow:nth-child(1) {
 }
 
 .gallery-txt p {
-    text-align: justify;
-    margin: 40px 0 45px 0;
+    text-align: justify !important;
+    margin: 40px 0 45px 30px !important;
+    font-size: 16px !important;
 }
 
 .gallery-page .tab-content {
@@ -1933,6 +1935,22 @@ div .gallery-daterow:nth-child(1) {
     left: 0;
     bottom: 10px;
 }
+
+
+// styled with mohsen-mahadi----------
+@media (min-width: 768px){
+    .col-md-4 {
+        flex: unset !important;
+        max-width: unset !important;
+    }
+    
+    .col-md-8 {
+        flex: unset !important;
+        max-width: unset !important;
+    }
+    }
+// styled with mohsen-mahadi----------
+
 
 @media(max-width : "992px"){
     .artwork-options {
@@ -3500,6 +3518,16 @@ div .gallery-daterow:nth-child(1) {
     z-index: 100;
 }
 
+.adv-btn-orginal{
+    // background: #fff;
+    position: sticky;
+    bottom: 0;
+    display: inline-block;
+    width: 100%;
+    padding: 16px 0;
+    z-index: 100;
+}
+
 
 .adv-btn button i {
     font-size: 10px;
@@ -4215,6 +4243,10 @@ a.sec-timeline {
     padding-top: 20px !important;
 }
 
+.margin-top-100{
+    padding-top: 100px !important;
+}
+
 .panel-style {
     background: #f7f7f7;
     position: relative;
@@ -4353,6 +4385,7 @@ a.sec-timeline {
 }
 
 .panel-header {
+    z-index: 99999 !important;
     background: #fff;
     border-bottom: 1px solid #e4e6e9;
     position: fixed;
@@ -4562,6 +4595,10 @@ a.sec-timeline {
     margin-bottom: 4px;
 }
 
+.text-align{
+    text-align: right !important;
+}
+
 .artistpanel-3 table,
 .artistpanel-5 table,
 .artistpanel-6 table {
@@ -4734,6 +4771,11 @@ a.sec-timeline {
 
 #favorite-1 .cols {
     margin-bottom: 32px;
+}
+
+
+.margin-bottom-32{
+    margin-bottom: 32px !important;
 }
 
 
@@ -5388,6 +5430,10 @@ p.upload-size {
     margin-top: 10px;
 }
 
+.mrgt125 {
+    margin-top: 125px;
+}
+
 .col-image img {
     max-width: 72px;
     margin-left: 16px;
@@ -5432,6 +5478,13 @@ p.upload-size {
 .fontbold19 {
     font-family: "Roboto Black", Arial, sans-serif;
     font-size: 19px;
+    display: flex;
+    justify-content: end;
+}
+
+.font-span{
+    display: flex;
+    justify-content: end;
 }
 
 .fontbold20 {
@@ -6094,6 +6147,11 @@ td[data-label] {
     margin: 64px 0;
 }
 
+
+.margin_top_bottom_64{
+    margin: 64px 0 !important
+}
+
 .logo-td img {
     border: 1px solid #e4e6e9;
     border-radius: 100%;
@@ -6110,7 +6168,7 @@ td[data-label] {
 }
 
 .addcover img {
-    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .no-cursor {
@@ -6223,6 +6281,16 @@ textarea {
 .wallet-table td {
     padding-top: 15px !important;
     padding-bottom: 15px !important;
+}
+
+@media(min-widht:768px){
+    .exhibition-table td.status {
+        text-align: center;
+    }
+}
+
+.exhibition-table td.status button {
+    margin: 0 2px;
 }
 
 
@@ -7063,7 +7131,7 @@ label {
 
 
 .radio label, .lable-checkbox {
-    // padding-left: 30px;
+    padding-left: 30px;
     color: #adafb3;
     cursor: pointer;
     font-size: 12px;
@@ -8621,12 +8689,20 @@ button.btn-searchfilter.hidden-sm{
     float : left;
 }
 
+.pull-dir-rev{
+    float : right;
+}
+
+.float-none{
+    float: none !important;
+}
+
 .margin-dir{
     margin-left: 60px !important;
 }
 
 .box-dir-reverse{
-    flex-direction: row-reverse !important;
+    flex-direction: inherit !important;
 }
 
 .justify-custom{
@@ -8904,4 +8980,16 @@ textarea.ant-input {
 .btn-close-modal-ant{
     width: 17px !important;
     height: 17px !important;
+}
+
+.d-table{
+    display: table !important;
+}
+
+.right-0{
+    right: 0!important;
+}
+
+.d-none{
+    display: none !important;
 }

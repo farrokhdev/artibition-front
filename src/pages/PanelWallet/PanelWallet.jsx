@@ -31,14 +31,14 @@ function PanelWallet() {
         <SidebarPanel />
 
         <div className="custom-container">
-        <div className="d-block d-lg-flex box-dir-reverse">
-            <div className="col col-lg-5 ">
+        <div className="d-block d-lg-flex box-dir-reverse dir">
+            <div className="col col-lg-4 ">
                 <BoxWallet
                     showWithdrawalModal={showWithdrawalModal}
                     showIncreaseModal={showIncreaseModal}
                 />
             </div>
-            <div className="col col-lg-7 ">
+            <div className="col col-lg-8 ">
                 <BoxArtistPanel/>
             </div>
         </div>

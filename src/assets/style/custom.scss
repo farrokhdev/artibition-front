@@ -1191,7 +1191,7 @@ footer .nl-input button {
 }
 
 .inner-tab .nav-tabs {
-    text-align: center;
+    text-align:center;
 }
 
 .inner-tab .nav-tabs > li {
@@ -1648,6 +1648,7 @@ input:checked + .switchbtn:before {
     border-top: 1px solid #e4e6e9;
     text-align: center;
     margin-top: 100px;
+    direction: rtl !important;
 }
 
 .row-pagination .pagination {
@@ -1740,6 +1741,7 @@ input:checked + .switchbtn:before {
 .coundown .timers {
     direction: ltr;
     text-align: center;
+    font-size: 2rem;
 }
 
 .timer-title {
@@ -1954,7 +1956,7 @@ input:checked + .switchbtn:before {
 }
 
 .timers.timetoend .timer-status,
-.timers.timetoend .timer {
+.timers .timer {
     color: #e68515;
 }
 
@@ -2073,8 +2075,9 @@ div .gallery-daterow:nth-child(1) {
 }
 
 .gallery-txt p {
-    text-align: justify;
-    margin: 40px 0 45px 0;
+    text-align: justify !important;
+    margin: 40px 0 45px 30px !important;
+    font-size: 16px !important;
 }
 
 .gallery-page .tab-content {
@@ -2151,13 +2154,13 @@ div .gallery-daterow:nth-child(1) {
 }
 
 .gallery-artist-img .btn-follow {
-    margin-top: 16px;
-    opacity: 0;
-    transition: all 0.5s ease 0s;
+    margin-top: 16px !important;
+    opacity: 0 !important;
+    transition: all 0.5s ease 0s !important;
 }
 
 .gallery-artist-img:hover .btn-follow {
-    opacity: 1;
+    opacity: 1 !important;
 }
 
 .gallery-artist-name {
@@ -4400,6 +4403,16 @@ button.close {
     z-index: 100;
 }
 
+.adv-btn-orginal{
+    // background: #fff;
+    position: sticky;
+    bottom: 0;
+    display: inline-block;
+    width: 100%;
+    padding: 16px 0;
+    z-index: 100;
+}
+
 
 .adv-btn button i {
     font-size: 10px;
@@ -5389,6 +5402,10 @@ a.sec-timeline {
     padding-top: 20px !important;
 }
 
+.margin-top-100{
+    padding-top: 100px !important;
+}
+
 .box {
     background: #fff;
     padding: 16px 40px;
@@ -5546,6 +5563,7 @@ a.sec-timeline {
 }
 
 .panel-header {
+    z-index: 99999 !important;
     background: #fff;
     border-bottom: 1px solid #e4e6e9;
     position: fixed;
@@ -5813,6 +5831,10 @@ a.sec-timeline {
     margin-bottom: 4px;
 }
 
+.text-align{
+    text-align: right !important;
+}
+
 .artistpanel-3 table,
 .artistpanel-5 table,
 .artistpanel-6 table {
@@ -6022,6 +6044,11 @@ a.sec-timeline {
 
 #favorite-1 .cols {
     margin-bottom: 32px;
+}
+
+
+.margin-bottom-32{
+    margin-bottom: 32px !important;
 }
 
 
@@ -6835,6 +6862,10 @@ p.upload-size {
     margin-top: 10px;
 }
 
+.mrgt125 {
+    margin-top: 125px;
+}
+
 .col-image img {
     max-width: 72px;
     margin-left: 16px;
@@ -6905,6 +6936,13 @@ p.upload-size {
 .fontbold19 {
     font-family: "Tahrir_Extra Bold", sans-serif;
     font-size: 19px;
+    display: flex;
+    justify-content: start;
+}
+
+.font-span{
+    display: flex;
+    justify-content: start;
 }
 
 .fontbold20 {
@@ -7777,6 +7815,10 @@ td[data-label] {
     margin: 64px 0;
 }
 
+.margin_top_bottom_64{
+    margin: 64px 0 !important
+}
+
 .logo-td img {
     border: 1px solid #e4e6e9;
     border-radius: 100%;
@@ -7927,6 +7969,16 @@ textarea {
 
 .wallet-table td.status {
     text-align: right;
+}
+
+@media(min-widht:768px){
+    .exhibition-table td.status {
+        text-align: center;
+    }
+}
+
+.exhibition-table td.status button {
+    margin: 0 2px;
 }
 
 .content-carousel .carousel-indicators {
@@ -8567,6 +8619,14 @@ span.unit-dimention {
     float : right;
 }
 
+.pull-dir-rev{
+    float : left;
+}
+
+.float-none{
+    float: none !important;
+}
+
 .margin-dir{
     margin-right: 60px !important;
 }
@@ -8856,5 +8916,28 @@ span.unit-dimention {
 }
 
 
+.d-table{
+    display: table !important;
 
+}
 
+.inner-tab .ant-tabs-tab{
+    padding: 12px 20px !important;
+}
+
+.visible-sm{
+    display: none !important;
+}
+
+.text-align{
+    text-align: right !important;
+
+}
+
+.right-0{
+    right: 0!important;
+}
+
+.d-none{
+    display: none !important;
+}

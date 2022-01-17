@@ -37,7 +37,7 @@ function ArtworkInformation({next , prev}) {
                     form={form}
                     onFinish={onFinish}
                 >
-            <div className="info-sec ">
+            <div className="info-sec dir">
                 <h3 className="infotitle-default require text-dir">{t("content-panel-add-artwork.art_info.title")}</h3>
                 <div className="row">
                     <div className="d-block d-sm-flex box-dir-reverse w-100">

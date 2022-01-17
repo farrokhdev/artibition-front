@@ -1,7 +1,7 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import NavbarMenuHeader from '../../components/NavbarMenuHeader/NavbarMenuHeader';
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 import logo from '../../assets/img/logo.svg';
 import logo_icon from '../../assets/img/logo-icon.png';
@@ -14,8 +14,8 @@ import shopping_basket from '../../assets/img/shopping_basket.svg';
 function HeaderPanel(props) {
 
 
-    const {t, i18n} = useTranslation();
-    
+    const { t, i18n } = useTranslation();
+
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);
         setTimeout(() => {
@@ -24,17 +24,16 @@ function HeaderPanel(props) {
     };
 
     return (
-        <div className="d-flex header panel-header box-dir-reverse ">
-
+        <div className="d-flex header panel-header box-dir-reverse dir right-0">
             <div className="col col-lg-2  px-0">
                 <div className="d-flex box-dir-reverse">
-                    <div class="artibition-logo pull-dir">
-                            <Link to="/">
-                                <img src={logo} width="240" height="62" className="img-responsive hidden-sm" alt="آرتیبیشن" />
-                                <img src={logo_icon} width="1079" height="1079" className="img-responsive visible-sm"
-                                    alt="آرتیبیشن" />
-                            </Link>
-                        </div>
+                    <div className="artibition-logo pull-dir">
+                        <Link to="/">
+                            <img src={logo} width="240" height="62" className="img-responsive hidden-sm" alt="آرتیبیشن" />
+                            <img src={logo_icon} width="1079" height="1079" className="img-responsive visible-sm"
+                                alt="آرتیبیشن" />
+                        </Link>
+                    </div>
                 </div>
             </div>
             <div className="col col-lg-8  px-0">
@@ -44,9 +43,9 @@ function HeaderPanel(props) {
             </div>
             <div className="col col-lg-2  px-0">
                 <div className="d-flex box-dir-reverse ">
-                    
-                
-                
+
+
+
                     <div className="d-flex box-dir-reverse">
                         <a href="#" className="btn-panel-header btn-shoppingcard">
                             <img src={shopping_basket} width="24" height="24" alt="" />
@@ -63,9 +62,9 @@ function HeaderPanel(props) {
                         <a href="#" className="btn-panel-header hidden-sm hidden-xs">
                             <img src={message} width="24" height="24" alt="pull-dir" />
                         </a>
-                        <a href="#"  className="btn-panel-header btn-changelang"> 
-                        <button onClick={()=>changeLanguage(i18n.language !== 'fa-IR' ? 'fa-IR' : 'en-US' )}>En</button>
-                        
+                        <a href="#" className="btn-panel-header btn-changelang">
+                            <button onClick={() => changeLanguage(i18n.language !== 'fa-IR' ? 'fa-IR' : 'en-US')}>En</button>
+
                         </a>
                     </div>
                     <div className="btn-panel-header visible-xs">
@@ -81,7 +80,7 @@ function HeaderPanel(props) {
             {/* <div className="col col-md-9 pl-0 ">
                 <div className="d-flex box-dir-reverse">
                     <div className="col-2 ">
-                        <div class="artibition-logo pull-dir">
+                        <div className="artibition-logo pull-dir">
                             <Link to="/">
                                 <img src={logo} width="240" height="62" className="img-responsive hidden-sm" alt="آرتیبیشن" />
                                 <img src={logo_icon} width="1079" height="1079" className="img-responsive visible-sm"

@@ -56,848 +56,848 @@ function ModalAddGallery(props) {
                             </span>
                             </button>
                         </div>
-                        <div class="modal-header">
-                            <h5 class="fontbold28 aligncenter" id="exampleModalLabel">{t("artwork.modal_similar_artwork.title")}</h5>
+                        <div className="modal-header">
+                            <h5 className="fontbold28 aligncenter" id="exampleModalLabel">{t("artwork.modal_similar_artwork.title")}</h5>
                         </div>
-                        <div class="modal-body">
-                <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
-                    <div class="info-sec">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="public-group ">
-                                    <input class="form-control input-public " required
+                        <div className="modal-body">
+                <div className="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
+                    <div className="info-sec">
+                        <div className="row">
+                            <div className="col-sm-6">
+                                <div className="public-group ">
+                                    <input className="form-control input-public " required
                                            placeholder="" value=""/>
-                                    <label class="lable-public">عنوان مجموعه</label>
+                                    <label className="lable-public">عنوان مجموعه</label>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                                <div class="public-group en">
-                                    <input class="form-control input-public en-lang" required
+                            <div className="col-sm-6">
+                                <div className="public-group en">
+                                    <input className="form-control input-public en-lang" required
                                            placeholder="" value=""/>
-                                    <label class="lable-public">Collection title</label>
+                                    <label className="lable-public">Collection title</label>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                                <div class="form-group ">
-                                            <textarea class="form-control " placeholder="توضیحات به فارسی"
+                            <div className="col-sm-6">
+                                <div className="form-group ">
+                                            <textarea className="form-control " placeholder="توضیحات به فارسی"
                                                       rows="6"></textarea>
-                                    <label class="lable-public"></label>
+                                    <label className="lable-public"></label>
                                 </div>
                             </div>
-                            <div class="col-sm-6">
-                                <div class="form-group en">
-                                            <textarea class="form-control en-lang" placeholder="Description in English"
+                            <div className="col-sm-6">
+                                <div className="form-group en">
+                                            <textarea className="form-control en-lang" placeholder="Description in English"
                                                       rows="8"></textarea>
-                                    <label class="lable-public"></label>
+                                    <label className="lable-public"></label>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="adv-content  col-sm-8 col-sm-offset-2 ">
-                        <h2 class="adv-title">آثار مورد نظر خود را انتخاب کنید.</h2>
-                        <div class="nl-input filter-search">
+                    <div className="adv-content  col-sm-8 col-sm-offset-2 ">
+                        <h2 className="adv-title">آثار مورد نظر خود را انتخاب کنید.</h2>
+                        <div className="nl-input filter-search">
                             <input placeholder="جستجوی اثر"/>
-                            <button class="noborder" type="button"><img src={search_icon} width="24"
+                            <button className="noborder" type="button"><img src={search_icon} width="24"
                                                                         height="24" alt=""/>
                             </button>
                         </div>
                     </div>
                 </div>
-                <div class="clearfix"></div>
-                <div class="container advisory-select">
-                    <div class="row-gridimg">
-                        <div class="row">
-                            <div class="cols col-sm-3 col-xs-6">
-                                <label class="lable-checkbox">
+                <div className="clearfix"></div>
+                <div className="container advisory-select">
+                    <div className="row-gridimg">
+                        <div className="row">
+                            <div className="cols col-sm-3 col-xs-6">
+                                <label className="lable-checkbox">
                                     <input type="checkbox" value=""/>
-                                    <span class="checkmark"></span>
-                                    <div class="col-img">
+                                    <span className="checkmark"></span>
+                                    <div className="col-img">
                                         <img src={jpaytrkase3} width="840" height="1259"
                                              alt="آرتیبیشن"
-                                             class="img-responsive"/>
-                                        <div class="tab-overly">
-                                            <a href="#" class="btn-see">
-                                                <span class="view-icon pull-right"></span>
+                                             className="img-responsive"/>
+                                        <div className="tab-overly">
+                                            <a href="#" className="btn-see">
+                                                <span className="view-icon pull-right"></span>
                                                 <span>مشاهده اثر</span>
                                             </a>
-                                            <a href="#" class="btn-sale">درخواست خرید</a>
-                                            <a href="#" class="like-icon"></a>
+                                            <a href="#" className="btn-sale">درخواست خرید</a>
+                                            <a href="#" className="like-icon"></a>
                                         </div>
                                     </div>
                                 </label>
-                                <div class="col-body">
-                                    <h6 class="col-title">
-                                        <span class="col-name">آیدین</span>
-                                        <span class="col-name">آغداشلو</span>
+                                <div className="col-body">
+                                    <h6 className="col-title">
+                                        <span className="col-name">آیدین</span>
+                                        <span className="col-name">آغداشلو</span>
                                     </h6>
-                                    <div class="col-dimension">
+                                    <div className="col-dimension">
 
-                                        <span class="col-dimension-title">ابعاد:</span>
-                                        <span class="col-dimension-body">
-                                        <span class="dimension-width">60</span>
+                                        <span className="col-dimension-title">ابعاد:</span>
+                                        <span className="col-dimension-body">
+                                        <span className="dimension-width">60</span>
                                         <span> در </span>
-                                        <span class="dimension-height">60</span>
+                                        <span className="dimension-height">60</span>
                                     </span>
                                     </div>
-                                    <div class="col-price">
-                                        <span class="col-price-num">22.000.000</span>
-                                        <span class="col-price-unit">تومان</span>
+                                    <div className="col-price">
+                                        <span className="col-price-num">22.000.000</span>
+                                        <span className="col-price-unit">تومان</span>
 
                                     </div>
                                 </div>
                             </div>
-                            <div class="cols col-sm-3 col-xs-6">
-                                <label class="lable-checkbox">
+                            <div className="cols col-sm-3 col-xs-6">
+                                <label className="lable-checkbox">
                                     <input type="checkbox" value=""/>
-                                    <span class="checkmark"></span>
-                                    <div class="col-img">
+                                    <span className="checkmark"></span>
+                                    <div className="col-img">
                                         <img src={hnrpqkfiup3} width="840" height="840"
                                              alt="آرتیبیشن"
-                                             class="img-responsive"/>
-                                        <div class="tab-overly">
-                                            <a href="#" class="btn-see">
-                                                <span class="view-icon pull-right"></span>
+                                             className="img-responsive"/>
+                                        <div className="tab-overly">
+                                            <a href="#" className="btn-see">
+                                                <span className="view-icon pull-right"></span>
                                                 <span>مشاهده اثر</span>
                                             </a>
-                                            <a href="#" class="btn-sale">درخواست خرید</a>
-                                            <a href="#" class="like-icon"></a>
+                                            <a href="#" className="btn-sale">درخواست خرید</a>
+                                            <a href="#" className="like-icon"></a>
                                         </div>
                                     </div>
                                 </label>
-                                <div class="col-body">
-                                    <h6 class="col-title">
-                                        <span class="col-name">آیدین</span>
-                                        <span class="col-name">آغداشلو</span>
+                                <div className="col-body">
+                                    <h6 className="col-title">
+                                        <span className="col-name">آیدین</span>
+                                        <span className="col-name">آغداشلو</span>
                                     </h6>
-                                    <div class="col-dimension">
+                                    <div className="col-dimension">
 
-                                        <span class="col-dimension-title">ابعاد:</span>
-                                        <span class="col-dimension-body">
-                                        <span class="dimension-width">60</span>
+                                        <span className="col-dimension-title">ابعاد:</span>
+                                        <span className="col-dimension-body">
+                                        <span className="dimension-width">60</span>
                                         <span> در </span>
-                                        <span class="dimension-height">60</span>
+                                        <span className="dimension-height">60</span>
                                     </span>
                                     </div>
-                                    <div class="col-price">
-                                        <span class="col-price-num">22.000.000</span>
-                                        <span class="col-price-unit">تومان</span>
-                                        <span class="tag-gift"><img src={gift_icon} width="22" height="22"
+                                    <div className="col-price">
+                                        <span className="col-price-num">22.000.000</span>
+                                        <span className="col-price-unit">تومان</span>
+                                        <span className="tag-gift"><img src={gift_icon} width="22" height="22"
                                                                     alt=""/></span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="clearfix visible-xs"></div>
-                            <div class="cols col-sm-3 col-xs-6">
-                                <label class="lable-checkbox">
+                            <div className="clearfix visible-xs"></div>
+                            <div className="cols col-sm-3 col-xs-6">
+                                <label className="lable-checkbox">
                                     <input type="checkbox" value=""/>
-                                    <span class="checkmark"></span>
-                                    <div class="col-img">
-                                        <div class="tags tags-off persian-num">30 %</div>
+                                    <span className="checkmark"></span>
+                                    <div className="col-img">
+                                        <div className="tags tags-off persian-num">30 %</div>
                                         <img src={nqliiocbif3} width="840" height="924"
                                              alt="آرتیبیشن"
-                                             class="img-responsive"/>
-                                        <div class="tab-overly">
-                                            <a href="#" class="btn-see">
-                                                <span class="view-icon pull-right"></span>
+                                             className="img-responsive"/>
+                                        <div className="tab-overly">
+                                            <a href="#" className="btn-see">
+                                                <span className="view-icon pull-right"></span>
                                                 <span>مشاهده اثر</span>
                                             </a>
-                                            <a href="#" class="btn-sale">درخواست خرید</a>
-                                            <a href="#" class="like-icon"></a>
+                                            <a href="#" className="btn-sale">درخواست خرید</a>
+                                            <a href="#" className="like-icon"></a>
                                         </div>
                                     </div>
                                 </label>
-                                <div class="col-body">
-                                    <h6 class="col-title">
-                                        <span class="col-name">آیدین</span>
-                                        <span class="col-name">آغداشلو</span>
+                                <div className="col-body">
+                                    <h6 className="col-title">
+                                        <span className="col-name">آیدین</span>
+                                        <span className="col-name">آغداشلو</span>
                                     </h6>
-                                    <div class="col-dimension">
+                                    <div className="col-dimension">
 
-                                        <span class="col-dimension-title">ابعاد:</span>
-                                        <span class="col-dimension-body">
-                                        <span class="dimension-width">60</span>
+                                        <span className="col-dimension-title">ابعاد:</span>
+                                        <span className="col-dimension-body">
+                                        <span className="dimension-width">60</span>
                                         <span> در </span>
-                                        <span class="dimension-height">60</span>
+                                        <span className="dimension-height">60</span>
                                     </span>
                                     </div>
-                                    <div class="col-price">
-                                        <span class="col-price-num">22.000.000</span>
-                                        <span class="col-price-unit">تومان</span>
+                                    <div className="col-price">
+                                        <span className="col-price-num">22.000.000</span>
+                                        <span className="col-price-unit">تومان</span>
 
                                     </div>
                                 </div>
                             </div>
-                            <div class="cols col-sm-3 col-xs-6">
-                                <label class="lable-checkbox">
+                            <div className="cols col-sm-3 col-xs-6">
+                                <label className="lable-checkbox">
                                     <input type="checkbox" value=""/>
-                                    <span class="checkmark"></span>
-                                    <div class="col-img">
-                                        <div class="tags tags-spacial">ویژه</div>
-                                        <div class="tags tags-off persian-num">33 %</div>
+                                    <span className="checkmark"></span>
+                                    <div className="col-img">
+                                        <div className="tags tags-spacial">ویژه</div>
+                                        <div className="tags tags-off persian-num">33 %</div>
                                         <img src={ucuurcufbm3} width="840" height="1259"
                                              alt="آرتیبیشن"
-                                             class="img-responsive"/>
-                                        <div class="tab-overly">
-                                            <a href="#" class="btn-see">
-                                                <span class="view-icon pull-right"></span>
+                                             className="img-responsive"/>
+                                        <div className="tab-overly">
+                                            <a href="#" className="btn-see">
+                                                <span className="view-icon pull-right"></span>
                                                 <span>مشاهده اثر</span>
                                             </a>
-                                            <a href="#" class="btn-sale">درخواست خرید</a>
-                                            <a href="#" class="like-icon"></a>
+                                            <a href="#" className="btn-sale">درخواست خرید</a>
+                                            <a href="#" className="like-icon"></a>
                                         </div>
                                     </div>
                                 </label>
-                                <div class="col-body">
-                                    <h6 class="col-title">
-                                        <span class="col-name">آیدین</span>
-                                        <span class="col-name">آغداشلو</span>
+                                <div className="col-body">
+                                    <h6 className="col-title">
+                                        <span className="col-name">آیدین</span>
+                                        <span className="col-name">آغداشلو</span>
                                     </h6>
-                                    <div class="col-dimension">
+                                    <div className="col-dimension">
 
-                                        <span class="col-dimension-title">ابعاد:</span>
-                                        <span class="col-dimension-body">
-                                        <span class="dimension-width">60</span>
+                                        <span className="col-dimension-title">ابعاد:</span>
+                                        <span className="col-dimension-body">
+                                        <span className="dimension-width">60</span>
                                         <span> در </span>
-                                        <span class="dimension-height">60</span>
+                                        <span className="dimension-height">60</span>
                                     </span>
                                     </div>
-                                    <div class="col-price">
-                                        <span class="col-price-num">22.000.000</span>
-                                        <span class="col-price-unit">تومان</span>
+                                    <div className="col-price">
+                                        <span className="col-price-num">22.000.000</span>
+                                        <span className="col-price-unit">تومان</span>
 
                                     </div>
                                 </div>
                             </div>
-                            <div class="clearfix"></div>
-                            <div class="cols col-sm-3 col-xs-6">
-                                <label class="lable-checkbox">
+                            <div className="clearfix"></div>
+                            <div className="cols col-sm-3 col-xs-6">
+                                <label className="lable-checkbox">
                                     <input type="checkbox" value=""/>
-                                    <span class="checkmark"></span>
-                                    <div class="col-img">
+                                    <span className="checkmark"></span>
+                                    <div className="col-img">
                                         <img src="img/artworks/jpaytrkase@3x.jpg" width="840" height="1259"
                                              alt="آرتیبیشن"
-                                             class="img-responsive"/>
-                                        <div class="tab-overly">
-                                            <a href="#" class="btn-see">
-                                                <span class="view-icon pull-right"></span>
+                                             className="img-responsive"/>
+                                        <div className="tab-overly">
+                                            <a href="#" className="btn-see">
+                                                <span className="view-icon pull-right"></span>
                                                 <span>مشاهده اثر</span>
                                             </a>
-                                            <a href="#" class="btn-sale">درخواست خرید</a>
-                                            <a href="#" class="like-icon"></a>
+                                            <a href="#" className="btn-sale">درخواست خرید</a>
+                                            <a href="#" className="like-icon"></a>
                                         </div>
                                     </div>
                                 </label>
-                                <div class="col-body">
-                                    <h6 class="col-title">
-                                        <span class="col-name">آیدین</span>
-                                        <span class="col-name">آغداشلو</span>
+                                <div className="col-body">
+                                    <h6 className="col-title">
+                                        <span className="col-name">آیدین</span>
+                                        <span className="col-name">آغداشلو</span>
                                     </h6>
-                                    <div class="col-dimension">
+                                    <div className="col-dimension">
 
-                                        <span class="col-dimension-title">ابعاد:</span>
-                                        <span class="col-dimension-body">
-                                        <span class="dimension-width">60</span>
+                                        <span className="col-dimension-title">ابعاد:</span>
+                                        <span className="col-dimension-body">
+                                        <span className="dimension-width">60</span>
                                         <span> در </span>
-                                        <span class="dimension-height">60</span>
+                                        <span className="dimension-height">60</span>
                                     </span>
                                     </div>
-                                    <div class="col-price">
-                                        <span class="col-price-num">22.000.000</span>
-                                        <span class="col-price-unit">تومان</span>
+                                    <div className="col-price">
+                                        <span className="col-price-num">22.000.000</span>
+                                        <span className="col-price-unit">تومان</span>
 
                                     </div>
                                 </div>
                             </div>
-                            <div class="cols col-sm-3 col-xs-6">
-                                <label class="lable-checkbox">
+                            <div className="cols col-sm-3 col-xs-6">
+                                <label className="lable-checkbox">
                                     <input type="checkbox" value=""/>
-                                    <span class="checkmark"></span>
-                                    <div class="col-img">
+                                    <span className="checkmark"></span>
+                                    <div className="col-img">
                                         <img src={artworks3} width="840" height="850" alt="آرتیبیشن"
-                                             class="img-responsive"/>
-                                        <div class="tab-overly">
-                                            <a href="#" class="btn-see">
-                                                <span class="view-icon pull-right"></span>
+                                             className="img-responsive"/>
+                                        <div className="tab-overly">
+                                            <a href="#" className="btn-see">
+                                                <span className="view-icon pull-right"></span>
                                                 <span>مشاهده اثر</span>
                                             </a>
-                                            <a href="#" class="btn-sale">درخواست خرید</a>
-                                            <a href="#" class="like-icon"></a>
+                                            <a href="#" className="btn-sale">درخواست خرید</a>
+                                            <a href="#" className="like-icon"></a>
                                         </div>
                                     </div>
                                 </label>
-                                <div class="col-body">
-                                    <h6 class="col-title">
-                                        <span class="col-name">آیدین</span>
-                                        <span class="col-name">آغداشلو</span>
+                                <div className="col-body">
+                                    <h6 className="col-title">
+                                        <span className="col-name">آیدین</span>
+                                        <span className="col-name">آغداشلو</span>
                                     </h6>
-                                    <div class="col-dimension">
+                                    <div className="col-dimension">
 
-                                        <span class="col-dimension-title">ابعاد:</span>
-                                        <span class="col-dimension-body">
-                                        <span class="dimension-width">60</span>
+                                        <span className="col-dimension-title">ابعاد:</span>
+                                        <span className="col-dimension-body">
+                                        <span className="dimension-width">60</span>
                                         <span> در </span>
-                                        <span class="dimension-height">60</span>
+                                        <span className="dimension-height">60</span>
                                     </span>
                                     </div>
-                                    <div class="col-price">
-                                        <span class="col-price-num">22.000.000</span>
-                                        <span class="col-price-unit">تومان</span>
+                                    <div className="col-price">
+                                        <span className="col-price-num">22.000.000</span>
+                                        <span className="col-price-unit">تومان</span>
 
                                     </div>
                                 </div>
                             </div>
-                            <div class="clearfix visible-xs"></div>
-                            <div class="cols col-sm-3 col-xs-6 finished">
-                                <label class="lable-checkbox">
+                            <div className="clearfix visible-xs"></div>
+                            <div className="cols col-sm-3 col-xs-6 finished">
+                                <label className="lable-checkbox">
                                     <input type="checkbox" value=""/>
-                                    <span class="checkmark"></span>
-                                    <div class="col-img">
+                                    <span className="checkmark"></span>
+                                    <div className="col-img">
                                         <img src={rdbewaopdm3} width="840" height="1120"
                                              alt="آرتیبیشن"
-                                             class="img-responsive"/>
-                                        <div class="tab-overly">
-                                            <a href="#" class="btn-see">
-                                                <span class="view-icon pull-right"></span>
+                                             className="img-responsive"/>
+                                        <div className="tab-overly">
+                                            <a href="#" className="btn-see">
+                                                <span className="view-icon pull-right"></span>
                                                 <span>مشاهده اثر</span>
                                             </a>
-                                            <a href="#" class="btn-sale">درخواست خرید</a>
-                                            <a href="#" class="like-icon"></a>
+                                            <a href="#" className="btn-sale">درخواست خرید</a>
+                                            <a href="#" className="like-icon"></a>
                                         </div>
                                     </div>
                                 </label>
-                                <div class="col-body">
-                                    <div class="finished-tag">فروخته شد</div>
+                                <div className="col-body">
+                                    <div className="finished-tag">فروخته شد</div>
 
-                                    <h6 class="col-title">
-                                        <span class="col-name">آیدین</span>
-                                        <span class="col-name">آغداشلو</span>
+                                    <h6 className="col-title">
+                                        <span className="col-name">آیدین</span>
+                                        <span className="col-name">آغداشلو</span>
                                     </h6>
-                                    <div class="col-dimension">
+                                    <div className="col-dimension">
 
-                                        <span class="col-dimension-title">ابعاد:</span>
-                                        <span class="col-dimension-body">
-                                        <span class="dimension-width">60</span>
+                                        <span className="col-dimension-title">ابعاد:</span>
+                                        <span className="col-dimension-body">
+                                        <span className="dimension-width">60</span>
                                         <span> در </span>
-                                        <span class="dimension-height">60</span>
+                                        <span className="dimension-height">60</span>
                                     </span>
                                     </div>
-                                    <div class="col-price">
-                                        <span class="col-price-num">22.000.000</span>
-                                        <span class="col-price-unit">تومان</span>
+                                    <div className="col-price">
+                                        <span className="col-price-num">22.000.000</span>
+                                        <span className="col-price-unit">تومان</span>
 
                                     </div>
                                 </div>
                             </div>
-                            <div class="cols col-sm-3 col-xs-6">
-                                <label class="lable-checkbox">
+                            <div className="cols col-sm-3 col-xs-6">
+                                <label className="lable-checkbox">
                                     <input type="checkbox" value=""/>
-                                    <span class="checkmark"></span>
-                                    <div class="col-img">
+                                    <span className="checkmark"></span>
+                                    <div className="col-img">
                                         <img src={hezvtaokhv3} width="840" height="1130"
                                              alt="آرتیبیشن"
-                                             class="img-responsive"/>
-                                        <div class="tab-overly">
-                                            <a href="#" class="btn-see">
-                                                <span class="view-icon pull-right"></span>
+                                             className="img-responsive"/>
+                                        <div className="tab-overly">
+                                            <a href="#" className="btn-see">
+                                                <span className="view-icon pull-right"></span>
                                                 <span>مشاهده اثر</span>
                                             </a>
-                                            <a href="#" class="btn-sale">درخواست خرید</a>
-                                            <a href="#" class="like-icon"></a>
+                                            <a href="#" className="btn-sale">درخواست خرید</a>
+                                            <a href="#" className="like-icon"></a>
                                         </div>
                                     </div>
                                 </label>
-                                <div class="col-body">
-                                    <h6 class="col-title">
-                                        <span class="col-name">آیدین</span>
-                                        <span class="col-name">آغداشلو</span>
+                                <div className="col-body">
+                                    <h6 className="col-title">
+                                        <span className="col-name">آیدین</span>
+                                        <span className="col-name">آغداشلو</span>
                                     </h6>
-                                    <div class="col-dimension">
+                                    <div className="col-dimension">
 
-                                        <span class="col-dimension-title">ابعاد:</span>
-                                        <span class="col-dimension-body">
-                                        <span class="dimension-width">60</span>
+                                        <span className="col-dimension-title">ابعاد:</span>
+                                        <span className="col-dimension-body">
+                                        <span className="dimension-width">60</span>
                                         <span> در </span>
-                                        <span class="dimension-height">60</span>
+                                        <span className="dimension-height">60</span>
                                     </span>
                                     </div>
-                                    <div class="col-price">
-                                        <span class="col-price-num">22.000.000</span>
-                                        <span class="col-price-unit">تومان</span>
+                                    <div className="col-price">
+                                        <span className="col-price-num">22.000.000</span>
+                                        <span className="col-price-unit">تومان</span>
 
                                     </div>
                                 </div>
                             </div>
-                            <div class="clearfix"></div>
-                            <div class="cols col-sm-3 col-xs-6">
-                                <label class="lable-checkbox">
+                            <div className="clearfix"></div>
+                            <div className="cols col-sm-3 col-xs-6">
+                                <label className="lable-checkbox">
                                     <input type="checkbox" value=""/>
-                                    <span class="checkmark"></span>
-                                    <div class="col-img">
+                                    <span className="checkmark"></span>
+                                    <div className="col-img">
                                         <img src={ffhxzfmfyx3} width="840" height="840"
                                              alt="آرتیبیشن"
-                                             class="img-responsive"/>
-                                        <div class="tab-overly">
-                                            <a href="#" class="btn-see">
-                                                <span class="view-icon pull-right"></span>
+                                             className="img-responsive"/>
+                                        <div className="tab-overly">
+                                            <a href="#" className="btn-see">
+                                                <span className="view-icon pull-right"></span>
                                                 <span>مشاهده اثر</span>
                                             </a>
-                                            <a href="#" class="btn-sale">درخواست خرید</a>
-                                            <a href="#" class="like-icon"></a>
+                                            <a href="#" className="btn-sale">درخواست خرید</a>
+                                            <a href="#" className="like-icon"></a>
                                         </div>
                                     </div>
                                 </label>
-                                <div class="col-body">
-                                    <h6 class="col-title">
-                                        <span class="col-name">آیدین</span>
-                                        <span class="col-name">آغداشلو</span>
+                                <div className="col-body">
+                                    <h6 className="col-title">
+                                        <span className="col-name">آیدین</span>
+                                        <span className="col-name">آغداشلو</span>
                                     </h6>
-                                    <div class="col-dimension">
+                                    <div className="col-dimension">
 
-                                        <span class="col-dimension-title">ابعاد:</span>
-                                        <span class="col-dimension-body">
-                                        <span class="dimension-width">60</span>
+                                        <span className="col-dimension-title">ابعاد:</span>
+                                        <span className="col-dimension-body">
+                                        <span className="dimension-width">60</span>
                                         <span> در </span>
-                                        <span class="dimension-height">60</span>
+                                        <span className="dimension-height">60</span>
                                     </span>
                                     </div>
-                                    <div class="col-price">
-                                        <span class="col-price-num">22.000.000</span>
-                                        <span class="col-price-unit">تومان</span>
+                                    <div className="col-price">
+                                        <span className="col-price-num">22.000.000</span>
+                                        <span className="col-price-unit">تومان</span>
 
                                     </div>
                                 </div>
                             </div>
-                            <div class="cols col-sm-3 col-xs-6">
-                                <label class="lable-checkbox">
+                            <div className="cols col-sm-3 col-xs-6">
+                                <label className="lable-checkbox">
                                     <input type="checkbox" value=""/>
-                                    <span class="checkmark"></span>
-                                    <div class="col-img">
+                                    <span className="checkmark"></span>
+                                    <div className="col-img">
                                         <img src={lhggrzlgoc3} width="840" height="1130"
                                              alt="آرتیبیشن"
-                                             class="img-responsive"/>
-                                        <div class="tab-overly">
-                                            <a href="#" class="btn-see">
-                                                <span class="view-icon pull-right"></span>
+                                             className="img-responsive"/>
+                                        <div className="tab-overly">
+                                            <a href="#" className="btn-see">
+                                                <span className="view-icon pull-right"></span>
                                                 <span>مشاهده اثر</span>
                                             </a>
-                                            <a href="#" class="btn-sale">درخواست خرید</a>
-                                            <a href="#" class="like-icon"></a>
+                                            <a href="#" className="btn-sale">درخواست خرید</a>
+                                            <a href="#" className="like-icon"></a>
                                         </div>
                                     </div>
                                 </label>
-                                <div class="col-body">
-                                    <h6 class="col-title">
-                                        <span class="col-name">آیدین</span>
-                                        <span class="col-name">آغداشلو</span>
+                                <div className="col-body">
+                                    <h6 className="col-title">
+                                        <span className="col-name">آیدین</span>
+                                        <span className="col-name">آغداشلو</span>
                                     </h6>
-                                    <div class="col-dimension">
+                                    <div className="col-dimension">
 
-                                        <span class="col-dimension-title">ابعاد:</span>
-                                        <span class="col-dimension-body">
-                                        <span class="dimension-width">60</span>
+                                        <span className="col-dimension-title">ابعاد:</span>
+                                        <span className="col-dimension-body">
+                                        <span className="dimension-width">60</span>
                                         <span> در </span>
-                                        <span class="dimension-height">60</span>
+                                        <span className="dimension-height">60</span>
                                     </span>
                                     </div>
-                                    <div class="col-price">
-                                        <span class="col-price-num">22.000.000</span>
-                                        <span class="col-price-unit">تومان</span>
+                                    <div className="col-price">
+                                        <span className="col-price-num">22.000.000</span>
+                                        <span className="col-price-unit">تومان</span>
 
                                     </div>
                                 </div>
                             </div>
-                            <div class="clearfix visible-xs"></div>
-                            <div class="cols col-sm-3 col-xs-6">
-                                <label class="lable-checkbox">
+                            <div className="clearfix visible-xs"></div>
+                            <div className="cols col-sm-3 col-xs-6">
+                                <label className="lable-checkbox">
                                     <input type="checkbox" value=""/>
-                                    <span class="checkmark"></span>
-                                    <div class="col-img">
+                                    <span className="checkmark"></span>
+                                    <div className="col-img">
                                         <img src={lhggrzlgoc3} width="840" height="1130"
                                              alt="آرتیبیشن"
-                                             class="img-responsive"/>
-                                        <div class="tab-overly">
-                                            <a href="#" class="btn-see">
-                                                <span class="view-icon pull-right"></span>
+                                             className="img-responsive"/>
+                                        <div className="tab-overly">
+                                            <a href="#" className="btn-see">
+                                                <span className="view-icon pull-right"></span>
                                                 <span>مشاهده اثر</span>
                                             </a>
-                                            <a href="#" class="btn-sale">درخواست خرید</a>
-                                            <a href="#" class="like-icon"></a>
+                                            <a href="#" className="btn-sale">درخواست خرید</a>
+                                            <a href="#" className="like-icon"></a>
                                         </div>
                                     </div>
                                 </label>
-                                <div class="col-body">
-                                    <h6 class="col-title">
-                                        <span class="col-name">آیدین</span>
-                                        <span class="col-name">آغداشلو</span>
+                                <div className="col-body">
+                                    <h6 className="col-title">
+                                        <span className="col-name">آیدین</span>
+                                        <span className="col-name">آغداشلو</span>
                                     </h6>
-                                    <div class="col-dimension">
+                                    <div className="col-dimension">
 
-                                        <span class="col-dimension-title">ابعاد:</span>
-                                        <span class="col-dimension-body">
-                                        <span class="dimension-width">60</span>
+                                        <span className="col-dimension-title">ابعاد:</span>
+                                        <span className="col-dimension-body">
+                                        <span className="dimension-width">60</span>
                                         <span> در </span>
-                                        <span class="dimension-height">60</span>
+                                        <span className="dimension-height">60</span>
                                     </span>
                                     </div>
-                                    <div class="col-price">
-                                        <span class="col-price-num">22.000.000</span>
-                                        <span class="col-price-unit">تومان</span>
+                                    <div className="col-price">
+                                        <span className="col-price-num">22.000.000</span>
+                                        <span className="col-price-unit">تومان</span>
 
                                     </div>
                                 </div>
                             </div>
-                            <div class="cols col-sm-3 col-xs-6">
-                                <label class="lable-checkbox">
+                            <div className="cols col-sm-3 col-xs-6">
+                                <label className="lable-checkbox">
                                     <input type="checkbox" value=""/>
-                                    <span class="checkmark"></span>
-                                    <div class="col-img">
+                                    <span className="checkmark"></span>
+                                    <div className="col-img">
                                         <img src={hyxvpfinmx3} width="840" height="1259"
                                              alt="آرتیبیشن"
-                                             class="img-responsive"/>
-                                        <div class="tab-overly">
-                                            <a href="#" class="btn-see">
-                                                <span class="view-icon pull-right"></span>
+                                             className="img-responsive"/>
+                                        <div className="tab-overly">
+                                            <a href="#" className="btn-see">
+                                                <span className="view-icon pull-right"></span>
                                                 <span>مشاهده اثر</span>
                                             </a>
-                                            <a href="#" class="btn-sale">درخواست خرید</a>
-                                            <a href="#" class="like-icon"></a>
+                                            <a href="#" className="btn-sale">درخواست خرید</a>
+                                            <a href="#" className="like-icon"></a>
                                         </div>
                                     </div>
                                 </label>
-                                <div class="col-body">
-                                    <h6 class="col-title">
-                                        <span class="col-name">آیدین</span>
-                                        <span class="col-name">آغداشلو</span>
+                                <div className="col-body">
+                                    <h6 className="col-title">
+                                        <span className="col-name">آیدین</span>
+                                        <span className="col-name">آغداشلو</span>
                                     </h6>
-                                    <div class="col-dimension">
+                                    <div className="col-dimension">
 
-                                        <span class="col-dimension-title">ابعاد:</span>
-                                        <span class="col-dimension-body">
-                                        <span class="dimension-width">60</span>
+                                        <span className="col-dimension-title">ابعاد:</span>
+                                        <span className="col-dimension-body">
+                                        <span className="dimension-width">60</span>
                                         <span> در </span>
-                                        <span class="dimension-height">60</span>
+                                        <span className="dimension-height">60</span>
                                     </span>
                                     </div>
-                                    <div class="col-price">
-                                        <span class="col-price-num">22.000.000</span>
-                                        <span class="col-price-unit">تومان</span>
+                                    <div className="col-price">
+                                        <span className="col-price-num">22.000.000</span>
+                                        <span className="col-price-unit">تومان</span>
 
                                     </div>
                                 </div>
                             </div>
-                            <div class="clearfix"></div>
-                            <div class="cols col-sm-3 col-xs-6">
-                                <label class="lable-checkbox">
+                            <div className="clearfix"></div>
+                            <div className="cols col-sm-3 col-xs-6">
+                                <label className="lable-checkbox">
                                     <input type="checkbox" value=""/>
-                                    <span class="checkmark"></span>
-                                    <div class="col-img">
+                                    <span className="checkmark"></span>
+                                    <div className="col-img">
                                         <img src={ayvglbkdfo3} width="840" height="840"
                                              alt="آرتیبیشن"
-                                             class="img-responsive"/>
-                                        <div class="tab-overly">
-                                            <a href="#" class="btn-see">
-                                                <span class="view-icon pull-right"></span>
+                                             className="img-responsive"/>
+                                        <div className="tab-overly">
+                                            <a href="#" className="btn-see">
+                                                <span className="view-icon pull-right"></span>
                                                 <span>مشاهده اثر</span>
                                             </a>
-                                            <a href="#" class="btn-sale">درخواست خرید</a>
-                                            <a href="#" class="like-icon"></a>
+                                            <a href="#" className="btn-sale">درخواست خرید</a>
+                                            <a href="#" className="like-icon"></a>
                                         </div>
                                     </div>
                                 </label>
-                                <div class="col-body">
-                                    <h6 class="col-title">
-                                        <span class="col-name">آیدین</span>
-                                        <span class="col-name">آغداشلو</span>
+                                <div className="col-body">
+                                    <h6 className="col-title">
+                                        <span className="col-name">آیدین</span>
+                                        <span className="col-name">آغداشلو</span>
                                     </h6>
-                                    <div class="col-dimension">
+                                    <div className="col-dimension">
 
-                                        <span class="col-dimension-title">ابعاد:</span>
-                                        <span class="col-dimension-body">
-                                        <span class="dimension-width">60</span>
+                                        <span className="col-dimension-title">ابعاد:</span>
+                                        <span className="col-dimension-body">
+                                        <span className="dimension-width">60</span>
                                         <span> در </span>
-                                        <span class="dimension-height">60</span>
+                                        <span className="dimension-height">60</span>
                                     </span>
                                     </div>
-                                    <div class="col-price">
-                                        <span class="col-price-num">22.000.000</span>
-                                        <span class="col-price-unit">تومان</span>
+                                    <div className="col-price">
+                                        <span className="col-price-num">22.000.000</span>
+                                        <span className="col-price-unit">تومان</span>
 
                                     </div>
                                 </div>
                             </div>
-                            <div class="cols col-sm-3 col-xs-6">
-                                <label class="lable-checkbox">
+                            <div className="cols col-sm-3 col-xs-6">
+                                <label className="lable-checkbox">
                                     <input type="checkbox" value=""/>
-                                    <span class="checkmark"></span>
-                                    <div class="col-img">
+                                    <span className="checkmark"></span>
+                                    <div className="col-img">
                                         <img src={gbazvsspbk3} width="840" height="840"
                                              alt="آرتیبیشن"
-                                             class="img-responsive"/>
-                                        <div class="tab-overly">
-                                            <a href="#" class="btn-see">
-                                                <span class="view-icon pull-right"></span>
+                                             className="img-responsive"/>
+                                        <div className="tab-overly">
+                                            <a href="#" className="btn-see">
+                                                <span className="view-icon pull-right"></span>
                                                 <span>مشاهده اثر</span>
                                             </a>
-                                            <a href="#" class="btn-sale">درخواست خرید</a>
-                                            <a href="#" class="like-icon"></a>
+                                            <a href="#" className="btn-sale">درخواست خرید</a>
+                                            <a href="#" className="like-icon"></a>
                                         </div>
                                     </div>
                                 </label>
-                                <div class="col-body">
-                                    <h6 class="col-title">
-                                        <span class="col-name">آیدین</span>
-                                        <span class="col-name">آغداشلو</span>
+                                <div className="col-body">
+                                    <h6 className="col-title">
+                                        <span className="col-name">آیدین</span>
+                                        <span className="col-name">آغداشلو</span>
                                     </h6>
-                                    <div class="col-dimension">
+                                    <div className="col-dimension">
 
-                                        <span class="col-dimension-title">ابعاد:</span>
-                                        <span class="col-dimension-body">
-                                        <span class="dimension-width">60</span>
+                                        <span className="col-dimension-title">ابعاد:</span>
+                                        <span className="col-dimension-body">
+                                        <span className="dimension-width">60</span>
                                         <span> در </span>
-                                        <span class="dimension-height">60</span>
+                                        <span className="dimension-height">60</span>
                                     </span>
                                     </div>
-                                    <div class="col-price">
-                                        <span class="col-price-num">22.000.000</span>
-                                        <span class="col-price-unit">تومان</span>
+                                    <div className="col-price">
+                                        <span className="col-price-num">22.000.000</span>
+                                        <span className="col-price-unit">تومان</span>
 
                                     </div>
                                 </div>
                             </div>
-                            <div class="clearfix visible-xs"></div>
-                            <div class="cols col-sm-3 col-xs-6">
-                                <label class="lable-checkbox">
+                            <div className="clearfix visible-xs"></div>
+                            <div className="cols col-sm-3 col-xs-6">
+                                <label className="lable-checkbox">
                                     <input type="checkbox" value=""/>
-                                    <span class="checkmark"></span>
-                                    <div class="col-img">
+                                    <span className="checkmark"></span>
+                                    <div className="col-img">
                                         <img src={rdbewaopdm3} width="840" height="1120"
                                              alt="آرتیبیشن"
-                                             class="img-responsive"/>
-                                        <div class="tab-overly">
-                                            <a href="#" class="btn-see">
-                                                <span class="view-icon pull-right"></span>
+                                             className="img-responsive"/>
+                                        <div className="tab-overly">
+                                            <a href="#" className="btn-see">
+                                                <span className="view-icon pull-right"></span>
                                                 <span>مشاهده اثر</span>
                                             </a>
-                                            <a href="#" class="btn-sale">درخواست خرید</a>
-                                            <a href="#" class="like-icon"></a>
+                                            <a href="#" className="btn-sale">درخواست خرید</a>
+                                            <a href="#" className="like-icon"></a>
                                         </div>
                                     </div>
                                 </label>
-                                <div class="col-body">
-                                    <h6 class="col-title">
-                                        <span class="col-name">آیدین</span>
-                                        <span class="col-name">آغداشلو</span>
+                                <div className="col-body">
+                                    <h6 className="col-title">
+                                        <span className="col-name">آیدین</span>
+                                        <span className="col-name">آغداشلو</span>
                                     </h6>
-                                    <div class="col-dimension">
+                                    <div className="col-dimension">
 
-                                        <span class="col-dimension-title">ابعاد:</span>
-                                        <span class="col-dimension-body">
-                                        <span class="dimension-width">60</span>
+                                        <span className="col-dimension-title">ابعاد:</span>
+                                        <span className="col-dimension-body">
+                                        <span className="dimension-width">60</span>
                                         <span> در </span>
-                                        <span class="dimension-height">60</span>
+                                        <span className="dimension-height">60</span>
                                     </span>
                                     </div>
-                                    <div class="col-price">
-                                        <span class="col-price-num">22.000.000</span>
-                                        <span class="col-price-unit">تومان</span>
+                                    <div className="col-price">
+                                        <span className="col-price-num">22.000.000</span>
+                                        <span className="col-price-unit">تومان</span>
 
                                     </div>
                                 </div>
                             </div>
-                            <div class="cols col-sm-3 col-xs-6">
-                                <label class="lable-checkbox">
+                            <div className="cols col-sm-3 col-xs-6">
+                                <label className="lable-checkbox">
                                     <input type="checkbox" value=""/>
-                                    <span class="checkmark"></span>
-                                    <div class="col-img">
+                                    <span className="checkmark"></span>
+                                    <div className="col-img">
                                         <img src={artwork3} width="840" height="850" alt="آرتیبیشن"
-                                             class="img-responsive"/>
-                                        <div class="tab-overly">
-                                            <a href="#" class="btn-see">
-                                                <span class="view-icon pull-right"></span>
+                                             className="img-responsive"/>
+                                        <div className="tab-overly">
+                                            <a href="#" className="btn-see">
+                                                <span className="view-icon pull-right"></span>
                                                 <span>مشاهده اثر</span>
                                             </a>
-                                            <a href="#" class="btn-sale">درخواست خرید</a>
-                                            <a href="#" class="like-icon"></a>
+                                            <a href="#" className="btn-sale">درخواست خرید</a>
+                                            <a href="#" className="like-icon"></a>
                                         </div>
                                     </div>
                                 </label>
-                                <div class="col-body">
-                                    <h6 class="col-title">
-                                        <span class="col-name">آیدین</span>
-                                        <span class="col-name">آغداشلو</span>
+                                <div className="col-body">
+                                    <h6 className="col-title">
+                                        <span className="col-name">آیدین</span>
+                                        <span className="col-name">آغداشلو</span>
                                     </h6>
-                                    <div class="col-dimension">
+                                    <div className="col-dimension">
 
-                                        <span class="col-dimension-title">ابعاد:</span>
-                                        <span class="col-dimension-body">
-                                        <span class="dimension-width">60</span>
+                                        <span className="col-dimension-title">ابعاد:</span>
+                                        <span className="col-dimension-body">
+                                        <span className="dimension-width">60</span>
                                         <span> در </span>
-                                        <span class="dimension-height">60</span>
+                                        <span className="dimension-height">60</span>
                                     </span>
                                     </div>
-                                    <div class="col-price">
-                                        <span class="col-price-num">22.000.000</span>
-                                        <span class="col-price-unit">تومان</span>
+                                    <div className="col-price">
+                                        <span className="col-price-num">22.000.000</span>
+                                        <span className="col-price-unit">تومان</span>
 
                                     </div>
                                 </div>
                             </div>
-                            <div class="clearfix"></div>
-                            <div class="cols col-sm-3 col-xs-6 finished ">
-                                <label class="lable-checkbox">
+                            <div className="clearfix"></div>
+                            <div className="cols col-sm-3 col-xs-6 finished ">
+                                <label className="lable-checkbox">
                                     <input type="checkbox" value=""/>
-                                    <span class="checkmark"></span>
-                                    <div class="col-img">
+                                    <span className="checkmark"></span>
+                                    <div className="col-img">
                                         <img src={rdbewaopdm3} width="840" height="1120"
                                              alt="آرتیبیشن"
-                                             class="img-responsive"/>
-                                        <div class="tab-overly">
-                                            <a href="#" class="btn-see">
-                                                <span class="view-icon pull-right"></span>
+                                             className="img-responsive"/>
+                                        <div className="tab-overly">
+                                            <a href="#" className="btn-see">
+                                                <span className="view-icon pull-right"></span>
                                                 <span>مشاهده اثر</span>
                                             </a>
-                                            <a href="#" class="btn-sale">درخواست خرید</a>
-                                            <a href="#" class="like-icon"></a>
+                                            <a href="#" className="btn-sale">درخواست خرید</a>
+                                            <a href="#" className="like-icon"></a>
                                         </div>
                                     </div>
                                 </label>
-                                <div class="col-body">
-                                    <div class="finished-tag">فروخته شد</div>
+                                <div className="col-body">
+                                    <div className="finished-tag">فروخته شد</div>
 
-                                    <h6 class="col-title">
-                                        <span class="col-name">آیدین</span>
-                                        <span class="col-name">آغداشلو</span>
+                                    <h6 className="col-title">
+                                        <span className="col-name">آیدین</span>
+                                        <span className="col-name">آغداشلو</span>
                                     </h6>
-                                    <div class="col-dimension">
+                                    <div className="col-dimension">
 
-                                        <span class="col-dimension-title">ابعاد:</span>
-                                        <span class="col-dimension-body">
-                                        <span class="dimension-width">60</span>
+                                        <span className="col-dimension-title">ابعاد:</span>
+                                        <span className="col-dimension-body">
+                                        <span className="dimension-width">60</span>
                                         <span> در </span>
-                                        <span class="dimension-height">60</span>
+                                        <span className="dimension-height">60</span>
                                     </span>
                                     </div>
-                                    <div class="col-price">
-                                        <span class="col-price-num">22.000.000</span>
-                                        <span class="col-price-unit">تومان</span>
+                                    <div className="col-price">
+                                        <span className="col-price-num">22.000.000</span>
+                                        <span className="col-price-unit">تومان</span>
 
                                     </div>
                                 </div>
                             </div>
-                            <div class="cols col-sm-3 col-xs-6">
-                                <label class="lable-checkbox">
+                            <div className="cols col-sm-3 col-xs-6">
+                                <label className="lable-checkbox">
                                     <input type="checkbox" value=""/>
-                                    <span class="checkmark"></span>
-                                    <div class="col-img">
+                                    <span className="checkmark"></span>
+                                    <div className="col-img">
                                         <img src={hezvtaokhv3} width="840" height="1130"
                                              alt="آرتیبیشن"
-                                             class="img-responsive"/>
-                                        <div class="tab-overly">
-                                            <a href="#" class="btn-see">
-                                                <span class="view-icon pull-right"></span>
+                                             className="img-responsive"/>
+                                        <div className="tab-overly">
+                                            <a href="#" className="btn-see">
+                                                <span className="view-icon pull-right"></span>
                                                 <span>مشاهده اثر</span>
                                             </a>
-                                            <a href="#" class="btn-sale">درخواست خرید</a>
-                                            <a href="#" class="like-icon"></a>
+                                            <a href="#" className="btn-sale">درخواست خرید</a>
+                                            <a href="#" className="like-icon"></a>
                                         </div>
                                     </div>
                                 </label>
-                                <div class="col-body">
-                                    <h6 class="col-title">
-                                        <span class="col-name">آیدین</span>
-                                        <span class="col-name">آغداشلو</span>
+                                <div className="col-body">
+                                    <h6 className="col-title">
+                                        <span className="col-name">آیدین</span>
+                                        <span className="col-name">آغداشلو</span>
                                     </h6>
-                                    <div class="col-dimension">
+                                    <div className="col-dimension">
 
-                                        <span class="col-dimension-title">ابعاد:</span>
-                                        <span class="col-dimension-body">
-                                        <span class="dimension-width">60</span>
+                                        <span className="col-dimension-title">ابعاد:</span>
+                                        <span className="col-dimension-body">
+                                        <span className="dimension-width">60</span>
                                         <span> در </span>
-                                        <span class="dimension-height">60</span>
+                                        <span className="dimension-height">60</span>
                                     </span>
                                     </div>
-                                    <div class="col-price">
-                                        <span class="col-price-num">22.000.000</span>
-                                        <span class="col-price-unit">تومان</span>
+                                    <div className="col-price">
+                                        <span className="col-price-num">22.000.000</span>
+                                        <span className="col-price-unit">تومان</span>
 
                                     </div>
                                 </div>
                             </div>
-                            <div class="clearfix visible-xs"></div>
-                            <div class="cols col-sm-3 col-xs-6">
-                                <label class="lable-checkbox">
+                            <div className="clearfix visible-xs"></div>
+                            <div className="cols col-sm-3 col-xs-6">
+                                <label className="lable-checkbox">
                                     <input type="checkbox" value=""/>
-                                    <span class="checkmark"></span>
-                                    <div class="col-img">
+                                    <span className="checkmark"></span>
+                                    <div className="col-img">
                                         <img src={ffhxzfmfyx3} width="840" height="840"
                                              alt="آرتیبیشن"
-                                             class="img-responsive"/>
-                                        <div class="tab-overly">
-                                            <a href="#" class="btn-see">
-                                                <span class="view-icon pull-right"></span>
+                                             className="img-responsive"/>
+                                        <div className="tab-overly">
+                                            <a href="#" className="btn-see">
+                                                <span className="view-icon pull-right"></span>
                                                 <span>مشاهده اثر</span>
                                             </a>
-                                            <a href="#" class="btn-sale">درخواست خرید</a>
-                                            <a href="#" class="like-icon"></a>
+                                            <a href="#" className="btn-sale">درخواست خرید</a>
+                                            <a href="#" className="like-icon"></a>
                                         </div>
                                     </div>
                                 </label>
-                                <div class="col-body">
-                                    <h6 class="col-title">
-                                        <span class="col-name">آیدین</span>
-                                        <span class="col-name">آغداشلو</span>
+                                <div className="col-body">
+                                    <h6 className="col-title">
+                                        <span className="col-name">آیدین</span>
+                                        <span className="col-name">آغداشلو</span>
                                     </h6>
-                                    <div class="col-dimension">
+                                    <div className="col-dimension">
 
-                                        <span class="col-dimension-title">ابعاد:</span>
-                                        <span class="col-dimension-body">
-                                        <span class="dimension-width">60</span>
+                                        <span className="col-dimension-title">ابعاد:</span>
+                                        <span className="col-dimension-body">
+                                        <span className="dimension-width">60</span>
                                         <span> در </span>
-                                        <span class="dimension-height">60</span>
+                                        <span className="dimension-height">60</span>
                                     </span>
                                     </div>
-                                    <div class="col-price">
-                                        <span class="col-price-num">22.000.000</span>
-                                        <span class="col-price-unit">تومان</span>
+                                    <div className="col-price">
+                                        <span className="col-price-num">22.000.000</span>
+                                        <span className="col-price-unit">تومان</span>
 
                                     </div>
                                 </div>
                             </div>
-                            <div class="cols col-sm-3 col-xs-6">
-                                <label class="lable-checkbox">
+                            <div className="cols col-sm-3 col-xs-6">
+                                <label className="lable-checkbox">
                                     <input type="checkbox" value=""/>
-                                    <span class="checkmark"></span>
-                                    <div class="col-img">
+                                    <span className="checkmark"></span>
+                                    <div className="col-img">
                                         <img src={lhggrzlgoc3} width="840" height="1130"
                                              alt="آرتیبیشن"
-                                             class="img-responsive"/>
-                                        <div class="tab-overly">
-                                            <a href="#" class="btn-see">
-                                                <span class="view-icon pull-right"></span>
+                                             className="img-responsive"/>
+                                        <div className="tab-overly">
+                                            <a href="#" className="btn-see">
+                                                <span className="view-icon pull-right"></span>
                                                 <span>مشاهده اثر</span>
                                             </a>
-                                            <a href="#" class="btn-sale">درخواست خرید</a>
-                                            <a href="#" class="like-icon"></a>
+                                            <a href="#" className="btn-sale">درخواست خرید</a>
+                                            <a href="#" className="like-icon"></a>
                                         </div>
                                     </div>
                                 </label>
-                                <div class="col-body">
-                                    <h6 class="col-title">
-                                        <span class="col-name">آیدین</span>
-                                        <span class="col-name">آغداشلو</span>
+                                <div className="col-body">
+                                    <h6 className="col-title">
+                                        <span className="col-name">آیدین</span>
+                                        <span className="col-name">آغداشلو</span>
                                     </h6>
-                                    <div class="col-dimension">
+                                    <div className="col-dimension">
 
-                                        <span class="col-dimension-title">ابعاد:</span>
-                                        <span class="col-dimension-body">
-                                        <span class="dimension-width">60</span>
+                                        <span className="col-dimension-title">ابعاد:</span>
+                                        <span className="col-dimension-body">
+                                        <span className="dimension-width">60</span>
                                         <span> در </span>
-                                        <span class="dimension-height">60</span>
+                                        <span className="dimension-height">60</span>
                                     </span>
                                     </div>
-                                    <div class="col-price">
-                                        <span class="col-price-num">22.000.000</span>
-                                        <span class="col-price-unit">تومان</span>
+                                    <div className="col-price">
+                                        <span className="col-price-num">22.000.000</span>
+                                        <span className="col-price-unit">تومان</span>
 
                                     </div>
                                 </div>
@@ -905,8 +905,8 @@ function ModalAddGallery(props) {
                         </div>
                     </div>
                 </div>
-                <div class="adv-btn">
-                    <button type="button" class="btn btn-black center-block">ثبت</button>
+                <div className="adv-btn">
+                    <button type="button" className="btn btn-black center-block">ثبت</button>
                 </div>
             </div>
                         

@@ -22,16 +22,16 @@ function PanelArtManagement() {
                 <h2 className=" default-title text-dir">{t("content-panel-dashboard.tables.orders")}</h2>
             </div> */}
 
-            <div class="d-flex box-dir-reverse public-header mrgb32">
-                <div class="col">
+            <div className="d-flex box-dir-reverse public-header mrgb32">
+                <div className="col">
                     <div className="d-flex justify-custom">
-                        <h2 class="default-title w-100 text-dir">{t("content-panel-manage-artworks.title")}</h2>
+                        <h2 className="default-title w-100 text-dir">{t("content-panel-manage-artworks.title")}</h2>
                     </div>
                 </div>
-                <div class="col ">
+                <div className="col ">
                     <div className="d-flex justify-custom">
-                        <button type="button" class="btn-outline-blue">
-                            <img src={add_icon} width="12" height="12" alt="" class="mx-2"/>
+                        <button type="button" className="btn-outline-blue">
+                            <img src={add_icon} width="12" height="12" alt="" className="mx-2"/>
                             <span>{t("content-panel-manage-artworks.btn")}</span>
                         </button>
                     </div>

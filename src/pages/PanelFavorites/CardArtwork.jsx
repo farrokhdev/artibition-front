@@ -5,7 +5,7 @@ import artwork_image from '../../assets/img/mainpage/rdbewaopdm840.jpg';
 function CardArtwork() {
 return (
 <div className="col-sm-3">
-    <a href="#" className="cols">
+    <a href="#" className="cols margin-bottom-32">
         <div className="col-img">
             <div className="tags tags-off ">30 %</div>
             <img src={artwork_image} width="840" height="840" alt="Arthibition" className="img-responsive" />

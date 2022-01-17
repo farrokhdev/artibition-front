@@ -34,7 +34,7 @@ function PanelFavorites() {
 
                 <div className="default-tab tab-3 tab-interval purchase ">
 
-                    <Tabs className='' defaultActiveKey="1" onChange={callback}>
+                    <Tabs className='dir' defaultActiveKey="1" onChange={callback}>
                             <TabPane className="mx-4" tab={t("content-panel-favorites.tabs.artworks")} key="1">
                                 <ArtworksTab/>
                             </TabPane>

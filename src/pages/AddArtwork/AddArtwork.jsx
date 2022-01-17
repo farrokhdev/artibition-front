@@ -53,7 +53,7 @@ function AddArtwork() {
         <>
     <HeaderPanel t={t} />
 
-    <div className="panel-style container mx-auto px-0 w-100 bg-white ">
+    <div className="panel-style container mx-auto px-0 w-100 bg-white">
 
         {/* <Steps 
             className='d-flex box-dir-reverse'
