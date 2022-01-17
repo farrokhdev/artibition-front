@@ -5,6 +5,7 @@
     "repeat-password": "تکرار رمز عبور وارد نشده است!",
     "activation-code": "کد فعالسازی وارد نشده است!"
   },
+  
   "filter-header": {
     "title": "فیلتر",
     "placeholder-input-search": "جستجوی نام اثر، نام هنرمند، گالری و غیره",
@@ -71,6 +72,12 @@
   "is-registered-question": "تاکنون ثبت‌نام نکردید؟",
   "signup-text": "ثبت‌نام کنید",
   "show-details": "مشاهده جزییات",
+  "all_faq": "همه سؤالات",
+  "FAQ":"سؤالات متداول",
+  "Journal":"مجله",
+  "share":"اشتراک‌گذاری",
+  "read_more":"بیشتر بخوانید",
+  "Lorem_ipsum_Arthibition_gallery": "مجموعه آثار چاپ، طراحی و نقاشی در گالری آرتیبیشن",
   "show-password": "نمایش",
   "hidden-password": "مخفی کردن",
   "signup_title": "عضو آرتیبشن شوید",
@@ -124,6 +131,7 @@
       "artField": {
         "title": "رشته هنری",
         "all": "همه آثار",
+        "all_artworks": "همه آثار",
         "painting": "نقاشی",
         "calligraphy": "خوشنویسی",
         "photography": "عکاسی",
@@ -171,6 +179,7 @@
   },
   "news-and-article-art": {
     "title": "اخبار و مقالات هنر",
+    "articles" : "مقالات",
     "more": "مطالعه خبر"
   },
   "suggestion-home": {
@@ -424,6 +433,10 @@
       "albums": "مجموعه‌ها",
       "biography": "زندگی‌نامه",
       "exhibitions": "نمایشگاه‌ها",
+      "upcoming_exhibitions":"نمایشگاه‌های پیش‌رو",
+      "Previous_exhibitions" : "نمایشگاه‌های پیشین",
+      "all_exhibitions": "همه نمایشگاه‌ها",
+      "to_end" : "تا پایان",
       "content": "محتوا"
     },
     "smileys": "صورتک‌ها",
@@ -434,6 +447,7 @@
     "activities": "فعالیت‌ها",
     "versions": "نسخه‌ها",
     "aknon_gallery": "گالری اکنون",
+    "buyers":"خریداران",
     "collection": "کلکسونر",
     "COLLECTION": "کلکسونر",
     "man": "من",
@@ -927,6 +941,7 @@
     "enter_artist_name_en": "Enter artist name",
     "gallery_name_fa": "نام گالری",
     "gallery_name_en": "Gallery Name",
+    "contact_info":"اطلاعات تماس",
     "address_contact_info": "آدرس و اطلاعات تماس",
     "notice_visiting_hours": "اعلامیه و ساعات مراجعه",
     "submit": "ثبت",
@@ -1041,6 +1056,7 @@
   "gallery-panel-my-gallery": {
     "create_gallery": "ثبت گالری جدید",
     "title": "گالری های من",
+    "my_gallery":"گالری هان", 
     "table": {
       "row": "ردیف",
       "logo": "لوگو",
@@ -1125,5 +1141,8 @@
   "gallery-panel-select-artist-source":{
     "select_from_exist_artist": "انتخاب از هنرمندان موجود",
     "add_new_artist": "اضافه کردن هنرمند جدید"
+  },
+  "lorem":{
+    "lorem_ipsum":"لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد"
   }
 }

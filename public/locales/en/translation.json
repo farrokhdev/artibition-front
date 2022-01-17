@@ -71,6 +71,12 @@
   "is-registered-question": "Not register yet",
   "signup-text": "Register",
   "show-details": "Details",
+  "all_faq": "All",
+  "FAQ":"FAQ",
+  "Journal":"Journal",
+  "share":"Share",
+  "read_more":"READ MORE",
+  "Lorem_ipsum_Arthibition_gallery": "Lorem ipsum Arthibition gallery",
   "show-password": "Show",
   "hidden-password": "Hidden",
   "signup_title": "Join Arthibition",
@@ -124,6 +130,7 @@
       "artField": {
         "title": "Art field",
         "all": "all",
+        "all_artworks": "All Artworks",
         "painting": "Painting",
         "calligraphy": "Calligraphy",
         "photography": "Photography",
@@ -171,6 +178,7 @@
   },
   "news-and-article-art": {
     "title": "ART NEWS AND EVENTS",
+    "articles" : "Articles",
     "more": "Read more"
   },
   "suggestion-home": {
@@ -475,6 +483,10 @@
       "albums": "Albums",
       "biography": "Biography",
       "exhibitions": "Exhibitions",
+      "upcoming_exhibitions":"Upcoming Exhibitions",
+      "Previous_exhibitions" : "Previous Exhibitions",
+      "all_exhibitions": " All",
+      "to_end" : "to end",
       "content": "Content"
     },
     "smileys": "Smileys",
@@ -485,6 +497,7 @@
     "activities": "Activities",
     "versions": "Versions",
     "aknon_gallery": "Aknon gallery",
+    "buyers":"Buyers",
     "collection": "Collection",
     "COLLECTION": "COLLECTION",
     "man": "Man",
@@ -977,6 +990,7 @@
     "city_name": "City",
     "exhibition_name_en": "Exhibition Name",
     "address_contact_info": "Address and contact info",
+    "contact_info":"Contact info",
     "notice_visiting_hours": "Notice and visiting hours",
     "submit": "Submit",
     "exhibition_contact_placeholder_en": "Details",
@@ -1078,6 +1092,7 @@
   "gallery-panel-my-gallery": {
     "create_gallery": "New gallery",
     "title": "MY GALLERIES",
+    "my_gallery":"Han Gallery",
     "table": {
       "row": "#",
       "logo": "Logo",
@@ -1185,5 +1200,8 @@
   "gallery-panel-select-artist-source":{
     "select_from_exist_artist": "Select from exist artist",
     "add_new_artist": "Add new artist"
+  },
+  "lorem":{
+    "lorem_ipsum":"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi."
   }
 }

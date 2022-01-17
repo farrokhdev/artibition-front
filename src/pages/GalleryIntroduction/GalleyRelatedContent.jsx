@@ -2,6 +2,7 @@ import React from 'react';
 import gallery from '../../assets/img/gallery/101.jpg';
 import arrowLeft from '../../assets/img/arrow-left.jpg';
 import Timer from 'react-compound-timer';
+import { t } from 'i18next';
 
 function GalleyRelatedContent() {
 
@@ -47,7 +48,7 @@ function GalleyRelatedContent() {
                                                 }}
                                                     class="timers"
                                                 >
-                                                    <span class="d-inline-block px-3 end" style={{ position: 'inherit' }}>تا پایان</span>
+                                                    <span class="d-inline-block px-3 end" style={{ position: 'inherit' }}>{t("artist_profile.tabs.to_end")}</span>
                                                     <span className="d-inline-block persian-num timer"><Timer.Days /></span>
                                                     <span className="d-inline-block coundown timers px-1">:</span>
                                                     <span className="d-inline-block persian-num timer"><Timer.Hours /> </span>

@@ -36,6 +36,8 @@ import Signup from '../pages/Singup/Signup';
 import GalleryPanelCreateArtistArtwork from '../pages/GalleryPanelCreateArtistArtwork/GalleryPanelCreateArtistArtwork';
 import GalleryPanelUploadExhibitionArtwork from '../pages/GalleryPanelUploadExhibitionArtwork/GalleryPanelUploadExhibitionArtwork';
 import GalleryPanelSelectArtisitSource from '../pages/GalleryPanelSelectArtistSource/GalleryPanelSelectArtistSource';
+import GalleryContentPage from '../pages/GalleryIntroduction/GalleryContentPage';
+import FAQ from '../pages/FAQ/FAQ';
 
 const RouterConfig = (props) => {
     return (
@@ -55,6 +57,8 @@ const RouterConfig = (props) => {
                     <Route path="artist-profile" element={<ProfileArtist />} />
                     <Route path="all-galleris-list" element={<AllGallerysList />} />
                     <Route path="gallery-introduction" element={<GalleryIntroduction />} />
+                    <Route path="gallery-content-page" element={<GalleryContentPage />}  />
+                    <Route path="faq" element={<FAQ />}  />
                 </Route>
             </Routes>
 
