@@ -1,6 +1,6 @@
 import React from 'react';
-import {Routes, Route, BrowserRouter} from 'react-router-dom';
-import {isLogin, GetLanguage} from './utils/utils'
+import {Routes, Route, BrowserRouter, Navigate} from 'react-router-dom';
+import {isLogin} from './utils/utils'
 import RouterConfig from './main/router'
 import {useTranslation} from 'react-i18next';
 import Login from "./pages/Login/Login";
@@ -38,6 +38,7 @@ function App(props) {
                     <Route path="artist-profile" element={<ProfileArtist/>}/>
                     <Route path="all-galleris-list" element={<AllGallerysList/>}/>
                     <Route path="gallery-introduction" element={<GalleryIntroduction/>}/>
+                    <Route path="*" element={<Navigate to="/site/artworks" replace />} />
                 </Route>
             </Routes>
             {isLogin() ?
@@ -49,6 +50,7 @@ function App(props) {
                         <Route path="login" element={<Login/>}/>
                         <Route path="confirm-mobile" element={<ConfirmMobile/>}/>
                         <Route path="recovery-password" element={<SetPassword/>}/>
+                        <Route path="*" element={<Navigate to="/auth/login" replace />} />
                     </Route>
                 </Routes>
             }

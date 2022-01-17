@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import {Routes, Route, BrowserRouter, Navigate} from 'react-router-dom';
 import AddArtwork from '../pages/AddArtwork/AddArtwork';
 import AllGallerysList from '../pages/AllGallerysList/AllGallerysList';
 import ArtistsPage from '../pages/ArtistsPage/ArtistsPage';
@@ -62,6 +62,7 @@ const RouterConfig = (props) => {
                     <Route path="select-artist-source" element={<GalleryPanelSelectArtisitSource/>} />
                     <Route path="create-artist-artwotk" element={<GalleryPanelCreateArtistArtwork/>} />
                     <Route path="upload-exhibition-artwotk" element={<GalleryPanelUploadExhibitionArtwork/>} />
+                    <Route path="*" element={<Navigate to="/panel/profile" replace />} />
                 </Route>
             </Routes>
 
