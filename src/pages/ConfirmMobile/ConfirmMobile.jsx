@@ -1,23 +1,31 @@
 import React , {useState} from 'react';
-import { Form, Input} from "antd";
+import {Form, Input, message} from "antd";
 import login from '../../assets/img/login.jpg';
 import Statistics from '../../components/Statistics/Statistics';
 import BasketFooter from '../../components/BasketFooter/BasketFooter';
 import ModalOtp from './ModalOtp';
 import HeaderAuthPages from '../../components/HeaderAuthPages/HeaderAuthPages';
 import { t } from 'i18next';
+import APIService from "../../utils/api.services";
+import {OPT} from "../../utils";
 
 function ConfirmMobile() {
 
     const [visibleOtpModal , setVisibleOtpModal] = useState(false)
-
     const [form] = Form.useForm();
+
     const onFinish = (values) =>{
+        APIService.post(OPT, values)
+            .then(res => {
+                if (res.data) {
+                    setTimeout(() => {
+                        window.location.href = "/auth/recovery-password?username=" + values['user_name']
+                    }, 200);
+                } else {
+                    message.error(res.response.data.message)
+                }
 
-        setTimeout(() => {
-            setVisibleOtpModal(true)
-        }, 300);
-
+            })
     }
 
     return (
@@ -43,7 +51,7 @@ function ConfirmMobile() {
 
                                         <Form.Item
                                             className="w-100"
-                                            name="username"
+                                            name="user_name"
                                             rules={[
                                                 {
                                                     required: true,

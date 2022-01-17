@@ -69,7 +69,9 @@ function HeaderAuthPages() {
                     <div className="col-sm-2   hidden-xs px-0 ">
                         <div className="head-leftbtn hidden-xs">
                             <button onClick={()=>changeLanguage(i18n.language !== 'fa-IR' ? 'fa-IR' : 'en-US' )} type="button" className="btn-changelang pull-left">{t("title_lang-header")}</button>
-                            <button type="button" className="btn-login pull-left">{t("redirect-login-header")}</button>
+                            <Link to={"/auth/login"}>
+                                <button type="button" className="btn-login pull-left mx-2">{t("redirect-login-header")}</button>
+                            </Link>
                         </div>
                     </div>
         </>

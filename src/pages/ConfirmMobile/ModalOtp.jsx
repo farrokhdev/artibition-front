@@ -52,7 +52,7 @@ function ModalOtp(props) {
 
                                     <div className="d-flex justify-content-center mt-3 mb-5">
                                         
-                                        <h3 className="pt-2">09124840475</h3>
+                                        <h3 className="pt-2">{props.phone}</h3>
                                         <img src={edit_icon} alt="edit-icon" />
                                     </div>
 

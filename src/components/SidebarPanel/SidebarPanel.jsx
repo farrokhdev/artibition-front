@@ -1,5 +1,4 @@
 import React from 'react';
-
 import profile_pic from '../../assets/img/profile_pic.svg';
 import edit from '../../assets/img/edit.svg';
 import invite from '../../assets/img/invite.svg';
@@ -7,8 +6,9 @@ import { t } from 'i18next';
 import { Link } from 'react-router-dom';
 
 function SidebarPanel(props) {
+
     return (
-        
+
         <div className="sidebar active " id="mySidebar">
             <div className="inner-sidebar" data-spy="affix" data-offset-top="205">
                 <div className="sidebar-info mb-5">
@@ -17,7 +17,7 @@ function SidebarPanel(props) {
                     <div className="sidebar-personal-info text-dir">
                         <span className="sidebar-name ">آیدین آغداشلو</span>
                         <div className="sidebar-mobile">
-                            <span className="persian-num pull-dir">{props.items?.mobile}</span>
+                            <span className="persian-num pull-dir">46546555</span>
                             <a href="#">
                                 <img src={edit} width="32" height="32" alt="" className="pull-dir img-responsive"/>
                             </a>
