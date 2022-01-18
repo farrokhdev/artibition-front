@@ -62,6 +62,7 @@
     }
   },
   "login_Title": "Login",
+  "logout_Title": "Logout",
   "placeholder-username": "Email or mobile number",
   "placeholder-password": "Password",
   "placeholder-confirm-password": "Confirm password",

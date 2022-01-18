@@ -63,6 +63,7 @@
     }
   },
   "login_Title": "وارد شوید",
+  "logout_Title": "خروج",
   "placeholder-username": "شماره همراه یا ایمیل",
   "placeholder-password": "رمز عبور",
   "placeholder-confirm-password": "تکرار رمز عبور",

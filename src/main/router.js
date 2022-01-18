@@ -65,7 +65,7 @@ const RouterConfig = (props) => {
                     <Route path="select-artist-source" element={<GalleryPanelSelectArtisitSource/>} />
                     <Route path="create-artist-artwotk" element={<GalleryPanelCreateArtistArtwork/>} />
                     <Route path="upload-exhibition-artwotk" element={<GalleryPanelUploadExhibitionArtwork/>} />
-                    <Route path="*" element={<Navigate to="/panel/profile" replace />} />
+                    <Route path="*" element={<Navigate to="/" replace />} />
                 </Route>
             </Routes>
 

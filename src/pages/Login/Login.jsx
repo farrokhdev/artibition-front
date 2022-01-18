@@ -24,12 +24,11 @@ function Login() {
         APIService.post(LOGIN, values)
             .then(res => {
                 if (res.data) {
-                    console.log(res.data)
                     setToken(res.data.data)
                     message.success("به آرتیبیشن خوش آمدید")
-                    setTimeout(() => {
-                        window.location.href = "/panel"
-                    }, 500);
+                    // setTimeout(() => {
+                    //     window.location.href = "/panel/profile"
+                    // }, 500);
                 } else {
                     console.log(res.response)
                     message.error(res.response.data.message)
