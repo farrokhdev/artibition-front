@@ -10,14 +10,28 @@ import BasketFooter from '../../components/BasketFooter/BasketFooter';
 import {useTranslation} from 'react-i18next';
 import HeaderAuthPages from '../../components/HeaderAuthPages/HeaderAuthPages';
 import APIService from '../../utils/api.services'
-import {LOGIN} from '../../utils/index'
+import {LOGIN, PROFILE} from '../../utils/index'
 import {setToken} from '../../utils/utils'
 import 'antd/dist/antd.css';
 import { message } from 'antd';
+import {connect} from 'react-redux';
+import { setProfile } from '../../redux/reducers/auth/auth.actions';
 
-function Login() {
+function Login(props) {
 
-    const {t, i18n} = useTranslation();
+    const {t} = useTranslation();
+
+    const getProfile = () => {
+        APIService.get(PROFILE, "")
+            .then(res => {
+                if (res.data) {
+                    props.setProfile( {...props.state , profile : res.data.data} )
+                } else {
+                    message.error(res.response.data.message)
+                }
+
+            })
+    }
 
     const [form] = Form.useForm();
     const onFinish = (values) =>{
@@ -25,10 +39,11 @@ function Login() {
             .then(res => {
                 if (res.data) {
                     setToken(res.data.data)
+                    getProfile()
                     message.success("به آرتیبیشن خوش آمدید")
-                    // setTimeout(() => {
-                    //     window.location.href = "/panel/profile"
-                    // }, 500);
+                    setTimeout(() => {
+                        window.location.href = "/panel/profile"
+                    }, 500);
                 } else {
                     console.log(res.response)
                     message.error(res.response.data.message)
@@ -46,7 +61,6 @@ function Login() {
 
                     <HeaderAuthPages/>
 
-                    
                 </div>
             </div>
             <div className="d-block login-content">
@@ -132,4 +146,17 @@ function Login() {
     )
 }
 
-export default Login
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setProfile : (data) => dispatch(setProfile(data)),
+    }
+}
+
+const mapStateToProps = (store) => {
+    return {
+        auth : store.authReducer,
+    }
+}
+
+
+export default connect(mapStateToProps , mapDispatchToProps)(Login)
