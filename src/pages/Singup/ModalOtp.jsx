@@ -1,10 +1,12 @@
 import React from 'react';
-import { Modal } from 'antd';
+import {message, Modal} from 'antd';
 import edit_icon from '../../assets/img/edit_name.svg';
 import close_icon from '../../assets/img/clear.svg';
 import { Form, Input} from "antd";
 import ver_code from '../../assets/img/ver_code.svg';
 import { t } from 'i18next';
+import APIService from "../../utils/api.services";
+import {REGISTER, VERIFY} from "../../utils";
 
 function ModalOtp(props) {
     
@@ -17,7 +19,20 @@ function ModalOtp(props) {
     }
 
     const onFinish = (values) =>{
+        values['username'] = props.phone
 
+        APIService.post(VERIFY, values)
+            .then(res => {
+                if (res.data) {
+                    message.success("ثبت نام شما با موفقیت انجام شد.")
+                    setTimeout(() => {
+                        window.location.href = "/"
+                    }, 200);
+                } else {
+                    message.error(res.response.data.message)
+                }
+
+            })
     }
 
     return (
@@ -53,7 +68,7 @@ function ModalOtp(props) {
 
                                     <div className="d-flex justify-content-center mt-3 mb-5">
                                         
-                                        <h3 className="pt-2">09124840475</h3>
+                                        <h3 className="pt-2">{props.phone}</h3>
                                         <img src={edit_icon} alt="edit-icon" />
                                     </div>
 
@@ -65,7 +80,7 @@ function ModalOtp(props) {
 
                                         <Form.Item
                                             className="w-100"
-                                            name=""
+                                            name="otp"
                                             rules={[
                                                 {
                                                     required: true,
