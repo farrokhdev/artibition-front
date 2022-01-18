@@ -9,6 +9,7 @@ import profile from '../../assets/img/profile.svg';
 import message from '../../assets/img/message.svg';
 import search from '../../assets/img/search.svg';
 import shopping_basket from '../../assets/img/shopping_basket.svg';
+import {removeToken} from "../../utils/utils";
 
 
 function HeaderPanel(props) {
@@ -63,15 +64,19 @@ function HeaderPanel(props) {
                             <img src={message} width="24" height="24" alt="pull-dir" />
                         </a>
                         <a href="#" className="btn-panel-header btn-changelang">
-                            <button onClick={() => changeLanguage(i18n.language !== 'fa-IR' ? 'fa-IR' : 'en-US')}>En</button>
+                            <button onClick={() => changeLanguage(i18n.language !== 'fa-IR' ? 'fa-IR' : 'en-US')}>{t("title_lang-header")}</button>
+
+                        </a>
+                        <a href="#" className="btn-panel-header btn-changelang">
+                            <button onClick={() => removeToken()}>{t("logout_Title")}</button>
 
                         </a>
                     </div>
                     <div className="btn-panel-header visible-xs">
                         <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#panel-navbar">
-                            <span className="icon-bar"></span>
-                            <span className="icon-bar"></span>
-                            <span className="icon-bar"></span>
+                            <span className="icon-bar"/>
+                            <span className="icon-bar"/>
+                            <span className="icon-bar"/>
                         </button>
                     </div>
                 </div>

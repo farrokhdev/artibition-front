@@ -6,12 +6,15 @@ import classnames from 'classnames';
 import { GetLanguage } from '../../utils/utils';
 
 import cloude_upload_icon from '../../assets/img/cloud-upload.svg';
+import { Link } from 'react-router-dom';
 
 function GalleryPanelCreateExhibition() {
+
+
+
     return (
         <>
             <HeaderPanel t={t} />
-
             <div className="panel-style container mx-auto px-0 w-100 bg-white ">
 
 
@@ -42,8 +45,7 @@ function GalleryPanelCreateExhibition() {
 
                             >
                                 <div className="public-group">
-                                    <input className="form-control input-public " required
-                                        placeholder="" value="" />
+                                    <input className="form-control input-public " required />
                                     <label className="lable-public">{t("gallery-panel-create-exhibition.exhibition_name_fa")}</label>
                                 </div>
                             </div>
@@ -55,9 +57,7 @@ function GalleryPanelCreateExhibition() {
 
                             >
                                 <div className="public-group en">
-                                    <input className="form-control input-public en-lang " required
-                                        placeholder=""
-                                        value="" />
+                                    <input className="form-control input-public en-lang " required />
                                     <label className="lable-public en-lang">{t("gallery-panel-create-exhibition.exhibition_name_en")}</label>
                                 </div>
                             </div>
@@ -72,27 +72,25 @@ function GalleryPanelCreateExhibition() {
                                 </div>
                                 <div className="col-sm-3">
                                     <div className="public-group">
-                                        <input className="form-control input-public persian-num" required
-                                            placeholder=""
-                                            value="" />
+                                        <input className="form-control input-public persian-num" required />
                                         <label className="lable-public">{t("gallery-panel-create-exhibition.online_start")}</label>
                                     </div>
                                 </div>
                                 <div className="col-sm-3">
                                     <div className="public-group">
-                                        <input className="form-control input-public persian-num" required placeholder="" value="" />
+                                        <input className="form-control input-public persian-num" required />
                                         <label className="lable-public">{t("gallery-panel-create-exhibition.online_end")}</label>
                                     </div>
                                 </div>
                                 <div className="col-sm-3">
                                     <div className="public-group">
-                                        <input className="form-control input-public persian-num" required placeholder="" value="" />
+                                        <input className="form-control input-public persian-num" required />
                                         <label className="lable-public">{t("gallery-panel-create-exhibition.local_start")}</label>
                                     </div>
                                 </div>
                                 <div className="col-sm-3">
                                     <div className="public-group">
-                                        <input className="form-control input-public persian-num" required placeholder="" value="" />
+                                        <input className="form-control input-public persian-num" required />
                                         <label className="lable-public">{t("gallery-panel-create-exhibition.local_end")}</label>
                                     </div>
                                 </div>
@@ -102,56 +100,56 @@ function GalleryPanelCreateExhibition() {
                         <div className="row">
                             <div className="col-sm-12 col-xs-6 text-dir">
                                 <label className="lable-checkbox">
-                                    <input type="checkbox" checked value="" />
+                                    <input type="checkbox" checked />
                                     <span>{t("gallery-panel-create-exhibition.painting")}</span>
                                     <span className="checkmark"></span>
                                 </label>
                             </div>
                             <div className="col-sm-12 col-xs-6 text-dir">
                                 <label className="lable-checkbox">
-                                    <input type="checkbox" value="" />
+                                    <input type="checkbox" />
                                     <span>{t("gallery-panel-create-exhibition.photography")}</span>
                                     <span className="checkmark"></span>
                                 </label>
                             </div>
                             <div className="col-sm-12 col-xs-6 text-dir">
                                 <label className="lable-checkbox">
-                                    <input type="checkbox" checked value="" />
+                                    <input type="checkbox" checked />
                                     <span>{t("gallery-panel-create-exhibition.sculpture")}</span>
                                     <span className="checkmark"></span>
                                 </label>
                             </div>
                             <div className="col-sm-12 col-xs-6 text-dir">
                                 <label className="lable-checkbox">
-                                    <input type="checkbox" value="" />
+                                    <input type="checkbox" />
                                     <span>{t("gallery-panel-create-exhibition.calligram")}</span>
                                     <span className="checkmark"></span>
                                 </label>
                             </div>
                             <div className="col-sm-12 col-xs-6 text-dir">
                                 <label className="lable-checkbox">
-                                    <input type="checkbox" value="" />
+                                    <input type="checkbox" />
                                     <span>{t("gallery-panel-create-exhibition.calligraphy")}</span>
                                     <span className="checkmark"></span>
                                 </label>
                             </div>
                             <div className="col-sm-12 col-xs-6 text-dir">
                                 <label className="lable-checkbox">
-                                    <input type="checkbox" value="" />
+                                    <input type="checkbox" />
                                     <span>{t("gallery-panel-create-exhibition.printmaking")}</span>
                                     <span className="checkmark"></span>
                                 </label>
                             </div>
                             <div className="col-sm-12 col-xs-6 text-dir">
                                 <label className="lable-checkbox">
-                                    <input type="checkbox" value="" />
+                                    <input type="checkbox" />
                                     <span>{t("gallery-panel-create-exhibition.graphic")}</span>
                                     <span className="checkmark"></span>
                                 </label>
                             </div>
                             <div className="col-sm-12 col-xs-6 text-dir">
                                 <label className="lable-checkbox">
-                                    <input type="checkbox" value="" />
+                                    <input type="checkbox" />
                                     <span>{t("gallery-panel-create-exhibition.drawing")}</span>
                                     <span className="checkmark"></span>
                                 </label>
@@ -165,7 +163,7 @@ function GalleryPanelCreateExhibition() {
                                     "d-none": GetLanguage() === 'en-US'
                                 })}>
                                 <div className="public-group">
-                                    <input className="form-control input-public " required placeholder="" value="" />
+                                    <input className="form-control input-public " required />
                                     <label className="lable-public">{t("gallery-panel-create-exhibition.enter_artist_name_fa")}</label>
                                 </div>
                             </div>
@@ -176,7 +174,7 @@ function GalleryPanelCreateExhibition() {
                                     "col w-100": GetLanguage() === 'en-US'
                                 })}>
                                 <div className="public-group en">
-                                    <input className="form-control input-public en-lang " required placeholder="" value="" />
+                                    <input className="form-control input-public en-lang " required />
                                     <label className="lable-public en-lang">{t("gallery-panel-create-exhibition.enter_artist_name_en")}</label>
                                 </div>
                             </div>
@@ -260,29 +258,29 @@ function GalleryPanelCreateExhibition() {
                         <div className="row dir">
                             <div className={"col-sm-9"}>
                                 <div className="public-group ">
-                                    <input className="form-control input-public " required placeholder="" value="" />
+                                    <input className="form-control input-public " required />
                                     <label className="lable-public en-lang">{t("gallery-panel-create-exhibition.address_fa")}</label>
                                 </div>
                             </div>
                             <div className="col-sm-3">
                                 <button type="button" className="btn-blue" data-toggle="modal" data-target="#show-map">
-                                {t("gallery-panel-create-exhibition.select_on_map")}
+                                    {t("gallery-panel-create-exhibition.select_on_map")}
                                 </button>
                             </div>
                             <div className="clearfix"></div>
                             <div className={classnames("", {
-                                    "col-sm-12": GetLanguage() === 'fa-IR',
-                                    "d-none": GetLanguage() === 'en-US'
-                                })}
-                                >
+                                "col-sm-12": GetLanguage() === 'fa-IR',
+                                "d-none": GetLanguage() === 'en-US'
+                            })}
+                            >
                                 <div className="public-group en">
-                                    <input className="form-control input-public en-lang " required placeholder="" value="" />
+                                    <input className="form-control input-public en-lang " required />
                                     <label className="lable-public en-lang">{t("gallery-panel-create-exhibition.address_en")}</label>
                                 </div>
                             </div>
                             <div className="col-sm-6">
                                 <div className="public-group">
-                                    <input className="form-control input-public  persian-num" required placeholder="" value="" />
+                                    <input className="form-control input-public  persian-num" required />
                                     <label className="lable-public">{t("gallery-panel-create-exhibition.phone_number")}</label>
                                 </div>
                             </div>
@@ -290,7 +288,9 @@ function GalleryPanelCreateExhibition() {
                     </div>
                     <br />
                     <div className="adv-btn">
-                        <button type="button" className="btn-black center-block">{t("gallery-panel-create-exhibition.btn_confirm_next")}</button>
+                        <Link to={"/panel/upload-exhibition-artwotk"} className="btn-black center-block">
+                            {t("gallery-panel-create-exhibition.btn_confirm_next")}
+                        </Link>
                     </div>
 
                 </div>

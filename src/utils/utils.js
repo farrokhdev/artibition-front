@@ -68,10 +68,12 @@ export function removeToken() {
     cookie.remove('token');
     cookie.remove('refresh');
     window.sessionStorage.clear()
-    message.success("شما از ..... خارج شدید.")
-    setTimeout(() => {
-        window.location.href = "/"
-    }, 400);
+    if(!isLogin()){
+        message.success("شما از پنل خارج شدید.")
+        setTimeout(() => {
+            window.location.href = "/"
+        }, 400);
+    }
 }
 
 export function getTokenObject() {

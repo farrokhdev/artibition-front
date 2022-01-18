@@ -1,4 +1,5 @@
-import {BASE_URL} from './index';
+import { ORDER_BUYERS } from './constant';
+import { BASE_URL } from './index';
 import axios from './request';
 
 class APIService {
@@ -51,6 +52,9 @@ class APIService {
                 return err
             })
     }
+
+
+    
 
 }
 

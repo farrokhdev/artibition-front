@@ -1,13 +1,44 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import HanLogo from '../../assets/img/gallery/hanlogo.jpg'
+import { GALLERY_LIST } from '../../utils';
+import apiServices from '../../utils/api.services';
+import queryString from 'query-string'
 
 
 function MainContent() {
 
     const { t, i18n } = useTranslation();
 
+    const pages = []
+    const [search, setSearch] = useState();
+    const [galleryList, setGalleryList] = useState();
+    const [params, setParams] = useState({
+        search:"",
+        page: 1,
+
+    })
+    const getGalleryList = () => {
+        apiServices.get(GALLERY_LIST, queryString.stringify(params))
+            .then(res => {
+                if (res.data) {
+                    setGalleryList(res.data.data)
+                }
+            })
+            .catch(err => {
+                console.log("err", err)
+            })
+    }
+
+    // for (let i = 1; i < (galleryList.results.length / galleryList?.page_size); i++) {
+    for (let i = 1; i < ([1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3].length / galleryList?.page_size); i++) {
+        pages.push(<li className={galleryList.current_page_no === i ? "active" : null}><Link to="">{i}</Link></li>)
+    }
+
+    useEffect(() => {
+        getGalleryList()
+    }, [params]);
 
     return (
         <div className="container">
@@ -16,8 +47,8 @@ function MainContent() {
                     <h2 className="content-title">{t("artworkList.box-banner.title")}</h2>
                     <p className="txt-title">{t("artworkList.box-banner.text")}</p>
                     <div className="nl-input">
-                        <input placeholder={t("artworkList.box-banner.placeholder")} />
-                        <button type="button" className="btn-black">{t("artworkList.box-banner.btn")}</button>
+                        <input placeholder={t("artworkList.box-banner.placeholder")} onChange={e => setSearch(e.target.value)}/>
+                        <button type="button" className="btn-black" onClick={() => setParams(state => ({ ...state, search: search }))}>{t("artworkList.box-banner.btn")}</button>
                     </div>
                 </div>
             </div>
@@ -41,31 +72,25 @@ function MainContent() {
 
                     <div className="gallery-name-list">
                         <div className="row">
-                            {[1, 2, 3, 4, 5, 6, 7]?.map((gallery) => {
+                            {galleryList?.results.map((gallery) => {
                                 return (
-
                                     <div className="col-md-3 col-sm-4 col-xs-6">
                                         <Link to="" className="gallery-logo-block">
                                             <div className="gallery-logo-img">
-                                                <img src={HanLogo} width="110" height="110" alt=""
+                                                <img src={gallery?.media[0]?.exact_url} width="110" height="110" alt=""
                                                     className="img-responsive center-block" />
                                             </div>
-                                                <h3 className="fontbold19">گالری آرتیبیشن</h3>
-                                                <span className="font-span">تهران</span>
+                                            <h3 className="fontbold19">{gallery?.owner?.username}</h3>
+                                            <span className="font-span">{gallery?.locations[0]?.point}</span>
                                         </Link>
                                     </div>
                                 )
                             })}
-
                         </div>
                     </div>
                     <div className="row-pagination">
                         <ul className="pagination">
-                            <li><Link to="/">1</Link></li>
-                            <li className="active"><Link to="/">2</Link></li>
-                            <li><Link to="/">3</Link></li>
-                            <li><Link to="/">4</Link></li>
-                            <li><Link to="/">5</Link></li>
+                            {pages}
                         </ul>
                     </div>
                 </div>

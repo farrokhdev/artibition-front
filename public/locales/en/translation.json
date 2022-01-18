@@ -62,6 +62,7 @@
     }
   },
   "login_Title": "Login",
+  "logout_Title": "Logout",
   "placeholder-username": "Email or mobile number",
   "placeholder-password": "Password",
   "placeholder-confirm-password": "Confirm password",
@@ -93,13 +94,14 @@
   "membership-info": "To recover the password, first enter the 4-digit code that sent to your mobile number.",
   "placeholder-activation-code": "Enter activation code",
   "text-btn-confirm-mobile-number": "Confirm mobile number",
-  "title_lang-header": "Fa",
+  "title_lang-header": "فارسی",
   "nav-menu-artworks": "Artworks",
   "nav-menu-showroom": "Showroom",
   "nav-menu-online-exhibition": "Online exhibition",
   "nav-menu-blog": "Blog",
   "nav-menu-sales-advisor": "Sales Advisor",
   "redirect-login-header": "Sign up/Login",
+  "panel": "panel",
   "text-statistics-purchase": "PURCHASE",
   "text-statistics-artworks": "ARTWORKS",
   "text-statistics-artists": "ARTISTS",
@@ -1179,11 +1181,36 @@
     "price": "USD",
     "new_artist": "Add new artist",
     "confirm_gallery_info": "Confirm gallery info",
-    "view":"View",
-    "shop_now":"Shop now"
+    "view": "View",
+    "shop_now": "Shop now"
   },
-  "gallery-panel-select-artist-source":{
+  "gallery-panel-select-artist-source": {
     "select_from_exist_artist": "Select from exist artist",
     "add_new_artist": "Add new artist"
+  },
+  "advisory": {
+    "welcome_step": {
+      "title": "Welcome to arthibition's online consulting!",
+      "description": "Arthibition presents online services regarding whatever you need to make a good and proper choice while buying an artwork and in case you need in-person consultation and wish to visit the artwork, we would always welcome you at arthibition. we recommend you to fill in the following sections accurately so you could receive better offers:",
+      "next_btn":"Next",
+      "adv_question": {
+        "pecific_category_question": "Do you consider buying from a specific category?",
+        "investment_question": "Do you buy artworks for investment proposes?",
+        "type_investment_question": "What type of investment do you prefer?",
+        "specific_artist_question": "Do you consider any specific artist or artists?",
+        "budget_question": "What is your budget?",
+        "no_difference": "No difference",
+        "different": "Different",
+        "yes": "Yes",
+        "no": "No",
+        "investing_teenagers": "Investing on teenagers",
+        "investing_young_people": "Investing on young people",
+        "Enter_artist_name": "Enter the artist's name",
+        "less_price": "Less than 10 USD",
+        "more_price": "More than 10 USD"
+      }
+    },
+    "select_favorite_artwork_step": {},
+    "extra_description_step": {}
   }
 }

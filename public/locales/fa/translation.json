@@ -62,6 +62,7 @@
     }
   },
   "login_Title": "وارد شوید",
+  "logout_Title": "خروج",
   "placeholder-username": "شماره همراه یا ایمیل",
   "placeholder-password": "رمز عبور",
   "placeholder-confirm-password": "تکرار رمز عبور",
@@ -93,13 +94,14 @@
   "membership-info": "جهت بازیابی رمز عبور ابتدا کد 4 رقمی ارسال شده به شماره همراه خود را وارد نمایید.",
   "placeholder-activation-code": "کد فعالسازی",
   "text-btn-confirm-mobile-number": "تایید شماره همراه",
-  "title_lang-header": "En. Versio",
+  "title_lang-header": "En",
   "nav-menu-artworks": "آثار هنری",
   "nav-menu-showroom": "تالار",
   "nav-menu-online-exhibition": "نمایشگاه مجازی",
   "nav-menu-blog": "بلاگ",
   "nav-menu-sales-advisor": "مشاوره خرید",
   "redirect-login-header": "عضویت / ورود",
+  "panel": "پنل کاربری",
   "text-statistics-purchase": "خرید موفق",
   "text-statistics-artworks": "اثرهنری",
   "text-statistics-artists": "هنرمند",
@@ -1125,5 +1127,30 @@
   "gallery-panel-select-artist-source":{
     "select_from_exist_artist": "انتخاب از هنرمندان موجود",
     "add_new_artist": "اضافه کردن هنرمند جدید"
+  },
+  "advisory": {
+    "welcome_step": {
+      "title": "به مشاوره آنلاین آرتیبیشن خوش آمدید!",
+      "description": "هر آنچه برای خرید و انتخاب خوب و مناسب نظر شما از آثار هنری می خواهید را آرتیبیشن می‌تواند به صورت آنلاین در اختیار شما قرار دهد و اگر نیاز به مشاوره حضوری و بازدید آثار هم باشد می‌توانید به آدرس گالری :آرتیبیشن تشریف فرما شوید. برای ارائه پیشنهادهای بهتر پیشنهاد می‌کنیم اطلاعات زیر را به دقت پر نمایید",
+      "next_btn":"ادامه",
+      "adv_question": {
+        "pecific_category_question": "آیا رشته هنری خاصی برای خرید در نظر دارید؟",
+        "investment_question": "آیا برای سرمایه‌گذاری اثر هنری می‌خرید؟",
+        "type_investment_question": "چه نوع سرمایه‌گذاری را می‌پسندید؟",
+        "specific_artist_question": "آثار هنرمند یا هنرمندان خاصی را در نظر دارید؟",
+        "budget_question": "چه بودجه‌ای برای این کار در نظر دارید؟",
+        "no_difference": "تفاوتی ندارد",
+        "different": "تفاوتی دارد",
+        "yes": "بلی",
+        "no": "خیر",
+        "investing_teenagers": "سرمایه‌گذاری بر روی جوانان",
+        "investing_young_people": "سرمایه‌گذاری بر روی نوجوانان",
+        "Enter_artist_name": "نام هنرمند مورد نظر را وارد نمایید",
+        "less_price": "کمتر از ۱۰ میلیون تومان",
+        "more_price": "بیشتر از ۱۰ میلیون تومان"
+      }
+    },
+    "select_favorite_artwork_step": {},
+    "extra_description_step": {}
   }
 }

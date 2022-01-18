@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { t } from 'i18next';
 import Header from "../../components/Header/Header";
 import Menu from '../../components/Menu/Menu';
@@ -14,13 +14,45 @@ import artist3 from '../../assets/img/artist-3.jpg';
 import blue_badge_icon from '../../assets/img/blue_badge.svg';
 import gold_badge_icon from '../../assets/img/gold_badge.svg';
 import { Pagination } from 'antd';
+import { ARTIST } from '../../utils';
+import apiServices from '../../utils/api.services';
+import queryString from 'query-string'
+import { useTranslation } from 'react-i18next';
+
 
 function ArtistsPage() {
+
+    const {t, i18n} = useTranslation();
+
+    const [artistList, setArtistList] = useState();
+    const [params, setParams] = useState({
+        search:"",
+        page: 1,
+
+    })
+
+    const getArtistList = () => {
+        apiServices.get(ARTIST, queryString.stringify(params))
+            .then(res => {
+                if (res.data) {
+                    setArtistList(res.data.data)
+                }
+            })
+            .catch(err => {
+                console.log("err", err)
+            })
+    }
+
+    useEffect(() => {
+        getArtistList()
+    }, []);
+
     return (
         <>
   <div className="container mx-auto px-0 w-100 bg-white">
     <Header />
     <Menu />
+    {console.log("artists",artistList)}
 
     <div className="banner">
       <div className="content-banner">
@@ -180,7 +212,47 @@ function ArtistsPage() {
           <div className="col-md-9 col-sm-12">
                     <div className="artist-list">
                         <div className="row box-dir-reverse">
+                            {artistList?.results?.map((item,index) => 
                             <div className="col-sm-4">
+                                <a href="#" className="cols">
+                                    <div className="col-img">
+                                        <div className="collection-firstrow">
+                                            {/* <img src={mainpage1_1} className="img-responsive"/> */}
+                                            <img src={item.media[0] && item.media[0]?.exact_url} className="img-responsive"/>
+                                        </div>
+                                        <div className="d-flex collection-secondrow">
+                                            <div className="col-6  pad-l2 px-0">
+                                                {/* <img src={mainpage1_2} width="420" height="420"
+                                                     className="img-responsive"/> */}
+                                                <img src={item.media[1] && item.media[1]?.exact_url} width="420" height="420"
+                                                     className="img-responsive"/>
+                                            </div>
+                                            <div className="col-6  pad-r2 px-0">
+                                                {/* <img src={mainpage1_3} width="420" height="420"
+                                                     className="img-responsive"/> */}
+                                                <img src={item.media[2] && item.media[2]?.exact_url} width="420" height="420"
+                                                     className="img-responsive"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-body">
+                                        <div className="col-image pull-right">
+                                            {/* <img src={artist3} width="408" height="408" alt=""
+                                                 className="img-responsive"/> */}
+                                            <img src={item.bg_image} width="408" height="408" alt=""
+                                                 className="img-responsive"/>
+                                            <img src={blue_badge_icon} width="22" height="22" alt=""
+                                                 className="img-badge"/>
+                                        </div>
+                                        <h6 className="col-title">
+                                            <span className="col-name pull-dir">{i18n.language === 'fa-IR' ? item.owner.translations.fa?.first_name : item.owner.translations.en?.first_name}</span>
+                                        </h6>
+                                        <button type="button" className="btn-follow pull-dir">{t("artwork.follow")}</button>
+                                    </div>
+                                </a>
+                            </div>
+                            )}
+                            {/* <div className="col-sm-4">
                                 <a href="#" className="cols">
                                     <div className="col-img">
                                         <div className="collection-firstrow">
@@ -210,39 +282,8 @@ function ArtistsPage() {
                                         <button type="button" className="btn-follow pull-dir">{t("artwork.follow")}</button>
                                     </div>
                                 </a>
-                            </div>
-                            <div className="col-sm-4">
-                                <a href="#" className="cols">
-                                    <div className="col-img">
-                                        <div className="collection-firstrow">
-                                            <img src={mainpage1_1} className="img-responsive"/>
-                                        </div>
-                                        <div className="d-flex collection-secondrow">
-                                            <div className="col-6  pad-l2 px-0">
-                                                <img src={mainpage1_2} width="420" height="420"
-                                                     className="img-responsive"/>
-                                            </div>
-                                            <div className="col-6  pad-r2 px-0">
-                                                <img src={mainpage1_3} width="420" height="420"
-                                                     className="img-responsive"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-body">
-                                        <div className="col-image pull-right">
-                                            <img src={artist3} width="408" height="408" alt=""
-                                                 className="img-responsive"/>
-                                            <img src={blue_badge_icon} width="22" height="22" alt=""
-                                                 className="img-badge"/>
-                                        </div>
-                                        <h6 className="col-title">
-                                            <span className="col-name pull-dir">هنر تراش بر روی چوب</span>
-                                        </h6>
-                                        <button type="button" className="btn-follow pull-dir">{t("artwork.follow")}</button>
-                                    </div>
-                                </a>
-                            </div>
-                            <div className="col-sm-4">
+                            </div> */}
+                            {/* <div className="col-sm-4">
                                 <a href="#" className="cols">
                                     <div className="col-img">
                                         <div className="collection-firstrow">
@@ -272,7 +313,7 @@ function ArtistsPage() {
                                         <button type="button" className="btn-follow followed pull-dir">{t("artwork.following")}</button>
                                     </div>
                                 </a>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     <div className=" row-pagination">
