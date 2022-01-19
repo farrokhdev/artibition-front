@@ -21,21 +21,21 @@ function GalleyRelatedContent() {
         <>
             {[1, 2, 3, 4].map((content) => {
                 return (
-                    <div class="galley-related-content">
-                        <div class="col-sm-6">
-                            <div class="gallery-maxwidth">
-                                <div class="gallery-img">
-                                    <div class="tags tags-events">مجازی</div>
+                    <div className="galley-related-content">
+                        <div className="col-sm-6">
+                            <div className="gallery-maxwidth">
+                                <div className="gallery-img">
+                                    <div className="tags tags-events">مجازی</div>
                                     <img src={gallery} height="840" width="840" alt=""
-                                        class="img-responsive" />
-                                    <a class="gallery-link" href="#"><img src={arrowLeft}
+                                        className="img-responsive" />
+                                    <a className="gallery-link" href="#"><img src={arrowLeft}
                                         width="16" height="16"
                                         alt="" /></a>
                                 </div>
-                                <div class="gallery-content">
-                                    <h3 class="gallery-content-title">نمایشگاه مجازی هنر نورانی نئون</h3>
-                                    <h4 class="gallery-content-name">گالری آران</h4>
-                                    <div class="coundown">
+                                <div className="gallery-content">
+                                    <h3 className="gallery-content-title">نمایشگاه مجازی هنر نورانی نئون</h3>
+                                    <h4 className="gallery-content-name">گالری آران</h4>
+                                    <div className="coundown">
                                         <Timer
                                             initialTime={timeExpire("2023/10/12")}
                                             direction="backward"
@@ -45,9 +45,9 @@ function GalleyRelatedContent() {
                                                     direction: 'ltr',
                                                     textAlign: "right"
                                                 }}
-                                                    class="timers"
+                                                    className="timers"
                                                 >
-                                                    <span class="d-inline-block px-3 end" style={{ position: 'inherit' }}>تا پایان</span>
+                                                    <span className="d-inline-block px-3 end" style={{ position: 'inherit' }}>تا پایان</span>
                                                     <span className="d-inline-block persian-num timer"><Timer.Days /></span>
                                                     <span className="d-inline-block coundown timers px-1">:</span>
                                                     <span className="d-inline-block persian-num timer"><Timer.Hours /> </span>
