@@ -1,6 +1,6 @@
 import React from 'react'
 import BasketFooter from '../../components/BasketFooter/BasketFooter';
-import { Steps, Button, message , Popover  } from 'antd';
+import { Steps, Button, message, Popover } from 'antd';
 import HeaderPanel from '../../components/HeaderPanel/HeaderPanel';
 import BasketFooterPanel from '../../components/BasketFooterPanel/BasketFooterPanel';
 import { t } from 'i18next';
@@ -73,6 +73,7 @@ function AddArtwork() {
 
     <div className="panel-style container mx-auto px-0 w-100 bg-white">
 
+
         {/* <Steps 
             className='d-flex box-dir-reverse'
             progressDot={customDot}
@@ -83,15 +84,15 @@ function AddArtwork() {
         </Steps> */}
 
 
-        
-    <Steps 
-      className='d-flex dir'
-      progressDot current={current}
-      >
-        {steps.map(item => (
+
+        <Steps
+          className='d-flex dir'
+          progressDot current={current}
+        >
+          {steps.map(item => (
             <Step key={item.title} title={item.title} />
-        ))}
-    </Steps>
+          ))}
+        </Steps>
 
         <div className="steps-content pt-5 px-4 px-sm-0">{steps[current].content}</div>
         {/* <div className="steps-action">
@@ -112,10 +113,9 @@ function AddArtwork() {
             )}
         </div> */}
 
-        {/* <BasketFooterPanel /> */}
-    </div>
-</>
-    )
+      </div>
+    </>
+  )
 }
 
 export default AddArtwork;

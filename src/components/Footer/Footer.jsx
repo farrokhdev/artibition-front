@@ -9,7 +9,7 @@ import { t } from 'i18next';
 export default function Footer() {
     return (
         <footer>
-            <div className="container">
+            <div className="container dir">
                 <div className="d-block d-md-flex flex-row-reverse row-footer ">
                     {/* <div className="col-sm-6 col-sm-push-6"> */}
                     <div className="col  my-auto">
@@ -34,7 +34,7 @@ export default function Footer() {
                 </div>
                 <div className="d-block d-lg-flex">
                     <div className="col">
-                        <div className="text-right">
+                        <div className="text-dir">
                             <img src={logo} width="160" height="42" alt="لوگو آرتیبیشن" className="logo-footer"/>
                             <p>
                                 {t("footer.text-info")}
@@ -44,7 +44,7 @@ export default function Footer() {
                     <div className="col">
                         <div className="row ">
                             <div className="col-md-4 col-xs-5">
-                                <div className="footer-nav text-right">
+                                <div className="footer-nav text-dir">
                                     <h6 className="footer-nav-header">{t("footer.guid.title")}</h6>
                                     <ul className="footer-nav-body">
                                         <li><a href="#">{t("footer.guid.signup-login")}</a></li>
@@ -56,7 +56,7 @@ export default function Footer() {
                                 </div>
                             </div>
                             <div className="col-md-4 col-xs-3">
-                                <div className="footer-nav text-right">
+                                <div className="footer-nav text-dir">
                                     <h6 className="footer-nav-header">{t("footer.terms-of-use.title")}</h6>
                                     <ul className="footer-nav-body">
                                         <li><a href="#">{t("footer.terms-of-use.copyright")}</a></li>
@@ -66,7 +66,7 @@ export default function Footer() {
                                 </div>
                             </div>
                             <div className="col-md-4 col-xs-4">
-                                <div className="footer-nav text-right">
+                                <div className="footer-nav text-dir">
                                     <h6 className="footer-nav-header">{t("footer.artibition.title")}</h6>
                                     <ul className="footer-nav-body">
                                         <li><a href="#">{t("footer.artibition.about-us")}</a></li>

@@ -8,4 +8,3 @@ export const PROFILE = "/account/profile/";
 export const OPT = "/account/sendotp/";
 export const RECOVER_PASSWORD = "/account/recover-password/";
 export const ORDER_BUYERS = "/orders/buyers/";
-
