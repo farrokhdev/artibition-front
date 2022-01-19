@@ -452,6 +452,8 @@
       }
     },
     "personal-info": {
+      "first_name": "Name",
+      "last_name": "Family",
       "title": "PERSONAL INFO",
       "fullname": "Full name",
       "phone": "Phone number",

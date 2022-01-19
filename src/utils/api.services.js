@@ -43,8 +43,18 @@ class APIService {
             })
     }
 
-    patch(uri, id, payload) {
+    patchByID(uri, id, payload) {
         return axios.patch(`${BASE_URL}${uri}/${id}`, payload)
+            .then(res => {
+                return res
+            })
+            .catch(err => {
+                return err
+            })
+    }
+
+    patch(uri, payload) {
+        return axios.patch(`${BASE_URL}${uri}`, payload)
             .then(res => {
                 return res
             })
