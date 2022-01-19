@@ -1191,7 +1191,7 @@
     "welcome_step": {
       "title": "Welcome to arthibition's online consulting!",
       "description": "Arthibition presents online services regarding whatever you need to make a good and proper choice while buying an artwork and in case you need in-person consultation and wish to visit the artwork, we would always welcome you at arthibition. we recommend you to fill in the following sections accurately so you could receive better offers:",
-      "next_btn":"Next",
+      "next_btn": "Next",
       "adv_question": {
         "pecific_category_question": "Do you consider buying from a specific category?",
         "investment_question": "Do you buy artworks for investment proposes?",
@@ -1209,7 +1209,140 @@
         "more_price": "More than 10 USD"
       }
     },
-    "select_favorite_artwork_step": {},
-    "extra_description_step": {}
+    "select_favorite_artwork_step": {
+      "title": "Select your favorite artworks",
+      "description": "Please visit the site through the following link and select couple of works similar to your taste, so we could consider them for consultation: ",
+      "size": "Size:",
+      "x": " x ",
+      "price": "USD",
+      "spacial": "Spacial",
+      "sold_out": "Sold out",
+      "btn_next": "Next",
+      "btn_prev": "Prev"
+    },
+    "extra_description_step": {
+      "title": "More details",
+      "description": "In case you have complementary explanations regarding your expectation of consultation and artworks selection, please let us know:",
+      "description_placeholder": "Description",
+      "btn_prev": "Prev",
+      "btn_submit": "Submit"
+    }
+  },
+  "advistory-submited": {
+    "title": "Your request has been registered successfully ",
+    "description": "we will contact and present you with our guidelines and suggestion after preliminary review. you could also contact us through following links, in case you wish to:",
+    "arthibition_address_title": "Arthibition's address:",
+    "arthibition_address_1": "Tehran, Shariati Ave., Kousha St., Naseri St., Ghandi (Daria) St., No. 6.",
+    "arthibition_address_2": "",
+    "contact": "Contact",
+    "phone": "+989122121030",
+    "back_home": "Back homepage"
+  },
+  "collections-list": {
+    "follow": "Follow",
+    "view_all": "View all",
+    "view": "View",
+    "shop_now": "Shop now",
+    "special": "Special"
+  },
+  "cart": {
+    "empty": {
+      "title": "Your cart is empty!",
+      "description": "No item has been added to your cart. to buy artworks from Arthibition click on ''buy artwork''",
+      "btn": "View artworks"
+    },
+    "full": {
+      "cart": "Your cart",
+      "total_price": "Total price",
+      "next": "Next",
+      "price_unit": "USD",
+      "less_price_received_separately": "The cost of orders less than 1 million tomans will be received separately"
+    },
+    "order": {
+      "code": "Code",
+      "category": "Category",
+      "technique": "Technique",
+      "material": "Material",
+      "date_creation": "Date of creation",
+      "size": "Size",
+      "x": " x ",
+      "delivery_call_desctiption": "After you make your purchase, you will be contacted via phone call to make the delivery. ",
+      "sold_by_collector_1": "the artwork is sold by a ",
+      "collector": "collector",
+      "sold_by_collector_2": "",
+      "price": "Price",
+      "price_unit": "USD",
+      "remove": "Remove",
+      "artwork_not_available": "Artwork is not available.",
+      "sold": "Sold",
+      "discount": "Discount",
+      "total_price": "Total price"
+    },
+    "properties": {
+      "delivery_arthibition": "Delivery by Arthibition ",
+      "referral_return": "7 days referral and return ",
+      "safe_payment": "Safe payment",
+      "originality_guaranteed": "Originality guaranteed by Arthibition "
+    }
+  },
+  "invoice": {
+    "price": "Price",
+    "price_unit": "USD",
+    "artworks": "artworks",
+    "discount": "Discount",
+    "shipment_fee": "Shipment fee",
+    "free": "Free",
+    "total_price": "Total price",
+    "next_btn": "Next"
+  },
+  "payment": {
+    "select_address_step": "Select address",
+    "payment_step": "Payment",
+    "bill_shipment_step": "Bill and shipment",
+    "address_step": {
+      "title": "Select address",
+      "new_address_btn": "New address",
+      "back_btn": "Back",
+      "prev_step": "",
+      "no_address_message": "You have registered no address!"
+    },
+    "pay_step": {
+      "title": "Payment method",
+      "back_btn": "Back",
+      "prev_step": "",
+      "online": "Online",
+      "cash": "Cash on delivery",
+      "order_summery": "Order summery",
+      "num": "Num",
+      "image": "Image",
+      "owner": "Owner",
+      "code": "Code",
+      "size": "Size",
+      "x": " x ",
+      "click_discount_code": "In case you have a discount code, click here",
+      "enter_code":"Enter discount code",
+      "submit_code":"Submit",
+      "pay_btn": "Pay",
+      "saman_bank": "Payment is processes through Saman Bank."
+    }
+  },
+  "success-payment":{
+    "title":"The purchase was successful",
+    "tracing_no":"Tracing No: ",
+    "return_website":"We appreciate your purchase, you will shortly return to Arthibition website.",
+    "finalize_purchase_btn":"Finalize purchase and return to site"
+  },
+  "unsuccess-payment":{
+    "title":"Purchase failed!",
+    "tracing_no":"Tracing No: ",
+    "try_again":"Unfortunately there has been an error. please try again.",
+    "return_site_btn":"Return to site"
+  },
+  "header-panel": {
+    "shopping_guid": "Shopping guid",
+    "from_site":"",
+    "faq": "FAQ",
+    "contact_us": "Contact us: ",
+    "phone_number": "021 22538 229"
   }
 }

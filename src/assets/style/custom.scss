@@ -729,13 +729,13 @@ padding: 10px 6px !important;
     min-width: 70px !important;
 }
 
-/* .view-icon {
+.view-icon {
     background: url("../img/view.svg");
     width: 24px;
     height: 24px;
     margin-left: 6px;
     display: block;
-} */
+}
 
 .btn-sale,
 .btn-sale:hover,
@@ -1602,7 +1602,7 @@ input:checked + .switchbtn:before {
 }
 
 .mrgt16 {
-    margin-top: 16px;
+    margin-top: 16px !important;
 }
 
 .clear-tag {
@@ -2764,6 +2764,13 @@ div .gallery-daterow:nth-child(1) {
     width: 100%;
 }
 
+.basket-price-orginal {
+    border: 1px solid #e4e6e9;
+    padding: 16px;
+    display: table;
+    width: 100%;
+}
+
 .btm-absolute {
     position: absolute;
     bottom: 0;
@@ -2850,6 +2857,12 @@ div .gallery-daterow:nth-child(1) {
 }
 
 .basket-price .finished-tag {
+    display: inline-block;
+    left: 15px;
+    top: 0;
+}
+
+.basket-price-orginal .finished-tag {
     display: inline-block;
     left: 15px;
     top: 0;
@@ -5831,7 +5844,7 @@ a.sec-timeline {
     margin-bottom: 4px;
 }
 
-.text-align{
+.text-align-dir{
     text-align: right !important;
 }
 
@@ -6882,7 +6895,7 @@ p.upload-size {
 }
 
 .btn-follow {
-    padding: 4px 54px 4px 7px;
+    padding: 4px 35px 4px 15px;
     margin-top: 12px;
     background: url("../img/circle-plus.png") no-repeat right center #fff;
     border: 1px solid #141414;
@@ -6978,6 +6991,10 @@ p.upload-size {
     margin-top: 24px;
 }
 
+.collection-list-row .btn-sale{
+    padding: 8px !important;
+}
+
 td .img-responsive{
     display: inline-block !important;
 }
@@ -7009,7 +7026,7 @@ td .img-responsive{
 }
 
 .aligncenter {
-    text-align: center;
+    text-align: center !important;
 }
 
 .modal-similar-artwork .artist-avatar > img {
@@ -9011,4 +9028,34 @@ span.unit-dimention {
 
 .dir-ltr{
     direction: ltr !important;
+}
+
+.dir{
+    direction: rtl !important;
+}
+
+.align-item-flex-start{
+    align-items: flex-start !important;
+}
+
+.mrgt0{
+    margin-top: 0px !important;
+}
+
+.mrgt20{
+    margin-top: 20px !important;
+}
+
+.justify-content-space-between{
+    justify-content: space-between !important;
+}
+
+
+.justify-content-unset{
+    justify-content: unset !important;
+}
+
+
+.flex-wrap{
+    flex-wrap: wrap !important;
 }

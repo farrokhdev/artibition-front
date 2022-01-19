@@ -7,7 +7,7 @@ import logo from '../../assets/img/logo.svg'
 
 function BasketFooterPanelNoBox() {
     return (
-        <div class="basket-footer dir">
+        <div class="basket-footer dir w-100">
             <div class="container">
                 <div class="row">
                     <div class="col-sm-9 text-dir">

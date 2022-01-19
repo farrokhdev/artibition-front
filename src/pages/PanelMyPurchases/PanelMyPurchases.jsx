@@ -20,7 +20,7 @@ function PanelMyPurchases() {
 
     const [purchase, setPurchase] = react.useState()
     const [params, setParams] = react.useState({
-        paid_status:"pending"
+        paid_status:"paid"
     })
 
     function callback(key) {

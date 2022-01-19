@@ -16,7 +16,8 @@ const test = {
 };
 
 const prod = {
-    BASE_URL: "https://api.artibition.gallery/api/v1/",
+    // BASE_URL: "https://api.artibition.gallery/api/v1/",
+    BASE_URL: "http://185.226.116.16/api/v1/",
     // PARAMS:
     COOKIE_EXPIRES: 1,
     WEB_SOCKET_BASE_URL: "ws://api.artibition.gallery",
