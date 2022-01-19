@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import 'antd/dist/antd.css'
 import App from './App';
 import './i18n';
+import {Provider} from 'react-redux'
+import store, {persistor} from './redux/store';
+import {PersistGate} from 'redux-persist/integration/react';
 
 //create components using React.lazy
 const FaTheme = React.lazy(() => import('../src/pages/FaTheme/FaTheme'));
@@ -27,7 +30,11 @@ const ThemeSelector = ({children}) => {
 ReactDOM.render(
     <Suspense fallback={null}>
         <ThemeSelector>
-            <App/>
+            <Provider store={store}>
+                <PersistGate loading={null} persistor={persistor}>
+                    <App/>
+                </PersistGate>
+            </Provider>
         </ThemeSelector>
     </Suspense>,
     document.getElementById('root')

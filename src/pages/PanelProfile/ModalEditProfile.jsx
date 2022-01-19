@@ -1,89 +1,144 @@
 import React from 'react'
-import { Modal } from 'antd';
+import {Modal} from 'antd';
 import close_icon from '../../assets/img/clear.svg';
+import {useTranslation} from "react-i18next";
+import {connect} from "react-redux";
+import {Form, Input} from 'antd';
+import APIService from "../../utils/api.services";
+import {PROFILE} from "../../utils";
+import {setProfile} from "../../redux/reducers/auth/auth.actions";
 
 function ModalEditProfile(props) {
+    const {t, i18n} = useTranslation();
+    const [form] = Form.useForm();
 
-    const {setVisibleModalEditProfile , visibleModalEditProfile} = props;
+    const {setVisibleModalEditProfile, visibleModalEditProfile} = props;
 
     const handleClose = () => {
         setVisibleModalEditProfile(false)
     }
+
+    const updateProfile = (values) => {
+        let lang = i18n.language === 'fa-IR' ? "fa" : "en"
+        let data = {
+            "translations": {
+                [lang]: {
+                    "first_name": values['first_name'],
+                    "last_name": values['last_name'],
+                }
+            },
+            "email": values['email'],
+            "national_code": values['national_code'],
+        }
+
+        APIService.patch(PROFILE, data)
+            .then(res => {
+                if (res.data) {
+                    props.setProfile( {...props.state , profile : res.data.data} )
+                    handleClose()
+                } else {
+                    console.log(res.response)
+                }
+
+            })
+    }
+
     return (
         <React.Fragment>
 
-        <Modal
-            centered
-            className=""
-            visible={visibleModalEditProfile}
-            onOk={handleClose}
-            onCancel={handleClose}
-            width={600}
-            footer={[]}
-            // header={[]}
-        >
-                       <div className="modal-content">
-                <div className="modal-header">
-                    <h5 className="modal-title" id="exampleModalLabel">ویرایش اطلاعات</h5>
-                    <button>
-                        <span  onClick={handleClose}  aria-hidden="true" aria-label="Close">
-                            <img className="btn-close-modal" src={close_icon} alt="close-icon" />
+            <Modal
+                centered
+                className=""
+                visible={visibleModalEditProfile}
+                onOk={handleClose}
+                onCancel={handleClose}
+                width={600}
+                footer={[]}
+            >
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="exampleModalLabel">ویرایش اطلاعات</h5>
+                        <button>
+                        <span onClick={handleClose} aria-hidden="true" aria-label="Close">
+                            <img className="btn-close-modal" src={close_icon} alt="close-icon"/>
                         </span>
-                    </button>
+                        </button>
+                    </div>
+                    <Form
+                        onFinish={updateProfile}
+                        form={form}
+                        initialValues={{
+                            first_name: i18n.language === 'fa-IR' ? props?.auth?.profile?.translations?.fa?.first_name : props?.auth?.profile?.translations?.en?.first_name,
+                            last_name: i18n.language === 'fa-IR' ? props?.auth?.profile?.translations?.fa?.last_name : props?.auth?.profile?.translations?.en?.last_name,
+                            national_code: props?.auth?.profile?.national_code,
+                            // birth_date: props?.auth?.profile?.birth_date,
+                            email: props?.auth?.profile?.email,
+
+                        }}
+
+                    >
+                        <div className="modal-body" dir={i18n.language === 'fa-IR' ? "rtl" : "ltr"}>
+
+                            <div className="col-sm-6">
+                                <Form.Item className="public-group"
+                                           label={t("content-panel-profile.personal-info.last_name")}
+                                           name={'last_name'}>
+                                    <Input className="form-control input-public "/>
+                                </Form.Item>
+                            </div>
+
+                            <div className="col-sm-6">
+                                <Form.Item className="public-group"
+                                           label={t("content-panel-profile.personal-info.first_name")}
+                                           name={'first_name'}>
+                                    <Input className="form-control input-public "/>
+                                </Form.Item>
+                            </div>
+
+                            <div className="col-sm-6">
+                                <Form.Item className="public-group"
+                                           label={t("content-panel-profile.personal-info.national")}
+                                           name={'national_code'}>
+                                    <Input className="form-control input-public "/>
+                                </Form.Item>
+                            </div>
+
+                            {/*<div className="col-sm-6">*/}
+                            {/*    <Form.Item className="public-group" label={t("content-panel-profile.personal-info.date")} name={'birth_date'}>*/}
+                            {/*        <Input className="form-control input-public "/>*/}
+                            {/*    </Form.Item>*/}
+                            {/*</div>*/}
+
+                            <div className="col-sm-6">
+                                <Form.Item className="public-group"
+                                           label={t("content-panel-profile.personal-info.email")} name={'email'}>
+                                    <Input className="form-control input-public "/>
+                                </Form.Item>
+                            </div>
+                        </div>
+                        <div className="clearfix"/>
+                        <div className="modal-footer">
+                            <button htmlType="submit" className="btn btn-black">ثبت تغییرات</button>
+                        </div>
+
+                    </Form>
                 </div>
-                <div className="modal-body">
-                    <div className="col-sm-6">
-                        <div className="public-group">
-                            <input id="info-1" className="form-control input-public " required placeholder=""
-                                   value="آیدین آغداشلو"/>
-                            <label for="info-1" className="lable-public">نام و نام خانوادگی</label>
-                        </div>
-                    </div>
-                    <div className="col-sm-6">
-                        <div className="public-group">
-                            <input id="info-2" className="form-control input-public persian-num " placeholder=""
-                                   value="09124048563"/>
-                            <label for="info-2" className="lable-public">شماره همراه</label>
-                        </div>
-                    </div>
-                    <div className="col-sm-6">
-                        <div className="public-group">
-                            <input id="info-3" className="form-control input-public persian-num " placeholder=""
-                                   value="0010854785"/>
-                            <label for="info-3" className="lable-public">کد ملی</label>
-                        </div>
-                    </div>
-                    <div className="col-sm-6">
-                        <div className="public-group">
-                            <input id="info-4" className="form-control input-public en-lang " placeholder=""
-                                   value="Karimi.hirad@gmail.com"/>
-                            <label for="info-4" className="lable-public">آدرس ایمیل</label>
-                        </div>
-                    </div>
-                    <div className="col-sm-6">
-                        <div className="public-group">
-                            <input id="info-5" className="form-control input-public persian-num " required placeholder=""
-                                   value=""/>
-                            <label for="info-5" className="lable-public">تاریخ تولد</label>
-                        </div>
-                    </div>
-                    <div className="col-sm-6">
-                        <div className="public-group">
-                            <input id="info-6" className="form-control input-public persian-num " required placeholder=""
-                                   value=""/>
-                            <label for="info-6" className="lable-public">نام کاربری</label>
-                        </div>
-                    </div>
-                </div>
-                <div className="clearfix"></div>
-                <div className="modal-footer">
-                    <button type="button" className="btn btn-black">ثبت تغییرات</button>
-                </div>
-            </div> 
-  
-        </Modal>
-    </React.Fragment>
+
+            </Modal>
+        </React.Fragment>
     )
 }
 
-export default ModalEditProfile
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setProfile : (data) => dispatch(setProfile(data)),
+    }
+}
+
+const mapStateToProps = (store) => {
+    return {
+        auth: store.authReducer,
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ModalEditProfile)

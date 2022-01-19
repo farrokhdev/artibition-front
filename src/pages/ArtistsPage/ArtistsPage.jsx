@@ -18,18 +18,26 @@ import { ARTIST } from '../../utils';
 import apiServices from '../../utils/api.services';
 import queryString from 'query-string'
 import { useTranslation } from 'react-i18next';
+import {connect} from "react-redux";
+import { setProfile } from '../../redux/reducers/auth/auth.actions';
 
 
-function ArtistsPage() {
+
+function ArtistsPage(props) {
 
     const {t, i18n} = useTranslation();
 
+    const [search, setSearch] = useState();
     const [artistList, setArtistList] = useState();
     const [params, setParams] = useState({
         search:"",
         page: 1,
 
     })
+
+    const onChange=(pageNumber) => {
+        setParams(state => ({...state,page:pageNumber}))
+    }
 
     const getArtistList = () => {
         apiServices.get(ARTIST, queryString.stringify(params))
@@ -45,8 +53,9 @@ function ArtistsPage() {
 
     useEffect(() => {
         getArtistList()
-    }, []);
-
+    }, [params]);
+    
+console.log("props",props)
     return (
         <>
   <div className="container mx-auto px-0 w-100 bg-white">
@@ -61,8 +70,8 @@ function ArtistsPage() {
           {t("artworkList.box-banner.text")}
         </p>
         <div className="nl-input">
-          <input placeholder={t("artworkList.box-banner.placeholder")} />
-          <button type="button" className="btn-black">{t("artworkList.box-banner.btn")}</button>
+          <input placeholder={t("artworkList.box-banner.placeholder")} onChange={e => setSearch(e.target.value)}/>
+          <button type="button" className="btn-black" onClick={() => setParams(state => ({ ...state, search: search }))}>{t("artworkList.box-banner.btn")}</button>
         </div>
       </div>
     </div>
@@ -239,7 +248,7 @@ function ArtistsPage() {
                                         <div className="col-image pull-right">
                                             {/* <img src={artist3} width="408" height="408" alt=""
                                                  className="img-responsive"/> */}
-                                            <img src={item.bg_image} width="408" height="408" alt=""
+                                            <img src={item.bg_image?.exact_url} width="408" height="408" alt=""
                                                  className="img-responsive"/>
                                             <img src={blue_badge_icon} width="22" height="22" alt=""
                                                  className="img-badge"/>
@@ -317,7 +326,7 @@ function ArtistsPage() {
                         </div>
                     </div>
                     <div className=" row-pagination">
-                      <Pagination  total={50} />
+                      <Pagination defaultCurrent={artistList?.current_page_no}  onChange={onChange} total={artistList?.results?.length/artistList?.page_size} />
                     </div>
                 </div>
 
@@ -336,5 +345,14 @@ function ArtistsPage() {
 </>
     )
 }
-
-export default ArtistsPage;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setProfile : (data) => dispatch(setProfile(data)),
+    }
+}
+const mapStateToProps = (store) => {
+    return {
+        auth: store.authReducer,
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(ArtistsPage);

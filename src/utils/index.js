@@ -10,4 +10,5 @@ export const RECOVER_PASSWORD = "/account/recover-password/";
 export const ORDER_BUYERS = "/orders/buyers/";
 export const GALLERY_LIST = "/gallery/";
 export const ARTIST = "/artist/";
+export const ARTIST_PROFILE = id => `/artist/${id}/`
 

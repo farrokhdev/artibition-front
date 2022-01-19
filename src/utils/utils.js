@@ -65,8 +65,8 @@ export function getRefreshToken() {
 }
 
 export function removeToken() {
-    cookie.remove('token');
-    cookie.remove('refresh');
+    cookie.remove('token', {path: '/'});
+    cookie.remove('refresh', {path: '/'});
     window.sessionStorage.clear()
     if(!isLogin()){
         message.success("شما از پنل خارج شدید.")
