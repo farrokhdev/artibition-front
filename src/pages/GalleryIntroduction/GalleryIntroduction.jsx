@@ -50,10 +50,10 @@ function GalleryIntroduction() {
                         </button>
                     </div>
 
-                    <div class="page-intro gallery-page">
-                        <div class="default-tab tab-1 tab-interval">
-                            <div class="tab-overflow">
-                                <div class="inner-tab">
+                    <div className="page-intro gallery-page">
+                        <div className="default-tab tab-1 tab-interval">
+                            <div className="tab-overflow">
+                                <div className="inner-tab">
                                     <ul className="nav ">
                                         <Tabs defaultActiveKey="1" onChange={callback}>
                                             <TabPane className="mx-5" tab="معرفی" key="1">
