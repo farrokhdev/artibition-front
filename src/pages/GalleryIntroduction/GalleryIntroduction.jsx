@@ -8,12 +8,17 @@ import { t } from 'i18next';
 import Introduction from './Introduction';
 import Footer from '../../components/Footer/Footer';
 import Exhibition from './Exhibition';
-
+import Artworks from './Artworks';
+import Artist from './Artist';
+import Journal from './Journal';
+import GalleryContact from './GalleryContact';
+import { useTranslation } from 'react-i18next';
 
 
 function GalleryIntroduction() {
 
     const { TabPane } = Tabs;
+    const { t, i18n } = useTranslation();
 
     function callback(key) {
         console.log(key);
@@ -27,53 +32,50 @@ function GalleryIntroduction() {
 
                 <div className="container">
                     <ul className="breadcrumb">
-                        <li><a href="#">آرتیبیشن</a></li>
-                        <li><a href="#">هنرمندان</a></li>
-                        <li><a href="#">گالری هان</a></li>
-                        <li class="active">معرفی</li>
+                        <li><a href="#">{t("artwork.artibition")}</a></li>
+                        <li><a href="#">{t("artist_profile.artists")}</a></li>
+                        <li><a href="#">{t("gallery-panel-my-gallery.my_gallery")}</a></li>
+                        <li class="active">{t("artist_profile.introduction")}</li>
                     </ul>
                     <div className="gallery-cover"></div>
                     <div className="gallery-info">
                         <div className="gallery-logo">
                             <img src={HanLogo} width="110" height="110" alt="هان گالری" className="img-responsive" />
                         </div>
-                        <h2 className="gallery-name">گالری هان</h2>
+                        <h2 className="gallery-name">{t("gallery-panel-my-gallery.my_gallery")}</h2>
                         <span className="gallery-location">تهران</span>
-                        <p className="text-justify">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون
-                            بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع
-                            با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه
-                            و متخصصان را می طلبد
-                        </p>
+                        <p className="text-justify">{t("lorem.lorem_ipsum")}</p>
                         <button className="btn btn-galleryfollow">
                             <img src={circleplus1} height="17" width="17" alt="" />
-                            <span>دنبال کردن</span>
+                            <span>{t("artwork.follow")}</span>
                         </button>
                     </div>
 
-                    <div className="page-intro gallery-page">
-                        <div className="default-tab tab-1 tab-interval">
-                            <div className="tab-overflow">
-                                <div className="inner-tab">
-                                    <ul className="nav ">
-                                        <Tabs defaultActiveKey="1" onChange={callback}>
-                                            <TabPane className="mx-5" tab="معرفی" key="1">
+                    <div class="page-intro gallery-page">
+                        <div class="default-tab tab-1 tab-interval">
+                            <div class="tab-overflow">
+                                <div class="inner-tab">
+                                    <ul className="nav d-block ">
+                                        <Tabs className="antd-tabnav" defaultActiveKey="1" onChange={callback}>
+                                            <TabPane className="mx-5 antd-tabnav" tab={t("artist_profile.introduction")} key="1">
                                                 <Introduction />
                                             </TabPane>
-                                            <TabPane tab="نمایشگاه‌ها" key="2">
-                                                <Exhibition/>
+                                            <TabPane tab={t("drawer-panel.nav-exhibitions")} key="2">
+                                                <Exhibition />
                                             </TabPane>
-                                            <TabPane tab="آثار" key="3">
+                                            <TabPane tab={t("nav-menu-artworks")} key="3">
+                                                <Artworks />
+                                            </TabPane>
+                                            <TabPane tab={t("artist_profile.artists")} key="4">
+                                                <Artist />
+                                            </TabPane>
+                                            <TabPane tab={t("Journal")} key="5">
+                                                <Journal />
+                                            </TabPane>
+                                            <TabPane tab={t("gallery-panel-edit-gallery-info.contact_info")} key="6">
+                                                <GalleryContact />
+                                            </TabPane>
 
-                                            </TabPane>
-                                            <TabPane tab="هنرمندان" key="4">
-
-                                            </TabPane>
-                                            <TabPane tab="مجله" key="5">
-
-                                            </TabPane>
-                                            <TabPane tab="اطلاعات تماس" key="6">
-
-                                            </TabPane>
 
                                         </Tabs>
                                     </ul>
@@ -85,7 +87,7 @@ function GalleryIntroduction() {
                 </div>
 
             </div>
-            <Footer/>
+            <Footer />
         </>
     )
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import { t } from 'i18next';
 import GalleyRelatedContent from './GalleyRelatedContent';
 import IntroducingTheExhibition from './IntroducingTheExhibition';
 import { Breadcrumb, Tabs } from 'antd';
@@ -21,13 +22,15 @@ function Introduction() {
                     <IntroducingTheExhibition />
                 </div>
                 <div className="events" style={{ marginLeft: '30px' }}>
-                    <div className="row ">
-                        <div className="d-flex public-header">
-                            <div className="col-xs-8">
-                                <h2 className="text-right default-title">نمایشگاه‌ها</h2>
+
+                    <div class="row ">
+                        <div class="d-flex public-header">
+                            <div class="col-xs-8">
+                                <h2 class="text-right default-title">{t("artist_profile.tabs.exhibitions")}</h2>
                             </div>
-                            <div className="col-xs-4">
-                                <a href="#" className="btn-readmore pull-left">همه نمایشگاه‌ها</a>
+                            <div class="col-xs-4">
+                                <a href="#" class="btn-readmore pull-left">{t("artist_profile.tabs.all_exhibitions")}</a>
+
                             </div>
                         </div>
                         <div className="clearfix"></div>
@@ -40,10 +43,10 @@ function Introduction() {
                     <div className="row">
                         <div className="d-flex public-header">
                             <div className="col-xs-8">
-                                <h2 className="text-right default-title">آثار هنری</h2>
+                                <h2 className="text-right default-title">{t("nav-menu-artworks")}</h2>
                             </div>
                             <div className="col-xs-4">
-                                <a href="#" className="btn-readmore pull-left">همه آثار</a>
+                                <a href="#" className="btn-readmore pull-left">{t("nav-submenu.artworks.artField.all")}</a>
                             </div>
                         </div>
                         <div className="clearfix"></div>
@@ -56,10 +59,10 @@ function Introduction() {
 
                                 <ul className="nav ">
                                     <Tabs defaultActiveKey="1" onChange={callback}>
-                                        <TabPane className="mx-5" tab="همه آثار" key="1">
+                                        <TabPane className="mx-5" tab={t("nav-submenu.artworks.artField.all_artworks")} key="1">
                                             <AllArtworks />
                                         </TabPane>
-                                        <TabPane tab="نقاشی" key="2">
+                                        <TabPane tab={t("filter-header.category.painting")} key="2">
 
                                             {/* <div id="menu1" className="tab-pane fade">
                                                 <h3>Menu 1</h3>
@@ -69,7 +72,7 @@ function Introduction() {
                                             </div> */}
 
                                         </TabPane>
-                                        <TabPane tab="عکاسی" key="3">
+                                        <TabPane tab={t("filter-header.category.photography")} key="3">
                                             {/* <div id="menu2" className="tab-pane fade">
                                                 <h3>Menu 2</h3>
                                                 <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
@@ -77,26 +80,27 @@ function Introduction() {
                                                     totam rem aperiam.</p>
                                             </div> */}
                                         </TabPane>
-                                        <TabPane tab="مجسمه" key="4">
+                                        <TabPane tab={t("filter-header.category.sculpture")} key="4">
                                             {/* <div id="menu3" className="tab-pane fade">
                                                 <h3>Menu 3</h3>
                                                 <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
                                                     explicabo.</p>
+
                                             </div> */}
                                         </TabPane>
-                                        <TabPane tab="نقاشی خط" key="5">
+                                        <TabPane tab={t("filter-header.category.calligram")} key="5">
 
                                         </TabPane>
-                                        <TabPane tab="خوشنویسی" key="6">
+                                        <TabPane tab={t("filter-header.category.calligraphy")} key="6">
 
                                         </TabPane>
-                                        <TabPane tab="چاپ دستی" key="7">
+                                        <TabPane tab={t("filter-header.category.printmaking")} key="7">
 
                                         </TabPane>
-                                        <TabPane tab="گرافیک" key="8">
+                                        <TabPane tab={t("filter-header.category.graphic")} key="8">
 
                                         </TabPane>
-                                        <TabPane tab="طراحی" key="9">
+                                        <TabPane tab={t("filter-header.category.drawing")} key="9">
 
                                         </TabPane>
 
@@ -117,10 +121,10 @@ function Introduction() {
                                     <div className="row">
                                         <div className="d-flex public-header">
                                             <div className="col-xs-9">
-                                                <h2 className="text-right default-title">هنرمندان</h2>
+                                                <h2 className="text-right default-title">{t("artist_profile.artists")}</h2>
                                             </div>
                                             <div className="col-xs-4 w-auto">
-                                                <a href="#" className="btn-readmore pull-left ">همه هنرمندان</a>
+                                                <a href="#" className="btn-readmore pull-left ">{t("nav-submenu.showroom.category.all")}</a>
                                             </div>
                                         </div>
                                         <div className="clearfix"></div>
@@ -139,18 +143,18 @@ function Introduction() {
                                                     <span>آیدین</span>
                                                     <span>آغداشلو</span>
                                                 </h6>
-                                                <button type="button" className=" btn-follow">دنبال کردن</button>
+                                                <button type="button" class=" btn-follow">{t("artwork.follow")}</button>
+
                                             </div>
                                         )
                                     })}
                                 </div>
 
-
-                                <div className="articles">
-                                    <div className="public-header">
-                                        <div className="row">
-                                            <div className="col-xs-12 w-auto">
-                                                <h2 className="default-title">مقالات</h2>
+                                <div class="articles">
+                                    <div class="public-header">
+                                        <div class="row">
+                                            <div class="col-xs-12 w-auto">
+                                                <h2 class="default-title">{t("news-and-article-art.articles")}</h2>
                                             </div>
                                         </div>
                                     </div>
@@ -186,7 +190,7 @@ function Introduction() {
                                                                 دانشکده هنر های زیبای تهران
                                                             </p>
                                                         </div>
-                                                        <button className="btn-readmore-black d-block">مطالعه خبر</button>
+                                                        <button class="btn-readmore-black d-block">{t("news-and-article-art.more")}</button>
                                                     </a>
                                                 </div>
                                             )

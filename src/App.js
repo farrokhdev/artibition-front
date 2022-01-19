@@ -15,6 +15,8 @@ import ConfirmMobile from "./pages/ConfirmMobile/ConfirmMobile";
 import SetPassword from "./pages/RecoveryPassword/RecoveryPassword";
 import Home from "./pages/Home.jsx/Home";
 import Advisory from './pages/Advisory/Advisory';
+import GalleryContentPage from './pages/GalleryIntroduction/GalleryContentPage';
+import FAQ from './pages/FAQ/FAQ';
 
 
 function App(props) {
@@ -40,6 +42,8 @@ function App(props) {
                     <Route path="artist-profile" element={<ProfileArtist />} />
                     <Route path="all-galleris-list" element={<AllGallerysList />} />
                     <Route path="gallery-introduction" element={<GalleryIntroduction />} />
+                    <Route path="gallery-content-page" element={<GalleryContentPage />}  />
+                    <Route path="faq" element={<FAQ />}  />
                     <Route path="advisory" element={<Advisory />} />
                     <Route path="*" element={<Navigate to="/site/artworks" replace />} />
                 </Route>

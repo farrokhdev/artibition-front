@@ -392,6 +392,7 @@ a:hover {
 .events .btn-readmore {
     position: relative;
     top: 3px;
+    left: 2rem;
 }
 
 .col-img {
@@ -815,6 +816,8 @@ footer .nl-input input:focus {
 }
 
 .breadcrumb {
+    direction: ltr;
+    display: block;
     background: none;
     border: 0;
     border-radius: 0;
@@ -1606,15 +1609,14 @@ div .gallery-daterow:nth-child(1) {
     cursor: pointer;
 }
 
-.gallery-artist-img .artist-follow {
-    margin-top: 16px;
-    padding: 8px 23px;
-    opacity: 0;
-    transition: all 0.5s ease 0s;
+.gallery-artist-img .btn-follow {
+    margin-top: 16px !important;
+    opacity: 0 !important;
+    transition: all 0.5s ease 0s !important;
 }
 
-.gallery-artist-img:hover .artist-follow {
-    opacity: 1;
+.gallery-artist-img:hover .btn-follow {
+    opacity: 1 !important;
 }
 
 .gallery-artist-img .artist-follow img {
@@ -8947,6 +8949,15 @@ button.btn-searchfilter.hidden-sm{
     width: calc(100% - 4px);
     height: 5px !important;
     margin-left: 8px;
+}
+
+.ant-tabs-top > .ant-tabs-nav, .ant-tabs-bottom > .ant-tabs-nav, .ant-tabs-top > div > .ant-tabs-nav, .ant-tabs-bottom > div > .ant-tabs-nav {
+    margin: 0 0px 17px 200px;
+}
+
+
+.ant-tabs-top > .ant-tabs-nav::before, .ant-tabs-bottom > .ant-tabs-nav::before, .ant-tabs-top > div > .ant-tabs-nav::before, .ant-tabs-bottom > div > .ant-tabs-nav::before{
+    width:125%;
 }
 
 .ant-select-selector {
