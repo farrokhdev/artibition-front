@@ -563,7 +563,7 @@ function ArtworkInformation({next , prev}) {
 
             </div>
                 <div className="adv-btn">
-                    <button type="button" className="btn-prev ">
+                    <button onClick={() => prev()} type="button" className="btn-prev ">
                         <span>{t("content-panel-add-artwork.art_info.cencel")}</span>
                     </button>
                     <button htmlType="submit"   className="btn-next pull-left">

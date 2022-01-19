@@ -1,24 +1,36 @@
 import React from 'react';
-import { Form, Input} from "antd";
+import {Form, Input, message} from "antd";
 import login from '../../assets/img/login.jpg';
 import lock_icon from '../../assets/img/password.png';
 import Statistics from '../../components/Statistics/Statistics';
 import BasketFooter from '../../components/BasketFooter/BasketFooter';
 import HeaderAuthPages from '../../components/HeaderAuthPages/HeaderAuthPages';
 import { t } from 'i18next';
+import ver_code from "../../assets/img/ver_code.svg";
+import {useSearchParams} from "react-router-dom";
+import APIService from "../../utils/api.services";
+import {RECOVER_PASSWORD} from "../../utils";
 
 
 function RecoveryPassword() {
 
+    let [searchParams, setSearchParams] = useSearchParams();
 
     const [form] = Form.useForm();
     const onFinish = (values) =>{
-        setTimeout(() => {
-            window.location.href = "/auth/login"
-        }, 300);
+        values['username'] = searchParams.get("username")
+        APIService.post(RECOVER_PASSWORD, values)
+            .then(res => {
+                if (res.data) {
+                    setTimeout(() => {
+                        window.location.href = "/auth/login"
+                    }, 200);
+                } else {
+                    message.error(res.response.data)
+                }
+
+            })
     }
-
-
 
     return (
         <div className="page-fixed">
@@ -43,7 +55,24 @@ function RecoveryPassword() {
 
                                         <Form.Item
                                             className="w-100"
-                                            name="username"
+                                            name="otp"
+                                            rules={[
+                                                {
+                                                    required: true,
+                                                    message: t("empty-error.activation-code"),
+                                                }
+                                            ]}>
+                                            <Input
+                                                prefix={<img src={ver_code}/>}
+                                                type="number"
+                                                className="input-public form-control border-0 px-2 my-5 d-flex"
+                                                placeholder={t("placeholder-activation-code")}
+                                            />
+                                        </Form.Item>
+
+                                        <Form.Item
+                                            className="w-100"
+                                            name="password"
                                             rules={[
                                                 {
                                                     required: true,
@@ -63,7 +92,7 @@ function RecoveryPassword() {
 
                                         <Form.Item
                                             className="w-100"
-                                            name="confirm-password"
+                                            name="password_check"
                                             rules={[
                                                 {
                                                     required: true,

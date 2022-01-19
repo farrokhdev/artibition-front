@@ -394,10 +394,12 @@ padding: 10px 6px !important;
 
 .col-title {
     margin-bottom: 5px;
+    display: flex;
 }
 
 .col-dimension {
     margin-bottom: 5px;
+    display: flex;
 }
 
 .allproducts .btn-readmore {
@@ -581,7 +583,7 @@ padding: 10px 6px !important;
 }
 
 .finished .col-date {
-    display: block;
+    display: flex;
 }
 
 .finished span {
@@ -6972,6 +6974,7 @@ p.upload-size {
 .fontbold28 {
     font-family: "Tahrir_Extra Bold", sans-serif;
     font-size: 28px;
+    display: flex;
 }
 
 .collection-artistname {
@@ -8000,7 +8003,7 @@ textarea {
 
 .content-carousel .carousel-indicators {
     position: relative;
-    right: auto;
+    right: -20%;
     left: auto;
     margin-right: 0;
     bottom: auto;
@@ -8024,7 +8027,7 @@ textarea {
     background-size: 20px;
     padding-right: 25px;
     margin-top: 18px;
-    display: inline-block;
+    display: flex;
 }
 
 .content-date span {
@@ -8048,6 +8051,9 @@ textarea {
     display: inline-block;
 }
 
+.shares{
+    display: flex !important;
+}
 .share li {
     display: inline-block;
 }

@@ -37,6 +37,7 @@ import Invoice from '../pages/Invoice/Invoice';
 import Payment from '../pages/Payment/Payment';
 import SuccessPayment from '../pages/SuccessPayment/SuccessPayment';
 import UnsuccessPayment from '../pages/UnsuccessPayment/UnsuccessPayment';
+import ListOfUploadedWorks from '../pages/ListOfUploadedWorks/ListOfUploadedWorks';
 
 const RouterConfig = (props) => {
     return (
