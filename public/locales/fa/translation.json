@@ -498,6 +498,8 @@
       }
     },
     "personal-info": {
+      "first_name": "نام",
+      "last_name": "نام خانوادگی",
       "title": "اطلاعات شخصی",
       "fullname": "نام و نام خانوادگی",
       "phone": "شماره همراه",

@@ -32,6 +32,8 @@ import GalleryPanelCreateArtistArtwork from '../pages/GalleryPanelCreateArtistAr
 import GalleryPanelUploadExhibitionArtwork from '../pages/GalleryPanelUploadExhibitionArtwork/GalleryPanelUploadExhibitionArtwork';
 import GalleryPanelSelectArtisitSource from '../pages/GalleryPanelSelectArtistSource/GalleryPanelSelectArtistSource';
 
+import ListOfUploadedWorks from '../pages/ListOfUploadedWorks/ListOfUploadedWorks';
+
 const RouterConfig = (props) => {
     return (
 
@@ -50,6 +52,7 @@ const RouterConfig = (props) => {
                     <Route index path="dashboard" element={<DashboardPanel />} />
                     <Route index path="orders" element={<PanelOrders />} />
                     <Route path="add-artwork" element={<AddArtwork />} />
+                    <Route path="list-uploaded-artworks" element={<ListOfUploadedWorks/>} />
                     <Route path="art-management" element={<PanelArtManagement />} />
                     <Route path="my-albums" element={<PanleMyAlbums />} />
                     <Route path="contents" element={<PanelContentList />} />

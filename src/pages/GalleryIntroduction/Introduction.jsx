@@ -16,12 +16,13 @@ function Introduction() {
     }
 
     return (
-        <div class="tab-content">
-            <div id="gallery1" class="tab-pane fade in active">
-                <div class="content-body">
+        <div className="tab-content">
+            <div id="gallery1" className="tab-pane fade in active">
+                <div className="content-body">
                     <IntroducingTheExhibition />
                 </div>
                 <div className="events" style={{ marginLeft: '30px' }}>
+
                     <div class="row ">
                         <div class="d-flex public-header">
                             <div class="col-xs-8">
@@ -29,6 +30,7 @@ function Introduction() {
                             </div>
                             <div class="col-xs-4">
                                 <a href="#" class="btn-readmore pull-left">{t("artist_profile.tabs.all_exhibitions")}</a>
+
                             </div>
                         </div>
                         <div className="clearfix"></div>
@@ -50,10 +52,10 @@ function Introduction() {
                         <div className="clearfix"></div>
                     </div>
                 </div>
-                <div class="default-tab tab-3 tab-interval">
-                    <div class="row">
-                        <div class="tab-overflow">
-                            <div class="col-md-12">
+                <div className="default-tab tab-3 tab-interval">
+                    <div className="row">
+                        <div className="tab-overflow">
+                            <div className="col-md-12">
 
                                 <ul className="nav ">
                                     <Tabs defaultActiveKey="1" onChange={callback}>
@@ -105,8 +107,8 @@ function Introduction() {
                                     </Tabs>
                                 </ul>
                             </div>
-                            <div class="col-md-2 visible-md">
-                                <select class="form-control pull-left">
+                            <div className="col-md-2 visible-md">
+                                <select className="form-control pull-left">
                                     <option>محبوب ترین‌ها</option>
                                     <option>پرفروش</option>
                                     <option>پربازدید</option>
@@ -134,19 +136,19 @@ function Introduction() {
                                     {[1, 2, 3, 4, 5, 6].map((artist) => {
                                         return (
 
-                                            <div class="gallery-artist-img">
+                                            <div className="gallery-artist-img">
                                                 <img src={gallery400} width="192" height="192" alt=""
-                                                    class="ml-5 pl-3 img-fluid" />
-                                                <h6 class="gallery-artist-name">
+                                                    className="ml-5 pl-3 img-fluid" />
+                                                <h6 className="gallery-artist-name">
                                                     <span>آیدین</span>
                                                     <span>آغداشلو</span>
                                                 </h6>
                                                 <button type="button" class=" btn-follow">{t("artwork.follow")}</button>
+
                                             </div>
                                         )
                                     })}
                                 </div>
-
 
                                 <div class="articles">
                                     <div class="public-header">
@@ -156,23 +158,23 @@ function Introduction() {
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="clearfix"></div>
-                                    <div class="row">
+                                    <div className="clearfix"></div>
+                                    <div className="row">
                                         {[1, 2, 3].map((article) => {
                                             return (
 
-                                                <div class="col-sm-4">
-                                                    <a href="#" class="articles-block">
-                                                        <div class="news-imgblock">
-                                                            <div class="news-date">
-                                                                <span class="persian-num">29</span>
+                                                <div className="col-sm-4">
+                                                    <a href="#" className="articles-block">
+                                                        <div className="news-imgblock">
+                                                            <div className="news-date">
+                                                                <span className="persian-num">29</span>
                                                                 <span>اردیبهشت</span>
                                                             </div>
                                                             <img src={articles100} width="840" height="840"
-                                                                class="img-responsive" alt="آرتیبیشن" />
+                                                                className="img-responsive" alt="آرتیبیشن" />
                                                         </div>
-                                                        <div class="articles-txt">
-                                                            <h5 class="articles-title">
+                                                        <div className="articles-txt">
+                                                            <h5 className="articles-title">
                                                                 مروری بر نقاشی های جلال شباهنگی (از دشت ها و کویرها گل و مرغ
                                                                 ها و حجم های شیشه ای)
                                                             </h5>

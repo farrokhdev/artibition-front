@@ -6,6 +6,9 @@ import BasketFooterPanel from '../../components/BasketFooterPanel/BasketFooterPa
 import { t } from 'i18next';
 import ArtworkInformation from './ArtworkInformation';
 import SellInformation from './SellInformation';
+import LoginPersonalInfo from './LoginPersonalInfo';
+import LoginArtistInfoForm from './LoginArtistInfoForm';
+import LoginUploadArtworks from './LoginUploadArtworks';
 
 const { Step } = Steps;
 
@@ -37,9 +40,24 @@ function AddArtwork() {
 
 
     const steps = [
+      {
+        title: t("content-panel-add-artwork.step1"),
+        content: <LoginPersonalInfo next={next} />,
+        icon : false
+      },
+      {
+        title: t("content-panel-add-artwork.step1"),
+        content: <LoginArtistInfoForm prev={prev} next={next} />,
+        icon : false
+      },
+      {
+        title: t("content-panel-add-artwork.step1"),
+        content: <LoginUploadArtworks prev={prev} next={next} />,
+        icon : false
+      },
         {
           title: t("content-panel-add-artwork.step1"),
-          content: <ArtworkInformation next={next} />,
+          content: <ArtworkInformation prev={prev} next={next} />,
           icon : false
         },
         {
@@ -94,7 +112,7 @@ function AddArtwork() {
             )}
         </div> */}
 
-        <BasketFooterPanel />
+        {/* <BasketFooterPanel /> */}
     </div>
 </>
     )
