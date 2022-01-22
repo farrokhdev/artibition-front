@@ -1,9 +1,36 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { t } from 'i18next';
+import { ARTIST_CATEGORY } from '../../utils';
+import QueryString from 'qs';
+import apiServices from '../../utils/api.services';
 
 function BiographyTab() {
+    const [artistCategory, setArtistCategory] = useState();
+
+    const [params, setParams] = useState({
+        // search: "",
+        page: 1,
+        owner_id: 4,
+  
+    })
+    const getArtistCategory = () => {
+        apiServices.get(ARTIST_CATEGORY, QueryString.stringify(params))
+            .then(res => {
+                if (res.data) {
+                    setArtistCategory(res.data.data)
+                }
+            })
+            .catch(err => {
+                console.log("err", err)
+            })
+    }
+
+    useEffect(() => {
+        getArtistCategory()
+    }, [params]);
     return (
         <div id="artist3" className="tab-pane ">
+            {console.log("data",artistCategory)}
                         <div className="d-flex box-dir-reverse ">
                             <div className="col-sm-7">
                                 <h5 className="custom-title text-dir">{t("artist_profile.introduction")}</h5>

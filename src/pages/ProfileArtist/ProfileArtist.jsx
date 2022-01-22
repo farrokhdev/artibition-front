@@ -17,7 +17,7 @@ import ModalVeiwAlbums from './ModalVeiwAlbums';
 import ModalSendMessage from './ModalSendMessage';
 import { ARTIST_PROFILE } from '../../utils';
 import apiServices from '../../utils/api.services';
-import QueryString from 'qs';
+import queryString from 'query-string'
 import { useTranslation } from 'react-i18next';
 
 function ProfileArtist() {
@@ -40,16 +40,16 @@ function ProfileArtist() {
 
     })
 
-    const handleShowVeiwAlbumModal = () => {
-        setVisibleShowAlbums(true)
-    }
+    // const handleShowVeiwAlbumModal = () => {
+    //     setVisibleShowAlbums(true)
+    // }
 
     const handleShowModalSendMessage = () => {
         setVisibleShowSendMessage(true)
     }
 
     const getArtistProfile = () => {
-        apiServices.get(ARTIST_PROFILE(1), QueryString.stringify(params))
+        apiServices.get(ARTIST_PROFILE(1), queryString.stringify(params))
             .then(res => {
                 if (res.data) {
                     setArtistProfile(res.data.data)
@@ -160,11 +160,13 @@ function ProfileArtist() {
 
                         <Tabs className='' defaultActiveKey="1" onChange={callback}>
                             <TabPane className="mx-4" tab={t("artist_profile.tabs.artworks")} key="1">
-                                <ArtworksTab />
+                                <ArtworksTab artistId={artistProfile?.id} translations={artistProfile?.owner?.translations}/>
                             </TabPane>
                             <TabPane tab={t("artist_profile.tabs.albums")} key="2">
                                 <AlbumsTab
-                                    handleShowVeiwAlbumModal={handleShowVeiwAlbumModal}
+                                    // handleShowVeiwAlbumModals={handleShowVeiwAlbumModal}
+                                    setVisibleShowAlbums={setVisibleShowAlbums}
+                                    ownerId={artistProfile?.owner?.id}
                                 />
                             </TabPane>
                             <TabPane tab={t("artist_profile.tabs.biography")} key="3">

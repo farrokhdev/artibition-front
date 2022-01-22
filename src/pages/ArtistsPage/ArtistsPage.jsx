@@ -14,17 +14,17 @@ import artist3 from '../../assets/img/artist-3.jpg';
 import blue_badge_icon from '../../assets/img/blue_badge.svg';
 import gold_badge_icon from '../../assets/img/gold_badge.svg';
 import { Pagination } from 'antd';
-import { ARTIST } from '../../utils';
+import { ARTIST_PRODUCTS } from '../../utils';
 import apiServices from '../../utils/api.services';
 import queryString from 'query-string'
 import { useTranslation } from 'react-i18next';
 import {connect} from "react-redux";
 import { setProfile } from '../../redux/reducers/auth/auth.actions';
+import { Link } from 'react-router-dom';
 
 
 
 function ArtistsPage(props) {
-
     const {t, i18n} = useTranslation();
 
     const [search, setSearch] = useState();
@@ -40,7 +40,7 @@ function ArtistsPage(props) {
     }
 
     const getArtistList = () => {
-        apiServices.get(ARTIST, queryString.stringify(params))
+        apiServices.get(ARTIST_PRODUCTS, queryString.stringify(params))
             .then(res => {
                 if (res.data) {
                     setArtistList(res.data.data)
@@ -227,106 +227,48 @@ console.log("props",props)
                                     <div className="col-img">
                                         <div className="collection-firstrow">
                                             {/* <img src={mainpage1_1} className="img-responsive"/> */}
-                                            <img src={item.media[0] && item.media[0]?.exact_url} className="img-responsive"/>
+                                            <img src={item?.medias[0] && item.medias[0]?.exact_url} className="img-responsive"/>
                                         </div>
                                         <div className="d-flex collection-secondrow">
                                             <div className="col-6  pad-l2 px-0">
                                                 {/* <img src={mainpage1_2} width="420" height="420"
                                                      className="img-responsive"/> */}
-                                                <img src={item.media[1] && item.media[1]?.exact_url} width="420" height="420"
+                                                <img src={item?.medias[1] && item.medias[1]?.exact_url} width="420" height="420"
                                                      className="img-responsive"/>
                                             </div>
                                             <div className="col-6  pad-r2 px-0">
                                                 {/* <img src={mainpage1_3} width="420" height="420"
                                                      className="img-responsive"/> */}
-                                                <img src={item.media[2] && item.media[2]?.exact_url} width="420" height="420"
+                                                <img src={item?.medias[2] && item.medias[2]?.exact_url} width="420" height="420"
                                                      className="img-responsive"/>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="col-body">
                                         <div className="col-image pull-right">
-                                            {/* <img src={artist3} width="408" height="408" alt=""
-                                                 className="img-responsive"/> */}
+                                            <Link to={'/site/artist-profile'}>
                                             <img src={item.bg_image?.exact_url} width="408" height="408" alt=""
                                                  className="img-responsive"/>
                                             <img src={blue_badge_icon} width="22" height="22" alt=""
                                                  className="img-badge"/>
+                                            </Link>
+                                            {/* <img src={artist3} width="408" height="408" alt=""
+                                                 className="img-responsive"/> */}
                                         </div>
                                         <h6 className="col-title">
+                                            <Link to={'/site/artist-profile'}>
                                             <span className="col-name pull-dir">{i18n.language === 'fa-IR' ? item.owner.translations.fa?.first_name : item.owner.translations.en?.first_name}</span>
+                                            </Link>
                                         </h6>
                                         <button type="button" className="btn-follow pull-dir">{t("artwork.follow")}</button>
                                     </div>
                                 </a>
                             </div>
                             )}
-                            {/* <div className="col-sm-4">
-                                <a href="#" className="cols">
-                                    <div className="col-img">
-                                        <div className="collection-firstrow">
-                                            <img src={mainpage1_1} className="img-responsive"/>
-                                        </div>
-                                        <div className="d-flex collection-secondrow">
-                                            <div className="col-6  pad-l2 px-0">
-                                                <img src={mainpage1_2} width="420" height="420"
-                                                     className="img-responsive"/>
-                                            </div>
-                                            <div className="col-6  pad-r2 px-0">
-                                                <img src={mainpage1_3} width="420" height="420"
-                                                     className="img-responsive"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-body">
-                                        <div className="col-image pull-right">
-                                            <img src={artist3} width="408" height="408" alt=""
-                                                 className="img-responsive"/>
-                                            <img src={blue_badge_icon} width="22" height="22" alt=""
-                                                 className="img-badge"/>
-                                        </div>
-                                        <h6 className="col-title">
-                                            <span className="col-name pull-dir">هنر تراش بر روی چوب</span>
-                                        </h6>
-                                        <button type="button" className="btn-follow pull-dir">{t("artwork.follow")}</button>
-                                    </div>
-                                </a>
-                            </div> */}
-                            {/* <div className="col-sm-4">
-                                <a href="#" className="cols">
-                                    <div className="col-img">
-                                        <div className="collection-firstrow">
-                                            <img src={mainpage1_1} className="img-responsive"/>
-                                        </div>
-                                        <div className="d-flex collection-secondrow">
-                                            <div className="col-6  pad-l2 px-0">
-                                                <img src={mainpage1_2} width="420" height="420"
-                                                     className="img-responsive"/>
-                                            </div>
-                                            <div className="col-6  pad-r2 px-0">
-                                                <img src={mainpage1_3} width="420" height="420"
-                                                     className="img-responsive"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-body">
-                                        <div className="col-image pull-right">
-                                            <img src={artist3} width="408" height="408" alt=""
-                                                 className="img-responsive"/>
-                                            <img src={gold_badge_icon} width="22" height="22" alt=""
-                                                 className="img-badge"/>
-                                        </div>
-                                        <h6 className="col-title">
-                                            <span className="col-name pull-dir">هنر تراش بر روی چوب</span>
-                                        </h6>
-                                        <button type="button" className="btn-follow followed pull-dir">{t("artwork.following")}</button>
-                                    </div>
-                                </a>
-                            </div> */}
                         </div>
                     </div>
                     <div className=" row-pagination">
-                      <Pagination defaultCurrent={artistList?.current_page_no}  onChange={onChange} total={artistList?.results?.length/artistList?.page_size} />
+                      <Pagination defaultPageSize={3} defaultCurrent={artistList?.current_page_no}  onChange={onChange} total={artistList?.count} />
                     </div>
                 </div>
 

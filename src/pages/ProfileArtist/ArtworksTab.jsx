@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import artist1 from '../../assets/img/artists/artist-1.jpg';
 import artist2 from '../../assets/img/artists/artist-2.jpg';
@@ -10,70 +10,119 @@ import artist7 from '../../assets/img/artists/artist-7.jpg';
 import artist8 from '../../assets/img/artists/artist-8.jpg';
 import artist9 from '../../assets/img/artists/artist-9.jpg';
 import artist10 from '../../assets/img/artists/artist-10.jpg';
-import { t } from 'i18next';
+import apiServices from '../../utils/api.services';
+import { ARTIST_PRODUCTS } from '../../utils';
+import queryString from 'query-string'
+import { useTranslation } from 'react-i18next';
 
-function ArtworksTab() {
+function ArtworksTab({ artistId, translations }) {
+    const { t, i18n } = useTranslation();
+
+    const [search, setSearch] = useState();
+    const [artistArts, setArtistArts] = useState();
+    const [params, setParams] = useState({
+        // search: "",
+        page: 1,
+        artist_id: artistId,
+
+    })
+    const getArtistArts = () => {
+        apiServices.get(ARTIST_PRODUCTS, queryString.stringify(params))
+            .then(res => {
+                if (res.data) {
+                    setArtistArts(res.data.data)
+                }
+            })
+            .catch(err => {
+                console.log("err", err)
+            })
+    }
+    useEffect(() => {
+        setParams(state => ({ ...state, artist_id: artistId }))
+    }, [artistId]);
+
+    useEffect(() => {
+        getArtistArts()
+    }, [params]);
+
+
+    console.log("iddddd", artistArts?.results)
+
     return (
         <div id="artist1" className="tab-pane fade in active">
-                        <div className="content-header">
-                            <div className="d-flex">
-                                <div className="col ">
-                                    <div className="d-flex justify-custom box-dir-reverse">
-                                        <div className="form-group pull-dir">
-                                            <select className="form-control text-dir" id="sel1">
-                                                <option>{t("artworkList.filter.last_update")}</option>
-                                                <option>{t("artworkList.filter.sell")}</option>
-                                                <option>{t("artworkList.filter.visite")}</option>
-                                            </select>
+            <div className="content-header">
+                <div className="d-flex">
+                    <div className="col ">
+                        <div className="d-flex justify-custom box-dir-reverse">
+                            <div className="form-group pull-dir">
+                                <select className="form-control text-dir" id="sel1">
+                                    <option>{t("artworkList.filter.last_update")}</option>
+                                    <option>{t("artworkList.filter.sell")}</option>
+                                    <option>{t("artworkList.filter.visite")}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="content-body">
+                <div className="d-flex">
+                    {artistArts?.results?.map((item, index) => 
+                        <>
+                            <div className="col-6 col-md-4 col-lg-3">
+                                <div className="cols">
+                                    <div className="col-img">
+                                        <img src={item.medias[0].exact_url} width="936" height="1212" alt="آرتیبیشن"
+                                            className="img-responsive" />
+                                            {console.log("sdsdds",item)}
+                                        <div className="tab-overly">
+                                            <a href="#" className="btn-see">
+                                                <span className="view-icon pull-right"></span>
+                                                <span>{t("card_artwork.veiw")}</span>
+                                            </a>
+                                            <a href="#" className="btn-sale">{t("card_artwork.request_buy")}</a>
+                                            <a href="#" className="like-icon"></a>
+                                        </div>
+                                    </div>
+                                    <div className="col-body ">
+                                        <h6 className="col-title text-dir">
+                                            {i18n.language === 'fa-IR' ?
+                                                <>
+                                                    <span className="col-name">{translations?.fa?.first_name}</span>
+                                                    <span className="col-name">{translations?.fa?.last_name}</span>
+                                                </> :
+                                                <>
+                                                    <span className="col-name">{translations?.en?.first_name}</span>
+                                                    <span className="col-name">{translations?.en?.last_name}</span>
+                                                </>
+
+                                            }
+                                        </h6>
+                                        <div className="col-dimension text-dir">
+                                            <div className="d-flex box-dir-reverse">
+                                                <span className="col-dimension-title">{t("card_artwork.size.title")}</span>
+                                                <span className="col-dimension-body mx-2">
+                                                    <div className="d-flex">
+                                                        <span className="dimension-width">{item?.width}</span>
+                                                        <span className="mx-2">{t("card_artwork.size.in")}</span>
+                                                        <span className="dimension-height ">{item?.height}</span>
+                                                    </div>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div className="col-price text-dir">
+                                            <div className="d-flex box-dir-reverse">
+                                                <span className="col-price-num">22.000.000</span>
+                                                <span className="col-price-unit">{t("toman")}</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="content-body">
-                            <div className="d-flex">
-                                <div className="col-6 col-md-4 col-lg-3">
-                                    <div className="cols">
-                                        <div className="col-img">
-                                            <img src={artist1} width="936" height="1212" alt="آرتیبیشن"
-                                                 className="img-responsive"/>
-                                            <div className="tab-overly">
-                                                <a href="#" className="btn-see">
-                                                    <span className="view-icon pull-right"></span>
-                                                    <span>{t("card_artwork.veiw")}</span>
-                                                </a>
-                                                <a href="#" className="btn-sale">{t("card_artwork.request_buy")}</a>
-                                                <a href="#" className="like-icon"></a>
-                                            </div>
-                                        </div>
-                                        <div className="col-body ">
-                                            <h6 className="col-title text-dir">
-                                                <span className="col-name">آیدین</span>
-                                                <span className="col-name">آغداشلو</span>
-                                            </h6>
-                                            <div className="col-dimension text-dir">
-
-                                                <div className="d-flex box-dir-reverse">
-                                                <span className="col-dimension-title">{t("card_artwork.size.title")}</span>
-                                                <span className="col-dimension-body mx-2">
-                                                    <div className="d-flex">
-                                                    <span className="dimension-width">60</span>
-                                                    <span className="mx-2">{t("card_artwork.size.in")}</span>
-                                                    <span className="dimension-height ">60</span>
-                                                    </div>
-                                                </span>
-                                                </div>
-                                            </div>
-                                            <div className="col-price text-dir">
-                                                <div className="d-flex box-dir-reverse">
-                                                <span className="col-price-num">22.000.000</span>
-                                                <span className="col-price-unit">{t("toman")}</span>
-                                                </div>
-                                            </div>
-                                            </div>
-                                    </div>
-                                </div>
-                                <div className="col-6 col-md-4 col-lg-3">
+                            {/* <div className="clearfix "></div> */}
+                        </>
+                    )}
+                    {/* <div className="col-6 col-md-4 col-lg-3">
                                     <div className="cols">
                                         <div className="col-img">
                                             <img src={artist2} width="942" height="1232" alt="آرتیبیشن"
@@ -449,10 +498,10 @@ function ArtworksTab() {
                                             </div>
                                             </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                </div> */}
+                </div>
+            </div>
+        </div>
     )
 }
 
