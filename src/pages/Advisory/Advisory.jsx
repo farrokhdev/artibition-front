@@ -7,6 +7,7 @@ import { t } from 'i18next';
 import WelcomeToAdvistoryStep from './WelcomeToAdvistoryStep';
 import SelectFavoriteArtworkStep from './SelectFavoriteArtworkStep';
 import ExtraDescriptionStep from './ExtraDescriptionStep';
+import BasketFooterPanelNoBox from '../GalleryPanelSelectArtworkSource/BasketFooterPanelNoBox';
 
 const { Step } = Steps;
 
@@ -78,8 +79,8 @@ function Advisory() {
                 </Steps>
 
                 <div className="steps-content pt-5 px-4 px-sm-0 dir">{steps[current].content}</div>
-                <BasketFooterPanel />
             </div>
+            <BasketFooterPanelNoBox />
         </>
     )
 }

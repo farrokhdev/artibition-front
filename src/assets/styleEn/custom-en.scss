@@ -392,6 +392,7 @@ a:hover {
 .events .btn-readmore {
     position: relative;
     top: 3px;
+    left: 2rem;
 }
 
 .col-img {
@@ -815,6 +816,8 @@ footer .nl-input input:focus {
 }
 
 .breadcrumb {
+    direction: ltr;
+    display: block;
     background: none;
     border: 0;
     border-radius: 0;
@@ -1213,7 +1216,7 @@ input:checked + .switchbtn:before {
 }
 
 .mrgt16 {
-    margin-top: 16px;
+    margin-top: 16px !important;
 }
 
 .row-gridimg {
@@ -1606,15 +1609,14 @@ div .gallery-daterow:nth-child(1) {
     cursor: pointer;
 }
 
-.gallery-artist-img .artist-follow {
-    margin-top: 16px;
-    padding: 8px 23px;
-    opacity: 0;
-    transition: all 0.5s ease 0s;
+.gallery-artist-img .btn-follow {
+    margin-top: 16px !important;
+    opacity: 0 !important;
+    transition: all 0.5s ease 0s !important;
 }
 
-.gallery-artist-img:hover .artist-follow {
-    opacity: 1;
+.gallery-artist-img:hover .btn-follow {
+    opacity: 1 !important;
 }
 
 .gallery-artist-img .artist-follow img {
@@ -2104,6 +2106,13 @@ div .gallery-daterow:nth-child(1) {
 }
 
 .basket-price {
+    border: 1px solid #e4e6e9;
+    padding: 16px;
+    display: table;
+    width: 100%;
+}
+
+.basket-price-orginal {
     border: 1px solid #e4e6e9;
     padding: 16px;
     display: table;
@@ -4599,6 +4608,10 @@ a.sec-timeline {
     text-align: right !important;
 }
 
+.text-align-dir{
+    text-align: left !important;
+}
+
 .artistpanel-3 table,
 .artistpanel-5 table,
 .artistpanel-6 table {
@@ -5524,8 +5537,12 @@ p.upload-size {
     margin-bottom: 40px;
 }
 
+.collection-list-row .btn-sale{
+    padding: 8px !important;
+}
+
 .aligncenter {
-    text-align: center;
+    text-align: center !important;
 }
 
 .modal-similar-artwork .fontbold20 {
@@ -8356,6 +8373,12 @@ button.close {
     top: 0;
 }
 
+.basket-price-orginal .finished-tag {
+    display: inline-block;
+    right: 15px;
+    top: 0;
+}
+
 .basket-moredetail .btn-remove,
 .basket-moredetail .btn-remove:hover,
 .basket-moredetail .btn-remove:focus {
@@ -8949,6 +8972,15 @@ button.btn-searchfilter.hidden-sm{
     margin-left: 8px;
 }
 
+.ant-tabs-top > .ant-tabs-nav, .ant-tabs-bottom > .ant-tabs-nav, .ant-tabs-top > div > .ant-tabs-nav, .ant-tabs-bottom > div > .ant-tabs-nav {
+    margin: 0 0px 17px 200px;
+}
+
+
+.ant-tabs-top > .ant-tabs-nav::before, .ant-tabs-bottom > .ant-tabs-nav::before, .ant-tabs-top > div > .ant-tabs-nav::before, .ant-tabs-bottom > div > .ant-tabs-nav::before{
+    width:125%;
+}
+
 .ant-select-selector {
     border: none !important;
     box-shadow: none !important;
@@ -9061,4 +9093,33 @@ textarea.ant-input {
 
 .dir-ltr{
     direction: ltr !important;
+}
+
+.align-item-flex-start{
+    align-items: flex-start !important;
+}
+
+
+.advisory-select .tag-gift{
+    margin-right: 0 !important;
+}
+.mrgt0{
+    margin-top: 0px !important;
+}
+
+.mrgt20{
+    margin-top: 20px !important;
+}
+
+.justify-content-space-between{
+    justify-content: space-between !important;
+}
+
+.justify-content-unset{
+    justify-content: unset !important;
+}
+
+
+.flex-wrap{
+    flex-wrap: wrap !important;
 }
