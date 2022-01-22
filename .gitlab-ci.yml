@@ -23,7 +23,7 @@ depoly:
     script:
         - cd /home/ubuntu/website/
         - echo "Deployment Stage Running"
-        - npm run build
+        - npm run build:prod
         - sudo rm -r build-prod/
         - mv build/ build-prod/
         - echo "Deployment Done Successfully"
