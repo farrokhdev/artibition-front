@@ -7,7 +7,7 @@ import { t } from 'i18next';
 function ModalWithdrawal(props) {
 
 
-    const {visibleIncreaseModal , setVisibleIncreaseModal} = props
+    const {visibleIncreaseModal , setVisibleIncreaseModal, wallet} = props
     const [form] = Form.useForm();
 
     const handleClose = ()=> {
@@ -47,7 +47,7 @@ return (
                         <div className="d-flex align-items-center justify-content-center box-dir-reverse">
                             <span className="default-title">{t("content-panel-wallet.inventory.modal_inventory")}</span>
                             <div className="d-flex box-dir-reverse cash-state align-items-center">
-                                <span className="persian-num mx-2">۸۶۰,۰۰۰</span>
+                                <span className="persian-num mx-2">{wallet?.total_balance}</span>
                                 <span>{t("toman")}</span>
                             </div>
                         </div>
