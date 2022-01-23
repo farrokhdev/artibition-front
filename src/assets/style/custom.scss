@@ -8293,6 +8293,14 @@ textarea {
     color: #fff;
 }
 
+.promotion-popup .ant-modal-body {
+    padding: 0 !important;
+}
+
+.promotion-popup .ant-modal-footer {
+    padding: 0 !important;
+}
+
 .font32 {
     font-size: 32px;
 }
@@ -9056,6 +9064,10 @@ span.unit-dimention {
     justify-content: space-between !important;
 }
 
+.justify-content-center{
+    justify-content: center !important;
+}
+
 
 .justify-content-unset{
     justify-content: unset !important;
@@ -9064,4 +9076,20 @@ span.unit-dimention {
 
 .flex-wrap{
     flex-wrap: wrap !important;
+}
+
+.promotion-tabs .ant-tabs-nav{
+    margin: 0
+}
+
+.tag-gift-custom {
+    position: absolute;
+    bottom: 4px;
+    margin: 0;
+    left: 4px;
+    right: unset;
+}
+
+.d-none-orginal{
+    display: none;
 }

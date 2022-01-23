@@ -10,23 +10,6 @@ import logo_icon from '../../assets/img/logo-icon.svg'
 
 function HeaderPayment() {
     return (
-        // <div className="default-header basket-header">
-        //     <div className="row dir">
-        //         <div className="col-sm-8 col-sm-offset-2">
-        //             <a href="#" className="artibition-logo">
-        //                 <img src={logo} width="240" height="62" alt="Artibition-logo" className="center-block hidden-xs" />
-        //                 <img src={logo_icon} width="1079" height="1079" alt="Artibition-logo" className="img-responsive visible-xs" />
-        //             </a>
-        //             <div className="clearfix hidden-xs"></div>
-        //             <ul className="basket-nav">
-        //                 <li className="active"><a href="#">Shopping guid</a></li>
-        //                 <li><a href="#">FAQ</a></li>
-        //                 <li className="hidden-xs">Contact us: <span>021 22538 229</span></li>
-        //             </ul>
-        //         </div>
-        //     </div>
-        // </div>
-
         <div className="default-header basket-header">
             <div className="row dir">
                 <div className="col-sm-8 col-sm-offset-2">

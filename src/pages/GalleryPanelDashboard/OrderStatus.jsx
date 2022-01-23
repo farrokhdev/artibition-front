@@ -20,9 +20,9 @@ function OrderStatus() {
                         <td>{t("gallery-panel-dashboard.tables.price")}</td>
                         <td>{t("gallery-panel-dashboard.tables.discount")}</td>
                         <td>{t("gallery-panel-dashboard.tables.paid")}</td>
+                        <td>{t("gallery-panel-dashboard.tables.date")}</td>
                         <td>{t("gallery-panel-dashboard.tables.status")}</td>
                         <td>{t("gallery-panel-dashboard.tables.details")}</td>
-                        <td></td>
                     </tr>
                 </thead>
                 <tbody>
