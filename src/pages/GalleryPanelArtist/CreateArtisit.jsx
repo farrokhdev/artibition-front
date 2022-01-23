@@ -11,7 +11,7 @@ function CreateArtist() {
             <div className="pull-dir">
                 <span className="bolder-title">{t("gallery-panel-artist.create_artist")}</span>
             </div>
-            <Link to={'/panel/select-artist-source'} className="btn-box-1 btn-pink pull-left">
+            <Link to={'/gallery-panel/select-artist-source'} className="btn-box-1 btn-pink pull-left">
                 <img src={whitePlus} width="16" height="16" className="center-block" />
             </Link>
             <div className="clearfix"></div>

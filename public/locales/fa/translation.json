@@ -5,7 +5,6 @@
     "repeat-password": "تکرار رمز عبور وارد نشده است!",
     "activation-code": "کد فعالسازی وارد نشده است!"
   },
-  
   "filter-header": {
     "title": "فیلتر",
     "placeholder-input-search": "جستجوی نام اثر، نام هنرمند، گالری و غیره",
@@ -74,10 +73,10 @@
   "signup-text": "ثبت‌نام کنید",
   "show-details": "مشاهده جزییات",
   "all_faq": "همه سؤالات",
-  "FAQ":"سؤالات متداول",
-  "Journal":"مجله",
-  "share":"اشتراک‌گذاری",
-  "read_more":"بیشتر بخوانید",
+  "FAQ": "سؤالات متداول",
+  "Journal": "مجله",
+  "share": "اشتراک‌گذاری",
+  "read_more": "بیشتر بخوانید",
   "Lorem_ipsum_Arthibition_gallery": "مجموعه آثار چاپ، طراحی و نقاشی در گالری آرتیبیشن",
   "show-password": "نمایش",
   "hidden-password": "مخفی کردن",
@@ -181,7 +180,7 @@
   },
   "news-and-article-art": {
     "title": "اخبار و مقالات هنر",
-    "articles" : "مقالات",
+    "articles": "مقالات",
     "more": "مطالعه خبر"
   },
   "suggestion-home": {
@@ -435,10 +434,10 @@
       "albums": "مجموعه‌ها",
       "biography": "زندگی‌نامه",
       "exhibitions": "نمایشگاه‌ها",
-      "upcoming_exhibitions":"نمایشگاه‌های پیش‌رو",
-      "Previous_exhibitions" : "نمایشگاه‌های پیشین",
+      "upcoming_exhibitions": "نمایشگاه‌های پیش‌رو",
+      "Previous_exhibitions": "نمایشگاه‌های پیشین",
       "all_exhibitions": "همه نمایشگاه‌ها",
-      "to_end" : "تا پایان",
+      "to_end": "تا پایان",
       "content": "محتوا"
     },
     "smileys": "صورتک‌ها",
@@ -449,7 +448,7 @@
     "activities": "فعالیت‌ها",
     "versions": "نسخه‌ها",
     "aknon_gallery": "گالری اکنون",
-    "buyers":"خریداران",
+    "buyers": "خریداران",
     "collection": "کلکسونر",
     "COLLECTION": "کلکسونر",
     "man": "من",
@@ -477,6 +476,9 @@
     "nav-messages": "پیام‌ها",
     "nav-profile": "پروفایل",
     "nav-exhibitions": "نمایشگاه ها",
+    "nav-artists": "هنرمندان",
+    "nav-my-galleries": "گالری‌های من",
+    "nav-content": "محتوا",
     "invite": {
       "btn": "دعوت دوستان",
       "text": "با دعوت دوستان خود از آرتیبیشن حمایت نمایید"
@@ -837,6 +839,7 @@
       "price": "قیمت(تومان)",
       "discount": "تخفیف",
       "paid": "پرداخت شده",
+      "date": "تاریخ",
       "status": "وضعیت",
       "details": "جزئیات",
       "suggested": "پیشنهاد شده",
@@ -945,7 +948,7 @@
     "enter_artist_name_en": "Enter artist name",
     "gallery_name_fa": "نام گالری",
     "gallery_name_en": "Gallery Name",
-    "contact_info":"اطلاعات تماس",
+    "contact_info": "اطلاعات تماس",
     "address_contact_info": "آدرس و اطلاعات تماس",
     "notice_visiting_hours": "اعلامیه و ساعات مراجعه",
     "submit": "ثبت",
@@ -1060,7 +1063,7 @@
   "gallery-panel-my-gallery": {
     "create_gallery": "ثبت گالری جدید",
     "title": "گالری های من",
-    "my_gallery":"گالری هان", 
+    "my_gallery": "گالری هان",
     "table": {
       "row": "ردیف",
       "logo": "لوگو",
@@ -1146,8 +1149,8 @@
     "select_from_exist_artist": "انتخاب از هنرمندان موجود",
     "add_new_artist": "اضافه کردن هنرمند جدید"
   },
-  "lorem":{
-    "lorem_ipsum":"لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد"
+  "lorem": {
+    "lorem_ipsum": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد"
   },
   "advisory": {
     "welcome_step": {
@@ -1266,7 +1269,28 @@
       "new_address_btn": "افزودن آدرس جدید",
       "back_btn": "بازگشت ",
       "prev_step": "به مرحله قبل",
-      "no_address_message": "شما تاکنون آدرسی ثبت نکرده‌اید!"
+      "no_address_message": "شما تاکنون آدرسی ثبت نکرده‌اید!",
+      "modal": {
+        "title": "افزودن آدرس جدید",
+        "address_info": "اطلاعات آدرس",
+        "province": "استان",
+        "city": "شهر",
+        "address": "نشانی پستی",
+        "no.": "پلاک",
+        "unit": "واحد",
+        "postal_code": "کد پستی",
+        "postal_code_description": "کد پستی می‌بایست ۱۰ رقم و بدون خط تیره باشد",
+        "receiver_information": "اطلاعات گیرنده",
+        "receiver_fullname": "نام و نام خانوادگی گیرنده",
+        "phone_number": "شماره همراه",
+        "national_code": "کد ملی",
+        "national_code_description": "کد ملی می‌بایست ۱۰ رقم و بدون خط تیره باشد",
+        "foreign_checkbox": "تبعه خارجی هستم، کد ملی ندارم.",
+        "receiver_checkbox": "گیرنده اثر خودم هستم",
+        "send_friend_checkbox": "اثر را برای دوستم ارسال می‌کنم",
+        "confirm_btn": "ثبت و تأیید آدرس",
+        "select_address_map": "انتخاب آدرس روی نقشه"
+      }
     },
     "pay_step": {
       "title": "انتخاب شیوه پرداخت",
@@ -1306,5 +1330,64 @@
     "faq": "سوالات متداول",
     "contact_us": "تماس با ما: ",
     "phone_number": "۲۲۵۳۸ ۲۲۹ ۰۲۱"
+  },
+  "promotion": {
+    "price_unit": "تومان",
+    "popup": {
+      "view_artworks": "مشاهده آثار"
+    },
+    "banner": {
+      "title": "هنر برای هدیه",
+      "descriprion": "با هدیه دادن آثار هنری، یک اثر ماندگار و ارزشمند را به دوستان و عزیزان خود تقدیم کنید.",
+      "price_1_btn": "تا 500 هزار ",
+      "price_2_btn": "تا 1 میلیون ",
+      "price_3_btn": "تا 2 میلیون ",
+      "price_4_btn": "تا 3 میلیون "
+    },
+    "categories": {
+      "all": "همه آثار",
+      "painting": "نقاشی",
+      "photography": "عکاسی",
+      "sculpture": "مجسمه",
+      "calligram": "نقاشی خط",
+      "calligraphy": "خوشنویسی",
+      "printmaking": "چاپ دستی",
+      "graphic": "گرافیک",
+      "drawing": "طراحی"
+    },
+    "artwork": {
+      "size": "ابعاد: ",
+      "x": " در ",
+      "fast_secure_delivery": "تحویل سریع و مطمئن",
+      "send_gift_recipient": "امکان ارسال برای گیرنده هدیه"
+    }
+  },
+  "promotion-competition": {
+    "banner": {
+      "finished": "پایان یافته",
+      "promotions": "فراخوان",
+      "competition_info_btn": "اطلاعات مسابقه",
+      "register_btn": "ثبت نام",
+      "participants": "اسامی شرکت کنندگان "
+    },
+    "artwork": {
+      "size": "ابعاد: ",
+      "x": " در ",
+      "price_unit": "تومان",
+      "sold_out":"فروخته شد"
+    },
+    "arthibition_holding_competition": "گالری آرتیبیشن برگزار می‌کند",
+    "selected_artworks": "آثار برگزیده",
+    "condition": "شرایط",
+    "prize": "جایزه",
+    "competition_info": "اطلاعات مسابقه",
+    "key_dates": "تاریخ‌های مسابقه",
+    "prize_": "جوایز",
+    "join_upload_btn": "ثبت‌نام و آپلود اثر",
+    "filter": "فیلتر",
+    "remove_all": "حذف همه",
+    "last_update_select": "محبوب ترین‌ها",
+    "visite_select": "پربازدید",
+    "sell_select": "پرفروش"
   }
 }
