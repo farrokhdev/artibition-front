@@ -1,0 +1,29 @@
+stages:
+    - test
+    - requirement
+    - depoly
+test:
+    stage: test
+    script:
+        - echo "Test Stage"
+        - pwd
+        - echo "Test DONE !"
+requirement:
+    stage: requirement
+    script:
+        - cd /home/ubuntu/website/
+        - echo "Pulling Project"
+        - git pull origin development        
+        - echo "Installing node module"
+        - sudo rm -rf node_modules yarn.lock package-lock.json
+        - sudo rm -rf build 
+        - npm i
+depoly:
+    stage: depoly
+    script:
+        - cd /home/ubuntu/website/
+        - echo "Deployment Stage Running"
+        - npm run build:prod
+        - sudo rm -r build-prod/
+        - mv build/ build-prod/
+        - echo "Deployment Done Successfully"
