@@ -3,11 +3,11 @@ import GoogleMapReact from 'google-map-react';
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
-function GoogleMap(){
+function GoogleMap({lat,long}){
     const defaultProps = {
         center: {
-            lat: 10.99835602,
-            lng: 77.01502627
+            lat: lat,
+            lng: long
         },
         zoom: 11
     };
@@ -21,8 +21,8 @@ function GoogleMap(){
         defaultZoom={defaultProps.zoom}
       >
         <AnyReactComponent
-          lat={59.955413}
-          lng={30.337844}
+          lat={lat}
+          lng={long}
           text="My Marker"
           />
       </GoogleMapReact>

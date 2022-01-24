@@ -1,9 +1,36 @@
-import React from 'react';
+import QueryString from 'qs';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import artistontent from '../../assets/img/artists/artist-content-1.jpg';
 import video from '../../assets/img/video.png'
+import { GALLERY_CONTENT } from '../../utils';
+import apiServices from '../../utils/api.services';
 
-function Journal() {
+function Journal({id}) {
+
+    const [galleryContent, setGalleryContent] = useState();
+    const [params, setParams] = useState({
+        search: "",
+        page: 1,
+        
+    })
+
+    const getGalleryContent = () => {
+        apiServices.get(GALLERY_CONTENT(id), QueryString.stringify(params))
+            .then(res => {
+                if (res.data) {
+                    setGalleryContent(res.data.data)
+                }
+            })
+            .catch(err => {
+                console.log("err", err)
+            })
+    }
+
+    useEffect(() => {
+        getGalleryContent()
+    }, [params]);
+
     return (
         <div id="gallery5" class="tab-pane fade in active">
             <div class="row">
