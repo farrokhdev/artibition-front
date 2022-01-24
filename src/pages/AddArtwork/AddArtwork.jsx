@@ -15,63 +15,63 @@ const { Step } = Steps;
 
 function AddArtwork() {
 
-  const [current, setCurrent] = React.useState(0);
+    const [current, setCurrent] = React.useState(0);
 
-  const next = () => {
-    setCurrent(current + 1);
-  };
-
-  const prev = () => {
-    setCurrent(current - 1);
-  };
-
-
-  const customDot = (dot, { status, index }) => (
-    <Popover
-      content={
-        <span>
-          مرحله {index} وضعیت: {status}
-        </span>
-      }
-    >
-      {dot}
-    </Popover>
-  );
+    const next = () => {
+      setCurrent(current + 1);
+    };
+  
+    const prev = () => {
+      setCurrent(current - 1);
+    };
 
 
-  const steps = [
-    {
-      title: t("content-panel-add-artwork.step1"),
-      content: <LoginPersonalInfo next={next} />,
-      icon: false
-    },
-    {
-      title: t("content-panel-add-artwork.step1"),
-      content: <LoginArtistInfoForm prev={prev} next={next} />,
-      icon: false
-    },
-    {
-      title: t("content-panel-add-artwork.step1"),
-      content: <LoginUploadArtworks prev={prev} next={next} />,
-      icon: false
-    },
-    {
-      title: t("content-panel-add-artwork.step1"),
-      content: <ArtworkInformation prev={prev} next={next} />,
-      icon: false
-    },
-    {
-      title: t("content-panel-add-artwork.step2"),
-      content: <SellInformation prev={prev} next={next} />,
-      icon: false
-    }
-  ];
+    const customDot = (dot, { status, index }) => (
+        <Popover
+          content={
+            <span>
+              مرحله {index} وضعیت: {status}
+            </span>
+          }
+        >
+          {dot}
+        </Popover>
+      );
 
-  return (
-    <>
-      <HeaderPanel t={t} />
 
-      <div className="panel-style container mx-auto px-0 w-100 bg-white">
+    const steps = [
+      // {
+      //   title: t("content-panel-add-artwork.step1"),
+      //   content: <LoginPersonalInfo next={next} />,
+      //   icon : false
+      // },
+      // {
+      //   title: t("content-panel-add-artwork.step2"),
+      //   content: <LoginArtistInfoForm prev={prev} next={next} />,
+      //   icon : false
+      // },
+      // {
+      //   title: t("content-panel-add-artwork.step3"),
+      //   content: <LoginUploadArtworks prev={prev} next={next} />,
+      //   icon : false
+      // },
+        {
+          title: t("content-panel-add-artwork.step4"),
+          content: <ArtworkInformation prev={prev} next={next} />,
+          icon : false
+        },
+        {
+          title: t("content-panel-add-artwork.step5"),
+          content: <SellInformation prev={prev} next={next}/>,
+          icon : false
+        }
+      ];
+
+    return (
+        <>
+    <HeaderPanel t={t} />
+
+    <div className="panel-style container mx-auto px-0 w-100 bg-white">
 
 
         {/* <Steps 
