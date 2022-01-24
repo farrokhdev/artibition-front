@@ -39,7 +39,7 @@ function MainContent() {
     useEffect(() => {
         getGalleryList()
     }, [params]);
-
+console.log("gallery",galleryList)
     return (
         <div className="container">
             <div className="banner">
@@ -72,16 +72,18 @@ function MainContent() {
 
                     <div className="gallery-name-list">
                         <div className="row">
-                            {galleryList?.results.map((gallery) => {
+                            {galleryList?.results?.map((gallery) => {
                                 return (
                                     <div className="col-md-3 col-sm-4 col-xs-6">
-                                        <Link to="" className="gallery-logo-block">
+                                        <Link to={`/site/gallery-introduction/?id=${gallery?.id}`} className="gallery-logo-block">
                                             <div className="gallery-logo-img">
-                                                <img src={gallery?.media[0]?.exact_url} width="110" height="110" alt=""
+                                                <img src={gallery?.media && gallery?.media[0]?.exact_url} width="110" height="110" alt=""
                                                     className="img-responsive center-block" />
                                             </div>
                                             <h3 className="fontbold19">{gallery?.owner?.username}</h3>
-                                            <span className="font-span">{gallery?.locations[0]?.point}</span>
+                                            {i18n.language === 'fa-IR' ?
+                                            <span className="font-span">{gallery?.locations && gallery?.locations[0]?.translations?.fa?.city}</span>:
+                                            <span className="font-span">{gallery?.locations && gallery?.locations[0]?.translations?.en?.city}</span>}
                                         </Link>
                                     </div>
                                 )

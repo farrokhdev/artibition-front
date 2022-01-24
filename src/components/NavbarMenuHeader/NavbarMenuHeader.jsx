@@ -5,11 +5,13 @@ import bohmer from '../../assets/img/mainpage/rene-bohmer-YeUVDKZWSZ4-unsplash@3
 import gift from '../../assets/img/gift.svg';
 import { t } from 'i18next';
 import { Tabs, Radio, Space } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
 const { TabPane } = Tabs;
 export default function NavbarMenuHeader(props) {
 
-  
+    let navigate = useNavigate();
+
 
     return (
 
@@ -82,7 +84,7 @@ export default function NavbarMenuHeader(props) {
                             <div className="col-sm-3">
                                 <ul className="nav nav-tabs">
                                     <li className="active"><a data-toggle="tab" href="#nav11">{t("category")}</a></li>
-                                    <li><a data-toggle="tab" href="#nav12">{t("galleries")}</a></li>
+                                    <li onClick={() => navigate('/site/all-galleris-list')}><a data-toggle="tab" href="#nav12">{t("galleries")}</a></li>
                                     <li><a data-toggle="tab" href="#nav13">{t("events")}</a></li>
                                 </ul>
                             </div>

@@ -52,15 +52,15 @@ console.log("data",artistCategory)
           {artistCategory?.results?.map((item,index) =>
           <>
             <h3 className="artist-title text-dir">{i18n.language === 'fa-IR' ? item.translations?.fa?.title : item.translations?.en?.title}</h3>
-            <button onClick={() => setVisibleShowAlbums(true)} type="button" className="d-flex box-dir-reverse align-items-center btn-more pull-dir" >
-                    {/* <span>{t("artist_profile.veiw")}</span>
+            {/* <button onClick={() => setVisibleShowAlbums(true)} type="button" className="d-flex box-dir-reverse align-items-center btn-more pull-dir" >
+                    <span>{t("artist_profile.veiw")}</span>
                     <i 
                         className={classnames("glyphicon", {
                           "glyphicon-chevron-left": GetLanguage() === 'fa-IR',
                           "glyphicon-chevron-right": GetLanguage() === 'en-US'
                         })}
-                    ></i> */}
-            </button>
+                    ></i>
+            </button> */}
             <div className="clearfix"></div>
             <div style={{overflow : 'auto'}} className="owl-carousel d-flex">
               {item.products?.map((itm,inx) => 
@@ -82,13 +82,13 @@ console.log("data",artistCategory)
                       <h6 className="col-title text-dir">
                         {i18n.language === 'fa-IR' ?
                         <>
-                        <span className="col-name">{itm.owner.translations.fa.first_name}</span>
-                        <span className="col-name">{itm.owner.translations.fa.last_name}</span>
+                        <span className="col-name">{itm.translations.fa.artist_name}</span>
+                        {/* <span className="col-name">{itm.translations.fa.last_name}</span> */}
                         </>
                         :
                         <>
-                        <span className="col-name">{itm.owner.translations.en.first_name}</span>
-                        <span className="col-name">{itm.owner.translations.en.last_name}</span>
+                        <span className="col-name">{itm.translations.en.artist_name}</span>
+                        {/* <span className="col-name">{itm.translations.en.last_name}</span> */}
                         </>}
                       </h6>
                       <div className="col-dimension text-dir">

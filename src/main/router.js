@@ -60,7 +60,7 @@ const RouterConfig = (props) => {
                 <Route path="my-albums" element={<PanleMyAlbums />} />
                 <Route path="contents" element={<PanelContentList />} />
                 <Route path="create-content" element={<PanelCreateContent />} />
-
+                
                 <Route path="dashboard-gallery" element={<GalleryPanelDashboard />} />
                 <Route path="exhibition-list-gallery" element={<GalleryPanelExhibition />} />
                 <Route path="artist-list-gallery" element={<GalleryPanelArtisit />} />

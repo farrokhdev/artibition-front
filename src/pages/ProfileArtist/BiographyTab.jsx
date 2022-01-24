@@ -1,23 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import { t } from 'i18next';
-import { ARTIST_CATEGORY } from '../../utils';
+import { ARTIST_CATEGORY, ARTIST_EXHIBITION } from '../../utils';
 import QueryString from 'qs';
 import apiServices from '../../utils/api.services';
+import { useTranslation } from 'react-i18next';
 
-function BiographyTab() {
-    const [artistCategory, setArtistCategory] = useState();
-
+function BiographyTab({artistBio,artistId}) {
+    const { t, i18n } = useTranslation();
+    const [artistExhibition, setArtistExhibition] = useState();
     const [params, setParams] = useState({
         // search: "",
         page: 1,
-        owner_id: 4,
+        artist_content__id: artistId,
   
     })
-    const getArtistCategory = () => {
-        apiServices.get(ARTIST_CATEGORY, QueryString.stringify(params))
+    const getArtistExhibition = () => {
+        apiServices.get(ARTIST_EXHIBITION, QueryString.stringify(params))
             .then(res => {
                 if (res.data) {
-                    setArtistCategory(res.data.data)
+                    setArtistExhibition(res.data.data)
                 }
             })
             .catch(err => {
@@ -26,25 +27,33 @@ function BiographyTab() {
     }
 
     useEffect(() => {
-        getArtistCategory()
+        getArtistExhibition()
     }, [params]);
+    console.log("exhibition",artistExhibition)
     return (
         <div id="artist3" className="tab-pane ">
-            {console.log("data",artistCategory)}
                         <div className="d-flex box-dir-reverse ">
                             <div className="col-sm-7">
                                 <h5 className="custom-title text-dir">{t("artist_profile.introduction")}</h5>
-                                <p className="text-justify"> آیدین آغداشلو (زاده ۸ آبان ۱۳۱۹ در رشت) نقاش، گرافیست، نویسنده،
+                                <p className="text-justify"> 
+                                {i18n.language === 'fa-IR' ?
+                                artistBio?.fa?.biography
+                                    :
+                                artistBio?.en?.biography
+
+                                }
+                                {/* آیدین آغداشلو (زاده ۸ آبان ۱۳۱۹ در رشت) نقاش، گرافیست، نویسنده،
                                     منتقد فیلم تصویرگر کتاب‌های درسی ایران، مجلات، و مؤسسه‌های خصوصی است. او همچنین مدتی
                                     مدیر امور فرهنگی و هنری «دفتر مخصوص شهبانو
                                     فرح پهلوی و از کارکنان موزه هنرهای معاصر تهران و موزه رضا عباسی بود. آغداشلو تاکنون
                                     تنها دو بار در ایران نمایشگاه فردی برگزار کرده ‌است، که نخستین آن در سال ۱۳۵۴ در
                                     انجمن ایران و آمریکا در تهران بود و دومین بار در
                                     .آبان ۱۳۹۳ در گالری اثر او همچنین نوشته‌هایی در نقد هنری و سینمایی، پژوهش‌های تاریخ
-                                    هنر، و سفرنامه انجام داده است
+                                    هنر، و سفرنامه انجام داده است */}
                                 </p>
                                 <h5 className="custom-title mrgt16 text-dir">{t("artist_profile.style")}</h5>
-                                <p className="text-justify">
+                                {/* <p className="text-justify">
+                                    
                                     آیدین آغداشلو (زاده ۸ آبان ۱۳۱۹ در رشت) نقاش، گرافیست، نویسنده، منتقد فیلم تصویرگر
                                     کتاب‌های درسی ایران، مجلات، و مؤسسه‌های خصوصی است. او همچنین مدتی مدیر امور فرهنگی و
                                     هنری «دفتر مخصوص شهبانو
@@ -74,7 +83,7 @@ function BiographyTab() {
                                     تیغه‌های مرگبار که نشانی از موشک‌های فرودآمده بر شهرها بود پدیدار شد.او کارهای دوران
                                     جنگ خودرا خود تک‌چهره‌نقاش در ۴۸ سالگی و شفاعت فرشتگان نامید که بیانگری افسردگی و نا
                                     آرامی‌های ناشی از ویرانی جنگ و اعتراض بود
-                                </p>
+                                </p> */}
                             </div>
                             <div className="col-sm-5">
                                 <h5 className="custom-title mrgr104 text-dir">{t("artist_profile.activities")}</h5>

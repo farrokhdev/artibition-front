@@ -74,7 +74,6 @@ function ArtworksTab({ artistId, translations }) {
                                     <div className="col-img">
                                         <img src={item.medias[0].exact_url} width="936" height="1212" alt="آرتیبیشن"
                                             className="img-responsive" />
-                                            {console.log("sdsdds",item)}
                                         <div className="tab-overly">
                                             <a href="#" className="btn-see">
                                                 <span className="view-icon pull-right"></span>
@@ -88,12 +87,12 @@ function ArtworksTab({ artistId, translations }) {
                                         <h6 className="col-title text-dir">
                                             {i18n.language === 'fa-IR' ?
                                                 <>
-                                                    <span className="col-name">{translations?.fa?.first_name}</span>
-                                                    <span className="col-name">{translations?.fa?.last_name}</span>
+                                                    <span className="col-name">{item.translations?.fa?.artist_name}</span>
+                                                    {/* <span className="col-name">{translations?.fa?.last_name}</span> */}
                                                 </> :
                                                 <>
-                                                    <span className="col-name">{translations?.en?.first_name}</span>
-                                                    <span className="col-name">{translations?.en?.last_name}</span>
+                                                    <span className="col-name">{item.translations?.en?.artist_name}</span>
+                                                    {/* <span className="col-name">{translations?.en?.last_name}</span> */}
                                                 </>
 
                                             }

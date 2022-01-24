@@ -170,13 +170,13 @@ function ProfileArtist() {
                                 />
                             </TabPane>
                             <TabPane tab={t("artist_profile.tabs.biography")} key="3">
-                                <BiographyTab />
+                                <BiographyTab artistBio={artistProfile?.translations} />
                             </TabPane>
                             <TabPane tab={t("artist_profile.tabs.exhibitions")} key="4">
-                                <ExhibitionsTab />
+                                <ExhibitionsTab artistId={artistProfile?.id}/>
                             </TabPane>
                             <TabPane tab={t("artist_profile.tabs.content")} key="5">
-                                <ContentTab />
+                                <ContentTab artistId={artistProfile?.id}/>
                             </TabPane>
 
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../../components/Header/Header';
 import Menu from '../../components/Menu/Menu';
 import HanLogo from '../../assets/img/gallery/hanlogo.jpg';
@@ -13,17 +13,53 @@ import Artist from './Artist';
 import Journal from './Journal';
 import GalleryContact from './GalleryContact';
 import { useTranslation } from 'react-i18next';
+import { GALLERY } from '../../utils';
+import apiServices from '../../utils/api.services';
+import QueryString from 'qs';
+import { useLocation } from 'react-router-dom';
 
 
 function GalleryIntroduction() {
-
     const { TabPane } = Tabs;
     const { t, i18n } = useTranslation();
+    const [galleryIntroduction, setGalleryIntroduction] = useState();
+    const [params, setParams] = useState({
+        search: "",
+        page: 1,
+        
+    })
+    
+    function useQuery() {
+        
+        return new URLSearchParams(useLocation().search);
+        
+    }
+    var id;
+
+    var query = useQuery();
+
+    id = query.get("id")
 
     function callback(key) {
         console.log(key);
     }
+    const getGalleryIntroduction = () => {
+        apiServices.get(GALLERY(id), QueryString.stringify(params))
+            .then(res => {
+                if (res.data) {
+                    setGalleryIntroduction(res.data.data)
+                }
+            })
+            .catch(err => {
+                console.log("err", err)
+            })
+    }
 
+    useEffect(() => {
+        getGalleryIntroduction()
+    }, [params]);
+
+    console.log("id",galleryIntroduction)
     return (
         <>
             <div className="container">
@@ -37,14 +73,26 @@ function GalleryIntroduction() {
                         <li><a href="#">{t("gallery-panel-my-gallery.my_gallery")}</a></li>
                         <li class="active">{t("artist_profile.introduction")}</li>
                     </ul>
-                    <div className="gallery-cover"></div>
+                    <div >
+                        <img src={galleryIntroduction?.cover?.exact_url} className="align-items-center d-flex gallery-cover justify-content-center" />
+                    </div>
                     <div className="gallery-info">
                         <div className="gallery-logo">
-                            <img src={HanLogo} width="110" height="110" alt="هان گالری" className="img-responsive" />
+                            <img src={galleryIntroduction?.logo?.exact_url} width="110" height="110" alt="هان گالری" className="img-responsive" />
                         </div>
-                        <h2 className="gallery-name">{t("gallery-panel-my-gallery.my_gallery")}</h2>
-                        <span className="gallery-location">تهران</span>
-                        <p className="text-justify">{t("lorem.lorem_ipsum")}</p>
+                        {i18n.language === 'fa-IR' ?
+                        <>
+                        <h2 className="gallery-name">{galleryIntroduction?.translations?.fa?.title}</h2>
+                        <span className="gallery-location">{galleryIntroduction?.locations[0]?.translations?.fa?.city}</span>
+                        <p className="text-justify">{galleryIntroduction?.translations?.fa?.description}</p>
+                        </>
+                        :
+                        <>
+                        <h2 className="gallery-name">{galleryIntroduction?.translations?.en?.title}</h2>
+                        <span className="gallery-location">{galleryIntroduction?.locations[0]?.translations?.en?.city}</span>
+                        <p className="text-justify">{galleryIntroduction?.translations?.en?.description}</p>
+                        </>
+    }
                         <button className="btn btn-galleryfollow">
                             <img src={circleplus1} height="17" width="17" alt="" />
                             <span>{t("artwork.follow")}</span>
@@ -58,22 +106,22 @@ function GalleryIntroduction() {
                                     <ul className="nav d-block ">
                                         <Tabs className="antd-tabnav" defaultActiveKey="1" onChange={callback}>
                                             <TabPane className="mx-5 antd-tabnav" tab={t("artist_profile.introduction")} key="1">
-                                                <Introduction />
+                                                <Introduction id={id} galleryIntroduction={galleryIntroduction}/>
                                             </TabPane>
                                             <TabPane tab={t("drawer-panel.nav-exhibitions")} key="2">
-                                                <Exhibition />
+                                                <Exhibition id={id}/>
                                             </TabPane>
                                             <TabPane tab={t("nav-menu-artworks")} key="3">
-                                                <Artworks />
+                                                <Artworks id={id}/>
                                             </TabPane>
                                             <TabPane tab={t("artist_profile.artists")} key="4">
-                                                <Artist />
+                                                <Artist id={id}/>
                                             </TabPane>
                                             <TabPane tab={t("Journal")} key="5">
-                                                <Journal />
+                                                <Journal id={id}/>
                                             </TabPane>
                                             <TabPane tab={t("gallery-panel-edit-gallery-info.contact_info")} key="6">
-                                                <GalleryContact />
+                                                <GalleryContact galleryIntroduction={galleryIntroduction}/>
                                             </TabPane>
 
 
