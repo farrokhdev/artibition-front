@@ -19,6 +19,8 @@ import AdvisorySubmited from './pages/AdvisorySubmited/AdvisorySubmited';
 import CollectionsList from './pages/CollectionsList/CollectionsList';
 import GalleryContentPage from './pages/GalleryIntroduction/GalleryContentPage';
 import FAQ from './pages/FAQ/FAQ';
+import DetailsPromotion from './pages/DetailsPromoton/DetailsPromotion';
+import PromotionCompetition from './pages/PromotionCompetition/PromotionCompetition';
 
 
 
@@ -50,6 +52,9 @@ function App(props) {
                     <Route path="advisory" element={<Advisory />} />
                     <Route path="advisory-submited" element={<AdvisorySubmited />} />
                     <Route path="collections-list" element={<CollectionsList />} />
+                    <Route path="promotion/:id" element={<DetailsPromotion />} />
+                    <Route path="promotion-competition/:id" element={<PromotionCompetition />} />
+
                     <Route path="*" element={<Navigate to="/site/artworks" replace />} />
                 </Route>
             </Routes>

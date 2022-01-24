@@ -8,7 +8,7 @@ import gift_big from '../../assets/img/gift-big.svg';
 function BoxWallet(props) {
 
 
-    const {showIncreaseModal , showWithdrawalModal} = props;
+    const {showIncreaseModal , showWithdrawalModal, wallet} = props;
 
     return (
         <div className=" box wallet ">
@@ -17,13 +17,13 @@ function BoxWallet(props) {
                 <h2 className="default-title text-dir">{t("content-panel-wallet.inventory.title")}</h2>
             </div>
             <div className="d-flex justify-content-center box-dir-reverse cash-state">
-                <span className="persian-num pull-dir">۸۶۰,۰۰۰</span>
+                <span className="persian-num pull-dir">{wallet?.total_balance}</span>
                 <span>{t("toman")}</span>
             </div>
             <div className="d-flex justify-content-center box-dir-reverse gift-info align-items-center">
                 <img src={gift_big} width="32" height="31" alt="gift-icon" className="pull-dir mx-2" />
                 <span>{t("content-panel-wallet.inventory.text_gift.text1")} <span
-                        className="persian-num text-dir mx-2 ">500,000</span>{t("content-panel-wallet.inventory.text_gift.text2")}
+                        className="persian-num text-dir mx-2 ">{wallet?.gift_balance}</span>{t("content-panel-wallet.inventory.text_gift.text2")}
                     {t("toman")} </span>
             </div>
             <button type="button" className="btn-pink center-block">{t("content-panel-wallet.inventory.buy_btn")}</button>

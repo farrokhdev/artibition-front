@@ -1,32 +1,75 @@
-import React from 'react';
+import QueryString from 'qs';
+import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import artist_content1 from '../../assets/img/artists/artist-content-1.jpg';
 import artist_content2 from '../../assets/img/artists/artist-content-2.jpg';
 import artist_content3 from '../../assets/img/artists/artist-content-3.jpg';
 import video_icon from '../../assets/img/video.png';
+import { ARTIST_CONTENT } from '../../utils';
+import apiServices from '../../utils/api.services';
 
-function ContentTab() {
+function ContentTab({artistId}) {
+
+    const { t, i18n } = useTranslation();
+
+    const [search, setSearch] = useState();
+    const [artistContent, setArtistContent] = useState();
+    const [params, setParams] = useState({
+        // search: "",
+        page: 1,
+        artist_content__id: artistId,
+  
+    })
+    const getArtistContent = () => {
+        apiServices.get(ARTIST_CONTENT, QueryString.stringify(params))
+            .then(res => {
+                if (res.data) {
+                    setArtistContent(res.data.data)
+                }
+            })
+            .catch(err => {
+                console.log("err", err)
+            })
+    }
+    useEffect(() => {
+        setParams(state => ({ ...state, artist_content__id: artistId }))
+    }, [artistId]);
+  
+    useEffect(() => {
+        getArtistContent()
+    }, [params]);
+
     return (
         <div id="artist5" className="tab-pane ">
                         <div className="d-flex box-dir-reverse">
-                            <div className="col-sm-4">
-                                <a href="#" className="cols">
-                                    <div className="col-img">
-                                        <div className="video-prev"><img src={video_icon} width="36" height="36" alt=""/>
-                                        </div>
-                                        <img src={artist_content1} width="1000" height="1000"
-                                             alt="آرتیبیشن"
-                                             className="img-responsive"/>
+                            {artistContent?.results?.map((item,index) => 
+                                    <div className="col-sm-4">
+                                        <a href="#" className="cols">
+                                            <div className="col-img">
+                                                <div className="video-prev"><img src={video_icon} width="36" height="36" alt=""/>
+                                                </div>
+                                                <img src={item.poster?.exact_url} width="1000" height="1000"
+                                                    alt="آرتیبیشن"
+                                                    className="img-responsive"/>
+                                            </div>
+                                            <div className="col-body">
+                                                <h6 className="col-title text-dir">
+                                                {i18n.language === 'fa-IR' ?
+
+                                                    <span className="col-name">{item.translations?.fa?.description}</span>
+                                                    :
+                                                    <span className="col-name">{item.translations?.en?.description}</span>
+                                                    
+                                                }
+                                                </h6>
+                                                <span className="block-time persian-num pull-dir">۲۰ دی ۹۸</span>
+                                            </div>
+                                        </a>
                                     </div>
-                                    <div className="col-body">
-                                        <h6 className="col-title text-dir">
-                                            <span className="col-name">سخنرانی آیدین آغداشلو در تورنتو</span>
-                                        </h6>
-                                        <span className="block-time persian-num pull-dir">۲۰ دی ۹۸</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div className="col-sm-4">
+                            
+                            )}
+                            {/* <div className="col-sm-4">
                                 <a href="#" className="cols">
                                     <div className="col-img">
                                         <img src={artist_content2} width="381" height="381"
@@ -55,7 +98,7 @@ function ContentTab() {
                                         <span className="block-time persian-num pull-dir">19 اردیبهشت ۹۹</span>
                                     </div>
                                 </a>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
     )

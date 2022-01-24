@@ -3,6 +3,7 @@ import qs from 'qs';
 import {BASE_URL, COOKIE_EXPIRES} from './index';
 import {message} from "antd";
 import {useTranslation} from "react-i18next";
+import momentJalaali from "moment-jalaali";
 
 export function Arraify(data){
     if(!data) return []
@@ -95,4 +96,11 @@ export function UrlQuery(url = "", data = {}){
 export function GetLanguage(){
     const {i18n} = useTranslation();
     return i18n.language
+}
+
+export function timeToStr(time, format){
+    if (time){
+        return momentJalaali(time).locale('fa').format(format)
+    }
+    return ""
 }

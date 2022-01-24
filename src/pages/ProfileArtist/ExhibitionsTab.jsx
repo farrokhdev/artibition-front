@@ -1,11 +1,45 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import artist20 from '../../assets/img/artists/artist-20.jpg';
 import artist21 from '../../assets/img/artists/artist-21.jpg';
 import arrow_left_icon from '../../assets/img/arrow-left.svg';
 import { t } from 'i18next';
+import { ARTIST_EXHIBITION } from '../../utils';
+import QueryString from 'qs';
+import apiServices from '../../utils/api.services';
+import { useTranslation } from 'react-i18next';
 
-function ExhibitionsTab() {
+function ExhibitionsTab({artistId}) {
+
+    const { t, i18n } = useTranslation();
+
+    const [search, setSearch] = useState();
+    const [artistExhibition, setArtistExhibition] = useState();
+    const [params, setParams] = useState({
+        // search: "",
+        page: 1,
+        artist_content__id: artistId,
+  
+    })
+    const getArtistExhibition = () => {
+        apiServices.get(ARTIST_EXHIBITION, QueryString.stringify(params))
+            .then(res => {
+                if (res.data) {
+                    setArtistExhibition(res.data.data)
+                }
+            })
+            .catch(err => {
+                console.log("err", err)
+            })
+    }
+    useEffect(() => {
+        setParams(state => ({ ...state, artist_content__id: artistId }))
+    }, [artistId]);
+  
+    useEffect(() => {
+        getArtistExhibition()
+    }, [params]);
+
     return (
         <div id="artist4" className="tab-pane ">
                         <div className="d-flex box-dir-reverse row-artist-exhibition">

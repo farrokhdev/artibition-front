@@ -60,7 +60,7 @@ const RouterConfig = (props) => {
                 <Route path="my-albums" element={<PanleMyAlbums />} />
                 <Route path="contents" element={<PanelContentList />} />
                 <Route path="create-content" element={<PanelCreateContent />} />
-
+                
                 <Route path="dashboard-gallery" element={<GalleryPanelDashboard />} />
                 <Route path="exhibition-list-gallery" element={<GalleryPanelExhibition />} />
                 <Route path="artist-list-gallery" element={<GalleryPanelArtisit />} />
@@ -71,12 +71,30 @@ const RouterConfig = (props) => {
                 <Route path="select-artist-source" element={<GalleryPanelSelectArtisitSource />} />
                 <Route path="create-artist-artwotk" element={<GalleryPanelCreateArtistArtwork />} />
                 <Route path="upload-exhibition-artwotk" element={<GalleryPanelUploadExhibitionArtwork />} />
+                <Route path="galleries" element={<GalleryPanelMyGallery />} />
                 <Route path="cart" element={<Cart />} />
                 <Route path="invoice" element={<Invoice />} />
                 <Route path="payment" element={<Payment />} />
                 <Route path="success-payment" element={<SuccessPayment />} />
                 <Route path="unsuccess-payment" element={<UnsuccessPayment />} />
                 <Route path="*" element={<Navigate to="/panel/profile" replace />} />
+            </Route>
+
+
+
+
+            <Route path="gallery-panel" animate={true}>
+                <Route path="dashboard" element={<GalleryPanelDashboard />} />
+                <Route path="exhibitions" element={<GalleryPanelExhibition />} />
+                <Route path="artists" element={<GalleryPanelArtisit />} />
+                <Route path="galleries" element={<GalleryPanelMyGallery />} />
+                <Route path="create-exhibition" element={<GalleryPanelCreateExhibition />} />
+                <Route path="edit-gallery" element={<GalleryPanelEditGalleryInfo />} />
+                <Route path="select-artwork-source" element={<GalleryPanelSelectArtworkSource />} />
+                <Route path="select-artist-source" element={<GalleryPanelSelectArtisitSource />} />
+                <Route path="create-artist-artwotk" element={<GalleryPanelCreateArtistArtwork />} />
+                <Route path="upload-exhibition-artwotk" element={<GalleryPanelUploadExhibitionArtwork />} />
+                <Route path="*" element={<Navigate to="/gallery-panel/dashboard" replace />} />
             </Route>
         </Routes>
 

@@ -439,6 +439,9 @@
     "nav-messages": "Messages",
     "nav-profile": "Profile",
     "nav-exhibitions": "Exhibitions",
+    "nav-artists": "Artists",
+    "nav-my-galleries": "My galleries",
+    "nav-content": "Content",
     "invite": {
       "btn": "Invite friends",
       "text": ""
@@ -898,6 +901,7 @@
       "discount": "Discount",
       "last_edition": "Last edition",
       "paid": "Paid",
+      "date": "Date",
       "status": "Status",
       "details": "Details",
       "suggested": "Suggested",
@@ -1330,7 +1334,28 @@
       "new_address_btn": "New address",
       "back_btn": "Back",
       "prev_step": "",
-      "no_address_message": "You have registered no address!"
+      "no_address_message": "You have registered no address!",
+      "modal": {
+        "title": "Add new address",
+        "address_info": "Address info",
+        "province": "Province",
+        "city": "City",
+        "address": "Address",
+        "no.": "No.",
+        "unit": "Unit",
+        "postal_code": "Postal code",
+        "postal_code_description": "Postal code must include 10 digits and no dash",
+        "receiver_information": "Receiver information",
+        "receiver_fullname": "Receiver fullname",
+        "phone_number": "Phone number",
+        "national_code": "National code",
+        "national_code_description": "National code must include 10 digits and no dash",
+        "foreign_checkbox": "I'm a foreign resident. I have no N.C.",
+        "receiver_checkbox": "I'm receiver",
+        "send_friend_checkbox": "I'll send the artwork to my friend",
+        "confirm_btn": "Confirm",
+        "select_address_map": "Select address on map"
+      }
     },
     "pay_step": {
       "title": "Payment method",
@@ -1346,29 +1371,88 @@
       "size": "Size",
       "x": " x ",
       "click_discount_code": "In case you have a discount code, click here",
-      "enter_code":"Enter discount code",
-      "submit_code":"Submit",
+      "enter_code": "Enter discount code",
+      "submit_code": "Submit",
       "pay_btn": "Pay",
       "saman_bank": "Payment is processes through Saman Bank."
     }
   },
-  "success-payment":{
-    "title":"The purchase was successful",
-    "tracing_no":"Tracing No: ",
-    "return_website":"We appreciate your purchase, you will shortly return to Arthibition website.",
-    "finalize_purchase_btn":"Finalize purchase and return to site"
+  "success-payment": {
+    "title": "The purchase was successful",
+    "tracing_no": "Tracing No: ",
+    "return_website": "We appreciate your purchase, you will shortly return to Arthibition website.",
+    "finalize_purchase_btn": "Finalize purchase and return to site"
   },
-  "unsuccess-payment":{
-    "title":"Purchase failed!",
-    "tracing_no":"Tracing No: ",
-    "try_again":"Unfortunately there has been an error. please try again.",
-    "return_site_btn":"Return to site"
+  "unsuccess-payment": {
+    "title": "Purchase failed!",
+    "tracing_no": "Tracing No: ",
+    "try_again": "Unfortunately there has been an error. please try again.",
+    "return_site_btn": "Return to site"
   },
   "header-panel": {
     "shopping_guid": "Shopping guid",
-    "from_site":"",
+    "from_site": "",
     "faq": "FAQ",
     "contact_us": "Contact us: ",
     "phone_number": "021 22538 229"
+  },
+  "promotion": {
+    "price_unit": "USD",
+    "popup": {
+      "view_artworks": "View artworks"
+    },
+    "banner": {
+      "title": "Art to gift",
+      "descriprion": "By gifting an artwork, gift a valuable and permanent work of art to your friends and loved ones.",
+      "price_1_btn": "Up to 500 ",
+      "price_2_btn": "Up to 1000 ",
+      "price_3_btn": "Up to 2000 ",
+      "price_4_btn": "Up to 3000 "
+    },
+    "categories": {
+      "all": "All",
+      "painting": "Painting",
+      "photography": "Photography",
+      "sculpture": "Sculpture",
+      "calligram": "Calligram",
+      "calligraphy": "Calligraphy",
+      "printmaking": "Printmaking",
+      "graphic": "Graphic",
+      "drawing": "Drawing"
+    },
+    "artwork": {
+      "size": "Size: ",
+      "x": " x ",
+      "fast_secure_delivery": "Fast and secure delivery",
+      "send_gift_recipient": "Send directly to gift recipient"
+    }
+  },
+  "promotion-competition": {
+    "banner": {
+      "finished": "Finished",
+      "promotions": "Promotions",
+      "competition_info_btn": "Competition information",
+      "register_btn": "Register",
+      "participants": "Participants "
+    },
+    "artwork":{
+      "size":"Size:",
+      "x":" x ",
+      "price_unit":"USD",
+      "sold_out":"Sold out"
+    },
+    "arthibition_holding_competition": "Arthibition gallery is holding a competition",
+    "selected_artworks": "Selected artworks",
+    "condition": "Condition",
+    "prize": "Prize",
+    "competition_info": "Competition information",
+    "key_dates": "Key dates",
+    "prize_": "Prize",
+    "join_upload_btn": "Join and upload artworks",
+    "filter": "Filter",
+    "remove_all": "Remove all",
+    "last_update_select": "Last update",
+    "visite_select": "visite",
+    "sell_select": "sell"
   }
 }

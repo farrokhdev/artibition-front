@@ -1,4 +1,4 @@
-import React , {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import HeaderPanel from '../../components/HeaderPanel/HeaderPanel';
 import { t } from 'i18next';
 
@@ -8,11 +8,14 @@ import ModalWithdrawal from './ModalWithdrawal';
 import ModalIncrease from './ModalIncrease';
 import BoxArtistPanel from './BoxArtistPanel';
 import BoxWallet from './BoxWallet';
+import ApiServices from "../../utils/api.services";
+import {WALLET} from "../../utils";
 
 function PanelWallet() {
 
     const [visibleWithdrawalModal, setVisibleWithdrawalModal] = useState(false);
     const [visibleIncreaseModal, setVisibleIncreaseModal] = useState(false);
+    const [wallet, setWallet] = useState();
 
     const showWithdrawalModal = () => {
         setVisibleWithdrawalModal(true)
@@ -21,6 +24,18 @@ function PanelWallet() {
     const showIncreaseModal = () => {
         setVisibleIncreaseModal(true)
     }
+
+    useEffect( () => {
+        ApiServices.get(WALLET, "")
+            .then(res=> {
+                if (res.data){
+                    setWallet(res.data.data)
+                }
+            })
+            .catch(reason => {
+                console.log(reason)
+            })
+    },[])
 
 
     return (
@@ -36,6 +51,7 @@ function PanelWallet() {
                 <BoxWallet
                     showWithdrawalModal={showWithdrawalModal}
                     showIncreaseModal={showIncreaseModal}
+                    wallet={wallet}
                 />
             </div>
             <div className="col col-lg-8 ">
@@ -47,11 +63,13 @@ function PanelWallet() {
     <ModalWithdrawal
         setVisibleWithdrawalModal={setVisibleWithdrawalModal}
         visibleWithdrawalModal={visibleWithdrawalModal}
+        wallet={wallet}
     />
 
     <ModalIncrease
         setVisibleIncreaseModal={setVisibleIncreaseModal}
         visibleIncreaseModal={visibleIncreaseModal}
+        wallet={wallet}
     />
 
         <BasketFooterPanel />

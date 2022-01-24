@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { t } from 'i18next';
 import GalleyRelatedContent from './GalleyRelatedContent';
 import IntroducingTheExhibition from './IntroducingTheExhibition';
@@ -6,20 +6,59 @@ import { Breadcrumb, Tabs } from 'antd';
 import AllArtworks from './AllArtworks';
 import gallery400 from '../../assets/img/gallery/400.jpg';
 import articles100 from '../../assets/img/articles/100.jpg';
+import apiServices from '../../utils/api.services';
+import QueryString from 'qs';
+import { GALLERY_ARTISTS, GALLERY_EXHIBITION } from '../../utils';
+import { useTranslation } from 'react-i18next';
 
-function Introduction() {
+function Introduction({id, galleryIntroduction}) {
 
     const { TabPane } = Tabs;
-
+    const { t, i18n } = useTranslation();
+    const [galleryExhibition, setGalleryExhibition] = useState();
+    const [galleryArtists, setGalleryArtists] = useState();
+    const [params, setParams] = useState({
+        search: "",
+        page: 1,
+        
+    })
     function callback(key) {
         console.log(key);
     }
+
+    const getGalleryExhibition = () => {
+        apiServices.get(GALLERY_EXHIBITION(id), QueryString.stringify(params))
+        .then(res => {
+            if (res.data) {
+                setGalleryExhibition(res.data.data)
+            }
+        })
+        .catch(err => {
+            console.log("err", err)
+        })
+    }
+    const getGalleryArtists = () => {
+        apiServices.get(GALLERY_ARTISTS(id), QueryString.stringify(params))
+        .then(res => {
+            if (res.data) {
+                setGalleryArtists(res.data.data)
+            }
+        })
+        .catch(err => {
+            console.log("err", err)
+        })
+    }
+
+    useEffect(() => {
+        getGalleryExhibition()
+        getGalleryArtists()
+    }, [params]);
 
     return (
         <div className="tab-content">
             <div id="gallery1" className="tab-pane fade in active">
                 <div className="content-body">
-                    <IntroducingTheExhibition />
+                    <IntroducingTheExhibition galleryIntroduction={galleryIntroduction}/>
                 </div>
                 <div className="events" style={{ marginLeft: '30px' }}>
 
@@ -37,7 +76,7 @@ function Introduction() {
                     </div>
                 </div>
 
-                <GalleyRelatedContent />
+                <GalleyRelatedContent galleryExhibition={galleryExhibition} galleryIntroduction={galleryIntroduction}/>
 
                 <div className="events" style={{ marginLeft: '30px' }}>
                     <div className="row">
@@ -133,15 +172,21 @@ function Introduction() {
 
 
                                 <div style={{ overflow: 'auto' }} className="owl-carousel d-flex" id="gallery-artists">
-                                    {[1, 2, 3, 4, 5, 6].map((artist) => {
+                                    {galleryArtists?.results?.map((artist) => {
                                         return (
 
                                             <div className="gallery-artist-img">
-                                                <img src={gallery400} width="192" height="192" alt=""
+                                                <img src={artist?.bg_image?.exact_url} width="192" height="192" alt=""
                                                     className="ml-5 pl-3 img-fluid" />
                                                 <h6 className="gallery-artist-name">
-                                                    <span>آیدین</span>
-                                                    <span>آغداشلو</span>
+                                                {i18n.language === 'fa-IR' ?
+                                                    <>
+                                                    <span>{artist?.translations?.fa?.nick_name}</span>
+                                                    </>
+                                                    :
+                                                    <>
+                                                    <span>{artist?.translations?.en?.nick_name}</span>
+                                                    </>}
                                                 </h6>
                                                 <button type="button" class=" btn-follow">{t("artwork.follow")}</button>
 
@@ -159,7 +204,7 @@ function Introduction() {
                                         </div>
                                     </div>
                                     <div className="clearfix"></div>
-                                    <div className="row">
+                                    <div className="row container">
                                         {[1, 2, 3].map((article) => {
                                             return (
 
