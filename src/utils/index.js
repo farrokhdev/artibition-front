@@ -21,3 +21,6 @@ export const ARTIST_PROFILE = id => `/artist/${id}/`
 export const ARTIST_CONTENT = "/artist/content/"
 export const ARTIST_EXHIBITION = "/artist/exhibition/"
 export const ORDER_SELERS =  "/orders/sellers/"
+export const WALLET =  "/accounting/wallet/me/"
+export const WALLET_TRANSACTIONS =  "/accounting/wallet-transactions/"
+export const GALLERY_FOLLOW = '/social-network/follow/'

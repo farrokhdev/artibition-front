@@ -13,13 +13,14 @@ import StatusSection from "../DashboarPanel/StatusSection";
 import Promotions from "../DashboarPanel/Promotions";
 import MyIncome from "../DashboarPanel/MyIncome";
 import BasketFooterPanel from "../../components/BasketFooterPanel/BasketFooterPanel";
+import SidebarGalleryPanel from "../../components/SidebarGalleryPanel/SidebarGalleryPanel";
 
 function GalleryPanelDashboard() {
     return (
         <>
             <HeaderPanel t={t} />
             <div className="panel-style margin-top-20">
-                <SidebarPanel />
+                <SidebarGalleryPanel />
                 <div className="custom-container">
                     <div className="row box-dir-reverse dir">
                         <div className="col-md-8">

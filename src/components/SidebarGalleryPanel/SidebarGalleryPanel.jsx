@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 import { useTranslation } from "react-i18next";
 
-function SidebarPanel(props) {
+function SidebarGalleryPanel(props) {
     const { t, i18n } = useTranslation();
 
     return (
@@ -38,28 +38,22 @@ function SidebarPanel(props) {
 
                 <div className="d-block mt-5">
                     <ul className="text-dir">
-                        <li className="sidebar-icon" id="home"><Link to="/panel/dashboard"><span
+                        <li className="sidebar-icon  my-4" id="home"><Link to="/panel/dashboard"><span
                             className="sidebar-nav-margin">{t("drawer-panel.nav-dashboard")}</span></Link></li>
-                        <li className="sidebar-icon my-4" id="manage-artworks"><Link to="/panel/art-management"><span
+                        <li className="sidebar-icon my-4" id="manage-artworks"><Link to="/gallery-panel/art-management"><span
                             className="sidebar-nav-margin">{t("drawer-panel.nav-art-management")}</span></Link></li>
-                        <li className="sidebar-icon my-4" id="mypurchase"><Link to="/panel/purchases"><span
-                            className="sidebar-nav-margin">{t("drawer-panel.nav-mypurchases")}</span></Link></li>
-                        <li className="sidebar-icon my-4" id="financial"><Link to="/panel/orders"><span
+                        <li className="sidebar-icon my-4" id="financial"><Link to="/gallery-panel/orders"><span
                             className="sidebar-nav-margin">{t("drawer-panel.nav-orders")}</span></Link></li>
-                        <li className="sidebar-icon my-4" id="wallet"><Link to="/panel/wallet"><span
-                            className="sidebar-nav-margin">{t("drawer-panel.nav-wallet")}</span></Link></li>
-                        <li className="sidebar-icon my-4" id="my-albums"><Link to="/panel/my-albums"><span
-                            className="sidebar-nav-margin">{t("drawer-panel.nav-my-albums")}</span></Link></li>
+                        <li className="sidebar-icon my-4 " id="messages"><Link to="/gallery-panel/messages"><span
+                            className="sidebar-nav-margin">{t("drawer-panel.nav-messages")}</span></Link></li>
+                        <li className="sidebar-icon " id="content"><Link to="/panel/orders"><span
+                            className="sidebar-nav-margin">{t("drawer-panel.nav-content")}</span></Link></li>
                         <li className="sidebar-icon my-4" id="my-albums"><Link to="/panel/my-albums"><span
                             className="sidebar-nav-margin">{t("drawer-panel.nav-exhibitions")}</span></Link></li>
-                        <li className="sidebar-icon my-4" id="liked"><Link to="/panel/favorites"><span
-                            className="sidebar-nav-margin">{t("drawer-panel.nav-favorits")}</span></Link></li>
-                        <li className="sidebar-icon my-4 " id="messages"><Link to="/panel/messages"><span
-                            className="sidebar-nav-margin">{t("drawer-panel.nav-messages")}</span></Link></li>
-                        <li className="sidebar-icon my-4 active" id="profile"><Link to="/panel/profile"><span
-                            className="sidebar-nav-margin">{t("drawer-panel.nav-profile")}</span></Link></li>
-                        <li className="sidebar-icon my-4" id="gallery"><Link to={"/gallery-panel/dashboard"}><span
-                        className="sidebar-nav-margin">{t("drawer-panel.nav-my-galleries")}</span></Link></li>
+                        <li className="sidebar-icon  my-4" id="artists"><Link to="/panel/profile"><span
+                            className="sidebar-nav-margin">{t("drawer-panel.nav-artists")}</span></Link></li>
+                        <li className="sidebar-icon  my-4" id="gallery"><Link to="/panel/profile"><span
+                            className="sidebar-nav-margin">{t("drawer-panel.nav-my-galleries")}</span></Link></li>
                     </ul>
                 </div>
 
@@ -82,4 +76,4 @@ const mapStateToProps = (store) => {
 }
 
 
-export default connect(mapStateToProps)(SidebarPanel)
+export default connect(mapStateToProps)(SidebarGalleryPanel)

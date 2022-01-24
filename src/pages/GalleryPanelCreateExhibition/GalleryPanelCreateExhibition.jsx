@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { t } from 'i18next';
 import HeaderPanel from '../../components/HeaderPanel/HeaderPanel';
 import BasketFooterPanel from '../../components/BasketFooterPanel/BasketFooterPanel';
@@ -7,10 +7,19 @@ import { GetLanguage } from '../../utils/utils';
 
 import cloude_upload_icon from '../../assets/img/cloud-upload.svg';
 import { Link } from 'react-router-dom';
+import { Modal } from 'antd';
+import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+import '../../assets/style/leaflet.scss'
 
 function GalleryPanelCreateExhibition() {
 
+<<<<<<< HEAD
 
+=======
+    const [showMap, setShowMap] = useState(false)
+    const [point, setPoint] = useState({})
+    const [zoom, setZoom] = useState(11)
+>>>>>>> 8ac4176cdeb475af3362a5f476b8ba63f8006d15
 
     return (
         <>
@@ -261,7 +270,7 @@ function GalleryPanelCreateExhibition() {
                                 </div>
                             </div>
                             <div className="col-sm-3">
-                                <button type="button" className="btn-blue" data-toggle="modal" data-target="#show-map">
+                                <button type="button" className="btn-blue" data-toggle="modal" data-target="#show-map" onClick={() => { setShowMap(true) }}>
                                     {t("gallery-panel-create-exhibition.select_on_map")}
                                 </button>
                             </div>
@@ -286,13 +295,66 @@ function GalleryPanelCreateExhibition() {
                     </div>
                     <br />
                     <div className="adv-btn">
-                        <Link to={"/panel/upload-exhibition-artwotk"} className="btn-black center-block">
+                        <Link to={"/gallery-panel/upload-exhibition-artwotk"} className="btn-black center-block">
                             {t("gallery-panel-create-exhibition.btn_confirm_next")}
                         </Link>
                     </div>
 
                 </div>
             </div>
+            <Modal
+                visible={showMap}
+                width={800}
+                footer={[]}>
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="exampleModalLabel">{t("payment.address_step.modal.title")}</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={() => { setShowMap(false) }}>
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+
+
+                    <div className="modal-body">
+                        <Map
+                            center={(point?.latitude && point?.longitude) ?
+                                [point?.latitude, point?.longitude] :
+                                ["35.690655", "51.380518"]}
+
+                            zoom={zoom}
+                            onzoomend={e => setZoom(e.target._zoom)}
+                            style={{ width: "100%", height: "500px" }}
+
+                            onclick={e => {
+                                setPoint({ latitude: e.latlng.lat, longitude: e.latlng.lng })
+                            }}
+
+                        >
+                            <TileLayer
+                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                            // attribution="<a href=http://biithome.com>biit.home.com</a>"
+                            />
+
+                            <Marker
+                                position={(point?.latitude && point?.longitude) ?
+                                    [point?.latitude, point?.longitude] :
+                                    ["", ""]}
+                            >
+                                {/* <Popup>موقعیت خانه حراجی</Popup> */}
+                            </Marker>
+
+
+                        </Map>
+                    </div>
+
+
+
+
+                    <div className="modal-footer justify-content-center">
+                        <button type="button" className="btn btn-black" onClick={() => { setShowMap(false) }}>{t("payment.address_step.modal.confirm_btn")}</button>
+                    </div>
+                </div>
+            </Modal>
             <BasketFooterPanel />
         </>
     )

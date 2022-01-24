@@ -13,7 +13,7 @@ import Artist from './Artist';
 import Journal from './Journal';
 import GalleryContact from './GalleryContact';
 import { useTranslation } from 'react-i18next';
-import { GALLERY } from '../../utils';
+import { GALLERY, GALLERY_FOLLOW } from '../../utils';
 import apiServices from '../../utils/api.services';
 import QueryString from 'qs';
 import { useLocation } from 'react-router-dom';
@@ -55,6 +55,21 @@ function GalleryIntroduction() {
             })
     }
 
+    const galleryFollow = () => {
+        // const followParams = {
+        //     activity_type : "following",
+        //     content_type : "gallery"
+        // }
+        // apiServices.post(GALLERY_FOLLOW,QueryString.stringify(followParams))
+        // .then(res => {
+        //     if (res.data) {
+                
+        //     }
+        // })
+        // .catch(err => {
+        //     console.log("err", err)
+        // })
+    }
     useEffect(() => {
         getGalleryIntroduction()
     }, [params]);
@@ -93,7 +108,7 @@ function GalleryIntroduction() {
                         <p className="text-justify">{galleryIntroduction?.translations?.en?.description}</p>
                         </>
     }
-                        <button className="btn btn-galleryfollow">
+                        <button className="btn btn-galleryfollow" onClick={galleryFollow}>
                             <img src={circleplus1} height="17" width="17" alt="" />
                             <span>{t("artwork.follow")}</span>
                         </button>
