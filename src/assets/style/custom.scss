@@ -6589,6 +6589,10 @@ a.sec-timeline {
     color: #e96710;
 }
 
+.active-state .status {
+    // background: #effff6;
+    color: #14ad5b;
+}
 .table button {
     padding: 2px 12px;
 }
@@ -9065,3 +9069,11 @@ span.unit-dimention {
 .flex-wrap{
     flex-wrap: wrap !important;
 }
+
+.image-custom-back{
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    width: 100%;
+    background-color: #eee;
+  }

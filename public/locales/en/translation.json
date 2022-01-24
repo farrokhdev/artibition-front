@@ -707,6 +707,8 @@
   "content-panel-orders": {
     "filters": {
       "all": "All",
+      "Review" : "Review",
+      "Active_on_the_site" : "Active on the site",
       "to_artibition": "To Arthibition",
       "artibition_to_customer": "Arthibition to customer",
       "delivered": "Delivered"
@@ -817,8 +819,11 @@
     "btn_cancel": "Cancel"
   },
   "content-panel-add-artwork": {
-    "step1": "Artwork info",
-    "step2": "Purchase info",
+    "step1": "Complete personal information",
+    "step2": "Complete artistic information",
+    "step3": "Upload 3 artworks",
+    "step4": "Artwork info",
+    "step5": "Purchase info",
     "upload": {
       "title": "Upload photo",
       "text": "Select one or more pictures and drag them here",

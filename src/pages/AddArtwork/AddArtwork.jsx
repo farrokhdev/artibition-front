@@ -40,28 +40,28 @@ function AddArtwork() {
 
 
     const steps = [
-      {
-        title: t("content-panel-add-artwork.step1"),
-        content: <LoginPersonalInfo next={next} />,
-        icon : false
-      },
-      {
-        title: t("content-panel-add-artwork.step1"),
-        content: <LoginArtistInfoForm prev={prev} next={next} />,
-        icon : false
-      },
-      {
-        title: t("content-panel-add-artwork.step1"),
-        content: <LoginUploadArtworks prev={prev} next={next} />,
-        icon : false
-      },
+      // {
+      //   title: t("content-panel-add-artwork.step1"),
+      //   content: <LoginPersonalInfo next={next} />,
+      //   icon : false
+      // },
+      // {
+      //   title: t("content-panel-add-artwork.step2"),
+      //   content: <LoginArtistInfoForm prev={prev} next={next} />,
+      //   icon : false
+      // },
+      // {
+      //   title: t("content-panel-add-artwork.step3"),
+      //   content: <LoginUploadArtworks prev={prev} next={next} />,
+      //   icon : false
+      // },
         {
-          title: t("content-panel-add-artwork.step1"),
+          title: t("content-panel-add-artwork.step4"),
           content: <ArtworkInformation prev={prev} next={next} />,
           icon : false
         },
         {
-          title: t("content-panel-add-artwork.step2"),
+          title: t("content-panel-add-artwork.step5"),
           content: <SellInformation prev={prev} next={next}/>,
           icon : false
         }
