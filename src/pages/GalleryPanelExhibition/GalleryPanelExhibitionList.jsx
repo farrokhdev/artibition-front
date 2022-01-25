@@ -1,13 +1,34 @@
-import React from "react";
-import { t } from 'i18next';
+import React, { useEffect, useState } from "react";
+import i18next, { t } from 'i18next';
 
 
 import viewBlue from '../../assets/img/view-blue.svg'
 import artwork1 from '../../assets/img/artworks/artwork-1.jpg';
 import { Link } from "react-router-dom";
+import apiServices from "../../utils/api.services";
+import { EXHIBITION } from "../../utils";
+import { message } from "antd";
+import moment from "jalali-moment";
 
 
 function GalleryPanelExhibitionList() {
+
+    const [galleries, setGalleries] = useState([])
+
+    useEffect(() => {
+        apiServices.get(EXHIBITION(1), "")
+            .then(res => {
+                if (res.data) {
+                    console.log(res.data.data.results);
+                    setGalleries(res.data.data.results)
+                } else {
+                    message.error(res.response.data.message)
+                }
+
+            })
+    }, [])
+
+
     return (
         <div className="box artistpanel-5">
             <div className="public-header">
@@ -27,26 +48,35 @@ function GalleryPanelExhibitionList() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td data-label={t("gallery-panel-exhibition.table.row")} className="persian-num">1</td>
-                        <td data-label={t("gallery-panel-exhibition.table.image")}><img src={artwork1} width="1776" height="1776"
-                            alt=""
-                            className="img-responsive center-block" /></td>
-                        <td data-label={t("gallery-panel-exhibition.table.gallery_name")}>...نگاهی به هنر مائوریتزیو کاتلان</td>
-                        <td data-label={t("gallery-panel-exhibition.table.type")}>{t("gallery-panel-exhibition.table.presence_virtual")}</td>
-                        <td data-label={t("gallery-panel-exhibition.table.start")} className="persian-num">۹۹/۰۶/۱۰</td>
-                        <td data-label={t("gallery-panel-exhibition.table.end")} className="persian-num">۹۹/۰۶/۱۰</td>
-                        <td data-label={t("gallery-panel-exhibition.table.profile")} className="status">
-                            <a href="#"><img src={viewBlue} width="18" height="18" alt="" className="" /></a>
-                        </td>
-                        <td data-label={t("gallery-panel-exhibition.table.details")} className="status">
-                            <Link to={"/gallery-panel/create-exhibition"} className="btn-outline-blue">
-                                {t("gallery-panel-exhibition.table.edit")}
-                            </Link>
-                            <button type="button" className="btn-outline-blue">{t("gallery-panel-exhibition.table.upload_artwotk")}</button>
-                        </td>
-                    </tr>
-                    <tr>
+                    {galleries &&
+                        galleries.map((gallery, index) => {
+                            return (
+                                <tr key={index}>
+                                    <td data-label={t("gallery-panel-exhibition.table.row")} className="persian-num">{index + 1}</td>
+                                    <td data-label={t("gallery-panel-exhibition.table.image")}><img src={gallery.poster[0].exact_url} width="1776" height="1776"
+                                        alt=""
+                                        className="img-responsive center-block" /></td>
+                                    <td data-label={t("gallery-panel-exhibition.table.gallery_name")}>{i18next.language === 'fa-IR' ?
+                                        gallery.translations?.fa?.name :
+                                        gallery.translations?.en?.name
+                                    }</td>
+                                    <td data-label={t("gallery-panel-exhibition.table.type")}>{t(`gallery-panel-exhibition.table.${gallery.type}`)}</td>
+                                    <td data-label={t("gallery-panel-exhibition.table.start")} className="persian-num">{moment(gallery.start_date.virtual_start_date).locale(i18next.language === 'fa-IR' ? 'fa' : 'en').format('YYYY/MM/DD')}</td>
+                                    <td data-label={t("gallery-panel-exhibition.table.end")} className="persian-num">{moment(gallery.end_date.virtual_end_date).locale(i18next.language === 'fa-IR' ? 'fa' : 'en').format('YYYY/MM/DD')}</td>
+                                    <td data-label={t("gallery-panel-exhibition.table.profile")} className="status">
+                                        <a href="#"><img src={viewBlue} width="18" height="18" alt="" className="" /></a>
+                                    </td>
+                                    <td data-label={t("gallery-panel-exhibition.table.details")} className="status">
+                                        <Link to={"/gallery-panel/create-exhibition"} className="btn-outline-blue">
+                                            {t("gallery-panel-exhibition.table.edit")}
+                                        </Link>
+                                        <button type="button" className="btn-outline-blue">{t("gallery-panel-exhibition.table.upload_artwotk")}</button>
+                                    </td>
+                                </tr>
+                            )
+                        })
+                    }
+                    {/* <tr>
                         <td data-label={t("gallery-panel-exhibition.table.row")} className="persian-num">1</td>
                         <td data-label={t("gallery-panel-exhibition.table.image")}><img src={artwork1} width="1776" height="1776"
                             alt=""
@@ -64,7 +94,7 @@ function GalleryPanelExhibitionList() {
                             </Link>
                             <button type="button" className="btn-outline-blue">{t("gallery-panel-exhibition.table.upload_artwotk")}</button>
                         </td>
-                    </tr>
+                    </tr> */}
                 </tbody>
             </table>
         </div>
