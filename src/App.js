@@ -42,7 +42,7 @@ function App(props) {
             <Routes>
                 <Route path="site" animate={true}>
                     <Route path="artworks" element={<ArtworksPage />} />
-                    <Route path="artworks/:id" element={<DetailsArtwork />} />
+                    <Route path="artworks-detail" element={<DetailsArtwork />} />
                     <Route path="artists" element={<ArtistsPage />} />
                     <Route path="artist-profile" element={<ProfileArtist />} />
                     <Route path="all-galleris-list" element={<AllGallerysList />} />

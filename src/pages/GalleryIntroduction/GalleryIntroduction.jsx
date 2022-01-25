@@ -59,7 +59,8 @@ function GalleryIntroduction() {
     const galleryFollow = () => {
         const followParams = {
             activity_type : "following",
-            content_type : "gallery"
+            content_type : "gallery",
+            object_id: id
         }
         apiServices.post(GALLERY_FOLLOW,QueryString.stringify(followParams))
         .then(res => {
@@ -102,7 +103,7 @@ function GalleryIntroduction() {
                         <li class="active">{t("artist_profile.introduction")}</li>
                     </ul>
                     <div >
-                        <img src={galleryIntroduction?.cover?.exact_url} className="align-items-center d-flex gallery-cover justify-content-center" />
+                        <img src={galleryIntroduction?.cover?.exact_url} className="align-items-center d-flex gallery-cover justify-content-center w-100" />
                     </div>
                     <div className="gallery-info">
                         <div className="gallery-logo">
@@ -134,7 +135,7 @@ function GalleryIntroduction() {
                                     <ul className="nav d-block ">
                                         <Tabs className="antd-tabnav" defaultActiveKey="1" onChange={callback}>
                                             <TabPane className="mx-5 antd-tabnav" tab={t("artist_profile.introduction")} key="1">
-                                                <Introduction id={id} galleryIntroduction={galleryIntroduction}/>
+                                                <Introduction id={id} galleryIntroduction={galleryIntroduction} galleryExhibition={galleryExhibition}/>
                                             </TabPane>
                                             <TabPane tab={t("drawer-panel.nav-exhibitions")} key="2">
                                                 <Exhibition id={id} galleryExhibition={galleryExhibition}/>

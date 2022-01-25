@@ -12,7 +12,6 @@ import { timeToStr } from '../../utils/utils';
 function Exhibition({ id , galleryExhibition}) {
     const { t, i18n } = useTranslation();
     const [toggle, setToggle] = useState(false);
-    // const [galleryExhibition, setGalleryExhibition] = useState();
     const [expired, setExpired] = useState([]);
     const [onPerforming, setOnPerforming] = useState([]);
     const [progressive, setProgressive] = useState([]);
@@ -23,38 +22,11 @@ function Exhibition({ id , galleryExhibition}) {
 
     })
 
-
-    // let expired = []
-    // let onPerforming = []
-    // let progressive = []
     function callback(key) {
         console.log(key);
     }
 
-    // const getGalleryExhibition = () => {
-    //     apiServices.get(GALLERY_EXHIBITION(id), QueryString.stringify(params))
-    //         .then(res => {
-    //             if (res.data) {
-    //                 setGalleryExhibition(res.data.data)
-    //             }
-    //         })
-    //         .catch(err => {
-    //             console.log("err", err)
-    //         })
-    // }
     const getToggle = () => setToggle(true)
-
-    const dividerData = () => {
-        galleryExhibition?.results?.map(item =>{
-            let start =  item.type === "real" ? new Date(item.start_date?.real_start_date) : item.type === "virtual" ? new Date(item.start_date?.virtual_start_date) : new Date(item.start_date?.virtual_real_start_date)
-            let expire =  item.type === "real" ? new Date(item.end_date?.real_end_date) : item.type === "virtual" ? new Date(item.end_date?.virtual_end_date) : new Date(item.end_date?.virtual_real_end_date)
-            let now = new Date()
-            return expire < now ? expired.push(item) : start < now < expire ? onPerforming.push(item) : now < start ?  progressive.push(item) :null
-        })
-    }
-    // useEffect(() => {
-    //     getGalleryExhibition()
-    // }, [params]);
 
     useEffect(() => {
         if (!toggleConfig) {
@@ -66,7 +38,9 @@ function Exhibition({ id , galleryExhibition}) {
             return expire < now ? expired.push(item) : start < now < expire ? onPerforming.push(item) : now < start ?  progressive.push(item) :null
         })}
         }, [galleryExhibition]);
+
 console.log("expired",expired ,galleryExhibition?.results)
+
     return (
         <div id="gallery2" className="tab-pane fade in active">
             {onPerforming.length > 0 && onPerforming?.map((item,index) =>

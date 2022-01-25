@@ -11,11 +11,10 @@ import QueryString from 'qs';
 import { GALLERY_ARTISTS, GALLERY_EXHIBITION } from '../../utils';
 import { useTranslation } from 'react-i18next';
 
-function Introduction({id, galleryIntroduction}) {
+function Introduction({id, galleryIntroduction, galleryExhibition}) {
 
     const { TabPane } = Tabs;
     const { t, i18n } = useTranslation();
-    const [galleryExhibition, setGalleryExhibition] = useState();
     const [galleryArtists, setGalleryArtists] = useState();
     const [params, setParams] = useState({
         search: "",
@@ -26,17 +25,6 @@ function Introduction({id, galleryIntroduction}) {
         console.log(key);
     }
 
-    const getGalleryExhibition = () => {
-        apiServices.get(GALLERY_EXHIBITION(id), QueryString.stringify(params))
-        .then(res => {
-            if (res.data) {
-                setGalleryExhibition(res.data.data)
-            }
-        })
-        .catch(err => {
-            console.log("err", err)
-        })
-    }
     const getGalleryArtists = () => {
         apiServices.get(GALLERY_ARTISTS(id), QueryString.stringify(params))
         .then(res => {
@@ -50,7 +38,6 @@ function Introduction({id, galleryIntroduction}) {
     }
 
     useEffect(() => {
-        getGalleryExhibition()
         getGalleryArtists()
     }, [params]);
 
@@ -58,7 +45,7 @@ function Introduction({id, galleryIntroduction}) {
         <div className="tab-content">
             <div id="gallery1" className="tab-pane fade in active">
                 <div className="content-body">
-                    <IntroducingTheExhibition galleryIntroduction={galleryIntroduction}/>
+                    <IntroducingTheExhibition galleryIntroduction={galleryIntroduction} galleryExhibition={galleryExhibition}/>
                 </div>
                 <div className="events" style={{ marginLeft: '30px' }}>
 
