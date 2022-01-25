@@ -651,7 +651,8 @@
     },
     "promotion": {
       "title": "LEADING PROMOTIONS",
-      "veiw_more": "Veiw more"
+      "veiw_more": "Veiw more",
+      "to": "-"
     },
     "veiw_artwork": {
       "title": "VIEW ARTWORKS",
@@ -912,7 +913,8 @@
       "review": "Review",
       "deactive": "Deactive",
       "sold": "Sold",
-      "uneditable": "Uneditable"
+      "uneditable": "Uneditable",
+      "view": "View"
     }
   },
   "gallery-panel-exhibition": {
@@ -929,9 +931,9 @@
       "details": "Details",
       "edit": "Edit",
       "upload_artwotk": "Upload artwork",
-      "presence": "Presence",
+      "real": "Presence",
       "virtual": "Virtual",
-      "presence_virtual": "Presence / Virtual"
+      "virtual_real": "Presence / Virtual"
     }
   },
   "gallery-panel-create-exhibition": {
@@ -955,7 +957,7 @@
     "graphic": "Graphic",
     "drawing": "Drawing",
     "artists": "َArtists",
-    "enter_artist_name_en": "Enter artist name",
+    "enter_artist_name": "Enter artist name",
     "exhibition_name_en": "Exhibition Name",
     "address_contact_info": "Address and contact info",
     "notice_visiting_hours": "Notice and visiting hours",
@@ -982,6 +984,18 @@
       "or": "or",
       "btn": "Select file",
       "tip": "All pictures must be PNG or JPG and video must be in MP4 format"
+    },
+    "add_new_artist": {
+      "title": "Add new artist",
+      "first_name_fa": "",
+      "first_name_en": "artist`s name",
+      "last_name_fa": "",
+      "last_name_en": "artist`s family",
+      "bio_fa": "",
+      "bio_en": "artist`s biography",
+      "confirm_btn": "Add artist",
+      "upload_artist_picture": "Upload artist`s avatar",
+      "artist_info": "Artist information"
     },
     "subject_fa": "",
     "subject_en": "Title",
@@ -1430,11 +1444,11 @@
       "register_btn": "Register",
       "participants": "Participants "
     },
-    "artwork":{
-      "size":"Size:",
-      "x":" x ",
-      "price_unit":"USD",
-      "sold_out":"Sold out"
+    "artwork": {
+      "size": "Size:",
+      "x": " x ",
+      "price_unit": "USD",
+      "sold_out": "Sold out"
     },
     "arthibition_holding_competition": "Arthibition gallery is holding a competition",
     "selected_artworks": "Selected artworks",
