@@ -1,10 +1,38 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import gallery400 from '../../assets/img/gallery/400.jpg';
 import gallery501 from '../../assets/img/gallery/501.jpg'
-import { t } from 'i18next';
+import { GALLERY_ARTISTS } from '../../utils';
+import apiServices from '../../utils/api.services';
+import QueryString from 'qs';
+import { useTranslation } from 'react-i18next';
 
 
-function Artist() {
+function Artist({id}) {
+    const { t, i18n } = useTranslation();
+
+    const [galleryArtists, setGalleryArtists] = useState();
+    const [params, setParams] = useState({
+        search: "",
+        page: 1,
+        
+    })
+
+    const getGalleryArtists = () => {
+        apiServices.get(GALLERY_ARTISTS(id), QueryString.stringify(params))
+            .then(res => {
+                if (res.data) {
+                    setGalleryArtists(res.data.data)
+                }
+            })
+            .catch(err => {
+                console.log("err", err)
+            })
+    }
+
+    useEffect(() => {
+        getGalleryArtists()
+    }, [params]);
+
     return (
         <div id="gallery4" class="tab-pane fade in active">
             <div class="gallery-artistartwork">
@@ -25,11 +53,11 @@ function Artist() {
                     </div>
                     <div class="col-sm-9 col-xs-8">
                         <div class="owl-carousel gallery-artistartworks d-flex">
-                            {[1, 2, 3].map((item) => {
+                            {galleryArtists?.results?.map((item) => {
                                 return (
                                     <div class="cols mx-4">
                                         <div class="col-img">
-                                            <img src={gallery501} width="830" height="830" alt="آرتیبیشن"
+                                            <img src={item?.bg_image?.exact_url} width="830" height="830" alt="آرتیبیشن"
                                                 class="img-responsive" />
                                             <div class="tab-overly">
                                                 <a href="#" class="btn-see">
@@ -41,9 +69,11 @@ function Artist() {
                                             </div>
                                         </div>
                                         <div class="col-body">
+                                        {i18n.language === 'fa-IR' ?
+                                        <>
                                             <h6 class="col-title">
-                                                <span class="col-name">مجید</span>
-                                                <span class="col-name">کورنگ بهشتی</span>
+                                                <span class="col-name">{item.translations?.fa?.nick_name}</span>
+                                                {/* <span class="col-name">کورنگ بهشتی</span> */}
                                             </h6>
                                             <div class="col-dimension">
                                                 <span> بدون عنوان </span>
@@ -52,6 +82,11 @@ function Artist() {
                                                 <span class="col-price-num">2.100.000</span>
                                                 <span class="col-price-unit">تومان</span>
                                             </div>
+                                        </>
+                                            :
+                                            <>
+                                            </>
+                                }
                                         </div>
                                     </div>
                                 )

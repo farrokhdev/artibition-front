@@ -62,5 +62,13 @@
   "devDependencies": {
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.0.2"
-  }
+  },
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "http://gitlab.amnmoj.ir/arthibition/frontend.git"
+  },
+  "author": "",
+  "license": "ISC"
 }

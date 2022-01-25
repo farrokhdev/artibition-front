@@ -17,7 +17,6 @@ const { Option } = Select;
 const { TextArea } = Input;
 
 function GalleryPanelCreateExhibition() {
-
     const [showMap, setShowMap] = useState(false)
     const [point, setPoint] = useState({})
     const [zoom, setZoom] = useState(11)
@@ -64,10 +63,7 @@ function GalleryPanelCreateExhibition() {
     return (
         <>
             <HeaderPanel t={t} />
-
             <div className="panel-style container mx-auto px-0 w-100 bg-white ">
-
-
                 <h2 className="default-title aligncenter mt-3">{t("gallery-panel-create-exhibition.title")}</h2>
                 <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 create-exhibition">
                     <Form onFinish={onFinish}>

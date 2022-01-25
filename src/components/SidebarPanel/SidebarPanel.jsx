@@ -56,7 +56,7 @@ function SidebarPanel(props) {
                             className="sidebar-nav-margin">{t("drawer-panel.nav-favorits")}</span></Link></li>
                         <li className="sidebar-icon my-4 " id="messages"><Link to="/panel/messages"><span
                             className="sidebar-nav-margin">{t("drawer-panel.nav-messages")}</span></Link></li>
-                        <li className="sidebar-icon my-4 active" id="profile"><Link to="/panel/profile"><span
+                        <li className="sidebar-icon " id="profile"><Link to="/panel/profile"><span
                             className="sidebar-nav-margin">{t("drawer-panel.nav-profile")}</span></Link></li>
                         <li className="sidebar-icon my-4" id="gallery"><Link to={"/gallery-panel/dashboard"}><span
                         className="sidebar-nav-margin">{t("drawer-panel.nav-my-galleries")}</span></Link></li>

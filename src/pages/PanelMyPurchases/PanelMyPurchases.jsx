@@ -44,7 +44,7 @@ function PanelMyPurchases() {
 
 
     useEffect(()=>{
-        console.log(purchase);
+        console.log("purchase",purchase);
     },[purchase])
 
     useEffect(()=>{
