@@ -9,10 +9,10 @@ import QueryString from 'qs';
 import { useTranslation } from 'react-i18next';
 import { timeToStr } from '../../utils/utils';
 
-function Exhibition({ id }) {
+function Exhibition({ id , galleryExhibition}) {
     const { t, i18n } = useTranslation();
     const [toggle, setToggle] = useState(false);
-    const [galleryExhibition, setGalleryExhibition] = useState();
+    // const [galleryExhibition, setGalleryExhibition] = useState();
     const [expired, setExpired] = useState([]);
     const [onPerforming, setOnPerforming] = useState([]);
     const [progressive, setProgressive] = useState([]);
@@ -31,17 +31,17 @@ function Exhibition({ id }) {
         console.log(key);
     }
 
-    const getGalleryExhibition = () => {
-        apiServices.get(GALLERY_EXHIBITION(id), QueryString.stringify(params))
-            .then(res => {
-                if (res.data) {
-                    setGalleryExhibition(res.data.data)
-                }
-            })
-            .catch(err => {
-                console.log("err", err)
-            })
-    }
+    // const getGalleryExhibition = () => {
+    //     apiServices.get(GALLERY_EXHIBITION(id), QueryString.stringify(params))
+    //         .then(res => {
+    //             if (res.data) {
+    //                 setGalleryExhibition(res.data.data)
+    //             }
+    //         })
+    //         .catch(err => {
+    //             console.log("err", err)
+    //         })
+    // }
     const getToggle = () => setToggle(true)
 
     const dividerData = () => {
@@ -52,9 +52,9 @@ function Exhibition({ id }) {
             return expire < now ? expired.push(item) : start < now < expire ? onPerforming.push(item) : now < start ?  progressive.push(item) :null
         })
     }
-    useEffect(() => {
-        getGalleryExhibition()
-    }, [params]);
+    // useEffect(() => {
+    //     getGalleryExhibition()
+    // }, [params]);
 
     useEffect(() => {
         if (!toggleConfig) {
@@ -246,8 +246,8 @@ console.log("expired",expired ,galleryExhibition?.results)
             <div className="clearfix"></div>
             <div className="row-pagination">
                 <ul className="pagination">
-                    <li><a href="#">1</a></li>
-                    <li className="active"><a href="#">2</a></li>
+                    <li className="active"><a href="#">1</a></li>
+                    <li ><a href="#">2</a></li>
                     <li><a href="#">3</a></li>
                     <li><a href="#">4</a></li>
                     <li><a href="#">5</a></li>

@@ -13,7 +13,7 @@ import Artist from './Artist';
 import Journal from './Journal';
 import GalleryContact from './GalleryContact';
 import { useTranslation } from 'react-i18next';
-import { GALLERY, GALLERY_FOLLOW } from '../../utils';
+import { GALLERY, GALLERY_EXHIBITION, GALLERY_FOLLOW } from '../../utils';
 import apiServices from '../../utils/api.services';
 import QueryString from 'qs';
 import { useLocation } from 'react-router-dom';
@@ -23,6 +23,7 @@ function GalleryIntroduction() {
     const { TabPane } = Tabs;
     const { t, i18n } = useTranslation();
     const [galleryIntroduction, setGalleryIntroduction] = useState();
+    const [galleryExhibition, setGalleryExhibition] = useState();
     const [params, setParams] = useState({
         search: "",
         page: 1,
@@ -56,22 +57,34 @@ function GalleryIntroduction() {
     }
 
     const galleryFollow = () => {
-        // const followParams = {
-        //     activity_type : "following",
-        //     content_type : "gallery"
-        // }
-        // apiServices.post(GALLERY_FOLLOW,QueryString.stringify(followParams))
-        // .then(res => {
-        //     if (res.data) {
+        const followParams = {
+            activity_type : "following",
+            content_type : "gallery"
+        }
+        apiServices.post(GALLERY_FOLLOW,QueryString.stringify(followParams))
+        .then(res => {
+            if (res.data) {
                 
-        //     }
-        // })
-        // .catch(err => {
-        //     console.log("err", err)
-        // })
+            }
+        })
+        .catch(err => {
+            console.log("err", err)
+        })
+    }
+    const getGalleryExhibition = () => {
+        apiServices.get(GALLERY_EXHIBITION(id), QueryString.stringify(params))
+            .then(res => {
+                if (res.data) {
+                    setGalleryExhibition(res.data.data)
+                }
+            })
+            .catch(err => {
+                console.log("err", err)
+            })
     }
     useEffect(() => {
         getGalleryIntroduction()
+        getGalleryExhibition()
     }, [params]);
 
     console.log("id",galleryIntroduction)
@@ -124,13 +137,13 @@ function GalleryIntroduction() {
                                                 <Introduction id={id} galleryIntroduction={galleryIntroduction}/>
                                             </TabPane>
                                             <TabPane tab={t("drawer-panel.nav-exhibitions")} key="2">
-                                                <Exhibition id={id}/>
+                                                <Exhibition id={id} galleryExhibition={galleryExhibition}/>
                                             </TabPane>
                                             <TabPane tab={t("nav-menu-artworks")} key="3">
                                                 <Artworks id={id}/>
                                             </TabPane>
                                             <TabPane tab={t("artist_profile.artists")} key="4">
-                                                <Artist id={id}/>
+                                                <Artist id={id} />
                                             </TabPane>
                                             <TabPane tab={t("Journal")} key="5">
                                                 <Journal id={id}/>

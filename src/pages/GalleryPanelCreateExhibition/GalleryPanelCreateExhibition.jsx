@@ -13,13 +13,10 @@ import '../../assets/style/leaflet.scss'
 
 function GalleryPanelCreateExhibition() {
 
-<<<<<<< HEAD
 
-=======
     const [showMap, setShowMap] = useState(false)
     const [point, setPoint] = useState({})
     const [zoom, setZoom] = useState(11)
->>>>>>> 8ac4176cdeb475af3362a5f476b8ba63f8006d15
 
     return (
         <>
