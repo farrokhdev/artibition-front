@@ -33,4 +33,5 @@ export const ARTIST_EXHIBITION = "/artist/exhibition/";
 export const WALLET =  "/accounting/wallet/me/";
 export const WALLET_TRANSACTIONS =  "/accounting/wallet-transactions/";
 export const GALLERY_FOLLOW = "/social-network/follow/";
+export const MESSAGES_ASSERTION = "/message/assertion/";
 
