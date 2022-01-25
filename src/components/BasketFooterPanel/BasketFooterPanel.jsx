@@ -10,12 +10,12 @@ function BasketFooterPanel() {
                     <div className="d-block d-sm-flex box-dir-reverse">
                         <div className="col col-sm-8 col-md-7 col-lg-6  px-0 ">
                             <div className="d-flex justify-content-center">
-                                <span>{t("text-footer-profile.info")}</span>
+                                <span>{t("text-footer-auth.info")}</span>
                             </div>
                         </div>
                         <div className="col px-0 ">
                             <div className="d-flex justify-content-center">
-                                <span className="persian-num">{t("text-footer-profile.mobile")}</span>
+                                <span className="persian-num">{t("text-footer-auth.mobile")}</span>
                             </div>
                         </div>
                     </div>

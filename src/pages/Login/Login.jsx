@@ -25,7 +25,7 @@ function Login(props) {
         APIService.get(PROFILE, "")
             .then(res => {
                 if (res.data) {
-                    props.setProfile( {...props.state , profile : res.data.data} )
+                    props.setProfile( {...props.state , profile : res.data.data,id: res.data.data.id} )
                 } else {
                     message.error(res.response.data.message)
                 }

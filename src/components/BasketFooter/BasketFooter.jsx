@@ -10,8 +10,8 @@ function BasketFooter() {
                 <div className="d-flex content-box-basket-footer">
                     <div className="col-sm-9">
                         <div className="d-flex content-box-basket-footer">
-                            <span>{t("text-footer-profile.info")}</span>
-                            <span className="persian-num mx-2">{t("text-footer-profile.mobile")}</span>
+                            <span>{t("text-footer-auth.info")}</span>
+                            <span className="persian-num mx-2">{t("text-footer-auth.mobile")}</span>
                         </div>
                     </div>
                     <div className="col-sm-3 hidden-xs">
