@@ -9152,6 +9152,29 @@ textarea.ant-input {
     display: none;
 }
 
+.exhibitionFormCategory .ant-checkbox-wrapper{
+    display: flex !important;
+    padding: 5px 0;
+    margin: 0;
+    direction: ltr;
+}
+
+.ant-select-selector{
+    width: 100%;
+}
+
+.ant-select-selection-placeholder{
+    text-align: left;
+}
+
+.ant-select-item-option{
+    text-align: left;
+    direction: ltr;
+}
+
+// .exhibitionFormCategory .ant-checkbox-group-item:last-child{
+//     margin-right: 8px;
+// }
 .image-custom-back{
     background-repeat: no-repeat;
     background-position: center center;

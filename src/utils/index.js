@@ -9,8 +9,11 @@ export const VERIFY = "/account/verify/";
 export const PROFILE = "/account/profile/";
 export const OPT = "/account/sendotp/";
 export const RECOVER_PASSWORD = "/account/recover-password/";
-export const ORDER_BUYERS = "/orders/buyers/";
-export const ORDER_SELERS =  "/orders/sellers/";
+export const ORDER_BUYERS = "/orders/buyers/"
+export const ORDER_SELERS = "/orders/sellers/"
+export const GALLERY_PANEL_DASHBOARD = (galleryId) => { return (`/gallery/${galleryId}/dashboard/`) }
+export const PROMOTIONS = "/events/promotions/";
+export const EXHIBITION = (galleryId) => { return (`/${galleryId}/exhibition/`) };
 export const PRODUCTS_ME = "/products/me/";
 export const PRODUCTS = "/products/";
 export const PRE_UPLOAD = "/core/upload/";
@@ -34,4 +37,5 @@ export const WALLET =  "/accounting/wallet/me/";
 export const WALLET_TRANSACTIONS =  "/accounting/wallet-transactions/";
 export const GALLERY_FOLLOW = "/social-network/follow/";
 export const PRODUCT_DETAIL = id => `/products/${id}/`
+export const MESSAGES_ASSERTION = "/message/assertion/";
 
