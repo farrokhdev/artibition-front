@@ -1,13 +1,16 @@
 import QueryString from 'qs';
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import artistontent from '../../assets/img/artists/artist-content-1.jpg';
 import video from '../../assets/img/video.png'
 import { GALLERY_CONTENT } from '../../utils';
 import apiServices from '../../utils/api.services';
+import { timeToStr } from '../../utils/utils';
 
 function Journal({id}) {
 
+    const { t, i18n } = useTranslation();
     const [galleryContent, setGalleryContent] = useState();
     const [params, setParams] = useState({
         search: "",
@@ -34,7 +37,7 @@ function Journal({id}) {
     return (
         <div id="gallery5" class="tab-pane fade in active">
             <div class="row">
-                {[1, 2, 3].map((journal) => {
+                {galleryContent?.results?.map((journal) => {
                     return (
                         <div class="col-sm-4">
                             <Link to="/site/gallery-content-page" class="cols">
@@ -42,14 +45,18 @@ function Journal({id}) {
                                     <div class="video-prev"><img src={video} width="36" height="36"
                                         alt="" />
                                     </div>
-                                    <img src={artistontent} width="1000" height="1000"
+                                    <img src={journal.poster?.exact_url} width="1000" height="1000"
                                         alt="آرتیبیشن" class="img-responsive" />
                                 </div>
                                 <div class="col-body">
                                     <h6 class="col-title">
-                                        <span class="col-name">سخنرانی آیدین آغداشلو در تورنتو</span>
+                                    {i18n.language === 'fa-IR' ?
+                                        <span class="col-name">{journal.translations?.fa?.description}</span>
+                                        :
+                                        <span class="col-name">{journal.translations?.en?.description}</span>
+                                    }
                                     </h6>
-                                    <span class="block-time persian-num">۲۰ دی ۹۸</span>
+                                    <span class="block-time persian-num">{timeToStr(journal.creation_date, "jYYYY jMM jDD")}</span>
                                 </div>
                             </Link>
                         </div>

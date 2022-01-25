@@ -40,7 +40,7 @@ export default function NavbarMenuHeader(props) {
                                         <div className="row">
                                             <div className="col-md-7 col-sm-6">
                                                 <ul className="vertical-nav">
-                                                    <li><a href="#">{t("nav-submenu.artworks.artField.all")}</a></li>
+                                                    <li onClick={() => navigate('/site/artworks')}><a href="#">{t("nav-submenu.artworks.artField.all")}</a></li>
                                                     <li><a href="#">{t("nav-submenu.artworks.artField.painting")}</a></li>
                                                     <li><a href="#">{t("nav-submenu.artworks.artField.calligraphy")}</a></li>
                                                     <li><a href="#">{t("nav-submenu.artworks.artField.photography")}</a></li>
