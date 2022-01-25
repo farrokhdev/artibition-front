@@ -647,7 +647,8 @@
     },
     "promotion": {
       "title": "پروموشن‌های پیشرو",
-      "veiw_more": "مشاهده بیشتر"
+      "veiw_more": "مشاهده بیشتر",
+      "to": "الی"
     },
     "veiw_artwork": {
       "title": "بازدید آثار",
@@ -859,7 +860,8 @@
       "review": "بررسی مجدد",
       "deactive": "غیر‌فعال",
       "sold": "فروخته شد",
-      "uneditable": "غیر قابل ویرایش"
+      "uneditable": "غیر قابل ویرایش",
+      "view": "مشاهده"
     }
   },
   "gallery-panel-exhibition": {
@@ -876,9 +878,9 @@
       "details": "جزئیات",
       "edit": "ویرایش",
       "upload_artwotk": "آپلود اثر",
-      "presence": "حضوری",
-      "virtual": "مجاری",
-      "presence_virtual": "حضوری/مجازی"
+      "real": "حضوری",
+      "virtual": "مجازی",
+      "virtual_real": "حضوری/مجازی"
     }
   },
   "gallery-panel-create-exhibition": {
@@ -903,6 +905,7 @@
     "drawing": "طراحی",
     "artists": "لیست هنرمندان",
     "enter_artist_name_fa": "نام هنرمند را وارد نمایید",
+    "enter_artist_name": "نام هنرمند را وارد نمایید",
     "enter_artist_name_en": "Enter artist name",
     "exhibition_name_fa": "نام نمایشگاه",
     "exhibition_name_en": "Exhibition Name",
@@ -933,6 +936,18 @@
       "or": " یا ",
       "btn": "انتخاب فایل از سیستم",
       "tip": "ابعاد عکس ها می‌بایست حداقل ۹۶۰ در ۹۶۰ و با فرمت  PNG و یا JPG باشند"
+    },
+    "add_new_artist": {
+      "title": "افزودن هنرمند جدید",
+      "first_name_fa": "نام هنرمند",
+      "first_name_en": "artist`s name",
+      "last_name_fa": "نام خانوادگی هنرمند",
+      "last_name_en": "artist`s family",
+      "bio_fa": "بیوگرافی هنرمند",
+      "bio_en": "artist`s biography",
+      "confirm_btn": "افزودن هنرمند",
+      "upload_artist_picture":"آپلود تصویر هنرمند",
+      "artist_info": "اطلاعات هنرمند"
     },
     "subject_fa": "عنوان",
     "subject_en": "Title",
@@ -1379,7 +1394,7 @@
       "size": "ابعاد: ",
       "x": " در ",
       "price_unit": "تومان",
-      "sold_out":"فروخته شد"
+      "sold_out": "فروخته شد"
     },
     "arthibition_holding_competition": "گالری آرتیبیشن برگزار می‌کند",
     "selected_artworks": "آثار برگزیده",
