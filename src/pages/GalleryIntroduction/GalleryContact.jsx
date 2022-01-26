@@ -23,7 +23,7 @@ function GalleryContact({galleryIntroduction}) {
                         زيرزمين */}
                     </li>
                     <li class="persian-num" id="gallery-contact-phone">
-                        <a href={galleryIntroduction.phone}>{galleryIntroduction?.phone}</a>
+                        <a href={galleryIntroduction?.phone}>{galleryIntroduction?.phone}</a>
                     </li>
                     <li class="persian-num" id="gallery-contact-time">
                     {i18n.language === 'fa-IR' ?

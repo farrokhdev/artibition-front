@@ -37,5 +37,6 @@ export const WALLET = "/accounting/wallet/me/";
 export const WALLET_TRANSACTIONS = "/accounting/wallet-transactions/";
 export const GALLERY_FOLLOW = "/social-network/follow/";
 export const ARTIST_BY_GALLERY = id => `/${id}/artists/define/`
-
+export const PRODUCT_DETAIL = id => `/products/${id}/`
+export const MESSAGES_ASSERTION = "/message/assertion/";
 
