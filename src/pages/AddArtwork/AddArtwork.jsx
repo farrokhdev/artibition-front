@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useState} from 'react'
 import BasketFooter from '../../components/BasketFooter/BasketFooter';
 import { Steps, Button, message, Popover } from 'antd';
 import HeaderPanel from '../../components/HeaderPanel/HeaderPanel';
@@ -15,7 +15,7 @@ const { Step } = Steps;
 
 function AddArtwork() {
 
-    const [current, setCurrent] = React.useState(0);
+    const [current, setCurrent] = useState(0);
 
     const next = () => {
       setCurrent(current + 1);
