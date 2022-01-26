@@ -100,6 +100,7 @@
   "membership-info": "To recover the password, first enter the 4-digit code that sent to your mobile number.",
   "placeholder-activation-code": "Enter activation code",
   "text-btn-confirm-mobile-number": "Confirm mobile number",
+  "text-btn-confirm-email": "Confirm mobile email",
   "title_lang-header": "فارسی",
   "nav-menu-artworks": "Artworks",
   "nav-menu-showroom": "Showroom",
@@ -1468,5 +1469,8 @@
     "last_update_select": "Last update",
     "visite_select": "visite",
     "sell_select": "sell"
+  },
+  "add-new-artist-by-gallery":{
+    "upload_avatar_error":"Please upload avatar for artist"
   }
 }

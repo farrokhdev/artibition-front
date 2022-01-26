@@ -21,7 +21,8 @@ function SellInformation({ prev, next }) {
     const [isValidEdition, setIsValidEdition] = useState(false);
     const [isValidSaleInformation, setIsValidSaleInformation] = useState(false);
     const Language = GetLanguage();
-    console.log("lastform====>", lastform);
+  
+
 
     const onFinish = (values) => {
         console.log("values1", values);
@@ -42,9 +43,12 @@ function SellInformation({ prev, next }) {
             },
 
         }
+
+        // If the information is empty, read the values ​​without the edition number
         if (isValidSaleInformation) {
             payload.items = values.items
         }
+
         apiServices.post(PRODUCTS, payload)
             .then(res => {
                 if (res.data) {
@@ -76,10 +80,11 @@ function SellInformation({ prev, next }) {
         console.log('Success:', values);
     };
 
+    // If there is no user information, it redirects the user to the previous page
     useEffect(() => {
         if (Object.keys(lastform)?.length === 0) {
             prev()
-            console.log("ObjectKey", Object.keys(lastform)?.length);
+            // console.log("ObjectKey", Object.keys(lastform)?.length);
         }
     }, []);
 

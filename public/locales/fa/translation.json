@@ -100,6 +100,7 @@
   "membership-info": "جهت بازیابی رمز عبور ابتدا کد 4 رقمی ارسال شده به شماره همراه خود را وارد نمایید.",
   "placeholder-activation-code": "کد فعالسازی",
   "text-btn-confirm-mobile-number": "تایید شماره همراه",
+  "text-btn-confirm-email": "تایید ایمیل",
   "title_lang-header": "En",
   "nav-menu-artworks": "آثار هنری",
   "nav-menu-showroom": "تالار",
@@ -1409,5 +1410,8 @@
     "last_update_select": "محبوب ترین‌ها",
     "visite_select": "پربازدید",
     "sell_select": "پرفروش"
+  },
+  "add-new-artist-by-gallery":{
+    "upload_avatar_error":"لطفا یک عکس برای هنرمند آپلود کنید"
   }
 }

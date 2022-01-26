@@ -29,24 +29,14 @@ function ArtworkInformation({ next, prev }) {
     const [material, setMaterial] = useState([]);
     const [materialId, setMaterialId] = useState({ material_id: [] })
     const [sotialCollection, setSotialCollection] = useState([]);
+    const Language = GetLanguage();
     const [params, setParams] = useState({
         owner_id : id,
     });
 
 
-    console.log("uploadList==>" , uploadList);
-    console.log("newArtwork", newArtwork.category_id);
-    console.log("subjectId", subjectId.subject_id);
-    console.log("techniqueId", techniqueId.technique_id);
-    console.log("materialId", materialId.material_id);
-
-
-    console.log("id=======>" , id);
-
     // The job of this constant is to send the information needed to make the artwork
     const onFinish = (values) => {
-        console.log("values", values);
-
         let payload = {
             "translations": {
                 "fa": {
@@ -78,10 +68,9 @@ function ArtworkInformation({ next, prev }) {
         dispach(artworkForm(payload))
         next()
       
-        console.log('Success:', values);
+        // console.log('Success:', values);
     };
 
-    const Language = GetLanguage();
     // get list of sub category for show to user and select by users in dropdown to create art field
     const getListCategory = () => {
         apiServices.get(PRODUCTS_CATEGORIES, "")
@@ -108,29 +97,32 @@ function ArtworkInformation({ next, prev }) {
             category_id: value
         })
     }
+    // function for set subject by categories id
     const handleSetSubject = (value) => {
         setSubjectId({
             ...subjectId,
             subject_id: value
         })
     }
+    // function for set technique by categories id
     const handleSetTechnique = (value) => {
         setTechniqueId({
             ...techniqueId,
             technique_id: value
         })
     }
+    // function for set material by categories id
     const handleSetMaterial = (value) => {
         setMaterialId({
             ...materialId,
             material_id: value
         })
     }
-
+    
+    // Get the list of collections and select it as dropdown
     const getCollections = ()=>{
         apiServices.get(SOCIAL_NETWORK_COLLECTIONS, queryString.stringify(params))
             .then(res=>{
-                console.log("collection==>" , res);
                 // setSotialCollection(res.data.data.map(item=>{}))
             })
             .catch(err=>{
@@ -143,13 +135,13 @@ function ArtworkInformation({ next, prev }) {
     }, []);
 
     useEffect(() => {
+        // If there is a device id, its dependent services will be run if selected
         if(newArtwork?.category_id){
 
         
         // Gets and displays a list of topics by filtering the art field
         apiServices.get(SUBJECTS_CATEGORISE(newArtwork?.category_id), "")
             .then(res => {
-                // console.log("Subject=>", res);
                 setSubject(res.data.data.map(item => {
 
                     if (Language === 'fa-IR') {
@@ -158,8 +150,6 @@ function ArtworkInformation({ next, prev }) {
                         return { label: item?.translations?.en?.title, value: item?.id }
                     }
                 }))
-
-                console.log("subject===>", subject);
             })
             .catch(err => {
                 console.log(err);
@@ -169,7 +159,6 @@ function ArtworkInformation({ next, prev }) {
         // Receives and displays a list of techniques by filtering the art background
         apiServices.get(TECHNIQUS_CATEGORIES(newArtwork?.category_id), "")
             .then(res => {
-                console.log("resTechniques==>", res);
                 setTechnique(res.data.data.map(item => {
 
                     if (Language === 'fa-IR') {
@@ -185,7 +174,6 @@ function ArtworkInformation({ next, prev }) {
 
         apiServices.get(MATERIALS_CATEGORIES(newArtwork?.category_id), "")
             .then(res => {
-                console.log("resTechniques==>", res);
                 setMaterial(res.data.data.map(item => {
 
                     if (Language === 'fa-IR') {
@@ -341,9 +329,6 @@ function ArtworkInformation({ next, prev }) {
                                             onChange={handleSetSubject}
                                             id="info-204"
                                         >
-                                            {/* <Option value="موضوع اول">موضوع اول</Option>
-                                            <Option value="موضوع دوم">موضوع دوم</Option>
-                                            <Option value="موضوع سوم">موضوع سوم</Option> */}
                                         </Select>
 
                                     </Form.Item>
@@ -373,9 +358,6 @@ function ArtworkInformation({ next, prev }) {
                                             onChange={handleSetTechnique}
                                             id="info-205"
                                         >
-                                            {/* <Option value="تکنیک اول">تکنیک اول</Option>
-                                            <Option value="تکنیک دوم">تکنیک دوم</Option>
-                                            <Option value="تکنیک سوم">تکنیک سوم</Option> */}
                                         </Select>
 
                                     </Form.Item>
@@ -403,9 +385,6 @@ function ArtworkInformation({ next, prev }) {
                                             onChange={handleSetMaterial}
                                             id="info-206"
                                         >
-                                            {/* <Option value="متریال اول">متریال اول</Option>
-                                            <Option value="متریال دوم">متریال دوم</Option>
-                                            <Option value="متریال سوم">متریال سوم</Option> */}
                                         </Select>
 
                                     </Form.Item>
@@ -552,19 +531,6 @@ function ArtworkInformation({ next, prev }) {
                                 </div>
                             </div>
                         </div>
-                        {/* <div className="col-sm-12">
-
-                            <label className="d-flex box-dir-reverse lable-checkbox public-group text-dir">
-
-
-                                <Form.Item name="remember" valuePropName="checked" noStyle>
-                                    <Checkbox type="checkbox"></Checkbox>
-                                </Form.Item>
-                                <span className='mx-2'>{t("content-panel-add-artwork.art_info.multi_edition")}</span>
-
-                            </label>
-
-                        </div> */}
                         <div className="d-block d-sm-flex box-dir-reverse w-100">
                             <div
 
@@ -591,8 +557,6 @@ function ArtworkInformation({ next, prev }) {
                                         <Input.TextArea id="info-213" rows={6} showCount maxLength={200} placeholder={t("content-panel-add-artwork.art_info.description_fa")} />
                                     </Form.Item>
 
-                                    {/* <textarea id="info-213" className="form-control " placeholder="توضیحات اثر به فارسی"
-                                      rows="8"></textarea> */}
                                     <label htmlFor="info-213" className="lable-public"></label>
                                 </div>
                             </div>
@@ -619,8 +583,6 @@ function ArtworkInformation({ next, prev }) {
                                         <Input.TextArea className='' id="info-214" rows={6} showCount maxLength={200} placeholder={t("content-panel-add-artwork.art_info.description_en")} />
                                     </Form.Item>
 
-                                    {/* <textarea id="info-214" className="form-control" placeholder="توضیحات اثر به انگلیسی"
-                                      rows="8"></textarea> */}
                                     <label htmlFor="info-214" className="lable-public"></label>
                                 </div>
                             </div>
@@ -653,9 +615,6 @@ function ArtworkInformation({ next, prev }) {
                                         />
 
                                     </Form.Item>
-                                    {/* <input id="info-215" className="form-control input-public " required
-                                   placeholder="" value=""/> */}
-                                    {/* <label htmlFor="info-215" className="lable-public">افزودن تگ (فارسی)</label> */}
                                     <span className="input-help text-dir">{t("content-panel-add-artwork.art_info.text_tag_fa")} </span>
                                 </div>
                             </div>
@@ -687,9 +646,6 @@ function ArtworkInformation({ next, prev }) {
                                         />
 
                                     </Form.Item>
-                                    {/* <input id="info-216" className="form-control input-public " required
-                                   placeholder="" value=""/> */}
-                                    {/* <label htmlFor="info-216" className="lable-public">افزودن تگ (انگلیسی)</label> */}
                                     <span className="input-help text-dir w-100">{t("content-panel-add-artwork.art_info.text_tag_en")}</span>
                                 </div>
                             </div>
