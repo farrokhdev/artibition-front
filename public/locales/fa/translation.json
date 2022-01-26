@@ -1409,5 +1409,8 @@
     "last_update_select": "محبوب ترین‌ها",
     "visite_select": "پربازدید",
     "sell_select": "پرفروش"
+  },
+  "add-new-artist-by-gallery":{
+    "upload_avatar_error":"لطفا یک عکس برای هنرمند آپلود کنید"
   }
 }

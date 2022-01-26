@@ -1468,5 +1468,8 @@
     "last_update_select": "Last update",
     "visite_select": "visite",
     "sell_select": "sell"
+  },
+  "add-new-artist-by-gallery":{
+    "upload_avatar_error":"Please upload avatar for artist"
   }
 }

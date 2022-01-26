@@ -7,15 +7,15 @@ import logo from '../../assets/img/logo.svg'
 
 function BasketFooterPanelNoBox() {
     return (
-        <div class="basket-footer dir w-100">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-9 text-dir">
+        <div className="basket-footer dir w-100">
+            <div className="container">
+                <div className="row">
+                    <div className="col-sm-9 text-dir">
                         <span>{t("text-footer-auth.info")}</span>
-                        <span class="persian-num">{t("text-footer-auth.mobile")}</span>
+                        <span className="persian-num">{t("text-footer-auth.mobile")}</span>
                     </div>
-                    <div class="col-sm-3 hidden-xs">
-                        <img src={logo} width="240" height="62" alt="لوگو-آرتیبیشن" class="img-responsive pull-left" />
+                    <div className="col-sm-3 hidden-xs">
+                        <img src={logo} width="240" height="62" alt="لوگو-آرتیبیشن" className="img-responsive pull-left" />
                     </div>
                 </div>
             </div>

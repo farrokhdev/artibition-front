@@ -8,7 +8,7 @@ import apiServices from '../../utils/api.services';
 
 const { Dragger } = Upload;
 
-function MultipleUpload({ uploadList, setUploadList }) {
+function MultipleUpload({ uploadList, setUploadList, defaultName }) {
 
   const propsUpload = {
     listType: "picture",
@@ -59,7 +59,7 @@ function MultipleUpload({ uploadList, setUploadList }) {
             className="ml-1  mt-2"
             type="radio"
           />
-          <span className="pb-2 mx-2">عکس کاور</span>
+          <span className="pb-2 mx-2">{defaultName, "عکس کاور"}</span>
         </div>,
       ];
     },
