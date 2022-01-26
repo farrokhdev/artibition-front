@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from "../../components/Header/Header";
 import Footer from '../../components/Footer/Footer';
 import Menu from '../../components/Menu/Menu';
@@ -29,13 +29,40 @@ import edit_icon from '../../assets/img/edit_name.svg';
 import ModalEditOffer from './ModalEditOffer';
 import ModalSimilarArtworks from './ModalSimilarArtworks';
 import ModalBidding from './ModalBidding';
+import { PRODUCT_DETAIL } from '../../utils';
+import { useLocation, useSearchParams } from 'react-router-dom';
+import apiServices from '../../utils/api.services';
+import QueryString from 'qs';
+import queryString from 'query-string'
+import { useTranslation } from 'react-i18next';
+import moment from 'moment-jalaali';
+import momentJalaali from "moment-jalaali";
 
 function DetailsArtwork() {
+
+    const { t, i18n } = useTranslation();
+
+    function useQuery() {
+
+        return new URLSearchParams(useLocation().search);
+
+    }
+    var id;
+
+    var query = useQuery();
+
+    id = query.get("id")
+
 
     const [visibleEditOfferModal, setVisibleEditOfferModal] = useState(false)
     const [visibleSimilarArtworksModal, setVisibleSimilarArtworksModal] = useState(false)
     const [visibleBiddingModal, setVisibleBiddingModal] = useState(false)
+    const [productDetail, setProductDetail] = useState();
+    const [params, setParams] = useState({
+        search: "",
+        page: 1,
 
+    })
     const handleShowModalEditOffer = () => {
         setVisibleEditOfferModal(true)
     }
@@ -55,7 +82,23 @@ function DetailsArtwork() {
         console.log(key);
     }
 
+    const getProductDetail = () => {
+        apiServices.get(PRODUCT_DETAIL(id), QueryString.stringify(params))
+            .then(res => {
+                if (res.data) {
+                    setProductDetail(res.data.data)
+                }
+            })
+            .catch(err => {
+                console.log("err", err)
+            })
+    }
 
+    useEffect(() => {
+        getProductDetail()
+    }, [params]);
+
+    console.log("detail", productDetail, id)
     return (
         <>
             <div className="container mx-auto px-0 w-100">
@@ -70,9 +113,13 @@ function DetailsArtwork() {
                         <Breadcrumb.Separator>{'>'}</Breadcrumb.Separator>
                         <Breadcrumb.Item href="">{t("artwork.field.calligram")}</Breadcrumb.Item>
                         <Breadcrumb.Separator>{'>'}</Breadcrumb.Separator>
-                        <Breadcrumb.Item href="">بهروز زیندشتی</Breadcrumb.Item>
+                        {i18n.language === 'fa-IR' ?
+                            <Breadcrumb.Item href="">{productDetail?.translations?.fa?.artist_name}</Breadcrumb.Item>
+                            :
+                            <Breadcrumb.Item href="">{productDetail?.translations?.en?.artist_name}</Breadcrumb.Item>
+                        }
                         <Breadcrumb.Separator>{'>'}</Breadcrumb.Separator>
-                        <Breadcrumb.Item className="active persian-num">۲۵۷۲۷۰۱۴۷۴</Breadcrumb.Item>
+                        <Breadcrumb.Item className="active persian-num">{productDetail?.unique_code}</Breadcrumb.Item>
                     </Breadcrumb>
 
                     <div className="clearfix"></div>
@@ -82,19 +129,21 @@ function DetailsArtwork() {
                                 <div id="myCarousel" className="carousel slide" data-ride="carousel">
                                     <div className="carousel-inner">
                                         <div className="item active">
-                                            <img src={artwork1} alt="Los Angeles" />
+                                            <img src={productDetail?.medias && productDetail?.medias[0]?.exact_url} alt="Los Angeles" />
                                         </div>
 
                                         <div className="item">
-                                            <img src={artwork1} alt="Chicago" />
+                                            <img src={productDetail?.medias && productDetail?.medias[0]?.exact_url} alt="Chicago" />
                                         </div>
                                     </div>
                                     <ol className="carousel-indicators">
-                                        <li data-target="#myCarousel" data-slide-to="0" className="active">
-                                            <img src={artwork1} height="1776" width="1776" alt=""
-                                                className="img-responsive" />
-                                        </li>
-                                        <li data-target="#myCarousel" data-slide-to="0" className="active">
+                                        {productDetail?.medias && productDetail?.medias?.map((item) =>
+                                            <li data-target="#myCarousel" data-slide-to="0" className="active">
+                                                <img src={item.exact_url} height="1776" width="1776" alt=""
+                                                    className="img-responsive" />
+                                            </li>
+                                        )}
+                                        {/* <li data-target="#myCarousel" data-slide-to="0" className="active">
                                             <img src={artwork1} height="1776" width="1776" alt=""
                                                 className="img-responsive" />
                                         </li>
@@ -112,7 +161,7 @@ function DetailsArtwork() {
                                         <li data-target="#myCarousel" data-slide-to="0" className="active">
                                             <img src={artwork1} height="1776" width="1776" alt=""
                                                 className="img-responsive" />
-                                        </li>
+                                        </li> */}
                                     </ol>
                                     <div className=" artwork-options pull-dir ">
                                         <div className="share-option ">
@@ -137,7 +186,13 @@ function DetailsArtwork() {
                                     <div className="col-xs-9">
                                         <div className="row box-dir-reverse">
                                             <div className="col-sm-6">
-                                                <h2 className="artist-fullname text-dir">بهروز زیندشتی</h2>
+                                                <h2 className="artist-fullname text-dir">
+                                                    {i18n.language === 'fa-IR' ?
+                                                        productDetail?.translations?.fa?.artist_name
+                                                        :
+                                                        productDetail?.translations?.en?.artist_name
+                                                    }
+                                                </h2>
                                                 <button type="button" className="btn btn-galleryfollow pull-dir">
                                                     <div className="d-flex box-dir-reverse">
                                                         <img src={circle_plus} width="17" height="17" alt="" className="pull-right" />
@@ -153,7 +208,14 @@ function DetailsArtwork() {
                                             </div>
                                             <div className="clearfix"></div>
                                             <div className="col-xs-12">
-                                                <h3 className="artwork-name text-dir">{t("artwork.untitle")}</h3>
+                                                <h3 className="artwork-name text-dir">
+                                                {i18n.language === 'fa-IR' ?
+                                                        productDetail?.translations?.fa?.title
+                                                        :
+                                                        productDetail?.translations?.en?.title
+                                                    }
+                                                    {/* {t("artwork.untitle")} */}
+                                                </h3>
                                             </div>
                                         </div>
                                     </div>
@@ -163,30 +225,55 @@ function DetailsArtwork() {
                                         <div className="col-xs-12">
                                             <div className="d-flex box-dir-reverse row-listdetail">
                                                 <span className="col-xs-4 detail-title text-dir">{t("artwork.code")}</span>
-                                                <span className="col-xs-8 detail-name persian-num text-dir">۲۵۷۲۷۰۱۴۷۴</span>
+                                                <span className="col-xs-8 detail-name persian-num text-dir">{productDetail?.unique_code}</span>
                                             </div>
                                             <div className="d-flex box-dir-reverse row-listdetail">
                                                 <span className="col-xs-4 detail-title text-dir">{t("artwork.field.title")}</span>
-                                                <h3 className="col-xs-8 detail-name text-dir">{t("artwork.field.calligram")}</h3>
+                                                <h3 className="col-xs-8 detail-name text-dir">
+                                                {i18n.language === 'fa-IR' ?
+                                                    productDetail?.category?.translations?.fa?.title
+                                                    :
+                                                    productDetail?.category?.translations?.en?.title
+                                                }
+                                                    </h3>
                                             </div>
                                             <div className="d-flex box-dir-reverse row-listdetail">
                                                 <span className="col-xs-4 detail-title text-dir">{t("artwork.technique")}</span>
-                                                <h3 className="col-xs-8 detail-name text-dir">{t("artwork.tags.composition")}</h3>
+                                                <h3 className="col-xs-8 detail-name text-dir">
+                                                {i18n.language === 'fa-IR' ?
+                                                    productDetail?.technique?.translations?.fa?.title
+                                                    :
+                                                    productDetail?.technique?.translations?.en?.title
+                                                }
+                                                </h3>
                                             </div>
                                             <div className="d-flex box-dir-reverse row-listdetail">
                                                 <span className="col-xs-4 detail-title text-dir">{t("artwork.material")}</span>
-                                                <h3 className="col-xs-8 detail-name text-dir">{t("artwork.tags.canvas")}</h3>
+                                                <h3 className="col-xs-8 detail-name text-dir">
+                                                {i18n.language === 'fa-IR' ?
+                                                    productDetail?.material?.translations?.fa?.title
+                                                    :
+                                                    productDetail?.material?.translations?.en?.title
+                                                }
+                                                    </h3>
                                             </div>
                                             <div className="d-flex box-dir-reverse row-listdetail">
                                                 <span className="col-xs-4 detail-title text-dir">{t("artwork.create_date")}</span>
-                                                <h3 className="col-xs-8 detail-name persian-num text-dir">۱۳۹۵</h3>
+                                                <h3 className="col-xs-8 detail-name persian-num text-dir">
+                                                {i18n.language === 'fa-IR' ?
+                                                    productDetail?.jalali_creation_year
+                                                    :
+                                                    productDetail?.christian_creation_year
+                                                }
+
+                                                </h3>
                                             </div>
                                             <div className="d-flex box-dir-reverse row-listdetail">
                                                 <span className="col-xs-4 detail-title text-dir">{t("artwork.size")}</span>
                                                 <h3 className="col-xs-8 detail-name text-dir">
-                                                    <span className="dimension-width persian-num">60</span>
+                                                    <span className="dimension-width persian-num">{productDetail?.width}</span>
                                                     <span> در </span>
-                                                    <span className="dimension-height persian-num">60</span>
+                                                    <span className="dimension-height persian-num">{productDetail?.height}</span>
                                                 </h3>
                                             </div>
                                             <div className="d-flex box-dir-reverse row-listdetail">
@@ -198,9 +285,9 @@ function DetailsArtwork() {
                                                             <span>{t("artwork.count.number")}</span>
                                                         </h3>
                                                         <select className="form-control num-select text-dir" id="sel1">
-                                                            <option> ادیشن 1</option>
-                                                            <option>ادیشن 2</option>
-                                                            <option>ادیشن 3</option>
+                                                            <option value="1"> ادیشن 1</option>
+                                                            <option value="2">ادیشن 2</option>
+                                                            <option value="3">ادیشن 3</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -212,7 +299,14 @@ function DetailsArtwork() {
                                 <div className="artwork-seller text-dir">
                                     <div className="d-flex box-dir-reverse">
                                         <img src={alert_icon} width="20" height="20" alt="" />
-                                        <span className="orangecolor">{t("artwork.alarm")}</span>
+                                        <span className="orangecolor">{
+                                            i18n.language === 'fa_IR' ?
+            
+                                            momentJalaali(productDetail?.modified_date).locale('fa').fromNow()
+                                            :
+                                            moment(productDetail?.modified_date).fromNow()
+                                        }
+                                        </span>
                                     </div>
                                 </div>
 
@@ -220,7 +314,13 @@ function DetailsArtwork() {
                                 <div className="d-block d-md-flex box-dir-reverse artwork-priceblock ">
                                     <div className="col px-0">
                                         <div className="d-flex justify-content-center artwork-price">
-                                            <span className="artwork-pricenum persian-num">۴,۰۰۰,۰۰۰</span>
+                                            <span className="artwork-pricenum persian-num">
+                                            {i18n.language === 'fa-IR' ?
+                                                    productDetail?.toman_price
+                                                    :
+                                                    productDetail?.dollar_price
+                                                }
+                                            </span>
                                             <span>{t("toman")}</span>
                                         </div>
                                     </div>
@@ -234,7 +334,12 @@ function DetailsArtwork() {
                                 <div className="d-block d-md-flex box-dir-reverse artwork-priceblock soldout">
                                     <div className="col px-0">
                                         <div className="d-flex justify-content-center artwork-price">
-                                            <span className="artwork-pricenum persian-num">۴,۰۰۰,۰۰۰</span>
+                                            <span className="artwork-pricenum persian-num">
+                                                {i18n.language === 'fa-IR' ?
+                                                    productDetail?.toman_price
+                                                    :
+                                                    productDetail?.dollar_price
+                                                }</span>
                                             <span>{t("toman")}</span>
                                         </div>
                                     </div>
@@ -349,7 +454,12 @@ function DetailsArtwork() {
                     <Tabs className='' defaultActiveKey="1" onChange={callback}>
                         <TabPane className="mx-4" tab={t("artwork.about_artwork.tab_title")} key="1">
                             <p className="text-dir">
-                                {t("artwork.about_artwork.text")}
+                                {/* {t("artwork.about_artwork.text")} */}
+                                {i18n.language === 'fa-IR' ?
+                                    productDetail?.translations?.fa?.about
+                                    :
+                                    productDetail?.translations?.en?.about
+                                }
                                 <button type="button" className="btn-moredown">
                                     <span>{t("artwork.about_artwork.more")}</span>
                                     <img src={more_icon} width="16" height="16" alt="" className="pull-dir px-2" />

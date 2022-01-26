@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
 import gift from '../../assets/img/gift.svg';
 import unread from '../../assets/img/unnamed.jpg';
@@ -6,52 +6,50 @@ import artist4 from '../../assets/img/artist-4.jpg';
 import profile from '../../assets/img/arthibition_profile.svg';
 import add_white_icon from '../../assets/img/add-white.png';
 import { t } from 'i18next';
+import ApiServices from "../../utils/api.services";
+import {MESSAGES_ASSERTION, WALLET_TRANSACTIONS} from "../../utils";
+import queryString from "query-string";
 
 function NotificationTab() {
+
+    const [asser, setAsser] = useState();
+    const [params, setParams] = useState();
+    const [count, setCount] = useState();
+    const [page, setPage] = useState(1);
+
+    useEffect(()=> {
+        ApiServices.get(MESSAGES_ASSERTION, queryString.stringify(params))
+            .then(res=> {
+                if (res.data){
+                    console.log(res.data.data.results)
+                    setAsser(res.data.data.results)
+                    setCount(res.data.data.count)
+                }
+            })
+            .catch(reason => {
+                console.log(reason)
+            })
+    } , [params])
 return (
 <>
 
     <div className="row mx-3">
-
-
-        <div className="message-block unread w-100">
-            <h3 className="d-flex box-dir-reverse msg-header">
-                <img src={gift} className='mx-2' width="22" height="22" alt="" />
-                <span className="msg-title">تخفیف ۲۵ درصدی سایت به مناسبت شب یلدا</span>
-                <span className="msg-new">{t("content-panel-messages.new")}</span>
-            </h3>
-            <p className="text-justify pull-dir">
-                ‏99 تمامی آثار سایت را با ۲۵ درصد تخفیف خریداری نمایید و هدیه‌ای ارزنده راYALDA ضمن
-                عرض تبریک به مناسبت فرا رسیدن شب یلدا، هم اکنون می‌توانید با استفاده از کد تخفیف
-                به خانواده و دوستان خود اهدا نمایید.
-            </p>
-        </div>
-        <div className="message-block  w-100">
-            <h3 className="d-flex box-dir-reverse msg-header">
-                <img src={gift} className='mx-2' width="22" height="22" alt="" />
-                <span className="msg-title">حمایت از سیل‌زدگان خوزستان</span>
-                <span className="msg-new">{t("content-panel-messages.new")}</span>
-            </h3>
-            <p className="text-justify pull-dir">
-            گالری آرتیبیشن با همکاری موسسه محک اقدام به راه‌اندازی طرح حمایت از سیل‌زدگان
-                خوزستان کرده است. با اهدال وجه نقد و یا هر وسیله ضروری در این طرح انسان دوستانه شرکت
-                .نمایید و در ازای کمک خود یک اثر هنری از آرتیبیشن هدیه دریافت نمایید. جهت دریافت
-                اطلاعات بیشتر به <a href="#" className="inner-link">این لینک</a>
-                مراجعه نمایید
-            </p>
-        </div>
-
-        <div className="message-block  w-100">
-            <h3 className="d-flex box-dir-reverse msg-header">
-                <span className="msg-title">قابلیت جدید سایت آرتیبیشن</span>
-                <span className="msg-new">{t("content-panel-messages.new")}</span>
-            </h3>
-            <p className="text-justify pull-dir">
-            .در نسخه جدید سایت آرتیبیشن می‌توانید آثار مورد علاقه خود را در
-                یک کالکشن ذخیره نمایید و به اسم خود در سایت منتشر نمایید
-                <a href="#" className="inner-link">یک کالکشن بسازید</a>
-            </p>
-        </div>
+        {asser?.map((item, key) => {
+            return(
+                <div key={key} className="message-block unread w-100">
+                <h3 className="d-flex box-dir-reverse msg-header">
+                    <img src={gift} className='mx-2' width="22" height="22" alt="" />
+                    <span className="msg-title">{item?.message?.title}</span>
+                    {!item?.is_read && (
+                        <span className="msg-new">{t("content-panel-messages.new")}</span>
+                    )}
+                </h3>
+                <p className="text-justify pull-dir">
+                    {item?.message?.body}
+                </p>
+            </div>
+            )
+        })}
     </div>
     
 </>

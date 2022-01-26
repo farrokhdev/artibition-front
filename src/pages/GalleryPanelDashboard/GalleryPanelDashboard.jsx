@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import HeaderPanel from "../../components/HeaderPanel/HeaderPanel";
 import { t } from 'i18next';
 import SidebarPanel from "../../components/SidebarPanel/SidebarPanel";
@@ -14,8 +14,10 @@ import Promotions from "../DashboarPanel/Promotions";
 import MyIncome from "../DashboarPanel/MyIncome";
 import BasketFooterPanel from "../../components/BasketFooterPanel/BasketFooterPanel";
 import SidebarGalleryPanel from "../../components/SidebarGalleryPanel/SidebarGalleryPanel";
+import apiServices from "../../utils/api.services";
 
 function GalleryPanelDashboard() {
+   
     return (
         <>
             <HeaderPanel t={t} />
@@ -27,7 +29,6 @@ function GalleryPanelDashboard() {
                             <CounterStatus />
                         </div>
                         <div className="col-md-4">
-                            {/* <ContractStatus /> */}
                             <StatusSection/>
                         </div>
                         <div className="col-md-8">
@@ -36,10 +37,8 @@ function GalleryPanelDashboard() {
                         </div>
                         <div className="col-md-4">
                             <CreateExhibition />
-                            {/* <MyRevenue /> */}
-                            <MyIncome/>
+                            {/* <MyIncome/> */}
                             <Promotions/>
-                            {/* <Promotion /> */}
                         </div>
                     </div>
                 </div>

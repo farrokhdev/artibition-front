@@ -9111,3 +9111,26 @@ span.unit-dimention {
     display: none;
 }
 
+.exhibitionFormCategory .ant-checkbox-wrapper{
+    display: flex !important;
+    padding: 5px 0;
+    margin: 0;
+    direction: rtl;
+}
+
+.ant-select-selector{
+    width: 100%;
+}
+
+.ant-select-selection-placeholder{
+    text-align: right;
+}
+
+.ant-select-item-option{
+    text-align: right;
+    direction: rtl;
+}
+
+// .exhibitionFormCategory .ant-checkbox-group-item:last-child{
+//     margin-right: 8px;
+// }
