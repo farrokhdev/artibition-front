@@ -9,7 +9,7 @@ import { t } from 'i18next';
 
 function ModalMessageMember(props) {
 
-    const {visibleDetailMessageMember , setVisibleDetailMessageMember} = props;
+    const {visibleDetailMessageMember , setVisibleDetailMessageMember, message} = props;
 
 
     const handleClose = () => {
@@ -73,106 +73,18 @@ function ModalMessageMember(props) {
                                         </div>
                                         <div className="col ">
                                             <div className="d-flex justify-custom">
-                                            <span className="pull-dir graycolor">19:04 - 2020/05/02</span>
+                                            <span className="pull-dir graycolor">{message?.message?.creation_date}</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="ticket-modal-block-body">
-                                        <p className="text-dir">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                                            diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-                                            volutpat</p>
+                                        <p className="text-dir">
+                                            {message?.message?.body}
+                                        </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
-
-
-                        <div className="ticket-modal-block">
-                            <div className="d-flex box-dir-reverse">
-                                <div className="col-sm-1 col-xs-2 nopadrl">
-                                    <img src={profile_artibition} width="56" height="56" className="img-responsive pull-left" alt='prifile-pic' />
-                                </div>
-
-                                <div className="col">
-                                    <div className="d-block d-md-flex box-dir-reverse">
-                                        <div className="col  px-0">
-                                            <div className="d-flex ">
-                                                <div className="d-block w-100">
-                                                    <div className="col  w-100">
-                                                        <div className="d-flex w-100" >
-                                                            <h4 className="gallery-artist-name text-dir  w-100">Arthibition support</h4>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col ">
-                                                        <div className="d-flex box-dir-reverse">
-                                                            <span className=" graycolor text-dir ">
-                                                                Masoud Molaei
-                                                            </span>
-                                                                <img src={blue_badge} height="20" width="20" alt=""/>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col ">
-                                            <div className="d-flex justify-custom">
-                                            <span className="pull-dir graycolor">19:04 - 2020/05/02</span>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                    <div className="ticket-modal-block-body">
-                                        <p className="text-dir">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                                            diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-                                            volutpat</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                        <div className="ticket-modal-block">
-                            <div className="d-flex box-dir-reverse">
-                                <div className="col-sm-1 col-xs-2 nopadrl">
-                                    <img src={profile} width="56" height="56" className="img-responsive pull-left" alt='prifile-pic' />
-                                </div>
-
-                                <div className="col">
-                                    <div className="d-block d-md-flex box-dir-reverse">
-                                        <div className="col  px-0">
-                                            <div className="d-flex ">
-                                                <div className="d-block w-100">
-                                                    <div className="col  w-100">
-                                                        <div className="d-flex w-100" >
-                                                            <h4 className="gallery-artist-name text-dir  w-100">Your account</h4>
-                                                        </div>
-                                                    </div>
-                                                    <div className="col ">
-                                                        <div className="d-flex">
-                                                            <span className=" graycolor text-dir w-100">0912071837</span>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col ">
-                                            <div className="d-flex justify-custom">
-                                            <span className="pull-dir graycolor">19:04 - 2020/05/02</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="ticket-modal-block-body">
-                                        <p className="text-dir">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed
-                                            diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-                                            volutpat</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
 
                         <div className="modal-footer">
                             <div className="form-group w-100">

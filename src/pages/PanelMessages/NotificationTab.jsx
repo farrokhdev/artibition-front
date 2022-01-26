@@ -21,7 +21,6 @@ function NotificationTab() {
         ApiServices.get(MESSAGES_ASSERTION, queryString.stringify(params))
             .then(res=> {
                 if (res.data){
-                    console.log(res.data.data.results)
                     setAsser(res.data.data.results)
                     setCount(res.data.data.count)
                 }

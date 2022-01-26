@@ -24,7 +24,6 @@ function PanelMyPurchases() {
     })
 
     function callback(key) {
-        console.log(key);
         setParams({paid_status:key})
     }
 
@@ -32,7 +31,6 @@ function PanelMyPurchases() {
         apiServices.get(ORDER_BUYERS, queryString.stringify(params))
             .then(res => {
                 if (res.data){
-                    // console.log(res.data.data.results)
                     setPurchase(res.data.data.results)
                 }
             })
@@ -40,12 +38,6 @@ function PanelMyPurchases() {
                 console.log(err)
             })
     }
-
-
-
-    useEffect(()=>{
-        console.log("purchase",purchase);
-    },[purchase])
 
     useEffect(()=>{
         getMyPurchasesInPanel()
