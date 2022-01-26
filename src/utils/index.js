@@ -29,6 +29,9 @@ export const GALLERY_EXHIBITION = id => `/${id}/exhibition/`
 export const GALLERY_ARTISTS = id => `/${id}/artists/`
 export const GALLERY_CONTENT = id => `/${id}/content/`
 export const ARTIST = "/artist/";
+export const ARTIST_ME = "/artist/me/";
+
+export const ARTIST_ALBUMS = "/artist/albums/"
 export const ARTIST_PRODUCTS = "/products/";
 export const ARTIST_CATEGORY = "/social-network/collections/";
 export const ARTIST_PROFILE = id => `/artist/${id}/`;
@@ -37,8 +40,8 @@ export const ARTIST_EXHIBITION = "/artist/exhibition/";
 export const WALLET = "/accounting/wallet/me/";
 export const WALLET_TRANSACTIONS = "/accounting/wallet-transactions/";
 export const GALLERY_FOLLOW = "/social-network/follow/";
-export const ARTIST_BY_GALLERY = id => `/${id}/artists/define/`
+export const FOLLOW_PRODUCTS ="/social-network/follow/products/";
+export const ARTIST_BY_GALLERY = id => `/${id}/artists/define/`;
 export const ACCOUNT_PROFILE = "/account/profile/";
 export const PRODUCT_DETAIL = id => `/products/${id}/`
 export const MESSAGES_ASSERTION = "/message/assertion/";
-
