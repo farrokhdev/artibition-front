@@ -38,6 +38,7 @@ import Payment from '../pages/Payment/Payment';
 import SuccessPayment from '../pages/SuccessPayment/SuccessPayment';
 import UnsuccessPayment from '../pages/UnsuccessPayment/UnsuccessPayment';
 import ListOfUploadedWorks from '../pages/ListOfUploadedWorks/ListOfUploadedWorks';
+import RegistrationArtist from '../pages/RegistrationArtists/RegistrationArtist';
 
 const RouterConfig = (props) => {
     return (
@@ -60,7 +61,7 @@ const RouterConfig = (props) => {
                 <Route path="my-albums" element={<PanleMyAlbums />} />
                 <Route path="contents" element={<PanelContentList />} />
                 <Route path="create-content" element={<PanelCreateContent />} />
-                
+                <Route path="registration-artists" element={<RegistrationArtist />} />
                 <Route path="dashboard-gallery" element={<GalleryPanelDashboard />} />
                 <Route path="exhibition-list-gallery" element={<GalleryPanelExhibition />} />
                 <Route path="artist-list-gallery" element={<GalleryPanelArtisit />} />
