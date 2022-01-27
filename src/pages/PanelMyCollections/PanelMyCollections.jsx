@@ -13,74 +13,49 @@ import ModalAddGallery from './ModalAddGallery';
 import RecentlyVeiws from './RecentlyVeiws';
 import Suggestions from './Suggestions';
 import apiServices from '../../utils/api.services';
-import { ARTIST_ALBUMS, ARTIST_ME, SOCIAL_NETWORK_COLLECTIONS } from '../../utils';
+import { ARTIST_ME, SOCIAL_NETWORK_COLLECTIONS } from '../../utils';
 import queryString from 'query-string';
 import { useSelector } from 'react-redux';
 import moment from "jalali-moment";
-function PanleMyAlbums() {
+function PanelMyCollections() {
 
 
     const [visibleAddGallery, setVisibleAddGallery] = useState(false);
     const { id } = useSelector((state) => state.authReducer)
     const [aulbum, setAulbum] = useState([]);
     const [artistDetails, setartistDetails] = useState({});
-    // const artistId = artistDetails?.id;
     const [params, setParams] = useState({
-
+        owner_id: id,
     });
-
-
 
 
     const Language = GetLanguage();
     const getMyAulbumCollection = () => {
-        console.log("params===>>", params);
-        apiServices.get(ARTIST_ALBUMS, queryString.stringify(params))
+        apiServices.get(SOCIAL_NETWORK_COLLECTIONS, queryString.stringify(params))
             .then(res => {
                 setAulbum(res.data.data.results)
-                console.log("resAulbum", res);
+                console.log("resAulbum", res.data.data.results);
             })
             .catch(err => {
                 console.log(err);
             })
     }
 
-
-    const getArtistDetails = () => {
-        apiServices.get(ARTIST_ME, "")
-            .then(res => {
-                
+    const getArtistDetails = ()=>{
+        apiServices.get(ARTIST_ME,"")
+            .then(res=>{
+                // console.log("res.data.data", res.data.data);
                 setartistDetails(res.data.data)
             })
-            .catch(err => {
+            .catch(err=>{
                 console.log(err);
             })
     }
 
-
-    // If there is an artist id, a new artist id should be in our parameters
     useEffect(() => {
-        if (artistDetails?.id) {
-            setParams({ artist_id: artistDetails?.id })
-        }
-    }, [artistDetails]);
-
-
-
-    // If there are params, this service should be called once
-    useEffect(() => {
-        if (Object?.keys(params).length){
-            getMyAulbumCollection();
-
-        }
-    }, [params]);
-
-    useEffect(() => {
-
-
+        getMyAulbumCollection();
         getArtistDetails();
     }, []);
-
     const handleShowAddGallery = () => {
         setVisibleAddGallery(true)
     }
@@ -114,13 +89,13 @@ function PanleMyAlbums() {
                                         <div className="d-flex box-dir-reverse">
                                             <div className="col">
                                                 <div className="d-flex pull-dir">
-                                                    <h2 className="default-title ">مجموعه‌ها</h2>
+                                                    <h2 className="default-title ">کالکشن ها</h2>
                                                 </div>
                                             </div>
                                             <div className="col w-100">
                                                 <div className="d-flex justify-custom w-100">
                                                     <button onClick={handleShowAddGallery} type="button" className="btn btn-more" data-target="#addnewcollection"
-                                                        data-toggle="modal">افزودن مجموعه
+                                                        data-toggle="modal">افزودن کالکشن
                                                     </button>
                                                 </div>
                                             </div>
@@ -141,14 +116,14 @@ function PanleMyAlbums() {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            { aulbum?.map((myAulbum, key) => {
+                                            {aulbum?.length && aulbum?.map((myAulbum, key) => {
                                                 return (
 
                                                     <tr>
                                                         <td data-label="ردیف">{key + 1}</td>
-                                                        <td data-label="عنوان"><span>{Language === 'fa-IR' ? myAulbum?.translations?.fa?.title : myAulbum?.translations?.en?.title}</span></td>
+                                                        <td data-label="عنوان"><span>{Language === 'fa-IR' ? myAulbum?.translations?.fa?.title : myAulbum?.translations?.en?.title }</span></td>
                                                         <td data-label="تعداد آثار"><span>{myAulbum?.likes_count}</span></td>
-                                                        <td data-label="آخرین ویرایش"><span>{moment(myAulbum?.artist?.modified_date, 'YYYY/MM/DD').locale('fa').format('YYYY/MM/DD')}</span></td>
+                                                        <td data-label="آخرین ویرایش"><span>{moment(myAulbum?.modified_date, 'YYYY/MM/DD').locale('fa').format('YYYY/MM/DD')}</span></td>
                                                         <td data-label="جزئیات">
                                                             <button type="button" className="btn-outline-blue" data-target="#addnewcollection"
                                                                 data-toggle="modal">ویرایش
@@ -157,7 +132,7 @@ function PanleMyAlbums() {
                                                     </tr>
                                                 )
                                             })}
-
+                                          
                                         </tbody>
                                     </table>
                                 </div>
@@ -218,4 +193,4 @@ function PanleMyAlbums() {
     )
 }
 
-export default PanleMyAlbums;
+export default PanelMyCollections;

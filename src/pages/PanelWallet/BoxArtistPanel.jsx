@@ -92,36 +92,6 @@ function BoxArtistPanel() {
                                 </tr>
                             )
                         })}
-                        {/*<tr className=''>*/}
-                        {/*    <td  data-label="نوع">برداشت</td>*/}
-                        {/*    <td data-label="مبلغ (تومان)" className="persian-num">۸۰۰,۰۰۰</td>*/}
-                        {/*    <td data-label="شماره حساب" className="persian-num">۲۱۷۳۱۲۷۳۲۹</td>*/}
-                        {/*    <td data-label="تاریخ درخواست" className="persian-num">۹۹/۰۵/۲۸</td>*/}
-                        {/*    <td data-label="وضعیت" className="persian-num status pending text-md-center">*/}
-                        {/*        <img src={inprogress_icon} width="24" height="24" alt="inprogress-icon" className=""/>*/}
-                        {/*        <span>در حال انجام</span>*/}
-                        {/*    </td>*/}
-                        {/*</tr>*/}
-                        {/*<tr>*/}
-                        {/*    <td data-label="نوع">برداشت</td>*/}
-                        {/*    <td data-label="مبلغ (تومان)" className="persian-num">۸۰۰,۰۰۰</td>*/}
-                        {/*    <td data-label="شماره حساب" className="persian-num">۲۱۷۳۱۲۷۳۲۹</td>*/}
-                        {/*    <td data-label="تاریخ درخواست" className="persian-num">۹۹/۰۵/۲۸</td>*/}
-                        {/*    <td data-label="وضعیت" className="persian-num status accept text-md-center">*/}
-                        {/*        <img src={deposit_icon} width="24" height="24" alt="deposit-icon" className=""/>*/}
-                        {/*        <span>واریز شده</span>*/}
-                        {/*    </td>*/}
-                        {/*</tr>*/}
-                        {/*<tr>*/}
-                        {/*    <td data-label="نوع">برداشت</td>*/}
-                        {/*    <td data-label="مبلغ (تومان)" className="persian-num">۸۰۰,۰۰۰</td>*/}
-                        {/*    <td data-label="شماره حساب" className="persian-num">۲۱۷۳۱۲۷۳۲۹</td>*/}
-                        {/*    <td data-label="تاریخ درخواست" className="persian-num">۹۹/۰۵/۲۸</td>*/}
-                        {/*    <td data-label="وضعیت" className="persian-num status deny text-md-center">*/}
-                        {/*        <img src={withdrawal_icon} width="24" height="24" alt="withdrawal-icon" className=""/>*/}
-                        {/*        <span>برداشت شده</span>*/}
-                        {/*    </td>*/}
-                        {/*</tr>*/}
                         </tbody>
                     </table>
                     </div>
