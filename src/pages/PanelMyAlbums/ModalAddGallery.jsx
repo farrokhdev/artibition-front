@@ -14,12 +14,14 @@ import apiServices from '../../utils/api.services';
 import { ARTIST_ALBUMS, PRODUCTS_ME, SOCIAL_NETWORK_COLLECTIONS } from '../../utils';
 import { useNavigate } from 'react-router-dom';
 import queryString from 'query-string';
-
+import { GetLanguage } from '../../utils/utils'
+import { handleShowImage } from '../../utils/showImageProduct';
 
 function ModalAddGallery(props) {
 
     const [form] = Form.useForm();
     const navigate = useNavigate();
+    let Language = GetLanguage();
     const { visibleAddGallery, setVisibleAddGallery } = props;
     const [chooseProduct, setchooseProduct] = useState([]);
     const [productList, setProductList] = useState([]);
@@ -234,12 +236,15 @@ function ModalAddGallery(props) {
                                                             if (e.target.checked) {
                                                                 setchooseProduct([...chooseProduct, artworksLike?.id])
                                                             } else {
-                                                                setchooseProduct(chooseProduct.filter((item=> item !== artworksLike?.id)))
+                                                                setchooseProduct(chooseProduct.filter((item => item !== artworksLike?.id)))
                                                             }
                                                         }} />
                                                         <span className="checkmark"></span>
                                                         <div className="col-img">
-                                                            <img src={artworksLike?.medias[0]?.exact_url} width="840" height="1259"
+                                                            <img 
+                                                           src={artworksLike && handleShowImage(artworksLike)}
+                                                           // src={artworksLike?.medias[0]?.exact_url} 
+                                                            width="840" height="1259"
                                                                 alt="آرتیبیشن"
                                                                 className="img-responsive" />
                                                             <div className="tab-overly">
@@ -254,16 +259,16 @@ function ModalAddGallery(props) {
                                                     </label>
                                                     <div className="col-body">
                                                         <h6 className="col-title">
-                                                            <span className="col-name">آیدین</span>
-                                                            <span className="col-name">آغداشلو</span>
+                                                            <span className="col-name">{Language === 'fa-IR' ? artworksLike?.translations?.fa?.artist_name : artworksLike?.translations?.en?.artist_name}</span>
+                                                            {/* <span className="col-name">آغداشلو</span> */}
                                                         </h6>
                                                         <div className="col-dimension">
 
                                                             <span className="col-dimension-title">ابعاد:</span>
                                                             <span className="col-dimension-body">
-                                                                <span className="dimension-width">60</span>
+                                                                <span className="dimension-width">{artworksLike?.width}</span>
                                                                 <span> در </span>
-                                                                <span className="dimension-height">60</span>
+                                                                <span className="dimension-height">{artworksLike?.height}</span>
                                                             </span>
                                                         </div>
                                                         <div className="col-price">

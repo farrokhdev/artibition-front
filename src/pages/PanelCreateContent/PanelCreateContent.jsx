@@ -1,161 +1,274 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { t } from 'i18next';
 import HeaderPanel from '../../components/HeaderPanel/HeaderPanel';
 import BasketFooterPanel from '../../components/BasketFooterPanel/BasketFooterPanel';
 import classnames from 'classnames';
 import { GetLanguage } from '../../utils/utils';
-
+import OneUpload from '../../components/OneUpload/OneUpload';
 import cloude_upload_icon from '../../assets/img/cloud-upload.svg';
+import { Form, Input, Select, Checkbox, message } from 'antd';
+import apiServices from '../../utils/api.services';
+import { CORE_CONTENT } from '../../utils';
+import { useNavigate } from 'react-router-dom';
+import TextArea from 'antd/es/input/TextArea';
 
 function PanelCreateContent() {
+    const navigate = useNavigate();
+    const [form] = Form.useForm();
+    const Language = GetLanguage();
+    const [uploadList, setUploadList] = useState([])
+    const [poster, setPoster] = useState([])
+
+    const [isSelected, setIsSelected] = useState(false);
+    const [isSelectedVideo, setIsSelectedVideo] = useState(false);
+
+    const onFinish = (values) => {
+        let payload = {
+            "translations": {
+                "en": {
+                    "title": values?.title_en,
+                    "description": values?.description_en
+                },
+                "fa": {
+                    "title": values?.title,
+                    "description": values?.description
+                }
+            },
+            "type": "other",
+            "is_active": true,
+            "link": values?.link,
+            "object_id": 1,
+            "content_type": "artist",
+            "content_file": uploadList,
+            "poster": poster[0]
+        }
+
+        apiServices.post(CORE_CONTENT, payload)
+            .then(res => {
+                if (res.data) {
+                    message.success({
+                        content: 'اثر با موفقیت ثبت شد', style: {
+                            marginTop: '10vh',
+                        },
+                    })
+                    setTimeout(() => {
+                        navigate('/panel/contents')
+                    }, 500);
+                } else {
+                    message.error({
+                        content: 'خطا در ثبت اطلاعات', style: {
+                            marginTop: '10vh'
+                        }
+                    })
+                }
+            })
+    }
+
+
     return (
         <>
             <HeaderPanel t={t} />
-
-            <div className="panel-style container mx-auto px-0 w-100 bg-white ">
-
-
-                <h2 className="default-title aligncenter mt-3">{t("content-panel-create-content.title")}</h2>
-                <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 create-exhibition">
-                    <h3 className="info-title mrgt64 require text-dir">{t("content-panel-create-content.upload_poster.title")}</h3>
-                    <div className="upload-img-artwork">
-                        <div className="btn-upload-artwork">
-                            <img src={cloude_upload_icon} width="64" height="57" alt="" className="" />
-                            <p>{t("content-panel-create-content.upload.text")}
-                                <br />
-                                {t("content-panel-create-content.upload.or")}</p>
-                            <label for="file-upload" className="btn-blue">{t("content-panel-create-content.upload.btn")}</label>
-                            <p className="upload-size"> {t("content-panel-create-content.upload.tip")}</p>
-                        </div>
-                        <input id="file-upload" type="file" />
-                    </div>
-                    <div className="row">
-                        <div
-                            className={classnames("", {
-                                "col-sm-6": GetLanguage() === 'fa-IR',
-                                "d-none": GetLanguage() === 'en-US'
-                            })}
-
-                        >
-                            <div className="public-group">
-                                <input className="form-control input-public " required
-                                    placeholder="" value="" />
-                                <label className="lable-public">{t("content-panel-create-content.subject_fa")}</label>
-                            </div>
-                        </div>
-                        <div
-                            className={classnames("", {
-                                "col-sm-6": GetLanguage() === 'fa-IR',
-                                "col w-100": GetLanguage() === 'en-US'
-                            })}
-
-                        >
-                            <div className="public-group en">
-                                <input className="form-control input-public en-lang " required
-                                    placeholder=""
-                                    value="" />
-                                <label className="lable-public en-lang">{t("content-panel-create-content.subject_en")}</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="col-sm-12">
-                        <div className="public-group en">
-                            <input className="form-control input-public " required
-                                placeholder="" value="" />
-                            <label className="lable-public">{t("content-panel-create-content.link")}</label>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div
-
-                            className={classnames("", {
-                                "col-sm-6": GetLanguage() === 'fa-IR',
-                                "d-none": GetLanguage() === 'en-US'
-                            })}
-
-                        >
-                            <div className="form-group">
-                                <textarea id="info-213" className="form-control "
-                                    placeholder={t("content-panel-create-content.placeholder_fa")}
-                                    rows="8"></textarea>
-                                <label for="info-213" className="lable-public"></label>
-                            </div>
-                        </div>
-                        <div
-                            className={classnames("", {
-                                "col-sm-6": GetLanguage() === 'fa-IR',
-                                "col w-100": GetLanguage() === 'en-US'
-                            })}
-                        >
-                            <div className="form-group ">
-                                <textarea className="form-control" placeholder={t("content-panel-create-content.placeholder_en")}
-                                    rows="8"></textarea>
-                                <label className="lable-public"></label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <h3 className="info-title mrgt64 require text-dir">{t("content-panel-create-content.upload.title")}</h3>
+            <Form
+                className=""
+                form={form}
+                onFinish={onFinish}
+            >
+                <div className="panel-style container mx-auto px-0 w-100 bg-white ">
 
 
+                    <h2 className="default-title aligncenter mt-3">{t("content-panel-create-content.title")}</h2>
+                    <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 create-exhibition">
+                        <h3 className="info-title mrgt64 require text-dir">{t("content-panel-create-content.upload_poster.title")}</h3>
+                        <OneUpload
+                            uploadList={poster}
+                            setUploadList={setPoster}
+                        />
+                        <div className="row">
+                            <div
+                                className={classnames("", {
+                                    "col-sm-6": Language === 'fa-IR',
+                                    "d-none": Language === 'en-US'
+                                })}
 
+                            >
+                                <div className="public-group">
 
+                                    <Form.Item
+                                        className="w-100"
+                                        name="title"
+                                        rules={[
+                                            {
+                                                required: Language === 'fa-IR' ? true : false,
+                                                message: 'required',
+                                            }
+                                        ]}>
 
-
-
-
-                    <ul className="content-type ">
-                        <div className="d-block d-md-flex ">
-                            <div className="col  px-0">
-                                <div className="d-flex box-dir-reverse">
-                                    <li>
-                                        <label className="container-radio text-dir">{t("content-panel-create-content.upload_poster.image")}
-                                            <input type="radio" checked="checked" name="radio" />
-                                            <span className="checkmark-radio"></span>
-                                        </label>
-                                    </li>
+                                        <Input
+                                            type="text"
+                                            id="info-215"
+                                            className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
+                                            placeholder={t("content-panel-create-content.subject_fa")}
+                                        />
+                                    </Form.Item>
                                 </div>
                             </div>
-                            <div className="col  px-0">
-                                <div className="d-flex box-dir-reverse">
-                                    <li><label className="container-radio">{t("content-panel-create-content.upload_poster.video")}
-                                        <input type="radio" name="radio" />
-                                        <span className="checkmark-radio"></span>
-                                    </label>
-                                    </li>
+                            <div
+                                className={classnames("", {
+                                    "col-sm-6": Language === 'fa-IR',
+                                    "col w-100": Language === 'en-US'
+                                })}
+
+                            >
+                                <div className="public-group en">
+
+                                    <Form.Item
+                                        className="w-100"
+                                        name="title_en"
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message: 'required',
+                                            }
+                                        ]}>
+
+                                        <Input
+                                            type="text"
+                                            id="info-215"
+                                            className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
+                                            placeholder={t("content-panel-create-content.subject_en")}
+                                        />
+                                    </Form.Item>
                                 </div>
                             </div>
-                            {/* <div className="col px-0">
-                                <div className="d-flex box-dir-reverse">
-                                    <li>
-                                        <label className="container-radio">{t("content-panel-create-content.upload_poster.link")}
-                                            <input type="radio" name="radio" />
-                                            <span className="checkmark-radio"></span>
-                                        </label>
-                                    </li>
-                                </div>
-                            </div> */}
                         </div>
-                    </ul>
-                    <div className="upload-img-artwork">
-                        <div className="btn-upload-artwork">
-                            <img src={cloude_upload_icon} width="64" height="57" alt="" className="" />
-                            <p>{t("content-panel-create-content.upload.text")}
-                                <br />
-                                {t("content-panel-create-content.upload.or")}</p>
-                            <label for="file-upload" className="btn-blue">{t("content-panel-create-content.upload.btn")}</label>
-                            <p className="upload-size"> {t("content-panel-create-content.upload.tip")}</p>
-                        </div>
-                        <input id="file-upload" type="file" />
-                    </div>
-                    <br />
-                    <div className="adv-btn">
-                        <button type="button" className="btn-default pull-dir graycolor">{t("content-panel-create-content.btn_cancel")}</button>
-                        <button type="button" className="btn-black pull-dir">{t("content-panel-create-content.btn_create_content")}</button>
-                    </div>
+                        <div className="row">
+                            <div
 
+                                className={classnames("", {
+                                    "col-sm-6": Language === 'fa-IR',
+                                    "d-none": Language === 'en-US'
+                                })}
+
+                            >
+                                <div className="form-group">
+
+                                    <Form.Item
+                                        className="w-100"
+                                        name="description"
+                                        rules={[
+                                            {
+                                                required: Language === 'fa-IR' ? true : false,
+                                                message: 'required',
+                                            }]}
+                                    >
+                                        <TextArea className="default-input"
+                                            placeholder={t("content-panel-create-content.placeholder_fa")} rows="8" />
+                                    </Form.Item>
+
+                                    <label for="info-213" className="lable-public"></label>
+                                </div>
+                            </div>
+                            <div
+                                className={classnames("", {
+                                    "col-sm-6": Language === 'fa-IR',
+                                    "col w-100": Language === 'en-US'
+                                })}
+                            >
+                                <div className="form-group ">
+                                    <Form.Item
+                                        className="w-100"
+                                        name="description_en"
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message: 'required',
+                                            }]}
+                                    >
+                                        <TextArea className="default-input"
+                                            placeholder={t("content-panel-create-content.placeholder_en")} rows="8" />
+                                    </Form.Item>
+                                    <label className="lable-public"></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 className="info-title mrgt64 require text-dir">{t("content-panel-create-content.upload.title")}</h3>
+                        <ul className="content-type ">
+                            <div className="d-block d-md-flex ">
+                                <div className="col  px-0">
+                                    <div className="d-flex box-dir-reverse">
+                                        <li>
+                                            <label className="container-radio text-dir">{t("content-panel-create-content.upload_poster.image")}
+                                            </label>
+                                            <Form.Item valuePropName="checked" noStyle>
+                                                <Checkbox type="checkbox"
+                                                    checked={isSelected}
+                                                    onChange={e => setIsSelected(e.target.checked)}
+                                                ></Checkbox>
+                                            </Form.Item>
+                                        </li>
+                                    </div>
+                                </div>
+                                <div className="col  px-0">
+                                    <div className="d-flex box-dir-reverse">
+                                        <li>
+
+                                            <label className="container-radio">{t("content-panel-create-content.upload_poster.video")}
+                                            </label>
+
+                                            <Form.Item valuePropName="checked" noStyle>
+                                                <Checkbox type="checkbox"
+                                                    checked={isSelectedVideo}
+                                                    onChange={e => setIsSelectedVideo(e.target.checked)}
+                                                ></Checkbox>
+                                            </Form.Item>
+                                        </li>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </ul>
+                        {isSelected ?
+
+                            <OneUpload
+                                uploadList={uploadList}
+                                setUploadList={setUploadList}
+                            />
+                            : ""}
+                        {isSelectedVideo ?
+                            <div className="col-sm-12">
+                                <div className="public-group en">
+                                    <Form.Item
+                                        className="w-100"
+                                        name="link"
+                                        rules={[
+                                            {
+                                                required: false,
+                                                message: 'required',
+                                            }
+                                        ]}>
+
+                                        <Input
+                                            type="text"
+                                            id="info-215"
+                                            className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
+                                            placeholder={t("content-panel-create-content.link")}
+                                        />
+                                    </Form.Item>
+                                </div>
+                            </div>
+                            : ""
+                        }
+
+                        <br />
+                        <div className="adv-btn">
+                            {/* <button type="button" className="btn-default pull-dir graycolor">{t("content-panel-create-content.btn_cancel")}</button> */}
+                            <button htmlType="submit" className="btn-black pull-dir">{t("content-panel-create-content.btn_create_content")}</button>
+                        </div>
+
+                    </div>
                 </div>
-            </div>
+            </Form>
             <BasketFooterPanel />
         </>
     )
