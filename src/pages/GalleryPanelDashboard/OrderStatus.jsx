@@ -2,18 +2,20 @@ import React, { useEffect, useState } from "react";
 import { message, Pagination } from 'antd';
 import { t } from 'i18next';
 import moment from 'jalali-moment'
+import { useSelector } from 'react-redux'
 
 import artwork1 from "../../assets/img/artworks/artwork-1.jpg"
 import apiServices from "../../utils/api.services";
+import galleryReducer from "../../redux/reducers/Gallery/gallery.reducer";
 
 function OrderStatus() {
 
 
     const [orders, setOrders] = useState([])
-
+    const { id } = useSelector((state) => state.galleryReducer)
 
     useEffect(() => {
-        apiServices.get(`/gallery/${1}/orders/`, "")
+        apiServices.get(`/gallery/${id}/orders/`, "")
             .then(res => {
                 if (res.data) {
                     setOrders(res.data.data.results)
@@ -22,6 +24,10 @@ function OrderStatus() {
                 }
 
             })
+    }, [])
+
+    useEffect(() => {
+        // console.log(id);
     }, [])
 
 
@@ -73,74 +79,6 @@ function OrderStatus() {
                     }
 
 
-
-
-
-
-                    {/* <tr className="pending-state">
-                        <td data-label={t("gallery-panel-dashboard.tables.row")} className="persian-num">1</td>
-                        <td data-label={t("gallery-panel-dashboard.tables.image")}><img src={artwork1} width="1776" height="1776" alt="" className="img-responsive" /></td>
-                        <td data-label={t("gallery-panel-dashboard.tables.code")} className="persian-num">۱۲۷۵</td>
-                        <td data-label={t("gallery-panel-dashboard.tables.edition")} className="persian-num">۲</td>
-                        <td data-label={t("gallery-panel-dashboard.tables.price")} className="persian-num">۴,۰۰۰,۰۰۰</td>
-                        <td data-label={t("gallery-panel-dashboard.tables.discount")} className="persian-num">۰</td>
-                        <td data-label={t("gallery-panel-dashboard.tables.paid")} className="persian-num">۴,۰۰۰,۰۰۰</td>
-                        <td data-label={t("gallery-panel-dashboard.tables.status")} className="persian-num">{moment('2022-01-03T09:40:25.593Z').locale('fa').format('YYYY/MM/DD')}</td>
-                        <td data-label={t("gallery-panel-dashboard.tables.details")} className="status">{t("gallery-panel-dashboard.tables.Waiting_to_send")}</td>
-                        <td>
-                            <button className="btn-outline-blue" type="button" data-toggle="modal" data-target="#modal-replied-price">
-                                {t("gallery-panel-dashboard.tables.view")}
-                            </button>
-                        </td>
-                    </tr>
-                    <tr className="pending-state">
-                        <td data-label={t("gallery-panel-dashboard.tables.row")} className="persian-num">1</td>
-                        <td data-label={t("gallery-panel-dashboard.tables.image")}><img src={artwork1} width="1776" height="1776" alt="" className="img-responsive" /></td>
-                        <td data-label={t("gallery-panel-dashboard.tables.code")} className="persian-num">۱۲۷۵</td>
-                        <td data-label={t("gallery-panel-dashboard.tables.edition")} className="persian-num">۲</td>
-                        <td data-label={t("gallery-panel-dashboard.tables.price")} className="persian-num">۴,۰۰۰,۰۰۰</td>
-                        <td data-label={t("gallery-panel-dashboard.tables.discount")} className="persian-num">۰</td>
-                        <td data-label={t("gallery-panel-dashboard.tables.paid")} className="persian-num">۴,۰۰۰,۰۰۰</td>
-                        <td data-label={t("gallery-panel-dashboard.tables.status")} className="persian-num">۹۹/۰۵/۲۰</td>
-                        <td data-label={t("gallery-panel-dashboard.tables.details")} className="status">{t("gallery-panel-dashboard.tables.Waiting_to_send")}</td>
-                        <td>
-                            <button className="btn-outline-blue" type="button" data-toggle="modal" data-target="#modal-replied-price">
-                                {t("gallery-panel-dashboard.tables.view")}
-                            </button>
-                        </td>
-                    </tr>
-                    <tr className="delivered-state">
-                        <td data-label={t("gallery-panel-dashboard.tables.row")} className="persian-num">1</td>
-                        <td data-label={t("gallery-panel-dashboard.tables.image")}><img src={artwork1} width="1776" height="1776" alt="" className="img-responsive" /></td>
-                        <td data-label={t("gallery-panel-dashboard.tables.code")} className="persian-num">۱۲۷۵</td>
-                        <td data-label={t("gallery-panel-dashboard.tables.edition")} className="persian-num">۲</td>
-                        <td data-label={t("gallery-panel-dashboard.tables.price")} className="persian-num">۴,۰۰۰,۰۰۰</td>
-                        <td data-label={t("gallery-panel-dashboard.tables.discount")} className="persian-num">۰</td>
-                        <td data-label={t("gallery-panel-dashboard.tables.paid")} className="persian-num">۴,۰۰۰,۰۰۰</td>
-                        <td data-label={t("gallery-panel-dashboard.tables.status")} className="persian-num">۹۹/۰۵/۲۰</td>
-                        <td data-label={t("gallery-panel-dashboard.tables.details")} className="status">{t("gallery-panel-dashboard.tables.delivered")}</td>
-                        <td>
-                            <button className="btn-outline-blue" type="button" data-toggle="modal" data-target="#modal-replied-price">
-                                {t("gallery-panel-dashboard.tables.view")}
-                            </button>
-                        </td>
-                    </tr>
-                    <tr className="pending-state">
-                        <td data-label={t("gallery-panel-dashboard.tables.row")} className="persian-num">1</td>
-                        <td data-label={t("gallery-panel-dashboard.tables.image")}><img src={artwork1} width="1776" height="1776" alt="" className="img-responsive" /></td>
-                        <td data-label={t("gallery-panel-dashboard.tables.code")} className="persian-num">۱۲۷۵</td>
-                        <td data-label={t("gallery-panel-dashboard.tables.edition")} className="persian-num">۲</td>
-                        <td data-label={t("gallery-panel-dashboard.tables.price")} className="persian-num">۴,۰۰۰,۰۰۰</td>
-                        <td data-label={t("gallery-panel-dashboard.tables.discount")} className="persian-num">۰</td>
-                        <td data-label={t("gallery-panel-dashboard.tables.paid")} className="persian-num">۴,۰۰۰,۰۰۰</td>
-                        <td data-label={t("gallery-panel-dashboard.tables.status")} className="persian-num">۹۹/۰۵/۲۰</td>
-                        <td data-label={t("gallery-panel-dashboard.tables.details")} className="status">{t("gallery-panel-dashboard.tables.Waiting_to_send")}</td>
-                        <td>
-                            <button className="btn-outline-blue" type="button" data-toggle="modal" data-target="#modal-replied-price">
-                                {t("gallery-panel-dashboard.tables.view")}
-                            </button>
-                        </td>
-                    </tr> */}
                 </tbody>
             </table>
             <div className="row-pagination">

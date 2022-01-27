@@ -6,10 +6,10 @@ import { GetLanguage } from '../../utils/utils'
 import { t } from 'i18next';
 import { useSelector, useDispatch } from 'react-redux';
 import apiServices from '../../utils/api.services';
-import { PRODUCTS } from '../../utils';
+import { ARTIST_BY_GALLERY, ARTWORK_BY_GALLERY, PRODUCTS } from '../../utils';
 import { artworkForm } from '../../redux/reducers/Artwork/artwork.action';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 const { Option } = Select;
 
 function SellInformation({ prev, next }) {
@@ -21,7 +21,15 @@ function SellInformation({ prev, next }) {
     const [isValidEdition, setIsValidEdition] = useState(false);
     const [isValidSaleInformation, setIsValidSaleInformation] = useState(false);
     const Language = GetLanguage();
-  
+    const { id } = useSelector((state) => state.galleryReducer)
+
+
+
+
+    let [searchParams, setSearchParams] = useSearchParams()
+
+
+
 
 
     const onFinish = (values) => {
@@ -49,35 +57,64 @@ function SellInformation({ prev, next }) {
             payload.items = values.items
         }
 
-        apiServices.post(PRODUCTS, payload)
-            .then(res => {
-                if (res.data) {
 
-                    message.success({
-                        content: 'اثر با موفقیت ثبت شد', style: {
-                            marginTop: '10vh',
-                        },
-                    })
-                    setTimeout(() => {
-                        navigate('/panel/art-management')
-                        // next()
-                        // navigate(next())
-                    }, 500);
-                } else {
-                    console.log(res.response)
-                    message.error({
-                        content: 'خطا در ثبت اطلاعات', style: {
-                            marginTop: '10vh'
-                        }
-                    })
-                    // message.error(res.response.data.message)
-                }
 
-            })
-            .catch(err => {
-                console.log(err);
-            })
-        console.log('Success:', values);
+        if (searchParams.get("back")) {
+            apiServices.post(ARTWORK_BY_GALLERY(id, searchParams.get("artist_id")), payload)
+                .then(res => {
+                    if (res.data) {
+
+                        message.success({
+                            content: 'اثر با موفقیت ثبت شد', style: {
+                                marginTop: '110px',
+                            },
+                        })
+                        setTimeout(() => {
+                            navigate(searchParams.get("back"))
+                        }, 500);
+                    } else {
+                        message.error({
+                            content: 'خطا در ثبت اطلاعات', style: {
+                                marginTop: '10vh'
+                            }
+                        })
+                    }
+
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        } else {
+            apiServices.post(PRODUCTS, payload)
+                .then(res => {
+                    if (res.data) {
+
+                        message.success({
+                            content: 'اثر با موفقیت ثبت شد', style: {
+                                marginTop: '10vh',
+                            },
+                        })
+                        setTimeout(() => {
+                            navigate('/panel/art-management')
+                            // next()
+                            // navigate(next())
+                        }, 500);
+                    } else {
+                        console.log(res.response)
+                        message.error({
+                            content: 'خطا در ثبت اطلاعات', style: {
+                                marginTop: '10vh'
+                            }
+                        })
+                        // message.error(res.response.data.message)
+                    }
+
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+            console.log('Success:', values);
+        }
     };
 
     // If there is no user information, it redirects the user to the previous page

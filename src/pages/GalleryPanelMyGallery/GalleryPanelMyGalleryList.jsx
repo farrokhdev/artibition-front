@@ -1,13 +1,58 @@
-import React from "react";
-import { t } from 'i18next';
+import React, { useEffect, useState } from "react";
+import i18next, { t } from 'i18next';
 
 
 import viewBlue from '../../assets/img/view-blue.svg'
 import artwork1 from '../../assets/img/artworks/artwork-1.jpg';
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import authReducer from "../../redux/reducers/auth/auth.reducer";
+import apiServices from "../../utils/api.services";
+import { GALLERY_LIST } from "../../utils";
+import { message } from "antd";
+import queryString from "query-string";
+import moment from "jalali-moment";
+import { galleryId } from "../../redux/reducers/Gallery/gallery.actions";
+import { useNavigate } from 'react-router-dom'
 
 
 function GalleryPanelMyGalleryList() {
+    const [galleries, setGalleries] = useState([])
+    const { id } = useSelector((state) => state.authReducer)
+    const [params, setParams] = useState({
+        owner_id: id
+    })
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+
+
+
+    const goToGalleryProfile = (id) => {
+        dispatch(galleryId(id))
+        navigate("/gallery-panel/dashboard")
+    }
+
+
+
+
+    useEffect(() => {
+        apiServices.get(GALLERY_LIST, queryString.stringify(params))
+            .then(res => {
+                if (res.data) {
+                    console.log(res.data.data.results);
+                    setGalleries(res.data.data.results)
+                } else {
+                    message.error({
+                        content: res.response.data.message,
+                        style: { marginTop: "110px" }
+                    })
+                }
+            }
+            ).catch(err => {
+                console.log(err)
+            })
+    }, [])
     return (
         <div className="box artistpanel-5">
             <div className="public-header">
@@ -26,42 +71,33 @@ function GalleryPanelMyGalleryList() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td data-label={t("gallery-panel-my-gallery.table.row")} className="persian-num">1</td>
-                        <td data-label={t("gallery-panel-my-gallery.table.logo")}><img src={artwork1} width="1776" height="1776"
-                            alt=""
-                            className="img-responsive center-block" /></td>
-                        <td data-label={t("gallery-panel-my-gallery.table.gallery_name")}>...نگاهی به هنر مائوریتزیو کاتلان</td>
-                        <td data-label={t("gallery-panel-my-gallery.table.number_exhibition")}>5</td>
-                        <td data-label={t("gallery-panel-my-gallery.table.last_edition")}>1399/05/12</td>
-                        <td data-label={t("gallery-panel-my-gallery.table.profile")} className="status">
-                            <a href="#"><img src={viewBlue} width="18" height="18" alt="" className="" /></a>
-                        </td>
-                        <td data-label={t("gallery-panel-my-gallery.table.details")} className="status">
-                            <Link to={'/panel/edit-gallery-info'} className="btn-outline-blue">
-                                {t("gallery-panel-my-gallery.table.edit")}
-                            </Link>
-                            {/* <button type="button" className="btn-outline-blue">{t("gallery-panel-my-gallery.table.edit")}</button> */}
-                        </td>
-                    </tr>
-                    <tr>
-                        <td data-label={t("gallery-panel-my-gallery.table.row")} className="persian-num">1</td>
-                        <td data-label={t("gallery-panel-my-gallery.table.logo")}><img src={artwork1} width="1776" height="1776"
-                            alt=""
-                            className="img-responsive center-block" /></td>
-                        <td data-label={t("gallery-panel-my-gallery.table.gallery_name")}>...نگاهی به هنر مائوریتزیو کاتلان</td>
-                        <td data-label={t("gallery-panel-my-gallery.table.number_exhibition")}>8</td>
-                        <td data-label={t("gallery-panel-my-gallery.table.last_edition")}>1398/11/02</td>
-                        <td data-label={t("gallery-panel-my-gallery.table.profile")} className="status">
-                            <a href="#"><img src={viewBlue} width="18" height="18" alt="" className="" /></a>
-                        </td>
-                        <td data-label={t("gallery-panel-my-gallery.table.details")} className="status">
-                            <Link to={'/panel/edit-gallery-info'} className="btn-outline-blue">
-                                {t("gallery-panel-my-gallery.table.edit")}
-                            </Link>
-                            {/* <button type="button" className="btn-outline-blue">{t("gallery-panel-my-gallery.table.edit")}</button> */}
-                        </td>
-                    </tr>
+                    {galleries.map((gallery, galleryIndex) => {
+                        return (
+                            <tr>
+                                <td data-label={t("gallery-panel-my-gallery.table.row")} className="persian-num">{galleryIndex + 1}</td>
+                                <td data-label={t("gallery-panel-my-gallery.table.logo")}><img src={artwork1} width="1776" height="1776"
+                                    alt=""
+                                    className="img-responsive center-block" /></td>
+                                <td data-label={t("gallery-panel-my-gallery.table.gallery_name")}>{i18next.language === 'fa-IR' ? gallery.translations?.fa?.title : gallery.translations?.en?.title}</td>
+                                <td data-label={t("gallery-panel-my-gallery.table.number_exhibition")}>{gallery.exhibition_num}</td>
+                                <td data-label={t("gallery-panel-my-gallery.table.last_edition")}>{moment(gallery.modified_date).locale(i18next.language === 'fa-IR' ? 'fa' : 'en').format('YYYY/MM/DD')}</td>
+                                <td data-label={t("gallery-panel-my-gallery.table.profile")} className="status">
+                                    <button onClick={() => {
+                                        goToGalleryProfile(gallery.id)
+                                    }}>
+                                        <img src={viewBlue} width="18" height="18" alt="" className="" />
+                                    </button>
+                                </td>
+                                <td data-label={t("gallery-panel-my-gallery.table.details")} className="status">
+                                    <button className="btn-outline-blue">
+                                        {t("gallery-panel-my-gallery.table.edit")}
+                                    </button>
+                                    {/* <button type="button" className="btn-outline-blue">{t("gallery-panel-my-gallery.table.edit")}</button> */}
+                                </td>
+                            </tr>
+                        )
+                    })}
+
                 </tbody>
             </table>
         </div>

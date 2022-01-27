@@ -46,4 +46,5 @@ export const ARTIST_BY_GALLERY = id => `/${id}/artists/define/`;
 export const ACCOUNT_PROFILE = "/account/profile/";
 export const PRODUCT_DETAIL = id => `/products/${id}/`
 export const MESSAGES_ASSERTION = "/message/assertion/";
+export const ARTWORK_BY_GALLERY = ((gallereyId, artistId) => { return (`/${gallereyId}/exhibition/artist/${artistId}/product/`) })
 export const MESSAGES_INBOX = "/message/inbox/";

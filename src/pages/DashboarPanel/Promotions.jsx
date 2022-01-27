@@ -19,7 +19,6 @@ function Promotions() {
         apiServices.get(PROMOTIONS, "")
             .then(res => {
                 if (res.data) {
-                    console.log(res.data.data.results);
                     setPromotions(res.data.data.results)
                 } else {
                     message.error(res.response.data.message)
@@ -47,7 +46,6 @@ function Promotions() {
             <div className="promotion-blocks">
                 {promotions &&
                     promotions.map((promotion, index) => {
-                        console.log(moment(promotion.start_date, 'YYYY/MM/DD').locale('en').format('MMMM'));
                         return (
                             <div className="promotion-block">
                                 <h3 className="d-flex box-dir-reverse pink-title">
