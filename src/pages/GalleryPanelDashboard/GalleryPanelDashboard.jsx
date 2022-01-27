@@ -17,6 +17,7 @@ import SidebarGalleryPanel from "../../components/SidebarGalleryPanel/SidebarGal
 import apiServices from "../../utils/api.services";
 
 function GalleryPanelDashboard() {
+
    
     return (
         <>

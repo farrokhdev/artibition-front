@@ -18,8 +18,8 @@ export const PRODUCTS_ME = "/products/me/";
 export const PRODUCTS = "/products/";
 export const PRE_UPLOAD = "/core/upload/";
 export const CORE_CATEGORIS = "/core/category/";
-export const  PRODUCTS_CATEGORIES ="/products/categories/";
-export const SUBJECTS_CATEGORISE = id =>`/products/categories/${id}/subjects/`;
+export const PRODUCTS_CATEGORIES = "/products/categories/";
+export const SUBJECTS_CATEGORISE = id => `/products/categories/${id}/subjects/`;
 export const TECHNIQUS_CATEGORIES = id => `/products/categories/${id}/techniques/`;
 export const MATERIALS_CATEGORIES = id => `/products/categories/${id}/materials/`;
 export const SOCIAL_NETWORK_COLLECTIONS = "/social-network/collections/"
@@ -41,4 +41,5 @@ export const ARTIST_BY_GALLERY = id => `/${id}/artists/define/`
 export const ACCOUNT_PROFILE = "/account/profile/";
 export const PRODUCT_DETAIL = id => `/products/${id}/`
 export const MESSAGES_ASSERTION = "/message/assertion/";
+export const ARTWORK_BY_GALLERY = ((gallereyId, artistId) => { return (`/${gallereyId}/exhibition/artist/${artistId}/product/`) })
 
