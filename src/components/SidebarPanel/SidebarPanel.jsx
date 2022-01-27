@@ -50,8 +50,13 @@ function SidebarPanel(props) {
                             className="sidebar-nav-margin">{t("drawer-panel.nav-wallet")}</span></Link></li>
                         <li className="sidebar-icon my-4" id="my-albums"><Link to="/panel/my-albums"><span
                             className="sidebar-nav-margin">{t("drawer-panel.nav-my-albums")}</span></Link></li>
-                            <li className="sidebar-icon my-4" id="my-albums"><Link to="/panel/my-collections"><span
+                        <li className="sidebar-icon my-4" id="my-albums"><Link to="/panel/my-collections"><span
                             className="sidebar-nav-margin">کالکشن های من</span></Link></li>
+
+                        <li className="sidebar-icon my-4" id="content"><Link to="/panel/contents"><span
+                            className="sidebar-nav-margin">محتوی</span></Link></li>
+
+
                         <li className="sidebar-icon my-4" id="my-albums"><Link to="/panel/my-albums"><span
                             className="sidebar-nav-margin">{t("drawer-panel.nav-exhibitions")}</span></Link></li>
                         <li className="sidebar-icon my-4" id="liked"><Link to="/panel/favorites"><span
@@ -61,7 +66,7 @@ function SidebarPanel(props) {
                         <li className="sidebar-icon " id="profile"><Link to="/panel/profile"><span
                             className="sidebar-nav-margin">{t("drawer-panel.nav-profile")}</span></Link></li>
                         <li className="sidebar-icon my-4" id="gallery"><Link to={"/gallery-panel/dashboard"}><span
-                        className="sidebar-nav-margin">{t("drawer-panel.nav-my-galleries")}</span></Link></li>
+                            className="sidebar-nav-margin">{t("drawer-panel.nav-my-galleries")}</span></Link></li>
                     </ul>
                 </div>
 
