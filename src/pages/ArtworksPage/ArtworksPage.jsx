@@ -591,7 +591,7 @@ return (
                           <div className="col-img">
                             <img src={product.medias && product.medias[0]?.exact_url} width="840" alt="آرتیبیشن" className="img-responsive" />
                             <div className="tab-overly">
-                              <a onClick={() => navigate(`/site/artworks-detail/?id=${product.id}`)} className="btn-see">
+                              <a onClick={() => navigate(`/site/artworks-detail/?id=${product.id}&artist_id=${product.artist_id}`)} className="btn-see">
                                 <span className="view-icon pull-right"></span>
                                 <span>{t("card_artwork.veiw")}</span>
                               </a>

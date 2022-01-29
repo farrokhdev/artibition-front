@@ -19,6 +19,7 @@ import { ARTIST_PROFILE } from '../../utils';
 import apiServices from '../../utils/api.services';
 import queryString from 'query-string'
 import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router-dom';
 
 function ProfileArtist() {
 
@@ -39,7 +40,16 @@ function ProfileArtist() {
         page: 1,
 
     })
+    function useQuery() {
+        
+        return new URLSearchParams(useLocation().search);
+        
+    }
+    var id;
 
+    var query = useQuery();
+
+    id = query.get("id")
     // const handleShowVeiwAlbumModal = () => {
     //     setVisibleShowAlbums(true)
     // }
@@ -49,7 +59,7 @@ function ProfileArtist() {
     }
 
     const getArtistProfile = () => {
-        apiServices.get(ARTIST_PROFILE(1), queryString.stringify(params))
+        apiServices.get(ARTIST_PROFILE(id), queryString.stringify(params))
             .then(res => {
                 if (res.data) {
                     setArtistProfile(res.data.data)
@@ -170,10 +180,10 @@ function ProfileArtist() {
                                 />
                             </TabPane>
                             <TabPane tab={t("artist_profile.tabs.biography")} key="3">
-                                <BiographyTab artistBio={artistProfile?.translations} />
+                                <BiographyTab artistId={id} artistBio={artistProfile?.translations} />
                             </TabPane>
                             <TabPane tab={t("artist_profile.tabs.exhibitions")} key="4">
-                                <ExhibitionsTab artistId={artistProfile?.id}/>
+                                <ExhibitionsTab artistId={id}/>
                             </TabPane>
                             <TabPane tab={t("artist_profile.tabs.content")} key="5">
                                 <ContentTab artistId={artistProfile?.id}/>

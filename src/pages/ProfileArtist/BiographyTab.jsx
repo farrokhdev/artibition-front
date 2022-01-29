@@ -11,11 +11,10 @@ function BiographyTab({artistBio,artistId}) {
     const [params, setParams] = useState({
         // search: "",
         page: 1,
-        artist_content__id: artistId,
   
     })
     const getArtistExhibition = () => {
-        apiServices.get(ARTIST_EXHIBITION, QueryString.stringify(params))
+        apiServices.get(ARTIST_EXHIBITION(artistId), QueryString.stringify(params))
             .then(res => {
                 if (res.data) {
                     setArtistExhibition(res.data.data)

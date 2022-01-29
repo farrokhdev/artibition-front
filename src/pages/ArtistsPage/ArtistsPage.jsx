@@ -246,7 +246,7 @@ console.log("props",props)
                                     </div>
                                     <div className="col-body">
                                         <div className="col-image pull-right">
-                                            <Link to={'/site/artist-profile'}>
+                                            <Link to={`/site/artist-profile/?id=${item?.artist_id}`}>
                                             <img src={item.bg_image?.exact_url} width="408" height="408" alt=""
                                                  className="img-responsive"/>
                                             <img src={blue_badge_icon} width="22" height="22" alt=""
@@ -256,8 +256,8 @@ console.log("props",props)
                                                  className="img-responsive"/> */}
                                         </div>
                                         <h6 className="col-title">
-                                            <Link to={'/site/artist-profile'}>
-                                            <span className="col-name pull-dir">{i18n.language === 'fa-IR' ? item.owner.translations.fa?.first_name : item.owner.translations.en?.first_name}</span>
+                                            <Link to={`/site/artist-profile/?id=${item?.artist_id}`}>
+                                            <span className="col-name pull-dir">{i18n.language === 'fa-IR' ? item.owner?.translations?.fa?.first_name : item.owner?.translations?.en?.first_name}</span>
                                             </Link>
                                         </h6>
                                         <button type="button" className="btn-follow pull-dir">{t("artwork.follow")}</button>
