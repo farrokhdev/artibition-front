@@ -1,0 +1,5 @@
+
+export default {
+    GALLERY_ID: "GALLERY_ID",
+    SELECTED_ARTWORKS: "SELECTED_ARTWORKS"
+}

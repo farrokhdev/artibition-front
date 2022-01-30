@@ -8,16 +8,8 @@ import apiServices from "../../utils/api.services";
 import { PRODUCTS } from "../../utils";
 import queryString from 'query-string'
 import { message } from "antd";
-import { select } from "react-cookies";
-
 
 const SliderSetting = {
-    // dots: true,
-    // infinite: false,
-    // speed: 500,
-    // slidesToShow: 4,
-    // slidesToScroll: 4,
-    // initialSlide: 0,
     dots: false,
     infinite: false,
     speed: 500,
@@ -51,51 +43,35 @@ const SliderSetting = {
 }
 
 
-const json = {
-    test1: {
-        1: "fwsf",
-        2: "refewrf"
-    },
-    test2: {
-        1: "wrefwefd",
-        2: "reffcwuyewrf"
-    },
-    test3: {
-        1: "1121212",
-        2: "1185418515"
-    },
-    test10: {
-        1: "aaaaaaaaa",
-        2: "bbbbbbbb"
-    }
-}
-
-let selected = []
-
 
 function ExistArtworkCollection({ artistID, selectedArtwork, setSelectedArtwork }) {
-
-    let data = { id: artistID }
-
-
     const handleChange = (e) => {
+        let temp = selectedArtwork
+        const json = {
+            id: artistID,
+            selected: [JSON.parse(e.target.name)]
+        }
         if (e.target.checked) {
-            selected.push(e.target.name)
-        } else {
-            selected.splice(selected.indexOf(e.target.name), 1)
-        }
-        data["selected"] = selected
-
-        const removedExist = selectedArtwork
-        for (let i = 0; i < selectedArtwork.length; i++) {
-            const element = selectedArtwork[i];
-            if (element.id === artistID) {
-                removedExist.splice(i, 1)
+            let existFlag = false
+            for (let i = 0; i < temp.length; i++) {
+                if (temp[i].id === artistID) {
+                    temp[i].selected.push(JSON.parse(e.target.name))
+                    existFlag = true
+                }
             }
-
+            if (!existFlag) {
+                temp.push(json)
+            }
+        } else {
+            for (let i = 0; i < temp.length; i++) {
+                if (temp[i].id === artistID) {
+                    temp[i].selected = temp[i].selected.filter(item => (item.product_id !== JSON.parse(e.target.name).product_id && item.product_item_id !== JSON.parse(e.target.name).product_item_id))
+                }
+            }
         }
-        setSelectedArtwork([...removedExist, data])
+        setSelectedArtwork(temp)
     }
+
 
     const [params, setParams] = useState({
         artist_id: artistID ? artistID : ""
@@ -104,17 +80,10 @@ function ExistArtworkCollection({ artistID, selectedArtwork, setSelectedArtwork 
 
 
 
-
-    
-
-
-
     useEffect(() => {
         apiServices.get(PRODUCTS, queryString.stringify(params))
             .then(res => {
                 if (res.data) {
-                    // console.log(res.data.data);
-                    // console.log(res.data.data.results);
                     setArtworks(res.data.data.results)
 
                 } else {
@@ -152,19 +121,17 @@ function ExistArtworkCollection({ artistID, selectedArtwork, setSelectedArtwork 
                                 return (
                                     <div className="cols">
                                         <label className="lable-checkbox">
-                                            <input type="checkbox" value="" name={[product.id, edition.id]} onChange={(e) => { handleChange(e) }} />
+                                            <input type="checkbox" value="" name={JSON.stringify({
+                                                product_id: product.id,
+                                                product_item_id: edition.id,
+                                                reserved_toman_price: edition.toman_price,
+                                                reserved_dollar_price: edition.dollar_price
+                                            })}
+                                                onChange={(e) => { handleChange(e) }} />
                                             <span className="checkmark"></span>
                                             <div className="col-img">
                                                 <div className="tags tags-off persian-num">30 %</div>
                                                 <img src={Artwork1} width="840" height="840" alt="آرتیبیشن" className="img-responsive" />
-                                                {/* <div className="tab-overly">
-                                    <a href="#" className="btn-see">
-                                        <span className="view-icon pull-right"></span>
-                                        <span>مشاهده اثر</span>
-                                    </a>
-                                    <a href="#" className="btn-sale">درخواست خرید</a>
-                                    <a href="#" className="like-icon"></a>
-                                </div> */}
                                             </div>
                                         </label>
                                         <div className="col-body text-dir dir">
@@ -196,91 +163,6 @@ function ExistArtworkCollection({ artistID, selectedArtwork, setSelectedArtwork 
                         هیچ اثری برای این هنرمند وجود ندارد
                     </div>
                 }
-
-
-
-
-
-
-                {/* <div className="cols">
-                    <div className="col-img" style={{ marginLeft: "20px" }}>
-                        <img src={Artwork1} width="840" height="840" alt="آرتیبیشن" className="img-responsive" />
-                        <div className="tab-overly dir">
-                            <a href="#" className="btn-see">
-                                <span className="view-icon pull-dir"></span>
-                                <span>{t("collections-list.view")}</span>
-                            </a>
-                            <a href="#" className="btn-sale">{t("collections-list.shop_now")}</a>
-                            <a href="#" className="like-icon"></a>
-                        </div>
-                    </div>
-                </div>
-                <div className="cols">
-                    <div className="col-img" style={{ marginLeft: "20px" }}>
-                        <img src={Artwork1} width="840" height="840" alt="آرتیبیشن" className="img-responsive" />
-                        <div className="tab-overly dir">
-                            <a href="#" className="btn-see">
-                                <span className="view-icon pull-dir"></span>
-                                <span>{t("collections-list.view")}</span>
-                            </a>
-                            <a href="#" className="btn-sale">{t("collections-list.shop_now")}</a>
-                            <a href="#" className="like-icon"></a>
-                        </div>
-                    </div>
-                </div>
-                <div className="cols">
-                    <div className="col-img" style={{ marginLeft: "20px" }}>
-                        <div className="tags tags-spacial">{t("collections-list.special")}</div>
-                        <img src={Artwork1} width="840" height="840" alt="آرتیبیشن" className="img-responsive" />
-                        <div className="tab-overly dir">
-                            <a href="#" className="btn-see">
-                                <span className="view-icon pull-dir"></span>
-                                <span>{t("collections-list.view")}</span>
-                            </a>
-                            <a href="#" className="btn-sale">{t("collections-list.shop_now")}</a>
-                            <a href="#" className="like-icon"></a>
-                        </div>
-                    </div>
-                </div>
-                <div className="cols">
-                    <div className="col-img" style={{ marginLeft: "20px" }}>
-                        <img src={Artwork1} width="840" height="840" alt="آرتیبیشن" className="img-responsive" />
-                        <div className="tab-overly dir">
-                            <a href="#" className="btn-see">
-                                <span className="view-icon pull-dir"></span>
-                                <span>{t("collections-list.view")}</span>
-                            </a>
-                            <a href="#" className="btn-sale">{t("collections-list.shop_now")}</a>
-                            <a href="#" className="like-icon"></a>
-                        </div>
-                    </div>
-                </div>
-                <div className="cols">
-                    <div className="col-img" style={{ marginLeft: "20px" }}>
-                        <img src={Artwork1} width="840" height="840" alt="آرتیبیشن" className="img-responsive" />
-                        <div className="tab-overly dir">
-                            <a href="#" className="btn-see">
-                                <span className="view-icon pull-dir"></span>
-                                <span>{t("collections-list.view")}</span>
-                            </a>
-                            <a href="#" className="btn-sale">{t("collections-list.shop_now")}</a>
-                            <a href="#" className="like-icon"></a>
-                        </div>
-                    </div>
-                </div>
-                <div className="cols">
-                    <div className="col-img" style={{ marginLeft: "20px" }}>
-                        <img src={Artwork1} width="840" height="840" alt="آرتیبیشن" className="img-responsive" />
-                        <div className="tab-overly dir">
-                            <a href="#" className="btn-see">
-                                <span className="view-icon pull-dir"></span>
-                                <span>{t("collections-list.view")}</span>
-                            </a>
-                            <a href="#" className="btn-sale">{t("collections-list.shop_now")}</a>
-                            <a href="#" className="like-icon"></a>
-                        </div>
-                    </div>
-                </div> */}
             </Slider>
 
 

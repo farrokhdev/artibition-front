@@ -44,7 +44,7 @@ function BoxesInfo({items}) {
                     <h2 className="greencolor text-dir">{t('content-panel-profile.info-box.seller.title')}</h2>
                     <p className="text-dir">{t('content-panel-profile.info-box.seller.text')}</p>
                 </div>
-                <Link to="/panel/Become-seller" className="btn-box-1 btn-green pull-left">
+                <Link to="/panel/become-seller" className="btn-box-1 btn-green pull-left">
                     <img src={felsh_left} width="16" height="16" className="center-block"/>
                 </Link>
                 <div className="clearfix"></div>

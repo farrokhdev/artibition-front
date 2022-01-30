@@ -67,15 +67,12 @@ const RouterConfig = (props) => {
                 <Route path="registration-artists" element={<RegistrationArtist />} />
                 <Route path="dashboard-gallery" element={<GalleryPanelDashboard />} />
                 <Route path="exhibition-list-gallery" element={<GalleryPanelExhibition />} />
-                <Route path="Become-seller" element={<BecomeSeller/>} />
+                <Route path="become-seller" element={<BecomeSeller/>} />
                 <Route path="artist-list-gallery" element={<GalleryPanelArtisit />} />
                 <Route path="my-gallery-list-gallery" element={<GalleryPanelMyGallery />} />
                 <Route path="create-exhibition" element={<GalleryPanelCreateExhibition />} />
                 <Route path="gallery-info" element={<GalleryPanelEditGalleryInfo />} />
                 <Route path="select-artwork-source" element={<GalleryPanelSelectArtworkSource />} />
-                <Route path="select-artist-source" element={<GalleryPanelSelectArtisitSource />} />
-                <Route path="create-artist-artwotk" element={<GalleryPanelCreateArtistArtwork />} />
-                <Route path="upload-exhibition-artwotk" element={<GalleryPanelUploadExhibitionArtwork />} />
                 <Route path="galleries" element={<GalleryPanelMyGallery />} />
                 <Route path="cart" element={<Cart />} />
                 <Route path="invoice" element={<Invoice />} />

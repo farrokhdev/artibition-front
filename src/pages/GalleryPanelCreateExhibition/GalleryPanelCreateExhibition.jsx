@@ -14,6 +14,8 @@ import '../../assets/style/leaflet.scss'
 import apiServices from '../../utils/api.services';
 import { GALLERY_ARTISTS } from '../../utils';
 import MultipleUpload from '../../components/MultiUpload/MultiUpload';
+import { exhibitionForm } from '../../redux/reducers/Exhibition/exhibition.action';
+import { useNavigate } from "react-router-dom";
 
 const { Option } = Select;
 const { TextArea } = Input;
@@ -26,13 +28,60 @@ function GalleryPanelCreateExhibition() {
     const [zoom, setZoom] = useState(11)
     const [artistsOption, setArtistOption] = useState([])
     const [posters, setPosters] = useState([])
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const onFinish = (form) => {
-        console.log(form);
         if (posters.length > 0) {
             if (form.type) {
                 if (form.category && form.category.length > 0) {
-
+                    const payload = {
+                        "translations": {
+                            "en": {
+                                "name": form.exhibition_name_en,
+                                "statement": form.statement_en,
+                                "activity_time": form.activity_time_en
+                            },
+                            "fa": {
+                                "name": i18next.language === 'fa-IR' ? form.exhibition_name_fa : "",
+                                "statement": i18next.language === 'fa-IR' ? form.statement_fa : "",
+                                "activity_time": i18next.language === 'fa-IR' ? form.activity_time_fa : ""
+                            }
+                        },
+                        "type": form.type,
+                        "category": form.category,
+                        "virtual_start_date": form.virtual_start_date,
+                        "virtual_end_date": form.virtual_end_date,
+                        "real_start_date": form.real_start_date,
+                        "real_end_date": form.real_end_date,
+                        "address": [
+                            {
+                                "point": point,
+                                "translations": {
+                                    "fa": {
+                                        "address": i18next.language === 'fa-IR' ? form.address_fa : "",
+                                        "city": "",
+                                        "state": "",
+                                        "country": ""
+                                    },
+                                    "en": {
+                                        "address": form.address_en,
+                                        "city": "",
+                                        "state": "",
+                                        "country": ""
+                                    }
+                                },
+                                "postal_code": "",
+                                "is_default": ""
+                            }
+                        ],
+                        "phone": form.phone,
+                        "artist": form.artists,
+                        "poster": posters,
+                        "product": []
+                    }
+                    dispatch(exhibitionForm(payload))
+                    navigate("/gallery-panel/upload-exhibition-artwotk")
                 } else {
                     message.error({
                         content: "حداقل باید یک رشته هنری انتخاب کنید",
@@ -51,10 +100,8 @@ function GalleryPanelCreateExhibition() {
                 style: { marginTop: "110px" }
             })
         }
-        const payload = {
-
-        }
     }
+
 
 
     const options = [
@@ -337,9 +384,12 @@ function GalleryPanelCreateExhibition() {
                             </div>
                             <h3 className="info-title mrgt64 text-dir">{t("gallery-panel-create-exhibition.address_contact_info")}</h3>
                             <div className="row dir">
-                                <div className={"col-sm-9"}>
+                                <div className={classnames("", {
+                                    "col-sm-9": GetLanguage() === 'fa-IR',
+                                    "d-none": GetLanguage() === 'en-US'
+                                })}>
                                     <div className="public-group ">
-                                        <Form.Item>
+                                        <Form.Item name={"address_fa"}>
                                             <Input className="form-control input-public " required={i18next.language === 'fa_IR'} placeholder={t("gallery-panel-create-exhibition.address_fa")} />
                                             {/* <label className="lable-public en-lang">{t("gallery-panel-create-exhibition.address_fa")}</label> */}
                                         </Form.Item>
@@ -354,11 +404,11 @@ function GalleryPanelCreateExhibition() {
                                 <div className="clearfix"></div>
                                 <div className={classnames("", {
                                     "col-sm-12": GetLanguage() === 'fa-IR',
-                                    "d-none": GetLanguage() === 'en-US'
+                                    "col-sm-9": GetLanguage() === 'en-US'
                                 })}
                                 >
                                     <div className="public-group en">
-                                        <Form.Item>
+                                        <Form.Item name={"address_en"}>
                                             <Input className="form-control input-public en-lang " required placeholder={t("gallery-panel-create-exhibition.address_en")} />
                                             {/* <label className="lable-public en-lang">{t("gallery-panel-create-exhibition.address_en")}</label> */}
                                         </Form.Item>
@@ -367,7 +417,7 @@ function GalleryPanelCreateExhibition() {
                                 <div className="col-sm-6">
                                     <div className="public-group">
                                         <Form.Item name={"phone"}>
-                                            <input className="form-control input-public  persian-num" required placeholder={t("gallery-panel-create-exhibition.phone_number")} />
+                                            <Input className="form-control input-public  persian-num" required placeholder={t("gallery-panel-create-exhibition.phone_number")} />
                                             {/* <label className="lable-public">{t("gallery-panel-create-exhibition.phone_number")}</label> */}
                                         </Form.Item>
 

@@ -3,13 +3,16 @@ import { t } from 'i18next';
 import apiServices from "../../utils/api.services";
 import { message } from "antd";
 import { GALLERY_PANEL_DASHBOARD } from "../../utils";
+import { useSelector } from 'react-redux'
 
 function CounterStatus() {
+
+    const { id } = useSelector((state) => state.galleryReducer)
 
     const [artworksStatus, setArtworkSatus] = useState()
 
     useEffect(() => {
-        apiServices.get(GALLERY_PANEL_DASHBOARD(2), "")
+        apiServices.get(GALLERY_PANEL_DASHBOARD(id), "")
             .then(res => {
                 if (res.data) {
                     setArtworkSatus(res.data.data)
