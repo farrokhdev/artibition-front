@@ -41,6 +41,7 @@ import ListOfUploadedWorks from '../pages/ListOfUploadedWorks/ListOfUploadedWork
 import RegistrationArtist from '../pages/RegistrationArtists/RegistrationArtist';
 import PanelMyCollections from '../pages/PanelMyCollections/PanelMyCollections';
 import BecomeSeller from '../pages/BecomeSeller/BecomeSeller';
+import PanelBiddingPrice from '../pages/PanelBiddingPrice/PanelBiddingPrice';
 
 const RouterConfig = (props) => {
     return (
@@ -68,6 +69,7 @@ const RouterConfig = (props) => {
                 <Route path="dashboard-gallery" element={<GalleryPanelDashboard />} />
                 <Route path="exhibition-list-gallery" element={<GalleryPanelExhibition />} />
                 <Route path="become-seller" element={<BecomeSeller/>} />
+                <Route path="Panel-bidding-price" element={<PanelBiddingPrice/>} />
                 <Route path="artist-list-gallery" element={<GalleryPanelArtisit />} />
                 <Route path="my-gallery-list-gallery" element={<GalleryPanelMyGallery />} />
                 <Route path="create-exhibition" element={<GalleryPanelCreateExhibition />} />
