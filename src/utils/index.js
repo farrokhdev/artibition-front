@@ -52,4 +52,6 @@ export const MESSAGES_ASSERTION = "/message/assertion/";
 export const ARTWORK_BY_GALLERY = ((gallereyId, artistId) => { return (`/${gallereyId}/exhibition/artist/${artistId}/product/`) })
 export const MESSAGES_INBOX = "/message/inbox/";
 export const PRODUCT_BY_ARTIST =(galleryId,artistId) => `/${galleryId}/exhibition/artist/${artistId}/product/`
-export const ORDER_BUYER_ME = '/orders/bids/buyers/me/'
+export const ORDER_BUYER_ME = '/orders/bids/buyers/me/';
+export const ORDER_BUYER_ME_ID = id=> `/orders/bids/buyers/me/${id}/`;
+
