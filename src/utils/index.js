@@ -50,3 +50,4 @@ export const ARTWORK_BY_GALLERY = ((gallereyId, artistId) => { return (`/${galle
 export const MESSAGES_INBOX = "/message/inbox/";
 export const PRODUCT_BY_ARTIST =(galleryId,artistId) => `/${galleryId}/exhibition/artist/${artistId}/product/`
 export const ORDER_BUYER_ME = '/orders/bids/buyers/me/'
+export const ARTISTS = '/artist/'

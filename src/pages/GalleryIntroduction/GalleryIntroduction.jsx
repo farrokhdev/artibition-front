@@ -3,7 +3,7 @@ import Header from '../../components/Header/Header';
 import Menu from '../../components/Menu/Menu';
 import HanLogo from '../../assets/img/gallery/hanlogo.jpg';
 import circleplus1 from '../../assets/img/circle-plus-1.png';
-import { Breadcrumb, Tabs } from 'antd';
+import { Breadcrumb, message, Tabs } from 'antd';
 import { t } from 'i18next';
 import Introduction from './Introduction';
 import Footer from '../../components/Footer/Footer';
@@ -65,7 +65,11 @@ function GalleryIntroduction() {
         apiServices.post(GALLERY_FOLLOW,QueryString.stringify(followParams))
         .then(res => {
             if (res.data) {
-                
+                message.success({
+                    content: 'درخواست شما با موفقیت ثبت شد', style: {
+                        marginTop: '110px',
+                    },
+                })
             }
         })
         .catch(err => {
