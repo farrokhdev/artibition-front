@@ -3,6 +3,7 @@ import { t } from 'i18next';
 import Slider from "react-slick";
 
 import Artwork1 from '../../assets/img/mainpage/hnrpqkfiup@3x.jpg'
+import { useTranslation } from "react-i18next";
 
 
 const SliderSetting = {
@@ -45,13 +46,27 @@ const SliderSetting = {
 }
 
 
-function Collection() {
+function Collection({collectionItem}) {
+    const { t, i18n } = useTranslation();
+
     return (
         <div className="collection-list-row">
             <div className="row w-100 text-dir dir">
                 <div className="col-sm-9">
-                    <h4 className="fontbold19 justify-content-unset">هنر تراش بر روی چوب</h4>
-                    <span className="collection-artistname">بردیا صالح</span>
+                    <h4 className="fontbold19 justify-content-unset">
+                    {i18n.language === 'fa-IR' ?
+                    collectionItem?.translations?.fa?.title
+                    :
+                    collectionItem?.translations?.en?.title
+                    }
+                    </h4>
+                    <span className="collection-artistname">
+                    {i18n.language === 'fa-IR' ?
+                    collectionItem?.owner?.translations?.fa?.first_name + ' ' + collectionItem?.owner?.translations?.fa?.last_name
+                    :
+                    collectionItem?.owner?.translations?.en?.first_name + ' ' + collectionItem?.owner?.translations?.en?.last_name
+                }
+                    </span>
                     <button type="button" className="btn-follow">{t("collections-list.follow")}</button>
                 </div>
                 <div className="col-sm-3">
@@ -65,9 +80,10 @@ function Collection() {
 
 
             <Slider {...SliderSetting} className="mrgt20">
-                <div className="cols">
+                {collectionItem?.products?.map((item,index) =>
+                <div className="cols" key={index}>
                     <div className="col-img" style={{ marginLeft: "20px" }}>
-                        <img src={Artwork1} width="840" height="840" alt="آرتیبیشن" className="img-responsive" />
+                        <img src={item.medias[0]?.exact_url} width="840" height="840" alt="آرتیبیشن" className="img-responsive" />
                         <div className="tab-overly dir">
                             <a href="#" className="btn-see">
                                 <span className="view-icon pull-dir"></span>
@@ -78,7 +94,8 @@ function Collection() {
                         </div>
                     </div>
                 </div>
-                <div className="cols">
+                    )}
+                {/* <div className="cols">
                     <div className="col-img" style={{ marginLeft: "20px" }}>
                         <img src={Artwork1} width="840" height="840" alt="آرتیبیشن" className="img-responsive" />
                         <div className="tab-overly dir">
@@ -143,7 +160,7 @@ function Collection() {
                             <a href="#" className="like-icon"></a>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </Slider>
 
 

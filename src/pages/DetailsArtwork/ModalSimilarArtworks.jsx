@@ -1,5 +1,5 @@
-import React from 'react';
-import { Modal } from 'antd';
+import React, { useState } from 'react';
+import { message, Modal } from 'antd';
 import edit_icon from '../../assets/img/edit_name.svg';
 import close_icon from '../../assets/img/clear.svg';
 import { Form, Input} from "antd";
@@ -10,15 +10,44 @@ import artwork1 from '../../assets/img/artworks/artwork-1.jpg';
 import artwork11 from '../../assets/img/artworks/artwork-11.jpg';
 import artist4 from '../../assets/img/artist-4.jpg';
 import circle_plus_icon from '../../assets/img/circle-plus-1.png';
+import { useTranslation } from 'react-i18next';
+import apiServices from '../../utils/api.services';
+import { GALLERY_FOLLOW } from '../../utils';
+import QueryString from 'qs';
 
 function ModalSimilarArtworks(props) {
 
-    const {visibleSimilarArtworksModal , setVisibleSimilarArtworksModal} = props;
-
+    const { t, i18n } = useTranslation();
+    const {visibleSimilarArtworksModal , setVisibleSimilarArtworksModal , artistProduct , productDetail, artist_id} = props;
+    const [params, setParams] = useState({
+        activity_type : "following",
+        content_type : "artist",
+        page: 1
+    });
+    
     const handleClose = () => {
         setVisibleSimilarArtworksModal(false);
     }
-
+    const galleryFollow = ({activity,content}) => {
+        const payload = {
+            content_type: content,
+            activity_type: activity,
+            object_id: artist_id
+        }
+        apiServices.post(GALLERY_FOLLOW,payload)
+        .then(res => {
+            if (res.data) {
+                message.success({
+                    content: 'درخواست شما با موفقیت ثبت شد', style: {
+                        marginTop: '110px',
+                    },
+                })
+            }
+        })
+        .catch(err => {
+            console.log("err", err)
+        })
+    }
 
     return (
         <React.Fragment>
@@ -49,7 +78,7 @@ function ModalSimilarArtworks(props) {
                                     <div className="d-flex box-dir-reverse modal-similar-header">
                                         <div className="col-xs-3 px-0">
                                             <div className="d-flex pull-dir">
-                                                <img src={artwork1} width="1776" height="1776" alt=""
+                                                <img src={artistProduct?.results && artistProduct?.results[0]?.medias[0]?.exact_url} width="1776" height="1776" alt=""
                                                     className="img-responsive"/>
                                             </div>
                                         </div>
@@ -62,11 +91,15 @@ function ModalSimilarArtworks(props) {
                                                     </div>
                                                </div>
                                                 <div className="col">
-                                                    <h3 className="fontbold20 text-dir">Behrouz Zindashti</h3>
-                                                    <h4 className="fontbold20 text-dir">Untitle</h4>
-                                                    <button type="button" className="btn btn-galleryfollow pull-dir">
+                                                    <h3 className="fontbold20 text-dir">{i18n.language === 'fa-IR' ?
+                                                        productDetail?.translations?.fa?.artist_name
+                                                        :
+                                                        productDetail?.translations?.en?.artist_name
+                                                    }</h3>
+                                                    {/* <h4 className="fontbold20 text-dir">Untitle</h4> */}
+                                                    <button type="button" className="btn btn-galleryfollow pull-dir" onClick={() => galleryFollow({content:"artist",activity:"following"})} >
                                                         <img src={circle_plus_icon} width="17" height="17" alt="" className="pull-left"/>
-                                                        <span >Follow</span>
+                                                        <span >{t("artwork.follow")}</span>
                                                     </button>
                                                 </div>
                                             </div>
@@ -75,10 +108,11 @@ function ModalSimilarArtworks(props) {
                                 </div>
                                 <div className="row-similar-artwork">
                                     <div className="row">
+                                    {artistProduct?.results?.map((item,index) => 
                                         <div className="col-sm-3">
                                             <a className="cols" href="#">
                                                 <div className="col-img">
-                                                    <img src={artwork1} width="1776" height="1776" alt="Arthibition"
+                                                    <img src={item.medias[0]?.exact_url} width="1776" height="1776" alt="Arthibition"
                                                         className="img-responsive"/>
                                                     <div className="tab-overly">
                                                         <span className="btn-see">
@@ -91,39 +125,8 @@ function ModalSimilarArtworks(props) {
                                                 </div>
                                             </a>
                                         </div>
-                                        <div className="col-sm-3">
-                                            <a className="cols" href="#">
-                                                <div className="col-img">
-                                                    <img src={artwork11} width="840" height="1041" alt="Arthibition"
-                                                        className="img-responsive"/>
-                                                    <div className="tab-overly">
-                                                        <span className="btn-see">
-                                                            <span className="view-icon pull-left"></span>
-                                                            <span>view</span>
-                                                        </span>
-                                                        <span className="btn-sale">Shop now</span>
-                                                        <span className="like-icon"></span>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div className="col-sm-3">
-                                            <a className="cols" href="#">
-                                                <div className="col-img">
-                                                    <img src={artwork1} width="1776" height="1776" alt="Arthibition"
-                                                        className="img-responsive"/>
-                                                    <div className="tab-overly">
-                                                        <span className="btn-see">
-                                                            <span className="view-icon pull-left"></span>
-                                                            <span>view</span>
-                                                        </span>
-                                                        <span className="btn-sale">Shop now</span>
-                                                        <span className="like-icon"></span>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                        </div>
-                                        <div className="col-sm-3">
+                                    )}
+                                        {/* <div className="col-sm-3">
                                             <a className="cols" href="#">
                                                 <div className="col-img">
                                                     <img src={artwork11} width="840" height="1041" alt="Arthibition"
@@ -171,6 +174,38 @@ function ModalSimilarArtworks(props) {
                                                 </div>
                                             </a>
                                         </div>
+                                        <div className="col-sm-3">
+                                            <a className="cols" href="#">
+                                                <div className="col-img">
+                                                    <img src={artwork1} width="1776" height="1776" alt="Arthibition"
+                                                        className="img-responsive"/>
+                                                    <div className="tab-overly">
+                                                        <span className="btn-see">
+                                                            <span className="view-icon pull-left"></span>
+                                                            <span>view</span>
+                                                        </span>
+                                                        <span className="btn-sale">Shop now</span>
+                                                        <span className="like-icon"></span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <div className="col-sm-3">
+                                            <a className="cols" href="#">
+                                                <div className="col-img">
+                                                    <img src={artwork11} width="840" height="1041" alt="Arthibition"
+                                                        className="img-responsive"/>
+                                                    <div className="tab-overly">
+                                                        <span className="btn-see">
+                                                            <span className="view-icon pull-left"></span>
+                                                            <span>view</span>
+                                                        </span>
+                                                        <span className="btn-sale">Shop now</span>
+                                                        <span className="like-icon"></span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div> */}
                                     </div>
 
                                 </div>

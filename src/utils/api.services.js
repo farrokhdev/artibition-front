@@ -12,6 +12,15 @@ class APIService {
                 return err
             })
     }
+    postByParams(uri, payload, params) {
+        return axios.post(`${BASE_URL}${uri}?${params}`, payload)
+            .then(res => {
+                return res
+            })
+            .catch(err => {
+                return err
+            })
+    }
 
     get(uri, params) {
         return axios.get(`${BASE_URL}${uri}?${params}`)

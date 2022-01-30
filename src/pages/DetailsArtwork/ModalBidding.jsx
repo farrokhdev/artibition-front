@@ -13,7 +13,7 @@ import apiServices from '../../utils/api.services';
 
 function ModalBidding(props) {
 
-    const {visibleBiddingModal , setVisibleBiddingModal , editionValue} = props;
+    const {visibleBiddingModal , setVisibleBiddingModal , editionValue, productDetail} = props;
     const [offerValue, setOfferValue] = useState();
 
     
