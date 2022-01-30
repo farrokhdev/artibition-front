@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import CardFollower from './CardFollower';
-import { FOLLOW_ARTISTS, FOLLOW_PRODUCTS } from '../../utils';
+import { FOLLOW_ARTISTS } from '../../utils';
 import apiServices from '../../utils/api.services';
 import queryString from 'query-string';
 import { useSelector } from 'react-redux';
