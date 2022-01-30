@@ -13,9 +13,9 @@ function BoxesInfo({items}) {
                     <h2 className="pinkcolor text-dir">{t('content-panel-profile.info-box.register.title')}</h2>
                     <p className="text-dir">{t('content-panel-profile.info-box.register.text')}</p>
                 </div>
-                <a href="#" className="btn-box-1 btn-pink pull-left">
+                <Link to="/panel/gallery-info" className="btn-box-1 btn-pink pull-left">
                     <img src={felsh_left} width="16" height="16" className="center-block"/>
-                </a>
+                </Link>
                 <div className="clearfix"></div>
             </div>
         </div>
@@ -44,9 +44,9 @@ function BoxesInfo({items}) {
                     <h2 className="greencolor text-dir">{t('content-panel-profile.info-box.seller.title')}</h2>
                     <p className="text-dir">{t('content-panel-profile.info-box.seller.text')}</p>
                 </div>
-                <a href="#" className="btn-box-1 btn-green pull-left">
+                <Link to="/panel/become-seller" className="btn-box-1 btn-green pull-left">
                     <img src={felsh_left} width="16" height="16" className="center-block"/>
-                </a>
+                </Link>
                 <div className="clearfix"></div>
             </div>
         </div>

@@ -34,7 +34,7 @@ const Panelprofile = (props) => {
         APIService.get(PROFILE, queryString.stringify(params))
             .then(resp => {
                 setLoading(false)
-                props.setProfile({ ...props.state, profile: resp.data.data, id: resp.data.data.id })
+                props.setProfile({ ...props.state, profile: resp.data.data, id: resp.data.data.id, roles:resp.data.data.roles })
                 setItems(resp.data.data)
             })
             .catch(err => {
