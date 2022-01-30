@@ -13,6 +13,7 @@ import AllProducts from "./AllProducts";
 import Slider from "./Slider";
 import Menu from "./Menu";
 import { Modal } from "antd";
+import { useSelector } from "react-redux";
 
 
 function Home() {
