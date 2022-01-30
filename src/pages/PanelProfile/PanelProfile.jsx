@@ -15,6 +15,7 @@ import ModalEditMobile from './ModalEditMobile';
 import { connect } from 'react-redux';
 import { setProfile } from '../../redux/reducers/auth/auth.actions';
 import ModalEditEmail from './ModalEditEmail';
+import { useSelector } from 'react-redux';
 
 const Panelprofile = (props) => {
 
@@ -28,13 +29,17 @@ const Panelprofile = (props) => {
 
 
 
+    const { roles } = useSelector((state) => state.authReducer)
+
+
+
 
     const getItems = () => {
         setLoading(true)
         APIService.get(PROFILE, queryString.stringify(params))
             .then(resp => {
                 setLoading(false)
-                props.setProfile({ ...props.state, profile: resp.data.data, id: resp.data.data.id, roles:resp.data.data.roles })
+                props.setProfile({ ...props.state, profile: resp.data.data, id: resp.data.data.id })
                 setItems(resp.data.data)
             })
             .catch(err => {
@@ -47,6 +52,10 @@ const Panelprofile = (props) => {
         getItems()
     }, [params])
 
+    useEffect(() => {
+        console.log(roles);
+    }, [])
+
 
     return (
         <>
@@ -55,7 +64,7 @@ const Panelprofile = (props) => {
             <div className="panel-style margin-top-20">
                 <SidebarPanel items={items} />
                 <div className="custom-container " id="main">
-                    <BoxesInfo items={items}/>
+                    <BoxesInfo items={items} />
                     <PersonalInfo
                         setVisibleModalEditProfile={setVisibleModalEditProfile}
                         setvisibleEditMobile={setvisibleEditMobile}
@@ -79,7 +88,7 @@ const Panelprofile = (props) => {
                 visibleEditMobile={visibleEditMobile}
             />
 
-              <ModalEditEmail
+            <ModalEditEmail
                 items={items}
                 getItems={getItems}
                 setvisibleEditEmail={setvisibleEditEmail}

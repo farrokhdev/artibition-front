@@ -67,10 +67,10 @@ const RouterConfig = (props) => {
                 <Route path="create-content" element={<PanelCreateContent />} />
                 <Route path="registration-artists" element={<RegistrationArtist />} />
                 <Route path="dashboard-gallery" element={<GalleryPanelDashboard />} />
-                <Route path="exhibition-list-gallery" element={<GalleryPanelExhibition />} />
+                <Route path="exhibitions" element={<GalleryPanelExhibition />} />
                 <Route path="become-seller" element={<BecomeSeller/>} />
                 <Route path="Panel-bidding-price" element={<PanelBiddingPrice/>} />
-                <Route path="artist-list-gallery" element={<GalleryPanelArtisit />} />
+                <Route path="artists" element={<GalleryPanelArtisit />} />
                 <Route path="my-gallery-list-gallery" element={<GalleryPanelMyGallery />} />
                 <Route path="create-exhibition" element={<GalleryPanelCreateExhibition />} />
                 <Route path="gallery-info" element={<GalleryPanelEditGalleryInfo />} />
@@ -89,9 +89,9 @@ const RouterConfig = (props) => {
 
             <Route path="gallery-panel" animate={true}>
                 <Route path="dashboard" element={<GalleryPanelDashboard />} />
-                <Route path="exhibitions" element={<GalleryPanelExhibition />} />
-                <Route path="artists" element={<GalleryPanelArtisit />} />
-                <Route path="galleries" element={<GalleryPanelMyGallery />} />
+                {/* <Route path="exhibitions" element={<GalleryPanelExhibition />} /> */}
+                {/* <Route path="artists" element={<GalleryPanelArtisit />} /> */}
+                {/* <Route path="galleries" element={<GalleryPanelMyGallery />} /> */}
                 <Route path="create-exhibition" element={<GalleryPanelCreateExhibition />} />
                 <Route path="edit-gallery" element={<GalleryPanelEditGalleryInfo />} />
                 <Route path="select-artwork-source" element={<GalleryPanelSelectArtworkSource />} />
