@@ -1,78 +1,49 @@
-import React from 'react';
-
-import artist from '../../assets/img/Aydin_Aghdashloo_04@3x.jpg';
-import artist1 from '../../assets/img/artist-1.jpg';
-import artist2 from '../../assets/img/artist-2.jpg';
-import artist3 from '../../assets/img/artist-3.jpg';
-import artist4 from '../../assets/img/artist-4.jpg';
-import { t } from 'i18next';
+import React, { useState, useEffect } from 'react';
+import CardFollower from './CardFollower';
+import { FOLLOW_ARTISTS } from '../../utils';
+import apiServices from '../../utils/api.services';
+import queryString from 'query-string';
+import { useSelector } from 'react-redux';
 
 function FollowersTab() {
-return (
-    <div className="row">
-        <div className="col-lg-2 col-md-3 col-xs-6 my-3">
-            <div className="artist-avatar">
-                <img src={artist}  width="408" height="408" className="img-responsive"
-                    alt="آیدین آغداشلو" />
-                <h3 className="avatar-name">پرویز تناولی</h3>
-                <button type="button" className="btn-follow">{t("artwork.follow")}</button>
-            </div>
-        </div>
-        <div className="col-lg-2 col-md-3 col-xs-6 my-3">
-            <div className="artist-avatar">
-                <img src={artist1} width="408" height="408" className="img-responsive" alt="آیدین آغداشلو" />
-                <h3 className="avatar-name">پرویز تناولی</h3>
-                <button type="button" className="btn-follow">{t("artwork.follow")}</button>
-            </div>
-        </div>
-        <div className="col-lg-2 col-md-3 col-xs-6 my-3">
-            <div className="artist-avatar">
-                <img src={artist2} width="408" height="408" className="img-responsive" alt="آیدین آغداشلو" />
-                <h3 className="avatar-name">پرویز تناولی</h3>
-                <button type="button" className="btn-follow followed">{t("artwork.following")}</button>
 
-            </div>
+
+    const { roles } = useSelector((state) => state.authReducer)
+    const [followerArtworks, setFollowerArtworks] = useState([]);
+    const [params, setParams] = useState({
+        activity_type: "following",
+        content_type: "artist"
+    });
+
+    console.log("rols==>", roles);
+    const getFollowers = () => {
+        apiServices.get(FOLLOW_ARTISTS, queryString.stringify(params))
+            .then(res => {
+                if (res.data) {
+                    setFollowerArtworks(res.data.data.results)
+                    console.log("res===>" , res);
+                }
+            })
+            .catch(err => {
+                console.log("err", err)
+            })
+    }
+
+    useEffect(() => {
+        getFollowers()
+    }, []);
+
+
+    return (
+        <div className="row">
+            {
+                followerArtworks?.length && followerArtworks?.map((follower) => {
+                    return (
+                        <CardFollower fallower={follower} />
+                    )
+                })
+            }
         </div>
-        <div className="col-lg-2 col-md-3 col-xs-6 my-3">
-            <div className="artist-avatar">
-                <img src={artist3} width="408" height="408" className="img-responsive" alt="آیدین آغداشلو" />
-                <h3 className="avatar-name">پرویز تناولی</h3>
-                <button type="button" className="btn-follow followed">{t("artwork.following")}</button>
-            </div>
-        </div>
-        <div className="col-lg-2 col-md-3 col-xs-6 my-3">
-            <div className="artist-avatar">
-                <img src={artist4} width="192" height="192" className="img-responsive"
-                    alt="آیدین آغداشلو" />
-                <h3 className="avatar-name">پرویز تناولی</h3>
-                <button type="button" className="btn-follow followed">{t("artwork.following")}</button>
-            </div>
-        </div>
-        <div className="col-lg-2 col-md-3 col-xs-6 my-3">
-            <div className="artist-avatar">
-                <img src={artist} width="192" height="192" className="img-responsive"
-                    alt="آیدین آغداشلو" />
-                <h3 className="avatar-name">پرویز تناولی</h3>
-                <button type="button" className="btn-follow followed">{t("artwork.following")}</button>
-            </div>
-        </div>
-        <div className="col-lg-2 col-md-3 col-xs-6 my-3">
-            <div className="artist-avatar">
-                <img src={artist1} width="192" height="192" className="img-responsive"
-                    alt="آیدین آغداشلو" />
-                <h3 className="avatar-name">پرویز تناولی</h3>
-                <button type="button" className="btn-follow followed">{t("artwork.following")}</button>
-            </div>
-        </div>
-        <div className="col-lg-2 col-md-3 col-xs-6 my-3">
-            <div className="artist-avatar">
-                <img src={artist2} width="192" height="192" className="img-responsive"
-                    alt="آیدین آغداشلو" />
-                <h3 className="avatar-name">پرویز تناولی</h3>
-                <button type="button" className="btn-follow followed">{t("artwork.following")}</button>
-            </div>
-        </div>
-    </div>
     )
 }
 

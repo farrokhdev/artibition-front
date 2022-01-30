@@ -43,9 +43,8 @@ function ModalAddGallery(props) {
                     "description": values?.description_en
                 }
             },
-            // "likes":[4] ,
-            "likes": chooseProduct
-            // chooseProduct
+            "products_id" : chooseProduct
+            // "likes": chooseProduct 
         }
         apiServices.post(SOCIAL_NETWORK_COLLECTIONS, payload)
             .then(res => {
@@ -65,13 +64,14 @@ function ModalAddGallery(props) {
                             marginTop: '10vh'
                         }
                     })
-                }
+                }  
             })
     }
 
     const getProductsFollow = () => {
         apiServices.get(FOLLOW_PRODUCTS, queryString.stringify(params))
             .then(res=>{
+                console.log("res.data.data.results==>>" , res.data.data.results);
                 setchooseFollowProducts(res.data.data.results)
             })
     }

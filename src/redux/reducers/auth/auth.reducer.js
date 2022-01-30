@@ -58,7 +58,8 @@ const authReducer = (state = initial_state , {type , payload})=> {
                 return {
                     ...state,
                     profile : payload.profile,
-                    id: payload.id
+                    id: payload.id,
+                    roles : payload.roles
                 }
 
         case types.GET_OTP : 

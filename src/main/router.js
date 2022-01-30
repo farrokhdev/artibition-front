@@ -40,6 +40,8 @@ import UnsuccessPayment from '../pages/UnsuccessPayment/UnsuccessPayment';
 import ListOfUploadedWorks from '../pages/ListOfUploadedWorks/ListOfUploadedWorks';
 import RegistrationArtist from '../pages/RegistrationArtists/RegistrationArtist';
 import PanelMyCollections from '../pages/PanelMyCollections/PanelMyCollections';
+import BecomeSeller from '../pages/BecomeSeller/BecomeSeller';
+import PanelBiddingPrice from '../pages/PanelBiddingPrice/PanelBiddingPrice';
 
 const RouterConfig = (props) => {
     return (
@@ -64,10 +66,15 @@ const RouterConfig = (props) => {
                 <Route path="contents" element={<PanelContentList />} />
                 <Route path="create-content" element={<PanelCreateContent />} />
                 <Route path="registration-artists" element={<RegistrationArtist />} />
-                {/* <Route path="select-artwork-source" element={<GalleryPanelSelectArtworkSource />} />
-                <Route path="select-artist-source" element={<GalleryPanelSelectArtisitSource />} />
-                <Route path="create-artist-artwotk" element={<GalleryPanelCreateArtistArtwork />} />
-                <Route path="upload-exhibition-artwotk" element={<GalleryPanelUploadExhibitionArtwork />} /> */}
+                <Route path="dashboard-gallery" element={<GalleryPanelDashboard />} />
+                <Route path="exhibitions" element={<GalleryPanelExhibition />} />
+                <Route path="become-seller" element={<BecomeSeller/>} />
+                <Route path="bidding-price" element={<PanelBiddingPrice/>} />
+                <Route path="artists" element={<GalleryPanelArtisit />} />
+                <Route path="my-gallery-list-gallery" element={<GalleryPanelMyGallery />} />
+                <Route path="create-exhibition" element={<GalleryPanelCreateExhibition />} />
+                <Route path="gallery-info" element={<GalleryPanelEditGalleryInfo />} />
+                <Route path="select-artwork-source" element={<GalleryPanelSelectArtworkSource />} />
                 <Route path="galleries" element={<GalleryPanelMyGallery />} />
                 <Route path="cart" element={<Cart />} />
                 <Route path="invoice" element={<Invoice />} />
@@ -82,9 +89,9 @@ const RouterConfig = (props) => {
 
             <Route path="gallery-panel" animate={true}>
                 <Route path="dashboard" element={<GalleryPanelDashboard />} />
-                <Route path="exhibitions" element={<GalleryPanelExhibition />} />
-                <Route path="artists" element={<GalleryPanelArtisit />} />
-                <Route path="galleries" element={<GalleryPanelMyGallery />} />
+                {/* <Route path="exhibitions" element={<GalleryPanelExhibition />} /> */}
+                {/* <Route path="artists" element={<GalleryPanelArtisit />} /> */}
+                {/* <Route path="galleries" element={<GalleryPanelMyGallery />} /> */}
                 <Route path="create-exhibition" element={<GalleryPanelCreateExhibition />} />
                 <Route path="edit-gallery" element={<GalleryPanelEditGalleryInfo />} />
                 <Route path="select-artwork-source" element={<GalleryPanelSelectArtworkSource />} />

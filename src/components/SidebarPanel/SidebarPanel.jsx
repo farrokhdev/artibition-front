@@ -5,9 +5,27 @@ import invite from '../../assets/img/invite.svg';
 import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 import { useTranslation } from "react-i18next";
+import { useSelector } from 'react-redux';
 
 function SidebarPanel(props) {
     const { t, i18n } = useTranslation();
+    const { roles } = useSelector((state) => state.authReducer)
+    const getUserRole = () => {
+        if (roles) {
+            let rolesTemp = roles.slice()
+            if (rolesTemp.indexOf('gallery') !== -1) {
+                rolesTemp.splice(rolesTemp.indexOf('gallery'), 1)
+            }
+            if (rolesTemp.length) {
+                return rolesTemp[0]
+            }
+            else {
+                return 'user'
+            }
+        } else {
+            return 'user'
+        }
+    }
 
     return (
 
@@ -38,35 +56,107 @@ function SidebarPanel(props) {
 
                 <div className="d-block mt-5">
                     <ul className="text-dir">
-                        <li className="sidebar-icon" id="home"><Link to="/panel/dashboard"><span
-                            className="sidebar-nav-margin">{t("drawer-panel.nav-dashboard")}</span></Link></li>
-                        <li className="sidebar-icon my-4" id="manage-artworks"><Link to="/panel/art-management"><span
-                            className="sidebar-nav-margin">{t("drawer-panel.nav-art-management")}</span></Link></li>
-                        <li className="sidebar-icon my-4" id="mypurchase"><Link to="/panel/purchases"><span
-                            className="sidebar-nav-margin">{t("drawer-panel.nav-mypurchases")}</span></Link></li>
-                        <li className="sidebar-icon my-4" id="financial"><Link to="/panel/orders"><span
-                            className="sidebar-nav-margin">{t("drawer-panel.nav-orders")}</span></Link></li>
-                        <li className="sidebar-icon my-4" id="wallet"><Link to="/panel/wallet"><span
-                            className="sidebar-nav-margin">{t("drawer-panel.nav-wallet")}</span></Link></li>
-                        <li className="sidebar-icon my-4" id="my-albums"><Link to="/panel/my-albums"><span
-                            className="sidebar-nav-margin">{t("drawer-panel.nav-my-albums")}</span></Link></li>
-                        <li className="sidebar-icon my-4" id="my-albums"><Link to="/panel/my-collections"><span
-                            className="sidebar-nav-margin">کالکشن های من</span></Link></li>
+                        {(getUserRole() === 'gallery') &&
+                            <>
+                                <li className="sidebar-icon" id="home"><Link to="/panel/dashboard"><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-dashboard")}</span></Link></li>
+                                <li className="sidebar-icon my-4" id="manage-artworks"><Link to="/panel/art-management"><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-art-management")}</span></Link></li>
+                                <li className="sidebar-icon my-4" id="financial"><Link to="/panel/orders"><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-orders")}</span></Link></li>
+                                <li className="sidebar-icon my-4" id="content"><Link to="/panel/contents"><span
+                                    className="sidebar-nav-margin">محتوا</span></Link></li>
+                                <li className="sidebar-icon my-4" id="my-albums"><Link to="/panel/my-collections"><span
+                                    className="sidebar-nav-margin">کالکشن های من</span></Link></li>
+                                <li className="sidebar-icon my-4" id="mypurchase"><Link to="/panel/bidding-price"><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.biding-price")}</span></Link></li>
+                                <li className="sidebar-icon my-4" id="my-albums"><Link to="/panel/exhibitions"><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-exhibitions")}</span></Link></li>
+                                <li className="sidebar-icon  my-4" id="artists"><Link to="/panel/artists"><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-artists")}</span></Link></li>
+                                <li className="sidebar-icon my-4" id="gallery"><Link to={"/panel/galleries"}><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-my-galleries")}</span></Link></li>
+                            </>
+                        }
 
-                        <li className="sidebar-icon my-4" id="content"><Link to="/panel/contents"><span
-                            className="sidebar-nav-margin">محتوی</span></Link></li>
+                        {(getUserRole() === 'artist') &&
+                            <>
+                                <li className="sidebar-icon" id="home"><Link to="/panel/dashboard"><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-dashboard")}</span></Link></li>
+                                <li className="sidebar-icon my-4" id="manage-artworks"><Link to="/panel/art-management"><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-art-management")}</span></Link></li>
+                                <li className="sidebar-icon my-4" id="mypurchase"><Link to="/panel/purchases"><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-mypurchases")}</span></Link></li>
+                                <li className="sidebar-icon my-4" id="financial"><Link to="/panel/orders"><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-orders")}</span></Link></li>
+                                <li className="sidebar-icon my-4" id="wallet"><Link to="/panel/wallet"><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-wallet")}</span></Link></li>
+                                <li className="sidebar-icon my-4" id="my-albums"><Link to="/panel/my-albums"><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-exhibitions")}</span></Link></li>
+                                <li className="sidebar-icon my-4" id="liked"><Link to="/panel/favorites"><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-favorits")}</span></Link></li>
+                                <li className="sidebar-icon my-4" id="content"><Link to="/panel/contents"><span
+                                    className="sidebar-nav-margin">محتوا</span></Link></li>
+                                <li className="sidebar-icon my-4" id="my-albums"><Link to="/panel/my-collections"><span
+                                    className="sidebar-nav-margin">کالکشن های من</span></Link></li>
+                                <li className="sidebar-icon my-4" id="mypurchase"><Link to="/panel/bidding-price"><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.biding-price")}</span></Link></li>
+                                <li className="sidebar-icon " id="profile"><Link to="/panel/profile"><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-profile")}</span></Link></li>
+                                <li className="sidebar-icon my-4" id="gallery"><Link to={"/panel/galleries"}><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-my-galleries")}</span></Link></li>
+                            </>
+                        }
 
+                        {(getUserRole === 'seller') &&
+                            <>
+                                <li className="sidebar-icon" id="home"><Link to="/panel/dashboard"><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-dashboard")}</span></Link></li>
+                                <li className="sidebar-icon my-4" id="mypurchase"><Link to="/panel/purchases"><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-mypurchases")}</span></Link></li>
+                                <li className="sidebar-icon my-4" id="financial"><Link to="/panel/orders"><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-orders")}</span></Link></li>
+                                <li className="sidebar-icon my-4" id="wallet"><Link to="/panel/wallet"><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-wallet")}</span></Link></li>
+                                <li className="sidebar-icon my-4" id="liked"><Link to="/panel/favorites"><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-favorits")}</span></Link></li>
+                                <li className="sidebar-icon my-4 " id="messages"><Link to="/panel/messages"><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-messages")}</span></Link></li>
+                                <li className="sidebar-icon " id="profile"><Link to="/panel/profile"><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-profile")}</span></Link></li>
+                                <li className="sidebar-icon my-4" id="my-albums"><Link to="/panel/my-collections"><span
+                                    className="sidebar-nav-margin">کالکشن های من</span></Link></li>
+                                <li className="sidebar-icon my-4" id="mypurchase"><Link to="/panel/bidding-price"><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.biding-price")}</span></Link></li>
+                                <li className="sidebar-icon my-4" id="gallery"><Link to={"/panel/galleries"}><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-my-galleries")}</span></Link></li>
+                            </>
+                        }
 
-                        <li className="sidebar-icon my-4" id="my-albums"><Link to="/panel/my-albums"><span
-                            className="sidebar-nav-margin">{t("drawer-panel.nav-exhibitions")}</span></Link></li>
-                        <li className="sidebar-icon my-4" id="liked"><Link to="/panel/favorites"><span
-                            className="sidebar-nav-margin">{t("drawer-panel.nav-favorits")}</span></Link></li>
-                        <li className="sidebar-icon my-4 " id="messages"><Link to="/panel/messages"><span
-                            className="sidebar-nav-margin">{t("drawer-panel.nav-messages")}</span></Link></li>
-                        <li className="sidebar-icon " id="profile"><Link to="/panel/profile"><span
-                            className="sidebar-nav-margin">{t("drawer-panel.nav-profile")}</span></Link></li>
-                        <li className="sidebar-icon my-4" id="gallery"><Link to={"/gallery-panel/dashboard"}><span
-                            className="sidebar-nav-margin">{t("drawer-panel.nav-my-galleries")}</span></Link></li>
+                        {(getUserRole() === 'user') &&
+                            <>
+                                <li className="sidebar-icon" id="home"><Link to="/panel/dashboard"><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-dashboard")}</span></Link></li>
+                                <li className="sidebar-icon my-4" id="mypurchase"><Link to="/panel/purchases"><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-mypurchases")}</span></Link></li>
+                                <li className="sidebar-icon my-4" id="financial"><Link to="/panel/orders"><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-orders")}</span></Link></li>
+                                <li className="sidebar-icon my-4" id="wallet"><Link to="/panel/wallet"><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-wallet")}</span></Link></li>
+                                <li className="sidebar-icon my-4" id="liked"><Link to="/panel/favorites"><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-favorits")}</span></Link></li>
+                                <li className="sidebar-icon my-4 " id="messages"><Link to="/panel/messages"><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-messages")}</span></Link></li>
+                                <li className="sidebar-icon " id="profile"><Link to="/panel/profile"><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-profile")}</span></Link></li>
+                                <li className="sidebar-icon my-4" id="my-albums"><Link to="/panel/my-collections"><span
+                                    className="sidebar-nav-margin">کالکشن های من</span></Link></li>
+                                <li className="sidebar-icon my-4" id="mypurchase"><Link to="/panel/bidding-price"><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.biding-price")}</span></Link></li>
+                                <li className="sidebar-icon my-4" id="gallery"><Link to={"/panel/galleries"}><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-my-galleries")}</span></Link></li>
+                            </>
+                        }
                     </ul>
                 </div>
 

@@ -13,7 +13,7 @@ export const ORDER_BUYERS = "/orders/buyers/"
 export const ORDER_SELERS = "/orders/sellers/"
 export const GALLERY_PANEL_DASHBOARD = (galleryId) => { return (`/gallery/${galleryId}/dashboard/`) }
 export const PROMOTIONS = "/events/promotions/";
-export const EXHIBITION = (galleryId) => { return (`/${galleryId}/exhibition/`) };
+export const EXHIBITION = galleryId =>  `/${galleryId}/exhibition/`;
 export const PRODUCTS_ME = "/products/me/";
 export const PRODUCTS = "/products/";
 export const PRE_UPLOAD = "/core/upload/";
@@ -42,6 +42,9 @@ export const WALLET = "/accounting/wallet/me/";
 export const WALLET_TRANSACTIONS = "/accounting/wallet-transactions/";
 export const GALLERY_FOLLOW = "/social-network/follow/";
 export const FOLLOW_PRODUCTS = "/social-network/follow/products/";
+export const FOLLOW_COLLECTIONS = "/social-network/follow/collections/";
+export const FOLLOW_ARTISTS = "/social-network/follow/artists/";
+export const SELLERS_REQUEST= "/artist/sellers/";
 export const ARTIST_BY_GALLERY = id => `/${id}/artists/define/`;
 export const ACCOUNT_PROFILE = "/account/profile/";
 export const PRODUCT_DETAIL = id => `/products/${id}/`
@@ -49,5 +52,7 @@ export const MESSAGES_ASSERTION = "/message/assertion/";
 export const ARTWORK_BY_GALLERY = ((gallereyId, artistId) => { return (`/${gallereyId}/exhibition/artist/${artistId}/product/`) })
 export const MESSAGES_INBOX = "/message/inbox/";
 export const PRODUCT_BY_ARTIST =(galleryId,artistId) => `/${galleryId}/exhibition/artist/${artistId}/product/`
-export const ORDER_BUYER_ME = '/orders/bids/buyers/me/'
 export const ARTISTS = '/artist/'
+export const ORDER_BUYER_ME = '/orders/bids/buyers/me/';
+export const ORDER_BUYER_ME_ID = id=> `/orders/bids/buyers/me/${id}/`;
+

@@ -470,6 +470,7 @@
     "nav-dashboard-gallery": "داشبورد گالری",
     "nav-art-management": "مدیریت آثار",
     "nav-mypurchases": "خریدهای من",
+    "biding-price" : "پیشنهاد قیمت",
     "nav-orders": "سفارشات",
     "nav-wallet": "کیف پول",
     "nav-my-albums": "مجموعه‌های من",
@@ -526,13 +527,14 @@
     "order": "شماره سفارش",
     "price-artwork": "قیمت اثر",
     "your-bidding": "پیشنهاد شما",
+    "your-price": "پیشنهاد شما",
     "artist-bidding": "پیشنهاد هنرمند",
     "payment-date": "تاریخ پرداخت",
     "status": "وضعیت",
     "order-details": "جزییات بیشتر",
     "x": "در",
     "btn-sell": "فروش در آرتیبیشن",
-    "artwok-return": "خرید اثر",
+    "artwok-return": "ارجاع اثر",
     "paid": {
       "title": "پرداخت شده",
       "empty": {
