@@ -23,6 +23,24 @@ function Login(props) {
     const { t } = useTranslation();
     const { roles } = useSelector((state) => state.authReducer)
 
+
+    const getUserRole = () => {
+        if (roles) {
+            let rolesTemp = roles.slice()
+            if (rolesTemp.indexOf('gallery') !== -1) {
+                rolesTemp.splice(rolesTemp.indexOf('gallery'), 1)
+            }
+            if (rolesTemp.length) {
+                return rolesTemp[0]
+            }
+            else {
+                return "user"
+            }
+        } else {
+            return "user"
+        }
+    }
+
     const getProfile = () => {
         APIService.get(PROFILE, "")
             .then(res => {
@@ -44,7 +62,7 @@ function Login(props) {
                     getProfile()
                     message.success("به آرتیبیشن خوش آمدید")
                     console.log(roles);
-                    if (roles) {
+                    if (getUserRole() !== "user") {
                         setTimeout(() => {
                             window.location.href = "/panel/dashboard"
                         }, 500);

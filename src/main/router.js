@@ -69,7 +69,7 @@ const RouterConfig = (props) => {
                 <Route path="dashboard-gallery" element={<GalleryPanelDashboard />} />
                 <Route path="exhibitions" element={<GalleryPanelExhibition />} />
                 <Route path="become-seller" element={<BecomeSeller/>} />
-                <Route path="Panel-bidding-price" element={<PanelBiddingPrice/>} />
+                <Route path="bidding-price" element={<PanelBiddingPrice/>} />
                 <Route path="artists" element={<GalleryPanelArtisit />} />
                 <Route path="my-gallery-list-gallery" element={<GalleryPanelMyGallery />} />
                 <Route path="create-exhibition" element={<GalleryPanelCreateExhibition />} />
