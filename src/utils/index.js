@@ -48,3 +48,11 @@ export const PRODUCT_DETAIL = (id) => `/products/${id}/`;
 export const MESSAGES_ASSERTION = "/message/assertion/";
 export const MESSAGES_INBOX = "/message/inbox/";
 export const CART_ME = "/carts/me/";
+export const CART_ME_REMOVE_ITEM = `${BASE_URL}/carts/remove/`;
+export const CART_ME_CHECKOUT = `${BASE_URL}/carts/checkout/`;
+export const CART_ME_CLEAR_CART = `${BASE_URL}/carts/clear/`;
+export const ORDER = (id) => `${BASE_URL}/orders/${id}/`;
+export const ADDRESSES = "/account/location/";
+export const COMPLETE_ORDER = (id) => `/orders/${id}/`;
+export const APPLY_DISCOUNT = (id) =>
+  `${BASE_URL}/orders/${id}/apply_discount/`;

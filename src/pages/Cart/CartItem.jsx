@@ -1,19 +1,20 @@
 import React from "react";
 import classnames from "classnames";
 
-import artwork1 from "../../assets/img/artworks/artwork-1.jpg";
 import delete_icon from "../../assets/img/delete.svg";
-import { t } from "i18next";
 import { GetLanguage } from "../../utils/utils";
 import { useTranslation } from "react-i18next";
 import { isNil } from "lodash";
 function CartItem({ removeProduct, singleProduct }) {
-  console.log(
-    "🚀 ~ file: CartItem.jsx ~ line 10 ~ CartItem ~ product",
-    singleProduct
-  );
+  const {
+    edition_number,
+    dollar_price,
+    toman_price,
+    discountPercent,
+    discountCash,
+    paymentPrice,
+  } = singleProduct;
 
-  const { edition_number, dollar_price, toman_price } = singleProduct;
   const { product } = singleProduct;
   const {
     id,
@@ -22,7 +23,6 @@ function CartItem({ removeProduct, singleProduct }) {
     medias,
     unique_code,
     category,
-    discount,
     material,
     technique,
     jalali_creation_year,
@@ -32,17 +32,21 @@ function CartItem({ removeProduct, singleProduct }) {
     width,
     height,
   } = product;
-  const { t, i18n } = useTranslation();
   let index = "";
+  const { t, i18n } = useTranslation();
   if (i18n.language === "fa-IR") {
     index = "fa";
   } else {
     index = "en";
   }
-  const title = translations?.[index]?.title;
-  const ownerName = `${owner?.translations?.[index]?.first_name} ${owner?.translations?.[index]?.last_name}`;
-  const price =
-    i18n.language === "fa-IR" ? parseInt(toman_price) : parseInt(dollar_price);
+  let title = translations?.[index]?.title;
+  title = title.replace(/null/g, "");
+  title = title.replace(/undefined/g, "");
+  let ownerName = `${owner?.translations?.[index]?.first_name} ${owner?.translations?.[index]?.last_name}`;
+  ownerName = ownerName.replace(/null/g, "");
+  ownerName = ownerName.replace(/undefined/g, "");
+  const price = i18n.language === "fa-IR" ? toman_price : dollar_price;
+
   const categoryName = category?.translations?.[index]?.title;
   const materialName = material?.translations?.[index]?.title;
   const techniqueName = technique?.translations?.[index]?.title;
@@ -55,6 +59,15 @@ function CartItem({ removeProduct, singleProduct }) {
       imgSrc = medias[0];
     }
   }
+  let discountText = "";
+  let paymentPriceText = "";
+
+  discountText = discountCash
+    ?.toString()
+    ?.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  paymentPriceText = paymentPrice
+    ?.toString()
+    ?.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   const sellerType =
     i18n.language === "fa-IR"
       ? seller_type === "artist"
@@ -68,10 +81,18 @@ function CartItem({ removeProduct, singleProduct }) {
       <div className="row">
         <div className="col-md-3 col-xs-6">
           <div className="col-img">
-            {/* <label className="lable-checkbox"> */}
-            {/* <input type="checkbox" checked /> */}
-            {/* <span className="checkmark green"></span>
-            </label> */}
+            {discountPercent > 0 && (
+              <span
+                className="persian-num text-dir "
+                style={{
+                  backgroundColor: "#ec008c",
+                  padding: "4px",
+                  color: "white",
+                }}
+              >
+                {discountPercent}%
+              </span>
+            )}
             <img
               src={imgSrc}
               width="1776"
@@ -163,23 +184,6 @@ function CartItem({ removeProduct, singleProduct }) {
                   {t("cart.order.sold_by_collector_2")}
                 </span>
               </div>
-
-              {/* <div className="col-md-12 col-sm-5 btm-absolute">
-                <div className="basket-price-orginal">
-                  <div className="price-row mrg0 d-flex">
-                    <div className="col-xs-4 text-dir">
-                      {t("cart.order.price")}
-                    </div>
-                    <div className="col-xs-8">
-                      <div className="basket-pricestyle pull-dir-rev">
-                        <span className="persian-num">۴,۰۰۰,۰۰۰</span>
-                        <span>{t("cart.order.price_unit")}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
-
               <div className="col-md-12 col-sm-5 btm-absolute">
                 <div className="basket-price-orginal">
                   <div className="price-row d-flex">
@@ -188,41 +192,53 @@ function CartItem({ removeProduct, singleProduct }) {
                     </div>
                     <div className="col-xs-7">
                       <div className="basket-pricestyle pull-dir-rev">
-                        <span className="persian-num">{price}</span>
+                        <span className="persian-num">
+                          {price.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                        </span>
                         <span>{t("cart.order.price_unit")}</span>
                       </div>
                     </div>
                   </div>
+
+                  {discountPercent > 0 && <div className="clearfix"></div>}
+                  {discountPercent > 0 && (
+                    <div className="price-row off d-flex">
+                      <div className="col-xs-5 text-dir">
+                        {t("cart.order.discount")}
+                      </div>
+
+                      <div className="col-xs-7">
+                        <div className="basket-pricestyle pull-dir-rev">
+                          <span className="persian-num">
+                            {discountText.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                          </span>
+                          <span>{t("cart.order.price_unit")}</span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                   <div className="clearfix"></div>
-                  <div className="price-row off d-flex">
-                    <div className="col-xs-5 text-dir">
-                      {t("cart.order.discount")}
-                    </div>
-                    <div className="col-xs-7">
-                      <div className="basket-pricestyle pull-dir-rev">
-                        <span className="persian-num">۱,۲۰۰,۰۰۰</span>
-                        <span>{t("cart.order.price_unit")}</span>
+                  {discountPercent > 0 && (
+                    <div
+                      className="price-row total d-flex"
+                      style={{
+                        paddingTop: "16px",
+                        borderTop: "2px solid #e4e6e9",
+                      }}
+                    >
+                      <div className="col-xs-5 text-dir">
+                        {t("cart.order.total_price")}
+                      </div>
+                      <div className="col-xs-7">
+                        <div className="basket-pricestyle pull-dir-rev">
+                          <span className="persian-num">
+                            {paymentPriceText}
+                          </span>
+                          <span>{t("cart.order.price_unit")}</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div className="clearfix"></div>
-                  <div
-                    className="price-row total d-flex"
-                    style={{
-                      paddingTop: "16px",
-                      borderTop: "2px solid #e4e6e9",
-                    }}
-                  >
-                    <div className="col-xs-5 text-dir">
-                      {t("cart.order.total_price")}
-                    </div>
-                    <div className="col-xs-7">
-                      <div className="basket-pricestyle pull-dir-rev">
-                        <span className="persian-num">۲,۸۰۰,۰۰۰</span>
-                        <span>{t("cart.order.price_unit")}</span>
-                      </div>
-                    </div>
-                  </div>
+                  )}
                 </div>
               </div>
 

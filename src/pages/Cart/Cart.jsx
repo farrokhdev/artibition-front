@@ -3,27 +3,72 @@ import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import Menu from "../../components/Menu/Menu";
 import classnames from "classnames";
-import { GetLanguage } from "../../utils/utils";
-
+import { GetLanguage, Token } from "../../utils/utils";
+import { useTranslation } from "react-i18next";
 import empty from "../../assets/img/Empty.svg";
-
-import { t } from "i18next";
 import CartItem from "./CartItem";
 import CartItemDisable from "./CartItemDisable";
 import ArthibitionProperties from "../../components/ArthibitionProperies/ArthibitionProperties";
 import apiServices from "../../utils/api.services";
-import { CART_ME } from "../../utils";
+import {
+  CART_ME,
+  CART_ME_CHECKOUT,
+  CART_ME_CLEAR_CART,
+  CART_ME_REMOVE_ITEM,
+  ORDER,
+} from "../../utils";
 import { useNavigate } from "react-router-dom";
-
+import { isNil } from "lodash";
+import axios from "axios";
+import { message } from "antd";
 function Cart() {
+  const { t, i18n } = useTranslation();
   const [product_items, setProduct_items] = useState();
+  const [totalPrice, setTotalPrice] = useState(0);
   const navigate = useNavigate();
   const getData = () => {
     apiServices
       .get(CART_ME, "")
       .then((res) => {
-        console.log("res", res?.data?.data);
-        setProduct_items(res?.data?.data?.product_items);
+        if (res?.data?.data?.product_items?.length > 0) {
+          const tempProductItems = res?.data?.data?.product_items.map(
+            (product_item) => {
+              const { discount, toman_price, dollar_price } =
+                product_item?.product;
+              const price =
+                i18n.language === "fa-IR" ? toman_price : dollar_price;
+              let discountCash = 0;
+              let paymentPrice = parseInt(price);
+              let discountPercent = 0;
+              if (!isNil(discount)) {
+                if (discount?.type === "percentage") {
+                  discountPercent = discount?.value;
+                  discountCash =
+                    (parseInt(price) * parseFloat(discountPercent)) / 100;
+                  paymentPrice = price - discountCash;
+                } else {
+                  discountCash = parseInt(discount?.value);
+                  discountPercent = (discountCash / parseInt(price)) * 100;
+                  paymentPrice = parseInt(price) - discountCash;
+                }
+              }
+              return {
+                ...product_item,
+                discountCash,
+                paymentPrice,
+                discountPercent,
+              };
+            }
+          );
+          const totalPriceTemp = tempProductItems?.reduce(
+            (acc, item) => acc + parseInt(item.paymentPrice),
+            0
+          );
+          setTotalPrice(totalPriceTemp);
+          setProduct_items(tempProductItems);
+        } else {
+          setProduct_items(res?.data?.data?.product_items);
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -33,7 +78,63 @@ function Cart() {
     getData();
   }, []);
   const removeSingleProduct = (id, edition_number) => {
-    console.log("remove me", id, edition_number);
+    let token = Token() ? "Bearer " + Token() : undefined;
+
+    const tempHeader = {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    axios
+      .put(
+        CART_ME_REMOVE_ITEM,
+        { product_id: id, edition_number },
+        {
+          headers: tempHeader,
+        }
+      )
+      .then((res) => {
+        if (res?.data?.code === 200) {
+          getData();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const handleCheckoutCart = () => {
+    let token = Token() ? "Bearer " + Token() : undefined;
+
+    const tempHeader = {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    axios
+      .put(
+        CART_ME_CHECKOUT,
+        {},
+        {
+          headers: tempHeader,
+        }
+      )
+      .then((res) => {
+        if (res?.data?.code === 200) {
+          const orderId = res?.data?.data?.order;
+          axios
+            .put(
+              CART_ME_CLEAR_CART,
+              {},
+              {
+                headers: tempHeader,
+              }
+            )
+            .then((res) => {
+              navigate("/panel/payment", { state: { orderId } });
+            });
+        }
+      })
+      .catch((err) => console.log(err));
   };
   return (
     <>
@@ -69,13 +170,21 @@ function Cart() {
                   {t("cart.full.cart")}
                 </h2>
                 <div className="basket-notification pull-dir ">
-                  <span className="persian-num">2</span>
+                  <span className="persian-num">{product_items?.length}</span>
                 </div>
               </div>
             </div>
           )}
           <div className="basket-list">
             {product_items?.map((product_item) => {
+              if (product_item?.is_sold) {
+                return (
+                  <CartItemDisable
+                    removeProduct={removeSingleProduct}
+                    singleProduct={product_item}
+                  />
+                );
+              }
               return (
                 <CartItem
                   removeProduct={removeSingleProduct}
@@ -83,19 +192,18 @@ function Cart() {
                 />
               );
             })}
-            {/* <CartItem />
-            <CartItem />
-            <CartItemDisable /> */}
+          </div>
 
-            <div className="clearfix"></div>
-            <div className="row">
-              <div
-                className={classnames("", {
-                  "col-md-4 col-md-offset-8": GetLanguage() === "fa-IR",
-                  "col-md-5 col-md-offset-7": GetLanguage() === "en-US",
-                })}
-              >
-                {/* <div className="basket-total">
+          <div className="clearfix"></div>
+          <div className="row">
+            <div
+              className={classnames("", {
+                "col-md-4 col-md-offset-8": GetLanguage() === "fa-IR",
+                "col-md-5 col-md-offset-7": GetLanguage() === "en-US",
+              })}
+            >
+              {product_items?.length > 0 && (
+                <div className="basket-total">
                   <div className="basket-price">
                     <div className="clearfix"></div>
                     <div className="price-row d-flex">
@@ -104,25 +212,47 @@ function Cart() {
                       </div>
                       <div className="col-xs-7">
                         <div className="basket-pricestyle pull-dir-rev">
-                          <span className="persian-num">۲,۸۰۰,۰۰۰</span>
+                          <span className="persian-num">
+                            {totalPrice
+                              ?.toString()
+                              ?.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                          </span>
                           <span>{t("cart.full.price_unit")}</span>
                         </div>
                       </div>
                     </div>
-                    <div className="col-xs-12">
-                      <span className="greencolor">
-                        {t("cart.full.less_price_received_separately")}
-                      </span>
-                      <button type="button" className="btn btn-continue">
-                        {t("cart.full.next")}
-                      </button>
+                    <div className="price-row d-flex">
+                      {i18n.language === "fa-IR" && totalPrice >= 1000000 && (
+                        <div className="col-xs-5 text-dir">
+                          {t("invoice.shipment_fee")}
+                        </div>
+                      )}
+                      <div className="col-xs-7">
+                        <span className="greencolor">
+                          {i18n.language === "fa-IR"
+                            ? totalPrice >= 1000000
+                              ? "رایگان"
+                              : t("cart.full.less_price_received_separately")
+                            : ""}
+                        </span>
+                        <button
+                          type="button"
+                          className="btn btn-continue"
+                          onClick={() => {
+                            handleCheckoutCart();
+                          }}
+                        >
+                          {t("cart.full.next")}
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div> */}
-              </div>
+                </div>
+              )}
             </div>
           </div>
-          {/* <ArthibitionProperties /> */}
+
+          <ArthibitionProperties />
         </div>
         {/* ------------- FULL STATE -------------- */}
       </div>
