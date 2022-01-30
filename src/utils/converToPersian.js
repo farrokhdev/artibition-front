@@ -34,3 +34,33 @@ export function isAccept(value) {
             }
     }
 }
+
+export function isStatusPurchases(value) {
+    switch (value) {
+        case "paid":
+            return {
+                title:"پرداخت شده",
+                css: "accept "
+            }
+        case "delivered":
+            return {
+                title:"تحویل شده",
+                css: "accept"
+            }
+        case "returned by buyer":
+            return {
+                title:"مرجوعی",
+                css: "pending"
+            }
+        case "canceled":
+            return {
+                title:"کنسل شده",
+                css: "deny"
+            }
+        default:
+            return {
+                title: "",
+                css: ""
+            }
+    }
+}

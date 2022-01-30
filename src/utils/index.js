@@ -42,6 +42,9 @@ export const WALLET = "/accounting/wallet/me/";
 export const WALLET_TRANSACTIONS = "/accounting/wallet-transactions/";
 export const GALLERY_FOLLOW = "/social-network/follow/";
 export const FOLLOW_PRODUCTS = "/social-network/follow/products/";
+export const FOLLOW_COLLECTIONS = "/social-network/follow/collections/";
+export const FOLLOW_ARTISTS = "/social-network/follow/artists/";
+export const SELLERS_REQUEST= "/artist/sellers/";
 export const ARTIST_BY_GALLERY = id => `/${id}/artists/define/`;
 export const ACCOUNT_PROFILE = "/account/profile/";
 export const PRODUCT_DETAIL = id => `/products/${id}/`

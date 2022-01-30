@@ -10,7 +10,7 @@ import Bidding from './Bidding';
 import Returned from './Returned';
 import Canceled from './Canceled';
 import apiServices from '../../utils/api.services';
-import {ORDER_BUYERS} from '../../utils/index'
+import { ORDER_BUYERS } from '../../utils/index'
 import react from 'react';
 import queryString from 'query-string'
 
@@ -20,17 +20,17 @@ function PanelMyPurchases() {
 
     const [purchase, setPurchase] = react.useState()
     const [params, setParams] = react.useState({
-        paid_status:"paid"
+        paid_status: "paid"
     })
 
     function callback(key) {
-        setParams({paid_status:key})
+        setParams({ paid_status: key })
     }
 
     const getMyPurchasesInPanel = () => {
         apiServices.get(ORDER_BUYERS, queryString.stringify(params))
             .then(res => {
-                if (res.data){
+                if (res.data) {
                     setPurchase(res.data.data.results)
                 }
             })
@@ -39,9 +39,9 @@ function PanelMyPurchases() {
             })
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         getMyPurchasesInPanel()
-    },[params])
+    }, [params])
 
     return (
         <>
@@ -63,16 +63,16 @@ function PanelMyPurchases() {
                                         <Paid purchasesProp={purchase} />
                                     </TabPane>
                                     <TabPane tab={t("content-panel-mypurchases.delivered.title")} key="delivered">
-                                        <Delivered />
+                                        <Delivered purchasesProp={purchase} />
                                     </TabPane>
                                     {/* <TabPane tab={t("content-panel-mypurchases.bidding.title")} key="3">
                                         <Bidding />
                                     </TabPane> */}
                                     <TabPane tab={t("content-panel-mypurchases.returned.title")} key="returned">
-                                        <Returned />
+                                        <Returned purchasesProp={purchase} />
                                     </TabPane>
                                     <TabPane tab={t("content-panel-mypurchases.canceled.title")} key="canceled">
-                                        <Canceled />
+                                        <Canceled purchasesProp={purchase} />
                                     </TabPane>
                                 </Tabs>
                             </div>
