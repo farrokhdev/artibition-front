@@ -470,7 +470,7 @@
     "nav-dashboard-gallery": "داشبورد گالری",
     "nav-art-management": "مدیریت آثار",
     "nav-mypurchases": "خریدهای من",
-    "biding-price" : "پیشنهاد قیمت",
+    "biding-price": "پیشنهاد قیمت",
     "nav-orders": "سفارشات",
     "nav-wallet": "کیف پول",
     "nav-my-albums": "مجموعه‌های من",
@@ -710,8 +710,8 @@
   "content-panel-orders": {
     "filters": {
       "all": "همه سفارش‌ها",
-      "Review" : "برسی مجدد",
-      "Active_on_the_site" : "فعال در سایت",
+      "Review": "برسی مجدد",
+      "Active_on_the_site": "فعال در سایت",
       "to_artibition": "منتظر ارسال اثر به آرتیبیشن",
       "artibition_to_customer": "درحال ارسال از آرتیبیشن به مشتری",
       "delivered": "تحویل شده به مشتری"
@@ -949,7 +949,7 @@
       "bio_fa": "بیوگرافی هنرمند",
       "bio_en": "artist`s biography",
       "confirm_btn": "افزودن هنرمند",
-      "upload_artist_picture":"آپلود تصویر هنرمند",
+      "upload_artist_picture": "آپلود تصویر هنرمند",
       "artist_info": "اطلاعات هنرمند"
     },
     "subject_fa": "عنوان",
@@ -1290,6 +1290,7 @@
     "address_step": {
       "title": "انتخاب آدرس تحویل اثر",
       "new_address_btn": "افزودن آدرس جدید",
+      "address_select": "لطفا یک آدرس را انتخاب کنید.",
       "back_btn": "بازگشت ",
       "prev_step": "به مرحله قبل",
       "no_address_message": "شما تاکنون آدرسی ثبت نکرده‌اید!",
@@ -1304,6 +1305,7 @@
         "postal_code": "کد پستی",
         "postal_code_description": "کد پستی می‌بایست ۱۰ رقم و بدون خط تیره باشد",
         "receiver_information": "اطلاعات گیرنده",
+        "receiver_select": "انتخاب گیرنده",
         "receiver_fullname": "نام و نام خانوادگی گیرنده",
         "phone_number": "شماره همراه",
         "national_code": "کد ملی",
@@ -1413,7 +1415,7 @@
     "visite_select": "پربازدید",
     "sell_select": "پرفروش"
   },
-  "add-new-artist-by-gallery":{
-    "upload_avatar_error":"لطفا یک عکس برای هنرمند آپلود کنید"
+  "add-new-artist-by-gallery": {
+    "upload_avatar_error": "لطفا یک عکس برای هنرمند آپلود کنید"
   }
 }

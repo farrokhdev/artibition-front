@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from "react";
-import classnames from "classnames";
-import { GetLanguage } from "../../utils/utils";
-import { t } from "i18next";
 import no_address from "../../assets/img/no_address@3x.png";
 import edit_name from "../../assets/img/edit_name.svg";
 import edit_name_blue from "../../assets/img/edit_name_blue.svg";
 import { message, Modal } from "antd";
-import { Map, TileLayer, Marker, Popup } from "react-leaflet";
-
+import { Map, TileLayer, Marker } from "react-leaflet";
 import { ostan, shahr } from "iran-cities-json";
-
 import "../../assets/style/leaflet.scss";
 import apiServices from "../../utils/api.services";
-import { ADDRESSES, COMPLETE_ORDER } from "../../utils";
+import { ADDRESSES, ADDRESSES_EDIT, ORDER } from "../../utils";
 import { useTranslation } from "react-i18next";
 import { isNil } from "lodash";
 
+const initialFormFields = {
+  id: 0,
+  name: "",
+  address: "",
+  postal_code: "",
+  city: 394,
+  state: 8,
+};
 function AddressStep({ next, prev, order }) {
   const [showAddress, setShowAddress] = useState(false);
   const [showMap, setShowMap] = useState(false);
@@ -23,9 +26,10 @@ function AddressStep({ next, prev, order }) {
   const { t, i18n } = useTranslation();
   const [zoom, setZoom] = useState(11);
   const [addresses, setAddresses] = useState();
-  const [editAddressId, setEditAddressId] = useState();
-  const [selectedOstan, setSelectedOstan] = useState();
+  const [isEditAddress, setIsEditAddress] = useState(false);
+  const [selectedOstan, setSelectedOstan] = useState(8);
   const [selectedAddress, setSelectedAddress] = useState();
+  const [formFields, setFormFields] = useState(initialFormFields);
   const price = (
     i18n.language === "fa-IR"
       ? order.total_order_toman
@@ -65,56 +69,87 @@ function AddressStep({ next, prev, order }) {
     getData();
   }, []);
   const editAddress = (id) => {
-    setEditAddressId(id);
+    setIsEditAddress(true);
+    const tempSelectedAddress = addresses.find((item) => item.id === id);
+    console.log(
+      "editAddress --------- tempSelectedAddress",
+      tempSelectedAddress
+    );
+    setPoint(tempSelectedAddress.point);
+    const tempState = ostan.find(
+      (item) => item.name === tempSelectedAddress?.translations?.fa?.state
+    )?.id;
+    const tempCity = shahr.find(
+      (item) => item.name === tempSelectedAddress?.translations?.fa?.city
+    )?.id;
+    setFormFields({
+      id: tempSelectedAddress?.id,
+      postal_code: tempSelectedAddress.postal_code,
+      state:
+        i18n.language === "fa-IR"
+          ? tempState
+          : tempSelectedAddress?.translations?.en?.city,
+      city:
+        i18n.language === "fa-IR"
+          ? tempCity
+          : tempSelectedAddress?.translations?.en?.city,
+      address:
+        i18n.language === "fa-IR"
+          ? tempSelectedAddress?.translations?.fa?.address
+          : tempSelectedAddress?.translations?.en?.address,
+    });
     setShowAddress(true);
   };
-  const postAddress = (addr) => {
+  const postAddress = () => {
+    const { city, state, address, postal_code } = formFields;
+    const tempCity = shahr.find((item) => item.id === parseInt(city))?.name;
+    const tempState = ostan.find((item) => item.id === parseInt(state))?.name;
     let translations = {};
     i18n.language === "fa-IR"
       ? (translations.fa = {
-          address: addr.address,
-          city: addr.city,
-          state: addr.state,
+          address,
+          city: tempCity,
+          state: tempState,
         })
       : (translations.en = {
-          address: addr.address,
-          city: addr.city,
-          state: addr.state,
+          address,
+          city: tempCity,
+          state: tempState,
         });
     let tempPayload = {
-      postal_code: addr.postal_code,
+      postal_code,
       translations,
     };
     if (!isNil(point)) tempPayload = { ...tempPayload, point };
     console.log("postAddress --------- tempPayload", tempPayload);
-    apiServices
-      .post(ADDRESSES, tempPayload)
-      .then((res) => getData())
-      .catch((err) => console.log(err?.response?.data?.message));
+    if (isEditAddress) {
+      apiServices
+        .patch(ADDRESSES_EDIT(formFields?.id), tempPayload)
+        .then((res) => {
+          getData();
+          setFormFields(initialFormFields);
+          setIsEditAddress(false);
+        });
+    } else {
+      apiServices
+        .post(ADDRESSES, tempPayload)
+        .then((res) => getData())
+        .catch((err) => console.log(err?.response?.data?.message));
+    }
   };
   const submitFormAddress = (e) => {
     e.preventDefault();
-
-    const city = shahr.find(
-      (item) => item.id === parseInt(e.target.city.value)
-    )?.name;
-
-    const state = ostan.find(
-      (item) => item.id === parseInt(e.target.state.value)
-    )?.name;
-
-    postAddress({
-      address: e.target.address.value,
-      state,
-      city,
-      postal_code: e.target.postal_code.value,
-    });
+    postAddress();
     setShowAddress(false);
     e.target.reset();
   };
   const goNextStep = () => {
+    if (isNil(selectedAddress)) {
+      message.error(t("payment.address_step.address_select"));
+      return;
+    }
     apiServices
-      .patch(COMPLETE_ORDER(order?.id), { location: selectedAddress })
+      .patch(ORDER(order?.id), { location: selectedAddress })
       .then((res) => next())
       .catch((err) => console.log(err?.response?.data?.message));
   };
@@ -183,6 +218,8 @@ function AddressStep({ next, prev, order }) {
                   data-toggle="modal"
                   data-target="#exampleModal"
                   onClick={() => {
+                    setIsEditAddress(false);
+
                     setShowAddress(true);
                   }}
                 >
@@ -338,19 +375,27 @@ function AddressStep({ next, prev, order }) {
                   </h3>
                 </div>
               </div>
-              <form
-                className="row dir"
-                onSubmit={submitFormAddress}
-                initialValues={{ address: "test" }}
-              >
+              <form className="row dir" onSubmit={submitFormAddress}>
                 <div className="col-sm-6">
                   <div className="public-group">
                     <select
                       name="state"
                       className="input-public"
                       required
+                      // value={
+                      //   ostan.find((item) => item.id === formFields.state)?.name
+                      // }
+                      value={formFields.state}
                       onChange={(e) => {
+                        setFormFields({
+                          ...formFields,
+                          state: parseInt(e.target.value),
+                        });
                         setSelectedOstan(parseInt(e.target.value));
+                        console.log(
+                          "AddressStep --------- parseInt(e.target.value)",
+                          parseInt(e.target.value)
+                        );
                       }}
                     >
                       <option></option>
@@ -369,7 +414,21 @@ function AddressStep({ next, prev, order }) {
                 </div>
                 <div className="col-sm-6">
                   <div className="public-group">
-                    <select className="input-public" name="city">
+                    <select
+                      className="input-public"
+                      name="city"
+                      value={formFields.city}
+                      onChange={(e) => {
+                        console.log(
+                          "AddressStep --------- parseInt(e.target.value)",
+                          parseInt(e.target.value)
+                        );
+                        setFormFields({
+                          ...formFields,
+                          city: parseInt(e.target.value),
+                        });
+                      }}
+                    >
                       <option></option>
 
                       {!isNil(selectedOstan) &&
@@ -394,6 +453,13 @@ function AddressStep({ next, prev, order }) {
                       className="form-control input-public "
                       required
                       name="address"
+                      value={formFields.address}
+                      onChange={(e) => {
+                        setFormFields({
+                          ...formFields,
+                          address: e.target.value,
+                        });
+                      }}
                     />
                     <label className="lable-public">
                       {t("payment.address_step.modal.address")}
@@ -422,6 +488,13 @@ function AddressStep({ next, prev, order }) {
                       className="form-control input-public "
                       required
                       name="postal_code"
+                      value={formFields.postal_code}
+                      onChange={(e) => {
+                        setFormFields({
+                          ...formFields,
+                          postal_code: e.target.value,
+                        });
+                      }}
                     />
                     <label className="lable-public">
                       {t("payment.address_step.modal.postal_code")}

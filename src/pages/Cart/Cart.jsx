@@ -60,10 +60,11 @@ function Cart() {
               };
             }
           );
-          const totalPriceTemp = tempProductItems?.reduce(
-            (acc, item) => acc + parseInt(item.paymentPrice),
-            0
-          );
+          const totalPriceTemp = tempProductItems?.reduce((acc, item) => {
+            if (item?.in_stock && !item?.is_sold) {
+              return acc + parseInt(item.paymentPrice);
+            } else return acc;
+          }, 0);
           setTotalPrice(totalPriceTemp);
           setProduct_items(tempProductItems);
         } else {
@@ -175,80 +176,89 @@ function Cart() {
               </div>
             </div>
           )}
+
           <div className="basket-list">
-            {product_items?.map((product_item) => {
-              if (product_item?.is_sold) {
+            <div>
+              {product_items?.map((product_item) => {
+                if (product_item?.is_sold || !product_item?.in_stock) {
+                  return (
+                    <CartItemDisable
+                      removeProduct={removeSingleProduct}
+                      singleProduct={product_item}
+                    />
+                  );
+                }
                 return (
-                  <CartItemDisable
+                  <CartItem
                     removeProduct={removeSingleProduct}
                     singleProduct={product_item}
                   />
                 );
-              }
-              return (
-                <CartItem
-                  removeProduct={removeSingleProduct}
-                  singleProduct={product_item}
-                />
-              );
-            })}
-          </div>
-
-          <div className="clearfix"></div>
-          <div className="row">
-            <div
-              className={classnames("", {
-                "col-md-4 col-md-offset-8": GetLanguage() === "fa-IR",
-                "col-md-5 col-md-offset-7": GetLanguage() === "en-US",
               })}
-            >
-              {product_items?.length > 0 && (
-                <div className="basket-total">
-                  <div className="basket-price">
-                    <div className="clearfix"></div>
-                    <div className="price-row d-flex">
-                      <div className="col-xs-5 text-dir">
-                        {t("cart.full.total_price")}
-                      </div>
-                      <div className="col-xs-7">
-                        <div className="basket-pricestyle pull-dir-rev">
-                          <span className="persian-num">
-                            {totalPrice
-                              ?.toString()
-                              ?.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                          </span>
-                          <span>{t("cart.full.price_unit")}</span>
+            </div>
+
+            <div className="clearfix"></div>
+            <div className="row">
+              <div
+                className={classnames("", {
+                  "col-md-4 col-md-offset-8": GetLanguage() === "fa-IR",
+                  "col-md-5 col-md-offset-7": GetLanguage() === "en-US",
+                })}
+              >
+                {!isNil(
+                  product_items?.find((item) => item?.in_stock === true)
+                ) &&
+                  product_items?.length > 0 && (
+                    <div className="basket-total">
+                      <div className="basket-price">
+                        <div className="clearfix"></div>
+                        <div className="price-row d-flex">
+                          <div className="col-xs-5 text-dir">
+                            {t("cart.full.total_price")}
+                          </div>
+                          <div className="col-xs-7">
+                            <div className="basket-pricestyle pull-dir-rev">
+                              <span className="persian-num">
+                                {totalPrice
+                                  ?.toString()
+                                  ?.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                              </span>
+                              <span>{t("cart.full.price_unit")}</span>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="price-row d-flex">
+                          {i18n.language === "fa-IR" &&
+                            totalPrice >= 1000000 && (
+                              <div className="col-xs-5 text-dir">
+                                {t("invoice.shipment_fee")}
+                              </div>
+                            )}
+                          <div className="col-xs-7">
+                            <span className="greencolor">
+                              {i18n.language === "fa-IR"
+                                ? totalPrice >= 1000000
+                                  ? "رایگان"
+                                  : t(
+                                      "cart.full.less_price_received_separately"
+                                    )
+                                : ""}
+                            </span>
+                            <button
+                              type="button"
+                              className="btn btn-continue"
+                              onClick={() => {
+                                handleCheckoutCart();
+                              }}
+                            >
+                              {t("cart.full.next")}
+                            </button>
+                          </div>
                         </div>
                       </div>
                     </div>
-                    <div className="price-row d-flex">
-                      {i18n.language === "fa-IR" && totalPrice >= 1000000 && (
-                        <div className="col-xs-5 text-dir">
-                          {t("invoice.shipment_fee")}
-                        </div>
-                      )}
-                      <div className="col-xs-7">
-                        <span className="greencolor">
-                          {i18n.language === "fa-IR"
-                            ? totalPrice >= 1000000
-                              ? "رایگان"
-                              : t("cart.full.less_price_received_separately")
-                            : ""}
-                        </span>
-                        <button
-                          type="button"
-                          className="btn btn-continue"
-                          onClick={() => {
-                            handleCheckoutCart();
-                          }}
-                        >
-                          {t("cart.full.next")}
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
+                  )}
+              </div>
             </div>
           </div>
 
