@@ -64,6 +64,7 @@ export const PRODUCT_BY_ARTIST = (galleryId, artistId) =>
   `/${galleryId}/exhibition/artist/${artistId}/product/`;
 export const ARTISTS = "/artist/";
 export const ORDER_BUYER_ME = "/orders/bids/buyers/me/";
+export const RETERND_ORDER_ITEM = (id) => `/orders/buyers/${id}/return_item/`
 export const ORDER_BUYER_ME_ID = (id) => `/orders/bids/buyers/me/${id}/`;
 
 export const CART_ME = "/carts/me/";

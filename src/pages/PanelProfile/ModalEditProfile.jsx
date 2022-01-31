@@ -29,6 +29,7 @@ function ModalEditProfile(props) {
             },
             "email": values['email'],
             "national_code": values['national_code'],
+            "username":values['username']
         }
 
         APIService.patch(PROFILE, data)
@@ -73,6 +74,7 @@ function ModalEditProfile(props) {
                             national_code: props?.auth?.profile?.national_code,
                             // birth_date: props?.auth?.profile?.birth_date,
                             email: props?.auth?.profile?.email,
+                            username: props?.auth?.profile?.username
 
                         }}
 
@@ -103,15 +105,21 @@ function ModalEditProfile(props) {
                                 </Form.Item>
                             </div>
 
-                            {/*<div className="col-sm-6">*/}
+                            {/* <div className="col-sm-6">*/}
                             {/*    <Form.Item className="public-group" label={t("content-panel-profile.personal-info.date")} name={'birth_date'}>*/}
                             {/*        <Input className="form-control input-public "/>*/}
                             {/*    </Form.Item>*/}
-                            {/*</div>*/}
+                            {/*</div> */}
 
-                            <div className="col-sm-6">
+                            {/* <div className="col-sm-6">
                                 <Form.Item className="public-group"
                                            label={t("content-panel-profile.personal-info.email")} name={'email'}>
+                                    <Input className="form-control input-public "/>
+                                </Form.Item>
+                            </div> */}
+                             <div className="col-sm-6">
+                                <Form.Item className="public-group"
+                                           label={t("content-panel-profile.personal-info.username")} name={'username'}>
                                     <Input className="form-control input-public "/>
                                 </Form.Item>
                             </div>
