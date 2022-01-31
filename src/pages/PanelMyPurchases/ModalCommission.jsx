@@ -1,32 +1,71 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, Input, Select, Checkbox, message, Modal } from 'antd';
 import TextArea from 'antd/es/input/TextArea';
 import { t } from 'i18next';
 import apiServices from '../../utils/api.services';
-function ModalCommission({ showModal, setShowModal }) {
+import { ADDRESSES, RETERND_ORDER_ITEM } from '../../utils';
+import { GetLanguage } from '../../utils/utils'
 
+function ModalCommission({ showModal, setShowModal, editionValue }) {
+
+    const [addresses, setAddresses] = useState([]);
+    const [addressId, setAddressId] = useState({ address_id: undefined })
     const [form] = Form.useForm();
+    const Language = GetLanguage();
+    console.log("addresses", addresses);
+
     const handleClose = () => {
         setShowModal(false)
         console.log("close", showModal);
     }
 
-    const onFinish = () => {
+    const onFinish = (valuse) => {
         let payload = {
-
+            "description": valuse?.description,
+            "location_id": addressId?.address_id
         }
-        apiServices.post( "",payload)
-            .then(res=>{
-                if(res.data){
+        apiServices.post(RETERND_ORDER_ITEM(editionValue?.id), payload)
+            .then(res => {
+                if (res.data) {
                     setTimeout(() => {
                         // console.log(res);
                         message.success("با موفقیت ارجاع شد")
                     }, 500);
-                }else{
+                } else {
                     message.error("خطا")
                 }
             })
     }
+
+    const getData = () => {
+        apiServices.get(ADDRESSES,"")
+            .then((res) => {
+                if (res?.data?.code === 200) {
+                    //   setAddresses(res?.data?.data?.results);
+                    setAddresses(res.data.data.results.map(item => {
+                        if (Language === 'fa-IR') {
+                            return { label: item?.translations?.fa?.address, value: item?.id }
+                        } else {
+                            return { label: item?.translations?.en?.address, value: item?.id }
+                        }
+                    }))
+                }
+            })
+            .catch((err) => {
+                console.log(err);
+                message.error("دریافت آدرس با خطا مواجه شد.");
+            });
+    };
+
+    const handleSetAddress = (value) => {
+        setAddressId({
+            ...addressId,
+            address_id: value
+        })
+    }
+    useEffect(() => {
+        getData();
+    }, [editionValue?.id]);
 
     return (
 
@@ -73,9 +112,9 @@ function ModalCommission({ showModal, setShowModal }) {
                                         <Select
                                             className='form-control input-public text-dir border-0 px-2  d-flex'
                                             placeholder="آدرس"
-                                            // options={categorys}
+                                            options={addresses}
                                             allowClear
-                                            // onChange={handleSetCategory}
+                                            onChange={handleSetAddress}
                                             id="info-203"
                                         >
 
