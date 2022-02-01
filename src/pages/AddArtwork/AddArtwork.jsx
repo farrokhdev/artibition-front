@@ -9,14 +9,12 @@ import SellInformation from './SellInformation';
 import LoginPersonalInfo from './LoginPersonalInfo';
 import LoginArtistInfoForm from './LoginArtistInfoForm';
 import LoginUploadArtworks from './LoginUploadArtworks';
-import { useLocation } from 'react-router-dom';
-import { useSearchParams } from "react-router-dom";
+
 
 const { Step } = Steps;
 
 
 function AddArtwork() {
-
 
 
   const [current, setCurrent] = useState(0);
@@ -66,7 +64,7 @@ function AddArtwork() {
     },
     {
       title: t("content-panel-add-artwork.step5"),
-      content: <SellInformation prev={prev} next={next} />,
+      content: <SellInformation prev={prev} next={next}  />,
       icon: false
     }
   ];

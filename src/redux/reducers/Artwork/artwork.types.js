@@ -11,4 +11,5 @@ export default {
     // GET_OTP : "GET_OTP"
 
     ARTWORK_FORM : "ARTWORK_FORM",
+    ARTIST_FORM : "ARTIST_FORM",
 }
