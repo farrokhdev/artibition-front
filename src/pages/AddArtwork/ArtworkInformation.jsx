@@ -67,6 +67,7 @@ function ArtworkInformation({ next, prev }) {
 
 
         }
+        
         dispach(artworkForm(payload))
         next()
       

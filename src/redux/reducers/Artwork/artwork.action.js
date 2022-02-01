@@ -7,3 +7,10 @@ export const artworkForm = (data) => (
         payload: data
     }
 )
+
+export const artistForm =(data) =>(
+    {
+        type: types.ARTIST_FORM,
+        payload :data
+    }
+)
