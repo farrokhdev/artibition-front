@@ -30,11 +30,6 @@ function App(props) {
         i18n.changeLanguage(lng);
     };
 
-    useEffect(()=> {
-        console.log(localStorage.getItem("i18nextLng"), "lang")
-    } ,[])
-
-
     return (
         <BrowserRouter>
             <Routes>
