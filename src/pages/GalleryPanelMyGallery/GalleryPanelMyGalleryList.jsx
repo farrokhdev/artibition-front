@@ -14,6 +14,7 @@ import queryString from "query-string";
 import moment from "jalali-moment";
 import { galleryId } from "../../redux/reducers/Gallery/gallery.actions";
 import { useNavigate } from 'react-router-dom'
+import { setProfile } from "../../redux/reducers/auth/auth.actions";
 
 
 function GalleryPanelMyGalleryList() {
@@ -30,7 +31,8 @@ function GalleryPanelMyGalleryList() {
 
     const goToGalleryProfile = (id) => {
         dispatch(galleryId(id))
-        navigate("/gallery-panel/dashboard")
+        dispatch(setProfile({ roles: "gallery" }))
+        navigate("/panel/dashboard")
     }
 
 

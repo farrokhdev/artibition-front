@@ -42,45 +42,107 @@ import RegistrationArtist from '../pages/RegistrationArtists/RegistrationArtist'
 import PanelMyCollections from '../pages/PanelMyCollections/PanelMyCollections';
 import BecomeSeller from '../pages/BecomeSeller/BecomeSeller';
 import PanelBiddingPrice from '../pages/PanelBiddingPrice/PanelBiddingPrice';
+import { useSelector } from 'react-redux';
 
 const RouterConfig = (props) => {
-    return (
 
+
+    const { roles } = useSelector((state) => state.authReducer)
+    const getUserRole = () => {
+        let userRole = "user"
+        if (typeof roles === "string") {
+            return roles
+        } else {
+            if (roles && roles.length > 0) {
+                if (roles.includes("seller")) {
+                    userRole = "seller"
+                }
+                if (roles.includes("artist")) {
+                    userRole = "artist"
+                }
+            } else {
+                userRole = 'user'
+            }
+        }
+        return userRole
+    }
+
+
+    return (
 
 
         <Routes>
             <Route path="panel" animate={true}>
 
-                <Route index path="profile" element={<Panelprofile />} />
-                <Route index path="artist-profile" element={<ProfileArtist />} />
-                <Route index path="purchases" element={<PanelMyPurchases />} />
-                <Route index path="favorites" element={<PanelFavorites />} />
-                <Route index path="messages" element={<PanelMessages />} />
-                <Route index path="wallet" element={<PanelWallet />} />
-                <Route index path="dashboard" element={<DashboardPanel />} />
-                <Route index path="orders" element={<PanelOrders />} />
-                <Route path="add-artwork" element={<AddArtwork />} />
-                <Route path="art-management" element={<PanelArtManagement />} />
-                <Route path="my-albums" element={<PanleMyAlbums />} />
-                <Route path="my-collections" element={<PanelMyCollections/>} />
-                <Route path="contents" element={<PanelContentList />} />
-                <Route path="create-content" element={<PanelCreateContent />} />
+                <Route path="artist-profile" element={<ProfileArtist />} />
+                <Route path="purchases" element={<PanelMyPurchases />} />
+                <Route path="my-collections" element={<PanelMyCollections />} />
                 <Route path="registration-artists" element={<RegistrationArtist />} />
                 <Route path="dashboard-gallery" element={<GalleryPanelDashboard />} />
-                <Route path="exhibitions" element={<GalleryPanelExhibition />} />
-                <Route path="become-seller" element={<BecomeSeller/>} />
-                <Route path="bidding-price" element={<PanelBiddingPrice/>} />
-                <Route path="artists" element={<GalleryPanelArtisit />} />
-                <Route path="my-gallery-list-gallery" element={<GalleryPanelMyGallery />} />
-                <Route path="create-exhibition" element={<GalleryPanelCreateExhibition />} />
+                <Route path="become-seller" element={<BecomeSeller />} />
+                <Route path="bidding-price" element={<PanelBiddingPrice />} />
                 <Route path="gallery-info" element={<GalleryPanelEditGalleryInfo />} />
-                <Route path="select-artwork-source" element={<GalleryPanelSelectArtworkSource />} />
                 <Route path="galleries" element={<GalleryPanelMyGallery />} />
                 <Route path="cart" element={<Cart />} />
                 <Route path="invoice" element={<Invoice />} />
                 <Route path="payment" element={<Payment />} />
                 <Route path="success-payment" element={<SuccessPayment />} />
                 <Route path="unsuccess-payment" element={<UnsuccessPayment />} />
+
+
+
+                {
+                    getUserRole() === "gallery" &&
+                    <>
+                        <Route path="dashboard" element={<DashboardPanel />} />
+                        <Route path="create-exhibition" element={<GalleryPanelCreateExhibition />} />
+                        <Route path="upload-exhibition-artwotk" element={<GalleryPanelUploadExhibitionArtwork />} />
+                        <Route path="artists" element={<GalleryPanelArtisit />} />
+                        <Route path="exhibitions" element={<GalleryPanelExhibition />} />
+                        <Route path="orders" element={<PanelOrders />} />
+                        <Route path="art-management" element={<PanelArtManagement />} />
+                        <Route path="contents" element={<PanelContentList />} />
+                        <Route path="create-content" element={<PanelCreateContent />} />
+                        <Route path="add-artwork" element={<AddArtwork />} />
+                    </>
+                }
+                {
+                    getUserRole() === "artist" &&
+                    <>
+                        <Route path="dashboard" element={<DashboardPanel />} />
+                        <Route path="my-albums" element={<PanleMyAlbums />} />
+                        <Route path="orders" element={<PanelOrders />} />
+                        <Route path="art-management" element={<PanelArtManagement />} />
+                        <Route path="profile" element={<Panelprofile />} />
+                        <Route path="favorites" element={<PanelFavorites />} />
+                        <Route path="wallet" element={<PanelWallet />} />
+                        <Route path="contents" element={<PanelContentList />} />
+                        <Route path="create-content" element={<PanelCreateContent />} />
+                        <Route path="add-artwork" element={<AddArtwork />} />
+                        <Route path="messages" element={<PanelMessages />} />
+                    </>
+                }
+                {
+                    getUserRole() === "seller" &&
+                    <>
+                        <Route path="dashboard" element={<DashboardPanel />} />
+                        <Route path="orders" element={<PanelOrders />} />
+                        <Route path="profile" element={<Panelprofile />} />
+                        <Route path="favorites" element={<PanelFavorites />} />
+                        <Route path="wallet" element={<PanelWallet />} />
+                        <Route path="add-artwork" element={<AddArtwork />} />
+                        <Route path="messages" element={<PanelMessages />} />
+                    </>
+                }
+                {
+                    getUserRole() === "user" &&
+                    <>
+                        <Route path="profile" element={<Panelprofile />} />
+                        <Route path="favorites" element={<PanelFavorites />} />
+                        <Route path="wallet" element={<PanelWallet />} />
+                        <Route path="messages" element={<PanelMessages />} />
+                    </>
+                }
                 <Route path="*" element={<Navigate to="/panel/profile" replace />} />
             </Route>
 
@@ -88,16 +150,15 @@ const RouterConfig = (props) => {
 
 
             <Route path="gallery-panel" animate={true}>
-                <Route path="dashboard" element={<GalleryPanelDashboard />} />
+                {/* <Route path="dashboard" element={<GalleryPanelDashboard />} /> */}
                 {/* <Route path="exhibitions" element={<GalleryPanelExhibition />} /> */}
                 {/* <Route path="artists" element={<GalleryPanelArtisit />} /> */}
                 {/* <Route path="galleries" element={<GalleryPanelMyGallery />} /> */}
-                <Route path="create-exhibition" element={<GalleryPanelCreateExhibition />} />
-                <Route path="edit-gallery" element={<GalleryPanelEditGalleryInfo />} />
-                <Route path="select-artwork-source" element={<GalleryPanelSelectArtworkSource />} />
-                <Route path="select-artist-source" element={<GalleryPanelSelectArtisitSource />} />
+                {/* <Route path="create-exhibition" element={<GalleryPanelCreateExhibition />} /> */}
+                {/* <Route path="edit-gallery" element={<GalleryPanelEditGalleryInfo />} /> */}
+                {/* <Route path="select-artwork-source" element={<GalleryPanelSelectArtworkSource />} /> */}
+                {/* <Route path="select-artist-source" element={<GalleryPanelSelectArtisitSource />} /> */}
                 <Route path="create-artist-artwotk" element={<GalleryPanelCreateArtistArtwork />} />
-                <Route path="upload-exhibition-artwotk" element={<GalleryPanelUploadExhibitionArtwork />} />
                 <Route path="*" element={<Navigate to="/gallery-panel/dashboard" replace />} />
             </Route>
         </Routes>

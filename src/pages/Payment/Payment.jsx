@@ -12,6 +12,7 @@ import apiServices from "../../utils/api.services";
 import { ORDER } from "../../utils";
 import axios from "axios";
 import { Token } from "../../utils/utils";
+import ReceiverStep from "./ReceiverStep";
 
 const { Step } = Steps;
 
@@ -30,17 +31,8 @@ function Payment() {
     setCurrent(current - 1);
   };
   const getData = (id) => {
-    let token = Token() ? "Bearer " + Token() : undefined;
-
-    const tempHeader = {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      Authorization: token,
-    };
-    axios
-      .get(ORDER(id), {
-        headers: tempHeader,
-      })
+    apiServices
+      .get(ORDER(id))
       .then((res) => {
         if (res?.data?.code === 200) {
           setOrder(res?.data?.data);
@@ -80,6 +72,11 @@ function Payment() {
       title: t("payment.select_address_step"),
       // content: <ArtworkInformation next={next} />,
       content: <AddressStep next={next} prev={prev} order={order} />,
+      icon: false,
+    },
+    {
+      title: t("payment.address_step.modal.receiver_information"),
+      content: <ReceiverStep next={next} prev={prev} order={order} />,
       icon: false,
     },
     {

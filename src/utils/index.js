@@ -24,13 +24,13 @@ export const PRE_UPLOAD = "/core/upload/";
 export const CORE_CONTENT = "/core/content/";
 export const CORE_CATEGORIS = "/core/category/";
 export const PRODUCTS_CATEGORIES = "/products/categories/";
-export const SUBJECTS_CATEGORISE = (id) =>
-  `/products/categories/${id}/subjects/`;
-export const TECHNIQUS_CATEGORIES = (id) =>
-  `/products/categories/${id}/techniques/`;
-export const MATERIALS_CATEGORIES = (id) =>
-  `/products/categories/${id}/materials/`;
-export const SOCIAL_NETWORK_COLLECTIONS = "/social-network/collections/";
+export const PRODUCTS_TECHNIQUES = "/products/techniques/";
+export const PRODUCTS_MATERIALS = "/products/materials/";
+export const PRODUCTS_SIZES = "/products/sizes/";
+export const SUBJECTS_CATEGORISE = id => `/products/categories/${id}/subjects/`;
+export const TECHNIQUS_CATEGORIES = id => `/products/categories/${id}/techniques/`;
+export const MATERIALS_CATEGORIES = id => `/products/categories/${id}/materials/`;
+export const SOCIAL_NETWORK_COLLECTIONS = "/social-network/collections/"
 export const GALLERY_LIST = "/gallery/";
 export const GALLERY = (id) => `/gallery/${id}/`;
 export const GALLERY_EXHIBITION = (id) => `/${id}/exhibition/`;
@@ -61,20 +61,20 @@ export const ARTWORK_BY_GALLERY = (gallereyId, artistId) => {
   return `/${gallereyId}/exhibition/artist/${artistId}/product/`;
 };
 export const MESSAGES_INBOX = "/message/inbox/";
-
-export const PRODUCT_BY_ARTIST = (galleryId, artistId) =>
-  `/${galleryId}/exhibition/artist/${artistId}/product/`;
-export const ARTISTS = "/artist/";
-export const ORDER_BUYER_ME = "/orders/bids/buyers/me/";
+export const PRODUCT_BY_ARTIST =(galleryId,artistId) => `/${galleryId}/exhibition/artist/${artistId}/product/`
+export const ARTISTS = '/artist/'
+export const ORDER_BUYER_ME = '/orders/bids/buyers/me/';
+export const ORDER_BUYER_ME_ID = id=> `/orders/bids/buyers/me/${id}/`;
+export const ARTIST_BY_PRODUCT = '/artist/product/'
 export const RETERND_ORDER_ITEM = (id) => `/orders/buyers/${id}/return_item/`
-export const ORDER_BUYER_ME_ID = (id) => `/orders/bids/buyers/me/${id}/`;
 
 export const CART_ME = "/carts/me/";
 export const CART_ME_REMOVE_ITEM = `${BASE_URL}/carts/remove/`;
 export const CART_ME_CHECKOUT = `${BASE_URL}/carts/checkout/`;
 export const CART_ME_CLEAR_CART = `${BASE_URL}/carts/clear/`;
-export const ORDER = (id) => `${BASE_URL}/orders/${id}/`;
+export const ORDER = (id) => `/orders/${id}/`;
 export const ADDRESSES = "/account/location/";
-export const COMPLETE_ORDER = (id) => `/orders/${id}/`;
+export const COMPLETE_ORDER = (id) => `/orders/${id}/complete_order/`;
 export const APPLY_DISCOUNT = (id) =>
   `${BASE_URL}/orders/${id}/apply_discount/`;
+export const ADDRESSES_EDIT = (id) => `/account/location/${id}/`;

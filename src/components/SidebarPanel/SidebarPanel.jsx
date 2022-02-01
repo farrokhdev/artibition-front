@@ -11,20 +11,22 @@ function SidebarPanel(props) {
     const { t, i18n } = useTranslation();
     const { roles } = useSelector((state) => state.authReducer)
     const getUserRole = () => {
-        if (roles) {
-            let rolesTemp = roles.slice()
-            if (rolesTemp.indexOf('gallery') !== -1) {
-                rolesTemp.splice(rolesTemp.indexOf('gallery'), 1)
-            }
-            if (rolesTemp.length) {
-                return rolesTemp[0]
-            }
-            else {
-                return 'user'
-            }
+        let userRole = "user"
+        if (typeof roles === "string") {
+            return roles
         } else {
-            return 'user'
+            if (roles && roles.length > 0) {
+                if (roles.includes("seller")) {
+                    userRole = "seller"
+                }
+                if (roles.includes("artist")) {
+                    userRole = "artist"
+                }
+            } else {
+                userRole = 'user'
+            }
         }
+        return userRole
     }
 
     return (
@@ -66,8 +68,6 @@ function SidebarPanel(props) {
                                     className="sidebar-nav-margin">{t("drawer-panel.nav-orders")}</span></Link></li>
                                 <li className="sidebar-icon my-4" id="content"><Link to="/panel/contents"><span
                                     className="sidebar-nav-margin">محتوا</span></Link></li>
-                                <li className="sidebar-icon my-4" id="my-albums"><Link to="/panel/my-collections"><span
-                                    className="sidebar-nav-margin">کالکشن های من</span></Link></li>
                                 <li className="sidebar-icon my-4" id="mypurchase"><Link to="/panel/bidding-price"><span
                                     className="sidebar-nav-margin">{t("drawer-panel.biding-price")}</span></Link></li>
                                 <li className="sidebar-icon my-4" id="my-albums"><Link to="/panel/exhibitions"><span
@@ -108,7 +108,7 @@ function SidebarPanel(props) {
                             </>
                         }
 
-                        {(getUserRole === 'seller') &&
+                        {(getUserRole() === 'seller') &&
                             <>
                                 <li className="sidebar-icon" id="home"><Link to="/panel/dashboard"><span
                                     className="sidebar-nav-margin">{t("drawer-panel.nav-dashboard")}</span></Link></li>
@@ -135,12 +135,8 @@ function SidebarPanel(props) {
 
                         {(getUserRole() === 'user') &&
                             <>
-                                <li className="sidebar-icon" id="home"><Link to="/panel/dashboard"><span
-                                    className="sidebar-nav-margin">{t("drawer-panel.nav-dashboard")}</span></Link></li>
                                 <li className="sidebar-icon my-4" id="mypurchase"><Link to="/panel/purchases"><span
                                     className="sidebar-nav-margin">{t("drawer-panel.nav-mypurchases")}</span></Link></li>
-                                <li className="sidebar-icon my-4" id="financial"><Link to="/panel/orders"><span
-                                    className="sidebar-nav-margin">{t("drawer-panel.nav-orders")}</span></Link></li>
                                 <li className="sidebar-icon my-4" id="wallet"><Link to="/panel/wallet"><span
                                     className="sidebar-nav-margin">{t("drawer-panel.nav-wallet")}</span></Link></li>
                                 <li className="sidebar-icon my-4" id="liked"><Link to="/panel/favorites"><span

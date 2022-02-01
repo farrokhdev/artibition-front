@@ -71,13 +71,17 @@ function PayStep({ next, prev, order }) {
       });
   };
   const handleNextClick = () => {
-    console.log("hello");
     apiServices
-      .patch(COMPLETE_ORDER(order?.id), { payment_method })
+      .post(COMPLETE_ORDER(order?.id), { payment_method })
       .then((res) => {
         console.log(".then --------- res", res);
         if (res?.data?.code === 200) {
           navigate("/panel/success-payment");
+        }
+        if (res.response?.status === 400) {
+          message.error(res.response?.data?.message);
+
+          navigate("/panel/unsuccess-payment");
         }
       })
       .catch((err) => {
@@ -165,7 +169,7 @@ function PayStep({ next, prev, order }) {
               <input
                 type="radio"
                 name="radio"
-                onChange={() => setPaymentMethod("manual")}
+                onChange={() => setPaymentMethod("cash")}
               />
               <span className="checkmark-radio"></span>
             </label>

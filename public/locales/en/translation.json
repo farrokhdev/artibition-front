@@ -433,7 +433,7 @@
     "nav-dashboard-gallery": "Gallery Dashborad",
     "nav-art-management": "Artworks",
     "nav-mypurchases": "My purchases",
-    "biding-price" : "Biding price",
+    "biding-price": "Biding price",
     "nav-orders": "Orders",
     "nav-wallet": "Wallet",
     "nav-my-albums": "My albums",
@@ -714,8 +714,8 @@
   "content-panel-orders": {
     "filters": {
       "all": "All",
-      "Review" : "Review",
-      "Active_on_the_site" : "Active on the site",
+      "Review": "Review",
+      "Active_on_the_site": "Active on the site",
       "to_artibition": "To Arthibition",
       "artibition_to_customer": "Arthibition to customer",
       "delivered": "Delivered"
@@ -1351,6 +1351,7 @@
       "new_address_btn": "New address",
       "back_btn": "Back",
       "prev_step": "",
+      "address_select": "please select an address",
       "no_address_message": "You have registered no address!",
       "modal": {
         "title": "Add new address",
@@ -1370,6 +1371,7 @@
         "foreign_checkbox": "I'm a foreign resident. I have no N.C.",
         "receiver_checkbox": "I'm receiver",
         "send_friend_checkbox": "I'll send the artwork to my friend",
+        "receiver_select": "Select  reciever",
         "confirm_btn": "Confirm",
         "select_address_map": "Select address on map"
       }
@@ -1472,7 +1474,7 @@
     "visite_select": "visite",
     "sell_select": "sell"
   },
-  "add-new-artist-by-gallery":{
-    "upload_avatar_error":"Please upload avatar for artist"
+  "add-new-artist-by-gallery": {
+    "upload_avatar_error": "Please upload avatar for artist"
   }
 }
