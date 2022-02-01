@@ -13,7 +13,14 @@ const EnTheme = React.lazy(() => import('../src/pages/EnTheme/EnTheme'));
 
 //create a parent component that will load the components conditionally using React.Suspense
 const ThemeSelector = ({children}) => {
-    const CHOSEN_THEME = localStorage.getItem('i18nextLng') || 'fa-IR';
+    let CHOSEN_THEME
+    if (localStorage.getItem('i18nextLng') === null){
+        localStorage.setItem('i18nextLng', 'fa-IR')
+        CHOSEN_THEME = 'fa-IR'
+    } else {
+        CHOSEN_THEME = localStorage.getItem('i18nextLng');
+    }
+
     return (
         <>
             <React.Suspense fallback={<></>}>
