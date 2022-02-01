@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
 import { isLogin } from './utils/utils'
 import RouterConfig from './main/router'
@@ -29,6 +29,10 @@ function App(props) {
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);
     };
+
+    useEffect(()=> {
+        console.log(localStorage.getItem("i18nextLng"), "lang")
+    } ,[])
 
 
     return (
