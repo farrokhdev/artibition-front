@@ -12,10 +12,12 @@ import shopping_basket from "../../assets/img/shopping_basket.svg";
 import { removeToken } from "../../utils/utils";
 import { connect } from "react-redux";
 import { clearStorage } from "../../redux/reducers/auth/auth.actions";
-
+import { useSelector, useDispatch } from "react-redux";
+import { UPDATE_CART } from "../../redux/reducers/cart/cart.types";
 function HeaderPanel(props) {
   const { t, i18n } = useTranslation();
-
+  const dispatch = useDispatch();
+  const { count } = useSelector((state) => state.cartReducer);
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
     setTimeout(() => {
@@ -58,7 +60,7 @@ function HeaderPanel(props) {
             <a href="/panel/cart" className="btn-panel-header btn-shoppingcard">
               <img src={shopping_basket} width="24" height="24" alt="" />
               <div className="basket-notification ">
-                <span className="persian-num">2</span>
+                <span className="persian-num">{count}</span>
               </div>
             </a>
             <a href="#" className="btn-panel-header">
@@ -93,6 +95,10 @@ function HeaderPanel(props) {
                 onClick={() => {
                   props.clearStorage();
                   removeToken();
+                  dispatch({
+                    type: UPDATE_CART,
+                    payload: 0,
+                  });
                 }}
               >
                 {t("logout_Title")}
