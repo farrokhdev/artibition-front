@@ -87,7 +87,7 @@ function DashboardPanel() {
 
 
                     {
-                        roles.includes("gallery") &&
+                        (getUserRole() !== "gallery" && roles.includes("gallery")) &&
                         <BoxGallery />
 
                     }

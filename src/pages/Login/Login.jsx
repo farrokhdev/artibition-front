@@ -24,7 +24,6 @@ function Login(props) {
     const { roles } = useSelector((state) => state.authReducer)
     const [loading, setLoading] = useState(true)
     let userRole = "user"
-    const d = []
 
     async function getProfile() {
         await APIService.get(PROFILE, "")
@@ -49,20 +48,6 @@ function Login(props) {
                             userRole = 'user'
                         }
                     }
-                    // if (res.data.data.roles && res.data.data.roles.length > 0) {
-                    //     let rolesTemp = res.data.data.roles.slice()
-                    //     if (rolesTemp.indexOf('gallery') !== -1) {
-                    //         rolesTemp.splice(rolesTemp.indexOf('gallery'), 1)
-                    //     }
-                    //     if (rolesTemp.length) {
-                    //         userRole = rolesTemp[0]
-                    //     }
-                    //     else {
-                    //         userRole = "user"
-                    //     }
-                    // } else {
-                    //     userRole = "user"
-                    // }
                 } else {
                     message.error(res.response.data.message)
                 }
@@ -82,12 +67,12 @@ function Login(props) {
                         if (userRole !== "user") {
                             setTimeout(() => {
                                 window.location.href = "/panel/dashboard"
-                            }, 5000);
+                            }, 500);
                         }
                         else {
                             setTimeout(() => {
                                 window.location.href = "/panel/profile"
-                            }, 5000);
+                            }, 500);
                         }
                     })
                 } else {
