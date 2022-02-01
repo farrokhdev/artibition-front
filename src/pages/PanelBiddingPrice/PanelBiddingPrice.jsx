@@ -165,7 +165,7 @@ function PanelBiddingPrice() {
                                                                     </div>
                                                                     <div className="d-flex box-dir-reverse">
                                                                         <div className="col-xs-5">
-                                                                            {item?.status === "rejected" ?
+                                                                            {item?.status === "rejected"  || item?.status === "closed"?
                                                                                 <button onClick={() => {
                                                                                     handleShowModalBidding()
                                                                                     setEditionValue(item)

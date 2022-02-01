@@ -35,6 +35,8 @@ function ArtworkInformation({ next, prev }) {
     });
 
 
+    console.log("categorys" , categorys);
+
     // The job of this constant is to send the information needed to make the artwork
     const onFinish = (values) => {
         let payload = {

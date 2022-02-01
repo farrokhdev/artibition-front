@@ -1,0 +1,13 @@
+version: "3"
+services:
+  front_app:
+    container_name: "arthibition"
+    image: node:14-buster
+    volumes:
+      - .:/front_app
+      - /front_app/node_modules
+    ports:
+      - 3000:3000
+    working_dir: /front_app
+    tty: true
+    command: sh -c "npm i && npm start"

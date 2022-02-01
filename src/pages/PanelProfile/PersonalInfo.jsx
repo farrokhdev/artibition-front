@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import { t } from 'i18next';
 
 import edit_name from '../../assets/img/edit_name.svg';
@@ -9,18 +9,18 @@ function PersonalInfo(props) {
     const { t, i18n } = useTranslation();
     console.log(props.auth.profile)
 
-    const { setVisibleModalEditProfile ,setvisibleEditMobile ,setvisibleEditEmail} = props;
+    const { setVisibleModalEditProfile, setvisibleEditMobile, setvisibleEditEmail } = props;
     const [showModal, setshowModal] = useState(false);
 
     const handleShowModal = () => {
         setVisibleModalEditProfile(true)
     }
 
-    const handleEditMobile = ()=>{
+    const handleEditMobile = () => {
         setvisibleEditMobile(true)
     }
 
-    const handleEditEmailAprove = ()=>{
+    const handleEditEmailAprove = () => {
         setvisibleEditEmail(true);
     }
 
@@ -55,8 +55,14 @@ function PersonalInfo(props) {
                         <div className="form-group text-dir">
                             <span className="lable-panel">{t('content-panel-profile.personal-info.phone')}</span>
                             {props?.auth?.profile?.mobile ?
-                                <span className="input-panel persian-num">{props?.auth?.profile?.mobile}</span>
-                                : <span className="lable-panel" onClick={handleEditMobile}>شماره همراه خود را تایید کنید</span>
+                                <span className="input-panel persian-num">
+                                    {props?.auth?.profile?.mobile}
+                                    <button type="button" class="btn-green en-lang pull-left text-light ml-5">تایید شده</button>
+                                </span>
+                                : <span className="lable-panel" onClick={handleEditMobile}>
+                                    شماره همراه خود را تایید کنید
+                                    <img src={edit_name} alt="" />
+                                </span>
                             }
                         </div>
                     </div>
@@ -65,15 +71,21 @@ function PersonalInfo(props) {
                         <div className="form-group text-dir">
                             <span className="lable-panel">{t('content-panel-profile.personal-info.national')}</span>
                             <span className="input-panel persian-num">{props?.auth?.profile?.national_code}</span>
-                            {console.log("props?.auth?.profile?.national_code" , props?.auth?.profile?.national_code)}
                         </div>
                     </div>
                     <div className="col-sm-6">
                         <div className="form-group text-dir">
                             <span className="lable-panel">{t('content-panel-profile.personal-info.email')}</span>
-                            {props?.auth?.profile?.email?
-                                <span className="input-panel en-lang">{props?.auth?.profile?.email}</span>
-                                : <span className="lable-panel" onClick={handleEditEmailAprove}>ایمیل خود را تایید کنید</span>
+                            {props?.auth?.profile?.email ?
+                                <span className="input-panel en-lang">
+                                    {props?.auth?.profile?.email}
+                                    <button type="button" class="btn-green pull-left text-light ml-5">تایید شده</button>
+                                </span>
+
+                                : <span className="lable-panel" onClick={handleEditEmailAprove}>
+                                    <img src={edit_name} alt="" />
+                                    ایمیل خود را تایید کنید
+                                </span>
                             }
                         </div>
                     </div>
