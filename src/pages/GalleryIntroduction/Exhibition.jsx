@@ -47,7 +47,12 @@ console.log("expired",expired)
             <div className="row gallery-ex">
             <div class="col-md-6 col-sm-3 sm-absolute">
                 <div class="col-img">
-                <div className="tags tags-events">{item.type === "real" ? 'حضوری' : item.type === 'virtual' ? 'مجازی' : 'مجازی - حضوری'}</div>
+                <div className="tags tags-events">
+                {i18n.language === 'fa-IR' ?
+                item.type === "real" ? 'حضوری' : item.type === 'virtual' ? 'مجازی' : 'مجازی - حضوری'
+                :
+                item.type
+            }</div>
                     <img src={item?.poster[0]?.exact_url} width="1776" height="1776" alt="آرتیبیشن"
                         class="img-responsive" />
                 </div>
