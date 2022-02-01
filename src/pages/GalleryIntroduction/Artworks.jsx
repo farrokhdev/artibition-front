@@ -14,6 +14,7 @@ function Artworks() {
 
     const [galleryProducts, setGalleryProducts] = useState();
     const [params, setParams] = useState({
+        status: 'active',
         search: "",
         page: 1,
         

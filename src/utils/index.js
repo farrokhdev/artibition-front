@@ -76,3 +76,4 @@ export const COMPLETE_ORDER = (id) => `/orders/${id}/complete_order/`;
 export const APPLY_DISCOUNT = (id) =>
   `${BASE_URL}/orders/${id}/apply_discount/`;
 export const ADDRESSES_EDIT = (id) => `/account/location/${id}/`;
+export const EXHIBITION_LIST = '/exhibition'
