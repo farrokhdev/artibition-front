@@ -14,7 +14,7 @@ import artist3 from '../../assets/img/artist-3.jpg';
 import blue_badge_icon from '../../assets/img/blue_badge.svg';
 import gold_badge_icon from '../../assets/img/gold_badge.svg';
 import { Pagination } from 'antd';
-import { ARTIST_PRODUCTS } from '../../utils';
+import { ARTIST_BY_PRODUCT, ARTIST_PRODUCTS } from '../../utils';
 import apiServices from '../../utils/api.services';
 import queryString from 'query-string'
 import { useTranslation } from 'react-i18next';
@@ -40,7 +40,7 @@ function ArtistsPage(props) {
     }
 
     const getArtistList = () => {
-        apiServices.get(ARTIST_PRODUCTS, queryString.stringify(params))
+        apiServices.get(ARTIST_BY_PRODUCT, queryString.stringify(params))
             .then(res => {
                 if (res.data) {
                     setArtistList(res.data.data)
@@ -227,26 +227,26 @@ console.log("props",props)
                                     <div className="col-img">
                                         <div className="collection-firstrow">
                                             {/* <img src={mainpage1_1} className="img-responsive"/> */}
-                                            <img src={item?.medias[0] && item.medias[0]?.exact_url} className="img-responsive"/>
+                                            <img src={item?.product && item.product[0]?.exact_url} className="img-responsive"/>
                                         </div>
                                         <div className="d-flex collection-secondrow">
                                             <div className="col-6  pad-l2 px-0">
                                                 {/* <img src={mainpage1_2} width="420" height="420"
                                                      className="img-responsive"/> */}
-                                                <img src={item?.medias[1] && item.medias[1]?.exact_url} width="420" height="420"
+                                                <img src={item?.product && item.product[1]?.exact_url} width="420" height="420"
                                                      className="img-responsive"/>
                                             </div>
                                             <div className="col-6  pad-r2 px-0">
                                                 {/* <img src={mainpage1_3} width="420" height="420"
                                                      className="img-responsive"/> */}
-                                                <img src={item?.medias[2] && item.medias[2]?.exact_url} width="420" height="420"
+                                                <img src={item?.product && item.product[2]?.exact_url} width="420" height="420"
                                                      className="img-responsive"/>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="col-body">
                                         <div className="col-image pull-right">
-                                            <Link to={`/site/artist-profile/?id=${item?.artist_id}`}>
+                                            <Link to={`/site/artist-profile/?id=${item?.id}`}>
                                             <img src={item.bg_image?.exact_url} width="408" height="408" alt=""
                                                  className="img-responsive"/>
                                             <img src={blue_badge_icon} width="22" height="22" alt=""
@@ -256,8 +256,8 @@ console.log("props",props)
                                                  className="img-responsive"/> */}
                                         </div>
                                         <h6 className="col-title">
-                                            <Link to={`/site/artist-profile/?id=${item?.artist_id}`}>
-                                            <span className="col-name pull-dir">{i18n.language === 'fa-IR' ? item.owner?.translations?.fa?.first_name : item.owner?.translations?.en?.first_name}</span>
+                                            <Link to={`/site/artist-profile/?id=${item?.id}`}>
+                                            <span className="col-name pull-dir">{i18n.language === 'fa-IR' ? item.translations?.fa?.nick_name : item.translations?.en?.nick_name}</span>
                                             </Link>
                                         </h6>
                                         <button type="button" className="btn-follow pull-dir">{t("artwork.follow")}</button>

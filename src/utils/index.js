@@ -20,6 +20,9 @@ export const PRE_UPLOAD = "/core/upload/";
 export const CORE_CONTENT = "/core/content/";
 export const CORE_CATEGORIS = "/core/category/";
 export const PRODUCTS_CATEGORIES = "/products/categories/";
+export const PRODUCTS_TECHNIQUES = "/products/techniques/";
+export const PRODUCTS_MATERIALS = "/products/materials/";
+export const PRODUCTS_SIZES = "/products/sizes/";
 export const SUBJECTS_CATEGORISE = id => `/products/categories/${id}/subjects/`;
 export const TECHNIQUS_CATEGORIES = id => `/products/categories/${id}/techniques/`;
 export const MATERIALS_CATEGORIES = id => `/products/categories/${id}/materials/`;
@@ -55,4 +58,5 @@ export const PRODUCT_BY_ARTIST =(galleryId,artistId) => `/${galleryId}/exhibitio
 export const ARTISTS = '/artist/'
 export const ORDER_BUYER_ME = '/orders/bids/buyers/me/';
 export const ORDER_BUYER_ME_ID = id=> `/orders/bids/buyers/me/${id}/`;
+export const ARTIST_BY_PRODUCT = '/artist/product/'
 
