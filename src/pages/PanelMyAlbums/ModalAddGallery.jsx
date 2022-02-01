@@ -243,7 +243,6 @@ function ModalAddGallery(props) {
                                                         <div className="col-img">
                                                             <img 
                                                            src={artworksLike && handleShowImage(artworksLike)}
-                                                           // src={artworksLike?.medias[0]?.exact_url} 
                                                             width="840" height="1259"
                                                                 alt="آرتیبیشن"
                                                                 className="img-responsive" />
@@ -260,7 +259,6 @@ function ModalAddGallery(props) {
                                                     <div className="col-body">
                                                         <h6 className="col-title">
                                                             <span className="col-name">{Language === 'fa-IR' ? artworksLike?.translations?.fa?.artist_name : artworksLike?.translations?.en?.artist_name}</span>
-                                                            {/* <span className="col-name">آغداشلو</span> */}
                                                         </h6>
                                                         <div className="col-dimension">
 

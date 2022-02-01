@@ -39,9 +39,6 @@ function ModalEditEmail(props) {
                 if (res.data) {
                     setNewField(values?.email)
                     setShowEmail(false)
-                    // setTimeout(() => {
-
-                    // }, 500);
                 } else {
                     message.error({ content: "خطا در ثبت اطلاعات", style: { marginTop: '10vh' } })
                 }

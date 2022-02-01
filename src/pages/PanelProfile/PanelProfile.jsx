@@ -58,7 +58,6 @@ const Panelprofile = (props) => {
         setLoading(true)
         APIService.get(PROFILE, queryString.stringify(params))
             .then(resp => {
-                console.log(resp.data.data);
                 setLoading(false)
                 setItems(resp.data.data)
             })
