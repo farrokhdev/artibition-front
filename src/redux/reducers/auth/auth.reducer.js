@@ -1,39 +1,39 @@
 import types from './auth.types';
-import {removeToken , Token} from '../../../utils/utils';
+import { removeToken, Token } from '../../../utils/utils';
 
-const initial_state ={
-    pending : false,
+const initial_state = {
+    pending: false,
     error: null,
-    otp : null,
-    is_logged_in : Boolean(Token()),
+    otp: null,
+    is_logged_in: Boolean(Token()),
     profile: null
 }
 
-const authReducer = (state = initial_state , {type , payload})=> {
-    switch(type){
+const authReducer = (state = initial_state, { type, payload }) => {
+    switch (type) {
         case types.LOGIN_START:
             console.log('LOGIN_START')
             return {
                 ...state,
-                pending: true ,
+                pending: true,
 
                 error: null
             }
 
-        case types.SET_PHONENUMBER :
+        case types.SET_PHONENUMBER:
             console.log('SET_PHONENUMBER')
             return {
-                    ...state, 
-                    mobile : payload.mobile
-                }
+                ...state,
+                mobile: payload.mobile
+            }
 
 
         case types.LOGIN_SUCCESS:
             console.log('LOGIN_SUCCESS')
             return {
-                ...state ,
+                ...state,
                 pending: false,
-                is_logged_in : true
+                is_logged_in: true
             }
 
         case types.LOGIN_ERROR:
@@ -46,32 +46,33 @@ const authReducer = (state = initial_state , {type , payload})=> {
             }
 
         case types.CLEAR_STORAGE:
-        console.log('CLEAR_STORAGE')
-        removeToken()
+            console.log('CLEAR_STORAGE')
+            removeToken()
             return {
                 ...state,
-                profile: null
+                profile: null,
+                roles: null
             }
 
-        case types.SET_PROFILE : 
-        console.log('Set Profile Done', payload)
-                return {
-                    ...state,
-                    profile : payload.profile,
-                    id: payload.id,
-                    roles : payload.roles
-                }
-
-        case types.GET_OTP : 
-        console.log('Get Otp Code Done', payload)
+        case types.SET_PROFILE:
+            console.log('Set Profile Done', payload)
             return {
                 ...state,
-                otp : payload.otp,
-                            
-        }
-            
-        default :
-        return state;
+                profile: payload.profile,
+                id: payload.id,
+                roles: payload.roles
+            }
+
+        case types.GET_OTP:
+            console.log('Get Otp Code Done', payload)
+            return {
+                ...state,
+                otp: payload.otp,
+
+            }
+
+        default:
+            return state;
     }
 }
 

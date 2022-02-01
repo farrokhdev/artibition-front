@@ -23,6 +23,8 @@ function OrderStatus() {
                     message.error(res.response.data.message)
                 }
 
+            }).catch(err => {
+                console.log(err);
             })
     }, [])
 

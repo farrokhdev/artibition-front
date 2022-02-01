@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { Form, Input } from "antd";
 import login from '../../assets/img/login.jpg';
 import google_icon from '../../assets/img/google.jpg';
@@ -22,30 +22,32 @@ function Login(props) {
 
     const { t } = useTranslation();
     const { roles } = useSelector((state) => state.authReducer)
+    const [loading, setLoading] = useState(true)
+    let userRole = "user"
 
-
-    const getUserRole = () => {
-        if (roles) {
-            let rolesTemp = roles.slice()
-            if (rolesTemp.indexOf('gallery') !== -1) {
-                rolesTemp.splice(rolesTemp.indexOf('gallery'), 1)
-            }
-            if (rolesTemp.length) {
-                return rolesTemp[0]
-            }
-            else {
-                return "user"
-            }
-        } else {
-            return "user"
-        }
-    }
-
-    const getProfile = () => {
-        APIService.get(PROFILE, "")
+    async function getProfile() {
+        await APIService.get(PROFILE, "")
             .then(res => {
                 if (res.data) {
+                    console.log(res.data.data);
                     props.setProfile({ ...props.state, profile: res.data.data, id: res.data.data.id, roles: res.data.data.roles })
+
+                    if (typeof roles === "string") {
+                        userRole = roles
+                    } else {
+                        const rolesTemp = res.data.data.roles
+                        
+                        if (rolesTemp && rolesTemp.length > 0) {
+                            if (rolesTemp.includes('seller')) {
+                                userRole = "seller"
+                            }
+                            if (rolesTemp.includes("artist")) {
+                                userRole = "artist"
+                            }
+                        } else {
+                            userRole = 'user'
+                        }
+                    }
                 } else {
                     message.error(res.response.data.message)
                 }
@@ -54,24 +56,25 @@ function Login(props) {
     }
 
     const [form] = Form.useForm();
-    const onFinish = (values) => {
+    async function onFinish(values) {
         APIService.post(LOGIN, values)
             .then(res => {
                 if (res.data) {
                     setToken(res.data.data)
-                    getProfile()
-                    message.success("به آرتیبیشن خوش آمدید")
-                    console.log(roles);
-                    if (getUserRole() !== "user") {
-                        setTimeout(() => {
-                            window.location.href = "/panel/dashboard"
-                        }, 500);
-                    }
-                    else {
-                        setTimeout(() => {
-                            window.location.href = "/panel/profile"
-                        }, 500);
-                    }
+                    getProfile().then(res => {
+                        message.success("به آرتیبیشن خوش آمدید")
+                        console.log(userRole);
+                        if (userRole !== "user") {
+                            setTimeout(() => {
+                                window.location.href = "/panel/dashboard"
+                            }, 500);
+                        }
+                        else {
+                            setTimeout(() => {
+                                window.location.href = "/panel/profile"
+                            }, 500);
+                        }
+                    })
                 } else {
                     console.log(res.response)
                     message.error(res.response.data.message)
