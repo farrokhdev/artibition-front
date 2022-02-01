@@ -23,7 +23,7 @@ import { Pagination } from 'antd';
 import { t } from 'i18next';
 import { useTranslation } from 'react-i18next';
 import QueryString from 'qs';
-import { ARTIST_PRODUCTS } from '../../utils';
+import { ARTIST_PRODUCTS, PRODUCTS_CATEGORIES, PRODUCTS_MATERIALS, PRODUCTS_SIZES, PRODUCTS_TECHNIQUES } from '../../utils';
 import apiServices from '../../utils/api.services';
 import { useNavigate } from 'react-router-dom';
 
@@ -36,10 +36,62 @@ function ArtworksPage() {
   const [productList, setProductList] = useState();
   const [params, setParams] = useState({
     status: "active",
-      search:"",
-      page: 1
-
+    // category_id:[],
+    // technique_id: [],
+    // material_id: [],
+    // size_id: [],
+    // toman_price_range_max: '',
+    // toman_price_range_min: '',
+    // dollar_price_range_max: '',
+    // dollar_price_range_min: '',
+    // width_max: '',
+    // width_min: '',
+    // length_min: '',
+    // length_max: '',
+    // height_max: '',
+    // height_min: '',
+    // search:"",
+    page: 1
+    
   })
+
+  //filters state
+  const [techniques, setTechniques] = useState();
+  const [techniquesId, setTechniquesId] = useState([]);
+  let techniquesIdTotal = []
+  for (var key in techniquesId) {
+    if (techniquesId[key] === true) {
+      techniquesIdTotal.push(key);
+    }
+  }
+
+  const [categories, setCategories] = useState();
+  const [categoriesId, setCategoriesId] = useState([]);
+  let categoriesIdTotal = []
+  for (var key in categoriesId) {
+    if (categoriesId[key] === true) {
+      categoriesIdTotal.push(parseFloat(key));
+    }
+  }
+
+  const [materials, setMaterials] = useState();
+  const [materialsId, setMaterialsId] = useState([]);
+  let materialsIdTotal = []
+  for (var key in materialsId) {
+    if (materialsId[key] === true) {
+      materialsIdTotal.push(key);
+    }
+  }
+
+  const [sizes, setSizes] = useState();
+  const [sizesId, setSizesId] = useState([]);
+  let sizesIdTotal = []
+  for (var key in sizesId) {
+    if (sizesId[key] === true) {
+      sizesIdTotal.push(key);
+    }
+  }
+
   const getProductList = () => {
     apiServices.get(ARTIST_PRODUCTS, QueryString.stringify(params))
         .then(res => {
@@ -51,11 +103,65 @@ function ArtworksPage() {
             console.log("err", err)
         })
 }
+  const getProductCategories = () => {
+    apiServices.get(PRODUCTS_CATEGORIES)
+        .then(res => {
+            if (res.data) {
+                setCategories(res.data.data)
+            }
+        })
+        .catch(err => {
+            console.log("err", err)
+        })
+}
+  const getProductTechniques = () => {
+    apiServices.get(PRODUCTS_TECHNIQUES)
+        .then(res => {
+            if (res.data) {
+              setTechniques(res.data.data)
+            }
+        })
+        .catch(err => {
+            console.log("err", err)
+        })
+}
+  const getProductMaterials = () => {
+    apiServices.get(PRODUCTS_MATERIALS)
+        .then(res => {
+            if (res.data) {
+              setMaterials(res.data.data)
+            }
+        })
+        .catch(err => {
+            console.log("err", err)
+        })
+}
 
+  const getProductSizes = () => {
+    apiServices.get(PRODUCTS_SIZES)
+        .then(res => {
+            if (res.data) {
+              setSizes(res.data.data)
+            }
+        })
+        .catch(err => {
+            console.log("err", err)
+        })
+}
+
+//filter submit
+const filter = () => {
+  setParams(state => ({...state,category_id:categoriesIdTotal?.toString(),technique_id:techniquesIdTotal,material_id:materialsIdTotal}))
+}
 useEffect(() => {
     getProductList()
+    getProductCategories()
+    getProductTechniques()
+    getProductMaterials()
+    getProductSizes()
 }, [params]);
-console.log("product",productList)
+
+console.log("product",categoriesIdTotal?.toString())
 return (
 <>
   <div className="container mx-auto px-0 w-100 bg-white">
@@ -138,51 +244,27 @@ return (
                 <div id="collapse2" className="panel-collapse collapse in">
                   <div className="panel-body">
                     <div className="checkbox-row">
-                      <label className="lable-checkbox text-dir">
-                        <input type="checkbox" checked value="" />
+                    <label className="lable-checkbox text-dir">
+                        <input type="checkbox" defaultChecked value="" />
                         <span>{t("artworkList.filter.artField.all")}</span>
                         <span className="checkmark"></span>
                       </label>
-                      <label className="lable-checkbox text-dir">
-                        <input type="checkbox" value="" />
-                        <span>{t("artworkList.filter.artField.painting")}</span>
-                        <span className="checkmark"></span>
-                      </label>
-                      <label className="lable-checkbox text-dir">
-                        <input type="checkbox" value="" />
-                        <span>{t("artworkList.filter.artField.photography")}</span>
-                        <span className="checkmark"></span>
-                      </label>
-                      <label className="lable-checkbox text-dir">
-                        <input type="checkbox" value="" />
-                        <span>{t("artworkList.filter.artField.sculpture")}</span>
-                        <span className="checkmark"></span>
-                      </label>
-                      <label className="lable-checkbox text-dir">
-                        <input type="checkbox" value="" />
-                        <span>{t("artworkList.filter.artField.calligram")}</span>
-                        <span className="checkmark"></span>
-                      </label>
-                      <label className="lable-checkbox text-dir">
-                        <input type="checkbox" value="" />
-                        <span>{t("artworkList.filter.artField.calligraphy")}</span>
-                        <span className="checkmark"></span>
-                      </label>
-                      <label className="lable-checkbox text-dir">
-                        <input type="checkbox" value="" />
-                        <span>{t("artworkList.filter.artField.printmaking")}</span>
-                        <span className="checkmark"></span>
-                      </label>
-                      <label className="lable-checkbox text-dir">
-                        <input type="checkbox" value="" />
-                        <span>{t("artworkList.filter.artField.graphic")}</span>
-                        <span className="checkmark"></span>
-                      </label>
-                      <label className="lable-checkbox text-dir">
-                        <input type="checkbox" value="" />
-                        <span>{t("artworkList.filter.artField.drawing")}</span>
-                        <span className="checkmark"></span>
-                      </label>
+                      {console.log("params",categoriesId)}
+                      {categories?.results?.map((item,index) => 
+                        <label className="lable-checkbox text-dir">
+                          <input id='category_id' name={item.id} type="checkbox" value={item.id} 
+                          onChange={e => setCategoriesId({...categoriesId,[e.target.name]: e.target.checked})}
+                           />
+                          <span>
+                          {i18n.language === 'fa-IR' ?
+                          item.translations?.fa?.title
+                          :
+                          item.translations?.en?.title
+                      }
+                          </span>
+                          <span className="checkmark"></span>
+                        </label>
+                      )}
 
                     </div>
                   </div>
@@ -202,12 +284,12 @@ return (
                     <div className="row row-inputs box-dir-reverse">
                       <div className="col-xs-6">
                         <label>{t("artworkList.filter.price.min")}</label>
-                        <input type="text" className="value persian-num" data-index="0" value="0" />
+                        <input type="text" className="value persian-num" data-index="0" defaultValue="0" onChange={e => i18n.language === 'fa-IR' ? setParams(state => ({...state,toman_price_range_min:e.target.value})) : setParams(state => ({...state,dollar_price_range_min:e.target.value}))}/>
                         <span>{t("artworkList.filter.price.to")}</span>
                       </div>
                       <div className="col-xs-6">
                         <label>{t("artworkList.filter.price.max")}</label>
-                        <input type="text" className="value  persian-num" data-index="1" value="4" />
+                        <input type="text" className="value  persian-num" data-index="1" defaultValue="4" onChange={e => i18n.language === 'fa-IR' ? setParams(state => ({...state,toman_price_range_max:e.target.value})) : setParams(state => ({...state,dollar_price_range_max:e.target.value}))}/>
                       </div>
                     </div>
                     <div className="d-flex justify-custom">
@@ -420,26 +502,22 @@ return (
                       <button className="noborder" type="button"><img src={search_icon} width="24" height="24" alt="" />
                       </button>
                       <div className="md-mrgt30">
+                        {techniques?.results?.map((item,index) => 
                         <label className="lable-checkbox text-dir">
-                          <input type="checkbox" value="" />
-                          <span>{t("artworkList.filter.technique.watercolor")}</span>
+                          <input type="checkbox" name={item.id} value={item.id} 
+                            onChange={e => setTechniquesId({...techniquesId,[e.target.name]: e.target.checked})}
+                          />
+                          <span>
+                            {i18n.language === 'fa-IR' ?
+                            item.translations?.fa?.title
+                            :
+                            item.translations?.en?.title
+                            }
+                          </span>
                           <span className="checkmark"></span>
                         </label>
-                        <label className="lable-checkbox text-dir">
-                          <input type="checkbox" value="" />
-                          <span>{t("artworkList.filter.technique.pastel")}</span>
-                          <span className="checkmark"></span>
-                        </label>
-                        <label className="lable-checkbox text-dir">
-                          <input type="checkbox" value="" />
-                          <span>{t("artworkList.filter.technique.acrylic")}</span>
-                          <span className="checkmark"></span>
-                        </label>
-                        <label className="lable-checkbox text-dir">
-                          <input type="checkbox" value="" />
-                          <span>{t("artworkList.filter.technique.composition")}</span>
-                          <span className="checkmark"></span>
-                        </label>
+                        )}
+                        
                       </div>
                     </div>
                   </div>
@@ -469,41 +547,22 @@ return (
                       <button className="noborder" type="button"><img src={search_icon} width="24" height="24" alt="" />
                       </button>
                       <div className="constant-height md-mrgt30 px-2">
+                      {materials?.results?.map((item,index) => 
                         <label className="lable-checkbox text-dir">
-                          <input type="checkbox" value="" />
-                          <span >{t("artworkList.filter.material.rapid")}</span>
+                          <input type="checkbox" value={item.id} name={item.id} 
+                            onChange={e => setMaterialsId({...materialsId,[e.target.name]: e.target.checked})}
+                          />
+                          <span >
+                          {i18n.language === 'fa-IR' ?
+                            item.translations?.fa?.title
+                            :
+                            item.translations?.en?.title
+                            }  
+                          </span>
                           <span className="checkmark"></span>
                         </label>
-                        <label className="lable-checkbox text-dir">
-                          <input type="checkbox" value="" />
-                          <span>{t("artworkList.filter.material.watercolor")}</span>
-                          <span className="checkmark"></span>
-                        </label>
-                        <label className="lable-checkbox text-dir">
-                          <input type="checkbox" value="" />
-                          <span>{t("artworkList.filter.material.govash")}</span>
-                          <span className="checkmark"></span>
-                        </label>
-                        <label className="lable-checkbox text-dir">
-                          <input type="checkbox" value="" />
-                          <span>{t("artworkList.filter.material.acrylic")}</span>
-                          <span className="checkmark"></span>
-                        </label>
-                        <label className="lable-checkbox text-dir">
-                          <input type="checkbox" value="" />
-                          <span>{t("artworkList.filter.material.pastel")}</span>
-                          <span className="checkmark"></span>
-                        </label>
-                        <label className="lable-checkbox text-dir">
-                          <input type="checkbox" value="" />
-                          <span>{t("artworkList.filter.material.collage")}</span>
-                          <span className="checkmark"></span>
-                        </label>
-                        <label className="lable-checkbox text-dir">
-                          <input type="checkbox" value="" />
-                          <span>{t("artworkList.filter.material.crayons")}</span>
-                          <span className="checkmark"></span>
-                        </label>
+                      )}
+
                       </div>
                     </div>
                   </div>
@@ -517,21 +576,22 @@ return (
                 </div>
                 <div id="collapse10" className="panel-collapse collapse in">
                   <div className="panel-body">
-                    <label className="lable-checkbox text-dir">
-                      <input type="checkbox" value="" />
-                      <span>{t("artworkList.filter.size.small")}</span>
-                      <span className="checkmark"></span>
-                    </label>
-                    <label className="lable-checkbox text-dir">
-                      <input type="checkbox" value="" />
-                      <span>{t("artworkList.filter.size.medium")}</span>
-                      <span className="checkmark"></span>
-                    </label>
-                    <label className="lable-checkbox text-dir">
-                      <input type="checkbox" value="" />
-                      <span>{t("artworkList.filter.size.large")}</span>
-                      <span className="checkmark"></span>
-                    </label>
+                    {sizes?.results?.map((item,index) => 
+                      <label className="lable-checkbox text-dir">
+                        <input type="checkbox" name={item.id} value={item.id} 
+                          onChange={e => setSizesId({...sizesId,[e.target.name]: e.target.checked})}
+                        />
+                        <span>
+                        {i18n.language === 'fa-IR' ?
+                            item.translations?.fa?.title
+                            :
+                            item.translations?.en?.title
+                            }    
+                        </span>
+                        <span className="checkmark"></span>
+                      </label>
+                    )}
+                    
                     <label className="lable-checkbox text-dir">
                       <input type="checkbox" checked id="Custom-dimensions" value="" />
                       <span>{t("artworkList.filter.size.custom")}</span>
@@ -541,39 +601,39 @@ return (
                       <div className="row mrgt16 box-dir-reverse">
                         <div className="col-xs-6 text-dir">
                             <label >{t("artworkList.filter.size.min_width")}</label>
-                            <input type="number" className="value persian-num" />
+                            <input type="number" className="value persian-num"  onChange={e => setParams(state => ({...state,width_min:e.target.value}))}/>
                             <span >{t("artworkList.filter.size.in")}</span>
                         </div>
                         <div className="col-xs-6 text-dir">
                           <label>{t("artworkList.filter.size.max_width")}</label>
-                          <input type="number" className="value  persian-num" />
+                          <input type="number" className="value  persian-num"  onChange={e => setParams(state => ({...state,width_max:e.target.value}))}/>
                         </div>
                       </div>
                       <div className="row mrgt16 box-dir-reverse">
                         <div className="col-xs-6 text-dir">
                           <label>{t("artworkList.filter.size.min_length")}</label>
-                          <input type="number" className="value persian-num" />
+                          <input type="number" className="value persian-num"  onChange={e => setParams(state => ({...state,length_min:e.target.value}))}/>
                           <span>{t("artworkList.filter.size.in")}</span>
                         </div>
                         <div className="col-xs-6 text-dir">
                           <label>{t("artworkList.filter.size.max_length")}</label>
-                          <input type="number" className="value  persian-num" />
+                          <input type="number" className="value  persian-num"  onChange={e => setParams(state => ({...state,length_max:e.target.value}))}/>
                         </div>
                       </div>
                       <div className="row mrgt16 box-dir-reverse">
                         <div className="col-xs-6 text-dir">
                           <label>{t("artworkList.filter.size.min_height")}</label>
-                          <input type="number" className="value persian-num" />
+                          <input type="number" className="value persian-num"  onChange={e => setParams(state => ({...state,height_min:e.target.value}))}/>
                           <span>{t("artworkList.filter.size.in")}</span>
                         </div>
                         <div className="col-xs-6 text-dir">
                           <label>{t("artworkList.filter.size.max_height")}</label>
-                          <input type="number" className="value  persian-num" />
+                          <input type="number" className="value  persian-num"  onChange={e => setParams(state => ({...state,height_max:e.target.value}))}/>
                         </div>
                       </div>
                     </div>
                     <div className="d-flex justify-custom">
-                      <button type="button" className="btn btn-ok pull-dir">{t("artworkList.filter.size.submit")}</button>
+                      <button type="button" className="btn btn-ok pull-dir" onClick={filter}>{t("artworkList.filter.size.submit")}</button>
                     </div>
                   </div>
                 </div>
