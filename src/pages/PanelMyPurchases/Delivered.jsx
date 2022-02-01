@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import empty_image from '../../assets/img/empty_list.svg';
 import reload from '../../assets/img/reload.svg';
 import go from '../../assets/img/go.svg';
@@ -12,11 +12,16 @@ function Delivered({ purchasesProp }) {
 
     const Language = GetLanguage();
     const [showModal, setShowModal] = useState(false);
+    const [editionValue, setEditionValue] = useState("");
 
 
     const handleShowModal = () => {
         setShowModal(true)
     }
+
+    useEffect(() => {
+
+    }, [editionValue]);
     return (
         <>
             {(purchasesProp && purchasesProp.length === 0) &&
@@ -131,7 +136,10 @@ function Delivered({ purchasesProp }) {
                                                                 </button>
                                                             </div>
                                                             <div className="col-xs-6">
-                                                                <button onClick={handleShowModal} type="button" className="btn btn-outline-pink" data-toggle="modal"
+                                                                <button onClick={() => {
+                                                                    handleShowModal()
+                                                                    setEditionValue(purchase)
+                                                                }} type="button" className="btn btn-outline-pink" data-toggle="modal"
                                                                     data-target="#modal-return-artwork">
                                                                     <img src={reload} width="16" height="18" alt="reload-pic" />
                                                                     <span>{t("content-panel-mypurchases.artwok-return")}</span>
@@ -156,11 +164,12 @@ function Delivered({ purchasesProp }) {
                     )
                 })
             }
-          
-            <ModalCommission 
+
+            <ModalCommission
                 showModal={showModal}
                 setShowModal={setShowModal}
-            /> 
+                editionValue={editionValue}
+            />
 
 
         </>

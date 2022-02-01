@@ -68,9 +68,9 @@ function ExhibitionsTab({artistId}) {
                         }
                                 </div>
                                 <div className="col-date text-dir">
-                                    <span className="persian-num">{timeToStr(item.start_date[`${item?.type}_start_date`], "jDD")}</span>
+                                    <span className="persian-num">{timeToStr(item.start_date[`${item.type=== 'virtual_real'? 'virtual' : item.type}_start_date`], "jDD")}</span>
                                     <span>الی</span>
-                                    <span className="persian-num">{timeToStr(item.end_date[`${item?.type}_end_date`], "jDD")}</span>
+                                    <span className="persian-num">{timeToStr(item.end_date[`${item.type=== 'virtual_real'? 'virtual' : item.type}_end_date`], "jDD")}</span>
                                     <span>{timeToStr(item.end_date[`${item?.type}_end_date`], "jMM")}</span>
                                 </div>
                                 <p className="text-justify text-dir">

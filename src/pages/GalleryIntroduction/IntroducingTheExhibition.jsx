@@ -18,8 +18,8 @@ function IntroducingTheExhibition({ galleryIntroduction, galleryExhibition }) {
     useEffect(() => {
         if (!toggleConfig) {
         galleryExhibition?.results?.map(item =>{
-            let start =  item.type === "real" ? new Date(item.start_date?.real_start_date) : item.type === "virtual" ? new Date(item.start_date?.virtual_start_date) : new Date(item.start_date?.virtual_real_start_date)
-            let expire =  item.type === "real" ? new Date(item.end_date?.real_end_date) : item.type === "virtual" ? new Date(item.end_date?.virtual_end_date) : new Date(item.end_date?.virtual_real_end_date)
+            let start =  item.type === "real" ? new Date(item.start_date?.real_start_date) : item.type === "virtual" ? new Date(item.start_date?.virtual_start_date) : new Date(item.start_date?.virtual_start_date)
+            let expire =  item.type === "real" ? new Date(item.end_date?.real_end_date) : item.type === "virtual" ? new Date(item.end_date?.virtual_end_date) : new Date(item.end_date?.virtual_end_date)
             let now = new Date()
             let a = moment(start)
             let b = moment(expire)
@@ -32,8 +32,9 @@ function IntroducingTheExhibition({ galleryIntroduction, galleryExhibition }) {
         }, [galleryExhibition]);
 
     console.log("gallery", galleryExhibition)
-    const sortedProgressive  = progressive?.sort((a,b) => new Moment(a.start_date[`${a.type}_start_date`]).format('YYYYMMDD') - new Moment(b.start_date[`${b.type}_start_date`]).format('YYYYMMDD'))
-    const sortedExpired  = expired?.sort((a,b) => new Moment(b.start_date[`${b.type}_start_date`]).format('YYYYMMDD') - new Moment(a.start_date[`${a.type}_start_date`]).format('YYYYMMDD'))
+    console.log("introduction",galleryIntroduction)
+    const sortedProgressive  = progressive?.sort((a,b) => new Moment(a.start_date[`${a.type=== 'virtual_real'? 'virtual' : a.type}_start_date`]).format('YYYYMMDD') - new Moment(b.start_date[`${b.type=== 'virtual_real'? 'virtual' : b.type}_start_date`]).format('YYYYMMDD'))
+    const sortedExpired  = expired?.sort((a,b) => new Moment(b.start_date[`${b.type=== 'virtual_real'? 'virtual' : b.type}_start_date`]).format('YYYYMMDD') - new Moment(a.start_date[`${a.type=== 'virtual_real'? 'virtual' : a.type}_start_date`]).format('YYYYMMDD'))
 
     return (
         <div class="row gallery-ex">
@@ -87,12 +88,12 @@ function IntroducingTheExhibition({ galleryIntroduction, galleryExhibition }) {
                             <div class="col-sm-5">
                                 <div class="gallery-daterow">
                                     <span class="gallery-date">آغاز</span>
-                                    <span class="gallery-datenum persian-num">{timeToStr(onPerforming && onPerforming[0]?.start_date[`${onPerforming[0]?.type}_start_date`], "jYYYY/jMM/jDD")}</span>
+                                    <span class="gallery-datenum persian-num">{timeToStr(onPerforming && onPerforming[0]?.start_date[`${onPerforming[0]?.type=== 'virtual_real'? 'virtual' : onPerforming[0]?.type}_start_date`], "jYYYY/jMM/jDD")}</span>
                                 </div>
                                 <div class="clearfix"></div>
                                 <div class="gallery-daterow">
                                     <span class="gallery-date">پایان</span>
-                                    <span class="gallery-datenum persian-num">{timeToStr(onPerforming && onPerforming[0]?.end_date[`${onPerforming[0]?.type}_end_date`], "jYYYY/jMM/jDD")}</span>
+                                    <span class="gallery-datenum persian-num">{timeToStr(onPerforming && onPerforming[0]?.end_date[`${onPerforming[0]?.type=== 'virtual_real'? 'virtual' : onPerforming[0]?.type}_end_date`], "jYYYY/jMM/jDD")}</span>
                                 </div>
                             </div>
                         </div>
@@ -161,12 +162,12 @@ function IntroducingTheExhibition({ galleryIntroduction, galleryExhibition }) {
                             <div class="col-sm-5">
                                 <div class="gallery-daterow">
                                     <span class="gallery-date">آغاز</span>
-                                    <span class="gallery-datenum persian-num">{timeToStr(sortedProgressive && sortedProgressive[0]?.start_date[`${sortedProgressive[0]?.type}_start_date`], "jYYYY/jMM/jDD")}</span>
+                                    <span class="gallery-datenum persian-num">{timeToStr(sortedProgressive && sortedProgressive[0]?.start_date[`${sortedProgressive[0]?.type=== 'virtual_real'? 'virtual' : sortedProgressive[0]?.type}_start_date`], "jYYYY/jMM/jDD")}</span>
                                 </div>
                                 <div class="clearfix"></div>
                                 <div class="gallery-daterow">
                                     <span class="gallery-date">پایان</span>
-                                    <span class="gallery-datenum persian-num">{timeToStr(sortedProgressive && sortedProgressive[0]?.end_date[`${sortedProgressive[0]?.type}_end_date`], "jYYYY/jMM/jDD")}</span>
+                                    <span class="gallery-datenum persian-num">{timeToStr(sortedProgressive && sortedProgressive[0]?.end_date[`${sortedProgressive[0]?.type=== 'virtual_real'? 'virtual' : sortedProgressive[0]?.type}_end_date`], "jYYYY/jMM/jDD")}</span>
                                 </div>
                             </div>
                         </div>
@@ -235,12 +236,12 @@ function IntroducingTheExhibition({ galleryIntroduction, galleryExhibition }) {
                             <div class="col-sm-5">
                                 <div class="gallery-daterow">
                                     <span class="gallery-date">آغاز</span>
-                                    <span class="gallery-datenum persian-num">{timeToStr(sortedExpired && sortedExpired[0]?.start_date[`${sortedExpired[0]?.type}_start_date`], "jYYYY/jMM/jDD")}</span>
+                                    <span class="gallery-datenum persian-num">{timeToStr(sortedExpired && sortedExpired[0]?.start_date[`${sortedExpired[0]?.type=== 'virtual_real'? 'virtual' : sortedExpired[0]?.type}_start_date`], "jYYYY/jMM/jDD")}</span>
                                 </div>
                                 <div class="clearfix"></div>
                                 <div class="gallery-daterow">
                                     <span class="gallery-date">پایان</span>
-                                    <span class="gallery-datenum persian-num">{timeToStr(sortedExpired && sortedExpired[0]?.end_date[`${sortedExpired[0]?.type}_end_date`], "jYYYY/jMM/jDD")}</span>
+                                    <span class="gallery-datenum persian-num">{timeToStr(sortedExpired && sortedExpired[0]?.end_date[`${sortedExpired[0]?.type=== 'virtual_real'? 'virtual' : sortedExpired[0]?.type}_end_date`], "jYYYY/jMM/jDD")}</span>
                                 </div>
                             </div>
                         </div>

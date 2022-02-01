@@ -1,9 +1,42 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import hnrpqkfiup from '../../assets/img/mainpage/hnrpqkfiup@3x.jpg';
 import mainpage from '../../assets/img/mainpage/2.jpg';
 import { t } from 'i18next';
+import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import apiServices from '../../utils/api.services';
+import { ARTIST_PRODUCTS } from '../../utils';
+import QueryString from 'qs';
 
 export default function AllProducts() {
+    let navigate = useNavigate();
+    const {t, i18n} = useTranslation();
+  
+    const [search, setSearch] = useState();
+    const [productList, setProductList] = useState();
+    const [params, setParams] = useState({
+      status: "active",
+        search:"",
+        page: 1
+  
+    })
+    const getProductList = () => {
+      apiServices.get(ARTIST_PRODUCTS, QueryString.stringify(params))
+          .then(res => {
+              if (res.data) {
+                  setProductList(res.data.data)
+              }
+          })
+          .catch(err => {
+              console.log("err", err)
+          })
+  }
+  
+  useEffect(() => {
+      getProductList()
+  }, [params]);
+  console.log("product",productList)
+
     return (
         <div className="allproducts">
         <div className="row">
@@ -34,19 +67,19 @@ export default function AllProducts() {
 
                             <div style={{overflow : 'auto'}} className="owl-carousel d-flex" id="tab1">
 
-
+                                {productList?.results?.map((product) => 
                                 <a href="#" className="cols  mx-4">
                                     <div className="col-img">
                                         <img  
                                            
-                                            src={hnrpqkfiup} 
+                                            src={product.medias && product.medias[0]?.exact_url} 
                                              alt="artibition"
                                              className="img-responsive"/>
                                         <div className="tab-overly">
-                                            <span className="btn-see hidden-xs hidden-sm">
+                                            <a onClick={() => navigate(`/site/artworks-detail/?id=${product.id}&artist_id=${product.artist_id}`)} className="btn-see hidden-xs hidden-sm">
                                                 <span className="view-icon pull-right"></span>
                                                 <span>{t("artwork.view-artwork")}</span>
-                                            </span>
+                                            </a>
                                             <button type="button" className="btn-sale">
                                                 <span className="hidden-xs hidden-sm">{t("artwork.btn-action-to-shop")}</span>
                                                 <span className="shopping-cart-xs visible-xs visible-sm"></span>
@@ -56,140 +89,27 @@ export default function AllProducts() {
                                     </div>
                                     <div className="col-body">
                                         <h6 className="col-title">
-                                            <span className="col-name">رضا</span>
-                                            <span className="col-name">حسینی</span>
+                                        {i18n.language === 'fa-IR' ?
+                              <span className="col-name">{product?.translations?.fa?.artist_name}</span>
+                              :
+                              <span className="col-name">{product?.translations?.en?.artist_name}</span>
+                            }
                                         </h6>
                                         <div className="col-dimension">
                                             <span className="col-dimension-title">ابعاد:</span>
                                             <span className="col-dimension-body">
-                                        <span className="dimension-width">60</span>
-                                        <span> در </span>
-                                        <span className="dimension-height">60</span>
+                                        <span className="dimension-width">{product.width}</span>
+                                        <span className="mx-2"> {t("card_artwork.size.in")} </span>
+                                        <span className="dimension-height">{product.height}</span>
                                     </span>
                                         </div>
                                         <div className="col-price">
-                                            <span className="col-price-num">22.000.000</span>
-                                            <span className="col-price-unit">تومان</span>
+                                            <span className="col-price-num">{product.toman_price}</span>
+                                            <span className="col-price-unit">{t("toman")}</span>
                                         </div>
                                     </div>
                                 </a>
-                                <a href="#" className="cols mx-4">
-                                    <div className="col-img">
-                                        <img 
-                                            src={mainpage}
-                                            style={{width : '280px' , height : '280px'}}
-                                            
-                                             alt="آرتیبیشن"
-                                             className="img-responsive"/>
-                                        <div className="tab-overly">
-                                            <span className="btn-see hidden-xs hidden-sm">
-                                                <span className="view-icon pull-right"></span>
-                                                <span>{t("artwork.view-artwork")}</span>
-                                            </span>
-                                            <button type="button" className="btn-sale">
-                                                <span className="hidden-xs hidden-sm">{t("artwork.btn-action-to-shop")}</span>
-                                                <span className="shopping-cart-xs visible-xs visible-sm"></span>
-                                            </button>
-                                            <button type="button" className="like-icon isLike"></button>
-                                        </div>
-                                    </div>
-                                    <div className="col-body">
-                                        <h6 className="col-title">
-                                            <span className="col-name">رضا</span>
-                                            <span className="col-name">حسینی</span>
-                                        </h6>
-                                        <div className="col-dimension">
-                                            <span className="col-dimension-title">ابعاد:</span>
-                                            <span className="col-dimension-body">
-                                        <span className="dimension-width">60</span>
-                                        <span> در </span>
-                                        <span className="dimension-height">60</span>
-                                    </span>
-                                        </div>
-                                        <div className="col-price">
-                                            <span className="col-price-num">22.000.000</span>
-                                            <span className="col-price-unit">تومان</span>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#" className="cols mx-4">
-                                    <div className="col-img">
-                                        <img 
-                                             src={mainpage}
-                                             style={{width : '280px' , height : '280px'}}
-                                             alt="آرتیبیشن"
-                                             className="img-responsive"/>
-                                        <div className="tab-overly">
-                                            <span className="btn-see hidden-xs hidden-sm">
-                                                <span className="view-icon pull-right"></span>
-                                                <span>{t("artwork.view-artwork")}</span>
-                                            </span>
-                                            <button type="button" className="btn-sale">
-                                                <span className="hidden-xs hidden-sm">{t("artwork.btn-action-to-shop")}</span>
-                                                <span className="shopping-cart-xs visible-xs visible-sm"></span>
-                                            </button>
-                                            <button type="button" className="like-icon isLike"></button>
-                                        </div>
-                                    </div>
-                                    <div className="col-body">
-                                        <h6 className="col-title">
-                                            <span className="col-name">رضا</span>
-                                            <span className="col-name">حسینی</span>
-                                        </h6>
-                                        <div className="col-dimension">
-                                            <span className="col-dimension-title">ابعاد:</span>
-                                            <span className="col-dimension-body">
-                                        <span className="dimension-width">60</span>
-                                        <span> در </span>
-                                        <span className="dimension-height">60</span>
-                                    </span>
-                                        </div>
-                                        <div className="col-price">
-                                            <span className="col-price-num">22.000.000</span>
-                                            <span className="col-price-unit">تومان</span>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="#" className="cols mx-4">
-                                    <div className="col-img">
-                                        <img 
-                                             src={mainpage}
-                                             style={{width : '280px' , height : '280px'}}
-                                             alt="آرتیبیشن"
-                                             className="img-responsive"/>
-                                        <div className="tab-overly">
-                                            <span className="btn-see hidden-xs hidden-sm">
-                                                <span className="view-icon pull-right"></span>
-                                                <span>{t("artwork.view-artwork")}</span>
-                                            </span>
-                                            <button type="button" className="btn-sale">
-                                                <span className="hidden-xs hidden-sm">{t("artwork.btn-action-to-shop")}</span>
-                                                <span className="shopping-cart-xs visible-xs visible-sm"></span>
-                                            </button>
-                                            <button type="button" className="like-icon isLike"></button>
-                                        </div>
-                                    </div>
-                                    <div className="col-body">
-                                        <h6 className="col-title">
-                                            <span className="col-name">رضا</span>
-                                            <span className="col-name">حسینی</span>
-                                        </h6>
-                                        <div className="col-dimension">
-                                            <span className="col-dimension-title">ابعاد:</span>
-                                            <span className="col-dimension-body">
-                                        <span className="dimension-width">60</span>
-                                        <span> در </span>
-                                        <span className="dimension-height">60</span>
-                                    </span>
-                                        </div>
-                                        <div className="col-price">
-                                            <span className="col-price-num">22.000.000</span>
-                                            <span className="col-price-unit">تومان</span>
-                                        </div>
-                                    </div>
-                                </a>
-
-
+                                )}
                                 
                             </div>
                         </div>

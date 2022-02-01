@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import mainpage1_1 from '../../assets/img/mainpage/1-1.jpg';
 import mainpage1_3 from '../../assets/img/mainpage/1-3.jpg';
@@ -14,9 +14,32 @@ import mainpage4_3 from '../../assets/img/mainpage/4-3.jpg';
 import mainpage1_2 from '../../assets/img/mainpage/1-2.jpg';
 import tip from '../../assets/img/tip.svg';
 import { t } from 'i18next';
+import apiServices from '../../utils/api.services';
+import { ARTIST_CATEGORY } from '../../utils';
+import QueryString from 'qs';
+import { useTranslation } from 'react-i18next';
 
 
 export default function Collection() {
+    const { t, i18n } = useTranslation();
+    const [artistCategory, setArtistCategory] = useState();
+    const [params, setParams] = useState({
+        page: 1,  
+    })
+    const getArtistCategory = () => {
+        apiServices.get(ARTIST_CATEGORY, QueryString.stringify(params))
+            .then(res => {
+                if (res.data) {
+                    setArtistCategory(res.data.data)
+                }
+            })
+            .catch(err => {
+                console.log("err", err)
+            })
+    }
+    useEffect(() => {
+        getArtistCategory()
+    }, [params]);
     return (
         
     <div className="collection">
@@ -49,155 +72,47 @@ export default function Collection() {
             <div className="collection-body">
 
                 <div style={{overflow : 'auto'}} className="owl-carousel d-flex" id="tab6">
+                    {artistCategory?.results?.map((item,index) => 
+                        <div>
+                            <a href="#" className="cols">
+                                <div className="col-img mx-4">
+                                    <div className=" collection-firstrow m-0">
+                                        <img src={item.products[0]?.medias[0]?.exact_url} className="img-responsive w-100"/>
+                                    </div>
+                                    {item.products[1] || item.products[2] && <div className="d-flex collection-secondrow  px-0">
+                                        {item.products[1] && <div className="col px-0  mt-2">
+                                            <img  src={item.products[1]?.medias[1]?.exact_url} 
+                                                className="img-responsive clolection-image w-100"/>
+                                        </div>}
+                                        {item.products[2] && <div className="col px-0 mr-2 mt-2">
+                                            <img src={item.products[2]?.medias[2]?.exact_url} 
+                                                className="img-responsive clolection-image w-100"/>
+                                        </div>}
+                                    </div>}
+                                </div>
+                                <div className="col-body">
+                                    <h6 className="col-title">
+                                        <span className="col-name">                    
+                                        {i18n.language === 'fa-IR' ?
+                                            item?.translations?.fa?.title
+                                            :
+                                            item?.translations?.en?.title
+                                            }</span>
+                                    </h6>
+                                    <div className="col-dimension">
+                                        <span className="col-dimension-title">
+                                        {i18n.language === 'fa-IR' ?
+                                            item?.owner?.translations?.fa?.first_name + ' ' + item?.owner?.translations?.fa?.last_name
+                                            :
+                                            item?.owner?.translations?.en?.first_name + ' ' + item?.owner?.translations?.en?.last_name
+                                        }
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    )}
 
-                    <div>
-                        <a href="#" className="cols">
-                            <div className="col-img mx-4">
-                                <div className=" collection-firstrow m-0">
-                                    <img src={mainpage1_1} className="img-responsive w-100"/>
-                                </div>
-                                <div className="d-flex collection-secondrow  px-0">
-                                    <div className="col px-0  mt-2">
-                                        <img  src={mainpage1_2} 
-                                             className="img-responsive clolection-image w-100"/>
-                                    </div>
-                                    <div className="col px-0 mr-2 mt-2">
-                                        <img src={mainpage1_3} 
-                                             className="img-responsive clolection-image w-100"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-body">
-                                <h6 className="col-title">
-                                    <span className="col-name">هنر تراش بر روی چوب</span>
-                                </h6>
-                                <div className="col-dimension">
-                                    <span className="col-dimension-title">بردیا صالح</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-
-                    <div>
-                        <a href="#" className="cols">
-                            <div className="col-img mx-4">
-                                <div className=" collection-firstrow m-0">
-                                    <img src={mainpage2_1} className="img-responsive w-100"/>
-                                </div>
-                                <div className="d-flex collection-secondrow  px-0">
-                                    <div className="col px-0  mt-2">
-                                        <img  src={mainpage2_2} 
-                                             className="img-responsive clolection-image w-100"/>
-                                    </div>
-                                    <div className="col px-0 mr-2 mt-2">
-                                        <img src={mainpage2_3} 
-                                             className="img-responsive clolection-image w-100"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-body">
-                                <h6 className="col-title">
-                                    <span className="col-name">هنر تراش بر روی چوب</span>
-                                </h6>
-                                <div className="col-dimension">
-                                    <span className="col-dimension-title">بردیا صالح</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-
-                    
-                    <div>
-                        <a href="#" className="cols">
-                            <div className="col-img mx-4">
-                                <div className=" collection-firstrow m-0">
-                                    <img src={mainpage3_1} className="img-responsive w-100"/>
-                                </div>
-                                <div className="d-flex collection-secondrow  px-0">
-                                    <div className="col px-0  mt-2">
-                                        <img  src={mainpage3_2} 
-                                             className="img-responsive clolection-image w-100"/>
-                                    </div>
-                                    <div className="col px-0 mr-2 mt-2">
-                                        <img src={mainpage3_3} 
-                                             className="img-responsive clolection-image w-100"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-body">
-                                <h6 className="col-title">
-                                    <span className="col-name">هنر تراش بر روی چوب</span>
-                                </h6>
-                                <div className="col-dimension">
-                                    <span className="col-dimension-title">بردیا صالح</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-
-                    <div>
-                        <a href="#" className="cols">
-                            <div className="col-img mx-4">
-                                <div className=" collection-firstrow m-0">
-                                    <img src={mainpage4_1} className="img-responsive w-100"/>
-                                </div>
-                                <div className="d-flex collection-secondrow  px-0">
-                                    <div className="col px-0  mt-2">
-                                        <img  src={mainpage4_2} 
-                                             className="img-responsive clolection-image w-100"/>
-                                    </div>
-                                    <div className="col px-0 mr-2 mt-2">
-                                        <img src={mainpage4_3} 
-                                             className="img-responsive clolection-image w-100"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-body">
-                                <h6 className="col-title">
-                                    <span className="col-name">هنر تراش بر روی چوب</span>
-                                </h6>
-                                <div className="col-dimension">
-                                    <span className="col-dimension-title">بردیا صالح</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    
-
-                    {/* <div>
-                        <a href="#" className="cols">
-                            <div className="col-img mx-4">
-                                <div className=" collection-firstrow m-0">
-                                    <img src={mainpage4_1} className="img-responsive w-100"/>
-                                </div>
-                                <div className="d-flex collection-secondrow  px-0">
-                                    <div className="col px-0  mt-2">
-                                        <img  src={mainpage4_2} 
-                                             className="img-responsive clolection-image w-100"/>
-                                    </div>
-                                    <div className="col px-0 mr-2 mt-2">
-                                        <img src={mainpage4_3} 
-                                             className="img-responsive clolection-image w-100"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-body">
-                                <h6 className="col-title">
-                                    <span className="col-name">هنر تراش بر روی چوب</span>
-                                </h6>
-                                <div className="col-dimension">
-                                    <span className="col-dimension-title">بردیا صالح</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div> */}
-   
-                    
-                    
                 </div>
             </div>
         </div>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Header from "../../components/Header/Header";
 import Footer from '../../components/Footer/Footer';
 import Menu from '../../components/Menu/Menu';
-import { Breadcrumb, Tabs } from 'antd';
+import { Breadcrumb, message, Tabs } from 'antd';
 import { t } from 'i18next';
 
 import artwork1 from '../../assets/img/artworks/artwork-1.jpg';
@@ -29,7 +29,7 @@ import edit_icon from '../../assets/img/edit_name.svg';
 import ModalEditOffer from './ModalEditOffer';
 import ModalSimilarArtworks from './ModalSimilarArtworks';
 import ModalBidding from './ModalBidding';
-import { ARTIST_PRODUCTS, ORDER_BUYER_ME, PRODUCT_DETAIL } from '../../utils';
+import { ARTIST_PRODUCTS, GALLERY_FOLLOW, ORDER_BUYER_ME, PRODUCT_DETAIL } from '../../utils';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import apiServices from '../../utils/api.services';
 import QueryString from 'qs';
@@ -51,9 +51,7 @@ function DetailsArtwork() {
     }
     var id;
     var artist_id;
-
     var query = useQuery();
-
     id = query.get("id")
     artist_id = query.get("artist_id")
 
@@ -76,6 +74,11 @@ function DetailsArtwork() {
         search: "",
         page: 1,
 
+    });
+    const [followParams, setfollowParams] = useState({
+        activity_type : "following",
+        content_type : "artist",
+        page: 1
     });
     const handleShowModalEditOffer = () => {
         setVisibleEditOfferModal(true)
@@ -130,6 +133,26 @@ function DetailsArtwork() {
                 console.log("err", err)
             })
     }
+    const galleryFollow = ({activity,content}) => {
+        const payload = {
+            content_type: content,
+            activity_type: activity,
+            object_id: artist_id
+        }
+        apiServices.post(GALLERY_FOLLOW,payload )
+        .then(res => {
+            if (res.data) {
+                message.success({
+                    content: 'درخواست شما با موفقیت ثبت شد', style: {
+                        marginTop: '110px',
+                    },
+                })
+            }
+        })
+        .catch(err => {
+            console.log("err", err)
+        })
+    }
 
     useEffect(() => {
         getProductDetail()
@@ -137,7 +160,7 @@ function DetailsArtwork() {
         getOfferValue()
     }, [params,toggle]);
 
-    console.log("detail", offerValue)
+    console.log("detail", productDetail)
     return (
         <>
             <div className="container mx-auto px-0 w-100">
@@ -158,7 +181,7 @@ function DetailsArtwork() {
                             <Breadcrumb.Item href="">{productDetail?.translations?.en?.artist_name}</Breadcrumb.Item>
                         }
                         <Breadcrumb.Separator>{'>'}</Breadcrumb.Separator>
-                        <Breadcrumb.Item className="active persian-num">{productDetail?.unique_code}</Breadcrumb.Item>
+                        <Breadcrumb.Item className="active persian-num">{productDetail?.unique_code.slice(-12)}</Breadcrumb.Item>
                     </Breadcrumb>
 
                     <div className="clearfix"></div>
@@ -206,7 +229,7 @@ function DetailsArtwork() {
                                         <div className="share-option ">
                                             <img src={share_icon} height="31" width="31" alt="" />
                                         </div>
-                                        <div className="like-option">
+                                        <div className="like-option" onClick={() => galleryFollow({content:"product",activity:"like"})}>
                                             <img src={like_selected_icon} height="31" width="31" alt="" />
                                         </div>
                                     </div>
@@ -232,7 +255,7 @@ function DetailsArtwork() {
                                                         productDetail?.translations?.en?.artist_name
                                                     }
                                                 </h2>
-                                                <button type="button" className="btn btn-galleryfollow pull-dir">
+                                                <button type="button" className="btn btn-galleryfollow pull-dir" onClick={() => galleryFollow({content:"artist",activity:"following"})}>
                                                     <div className="d-flex box-dir-reverse">
                                                         <img src={circle_plus} width="17" height="17" alt="" className="pull-right" />
                                                         <span>{t("artwork.follow")}</span>
@@ -264,7 +287,7 @@ function DetailsArtwork() {
                                         <div className="col-xs-12">
                                             <div className="d-flex box-dir-reverse row-listdetail">
                                                 <span className="col-xs-4 detail-title text-dir">{t("artwork.code")}</span>
-                                                <span className="col-xs-8 detail-name persian-num text-dir">{productDetail?.unique_code}</span>
+                                                <span className="col-xs-8 detail-name persian-num text-dir">{productDetail?.unique_code.slice(-12)}</span>
                                             </div>
                                             <div className="d-flex box-dir-reverse row-listdetail">
                                                 <span className="col-xs-4 detail-title text-dir">{t("artwork.field.title")}</span>
@@ -350,10 +373,10 @@ function DetailsArtwork() {
                                         <span className="orangecolor">{
                                             i18n.language === 'fa_IR' ?
 
-                                                momentJalaali(productDetail?.modified_date).locale('fa').fromNow()
+                                                momentJalaali(productDetail?.creation_date).locale('fa').fromNow()
                                                 :
-                                                moment(productDetail?.modified_date).fromNow()
-                                        }
+                                                moment(productDetail?.creation_date).fromNow()
+                                        } این اثر قیمت گذاری شده است
                                         </span>
                                     </div>
                                 </div>
@@ -408,17 +431,22 @@ function DetailsArtwork() {
                                                 <p className="pull-dir">{t("artwork.bid_artwork.text1")}
                                                     <strong className="persian-num px-1">
                                                         {i18n.language === 'fa-IR' ?
-                                                            item.toman_price
+                                                            item.toman_price + t("toman") + ' '
                                                             :
-                                                            item.dollar_price
+                                                            item.dollar_price + t("toman") + ' '
                                                         }
                                                     </strong>
-                                                    {t("artwork.bid_artwork.text2")} {t("toman")}  </p>
+                                                    {t("artwork.bid_artwork.text2")} 
+                                                    {/* {t("toman")}   */}
+                                                    </p>
 
                                             </div>
                                             <div className="col-2 px-0">
                                                 <a href="#" data-toggle="modal" data-target="#modal-edit-offer">
+                                                    {item.status === "modified" ?
                                                     <img onClick={handleShowModalEditOffer} src={edit_icon} width="32" height="32" alt="" className="pull-dir" />
+                                                    :
+                                                    null}
                                                 </a>
                                             </div>
                                         </div>
@@ -437,9 +465,36 @@ function DetailsArtwork() {
                                         </div>
                                     </ul>
                                     <div className="clearfix"></div>
+                                    {editionValue?.is_sold ?
+
+                                    <div className="row">
+                                        <div className="col-xs-12">
+                                            <button onClick={handleShowSimilarArtworks} type="button" className="btn btn-artworksimilar" data-toggle="modal"
+                                                data-target="#modal-similar-artwork">
+                                                <div className="d-flex box-dir-reverse justify-content-center">
+                                                    <img src={similar_icon} width="24" height="24" alt="" />
+                                                    <span>{t("artwork.veiw_simillar_artworks")}</span>
+                                                </div>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    :
+                                    offerValue?.results?.map(item => item.product_item_id === editionValue?.id ? true : false) ?
+                                        <div className="row">
+                                        <div className="col-xs-12">
+                                            <button onClick={handleShowSimilarArtworks} type="button" className="btn btn-artworksimilar" data-toggle="modal"
+                                                data-target="#modal-similar-artwork">
+                                                <div className="d-flex box-dir-reverse justify-content-center">
+                                                    <img src={similar_icon} width="24" height="24" alt="" />
+                                                    <span>{t("artwork.veiw_simillar_artworks")}</span>
+                                                </div>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    :
                                     <div className="d-flex box-dir-reverse">
                                         <div className="col-xs-6">
-                                            <button onClick={handleShowModalBidding} type="button" className="btn btn-artworksimilar" data-toggle="modal"
+                                            <button onClick={handleShowModalBidding} disabled={!productDetail?.can_bid} type="button" className="btn btn-artworksimilar" data-toggle="modal"
                                                 data-target="#modal-replied-suggestion1">
                                                 <div className="d-flex box-dir-reverse">
                                                     <img src={auction_black_icon} width="24" height="24" alt="" />
@@ -457,18 +512,7 @@ function DetailsArtwork() {
                                             </button>
                                         </div>
                                     </div>
-
-                                    <div className="row">
-                                        <div className="col-xs-12">
-                                            <button onClick={handleShowSimilarArtworks} type="button" className="btn btn-artworksimilar" data-toggle="modal"
-                                                data-target="#modal-similar-artwork">
-                                                <div className="d-flex box-dir-reverse justify-content-center">
-                                                    <img src={similar_icon} width="24" height="24" alt="" />
-                                                    <span>{t("artwork.veiw_simillar_artworks")}</span>
-                                                </div>
-                                            </button>
-                                        </div>
-                                    </div>
+                                    }
 
                                 </div>
                             </div>
@@ -575,7 +619,7 @@ function DetailsArtwork() {
                             </div>
                         </div>
                         <div style={{ overflow: 'auto' }} className="d-flex owl-carousel">
-                            {console.log("artistProduct",artistProduct)}
+                            {/* {console.log("artistProduct",artistProduct)} */}
                             {artistProduct?.results?.map((item,index) => 
                             <div className="cols mx-4 pb-3">
                                 <div className="col-img">
@@ -596,8 +640,13 @@ function DetailsArtwork() {
                                 </div>
                                 <div className="col-body">
                                     <h6 className="col-title">
-                                        <span className="col-name">بهنام</span>
-                                        <span className="col-name">کامرانی</span>
+                                        <span className="col-name">
+                                        {i18n.language === 'fa-IR' ?
+                                        item.translations?.fa?.artist_name
+                                        :
+                                        item.translations?.en?.artist_name
+                                }
+                                        </span>
                                     </h6>
                                     <div className="col-dimension">
                                         <span className="col-dimension-title">ابعاد:</span>
@@ -1136,7 +1185,7 @@ function DetailsArtwork() {
                                                     <div className="col-body">
                                                         <h6 className="col-title text-dir">
                                                             <span className="col-name">رضا</span>
-                                                            <span className="col-name">حسینی</span>
+                                                            <span className="col-name">حسffffffffینی</span>
                                                         </h6>
                                                         <div className="col-dimension text-dir">
 
@@ -1192,17 +1241,23 @@ function DetailsArtwork() {
                     visibleEditOfferModal={visibleEditOfferModal}
                     editionValue={editionValue}
                     offerValue={offerValue}
+                    productDetail={productDetail}
+
                 />
 
                 <ModalBidding
                     visibleBiddingModal={visibleBiddingModal}
                     setVisibleBiddingModal={setVisibleBiddingModal}
                     editionValue={editionValue}
+                    productDetail={productDetail}
                 />
 
                 <ModalSimilarArtworks
                     setVisibleSimilarArtworksModal={setVisibleSimilarArtworksModal}
                     visibleSimilarArtworksModal={visibleSimilarArtworksModal}
+                    artistProduct={artistProduct}
+                    productDetail={productDetail}
+                    artist_id={artist_id}
                 />
 
             </div>

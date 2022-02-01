@@ -13,7 +13,7 @@ import { numDiscriminant } from '../../utils/discriminant';
 
 function ModalEditOffer(props) {
 
-    const { visibleEditOfferModal, setVisibleEditOfferModal, editionValue ,offerValue} = props;
+    const { visibleEditOfferModal, setVisibleEditOfferModal, editionValue , offerValue, productDetail} = props;
     const [offerValueEdit, setOfferValueEdit] = useState();
     const handleClose = () => {
         setVisibleEditOfferModal(false)
