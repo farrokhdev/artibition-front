@@ -403,7 +403,7 @@ function GalleryPanelUploadExhibitionArtwork() {
                                 <button type="button" className="btn-black center-block mrgt16" data-target="#modal-import { useLocation } from 'react-router-dom';edit-price" data-toggle="modal" onClick={() => {
                                     navigate({
                                         pathname: '/panel/add-artwork',
-                                        search: `?artist_id=${selectedArtist}&back=/gallery-panel/upload-exhibition-artwotk`,
+                                        search: `?artist_id=${selectedArtist}&back=/panel/upload-exhibition-artwotk`,
                                     });
                                 }}>
                                     افزودن اثر جدید

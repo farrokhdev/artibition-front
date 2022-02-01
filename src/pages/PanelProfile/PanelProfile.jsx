@@ -30,6 +30,26 @@ const Panelprofile = (props) => {
 
 
     const { roles } = useSelector((state) => state.authReducer)
+    const getUserRole = () => {
+        let userRole = "user"
+        if (typeof roles === "string") {
+            return roles
+        } else {
+            if (roles && roles.length > 0) {
+                if (roles.includes("seller")) {
+                    userRole = "seller"
+                }
+                if (roles.includes("artist")) {
+                    userRole = "artist"
+                }
+            } else {
+                userRole = 'user'
+            }
+        }
+        return userRole
+    }
+
+    console.log(getUserRole());
 
 
 
@@ -38,8 +58,8 @@ const Panelprofile = (props) => {
         setLoading(true)
         APIService.get(PROFILE, queryString.stringify(params))
             .then(resp => {
+                console.log(resp.data.data);
                 setLoading(false)
-                props.setProfile({ ...props.state, profile: resp.data.data, id: resp.data.data.id })
                 setItems(resp.data.data)
             })
             .catch(err => {
