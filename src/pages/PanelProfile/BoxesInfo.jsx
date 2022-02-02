@@ -7,7 +7,6 @@ import { useSelector } from 'react-redux';
 
 function BoxesInfo({ items }) {
 
-
     const { roles } = useSelector((state) => state.authReducer)
     const getUserRole = () => {
         let userRole = "user"
@@ -33,7 +32,29 @@ function BoxesInfo({ items }) {
     return (
         <div className="row dir">
             {getUserRole() === "artist" &&
-                <div className="col-md-12 ">
+            <>
+            <div className="col-md-4">
+                    <div className="box box-1">
+                        <div className="pull-dir">
+                            <h2 className="pinkcolor text-dir">{t('content-panel-profile.info-box.seller.title')}</h2>
+                            <p className="text-dir text-success">{t('content-panel-profile.info-box.artists.text-success')}</p>
+                        </div>
+
+                        <div className="clearfix"></div>
+                    </div>
+                </div>
+                <div className="col-md-4">
+                    <div className="box box-1">
+                        <div className="pull-dir">
+                            <h2 className="purplecolor text-dir">{t('content-panel-profile.info-box.artists.title')}</h2>
+                            <p className="text-dir text-success">{t('content-panel-profile.info-box.artists.text-success')}</p>
+                        </div>
+
+
+                        <div className="clearfix"></div>
+                    </div>
+                </div>
+                <div className="col-md-4 ">
                     <div className="box box-1">
                         <div className="pull-dir">
                             <h2 className="greencolor text-dir">{t('content-panel-profile.info-box.register.title')}</h2>
@@ -45,10 +66,21 @@ function BoxesInfo({ items }) {
                         <div className="clearfix"></div>
                     </div>
                 </div>
+                </>
             }
             {getUserRole() === "seller" &&
                 <>
-                    <div className="col-md-6">
+                <div className="col-md-4">
+                    <div className="box box-1">
+                        <div className="pull-dir">
+                            <h2 className="pinkcolor text-dir">{t('content-panel-profile.info-box.seller.title')}</h2>
+                            <p className="text-dir text-success">{t('content-panel-profile.info-box.artists.text-success')}</p>
+                        </div>
+
+                        <div className="clearfix"></div>
+                    </div>
+                </div>
+                    <div className="col-md-4">
                         <div className="box box-1">
                             <div className="pull-dir">
                                 <h2 className="purplecolor text-dir">{t('content-panel-profile.info-box.artists.title')}</h2>
@@ -67,7 +99,7 @@ function BoxesInfo({ items }) {
                             <div className="clearfix"></div>
                         </div>
                     </div>
-                    <div className="col-md-6 ">
+                    <div className="col-md-4 ">
                         <div className="box box-1">
                             <div className="pull-dir">
                                 <h2 className="greencolor text-dir">{t('content-panel-profile.info-box.register.title')}</h2>

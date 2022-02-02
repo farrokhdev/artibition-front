@@ -1,22 +1,30 @@
 import types from './artwork.types';
 
-const initial_state ={
+const initial_state = {
     is_send_invitation: false,
-    lastform :{}
+    lastform: {},
+    artistform: {}
 }
 
-const artworkReducer = (state = initial_state , {type , payload})=> {
-    switch(type){
-        
-        case types.ARTWORK_FORM :
-            console.log("payload=>" , payload);
+const artworkReducer = (state = initial_state, { type, payload }) => {
+    switch (type) {
+
+        case types.ARTWORK_FORM:
+            console.log("payload=>", payload);
             return {
                 ...state,
-                lastform : payload ,
+                lastform: payload,
             }
-            
-        default :
-        return state;
+
+        case types.ARTIST_FORM:
+            console.log("payload=>", payload);
+            return {
+                ...state,
+                artistform: payload,
+            }
+
+        default:
+            return state;
     }
 }
 
