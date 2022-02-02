@@ -16,6 +16,7 @@ import { connect } from 'react-redux';
 import { setProfile } from '../../redux/reducers/auth/auth.actions';
 import ModalEditEmail from './ModalEditEmail';
 import { useSelector } from 'react-redux';
+import ModalAddAddress from './ModalAddAddress';
 
 const Panelprofile = (props) => {
 
@@ -26,6 +27,7 @@ const Panelprofile = (props) => {
     const [visibleModalEditProfile, setVisibleModalEditProfile] = useState(false);
     const [visibleEditMobile, setvisibleEditMobile] = useState(false);
     const [visibleEditEmail, setvisibleEditEmail] = useState(false);
+    const [visibleAddAddress, setVisibleAddAddress] = useState(false);
 
 
 
@@ -88,6 +90,7 @@ const Panelprofile = (props) => {
                         setVisibleModalEditProfile={setVisibleModalEditProfile}
                         setvisibleEditMobile={setvisibleEditMobile}
                         setvisibleEditEmail={setvisibleEditEmail}
+                        setVisibleAddAddress={setVisibleAddAddress}
                     />
                     <Suggestions />
                     <RecentlyVeiws />
@@ -112,6 +115,13 @@ const Panelprofile = (props) => {
                 getItems={getItems}
                 setvisibleEditEmail={setvisibleEditEmail}
                 visibleEditEmail={visibleEditEmail}
+            />
+
+            <ModalAddAddress 
+                items={items}
+                getItems={getItems}
+                setVisibleAddAddress={setVisibleAddAddress}
+                visibleAddAddress={visibleAddAddress}
             />
         </>
     );

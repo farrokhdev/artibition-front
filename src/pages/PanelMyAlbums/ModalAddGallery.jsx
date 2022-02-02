@@ -74,9 +74,10 @@ function ModalAddGallery(props) {
                             marginTop: '10vh',
                         },
                     })
-                    setTimeout(() => {
-                        navigate('/panel/my-albums')
-                    }, 500);
+                    setVisibleAddGallery(false)
+                    // setTimeout(() => {
+                        // navigate('/panel/my-albums')
+                    // }, 500);
                 } else {
                     console.log(res.response)
                     message.error({

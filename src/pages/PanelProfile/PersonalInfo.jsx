@@ -9,7 +9,7 @@ function PersonalInfo(props) {
     const { t, i18n } = useTranslation();
     console.log(props.auth.profile)
 
-    const { setVisibleModalEditProfile, setvisibleEditMobile, setvisibleEditEmail } = props;
+    const { setVisibleModalEditProfile, setvisibleEditMobile, setvisibleEditEmail,setVisibleAddAddress } = props;
     const [showModal, setshowModal] = useState(false);
 
     const handleShowModal = () => {
@@ -24,6 +24,9 @@ function PersonalInfo(props) {
         setvisibleEditEmail(true);
     }
 
+    const handleAddAddress = ()=>{
+        setVisibleAddAddress(true)
+    }
     return (
         <div className="box box-2 dir">
             <div className="sec1">
@@ -110,7 +113,7 @@ function PersonalInfo(props) {
                         <h2 className="default-title">{t('content-panel-profile.personal-info.address.title')}</h2>
                     </div>
                     <div className="pull-dir">
-                        <button type="button" className="btn btn-more">{t('content-panel-profile.personal-info.address.btn')}</button>
+                        <button onClick={handleAddAddress} type="button" className="btn btn-more">{t('content-panel-profile.personal-info.address.btn')}</button>
                     </div>
                 </div>
                 <div className="sec2-addresses">
