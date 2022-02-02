@@ -10,6 +10,7 @@ import { useSelector } from 'react-redux';
 function SidebarPanel(props) {
     const { t, i18n } = useTranslation();
     const { roles } = useSelector((state) => state.authReducer)
+    const { galleryProfile } = useSelector((state) => state.galleryReducer)
     const getUserRole = () => {
         let userRole = "user"
         if (typeof roles === "string") {
@@ -38,11 +39,16 @@ function SidebarPanel(props) {
                         className="pull-dir sidebar-avatar img-responsive" />
                     <div className="sidebar-personal-info text-dir">
                         <span className="sidebar-name ">
-                            {i18n.language === 'fa-IR' ?
-                                props.auth?.profile?.translations?.fa?.first_name + " " +
-                                props.auth?.profile?.translations?.fa?.last_name :
-                                props.auth?.profile?.translations?.en?.first_name + " " +
-                                props.auth?.profile?.translations?.en?.last_name
+                            {getUserRole() === "gallery" ?
+                                i18n.language === 'fa-IR' ?
+                                    galleryProfile.translations?.fa?.title :
+                                    galleryProfile.translations?.en?.title
+                                :
+                                i18n.language === 'fa-IR' ?
+                                    props.auth?.profile?.translations?.fa?.first_name + " " +
+                                    props.auth?.profile?.translations?.fa?.last_name :
+                                    props.auth?.profile?.translations?.en?.first_name + " " +
+                                    props.auth?.profile?.translations?.en?.last_name
                             }
                         </span>
                         <div className="sidebar-mobile">
@@ -92,7 +98,7 @@ function SidebarPanel(props) {
                                 <li className="sidebar-icon my-4" id="wallet"><Link to="/panel/wallet"><span
                                     className="sidebar-nav-margin">{t("drawer-panel.nav-wallet")}</span></Link></li>
                                 <li className="sidebar-icon my-4" id="my-albums"><Link to="/panel/my-albums"><span
-                                    className="sidebar-nav-margin">{t("drawer-panel.nav-exhibitions")}</span></Link></li>
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-my-albums")}</span></Link></li>
                                 <li className="sidebar-icon my-4" id="liked"><Link to="/panel/favorites"><span
                                     className="sidebar-nav-margin">{t("drawer-panel.nav-favorits")}</span></Link></li>
                                 <li className="sidebar-icon my-4" id="content"><Link to="/panel/contents"><span

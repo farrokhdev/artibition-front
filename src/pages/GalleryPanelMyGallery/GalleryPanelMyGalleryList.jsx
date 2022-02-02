@@ -12,7 +12,7 @@ import { GALLERY_LIST } from "../../utils";
 import { message } from "antd";
 import queryString from "query-string";
 import moment from "jalali-moment";
-import { galleryId } from "../../redux/reducers/Gallery/gallery.actions";
+import { galleryId, galleryProfile } from "../../redux/reducers/Gallery/gallery.actions";
 import { useNavigate } from 'react-router-dom'
 import { setProfile } from "../../redux/reducers/auth/auth.actions";
 
@@ -29,8 +29,9 @@ function GalleryPanelMyGalleryList() {
 
 
 
-    const goToGalleryProfile = (id) => {
-        dispatch(galleryId(id))
+    const goToGalleryProfile = (gallery) => {
+        dispatch(galleryId(gallery.id))
+        dispatch(galleryProfile(gallery))
         dispatch(setProfile({ roles: "gallery" }))
         navigate("/panel/dashboard")
     }
@@ -39,6 +40,7 @@ function GalleryPanelMyGalleryList() {
 
 
     useEffect(() => {
+        console.log(params);
         apiServices.get(GALLERY_LIST, queryString.stringify(params))
             .then(res => {
                 if (res.data) {
@@ -85,7 +87,7 @@ function GalleryPanelMyGalleryList() {
                                 <td data-label={t("gallery-panel-my-gallery.table.last_edition")}>{moment(gallery.modified_date).locale(i18next.language === 'fa-IR' ? 'fa' : 'en').format('YYYY/MM/DD')}</td>
                                 <td data-label={t("gallery-panel-my-gallery.table.profile")} className="status">
                                     <button onClick={() => {
-                                        goToGalleryProfile(gallery.id)
+                                        goToGalleryProfile(gallery)
                                     }}>
                                         <img src={viewBlue} width="18" height="18" alt="" className="" />
                                     </button>

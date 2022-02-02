@@ -29,7 +29,25 @@ function SellInformation({ prev, next }) {
     let [searchParams, setSearchParams] = useSearchParams()
 
 
-
+    const { roles } = useSelector((state) => state.authReducer)
+    const getUserRole = () => {
+        let userRole = "user"
+        if (typeof roles === "string") {
+            return roles
+        } else {
+            if (roles && roles.length > 0) {
+                if (roles.includes("seller")) {
+                    userRole = "seller"
+                }
+                if (roles.includes("artist")) {
+                    userRole = "artist"
+                }
+            } else {
+                userRole = 'user'
+            }
+        }
+        return userRole
+    }
 
 
     const onFinish = (values) => {
@@ -59,7 +77,7 @@ function SellInformation({ prev, next }) {
 
 
 
-        if (searchParams.get("back")) {
+        if (searchParams.get("back") || getUserRole() === "gallery") {
             apiServices.post(ARTWORK_BY_GALLERY(id, searchParams.get("artist_id")), payload)
                 .then(res => {
                     if (res.data) {

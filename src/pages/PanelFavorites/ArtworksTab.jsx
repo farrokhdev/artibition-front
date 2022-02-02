@@ -33,16 +33,14 @@ function ArtworksTab() {
 
     return (
         <div className="row">
-
             {
                 favoriteArtworks?.length && favoriteArtworks?.map((artworks) => {
                     return (
-
                         <CardArtwork artworks={artworks} />
                     )
                 })
             }
-      
+
         </div>
     )
 }

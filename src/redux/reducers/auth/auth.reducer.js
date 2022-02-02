@@ -6,7 +6,9 @@ const initial_state = {
     error: null,
     otp: null,
     is_logged_in: Boolean(Token()),
-    profile: null
+    profile: null,
+    id: null,
+    roles: null
 }
 
 const authReducer = (state = initial_state, { type, payload }) => {
@@ -56,12 +58,21 @@ const authReducer = (state = initial_state, { type, payload }) => {
 
         case types.SET_PROFILE:
             console.log('Set Profile Done', payload)
-            return {
-                ...state,
-                profile: payload.profile,
-                id: payload.id,
-                roles: payload.roles
+            if (payload.id) {
+                return {
+                    ...state,
+                    profile: payload?.profile,
+                    id: payload?.id,
+                    roles: payload?.roles
+                }
+            } else {
+                return {
+                    ...state,
+                    profile: payload?.profile,
+                    roles: payload?.roles
+                }
             }
+
 
         case types.GET_OTP:
             console.log('Get Otp Code Done', payload)

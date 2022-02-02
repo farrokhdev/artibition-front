@@ -36,7 +36,7 @@ function Login(props) {
                         userRole = roles
                     } else {
                         const rolesTemp = res.data.data.roles
-                        
+
                         if (rolesTemp && rolesTemp.length > 0) {
                             if (rolesTemp.includes('seller')) {
                                 userRole = "seller"
@@ -89,9 +89,7 @@ function Login(props) {
             <div className="container container-fixed ">
                 <div className="default-header promotion-head">
                     <div className="d-flex content-box-header-auth">
-
                         <HeaderAuthPages />
-
                     </div>
                 </div>
                 <div className="d-block login-content">
@@ -106,7 +104,6 @@ function Login(props) {
                                 form={form}
                                 onFinish={onFinish}
                             >
-
                                 <Form.Item
                                     className="w-100"
                                     name="username"

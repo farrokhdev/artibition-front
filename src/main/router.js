@@ -76,10 +76,7 @@ const RouterConfig = (props) => {
 
                 <Route path="artist-profile" element={<ProfileArtist />} />
                 <Route path="purchases" element={<PanelMyPurchases />} />
-                <Route path="my-collections" element={<PanelMyCollections />} />
-                <Route path="registration-artists" element={<RegistrationArtist />} />
                 <Route path="dashboard-gallery" element={<GalleryPanelDashboard />} />
-                <Route path="become-seller" element={<BecomeSeller />} />
                 <Route path="bidding-price" element={<PanelBiddingPrice />} />
                 <Route path="gallery-info" element={<GalleryPanelEditGalleryInfo />} />
                 <Route path="galleries" element={<GalleryPanelMyGallery />} />
@@ -120,6 +117,8 @@ const RouterConfig = (props) => {
                         <Route path="create-content" element={<PanelCreateContent />} />
                         <Route path="add-artwork" element={<AddArtwork />} />
                         <Route path="messages" element={<PanelMessages />} />
+                        <Route path="my-collections" element={<PanelMyCollections />} />
+
                     </>
                 }
                 {
@@ -132,6 +131,9 @@ const RouterConfig = (props) => {
                         <Route path="wallet" element={<PanelWallet />} />
                         <Route path="add-artwork" element={<AddArtwork />} />
                         <Route path="messages" element={<PanelMessages />} />
+                        <Route path="my-collections" element={<PanelMyCollections />} />
+                        <Route path="registration-artists" element={<RegistrationArtist />} />
+
                     </>
                 }
                 {
@@ -141,6 +143,11 @@ const RouterConfig = (props) => {
                         <Route path="favorites" element={<PanelFavorites />} />
                         <Route path="wallet" element={<PanelWallet />} />
                         <Route path="messages" element={<PanelMessages />} />
+                        <Route path="my-collections" element={<PanelMyCollections />} />
+                        <Route path="registration-artists" element={<RegistrationArtist />} />
+                        <Route path="become-seller" element={<BecomeSeller />} />
+
+
                     </>
                 }
                 <Route path="*" element={<Navigate to="/panel/profile" replace />} />
