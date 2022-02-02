@@ -1,12 +1,17 @@
 import React from 'react';
 import slider1 from '../../assets/img/slider-en-1.jpg';
-import slider2 from '../../assets/img/mainpage/slider-2.jpg';
+import slider2 from '../../assets/img/slider-en-2.jpg';
+import slider1_fa from '../../assets/img/mainpage/slider-1.jpg';
+import slider2_fa from '../../assets/img/mainpage/slider-2.jpg';
 import previousIcon from '../../assets/img/previous.svg';
 import nextIcon from '../../assets/img/next.svg';
 import { t } from 'i18next';
 import Timer from 'react-compound-timer';
+import { useTranslation } from 'react-i18next';
 
 export default function Slider() {
+    const { t, i18n } = useTranslation();
+
     function timeExpire(time) {
         let expire = new Date(time)
         let now = new Date()
@@ -22,7 +27,11 @@ export default function Slider() {
             <div id="myCarousel" className="carousel slide" data-ride="carousel" data-interval="0">
                 <div className="carousel-inner">
                     <div className="item active">
+                        {i18n.language === 'fa-IR' ?
+                        <img src={slider1_fa} width="3648" height="1200" alt="آرتیبیشن" />
+                        :
                         <img src={slider1} width="3648" height="1200" alt="آرتیبیشن" />
+                        }
                         <div className="carousel-txt text-dir">
                             <div className="coundown">
                                 <h6 className="countdown-title hidden-sm hidden-xs">{t("deadline-send-artwroks")}</h6>
@@ -59,7 +68,11 @@ export default function Slider() {
                         </div>
                     </div>
                     <div className="item">
+                        {i18n.language === 'fa-IR' ?
+                        <img src={slider2_fa} height="1200" width="3648" alt="آرتیبیشن" />
+                        :
                         <img src={slider2} height="1200" width="3648" alt="آرتیبیشن" />
+                        }
                     </div>
                 </div>
                 <a className="left carousel-control hidden-xs" href="#myCarousel" data-slide="prev">

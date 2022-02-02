@@ -43,7 +43,7 @@ import queryString from "query-string";
 import { useTranslation } from "react-i18next";
 import moment from "moment-jalaali";
 import momentJalaali from "moment-jalaali";
-import { Token } from "../../utils/utils";
+import { follow, Token } from "../../utils/utils";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { UPDATE_CART } from "../../redux/reducers/cart/cart.types";
@@ -312,9 +312,11 @@ function DetailsArtwork() {
                     </div>
                     <div
                       className="like-option"
-                      onClick={() =>
-                        galleryFollow({ content: "product", activity: "like" })
-                      }
+                      onClick={() => 
+                        follow({content:"product",
+                        activity:"like",
+                        object_id:productDetail?.id})
+                    }
                     >
                       <img
                         src={like_selected_icon}
@@ -352,12 +354,12 @@ function DetailsArtwork() {
                         <button
                           type="button"
                           className="btn btn-galleryfollow pull-dir"
-                          onClick={() =>
-                            galleryFollow({
-                              content: "artist",
-                              activity: "following",
-                            })
-                          }
+                          onClick={() => 
+                            follow({
+                                content:"artist",
+                                activity:"following",
+                                object_id:artist_id})
+                            }
                         >
                           <div className="d-flex box-dir-reverse">
                             <img

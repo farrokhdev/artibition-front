@@ -7,6 +7,7 @@ import { useTranslation } from 'react-i18next';
 import apiServices from '../../utils/api.services';
 import { ARTIST_PRODUCTS } from '../../utils';
 import QueryString from 'qs';
+import { follow } from '../../utils/utils';
 
 export default function AllProducts() {
     let navigate = useNavigate();
@@ -44,7 +45,7 @@ export default function AllProducts() {
                 <div className="col-xs-8 visible-sm visible-xs">
                     <h2 className="default-title">آثار</h2>
                 </div>
-                <a href="#" className="btn-readmore pull-left">{t("see-all")}</a>
+                <a href="#" className="btn-readmore pull-left" onClick={() => navigate('/site/artworks')}>{t("see-all")}</a>
             </div>
             <div className="clearfix"></div>
             <div className="col-sm-12">
@@ -84,7 +85,7 @@ export default function AllProducts() {
                                                 <span className="hidden-xs hidden-sm">{t("artwork.btn-action-to-shop")}</span>
                                                 <span className="shopping-cart-xs visible-xs visible-sm"></span>
                                             </button>
-                                            <button type="button" className="like-icon isLike"></button>
+                                            <button type="button" className="like-icon isLike" onClick={() => follow({activity:'like',content:'artist',object_id:product.artist_id})}></button>
                                         </div>
                                     </div>
                                     <div className="col-body">
