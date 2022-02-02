@@ -21,6 +21,7 @@ import { useTranslation } from 'react-i18next';
 import {connect} from "react-redux";
 import { setProfile } from '../../redux/reducers/auth/auth.actions';
 import { Link } from 'react-router-dom';
+import { follow } from '../../utils/utils';
 
 
 
@@ -34,6 +35,7 @@ function ArtistsPage(props) {
         page: 1,
 
     })
+
 
     const onChange=(pageNumber) => {
         setParams(state => ({...state,page:pageNumber}))
@@ -50,6 +52,8 @@ function ArtistsPage(props) {
                 console.log("err", err)
             })
     }
+
+
 
     useEffect(() => {
         getArtistList()
@@ -260,7 +264,7 @@ console.log("props",props)
                                             <span className="col-name pull-dir">{i18n.language === 'fa-IR' ? item.translations?.fa?.nick_name : item.translations?.en?.nick_name}</span>
                                             </Link>
                                         </h6>
-                                        <button type="button" className="btn-follow pull-dir">{t("artwork.follow")}</button>
+                                        <button type="button" className="btn-follow pull-dir" onClick={() => follow({activity:'following',content:'artist',object_id:item.id})}>{t("artwork.follow")}</button>
                                     </div>
                                 </a>
                             </div>

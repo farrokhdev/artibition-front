@@ -1,9 +1,10 @@
 import cookie from 'react-cookies';
 import qs from 'qs';
-import {BASE_URL, COOKIE_EXPIRES} from './index';
+import {BASE_URL, COOKIE_EXPIRES, GALLERY_FOLLOW} from './index';
 import {message} from "antd";
 import {useTranslation} from "react-i18next";
 import momentJalaali from "moment-jalaali";
+import apiServices from './api.services';
 
 export function Arraify(data){
     if(!data) return []
@@ -103,4 +104,25 @@ export function timeToStr(time, format){
         return momentJalaali(time).locale('fa').format(format)
     }
     return ""
+}
+
+export const follow = ({activity,content,object_id}) => {
+    const payload = {
+        content_type: content,
+        activity_type: activity,
+        object_id: object_id
+    }
+    apiServices.post(GALLERY_FOLLOW,payload)
+    .then(res => {
+        if (res.data) {
+            message.success({
+                content: 'درخواست شما با موفقیت ثبت شد', style: {
+                    marginTop: '110px',
+                },
+            })
+        }
+    })
+    .catch(err => {
+        console.log("err", err)
+    })
 }

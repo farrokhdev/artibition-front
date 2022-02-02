@@ -21,11 +21,14 @@ import { useNavigate } from "react-router-dom";
 import { isNil } from "lodash";
 import axios from "axios";
 import { message } from "antd";
+import { useDispatch } from "react-redux";
+import { UPDATE_CART } from "../../redux/reducers/cart/cart.types";
 function Cart() {
   const { t, i18n } = useTranslation();
   const [product_items, setProduct_items] = useState();
   const [totalPrice, setTotalPrice] = useState(0);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const getData = () => {
     apiServices
       .get(CART_ME, "")
@@ -96,6 +99,10 @@ function Cart() {
       )
       .then((res) => {
         if (res?.data?.code === 200) {
+          dispatch({
+            type: UPDATE_CART,
+            payload: res?.data?.data?.product_items?.length,
+          });
           getData();
         }
       })
@@ -131,6 +138,10 @@ function Cart() {
               }
             )
             .then((res) => {
+              dispatch({
+                type: UPDATE_CART,
+                payload: 0,
+              });
               navigate("/panel/payment", { state: { orderId } });
             });
         }

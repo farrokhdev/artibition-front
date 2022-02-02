@@ -3,6 +3,7 @@ import { t } from 'i18next';
 
 import felsh_left from '../../assets/img/felsh-left.png';
 import logo_icon from '../../assets/img/logo-icon.png';
+import CreateGallery from '../GalleryPanelMyGallery/CreateGallery';
 
 
 function BoxGallery() {
@@ -29,16 +30,7 @@ function BoxGallery() {
                 </div>
             </div>
             <div className="col-lg-4">
-                <div className="d-flex box-dir-reverse box box-1">
-                    <div className="text-dir">
-                        <h2 className="greencolor">{t("content-panel-dashboard.box_gallery.new_gallery")}</h2>
-                        <p>{t("content-panel-dashboard.box_gallery.info_gallery")}</p>
-                    </div>
-                    <a href="#" className="btn-box-1 btn-green pull-left">
-                        <img src={felsh_left} width="16" height="16" className="center-block"/>
-                    </a>
-                    <div className="clearfix"></div>
-                </div>
+                <CreateGallery/>
             </div>
         </div>
     )

@@ -13,10 +13,11 @@ import Artist from './Artist';
 import Journal from './Journal';
 import GalleryContact from './GalleryContact';
 import { useTranslation } from 'react-i18next';
-import { GALLERY, GALLERY_EXHIBITION, GALLERY_FOLLOW } from '../../utils';
+import { GALLERY, GALLERY_EXHIBITION } from '../../utils';
 import apiServices from '../../utils/api.services';
 import QueryString from 'qs';
 import { useLocation } from 'react-router-dom';
+import { follow } from '../../utils/utils';
 
 
 function GalleryIntroduction() {
@@ -56,26 +57,6 @@ function GalleryIntroduction() {
             })
     }
 
-    const galleryFollow = () => {
-        const followParams = {
-            activity_type : "following",
-            content_type : "gallery",
-            object_id: id
-        }
-        apiServices.post(GALLERY_FOLLOW,QueryString.stringify(followParams))
-        .then(res => {
-            if (res.data) {
-                message.success({
-                    content: 'درخواست شما با موفقیت ثبت شد', style: {
-                        marginTop: '110px',
-                    },
-                })
-            }
-        })
-        .catch(err => {
-            console.log("err", err)
-        })
-    }
     const getGalleryExhibition = () => {
         apiServices.get(GALLERY_EXHIBITION(id), QueryString.stringify(params))
             .then(res => {
@@ -126,7 +107,7 @@ function GalleryIntroduction() {
                         <p className="text-justify">{galleryIntroduction?.translations?.en?.description}</p>
                         </>
     }
-                        <button className="btn btn-galleryfollow" onClick={galleryFollow}>
+                        <button className="btn btn-galleryfollow" onClick={() => follow({activity:'following',content:'gallery',object_id:id})}>
                             <img src={circleplus1} height="17" width="17" alt="" />
                             <span>{t("artwork.follow")}</span>
                         </button>

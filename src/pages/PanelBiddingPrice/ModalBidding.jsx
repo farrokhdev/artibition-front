@@ -31,7 +31,6 @@ function ModalBidding(props) {
         apiServices.post(ORDER_BUYER_ME, payload)
             .then(res => {
                 if (res.data) {
-
                     message.success({
                         content: 'قیمت پیشنهادی با موفقیت ثبت شد', style: {
                             marginTop: '110px',
