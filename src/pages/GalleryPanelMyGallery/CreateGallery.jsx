@@ -12,7 +12,7 @@ function CreateGallery() {
                 <h2 className="greencolor">{t("content-panel-dashboard.box_gallery.new_gallery")}</h2>
                 <p>{t("content-panel-dashboard.box_gallery.info_gallery")}</p>
             </div>
-            <Link to={"/panel/edit-gallery-info"} className="btn-box-1 btn-green pull-left">
+            <Link to={"/panel/gallery-info"} className="btn-box-1 btn-green pull-left">
                 <img src={flashLeft} width="16" height="16" className="center-block" />
             </Link>
             <div className="clearfix"></div>

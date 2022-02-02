@@ -64,14 +64,17 @@ export const ARTWORK_BY_GALLERY = (gallereyId, artistId) => {
   return `/${gallereyId}/exhibition/artist/${artistId}/product/`;
 };
 export const MESSAGES_INBOX = "/message/inbox/";
+
+
+export const ARTISTS = '/artist/'
+export const ORDER_BUYER_ME = '/orders/bids/buyers/me/';
+export const ORDER_BUYER_ME_ID = id => `/orders/bids/buyers/me/${id}/`;
+export const GALLERY_BIDS = (gallery_id) => `/gallery/${gallery_id}/bids/`;
+export const GALLERY_EDIT_BIDS = (gallery_id, bid_id) => `/gallery/${gallery_id}/bids/${bid_id}/`;
+export const ARTIST_BY_PRODUCT = '/artist/product/'
+export const RETERND_ORDER_ITEM = (id) => `/orders/buyers/${id}/return_item/`
 export const PRODUCT_BY_ARTIST = (galleryId, artistId) =>
   `/${galleryId}/exhibition/artist/${artistId}/product/`;
-export const ARTISTS = "/artist/";
-export const ORDER_BUYER_ME = "/orders/bids/buyers/me/";
-export const ORDER_BUYER_ME_ID = (id) => `/orders/bids/buyers/me/${id}/`;
-export const ARTIST_BY_PRODUCT = "/artist/product/";
-export const RETERND_ORDER_ITEM = (id) => `/orders/buyers/${id}/return_item/`;
-
 export const CART_ME = "/carts/me/";
 export const CART_ME_REMOVE_ITEM = `${BASE_URL}/carts/remove/`;
 export const CART_ME_CHECKOUT = `${BASE_URL}/carts/checkout/`;

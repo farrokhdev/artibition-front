@@ -11,6 +11,7 @@ import apiServices from '../../utils/api.services';
 import { CORE_CONTENT } from '../../utils';
 import { useNavigate } from 'react-router-dom';
 import TextArea from 'antd/es/input/TextArea';
+import { useSelector } from 'react-redux';
 
 function PanelCreateContent() {
     const navigate = useNavigate();
@@ -21,6 +22,27 @@ function PanelCreateContent() {
 
     const [isSelected, setIsSelected] = useState(false);
     const [isSelectedVideo, setIsSelectedVideo] = useState(false);
+    const { id } = useSelector((state) => state.galleryReducer)
+
+    const { roles } = useSelector((state) => state.authReducer)
+    const getUserRole = () => {
+        let userRole = "user"
+        if (typeof roles === "string") {
+            return roles
+        } else {
+            if (roles && roles.length > 0) {
+                if (roles.includes("seller")) {
+                    userRole = "seller"
+                }
+                if (roles.includes("artist")) {
+                    userRole = "artist"
+                }
+            } else {
+                userRole = 'user'
+            }
+        }
+        return userRole
+    }
 
     const onFinish = (values) => {
         let payload = {
@@ -38,7 +60,7 @@ function PanelCreateContent() {
             "is_active": true,
             "link": values?.link,
             "object_id": 1,
-            "content_type": "artist",
+            "content_type": getUserRole() === "gallery" ? "gallery" : "artist",
             "content_file": uploadList,
             "poster": poster[0]
         }
@@ -102,7 +124,6 @@ function PanelCreateContent() {
                                                 message: 'required',
                                             }
                                         ]}>
-
                                         <Input
                                             type="text"
                                             id="info-215"

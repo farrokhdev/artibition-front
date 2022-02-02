@@ -7,7 +7,7 @@ import edit_icon from '../../assets/img/edit_name.svg';
 import go from '../../assets/img/go.svg';
 import BasketFooterPanel from '../../components/BasketFooterPanel/BasketFooterPanel';
 import apiServices from '../../utils/api.services';
-import { ORDER_BUYER_ME } from '../../utils';
+import { GALLERY_BIDS, ORDER_BUYER_ME } from '../../utils';
 import queryString from 'query-string';
 import { GetLanguage } from '../../utils/utils';
 import { isBiddingPrice } from '../../utils/converToPersian';
@@ -15,6 +15,8 @@ import { handleShowImage } from '../../utils/showImageProduct';
 import { DEFAULT_URL_IMAGE } from '../../utils/defaultImage';
 import ModalBidding from './ModalBidding';
 import ModalEditBidding from './ModalEditBidding';
+import { useSelector } from 'react-redux';
+import { message } from 'antd';
 
 function PanelBiddingPrice() {
 
@@ -23,24 +25,69 @@ function PanelBiddingPrice() {
     const [visibleEditModal, setvisibleEditModal] = useState(false)
     const [offerValue, setOfferValue] = useState([]);
     const [editionValue, setEditionValue] = useState("");
-    const getOfferValue = () => {
-        apiServices.get(ORDER_BUYER_ME, "")
-            .then(res => {
-                if (res.data) {
-                    setOfferValue(res.data.data.results)
-                    // product_item_id
+
+
+
+    const { roles } = useSelector((state) => state.authReducer)
+    const { id } = useSelector((state) => state.galleryReducer)
+    const getUserRole = () => {
+        let userRole = "user"
+        if (typeof roles === "string") {
+            return roles
+        } else {
+            if (roles && roles.length > 0) {
+                if (roles.includes("seller")) {
+                    userRole = "seller"
                 }
-            })
-            .catch(err => {
-                console.log("err", err)
-            })
+                if (roles.includes("artist")) {
+                    userRole = "artist"
+                }
+            } else {
+                userRole = 'user'
+            }
+        }
+        return userRole
+    }
+
+    const getOfferValue = () => {
+        if (getUserRole() === "gallery") {
+            apiServices.get(GALLERY_BIDS(id), "")
+                .then(res => {
+                    if (res.data) {
+                        setOfferValue(res.data.data.results)
+                        // product_item_id
+                    } else {
+                        message.error({
+                            content: res.response.data.message,
+                            style: { marginTop: "110px" }
+                        })
+                    }
+                })
+                .catch(err => {
+                    console.log("err", err)
+                })
+
+        } else {
+            apiServices.get(ORDER_BUYER_ME, "")
+                .then(res => {
+                    if (res.data) {
+                        setOfferValue(res.data.data.results)
+                        // product_item_id
+                    }
+                })
+                .catch(err => {
+                    console.log("err", err)
+                })
+        }
+
+
     }
 
     const handleShowModalBidding = (e) => {
         setVisibleBiddingModal(true)
     }
 
-    const handleEditModalBidding = ()=>{
+    const handleEditModalBidding = () => {
         setvisibleEditModal(true)
     }
 
@@ -165,7 +212,7 @@ function PanelBiddingPrice() {
                                                                     </div>
                                                                     <div className="d-flex box-dir-reverse">
                                                                         <div className="col-xs-5">
-                                                                            {item?.status === "rejected"  || item?.status === "closed"?
+                                                                            {item?.status === "rejected" || item?.status === "closed" ?
                                                                                 <button onClick={() => {
                                                                                     handleShowModalBidding()
                                                                                     setEditionValue(item)
@@ -197,11 +244,11 @@ function PanelBiddingPrice() {
                     setVisibleBiddingModal={setVisibleBiddingModal}
                     editionValue={editionValue}
                 />
-                
-                <ModalEditBidding 
-                setvisibleEditModal={setvisibleEditModal}
-                visibleEditModal={visibleEditModal}
-                editionValue={editionValue}
+
+                <ModalEditBidding
+                    setvisibleEditModal={setvisibleEditModal}
+                    visibleEditModal={visibleEditModal}
+                    editionValue={editionValue}
                 />
                 <BasketFooterPanel />
             </div>
