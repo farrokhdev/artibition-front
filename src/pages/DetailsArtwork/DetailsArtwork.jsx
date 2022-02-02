@@ -29,7 +29,7 @@ import edit_icon from '../../assets/img/edit_name.svg';
 import ModalEditOffer from './ModalEditOffer';
 import ModalSimilarArtworks from './ModalSimilarArtworks';
 import ModalBidding from './ModalBidding';
-import { ARTIST_PRODUCTS, GALLERY_FOLLOW, ORDER_BUYER_ME, PRODUCT_DETAIL } from '../../utils';
+import { ARTIST_PRODUCTS, ORDER_BUYER_ME, PRODUCT_DETAIL } from '../../utils';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import apiServices from '../../utils/api.services';
 import QueryString from 'qs';
@@ -37,6 +37,7 @@ import queryString from 'query-string'
 import { useTranslation } from 'react-i18next';
 import moment from 'moment-jalaali';
 import momentJalaali from "moment-jalaali";
+import { follow } from '../../utils/utils';
 
 function DetailsArtwork() {
 
@@ -133,26 +134,6 @@ function DetailsArtwork() {
                 console.log("err", err)
             })
     }
-    const galleryFollow = ({activity,content}) => {
-        const payload = {
-            content_type: content,
-            activity_type: activity,
-            object_id: artist_id
-        }
-        apiServices.post(GALLERY_FOLLOW,payload )
-        .then(res => {
-            if (res.data) {
-                message.success({
-                    content: 'درخواست شما با موفقیت ثبت شد', style: {
-                        marginTop: '110px',
-                    },
-                })
-            }
-        })
-        .catch(err => {
-            console.log("err", err)
-        })
-    }
 
     useEffect(() => {
         getProductDetail()
@@ -229,7 +210,7 @@ function DetailsArtwork() {
                                         <div className="share-option ">
                                             <img src={share_icon} height="31" width="31" alt="" />
                                         </div>
-                                        <div className="like-option" onClick={() => galleryFollow({content:"product",activity:"like"})}>
+                                        <div className="like-option" onClick={() => follow({content:"product",activity:"like"})}>
                                             <img src={like_selected_icon} height="31" width="31" alt="" />
                                         </div>
                                     </div>
@@ -255,7 +236,7 @@ function DetailsArtwork() {
                                                         productDetail?.translations?.en?.artist_name
                                                     }
                                                 </h2>
-                                                <button type="button" className="btn btn-galleryfollow pull-dir" onClick={() => galleryFollow({content:"artist",activity:"following"})}>
+                                                <button type="button" className="btn btn-galleryfollow pull-dir" onClick={() => follow({content:"artist",activity:"following",object_id:artist_id})}>
                                                     <div className="d-flex box-dir-reverse">
                                                         <img src={circle_plus} width="17" height="17" alt="" className="pull-right" />
                                                         <span>{t("artwork.follow")}</span>

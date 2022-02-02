@@ -41,7 +41,7 @@ export default function Artists() {
             {/* <h5 className="artists-title visible-xs">هنرمندان آرتیبشن</h5> */}
             {/* <h5 className="artists-title">هنرمندان آرتیبشن</h5> */}
             <div className="col col-lg-8">
-                <div style={{overflowY : 'hidden'}} className="d-flex d-lg-block">
+                <div style={{overflowY : 'hidden'}} className="d-flex">
                     {/* <div className="rowdesign "> */}
                     {console.log("artists",artists)}
                     {artists?.results?.map((item,index) => 

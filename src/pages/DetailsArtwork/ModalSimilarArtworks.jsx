@@ -11,9 +11,7 @@ import artwork11 from '../../assets/img/artworks/artwork-11.jpg';
 import artist4 from '../../assets/img/artist-4.jpg';
 import circle_plus_icon from '../../assets/img/circle-plus-1.png';
 import { useTranslation } from 'react-i18next';
-import apiServices from '../../utils/api.services';
-import { GALLERY_FOLLOW } from '../../utils';
-import QueryString from 'qs';
+import { follow } from '../../utils/utils';
 
 function ModalSimilarArtworks(props) {
 
@@ -28,26 +26,7 @@ function ModalSimilarArtworks(props) {
     const handleClose = () => {
         setVisibleSimilarArtworksModal(false);
     }
-    const galleryFollow = ({activity,content}) => {
-        const payload = {
-            content_type: content,
-            activity_type: activity,
-            object_id: artist_id
-        }
-        apiServices.post(GALLERY_FOLLOW,payload)
-        .then(res => {
-            if (res.data) {
-                message.success({
-                    content: 'درخواست شما با موفقیت ثبت شد', style: {
-                        marginTop: '110px',
-                    },
-                })
-            }
-        })
-        .catch(err => {
-            console.log("err", err)
-        })
-    }
+
 
     return (
         <React.Fragment>
@@ -97,7 +76,7 @@ function ModalSimilarArtworks(props) {
                                                         productDetail?.translations?.en?.artist_name
                                                     }</h3>
                                                     {/* <h4 className="fontbold20 text-dir">Untitle</h4> */}
-                                                    <button type="button" className="btn btn-galleryfollow pull-dir" onClick={() => galleryFollow({content:"artist",activity:"following"})} >
+                                                    <button type="button" className="btn btn-galleryfollow pull-dir" onClick={() => follow({content:"artist",activity:"following",object_id:artist_id})} >
                                                         <img src={circle_plus_icon} width="17" height="17" alt="" className="pull-left"/>
                                                         <span >{t("artwork.follow")}</span>
                                                     </button>

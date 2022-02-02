@@ -18,13 +18,16 @@ import apiServices from '../../utils/api.services';
 import { ARTIST_CATEGORY } from '../../utils';
 import QueryString from 'qs';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+import { Popover } from 'antd';
 
 
 export default function Collection() {
+    let navigate = useNavigate();
     const { t, i18n } = useTranslation();
     const [artistCategory, setArtistCategory] = useState();
     const [params, setParams] = useState({
-        page: 1,  
+        page: 1,
     })
     const getArtistCategory = () => {
         apiServices.get(ARTIST_CATEGORY, QueryString.stringify(params))
@@ -37,86 +40,93 @@ export default function Collection() {
                 console.log("err", err)
             })
     }
+    const content = (
+        <div
+            className="popover-content"
+        >
+            <p>با ایجاد کالکشن شما می‌توانید آثار مورد علاقه
+                خود را با آن اضافه و آن‌ها را طبقه‌بندی نمایید</p>
+            <a className="popover-btn" href="#" type="button">ایجاد کالکشن</a>
+        </div>
+    );
+
     useEffect(() => {
         getArtistCategory()
     }, [params]);
     return (
-        
-    <div className="collection">
-    <div className="row">
 
-        <div className="public-header d-flex">
-            <div className="col-6 col-md-8 ">
-                <div className="d-flex">
-                    <h2 className="default-title pull-right px-4 ">{t("collection-artworks-home.title")}</h2>
-                    <div className="popover-collection">
-                        <a title="کالکشن آثار" data-toggle="popover" data-placement="left">
-                            <img src={tip} width="18" height="18" alt="کالکشن آثار"/>
-                        </a>
-                        <div 
-                            className="popover-content" style={{display: "none"}}
-                        >
-                            <p>با ایجاد کالکشن شما می‌توانید آثار مورد علاقه
-                                خود را با آن اضافه و آن‌ها را طبقه‌بندی نمایید</p>
-                            <a className="popover-btn" href="#" type="button">ایجاد کالکشن</a>
+        <div className="collection">
+            <div className="row">
+
+                <div className="public-header d-flex">
+                    <div className="col-6 col-md-8 ">
+                        <div className="d-flex">
+                            <h2 className="default-title pull-right px-4 ">{t("collection-artworks-home.title")}</h2>
+                            <div className="popover-collection">
+                                <Popover placement="left" autoAdjustOverflow={true} content={content} title="کالکشن آثار" overlayInnerStyle={{ paddingBottom: '30px' }}>
+
+                                    <a title="کالکشن آثار" data-toggle="popover" data-placement="left">
+                                        <img src={tip} width="18" height="18" alt="کالکشن آثار" />
+                                    </a>
+                                </Popover>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-6 col-md-4 ">
+                        <div className="btn-readmore pull-left " onClick={() => navigate('/site/collections-list')}>{t("collection-all")}</div>
+                    </div>
+                </div>
+
+                <div className="col">
+                    <div className="collection-body">
+
+                        <div style={{ overflow: 'auto' }} className="owl-carousel d-flex" id="tab6">
+                            {artistCategory?.results?.map((item, index) =>
+                                <div>
+                                    <a href="#" className="cols">
+                                        <div className="col-img mx-4">
+                                            <div className=" collection-firstrow m-0">
+                                                <img src={item.products[0]?.medias[0]?.exact_url} className="img-responsive w-100" />
+                                            </div>
+                                            {item.products[1] || item.products[2] && <div className="d-flex collection-secondrow  px-0">
+                                                {item.products[1] && <div className="col px-0  mt-2">
+                                                    <img src={item.products[1]?.medias[1]?.exact_url}
+                                                        className="img-responsive clolection-image w-100" />
+                                                </div>}
+                                                {item.products[2] && <div className="col px-0 mr-2 mt-2">
+                                                    <img src={item.products[2]?.medias[2]?.exact_url}
+                                                        className="img-responsive clolection-image w-100" />
+                                                </div>}
+                                            </div>}
+                                        </div>
+                                        <div className="col-body">
+                                            <h6 className="col-title">
+                                                <span className="col-name">
+                                                    {i18n.language === 'fa-IR' ?
+                                                        item?.translations?.fa?.title
+                                                        :
+                                                        item?.translations?.en?.title
+                                                    }</span>
+                                            </h6>
+                                            <div className="col-dimension">
+                                                <span className="col-dimension-title">
+                                                    {i18n.language === 'fa-IR' ?
+                                                        item?.owner?.translations?.fa?.first_name + ' ' + item?.owner?.translations?.fa?.last_name
+                                                        :
+                                                        item?.owner?.translations?.en?.first_name + ' ' + item?.owner?.translations?.en?.last_name
+                                                    }
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            )}
+
                         </div>
                     </div>
                 </div>
             </div>
-            <div className="col-6 col-md-4 ">
-                <div className="btn-readmore pull-left ">{t("collection-all")}</div>
-            </div>
         </div>
-
-        <div className="col">
-            <div className="collection-body">
-
-                <div style={{overflow : 'auto'}} className="owl-carousel d-flex" id="tab6">
-                    {artistCategory?.results?.map((item,index) => 
-                        <div>
-                            <a href="#" className="cols">
-                                <div className="col-img mx-4">
-                                    <div className=" collection-firstrow m-0">
-                                        <img src={item.products[0]?.medias[0]?.exact_url} className="img-responsive w-100"/>
-                                    </div>
-                                    {item.products[1] || item.products[2] && <div className="d-flex collection-secondrow  px-0">
-                                        {item.products[1] && <div className="col px-0  mt-2">
-                                            <img  src={item.products[1]?.medias[1]?.exact_url} 
-                                                className="img-responsive clolection-image w-100"/>
-                                        </div>}
-                                        {item.products[2] && <div className="col px-0 mr-2 mt-2">
-                                            <img src={item.products[2]?.medias[2]?.exact_url} 
-                                                className="img-responsive clolection-image w-100"/>
-                                        </div>}
-                                    </div>}
-                                </div>
-                                <div className="col-body">
-                                    <h6 className="col-title">
-                                        <span className="col-name">                    
-                                        {i18n.language === 'fa-IR' ?
-                                            item?.translations?.fa?.title
-                                            :
-                                            item?.translations?.en?.title
-                                            }</span>
-                                    </h6>
-                                    <div className="col-dimension">
-                                        <span className="col-dimension-title">
-                                        {i18n.language === 'fa-IR' ?
-                                            item?.owner?.translations?.fa?.first_name + ' ' + item?.owner?.translations?.fa?.last_name
-                                            :
-                                            item?.owner?.translations?.en?.first_name + ' ' + item?.owner?.translations?.en?.last_name
-                                        }
-                                        </span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    )}
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
     )
 }
