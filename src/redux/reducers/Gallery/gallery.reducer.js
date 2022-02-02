@@ -3,7 +3,8 @@ import types from './gallery.types';
 const initial_state = {
     is_send_invitation: false,
     id: "",
-    selected_artwork_redux: []
+    selected_artwork_redux: [],
+    galleryProfile: null
 }
 
 const galleryReducer = (state = initial_state, { type, payload }) => {
@@ -14,6 +15,12 @@ const galleryReducer = (state = initial_state, { type, payload }) => {
             return {
                 ...state,
                 id: payload,
+            }
+        case types.GALLERY_PROFILE:
+            console.log("payload=>", payload);
+            return {
+                ...state,
+                galleryProfile: payload,
             }
         case types.SELECTED_ARTWORKS:
             console.log("payload=>", payload);

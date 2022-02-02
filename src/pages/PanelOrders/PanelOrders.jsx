@@ -49,7 +49,7 @@ function PanelOrders() {
     const getIgetOrdersLisItems = () => {
         setLoading(true)
         if (getUserRole() === "gallery") {
-            apiServices.get(`/gallery/${id}/orders/`, "")
+            apiServices.get(`/gallery/${id}/orders/`, queryString.stringify(params))
                 .then(res => {
                     if (res.data) {
                         setLoading(false)

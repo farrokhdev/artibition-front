@@ -9,12 +9,13 @@ import apiServices from '../../utils/api.services';
 import { ARTIST_BY_GALLERY, ARTWORK_BY_GALLERY, PRODUCTS } from '../../utils';
 import { artworkForm } from '../../redux/reducers/Artwork/artwork.action';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams, useLocation} from 'react-router-dom';
 const { Option } = Select;
 
 function SellInformation({ prev, next }) {
 
     const [form] = Form.useForm();
+    const Location = useLocation();
     const navigate = useNavigate();
     const { lastform } = useSelector((state) => state.artworkReducer)
     const [isValidation, setisValidation] = useState(false);
@@ -29,7 +30,25 @@ function SellInformation({ prev, next }) {
     let [searchParams, setSearchParams] = useSearchParams()
 
 
-
+    const { roles } = useSelector((state) => state.authReducer)
+    const getUserRole = () => {
+        let userRole = "user"
+        if (typeof roles === "string") {
+            return roles
+        } else {
+            if (roles && roles.length > 0) {
+                if (roles.includes("seller")) {
+                    userRole = "seller"
+                }
+                if (roles.includes("artist")) {
+                    userRole = "artist"
+                }
+            } else {
+                userRole = 'user'
+            }
+        }
+        return userRole
+    }
 
 
     const onFinish = (values) => {
@@ -59,7 +78,7 @@ function SellInformation({ prev, next }) {
 
 
 
-        if (searchParams.get("back")) {
+        if (searchParams.get("back") || getUserRole() === "gallery") {
             apiServices.post(ARTWORK_BY_GALLERY(id, searchParams.get("artist_id")), payload)
                 .then(res => {
                     if (res.data) {
@@ -95,7 +114,7 @@ function SellInformation({ prev, next }) {
                             },
                         })
                         setTimeout(() => {
-                            navigate('/panel/art-management')
+                            navigate(Location?.state?.from ,  { state: {current : 2 } })
                             // next()
                             // navigate(next())
                         }, 500);

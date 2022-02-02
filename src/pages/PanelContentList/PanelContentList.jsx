@@ -8,7 +8,7 @@ import artwork1 from '../../assets/img/artworks/artwork-1.jpg';
 import plus_white_icon from '../../assets/img/plus-white.png';
 import { Link } from 'react-router-dom';
 import apiServices from '../../utils/api.services';
-import { ARTIST_CONTENT, ARTIST_ME } from '../../utils';
+import { ARTIST_CONTENT, ARTIST_ME, GALLERY_CONTENT } from '../../utils';
 import queryString from 'query-string';
 import { useSelector } from 'react-redux';
 import moment from 'jalali-moment';
@@ -17,10 +17,30 @@ import { GetLanguage } from '../../utils/utils'
 
 function PanelContentList() {
 
-    const { id } = useSelector((state) => state.authReducer)
+    const { id } = useSelector((state) => state.galleryReducer)
     const Language = GetLanguage();
     const [artistContent, setArtistContent] = useState();
     const [artistProfile, setArtistProfile] = useState({});
+
+    const { roles } = useSelector((state) => state.authReducer)
+    const getUserRole = () => {
+        let userRole = "user"
+        if (typeof roles === "string") {
+            return roles
+        } else {
+            if (roles && roles.length > 0) {
+                if (roles.includes("seller")) {
+                    userRole = "seller"
+                }
+                if (roles.includes("artist")) {
+                    userRole = "artist"
+                }
+            } else {
+                userRole = 'user'
+            }
+        }
+        return userRole
+    }
 
     const [params, setParams] = useState({
 
@@ -28,15 +48,28 @@ function PanelContentList() {
     })
 
     const getArtistContent = () => {
-        apiServices.get(ARTIST_CONTENT, queryString.stringify(params))
-            .then(res => {
-                if (res.data) {
-                    setArtistContent(res.data.data.results)
-                }
-            })
-            .catch(err => {
-                console.log("err", err)
-            })
+        if (getUserRole() === "gallery") {
+            apiServices.get(GALLERY_CONTENT(id), "")
+                .then(res => {
+                    if (res.data) {
+                        setArtistContent(res.data.data.results)
+                    }
+                })
+                .catch(err => {
+                    console.log("err", err)
+                })
+        } else {
+            apiServices.get(ARTIST_CONTENT, queryString.stringify(params))
+                .then(res => {
+                    if (res.data) {
+                        setArtistContent(res.data.data.results)
+                    }
+                })
+                .catch(err => {
+                    console.log("err", err)
+                })
+        }
+
     }
 
 

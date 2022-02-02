@@ -78,7 +78,13 @@ function PanelArtManagement() {
                             </div>
                             <div className="col ">
                                 <div className="d-flex justify-custom">
-                                    <Link to="/panel/add-artwork" type="button" className="btn-outline-blue">
+                                    <Link
+
+                                        to={"/panel/add-artwork"}
+                                         state={{ from: "/panel/art-management" }}
+                                        
+                                        // to="/panel/add-artwork" 
+                                        type="button" className="btn-outline-blue">
                                         <img src={add_icon} width="12" height="12" alt="" className="mx-2" />
                                         <span>{t("content-panel-manage-artworks.btn")}</span>
                                     </Link>
@@ -156,7 +162,7 @@ function PanelArtManagement() {
                         </div>
 
 
-                        <TableArtworks id productList={productList}/>
+                        <TableArtworks id productList={productList} />
 
 
                         <div className=" row-pagination">
