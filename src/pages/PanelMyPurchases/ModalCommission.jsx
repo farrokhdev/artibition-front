@@ -12,7 +12,6 @@ function ModalCommission({ showModal, setShowModal, editionValue }) {
     const [addressId, setAddressId] = useState({ address_id: undefined })
     const [form] = Form.useForm();
     const Language = GetLanguage();
-    console.log("addresses", addresses);
 
     const handleClose = () => {
         setShowModal(false)
@@ -28,7 +27,6 @@ function ModalCommission({ showModal, setShowModal, editionValue }) {
             .then(res => {
                 if (res.data) {
                     setTimeout(() => {
-                        // console.log(res);
                         message.success("با موفقیت ارجاع شد")
                     }, 500);
                 } else {
@@ -41,7 +39,6 @@ function ModalCommission({ showModal, setShowModal, editionValue }) {
         apiServices.get(ADDRESSES,"")
             .then((res) => {
                 if (res?.data?.code === 200) {
-                    //   setAddresses(res?.data?.data?.results);
                     setAddresses(res.data.data.results.map(item => {
                         if (Language === 'fa-IR') {
                             return { label: item?.translations?.fa?.address, value: item?.id }

@@ -253,7 +253,7 @@ export default function NavbarMenuHeader(props) {
                 <li className="dropdown mega-dropdown">
                     <a className='dropdown-toggle' href="#">{t("nav-menu-blog")}</a>
                 </li>
-                <li className="dropdown mega-dropdown">
+                <li className="dropdown mega-dropdown" onClick={() => navigate('/site/advisory')}>
                     <a href="#" className="dropdown-toggle sales">{t('nav-menu-sales-advisor')}</a>
                 </li>
             

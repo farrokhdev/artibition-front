@@ -27,9 +27,7 @@ function Canceled({purchasesProp}) {
                     </button>
                 </div>
             }:{purchasesProp &&
-                // (purchasesProp && purchasesProp.lenght >= 0) &&
                 purchasesProp.map((purchase, index) => {
-                    console.log("purchase", purchase)
                     return (
                         <div className="basket-list-row">
                             <div className="d-block d-lg-flex box-dir-reverse">

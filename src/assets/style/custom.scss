@@ -138,7 +138,10 @@ a:hover {
     outline-color: transparent;
     outline: 0;
 }
-
+.ant-popover-title{
+    text-align: right;
+    font-size: large;
+}
 .navbar-nav li a:hover {
     background: none;
 }
@@ -1729,9 +1732,11 @@ input:checked + .switchbtn:before {
 .coundown .timers > div:before {
     content: ":";
     position: absolute;
-    left: 30px;
+    // left: 30px;
+    left: 44px;
     font-size: 30px;
-    top : -27px;
+    // top : -27px;
+    top : 0;
     font-family: Iransans-Medium, sans-serif;
     line-height: 36px;
 }
