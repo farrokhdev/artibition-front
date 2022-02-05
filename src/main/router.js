@@ -80,11 +80,7 @@ const RouterConfig = (props) => {
                 <Route path="bidding-price" element={<PanelBiddingPrice />} />
                 <Route path="gallery-info" element={<GalleryPanelEditGalleryInfo />} />
                 <Route path="galleries" element={<GalleryPanelMyGallery />} />
-                <Route path="cart" element={<Cart />} />
-                <Route path="invoice" element={<Invoice />} />
-                <Route path="payment" element={<Payment />} />
-                <Route path="success-payment" element={<SuccessPayment />} />
-                <Route path="unsuccess-payment" element={<UnsuccessPayment />} />
+
 
 
 
@@ -101,6 +97,7 @@ const RouterConfig = (props) => {
                         <Route path="contents" element={<PanelContentList />} />
                         <Route path="create-content" element={<PanelCreateContent />} />
                         <Route path="add-artwork" element={<AddArtwork />} />
+                        <Route path="*" element={<Navigate to="/panel/dashboard" replace />} />
                     </>
                 }
                 {
@@ -118,6 +115,12 @@ const RouterConfig = (props) => {
                         <Route path="add-artwork" element={<AddArtwork />} />
                         <Route path="messages" element={<PanelMessages />} />
                         <Route path="my-collections" element={<PanelMyCollections />} />
+                        <Route path="cart" element={<Cart />} />
+                        <Route path="invoice" element={<Invoice />} />
+                        <Route path="payment" element={<Payment />} />
+                        <Route path="success-payment" element={<SuccessPayment />} />
+                        <Route path="unsuccess-payment" element={<UnsuccessPayment />} />
+                        <Route path="*" element={<Navigate to="/panel/dashboard" replace />} />
 
                     </>
                 }
@@ -133,6 +136,12 @@ const RouterConfig = (props) => {
                         <Route path="messages" element={<PanelMessages />} />
                         <Route path="my-collections" element={<PanelMyCollections />} />
                         <Route path="registration-artists" element={<RegistrationArtist />} />
+                        <Route path="cart" element={<Cart />} />
+                        <Route path="invoice" element={<Invoice />} />
+                        <Route path="payment" element={<Payment />} />
+                        <Route path="success-payment" element={<SuccessPayment />} />
+                        <Route path="unsuccess-payment" element={<UnsuccessPayment />} />
+                        <Route path="*" element={<Navigate to="/panel/dashboard" replace />} />
 
                     </>
                 }
@@ -146,11 +155,15 @@ const RouterConfig = (props) => {
                         <Route path="my-collections" element={<PanelMyCollections />} />
                         <Route path="registration-artists" element={<RegistrationArtist />} />
                         <Route path="become-seller" element={<BecomeSeller />} />
-
+                        <Route path="cart" element={<Cart />} />
+                        <Route path="invoice" element={<Invoice />} />
+                        <Route path="payment" element={<Payment />} />
+                        <Route path="success-payment" element={<SuccessPayment />} />
+                        <Route path="unsuccess-payment" element={<UnsuccessPayment />} />
+                        <Route path="*" element={<Navigate to="/panel/profile" replace />} />
 
                     </>
                 }
-                <Route path="*" element={<Navigate to="/panel/profile" replace />} />
             </Route>
 
 

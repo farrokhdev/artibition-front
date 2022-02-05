@@ -14,23 +14,46 @@ function OrderStatus() {
     const [orders, setOrders] = useState([])
     const { id } = useSelector((state) => state.galleryReducer)
 
-    useEffect(() => {
-        apiServices.get(`/gallery/${id}/orders/`, "")
-            .then(res => {
-                if (res.data) {
-                    setOrders(res.data.data.results)
-                } else {
-                    message.error(res.response.data.message)
+
+    const { roles } = useSelector((state) => state.authReducer)
+    const getUserRole = () => {
+        let userRole = "user"
+        if (typeof roles === "string") {
+            return roles
+        } else {
+            if (roles && roles.length > 0) {
+                if (roles.includes("seller")) {
+                    userRole = "seller"
                 }
-
-            }).catch(err => {
-                console.log(err);
-            })
-    }, [])
+                if (roles.includes("artist")) {
+                    userRole = "artist"
+                }
+            } else {
+                userRole = 'user'
+            }
+        }
+        return userRole
+    }
 
     useEffect(() => {
-        // console.log(id);
+        if (getUserRole() === "gallery") {
+            apiServices.get(`/gallery/${id}/orders/`, "")
+                .then(res => {
+                    if (res.data) {
+                        setOrders(res.data.data.results)
+                    } else {
+                        message.error(res.response.data.message)
+                    }
+
+                }).catch(err => {
+                    console.log(err);
+                })
+        } else {
+            
+        }
+
     }, [])
+
 
 
     return (

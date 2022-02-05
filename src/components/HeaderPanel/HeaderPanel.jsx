@@ -14,6 +14,7 @@ import { connect } from "react-redux";
 import { clearStorage } from "../../redux/reducers/auth/auth.actions";
 import { useSelector, useDispatch } from "react-redux";
 import { UPDATE_CART } from "../../redux/reducers/cart/cart.types";
+import { galleryId } from "../../redux/reducers/Gallery/gallery.actions";
 function HeaderPanel(props) {
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
@@ -99,6 +100,7 @@ function HeaderPanel(props) {
                     type: UPDATE_CART,
                     payload: 0,
                   });
+                  dispatch(galleryId(null))
                 }}
               >
                 {t("logout_Title")}

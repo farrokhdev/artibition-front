@@ -9,14 +9,19 @@ import apiServices from "../../utils/api.services";
 import { EXHIBITION } from "../../utils";
 import { message } from "antd";
 import moment from "jalali-moment";
+import { useSelector } from "react-redux";
+import { sample } from "lodash";
 
 
 function GalleryPanelExhibitionList() {
 
     const [galleries, setGalleries] = useState([])
+    const { id } = useSelector((state) => state.galleryReducer)
+
+    
 
     useEffect(() => {
-        apiServices.get(EXHIBITION(1), "")
+        apiServices.get(EXHIBITION(id), "")
             .then(res => {
                 if (res.data) {
                     console.log(res.data.data.results);
@@ -67,7 +72,7 @@ function GalleryPanelExhibitionList() {
                                         <a href="#"><img src={viewBlue} width="18" height="18" alt="" className="" /></a>
                                     </td>
                                     <td data-label={t("gallery-panel-exhibition.table.details")} className="status">
-                                        <Link to={"/gallery-panel/create-exhibition"} className="btn-outline-blue">
+                                        <Link to={"/panel/create-exhibition"} className="btn-outline-blue">
                                             {t("gallery-panel-exhibition.table.edit")}
                                         </Link>
                                         <button type="button" className="btn-outline-blue">{t("gallery-panel-exhibition.table.upload_artwotk")}</button>
@@ -89,7 +94,7 @@ function GalleryPanelExhibitionList() {
                             <a href="#"><img src={viewBlue} width="18" height="18" alt="" className="" /></a>
                         </td>
                         <td data-label={t("gallery-panel-exhibition.table.details")} className="status">
-                            <Link to={"/gallery-panel/create-exhibition"} className="btn-outline-blue">
+                            <Link to={"/panel/create-exhibition"} className="btn-outline-blue">
                                 {t("gallery-panel-exhibition.table.edit")}
                             </Link>
                             <button type="button" className="btn-outline-blue">{t("gallery-panel-exhibition.table.upload_artwotk")}</button>

@@ -12,7 +12,7 @@ import { GALLERY_LIST } from "../../utils";
 import { message } from "antd";
 import queryString from "query-string";
 import moment from "jalali-moment";
-import { galleryId, galleryProfile } from "../../redux/reducers/Gallery/gallery.actions";
+import { editGalleryMode, galleryId, galleryProfile } from "../../redux/reducers/Gallery/gallery.actions";
 import { useNavigate } from 'react-router-dom'
 import { setProfile } from "../../redux/reducers/auth/auth.actions";
 
@@ -34,6 +34,13 @@ function GalleryPanelMyGalleryList() {
         dispatch(galleryProfile(gallery))
         dispatch(setProfile({ roles: "gallery" }))
         navigate("/panel/dashboard")
+    }
+
+    const goToEditGallery = (gallery) => {
+        dispatch(galleryId(gallery.id))
+        dispatch(editGalleryMode(true))
+        dispatch(setProfile({ roles: "gallery" }))
+        navigate("/panel/gallery-info")
     }
 
 
@@ -93,7 +100,9 @@ function GalleryPanelMyGalleryList() {
                                     </button>
                                 </td>
                                 <td data-label={t("gallery-panel-my-gallery.table.details")} className="status">
-                                    <button className="btn-outline-blue">
+                                    <button className="btn-outline-blue" onClick={() => {
+                                        goToEditGallery(gallery)
+                                    }}>
                                         {t("gallery-panel-my-gallery.table.edit")}
                                     </button>
                                     {/* <button type="button" className="btn-outline-blue">{t("gallery-panel-my-gallery.table.edit")}</button> */}
