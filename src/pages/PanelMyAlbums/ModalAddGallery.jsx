@@ -74,9 +74,10 @@ function ModalAddGallery(props) {
                             marginTop: '10vh',
                         },
                     })
-                    setTimeout(() => {
-                        navigate('/panel/my-albums')
-                    }, 500);
+                    setVisibleAddGallery(false)
+                    // setTimeout(() => {
+                        // navigate('/panel/my-albums')
+                    // }, 500);
                 } else {
                     console.log(res.response)
                     message.error({
@@ -243,7 +244,6 @@ function ModalAddGallery(props) {
                                                         <div className="col-img">
                                                             <img 
                                                            src={artworksLike && handleShowImage(artworksLike)}
-                                                           // src={artworksLike?.medias[0]?.exact_url} 
                                                             width="840" height="1259"
                                                                 alt="آرتیبیشن"
                                                                 className="img-responsive" />
@@ -260,7 +260,6 @@ function ModalAddGallery(props) {
                                                     <div className="col-body">
                                                         <h6 className="col-title">
                                                             <span className="col-name">{Language === 'fa-IR' ? artworksLike?.translations?.fa?.artist_name : artworksLike?.translations?.en?.artist_name}</span>
-                                                            {/* <span className="col-name">آغداشلو</span> */}
                                                         </h6>
                                                         <div className="col-dimension">
 
