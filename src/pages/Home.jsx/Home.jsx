@@ -14,9 +14,12 @@ import Slider from "./Slider";
 import Menu from "./Menu";
 import { Modal } from "antd";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 
 function Home() {
+  const {t, i18n} = useTranslation();
+
   const [showPromotion, setShowPromotion] = useState(false)
 
   const copyToClipboard = () => {
@@ -52,18 +55,16 @@ function Home() {
                 <div className="col-sm-6">
                   <div className="aligncenter right-pro">
                     <h2 className="persian-num font24">20 درصد تخفیف</h2>
-                    <h3 className="persian-num font24">حراج بزرگ آرتیبیشن</h3>
+                    <h3 className="persian-num font24">{t('home-modal-exhibition-sale-title')}</h3>
                     <div className="clearfix"></div>
                     <p className="" style={{ textAlign: "center" }}>
-                      تنها ۳ روز دیگر تا پایان جشنواره پاییزه آرتیبیشن فرصت
-                      باقیست. هم اکنون با استفاده از کد زیر از تخفیف ۲۰
-                      درصدی تمام آثار هنری آرتیبیشن بهره‌مند شوید.
+                      {t('home-modal-exhibition-sale-content')}
                     </p>
                     <div className="offer-code">
                       <button className="btn-copy pull-dir" onClick={() => { copyToClipboard() }}></button>
                       <span className="greencolor" id="code">ARTHIBITION_99</span>
                     </div>
-                    <button type="button" className="btn-white">مشاهده آثار</button>
+                    <button type="button" className="btn-white">{t('promotion.popup.view_artworks')}</button>
                   </div>
                 </div>
                 <div className="col-sm-6 hidden-xs">
