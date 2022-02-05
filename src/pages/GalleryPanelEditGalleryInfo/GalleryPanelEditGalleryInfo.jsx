@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { t } from 'i18next';
 import HeaderPanel from '../../components/HeaderPanel/HeaderPanel';
 import BasketFooterPanel from '../../components/BasketFooterPanel/BasketFooterPanel';
 import classnames from 'classnames';
 import { GetLanguage } from '../../utils/utils';
 import TextArea from 'antd/es/input/TextArea';
-import { Form, Input, Button, Space, message } from 'antd';
+import { Form, Input, Button, Space, message, Modal } from 'antd';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import CoverUpload from '../../components/CoverUpload/CoverUpload';
 import CoverUploadLogo from '../../components/CoverUploadLogo/CoverUploadLogo';
 import DatePicker, { Calendar } from 'react-datepicker2';
 import apiServices from '../../utils/api.services';
-import { GALLERY_LIST } from '../../utils';
+import { GALLERY, GALLERY_LIST } from '../../utils';
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 // import add_icon from '../../assets/img/add_pic.svg';
 // import logo_icon from '../../assets/img/logo-icon.png';
 // import edit_name from '../../assets/img/edit_name.svg';
@@ -24,26 +26,67 @@ function GalleryPanelEditGalleryInfo() {
     const navigate = useNavigate();
     const [uploadListCover, setUploadListCover] = useState([]);
     const [uploadListLogo, setUploadListLogo] = useState([]);
+    const [point, setPoint] = useState({})
+    const [zoom, setZoom] = useState(11)
+    const [showMap, setShowMap] = useState(false)
+
+    const { id } = useSelector((state) => state.galleryReducer)
+    const { editGalleryMode } = useSelector((state) => state.galleryReducer)
+
+    const Language = GetLanguage()
+
+
+
+
+
+    useEffect(() => {
+        if (id && editGalleryMode) {
+            apiServices.get(GALLERY(id), "")
+                .then(res => {
+                    if (res.data) {
+                        console.log(res.data.data);
+                        const value = res.data.data;
+                        form.setFieldsValue({
+                            title_en: value.translations?.en?.title,
+                            title: value.translations?.fa?.title,
+                            city: Language === "fa-IR" ? value.locations?.find(e => e.is_default === true).translations?.fa?.city : value.locations?.find(e => e.is_default === true).translations?.en?.city,
+                            country: Language === "fa-IR" ? value.locations?.find(e => e.is_default === true).translations?.fa?.country : value.locations?.find(e => e.is_default === true).translations?.en?.country,
+                            description_en: value.translations?.en?.description,
+                            description: value.translations?.fa?.description,
+                            work_hours_en: value.translations?.en?.work_hours,
+                            work_hours: value.translations?.fa?.work_hours,
+                            address_en: value.locations?.find(e => e.is_default === true).translations?.en?.address,
+                            address: value.locations?.find(e => e.is_default === true).translations?.fa?.address,
+                            phone: value.phone
+                        })
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        }
+    }, [])
+
+
 
 
     const onFinish = (values) => {
+        console.log(values);
         let payload = {
             "translations": {
                 "en": {
                     "title": values?.title_en,
                     "address": values?.address_en,
-                    "city": "Tehran",
-                    "state": "Tehran",
-                    "country": "IRAN",
+                    "city": Language === "fa-IR" ? null : values?.city,
+                    "country": Language === "fa-IR" ? null : values?.country,
                     "work_hours": values?.work_hours_en,
                     "description": values?.description_en
                 },
                 "fa": {
                     "title": values?.title,
                     "address": values?.address,
-                    "city": values?.city,
-                    "state": "تهران",
-                    "country": values?.country,
+                    "city": Language === "fa-IR" ? values?.city : null,
+                    "country": Language === "fa-IR" ? values?.country : null,
                     "work_hours": values?.work_hours,
                     "description": values?.description
                 }
@@ -53,25 +96,46 @@ function GalleryPanelEditGalleryInfo() {
             "modified_date": values?.modified_date,
             "locations": [],
             "phone": values?.phone,
-            "cover": uploadListCover[0],
-            "logo": uploadListLogo[0]
+            "cover": (uploadListCover && uploadListCover.length > 0) ? uploadListCover[0] : undefined,
+            "logo": (uploadListLogo && uploadListLogo.length > 0) ? uploadListLogo[0] : undefined
         }
-        apiServices.post(GALLERY_LIST, payload)
-            .then(res => {
-                if (res.data) {
-                    
-                    setTimeout(() => {
-                        navigate("/panel/profile")
-                        message.success({
-                            content: 'اطلاعات شما با موفقیت ثبت شد', style: {
-                                marginTop: '110px',
-                            },
-                        })
-                    }, 500);
-                } else {
-                    message.error(res.response.data.message)
-                }
-            })
+        console.log(payload);
+        if (id && editGalleryMode) {
+            apiServices.patch(GALLERY(id), payload)
+                .then(res => {
+                    if (res.data) {
+                        setTimeout(() => {
+                            navigate("/panel/profile")
+                            message.success({
+                                content: 'اطلاعات شما با موفقیت ویرایش شد', style: {
+                                    marginTop: '110px',
+                                },
+                            })
+                        }, 500);
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        } else {
+            apiServices.post(GALLERY_LIST, payload)
+                .then(res => {
+                    if (res.data) {
+
+                        setTimeout(() => {
+                            navigate("/panel/profile")
+                            message.success({
+                                content: 'اطلاعات شما با موفقیت ثبت شد', style: {
+                                    marginTop: '110px',
+                                },
+                            })
+                        }, 500);
+                    } else {
+                        message.error(res.response.data.message)
+                    }
+                })
+        }
+
     }
     return (
         <>
@@ -360,7 +424,7 @@ function GalleryPanelEditGalleryInfo() {
                                     </div>
                                 </div>
                                 <div class="col-sm-3">
-                                    <button type="button" class="btn-blue" data-toggle="modal" data-target="#show-map">
+                                    <button type="button" class="btn-blue" data-toggle="modal" data-target="#show-map" onClick={() => { setShowMap(true) }}>
                                         {t("gallery-panel-edit-gallery-info.select_on_map")}
                                     </button>
                                 </div>
@@ -406,7 +470,7 @@ function GalleryPanelEditGalleryInfo() {
                                             ]}>
 
                                             <Input
-                                                type="number"
+                                                type="tel"
                                                 id="info-201"
                                                 className="form-control input-public border-0 px-2  d-flex"
                                                 placeholder={t("gallery-panel-edit-gallery-info.phone_number")}
@@ -584,6 +648,57 @@ function GalleryPanelEditGalleryInfo() {
                 </div>
             </Form>
             <BasketFooterPanel />
+            <Modal
+                visible={showMap}
+                width={800}
+                footer={[]}>
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title" id="exampleModalLabel">{t("payment.address_step.modal.title")}</h5>
+                        <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={() => { setShowMap(false) }}>
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+
+
+                    <div className="modal-body">
+                        <Map
+                            center={(point?.latitude && point?.longitude) ?
+                                [point?.latitude, point?.longitude] :
+                                ["35.690655", "51.380518"]}
+
+                            zoom={zoom}
+                            onzoomend={e => setZoom(e.target._zoom)}
+                            style={{ width: "100%", height: "500px" }}
+
+                            onclick={e => {
+                                setPoint({ latitude: e.latlng.lat, longitude: e.latlng.lng })
+                            }}
+
+                        >
+                            <TileLayer
+                                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                            />
+
+                            <Marker
+                                position={(point?.latitude && point?.longitude) ?
+                                    [point?.latitude, point?.longitude] :
+                                    ["", ""]}
+                            >
+                            </Marker>
+
+
+                        </Map>
+                    </div>
+
+
+
+
+                    <div className="modal-footer justify-content-center">
+                        <button type="button" className="btn btn-black" onClick={() => { setShowMap(false) }}>{t("payment.address_step.modal.confirm_btn")}</button>
+                    </div>
+                </div>
+            </Modal>
 
         </>
     )
