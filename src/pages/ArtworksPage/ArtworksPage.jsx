@@ -32,6 +32,7 @@ import {
 } from "../../utils";
 import apiServices from "../../utils/api.services";
 import { useNavigate } from "react-router-dom";
+import { follow } from "../../utils/utils";
 
 function ArtworksPage() {
   let navigate = useNavigate();
@@ -1009,6 +1010,7 @@ function ArtworksPage() {
                                   width="840"
                                   alt="آرتیبیشن"
                                   className="img-responsive"
+                                  style={{ height: 400 }}
                                 />
                                 <div className="tab-overly">
                                   <a
@@ -1033,7 +1035,17 @@ function ArtworksPage() {
                                   >
                                     {t("card_artwork.request_buy")}
                                   </a>
-                                  <a href="#" className="like-icon isLike"></a>
+                                  <a
+                                    href="#"
+                                    className="like-icon isLike"
+                                    onClick={() =>
+                                      follow({
+                                        content: "product",
+                                        activity: "like",
+                                        object_id: product?.id,
+                                      })
+                                    }
+                                  ></a>
                                 </div>
                               </div>
                               <div className="col-body ">
