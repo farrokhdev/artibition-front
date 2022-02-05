@@ -9153,3 +9153,9 @@ iframe {
 .ant-picker-input{
     direction: ltr !important;
 }
+
+.ant-upload-circle .ant-upload-select{
+    border-radius: 50%;
+    display: block !important;
+    margin: 10px auto;
+}

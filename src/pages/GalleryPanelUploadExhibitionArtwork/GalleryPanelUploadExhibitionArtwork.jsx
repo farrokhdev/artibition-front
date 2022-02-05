@@ -26,8 +26,8 @@ import Collection from "../CollectionsList/Collection";
 import ExistArtworkCollection from "./ExistArtworkCollection";
 import { useNavigate } from "react-router-dom";
 import { exhibitionForm } from "../../redux/reducers/Exhibition/exhibition.action";
+import OneUploadCircle from "../../components/OneUploadCircle/OneUploadCircle";
 
-let ttemp = []
 const { TextArea } = Input
 
 function GalleryPanelUploadExhibitionArtwork() {
@@ -87,7 +87,7 @@ function GalleryPanelUploadExhibitionArtwork() {
     }
 
     useEffect(() => {
-        apiServices.get(GALLERY_ARTISTS(2), queryString.stringify(params))
+        apiServices.get(GALLERY_ARTISTS(id), queryString.stringify(params))
             .then(res => {
                 if (res.data) {
                     let filter = []
@@ -313,7 +313,7 @@ function GalleryPanelUploadExhibitionArtwork() {
                                 <div className="row-addaddress">
                                     <h3 className="addressform-title text-dir">{t("gallery-panel-create-exhibition.add_new_artist.upload_artist_picture")}</h3>
                                 </div>
-                                <OneUpload uploadList={uploadList} setUploadList={setUploadList} />
+                                <OneUploadCircle uploadList={uploadList} setUploadList={setUploadList} />
                                 <Form form={form} name="add_new_artist"
                                     onFinish={onFinishNewArtist}
                                     className="row dir">
