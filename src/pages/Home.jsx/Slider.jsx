@@ -48,15 +48,15 @@ export default function Slider() {
                                         >
                                             <div className="days">
                                                 <span className="persian-num timer"><Timer.Days /></span>
-                                                <span className="timer-title">روز</span>
+                                                <span className="timer-title">{t("day")}</span>
                                             </div>
                                             <div className="hours">
                                                 <span className="persian-num timer"><Timer.Hours /></span>
-                                                <span className="timer-title">ساعت</span>
+                                                <span className="timer-title">{t("hour")}</span>
                                             </div>
                                             <div className="minutes">
                                                 <span className="persian-num timer"><Timer.Minutes /></span>
-                                                <span className="timer-title">دقیقه</span>
+                                                <span className="timer-title">{t('minute')}</span>
                                             </div>
 
                                         </div>

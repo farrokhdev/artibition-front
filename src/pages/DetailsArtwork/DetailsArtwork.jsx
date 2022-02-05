@@ -47,6 +47,7 @@ import { follow, Token } from "../../utils/utils";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { UPDATE_CART } from "../../redux/reducers/cart/cart.types";
+import { numDiscriminant } from "../../utils/discriminant";
 function DetailsArtwork() {
   let navigate = useNavigate();
 
@@ -76,14 +77,11 @@ function DetailsArtwork() {
   });
   const [artistParams, setArtistParams] = useState({
     artist_id: artist_id,
+    status: "active",
     search: "",
     page: 1,
   });
-  const [followParams, setfollowParams] = useState({
-    activity_type: "following",
-    content_type: "artist",
-    page: 1,
-  });
+
   const handleShowModalEditOffer = () => {
     setVisibleEditOfferModal(true);
   };
@@ -139,28 +137,7 @@ function DetailsArtwork() {
         console.log("err", err);
       });
   };
-  const galleryFollow = ({ activity, content }) => {
-    const payload = {
-      content_type: content,
-      activity_type: activity,
-      object_id: artist_id,
-    };
-    apiServices
-      .post(GALLERY_FOLLOW, payload)
-      .then((res) => {
-        if (res.data) {
-          message.success({
-            content: "درخواست شما با موفقیت ثبت شد",
-            style: {
-              marginTop: "110px",
-            },
-          });
-        }
-      })
-      .catch((err) => {
-        console.log("err", err);
-      });
-  };
+
 
   useEffect(() => {
     getProductDetail();
@@ -219,8 +196,10 @@ function DetailsArtwork() {
           >
             <Breadcrumb.Item>{t("artwork.artibition")}</Breadcrumb.Item>
             <Breadcrumb.Separator>{">"}</Breadcrumb.Separator>
-            <Breadcrumb.Item href="">
-              {t("artwork.field.calligram")}
+            <Breadcrumb.Item href="/site/artworks/">
+              {i18n.language === "fa-IR"
+                ? productDetail?.category?.translations?.fa?.title
+                : productDetail?.category?.translations?.en?.title}
             </Breadcrumb.Item>
             <Breadcrumb.Separator>{">"}</Breadcrumb.Separator>
             {i18n.language === "fa-IR" ? (
@@ -286,25 +265,6 @@ function DetailsArtwork() {
                           />
                         </li>
                       ))}
-                    {/* <li data-target="#myCarousel" data-slide-to="0" className="active">
-                                            <img src={artwork1} height="1776" width="1776" alt=""
-                                                className="img-responsive" />
-                                        </li>
-                                        <li data-target="#myCarousel" data-slide-to="0" className="active">
-                                            <img src={artwork1} height="1776" width="1776" alt=""
-                                                className="img-responsive" />
-                                        </li>
-                                        <li data-target="#myCarousel" data-slide-to="1">
-                                            <img src={live_veiw_icon} height="72" width="72" alt="" className="img-responsive" />
-                                        </li>
-                                        <li data-target="#myCarousel" data-slide-to="0" className="active">
-                                            <img src={artwork1} height="1776" width="1776" alt=""
-                                                className="img-responsive" />
-                                        </li>
-                                        <li data-target="#myCarousel" data-slide-to="0" className="active">
-                                            <img src={artwork1} height="1776" width="1776" alt=""
-                                                className="img-responsive" />
-                                        </li> */}
                   </ol>
                   <div className=" artwork-options pull-dir ">
                     <div className="share-option ">
@@ -312,11 +272,13 @@ function DetailsArtwork() {
                     </div>
                     <div
                       className="like-option"
-                      onClick={() => 
-                        follow({content:"product",
-                        activity:"like",
-                        object_id:productDetail?.id})
-                    }
+                      onClick={() =>
+                        follow({
+                          content: "product",
+                          activity: "like",
+                          object_id: productDetail?.id,
+                        })
+                      }
                     >
                       <img
                         src={like_selected_icon}
@@ -354,12 +316,13 @@ function DetailsArtwork() {
                         <button
                           type="button"
                           className="btn btn-galleryfollow pull-dir"
-                          onClick={() => 
+                          onClick={() =>
                             follow({
-                                content:"artist",
-                                activity:"following",
-                                object_id:artist_id})
-                            }
+                              content: "artist",
+                              activity: "following",
+                              object_id: artist_id,
+                            })
+                          }
                         >
                           <div className="d-flex box-dir-reverse">
                             <img
@@ -523,8 +486,8 @@ function DetailsArtwork() {
                       <div className="d-flex justify-content-center artwork-price">
                         <span className="artwork-pricenum persian-num">
                           {i18n.language === "fa-IR"
-                            ? editionValue?.toman_price
-                            : editionValue?.dollar_price}
+                            ? numDiscriminant(editionValue?.toman_price)
+                            : numDiscriminant(editionValue?.dollar_price)}
                         </span>
                         <span>{t("toman")}</span>
                       </div>
@@ -546,8 +509,8 @@ function DetailsArtwork() {
                       <div className="d-flex justify-content-center artwork-price">
                         <span className="artwork-pricenum persian-num">
                           {i18n.language === "fa-IR"
-                            ? editionValue?.toman_price
-                            : editionValue?.dollar_price}
+                            ? numDiscriminant(editionValue?.toman_price)
+                            : numDiscriminant(editionValue?.dollar_price)}
                         </span>
                         <span>{t("toman")}</span>
                       </div>
@@ -575,8 +538,12 @@ function DetailsArtwork() {
                             {t("artwork.bid_artwork.text1")}
                             <strong className="persian-num px-1">
                               {i18n.language === "fa-IR"
-                                ? item.toman_price + t("toman") + " "
-                                : item.dollar_price + t("toman") + " "}
+                                ? numDiscriminant(item.toman_price) +
+                                  t("toman") +
+                                  " "
+                                : numDiscriminant(item.dollar_price) +
+                                  t("toman") +
+                                  " "}
                             </strong>
                             {t("artwork.bid_artwork.text2")}
                             {/* {t("toman")}   */}
@@ -876,12 +843,12 @@ function DetailsArtwork() {
                         className="btn-see"
                       >
                         <span className="view-icon pull-right"></span>
-                        <span>مشاهده اثر</span>
+                        <span>{t('artwork.view-artwork')}</span>
                       </a>
                       <a href="#" className="btn-sale">
-                        درخواست خرید
+                        {t('artwork.btn-action-to-shop')}
                       </a>
-                      <a href="#" className="like-icon"></a>
+                      <a href="#" className="like-icon" onClick={() => follow({content:'product',activity:'like',object_id:item.id})}></a>
                     </div>
                   </div>
                   <div className="col-body">
@@ -903,8 +870,8 @@ function DetailsArtwork() {
                     <div className="col-price">
                       <span className="col-price-num">
                         {i18n.language === "fa-IR"
-                          ? item.toman_price
-                          : item.dollar_price}
+                          ? numDiscriminant(item.toman_price)
+                          : numDiscriminant(item.dollar_price)}
                       </span>
                       <span className="col-price-unit">تومان</span>
                       <span className="persian-num col-price-off">
@@ -1036,7 +1003,7 @@ function DetailsArtwork() {
                   <div className="tab-overly">
                     <span className="btn-see hidden-xs hidden-sm">
                       <span className="view-icon pull-right"></span>
-                      <span>مشاهده اثر</span>
+                      <span>{t('artwork.view-artwork')}</span>
                     </span>
                     <button type="button" className="btn-sale">
                       <span className="hidden-xs hidden-sm">درخواست خرید</span>
@@ -1090,7 +1057,7 @@ function DetailsArtwork() {
                   <div className="tab-overly">
                     <span className="btn-see hidden-xs hidden-sm">
                       <span className="view-icon pull-right"></span>
-                      <span>مشاهده اثر</span>
+                      <span>{t('artwork.view-artwork')}</span>
                     </span>
                     <button type="button" className="btn-sale">
                       <span className="hidden-xs hidden-sm">درخواست خرید</span>
