@@ -27,6 +27,21 @@ export function isAccept(value) {
                 title: t("content-panel-orders.filters.Review"),
                 css: "bluestyle"
             }
+        case "available in arthibition":
+            return {
+                title: "موجود در آرتیبیشن",
+                css: "accept "
+            }
+        case "paid":
+            return {
+                title: "پرداخت شده",
+                css: "accept "
+            }
+        case "returned by buyer":
+            return {
+                title: "مرجوعی",
+                css: "pending"
+            }
         default:
             return {
                 title: "",
@@ -94,11 +109,37 @@ export function isBiddingPrice(value) {
                 title: " نیازمند به اصلاح",
                 css: "pending"
             }
-            case "closed":
-                return {
-                    title: "بسته شده",
-                    css: "deny"
-                }
+        case "closed":
+            return {
+                title: "بسته شده",
+                css: "deny"
+            }
+
+        default:
+            return {
+                title: "",
+                css: ""
+            }
+    }
+}
+
+export function isDashboardStatus(value) {
+    switch (value) {
+        case "pending":
+            return {
+                title: " در انتظار تایید",
+                css: "status-step failed"
+            }
+        case "approved":
+            return {
+                title: "تایید شده",
+                css: "status-step passed"
+            }
+        case "rejected":
+            return {
+                title: "رد شد",
+                css: "status-step failed"
+            }
 
         default:
             return {

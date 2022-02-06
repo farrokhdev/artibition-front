@@ -44,7 +44,6 @@ function PanelContentList() {
 
     const [params, setParams] = useState({
 
-
     })
 
     const getArtistContent = () => {

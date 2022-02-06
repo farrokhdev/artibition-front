@@ -91,10 +91,22 @@ function GalleryPanelEditGalleryInfo() {
                     "description": values?.description
                 }
             },
-            "exhibition_num": values?.exhibition_num,
-            "creation_date": values?.creation_date,
-            "modified_date": values?.modified_date,
-            "locations": [],
+            "exhibition_history": values?.items,
+            // "exhibition_num": values?.items?.exhibition_num,
+            // "creation_date": values?.items?.creation_date,
+            // "modified_date": values?.items?.modified_date,
+            "locations": [{
+                "translations": {
+                    "en": {
+                        "address": values?.address_en,
+
+                    },
+                    "fa": {
+                        "address": values?.address,
+                    }
+                }
+                , point
+            }],
             "phone": values?.phone,
             "cover": (uploadListCover && uploadListCover.length > 0) ? uploadListCover[0] : undefined,
             "logo": (uploadListLogo && uploadListLogo.length > 0) ? uploadListLogo[0] : undefined
@@ -519,7 +531,7 @@ function GalleryPanelEditGalleryInfo() {
                                                         <Form.Item
                                                             className="w-100"
                                                             {...restField}
-                                                            name={[name, 'exhibition_num']}
+                                                            name={[name, 'exhibition_name']}
                                                             rules={[{ required: true, message: 'Missing first name' }]}
                                                         >
                                                             <Input
