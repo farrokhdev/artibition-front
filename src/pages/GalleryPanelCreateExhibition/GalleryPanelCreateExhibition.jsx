@@ -12,11 +12,12 @@ import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import { useSelector, useDispatch } from 'react-redux';
 import '../../assets/style/leaflet.scss'
 import apiServices from '../../utils/api.services';
-import { CORE_CATEGORIS, GALLERY_ARTISTS } from '../../utils';
+import { CORE_CATEGORIS, EXHIBITION_INFO, GALLERY_ARTISTS } from '../../utils';
 import MultipleUpload from '../../components/MultiUpload/MultiUpload';
 import { exhibitionForm } from '../../redux/reducers/Exhibition/exhibition.action';
 import { useNavigate } from "react-router-dom";
 import DatePicker, { Calendar } from 'react-datepicker2';
+import moment from 'jalali-moment'
 import queryString from 'query-string';
 
 const { Option } = Select;
@@ -40,12 +41,16 @@ function GalleryPanelCreateExhibition() {
     const [exhibitionType, setExhibitionType] = useState(undefined)
     const dispatch = useDispatch()
     const { id } = useSelector((state) => state.galleryReducer)
+    const { exhibitionId } = useSelector((state) => state.galleryReducer)
+    const { editExhibitionMode } = useSelector((state) => state.galleryReducer)
     const navigate = useNavigate()
+    const [form] = Form.useForm()
 
 
 
     const onFinish = (form) => {
-        if (posters.length > 0) {
+        console.log(editExhibitionMode);
+        if (editExhibitionMode || posters.length > 0) {
             if (form.type) {
                 if (form.category && form.category.length > 0) {
                     const payload = {
@@ -127,7 +132,6 @@ function GalleryPanelCreateExhibition() {
         apiServices.get(CORE_CATEGORIS, queryString.stringify(categoryParams))
             .then(res => {
                 if (res.data) {
-                    console.log(res.data.data);
                     let temp = []
                     for (let i = 0; i < res.data.data.results.length; i++) {
                         const element = res.data.data.results[i];
@@ -140,7 +144,6 @@ function GalleryPanelCreateExhibition() {
                     //     console.log("map");
                     //     temp.push({ label: i18next.language === 'fa-IR' ? item.translations.fa.title : item.translations.fa.title, value: item.id })
                     // })
-                    console.log(temp);
                     setCategories(temp)
                 } else {
                     message.error(res.response.data.message)
@@ -157,7 +160,6 @@ function GalleryPanelCreateExhibition() {
         apiServices.get(GALLERY_ARTISTS(id), queryString.stringify(params))
             .then(res => {
                 if (res.data) {
-                    console.log(res.data.data);
                     const options = []
                     res.data.data.results.map((artist, index) => {
                         options.push({ label: `${artist.translations.fa ? artist.translations.fa.nick_name : ""} | ${artist.translations.en ? artist.translations.en.nick_name : ""}`, value: artist.id })
@@ -172,8 +174,40 @@ function GalleryPanelCreateExhibition() {
     }, [])
 
     useEffect(() => {
-        console.log(exhibitionType);
-    }, [exhibitionType])
+        if (editExhibitionMode && id) {
+            apiServices.get(EXHIBITION_INFO(id, exhibitionId), "")
+                .then(res => {
+                    if (res.data) {
+                        const value = res.data.data
+                        setPoint(value.address?.find(e => e.is_default === true)?.point)
+                        form.setFieldsValue({
+                            exhibition_name_fa: value.translations?.fa?.name,
+                            exhibition_name_en: value.translations?.en?.name,
+                            type: value.type,
+                            virtual_start_time: moment.utc(value.start_date.virtual_start_date).local(),
+                            real_start_time: moment.utc(value.start_date.real_start_date).local(),
+                            virtual_end_time: moment.utc(value.end_date.virtual_end_date).local(),
+                            real_end_time: moment.utc(value.end_date.real_end_date).local(),
+                            virtual_start_date: moment.utc(value.start_date.virtual_start_date).local(),
+                            real_start_date: moment.utc(value.start_date.real_start_date).local(),
+                            virtual_end_date: moment.utc(value.end_date.virtual_end_date).local(),
+                            real_end_date: moment.utc(value.end_date.real_end_date).local(),
+                            activity_time_en: value.translations?.en?.activity_time,
+                            activity_time_fa: value.translations?.fa?.activity_time,
+                            statement_en: value.translations?.en?.statement,
+                            statement_fa: value.translations?.fa?.statement,
+                            address_fa: value.address?.find(e => e.is_default === true)?.translations?.fa?.address,
+                            address_en: value.address?.find(e => e.is_default === true)?.translations?.en?.address,
+                            phone: value.phone
+                        })
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        }
+
+    }, [])
 
 
     return (
@@ -182,7 +216,9 @@ function GalleryPanelCreateExhibition() {
             <div className="panel-style container mx-auto px-0 w-100 bg-white ">
                 <h2 className="default-title aligncenter mt-3">{t("gallery-panel-create-exhibition.title")}</h2>
                 <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 create-exhibition">
-                    <Form onFinish={onFinish}>
+                    <Form
+                        onFinish={onFinish}
+                        form={form}>
                         <h3 className="info-title mrgt64 require text-dir">{t("gallery-panel-create-exhibition.upload_poster.title")}</h3>
                         <p className="mrgb20 text-dir">{t("gallery-panel-create-exhibition.upload_poster.description")}</p>
                         <MultipleUpload uploadList={posters} setUploadList={setPosters} defaultName={"عکس اصلی"} />

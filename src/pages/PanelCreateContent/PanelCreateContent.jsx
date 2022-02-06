@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { t } from 'i18next';
 import HeaderPanel from '../../components/HeaderPanel/HeaderPanel';
 import BasketFooterPanel from '../../components/BasketFooterPanel/BasketFooterPanel';
@@ -6,9 +6,9 @@ import classnames from 'classnames';
 import { GetLanguage } from '../../utils/utils';
 import OneUpload from '../../components/OneUpload/OneUpload';
 import cloude_upload_icon from '../../assets/img/cloud-upload.svg';
-import { Form, Input, Select, Checkbox, message } from 'antd';
+import { Form, Input, Select, Checkbox, message, Radio } from 'antd';
 import apiServices from '../../utils/api.services';
-import { CORE_CONTENT } from '../../utils';
+import { ARTIST_ME, CORE_CONTENT } from '../../utils';
 import { useNavigate } from 'react-router-dom';
 import TextArea from 'antd/es/input/TextArea';
 import { useSelector } from 'react-redux';
@@ -19,10 +19,13 @@ function PanelCreateContent() {
     const Language = GetLanguage();
     const [uploadList, setUploadList] = useState([])
     const [poster, setPoster] = useState([])
+    const [imageOrVideo, setImageOrVideo] = useState()
+    const [artistId, setArtistId] = useState()
 
     const [isSelected, setIsSelected] = useState(false);
     const [isSelectedVideo, setIsSelectedVideo] = useState(false);
     const { id } = useSelector((state) => state.galleryReducer)
+
 
     const { roles } = useSelector((state) => state.authReducer)
     const getUserRole = () => {
@@ -59,17 +62,18 @@ function PanelCreateContent() {
             "type": "other",
             "is_active": true,
             "link": values?.link,
-            "object_id": 1,
+            "object_id": getUserRole() === "gallery" ? id : artistId,
             "content_type": getUserRole() === "gallery" ? "gallery" : "artist",
             "content_file": uploadList,
             "poster": poster[0]
         }
+        console.log(payload);
 
         apiServices.post(CORE_CONTENT, payload)
             .then(res => {
                 if (res.data) {
                     message.success({
-                        content: 'اثر با موفقیت ثبت شد', style: {
+                        content: 'محتوا با موفقیت ساخته شد', style: {
                             marginTop: '10vh',
                         },
                     })
@@ -85,6 +89,19 @@ function PanelCreateContent() {
                 }
             })
     }
+
+    useEffect(() => {
+        apiServices.get(ARTIST_ME, "")
+            .then(res => {
+                if (res.data) {
+                    setArtistId(res.data.data.id)
+                    // console.log(res.data.data.id);
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }, [])
 
 
     return (
@@ -215,8 +232,8 @@ function PanelCreateContent() {
 
                         <h3 className="info-title mrgt64 require text-dir">{t("content-panel-create-content.upload.title")}</h3>
                         <ul className="content-type ">
-                            <div className="d-block d-md-flex ">
-                                <div className="col  px-0">
+                            <div className="d-block d-md-flex text-dir ">
+                                {/* <div className="col  px-0">
                                     <div className="d-flex box-dir-reverse">
                                         <li>
                                             <label className="container-radio text-dir">{t("content-panel-create-content.upload_poster.image")}
@@ -229,34 +246,24 @@ function PanelCreateContent() {
                                             </Form.Item>
                                         </li>
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="col  px-0">
-                                    <div className="d-flex box-dir-reverse">
-                                        <li>
-
-                                            <label className="container-radio">{t("content-panel-create-content.upload_poster.video")}
-                                            </label>
-
-                                            <Form.Item valuePropName="checked" noStyle>
-                                                <Checkbox type="checkbox"
-                                                    checked={isSelectedVideo}
-                                                    onChange={e => setIsSelectedVideo(e.target.checked)}
-                                                ></Checkbox>
-                                            </Form.Item>
-                                        </li>
-                                    </div>
+                                    <Radio.Group onChange={(e) => { setImageOrVideo(e.target.value) }}>
+                                        <Radio value={"video"} style={{ margin: "0 30px" }}>{t("content-panel-create-content.upload_poster.video")}</Radio>
+                                        <Radio value={"image"} style={{ margin: "0 30px" }}>{t("content-panel-create-content.upload_poster.image")}</Radio>
+                                    </Radio.Group>
                                 </div>
 
                             </div>
                         </ul>
-                        {isSelected ?
+                        {imageOrVideo === "image" ?
 
                             <OneUpload
                                 uploadList={uploadList}
                                 setUploadList={setUploadList}
                             />
                             : ""}
-                        {isSelectedVideo ?
+                        {imageOrVideo === "video" ?
                             <div className="col-sm-12">
                                 <div className="public-group en">
                                     <Form.Item

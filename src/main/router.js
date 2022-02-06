@@ -82,8 +82,6 @@ const RouterConfig = (props) => {
                 <Route path="galleries" element={<GalleryPanelMyGallery />} />
 
 
-
-
                 {
                     getUserRole() === "gallery" &&
                     <>

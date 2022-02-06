@@ -90,3 +90,6 @@ export const APPLY_DISCOUNT = (id) =>
 export const ADDRESSES_EDIT = (id) => `/account/location/${id}/`;
 export const EXHIBITION_LIST = "/exhibition";
 export const CART_ME_ADD_ITEM = `${BASE_URL}/carts/add/`;
+export const ADD_ARTIST_TO_GALLERY = (galleryId) => `/${galleryId}/add-artists`
+export const EXHIBITION_INFO = (galleryId, exhibitionId) => `/${galleryId}/exhibition/${exhibitionId}/`
+export const EXHIBITION_PRODUCT = (galleryId, exhibitionId) => `/${galleryId}/exhibition/${exhibitionId}/artist-product`

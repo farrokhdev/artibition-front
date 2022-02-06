@@ -166,16 +166,6 @@ function GalleryPanelUploadExhibitionArtwork() {
     }
 
 
-    // useEffect(() => {
-    //     if (lastform) {
-    //         setSelectedArtistId(lastform.artist)
-    //     }
-    //     console.log(lastform);
-
-    //     console.log(chosenList);
-    // }, [])
-
-
     const changePriceFinish = (form) => {
         let temp = selectedArtworks
 
