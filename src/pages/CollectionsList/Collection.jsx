@@ -7,12 +7,6 @@ import { useTranslation } from "react-i18next";
 
 
 const SliderSetting = {
-    // dots: true,
-    // infinite: false,
-    // speed: 500,
-    // slidesToShow: 4,
-    // slidesToScroll: 4,
-    // initialSlide: 0,
     dots: false,
     infinite: false,
     speed: 500,
