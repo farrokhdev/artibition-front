@@ -6,7 +6,8 @@ const initial_state = {
     selected_artwork_redux: [],
     galleryProfile: null,
     editGalleryMode: false,
-    editExhibitionMode: false
+    editExhibitionMode: false,
+    exhibitionId: null
 }
 
 const galleryReducer = (state = initial_state, { type, payload }) => {
@@ -17,6 +18,12 @@ const galleryReducer = (state = initial_state, { type, payload }) => {
             return {
                 ...state,
                 id: payload,
+            }
+        case types.EXHIBITION_ID:
+            console.log("payload=>", payload);
+            return {
+                ...state,
+                exhibitionId: payload,
             }
         case types.GALLERY_PROFILE:
             console.log("payload=>", payload);

@@ -15,6 +15,8 @@ import { GALLERY, GALLERY_LIST } from '../../utils';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+import { useDispatch } from 'react-redux';
+import { editGalleryModeFunc } from '../../redux/reducers/Gallery/gallery.actions';
 // import add_icon from '../../assets/img/add_pic.svg';
 // import logo_icon from '../../assets/img/logo-icon.png';
 // import edit_name from '../../assets/img/edit_name.svg';
@@ -34,6 +36,7 @@ function GalleryPanelEditGalleryInfo() {
     const { editGalleryMode } = useSelector((state) => state.galleryReducer)
 
     const Language = GetLanguage()
+    const dispatch = useDispatch()
 
 
 
@@ -91,19 +94,31 @@ function GalleryPanelEditGalleryInfo() {
                     "description": values?.description
                 }
             },
-            "exhibition_num": values?.exhibition_num,
-            "creation_date": values?.creation_date,
-            "modified_date": values?.modified_date,
-            "locations": [],
+            "exhibition_history": values?.items,
+            // "exhibition_num": values?.items?.exhibition_num,
+            // "creation_date": values?.items?.creation_date,
+            // "modified_date": values?.items?.modified_date,
+            "locations": [{
+                "translations": {
+                    "en": {
+                        "address": values?.address_en,
+
+                    },
+                    "fa": {
+                        "address": values?.address,
+                    }
+                }
+                , point
+            }],
             "phone": values?.phone,
             "cover": (uploadListCover && uploadListCover.length > 0) ? uploadListCover[0] : undefined,
             "logo": (uploadListLogo && uploadListLogo.length > 0) ? uploadListLogo[0] : undefined
         }
-        console.log(payload);
         if (id && editGalleryMode) {
             apiServices.patch(GALLERY(id), payload)
                 .then(res => {
                     if (res.data) {
+                        dispatch(editGalleryModeFunc(false))
                         setTimeout(() => {
                             navigate("/panel/profile")
                             message.success({
@@ -519,7 +534,7 @@ function GalleryPanelEditGalleryInfo() {
                                                         <Form.Item
                                                             className="w-100"
                                                             {...restField}
-                                                            name={[name, 'exhibition_num']}
+                                                            name={[name, 'exhibition_name']}
                                                             rules={[{ required: true, message: 'Missing first name' }]}
                                                         >
                                                             <Input
