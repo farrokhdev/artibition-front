@@ -16,7 +16,7 @@ import artwork10 from '../../assets/img/artworks/hnrpqkfiup@3x.jpg'
 import edit_name from '../../assets/img/edit_name.svg'
 import change_icon from '../../assets/img/change.png'
 import apiServices from "../../utils/api.services";
-import { ARTIST_BY_GALLERY, EXHIBITION, GALLERY_ARTISTS } from "../../utils";
+import { ARTIST_BY_GALLERY, EXHIBITION, EXHIBITION_PRODUCT, GALLERY_ARTISTS } from "../../utils";
 import { Form, Input, message, Modal, Button, Spin } from "antd";
 import { GetLanguage } from "../../utils/utils";
 import MultipleUpload from "../../components/MultiUpload/MultiUpload";
@@ -45,6 +45,7 @@ function GalleryPanelUploadExhibitionArtwork() {
     const [artistToChange, setArtistToChange] = useState({})
     const dispatch = useDispatch()
     const { id } = useSelector((state) => state.galleryReducer)
+    const { exhibitionId } = useSelector((state) => state.galleryReducer)
 
 
 
@@ -85,6 +86,22 @@ function GalleryPanelUploadExhibitionArtwork() {
                 console.log(err);
             })
     }
+
+
+
+
+    useEffect(() => {
+        apiServices.get(EXHIBITION_PRODUCT(id, exhibitionId), "")
+            .then(res => {
+                if (res.data) {
+                    console.log(res.data.data);
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }, [])
+
 
     useEffect(() => {
         apiServices.get(GALLERY_ARTISTS(id), queryString.stringify(params))

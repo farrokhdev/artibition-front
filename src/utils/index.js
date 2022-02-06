@@ -1,6 +1,6 @@
 // export const BASE_URL = "http://192.168.0.23:8808/api/v1";
-
-export const BASE_URL = "https://api.artibition.gallery/api/v1";
+export const BASE_URL = "http://192.168.0.113:8000/api/v1";
+// export const BASE_URL = "https://api.artibition.gallery/api/v1";
 
 export const COOKIE_EXPIRES = 1;
 export const LOGIN = "/account/login/";

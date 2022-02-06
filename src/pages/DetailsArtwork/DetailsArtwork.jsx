@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Menu from "../../components/Menu/Menu";
-import { Breadcrumb, message, Tabs } from "antd";
+import { Breadcrumb, message, Modal, Tabs } from "antd";
 import { t } from "i18next";
 
 import artwork1 from "../../assets/img/artworks/artwork-1.jpg";
@@ -26,6 +26,8 @@ import mainpage_3 from "../../assets/img/mainpage/3.jpg";
 import hezvtaokhv840 from "../../assets/img/mainpage/hezvtaokhv840.jpg";
 import ayvglbkdfo3 from "../../assets/img/mainpage/ayvglbkdfo@3x.jpg";
 import edit_icon from "../../assets/img/edit_name.svg";
+import telegram from "../../assets/img/telegram.svg";
+import whatsapp from "../../assets/img/whatsapp.svg";
 import ModalEditOffer from "./ModalEditOffer";
 import ModalSimilarArtworks from "./ModalSimilarArtworks";
 import ModalBidding from "./ModalBidding";
@@ -69,6 +71,7 @@ function DetailsArtwork() {
   const [productDetail, setProductDetail] = useState();
   const [editionValue, setEditionValue] = useState({});
   const [artistProduct, setArtistProduct] = useState();
+  const [showShare, setShowShare] = useState(false)
   const [offerValue, setOfferValue] = useState();
   const [toggle, setToggle] = useState(false);
   const [params, setParams] = useState({
@@ -81,6 +84,10 @@ function DetailsArtwork() {
     search: "",
     page: 1,
   });
+  useEffect(()=>{
+    // navigate
+    console.log(navigate());
+  })
 
   const handleShowModalEditOffer = () => {
     setVisibleEditOfferModal(true);
@@ -271,9 +278,12 @@ function DetailsArtwork() {
                       ))}
                   </ol>
                   <div className=" artwork-options pull-dir ">
-                    <div className="share-option ">
+                    <button className="share-option" onClick={() => {
+                      console.log("pfpjkweifjewhu hewuh dfuiewhfiuhebbcieh fehwh8hewf iefdheiao f buwefnhcoiwehf i")
+                      setShowShare(true)
+                    }}>
                       <img src={share_icon} height="31" width="31" alt="" />
-                    </div>
+                    </button>
                     <div
                       className="like-option"
                       onClick={() =>
@@ -476,8 +486,8 @@ function DetailsArtwork() {
                     <span className="orangecolor">
                       {i18n.language === "fa_IR"
                         ? momentJalaali(productDetail?.creation_date)
-                            .locale("fa")
-                            .fromNow()
+                          .locale("fa")
+                          .fromNow()
                         : moment(productDetail?.creation_date).fromNow()}{" "}
                       این اثر قیمت گذاری شده است
                     </span>
@@ -543,11 +553,11 @@ function DetailsArtwork() {
                             <strong className="persian-num px-1">
                               {i18n.language === "fa-IR"
                                 ? numDiscriminant(item.toman_price) +
-                                  t("toman") +
-                                  " "
+                                t("toman") +
+                                " "
                                 : numDiscriminant(item.dollar_price) +
-                                  t("toman") +
-                                  " "}
+                                t("toman") +
+                                " "}
                             </strong>
                             {t("artwork.bid_artwork.text2")}
                             {/* {t("toman")}   */}
@@ -618,8 +628,8 @@ function DetailsArtwork() {
                       </div>
                     </div>
                   ) : offerValue?.results?.map((item) =>
-                      item.product_item_id === editionValue?.id ? true : false
-                    ) ? (
+                    item.product_item_id === editionValue?.id ? true : false
+                  ) ? (
                     <div className="row">
                       <div className="col-xs-12">
                         <button
@@ -1606,6 +1616,59 @@ function DetailsArtwork() {
       </div>
 
       <Footer />
+      <Modal
+        visible={showShare}
+        width={600}
+        footer={[]}>
+        <div className="modal-content">
+          <div className="modal-header">
+            <h5 className="modal-title" id="exampleModalLabel">اشتراک گذاری</h5>
+            <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={() => { setShowShare(false) }}>
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+
+
+          <div className="modal-body">
+            <div className="d-flex">
+              <p>شما می توانید با استفاده از روش های زیر صفحه مورد نطر خود را با دوستان خود به اشتراک بگذارید</p>
+            </div>
+            <div className="row">
+              <div className="col-6 col-sm-3 mt-3 mt-sm-0">
+                <div className="d-flex justify-content-end justify-content-sm-center">
+                  <button aria-label="telegram" className="react-share__ShareButton" style={{ backgroundColor: "transparent", border: "none", padding: "0px", color: "inherit", cursor: "pointer" }}>
+                    <img src={telegram} alt="icon_Telegram" style={{ width: "50px" }} />
+                  </button>
+                </div>
+              </div>
+              <div className="col-6 col-sm-3 mt-3 mt-sm-0">
+                <div className="d-flex justify-content-start justify-content-sm-center">
+                  <a href={`https://api.whatsapp.com/send?text=geoooovujbuj`} aria-label="whatsapp" className="react-share__ShareButton" onClick={() => { console.log(`https://web.whatsapp.com/send?text=`) }} style={{ backgroundColor: "transparent", border: "none", padding: "0px", color: "inherit", cursor: "pointer" }}>
+                    <img src={whatsapp} alt="icon_Whatsapp" style={{ width: "50px" }} />
+                  </a>
+                  {/* <WhatsappShareButton url={"rfhburefhcuehu"} title={"whatsapp"}/> */}
+                </div>
+              </div>
+            </div>
+            <div className="d-flex mt-4">
+              <p className="text-right">یا از طریق دکمه زیر لینک صفحه مورد نظر را کپی کنید</p>
+            </div>
+            <div className="row justify-content-center">
+              <div className="col">
+              </div>
+              <div id="box_copyLink" className="col-3 px-0">
+                <button className="row justify-content-around  align-items-center copy-link-box pt-1">
+                  <img src="/static/media/copy-link-share.c03935bb.svg" alt="icon_CopyLink_share" />
+                  <p className="mb-0">کپی لینک</p>
+                </button>
+              </div>
+              <div className="col">
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </Modal>
     </>
   );
 }
