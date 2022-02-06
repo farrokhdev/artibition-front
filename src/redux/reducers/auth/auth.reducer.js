@@ -8,7 +8,8 @@ const initial_state = {
     is_logged_in: Boolean(Token()),
     profile: null,
     id: null,
-    roles: null
+    roles: null,
+    editingLocation:{}
 }
 
 const authReducer = (state = initial_state, { type, payload }) => {
@@ -82,6 +83,13 @@ const authReducer = (state = initial_state, { type, payload }) => {
 
             }
 
+        
+        case types.EDITING_LOCATION:
+            console.log('editingLocation' , payload);
+            return{
+                ...state,
+                editingLocation : payload
+            }
         default:
             return state;
     }

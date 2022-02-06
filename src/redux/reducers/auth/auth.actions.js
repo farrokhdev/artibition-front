@@ -35,4 +35,11 @@ export const getOtp = (data) => (
         payload : data
     }
 )
+
+export const editingLocation = (data)=>(
+    {
+        type : types.EDITING_LOCATION,
+        payload: data
+    }
+)
  
