@@ -138,7 +138,6 @@ function DetailsArtwork() {
       });
   };
 
-
   useEffect(() => {
     getProductDetail();
     getArtistProduct();
@@ -234,7 +233,12 @@ function DetailsArtwork() {
                           productDetail?.medias[0]?.exact_url
                         }
                         alt="Los Angeles"
-                        style={{ maxHeight: "660px" }}
+                        style={{
+                          maxWidth: "534px",
+                          minWidth: "534px",
+                          maxHeight: "660px",
+                          minHeight: "660px",
+                        }}
                       />
                     </div>
 
@@ -843,12 +847,22 @@ function DetailsArtwork() {
                         className="btn-see"
                       >
                         <span className="view-icon pull-right"></span>
-                        <span>{t('artwork.view-artwork')}</span>
+                        <span>{t("artwork.view-artwork")}</span>
                       </a>
                       <a href="#" className="btn-sale">
-                        {t('artwork.btn-action-to-shop')}
+                        {t("artwork.btn-action-to-shop")}
                       </a>
-                      <a href="#" className="like-icon" onClick={() => follow({content:'product',activity:'like',object_id:item.id})}></a>
+                      <a
+                        href="#"
+                        className="like-icon"
+                        onClick={() =>
+                          follow({
+                            content: "product",
+                            activity: "like",
+                            object_id: item.id,
+                          })
+                        }
+                      ></a>
                     </div>
                   </div>
                   <div className="col-body">
@@ -1003,7 +1017,7 @@ function DetailsArtwork() {
                   <div className="tab-overly">
                     <span className="btn-see hidden-xs hidden-sm">
                       <span className="view-icon pull-right"></span>
-                      <span>{t('artwork.view-artwork')}</span>
+                      <span>{t("artwork.view-artwork")}</span>
                     </span>
                     <button type="button" className="btn-sale">
                       <span className="hidden-xs hidden-sm">درخواست خرید</span>
@@ -1057,7 +1071,7 @@ function DetailsArtwork() {
                   <div className="tab-overly">
                     <span className="btn-see hidden-xs hidden-sm">
                       <span className="view-icon pull-right"></span>
-                      <span>{t('artwork.view-artwork')}</span>
+                      <span>{t("artwork.view-artwork")}</span>
                     </span>
                     <button type="button" className="btn-sale">
                       <span className="hidden-xs hidden-sm">درخواست خرید</span>

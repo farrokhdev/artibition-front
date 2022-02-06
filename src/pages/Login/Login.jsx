@@ -20,82 +20,77 @@ import { useSelector, useDispatch } from "react-redux";
 import { UPDATE_CART } from "../../redux/reducers/cart/cart.types";
 
 function Login(props) {
-
   const { t } = useTranslation();
   const dispatch = useDispatch();
-  const { roles } = useSelector((state) => state.authReducer)
-  const [loading, setLoading] = useState(true)
-  let userRole = "user"
+  const { roles } = useSelector((state) => state.authReducer);
+  const [loading, setLoading] = useState(true);
+  let userRole = "user";
 
   async function getProfile() {
-    await APIService.get(PROFILE, "")
-      .then(res => {
-        if (res.data) {
-          console.log(res.data.data);
-          props.setProfile({ ...props.state, profile: res.data.data, id: res.data.data.id, roles: res.data.data.roles })
+    await APIService.get(PROFILE, "").then((res) => {
+      if (res.data) {
+        console.log(res.data.data);
+        props.setProfile({
+          ...props.state,
+          profile: res.data.data,
+          id: res.data.data.id,
+          roles: res.data.data.roles,
+        });
 
-          if (typeof roles === "string") {
-            userRole = roles
-          } else {
-            const rolesTemp = res.data.data.roles
-
-            if (rolesTemp && rolesTemp.length > 0) {
-              if (rolesTemp.includes('seller')) {
-                userRole = "seller"
-              }
-              if (rolesTemp.includes("artist")) {
-                userRole = "artist"
-              }
-            } else {
-              userRole = 'user'
-            }
-          }
+        if (typeof roles === "string") {
+          userRole = roles;
         } else {
-          message.error(res.response.data.message)
+          const rolesTemp = res.data.data.roles;
+
+          if (rolesTemp && rolesTemp.length > 0) {
+            if (rolesTemp.includes("seller")) {
+              userRole = "seller";
+            }
+            if (rolesTemp.includes("artist")) {
+              userRole = "artist";
+            }
+          } else {
+            userRole = "user";
+          }
         }
-
-      })
+      } else {
+        message.error(res.response.data.message);
+      }
+    });
   }
-
-
 
   const [form] = Form.useForm();
   async function onFinish(values) {
-
-    APIService.post(LOGIN, values)
-      .then(res => {
-        if (res.data) {
-          setToken(res.data.data)
-          APIService.get(CART_ME, {}).then((res) => {
-            if (res.data.code === 200) {
-              dispatch({
-                type: UPDATE_CART,
-                payload: res?.data?.data?.product_items?.length,
-              });
-            }
-          });
-          getProfile().then(res => {
-            message.success("به آرتیبیشن خوش آمدید")
-            console.log(userRole);
-            if (userRole !== "user") {
-              setTimeout(() => {
-                window.location.href = "/panel/dashboard"
-              }, 500);
-            }
-            else {
-              setTimeout(() => {
-                window.location.href = "/panel/profile"
-              }, 500);
-            }
-          })
-        } else {
-          console.log(res.response)
-          message.error(res.response.data.message)
-        }
-
-      })
+    APIService.post(LOGIN, values).then((res) => {
+      if (res.data) {
+        setToken(res.data.data);
+        APIService.get(CART_ME, {}).then((res) => {
+          if (res.data.code === 200) {
+            dispatch({
+              type: UPDATE_CART,
+              payload: res?.data?.data?.product_items?.length,
+            });
+          }
+        });
+        getProfile().then((res) => {
+          message.success("به آرتیبیشن خوش آمدید");
+          console.log(userRole);
+          if (userRole !== "user") {
+            setTimeout(() => {
+              window.location.href = "/panel/dashboard";
+            }, 500);
+          } else {
+            setTimeout(() => {
+              window.location.href = "/panel/profile";
+            }, 500);
+          }
+        });
+      } else {
+        console.log(res.response);
+        message.error(res.response.data.message);
+      }
+    });
   }
-
 
   return (
     <div className="page-fixed">
@@ -172,7 +167,6 @@ function Login(props) {
                 {t("is-registered-question")}
                 <Link to="/auth/signup">{t("signup-text")}</Link>
               </p>
-
             </div>
 
             <div className="col-lg-5   hidden-sm hidden-xs ">
