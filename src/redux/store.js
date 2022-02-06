@@ -4,6 +4,7 @@ import artworkReducer from "./reducers/Artwork/artwork.reducer";
 import exhibitionReducer from "./reducers/Exhibition/exhibition.reducer";
 import galleryReducer from "./reducers/Gallery/gallery.reducer";
 import cartReducer from "./reducers/cart/cart.reducer";
+import filtersReducer from "./reducers/Filters/filters.reducer";
 import thunk from "redux-thunk";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
@@ -23,6 +24,7 @@ const persistedReducer = persistReducer(
     exhibitionReducer,
     galleryReducer,
     cartReducer,
+    filtersReducer
   })
 );
 let store = createStore(
