@@ -20,7 +20,6 @@ function GalleryPanelArtistList() {
     const { id } = useSelector((state) => state.galleryReducer)
 
     useEffect(() => {
-        console.log(id);
         apiServices.get(GALLERY_ARTISTS(id), queryString.stringify(params))
             .then(res => {
                 if (res.data) {

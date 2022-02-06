@@ -28,6 +28,7 @@ const Panelprofile = (props) => {
     const [visibleEditMobile, setvisibleEditMobile] = useState(false);
     const [visibleEditEmail, setvisibleEditEmail] = useState(false);
     const [visibleAddAddress, setVisibleAddAddress] = useState(false);
+    const [locations, setlocations] = useState([]);
 
 
 
@@ -61,7 +62,15 @@ const Panelprofile = (props) => {
         APIService.get(PROFILE, queryString.stringify(params))
             .then(resp => {
                 setLoading(false)
+                console.log("items.resp==>", resp.data.data.locations.map((item) => {
+                    return { value: item?.id }
+
+                }));
                 setItems(resp.data.data)
+                setlocations(resp.data.data.locations.map((item) => {
+                    return { value: item?.id }
+
+                }))
             })
             .catch(err => {
                 setLoading(false)
@@ -87,6 +96,7 @@ const Panelprofile = (props) => {
                 <div className="custom-container " id="main">
                     <BoxesInfo items={items} />
                     <PersonalInfo
+                        profile={items}
                         setVisibleModalEditProfile={setVisibleModalEditProfile}
                         setvisibleEditMobile={setvisibleEditMobile}
                         setvisibleEditEmail={setvisibleEditEmail}
@@ -117,8 +127,9 @@ const Panelprofile = (props) => {
                 visibleEditEmail={visibleEditEmail}
             />
 
-            <ModalAddAddress 
-                items={items}
+            <ModalAddAddress
+                locations={locations}
+                profile={items}
                 getItems={getItems}
                 setVisibleAddAddress={setVisibleAddAddress}
                 visibleAddAddress={visibleAddAddress}

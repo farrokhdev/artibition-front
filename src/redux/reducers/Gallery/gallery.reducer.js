@@ -4,7 +4,9 @@ const initial_state = {
     is_send_invitation: false,
     id: "",
     selected_artwork_redux: [],
-    galleryProfile: null
+    galleryProfile: null,
+    editGalleryMode: false,
+    editExhibitionMode: false
 }
 
 const galleryReducer = (state = initial_state, { type, payload }) => {
@@ -21,6 +23,18 @@ const galleryReducer = (state = initial_state, { type, payload }) => {
             return {
                 ...state,
                 galleryProfile: payload,
+            }
+        case types.EDIT_GALLERY_MODE:
+            console.log("payload=>", payload);
+            return {
+                ...state,
+                editGalleryMode: payload,
+            }
+        case types.EDIT_EXHIBITION_MODE:
+            console.log("payload=>", payload);
+            return {
+                ...state,
+                editExhibitionMode: payload,
             }
         case types.SELECTED_ARTWORKS:
             console.log("payload=>", payload);

@@ -31,7 +31,6 @@ function SidebarPanel(props) {
     }
 
     return (
-
         <div className="sidebar active " id="mySidebar">
             <div className="inner-sidebar" data-spy="affix" data-offset-top="205">
                 <div className="sidebar-info mb-5">

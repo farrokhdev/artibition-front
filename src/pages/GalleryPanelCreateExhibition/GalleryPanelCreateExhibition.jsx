@@ -96,7 +96,7 @@ function GalleryPanelCreateExhibition() {
                     }
                     console.log(payload);
                     dispatch(exhibitionForm(payload))
-                    navigate("/gallery-panel/upload-exhibition-artwotk")
+                    navigate("/panel/upload-exhibition-artwotk")
                 } else {
                     message.error({
                         content: "حداقل باید یک رشته هنری انتخاب کنید",

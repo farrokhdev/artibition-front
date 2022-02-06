@@ -81,6 +81,7 @@ export const CART_ME_CHECKOUT = `${BASE_URL}/carts/checkout/`;
 export const CART_ME_CLEAR_CART = `${BASE_URL}/carts/clear/`;
 export const ORDER = (id) => `/orders/${id}/`;
 export const ADDRESSES = "/account/location/";
+export const EDIT_ADDRESSES = (id) => `/account/location/${id}/`
 export const COMPLETE_ORDER = (id) => `/orders/${id}/complete_order/`;
 export const APPLY_DISCOUNT = (id) =>
   `${BASE_URL}/orders/${id}/apply_discount/`;

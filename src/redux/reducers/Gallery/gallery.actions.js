@@ -21,3 +21,17 @@ export const selectedArtworkRedux = (data) => (
         payload: data
     }
 )
+
+export const editGalleryMode = (data) => (
+    {
+        type: types.EDIT_GALLERY_MODE ,
+        payload: data
+    }
+)
+
+export const editExhibitionMode = (data) => (
+    {
+        type: types.EDIT_EXHIBITION_MODE ,
+        payload: data
+    }
+)
