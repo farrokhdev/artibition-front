@@ -4,12 +4,13 @@ import { t } from 'i18next';
 import edit_name from '../../assets/img/edit_name.svg';
 import { connect } from "react-redux";
 import { useTranslation } from "react-i18next";
-
+import { useDispatch } from 'react-redux';
+import { editingLocation } from '../../redux/reducers/auth/auth.actions';
 function PersonalInfo(props) {
     const { t, i18n } = useTranslation();
     console.log(props.auth.profile)
-
-    const { setVisibleModalEditProfile, setvisibleEditMobile, setvisibleEditEmail,setVisibleAddAddress } = props;
+    const dispach = useDispatch()
+    const { setVisibleModalEditProfile, setvisibleEditMobile, setvisibleEditEmail, setVisibleAddAddress, profile } = props;
     const [showModal, setshowModal] = useState(false);
 
     const handleShowModal = () => {
@@ -24,7 +25,7 @@ function PersonalInfo(props) {
         setvisibleEditEmail(true);
     }
 
-    const handleAddAddress = ()=>{
+    const handleAddAddress = () => {
         setVisibleAddAddress(true)
     }
     return (
@@ -117,23 +118,29 @@ function PersonalInfo(props) {
                     </div>
                 </div>
                 <div className="sec2-addresses">
-                    {props?.auth?.profile?.locations?.map((item, key) =>
 
-                        <label key={key} className="d-flex container-radio  justify-content-between text-dir box-dir-reverse">
-                            {i18n.language === 'fa-IR' ?
-                                item?.translations?.fa?.city + "،" + item?.translations?.fa?.address :
-                                item?.translations?.en?.city + "،" + item?.translations?.en?.address
-                            }
 
-                            <span className="default">{t('content-panel-profile.personal-info.address.default')}</span>
-                            <input type="radio" checked="checked" name="radio" />
-                            <span className="checkmark-radio"></span>
-                            <a href="#" className="edit-address">
-                                <img src={edit_name} width="32" height="32" className="text-dir" alt="" />
-                            </a>
-                        </label>
+                    {profile?.locations?.map((item, key) => {
+                        return (
 
-                    )}
+                            <label key={key} className="d-flex container-radio  justify-content-between text-dir box-dir-reverse">
+                                {/* {dispach(locationId(item?.id))} */}
+                                {i18n.language === 'fa-IR' ?
+                                    item?.translations?.fa?.city + "،" + item?.translations?.fa?.address :
+                                    item?.translations?.en?.city + "،" + item?.translations?.en?.address
+                                }
+                                {item?.is_default ?
+                                    <span className="default">{t('content-panel-profile.personal-info.address.default')}</span>
+                                    : ""}
+
+                                <input type="radio" checked="checked" name="radio" />
+                                <span className="checkmark-radio"></span>
+                                <a href="#" className="edit-address">
+                                    <img src={edit_name} onClick={() => { handleAddAddress(); dispach(editingLocation(item)) }} width="32" height="32" className="text-dir" alt="" />
+                                </a>
+                            </label>
+                        )
+                    })}
                 </div>
             </div>
         </div>
