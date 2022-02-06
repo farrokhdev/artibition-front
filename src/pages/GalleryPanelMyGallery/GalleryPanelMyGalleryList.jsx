@@ -12,7 +12,7 @@ import { GALLERY_LIST } from "../../utils";
 import { message } from "antd";
 import queryString from "query-string";
 import moment from "jalali-moment";
-import { editGalleryMode, galleryId, galleryProfile } from "../../redux/reducers/Gallery/gallery.actions";
+import { editGalleryModeFunc, galleryId, galleryProfile } from "../../redux/reducers/Gallery/gallery.actions";
 import { useNavigate } from 'react-router-dom'
 import { setProfile } from "../../redux/reducers/auth/auth.actions";
 
@@ -38,7 +38,7 @@ function GalleryPanelMyGalleryList() {
 
     const goToEditGallery = (gallery) => {
         dispatch(galleryId(gallery.id))
-        dispatch(editGalleryMode(true))
+        dispatch(editGalleryModeFunc(true))
         dispatch(setProfile({ roles: "gallery" }))
         navigate("/panel/gallery-info")
     }

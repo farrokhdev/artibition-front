@@ -5,7 +5,7 @@ import whitePlus from "../../assets/img/plus-white.png"
 import { Link } from "react-router-dom";
 import { Button, Checkbox, Form, Input, message, Modal } from "antd";
 import apiServices from "../../utils/api.services";
-import { ARTIST, ARTIST_BY_GALLERY, GALLERY_ARTISTS } from "../../utils";
+import { ADD_ARTIST_TO_GALLERY, ARTIST, ARTIST_BY_GALLERY, GALLERY_ARTISTS } from "../../utils";
 import queryString from "query-string";
 import OneUpload from "../../components/OneUpload/OneUpload";
 import classnames from 'classnames';
@@ -28,17 +28,32 @@ function CreateArtist() {
     const [form] = Form.useForm()
     const { TextArea } = Input
     const { id } = useSelector((state) => state.galleryReducer)
-    let selectedArtist = []
+    let selectedArtist = {
+        artists_id_list: []
+    }
 
 
     const handleChange = (e) => {
         if (e.target.checked) {
-            selectedArtist.push(e.target.value)
+            selectedArtist.artists_id_list.push(e.target.value)
         } else {
-            const index = selectedArtist.indexOf(e.target.value)
-            selectedArtist.splice(index, 1)
+            const index = selectedArtist.artists_id_list.indexOf(e.target.value)
+            selectedArtist.artists_id_list.splice(index, 1)
         }
+        console.log(selectedArtist.artists_id_list);
+    }
+    const confirmAddArtist = () => {
         console.log(selectedArtist);
+        apiServices.post(ADD_ARTIST_TO_GALLERY(id), selectedArtist)
+
+            .then(res => {
+                if (res.data) {
+                    console.log(res.data.data);
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
 
     useEffect(() => {
@@ -183,7 +198,7 @@ function CreateArtist() {
                             return (
                                 <div className="d-flex" style={{ padding: "20px", margin: "20px 0" }}>
                                     <div className="d-flex" style={{ width: "40px", height: "50px", padding: "10px", alignItems: "center", justifyContent: "center" }}>
-                                        <Checkbox value={artist.id} defaultChecked={!galleryArtists.some(e => e.id === artist.id)} disabled={galleryArtists.some(e => e.id === artist.id)} onChange={(e) => { handleChange(e) }} />
+                                        <Checkbox value={artist.id} defaultChecked={galleryArtists.some(e => e.id === artist.id)} disabled={galleryArtists.some(e => e.id === artist.id)} onChange={(e) => { handleChange(e) }} />
                                     </div>
                                     <div className="d-flex" style={{ width: "100px", height: "50px", padding: "10px", alignItems: "center", justifyContent: "center" }}>
                                         <img src={Aydin_Aghdashloo} style={{ width: "70px" }} />
@@ -196,7 +211,7 @@ function CreateArtist() {
                         })}
 
                         <div style={{ position: "sticky", bottom: "0px", backgroundColor: "white", padding: "20px 0" }}>
-                            <Button className="btn btn-black" style={{ padding: "0 40px", height: "40px" }}>تایید</Button>
+                            <Button className="btn btn-black" style={{ padding: "0 40px", height: "40px" }} onClick={() => { confirmAddArtist() }}>تایید</Button>
                         </div>
 
                     </div>

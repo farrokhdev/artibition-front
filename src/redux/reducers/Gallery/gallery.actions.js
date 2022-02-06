@@ -8,6 +8,13 @@ export const galleryId = (data) => (
     }
 )
 
+export const exhibitionId = (data) => (
+    {
+        type: types.EXHIBITION_ID,
+        payload: data
+    }
+)
+
 export const galleryProfile = (data) => (
     {
         type: types.GALLERY_PROFILE,
@@ -17,21 +24,21 @@ export const galleryProfile = (data) => (
 
 export const selectedArtworkRedux = (data) => (
     {
-        type: types.SELECTED_ARTWORKS ,
+        type: types.SELECTED_ARTWORKS,
         payload: data
     }
 )
 
-export const editGalleryMode = (data) => (
+export const editGalleryModeFunc = (data) => (
     {
-        type: types.EDIT_GALLERY_MODE ,
+        type: types.EDIT_GALLERY_MODE,
         payload: data
     }
 )
 
-export const editExhibitionMode = (data) => (
+export const editExhibitionModeFunc = (data) => (
     {
-        type: types.EDIT_EXHIBITION_MODE ,
+        type: types.EDIT_EXHIBITION_MODE,
         payload: data
     }
 )
