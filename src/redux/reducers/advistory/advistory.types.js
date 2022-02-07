@@ -1,0 +1,4 @@
+export default {
+    ADVISTORY_FORM : "ADVISTORY_FORM",
+    CHOOSE_PRODUCT : "CHOOSE_PRODUCT"
+}
