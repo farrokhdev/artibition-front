@@ -1,4 +1,7 @@
-// export const BASE_URL = "http://192.168.0.23:8808/api/v1";
+
+// export const BASE_URL = " http://192.168.0.23:8808/api/v1";
+// export const BASE_URL = " http://192.168.0.113:8000/api/v1";
+// export const BASE_URL = " http://192.168.0.145:8000/api/v1";
 
 export const BASE_URL = "https://api.artibition.gallery/api/v1";
 
@@ -65,7 +68,7 @@ export const ARTWORK_BY_GALLERY = (gallereyId, artistId) => {
 };
 export const MESSAGES_INBOX = "/message/inbox/";
 
-
+export const ADVISOR = "/advisor/advisor/"
 export const ARTISTS = '/artist/'
 export const ORDER_BUYER_ME = '/orders/bids/buyers/me/';
 export const ORDER_BUYER_ME_ID = id => `/orders/bids/buyers/me/${id}/`;
