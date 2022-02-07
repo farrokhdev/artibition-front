@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Menu from "../../components/Menu/Menu";
-import { Breadcrumb, message, Tabs } from "antd";
+import { Breadcrumb, message, Modal, Tabs } from "antd";
 import { t } from "i18next";
 
 import artwork1 from "../../assets/img/artworks/artwork-1.jpg";
@@ -26,9 +26,14 @@ import mainpage_3 from "../../assets/img/mainpage/3.jpg";
 import hezvtaokhv840 from "../../assets/img/mainpage/hezvtaokhv840.jpg";
 import ayvglbkdfo3 from "../../assets/img/mainpage/ayvglbkdfo@3x.jpg";
 import edit_icon from "../../assets/img/edit_name.svg";
+import telegram from "../../assets/img/telegram.svg";
+import whatsapp from "../../assets/img/whatsapp.svg";
+import copy_icon from "../../assets/img/copy-share.png";
 import ModalEditOffer from "./ModalEditOffer";
 import ModalSimilarArtworks from "./ModalSimilarArtworks";
 import ModalBidding from "./ModalBidding";
+import ModalSendMessage from '../ProfileArtist/ModalSendMessage'
+import { TelegramShareButton, WhatsappShareButton } from "react-share";
 import {
   ARTIST_PRODUCTS,
   CART_ME_ADD_ITEM,
@@ -69,6 +74,8 @@ function DetailsArtwork() {
   const [productDetail, setProductDetail] = useState();
   const [editionValue, setEditionValue] = useState({});
   const [artistProduct, setArtistProduct] = useState();
+  const [showShare, setShowShare] = useState(false)
+  const [showSendMessage, setShowSendMessage] = useState(false)
   const [offerValue, setOfferValue] = useState();
   const [toggle, setToggle] = useState(false);
   const [params, setParams] = useState({
@@ -93,6 +100,14 @@ function DetailsArtwork() {
   const handleShowSimilarArtworks = () => {
     setVisibleSimilarArtworksModal(true);
   };
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(window.location.href);
+    message.success({
+      content: "با موفقیت کپی شد",
+      style: { marginTop: "110px" }
+    })
+  }
 
   const { TabPane } = Tabs;
 
@@ -182,6 +197,8 @@ function DetailsArtwork() {
         console.log(err.response.data.message);
       });
   };
+
+
   return (
     <>
       <div className="container mx-auto px-0 w-100">
@@ -271,9 +288,12 @@ function DetailsArtwork() {
                       ))}
                   </ol>
                   <div className=" artwork-options pull-dir ">
-                    <div className="share-option ">
+                    <button className="share-option" onClick={() => {
+                      console.log("pfpjkweifjewhu hewuh dfuiewhfiuhebbcieh fehwh8hewf iefdheiao f buwefnhcoiwehf i")
+                      setShowShare(true)
+                    }}>
                       <img src={share_icon} height="31" width="31" alt="" />
-                    </div>
+                    </button>
                     <div
                       className="like-option"
                       onClick={() =>
@@ -341,7 +361,7 @@ function DetailsArtwork() {
                         </button>
                       </div>
                       <div className="col-sm-6">
-                        <button type="button" className="btn-askme pull-left">
+                        <button type="button" className="btn-askme pull-left" onClick={() => { setShowSendMessage(true) }}>
                           <img
                             src={ask_me_icon}
                             width="24"
@@ -476,8 +496,8 @@ function DetailsArtwork() {
                     <span className="orangecolor">
                       {i18n.language === "fa_IR"
                         ? momentJalaali(productDetail?.creation_date)
-                            .locale("fa")
-                            .fromNow()
+                          .locale("fa")
+                          .fromNow()
                         : moment(productDetail?.creation_date).fromNow()}{" "}
                       این اثر قیمت گذاری شده است
                     </span>
@@ -543,11 +563,11 @@ function DetailsArtwork() {
                             <strong className="persian-num px-1">
                               {i18n.language === "fa-IR"
                                 ? numDiscriminant(item.toman_price) +
-                                  t("toman") +
-                                  " "
+                                t("toman") +
+                                " "
                                 : numDiscriminant(item.dollar_price) +
-                                  t("toman") +
-                                  " "}
+                                t("toman") +
+                                " "}
                             </strong>
                             {t("artwork.bid_artwork.text2")}
                             {/* {t("toman")}   */}
@@ -618,8 +638,8 @@ function DetailsArtwork() {
                       </div>
                     </div>
                   ) : offerValue?.results?.map((item) =>
-                      item.product_item_id === editionValue?.id ? true : false
-                    ) ? (
+                    item.product_item_id === editionValue?.id ? true : false
+                  ) ? (
                     <div className="row">
                       <div className="col-xs-12">
                         <button
@@ -1603,9 +1623,61 @@ function DetailsArtwork() {
           productDetail={productDetail}
           artist_id={artist_id}
         />
+        <ModalSendMessage
+          visibleShowSendMessage={showSendMessage}
+          setVisibleShowSendMessage={setShowSendMessage}
+        />
       </div>
 
       <Footer />
+      <Modal
+        visible={showShare}
+        width={600}
+        footer={[]}>
+        <div className="modal-content">
+          <div className="modal-header">
+            <h5 className="modal-title" id="exampleModalLabel">اشتراک گذاری</h5>
+            <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={() => { setShowShare(false) }}>
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+
+
+          <div className="modal-body">
+            <div className="d-flex">
+              <p style={{ fontSize: "18px", marginBottom: "30px", textAlign: "center" }}>شما می توانید با استفاده از روش های زیر صفحه مورد نطر خود را با دوستان خود به اشتراک بگذارید</p>
+            </div>
+            <div className="row" style={{ marginBottom: "50px", justifyContent: "center" }}>
+              <div className="col-6 col-sm-3 mt-3 mt-sm-0">
+                <div className="d-flex justify-content-end justify-content-sm-center">
+                  <TelegramShareButton url={window.location.href}>
+                    <img src={telegram} alt="icon_Telegram" style={{ width: "50px" }} />
+                  </TelegramShareButton>
+                </div>
+              </div>
+              <div className="col-6 col-sm-3 mt-3 mt-sm-0">
+                <div className="d-flex justify-content-start justify-content-sm-center">
+                  <WhatsappShareButton url={window.location.href}>
+                    <img src={whatsapp} alt="icon_Whatsapp" style={{ width: "50px" }} />
+                  </WhatsappShareButton>
+                </div>
+              </div>
+            </div>
+            <div className="mt-4">
+              <p style={{ fontSize: "18px", marginBottom: "20px", textAlign: "center" }}>یا از طریق دکمه زیر لینک صفحه مورد نظر را کپی کنید</p>
+            </div>
+            <div className="row justify-content-center">
+              <div id="box_copyLink" className="col-3 px-0" style={{ textAlign: "center" }}>
+                <button onClick={() => { copyToClipboard() }} style={{ padding: "15px 15px !important", border: "1px solid black", borderRadius: "5px", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto" }} >
+                  <p className="mb-0" style={{ fontSize: "18px", display: "inline-block" }}>کپی لینک</p>
+                  <img src={copy_icon} alt="icon_CopyLink_share" style={{ width: "20px", display: "inline-block", margin: "0 7px" }} />
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </Modal>
     </>
   );
 }

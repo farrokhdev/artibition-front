@@ -12,19 +12,22 @@ import Artists from "./Artists";
 import AllProducts from "./AllProducts";
 import Slider from "./Slider";
 import Menu from "./Menu";
-import { Modal } from "antd";
+import { message, Modal } from "antd";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 
 
 function Home() {
-  const {t, i18n} = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const [showPromotion, setShowPromotion] = useState(false)
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(document.getElementById("code").innerHTML);
-    alert("successfully copied!")
+    message.success({
+      content: "با موفقیت کپی شد",
+      style: { marginTop: "110px" }
+    })
   }
 
   return (
