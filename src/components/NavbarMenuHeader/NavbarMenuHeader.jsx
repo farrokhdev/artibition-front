@@ -4,8 +4,9 @@ import vitrin from '../../assets/img/mainpage/menu-vitrin.jpg';
 import bohmer from '../../assets/img/mainpage/rene-bohmer-YeUVDKZWSZ4-unsplash@3x.jpg';
 import gift from '../../assets/img/gift.svg';
 import { t } from 'i18next';
-import { Tabs, Radio, Space } from 'antd';
-import { useNavigate } from 'react-router-dom';
+import { Tabs, Radio, Space, message } from 'antd';
+import { useNavigate , Link} from 'react-router-dom';
+import {isLogin} from "../../utils/utils";
 
 const { TabPane } = Tabs;
 export default function NavbarMenuHeader(props) {
@@ -253,8 +254,14 @@ export default function NavbarMenuHeader(props) {
                 <li className="dropdown mega-dropdown">
                     <a className='dropdown-toggle' href="#">{t("nav-menu-blog")}</a>
                 </li>
-                <li className="dropdown mega-dropdown" onClick={() => navigate('/site/advisory')}>
-                    <a href="#" className="dropdown-toggle sales">{t('nav-menu-sales-advisor')}</a>
+                <li className="dropdown mega-dropdown"
+                //  onClick={() => navigate('/site/advisory')}
+                >
+                    {isLogin() ?
+                    <Link to="/site/advisory" className="dropdown-toggle sales">{t('nav-menu-sales-advisor')}</Link>
+                    :
+                    <Link to="/" className="dropdown-toggle sales" onClick={()=>{message.error("لطفا ابتدا وارد حساب کاربری شوید")}}>{t('nav-menu-sales-advisor')}</Link>
+                }
                 </li>
             
              

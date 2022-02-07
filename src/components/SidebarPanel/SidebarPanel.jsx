@@ -100,6 +100,8 @@ function SidebarPanel(props) {
                                     className="sidebar-nav-margin">{t("drawer-panel.nav-my-albums")}</span></Link></li>
                                 <li className="sidebar-icon my-4" id="liked"><Link to="/panel/favorites"><span
                                     className="sidebar-nav-margin">{t("drawer-panel.nav-favorits")}</span></Link></li>
+                                <li className="sidebar-icon my-4 " id="messages"><Link to="/panel/messages"><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-messages")}</span></Link></li>
                                 <li className="sidebar-icon my-4" id="content"><Link to="/panel/contents"><span
                                     className="sidebar-nav-margin">محتوا</span></Link></li>
                                 <li className="sidebar-icon my-4" id="my-albums"><Link to="/panel/my-collections"><span

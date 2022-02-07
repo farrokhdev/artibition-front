@@ -1,6 +1,7 @@
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import authReducer from "../redux/reducers/auth/auth.reducer";
 import artworkReducer from "./reducers/Artwork/artwork.reducer";
+import advistoryReducer from "./reducers/advistory/advistory.reducer";
 import exhibitionReducer from "./reducers/Exhibition/exhibition.reducer";
 import galleryReducer from "./reducers/Gallery/gallery.reducer";
 import cartReducer from "./reducers/cart/cart.reducer";
@@ -8,6 +9,7 @@ import thunk from "redux-thunk";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { composeWithDevTools } from "redux-devtools-extension";
+
 
 const middleware = [thunk];
 const persistConfig = {
@@ -23,6 +25,7 @@ const persistedReducer = persistReducer(
     exhibitionReducer,
     galleryReducer,
     cartReducer,
+    advistoryReducer,
   })
 );
 let store = createStore(
