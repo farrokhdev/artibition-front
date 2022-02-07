@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { t } from 'i18next';
+import i18next, { t } from 'i18next';
 
 import edit_name from '../../assets/img/edit_name.svg';
 import { connect } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from 'react-redux';
 import { editingLocation } from '../../redux/reducers/auth/auth.actions';
+import moment from 'jalali-moment';
 function PersonalInfo(props) {
     const { t, i18n } = useTranslation();
     console.log(props.auth.profile)
@@ -97,7 +98,8 @@ function PersonalInfo(props) {
                     <div className="col-sm-6">
                         <div className="form-group text-dir">
                             <span className="lable-panel">{t('content-panel-profile.personal-info.date')}</span>
-                            <span className="input-panel persian-num">{props?.auth?.profile?.birth_date}</span>
+                            <span className="input-panel persian-num">{moment(props?.auth?.profile?.birth_date).locale(i18next.language === 'fa-IR' ? 'fa' : 'en').format('YYYY/MM/DD')}</span>
+                            {/* {moment(order?.creation_date).locale('fa').format('YYYY/MM/DD')} */}
                         </div>
                     </div>
                     <div className="col-sm-6">

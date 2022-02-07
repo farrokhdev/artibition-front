@@ -52,8 +52,14 @@ function ArtworksPage() {
   const [length_min, setLength_min] = useState();
   const [length_max, setLength_max] = useState();
   const [productList, setProductList] = useState();
+  const [selectedOption, setSelectedOption] = useState("popularity");
+
   const [params, setParams] = useState({
     status: "active",
+    order: selectedOption,
+    page: 1,
+  });
+  const [categorieParams, setCategorieParams] = useState({
     page: 1,
   });
   const [materialParams, setMaterialParams] = useState({
@@ -137,7 +143,7 @@ function ArtworksPage() {
   };
   const getProductCategories = () => {
     apiServices
-      .get(PRODUCTS_CATEGORIES)
+      .get(PRODUCTS_CATEGORIES, queryString.stringify(categorieParams))
       .then((res) => {
         if (res.data) {
           setCategories(res.data.data);
@@ -147,6 +153,7 @@ function ArtworksPage() {
         console.log("err", err);
       });
   };
+
   const getProductTechniques = () => {
     apiServices
       .get(
@@ -166,6 +173,7 @@ function ArtworksPage() {
         console.log("err", err);
       });
   };
+
   const getProductMaterials = () => {
     apiServices
       .get(
@@ -209,7 +217,7 @@ function ArtworksPage() {
     getProductTechniques();
     getProductMaterials();
     getProductSizes();
-  }, [params, materialParams, techniqueParams]);
+  }, [params, materialParams, techniqueParams, selectedOption]);
 
   return (
     <>
@@ -269,16 +277,27 @@ function ArtworksPage() {
               <div className="col">
                 <div className="d-flex justify-custom">
                   <div className="form-group pull-left">
-                    <select className="form-control" id="sel1">
-                      <option className="text-dir">
+                    <select
+                      className="form-control"
+                      id="sel1"
+                      onChange={(e) => {
+                        setParams((state) => ({
+                          ...state,
+                          order: e.target.value,
+                        }));
+                        setSelectedOption(e.target.value);
+                      }}
+                      value={selectedOption}
+                    >
+                      <option className="text-dir" value="popularity">
                         {t("artworkList.filter.last_update")}
                       </option>
-                      <option className="text-dir">
+                      <option className="text-dir" value="price">
                         {t("artworkList.filter.sell")}
                       </option>
-                      <option className="text-dir">
+                      {/* <option className="text-dir">
                         {t("artworkList.filter.visite")}
-                      </option>
+                      </option> */}
                     </select>
                   </div>
                 </div>
@@ -350,7 +369,7 @@ function ArtworksPage() {
                             <span>{t("artworkList.filter.artField.all")}</span>
                             <span className="checkmark"></span>
                           </label>
-                          {console.log("params", categoriesId)}
+                          {/* {console.log("params", categoriesId)} */}
                           {categories?.results?.map((item, index) => (
                             <label className="lable-checkbox text-dir">
                               <input

@@ -32,6 +32,14 @@ function ArtistsPage(props) {
 
   const [search, setSearch] = useState();
   const [artistList, setArtistList] = useState();
+  const [selectedOption, setSelectedOption] = useState("popularity");
+  const [artistIsOfficial, setArtistIsOfficial] = useState({
+    is_official: false,
+  });
+  console.log(
+    "🚀 ~ file: ArtistsPage.jsx ~ line 37 ~ ArtistsPage ~ artistIsOfficial",
+    artistIsOfficial
+  );
   const [params, setParams] = useState({
     status: "active",
     page: 1,
@@ -91,6 +99,13 @@ function ArtistsPage(props) {
     getArtistList();
     getProductCategories();
   }, [params]);
+
+  useEffect(() => {
+    setParams((state) => ({
+      ...state,
+      is_official: artistIsOfficial?.is_official,
+    }));
+  }, [artistIsOfficial]);
 
   console.log("props", props);
   return (
@@ -152,16 +167,27 @@ function ArtistsPage(props) {
               <div className="col">
                 <div className="d-flex justify-custom">
                   <div className="form-group pull-left">
-                    <select className="form-control" id="sel1">
-                      <option className="text-dir">
+                    <select
+                      className="form-control"
+                      id="sel1"
+                      onChange={(e) => {
+                        setParams((state) => ({
+                          ...state,
+                          order: e.target.value,
+                        }));
+                        setSelectedOption(e.target.value);
+                      }}
+                      value={selectedOption}
+                    >
+                      <option className="text-dir" value="popularity">
                         {t("artworkList.filter.last_update")}
                       </option>
-                      <option className="text-dir">
+                      <option className="text-dir" value="price">
                         {t("artworkList.filter.sell")}
                       </option>
-                      <option className="text-dir">
+                      {/* <option className="text-dir">
                         {t("artworkList.filter.visite")}
-                      </option>
+                      </option> */}
                     </select>
                   </div>
                 </div>
@@ -214,52 +240,6 @@ function ArtistsPage(props) {
                               <span className="checkmark"></span>
                             </label>
                           ))}
-                          {/* <label className="lable-checkbox text-dir">
-                            <input type="checkbox" value="" />
-                            <span>{t("artists.filter.expert.painting")}</span>
-                            <span className="checkmark"></span>
-                          </label>
-                          <label className="lable-checkbox text-dir">
-                            <input type="checkbox" value="" />
-                            <span>
-                              {t("artists.filter.expert.photography")}
-                            </span>
-                            <span className="checkmark"></span>
-                          </label>
-                          <label className="lable-checkbox text-dir">
-                            <input type="checkbox" value="" />
-                            <span>{t("artists.filter.expert.sculpture")}</span>
-                            <span className="checkmark"></span>
-                          </label>
-                          <label className="lable-checkbox text-dir">
-                            <input type="checkbox" value="" />
-                            <span>{t("artists.filter.expert.calligram")}</span>
-                            <span className="checkmark"></span>
-                          </label>
-                          <label className="lable-checkbox text-dir">
-                            <input type="checkbox" value="" />
-                            <span>
-                              {t("artists.filter.expert.calligraphy")}
-                            </span>
-                            <span className="checkmark"></span>
-                          </label>
-                          <label className="lable-checkbox text-dir">
-                            <input type="checkbox" value="" />
-                            <span>
-                              {t("artists.filter.expert.printmaking")}
-                            </span>
-                            <span className="checkmark"></span>
-                          </label>
-                          <label className="lable-checkbox text-dir">
-                            <input type="checkbox" value="" />
-                            <span>{t("artists.filter.expert.graphic")}</span>
-                            <span className="checkmark"></span>
-                          </label>
-                          <label className="lable-checkbox text-dir">
-                            <input type="checkbox" value="" />
-                            <span>{t("artists.filter.expert.drawing")}</span>
-                            <span className="checkmark"></span>
-                          </label> */}
                         </div>
                         <div className="d-flex justify-custom">
                           <button
@@ -294,7 +274,17 @@ function ArtistsPage(props) {
                             <span className="checkmark"></span>
                           </label>
                           <label className="lable-checkbox text-dir">
-                            <input type="checkbox" value="" />
+                            <input
+                              type="checkbox"
+                              // value={false}
+                              name="is_official"
+                              onClick={(e) => {
+                                setArtistIsOfficial({
+                                  ...categoriesId,
+                                  [e.target.name]: e.target.checked,
+                                });
+                              }}
+                            />
                             <span>{t("artists.filter.artist.special")}</span>
                             <span className="checkmark"></span>
                             <img

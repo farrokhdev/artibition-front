@@ -54,6 +54,7 @@ const authReducer = (state = initial_state, { type, payload }) => {
             return {
                 ...state,
                 profile: null,
+                is_logged_in: false,
                 roles: null
             }
 
@@ -63,6 +64,7 @@ const authReducer = (state = initial_state, { type, payload }) => {
                 return {
                     ...state,
                     profile: payload?.profile,
+                    is_logged_in: true,
                     id: payload?.id,
                     roles: payload?.roles
                 }
