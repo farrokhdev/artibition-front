@@ -5,6 +5,7 @@ import close_icon from '../../assets/img/clear.svg';
 import { Form, Input} from "antd";
 import ver_code from '../../assets/img/ver_code.svg';
 import { t } from 'i18next';
+import { useEffect } from 'react';
 
 function ModalSendMessage(props) {
 
@@ -18,6 +19,8 @@ function ModalSendMessage(props) {
     const onFinish = (values) =>{
 
     }
+
+    
 
     return (
         <React.Fragment>

@@ -54,6 +54,12 @@ function PanelArtManagement() {
         })
     }
 
+    // useEffect(() => {
+    //     for (let index = 0; index < 100; index++) {
+    //         getProductList()
+    //     }
+    // }, [])
+
     useEffect(() => {
         getProductList()
     }, [params])
@@ -79,11 +85,8 @@ function PanelArtManagement() {
                             <div className="col ">
                                 <div className="d-flex justify-custom">
                                     <Link
-
                                         to={"/panel/add-artwork"}
-                                         state={{ from: "/panel/art-management" }}
-                                        
-                                        // to="/panel/add-artwork" 
+                                        state={{ from: "/panel/art-management" }}
                                         type="button" className="btn-outline-blue">
                                         <img src={add_icon} width="12" height="12" alt="" className="mx-2" />
                                         <span>{t("content-panel-manage-artworks.btn")}</span>

@@ -81,7 +81,7 @@ function PanelMyCollections() {
 
 
                     <div className="row">
-                        <div className="col-lg-8">
+                        <div className="col-lg-12">
                             <div className="box box-2">
                                 <div className="sec4">
                                     <div className="public-header">
@@ -138,7 +138,7 @@ function PanelMyCollections() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-4">
+                        {/* <div className="col-lg-4">
                             <div className=" box box-3">
                                 <div className="d-flex box-dir-reverse public-header">
                                     <div className="col-9">
@@ -175,7 +175,7 @@ function PanelMyCollections() {
                                     </button>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                     <Suggestions />
                     <RecentlyVeiws />

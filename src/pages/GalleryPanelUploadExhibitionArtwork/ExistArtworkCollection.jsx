@@ -69,6 +69,7 @@ function ExistArtworkCollection({ artistID, selectedArtwork, setSelectedArtwork 
                 }
             }
         }
+        console.log(temp);
         setSelectedArtwork(temp)
     }
 
