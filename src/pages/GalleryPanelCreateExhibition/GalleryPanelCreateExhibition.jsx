@@ -53,6 +53,7 @@ function GalleryPanelCreateExhibition() {
         if (editExhibitionMode || posters.length > 0) {
             if (form.type) {
                 if (form.category && form.category.length > 0) {
+                    console.log(form);
                     const payload = {
                         "translations": {
                             "en": {
@@ -69,10 +70,10 @@ function GalleryPanelCreateExhibition() {
                         "type": form.type,
                         "category": form.category,
                         "product_status": "sale",
-                        "virtual_start_date": `${form.virtual_start_date.format("YYYY-MM-DD")}${form.virtual_start_time.toISOString().slice(10)}`,
-                        "virtual_end_date": `${form.virtual_end_date.format("YYYY-MM-DD")}${form.virtual_end_time.toISOString().slice(10)}`,
-                        "real_start_date": `${form.real_start_date.format("YYYY-MM-DD")}${form.real_start_time.toISOString().slice(10)}`,
-                        "real_end_date": `${form.real_end_date.format("YYYY-MM-DD")}${form.real_end_time.toISOString().slice(10)}`,
+                        "virtual_start_date": `${form.virtual_start_date?.format("YYYY-MM-DD")}${form.virtual_start_time?.toISOString().slice(10)}`,
+                        "virtual_end_date": `${form.virtual_end_date?.format("YYYY-MM-DD")}${form.virtual_end_time?.toISOString().slice(10)}`,
+                        "real_start_date": `${form.real_start_date?.format("YYYY-MM-DD")}${form.real_start_time?.toISOString().slice(10)}`,
+                        "real_end_date": `${form.real_end_date?.format("YYYY-MM-DD")}${form.real_end_time?.toISOString().slice(10)}`,
                         "address": [
                             {
                                 "point": point,

@@ -17,6 +17,7 @@ function PanelArtManagement() {
     const [loading, setLoading] = useState(false);
     const [productList, setProductList] = useState([]);
     const [suggestionsCount, setSuggestionsCount] = useState("");
+    const [test, setTest] = useState(false)
     const [params, setParams] = useState({
         page: 1,
         status: "",
@@ -54,15 +55,19 @@ function PanelArtManagement() {
         })
     }
 
-    // useEffect(() => {
-    //     for (let index = 0; index < 100; index++) {
-    //         getProductList()
-    //     }
-    // }, [])
-
     useEffect(() => {
         getProductList()
     }, [params])
+
+
+
+
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setTest(!test)
+    //     }, 500)
+    //     apiServices.get("/panel/users/", "")
+    // })
 
     return (
         <>

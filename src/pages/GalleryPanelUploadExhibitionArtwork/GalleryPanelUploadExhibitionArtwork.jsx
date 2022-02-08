@@ -1488,6 +1488,15 @@ function GalleryPanelUploadExhibitionArtwork() {
     }, [])
 
 
+    useEffect(() => {
+        console.log(selectedArtists)
+    }, [selectedArtists])
+
+    useEffect(() => {
+        console.log(selectedArtworks);
+    }, [selectedArtworks])
+
+
 
     const submitSelectedArtwork = () => {
         // setSelectedArtworks(ttemp)

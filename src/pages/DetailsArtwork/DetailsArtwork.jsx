@@ -77,6 +77,7 @@ function DetailsArtwork() {
   const [showShare, setShowShare] = useState(false)
   const [showSendMessage, setShowSendMessage] = useState(false)
   const [offerValue, setOfferValue] = useState();
+  const [messageReceiverId, setMessageReceiverId] = useState(null)
   const [toggle, setToggle] = useState(false);
   const [params, setParams] = useState({
     search: "",
@@ -122,6 +123,7 @@ function DetailsArtwork() {
         if (res.data) {
           setProductDetail(res.data.data);
           setEditionValue(res.data.data?.items[0]);
+          setMessageReceiverId(res.data.data?.owner?.id)
         }
       })
       .catch((err) => {
@@ -1626,6 +1628,7 @@ function DetailsArtwork() {
         <ModalSendMessage
           visibleShowSendMessage={showSendMessage}
           setVisibleShowSendMessage={setShowSendMessage}
+          receiverId={messageReceiverId}
         />
       </div>
 
