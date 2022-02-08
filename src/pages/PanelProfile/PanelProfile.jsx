@@ -24,7 +24,6 @@ const Panelprofile = (props) => {
     const [loading, setLoading] = useState(false)
     const [items, setItems] = useState([])
     const [params, setParams] = useState({})
-    const [visibleModalEditProfile, setVisibleModalEditProfile] = useState(false);
     const [visibleEditMobile, setvisibleEditMobile] = useState(false);
     const [visibleEditEmail, setvisibleEditEmail] = useState(false);
     const [visibleAddAddress, setVisibleAddAddress] = useState(false);
@@ -97,7 +96,6 @@ const Panelprofile = (props) => {
                     <BoxesInfo items={items} />
                     <PersonalInfo
                         profile={items}
-                        setVisibleModalEditProfile={setVisibleModalEditProfile}
                         setvisibleEditMobile={setvisibleEditMobile}
                         setvisibleEditEmail={setvisibleEditEmail}
                         setVisibleAddAddress={setVisibleAddAddress}
@@ -109,10 +107,7 @@ const Panelprofile = (props) => {
                 <BasketFooterPanel />
             </div>
 
-            <ModalEditProfile
-                setVisibleModalEditProfile={setVisibleModalEditProfile}
-                visibleModalEditProfile={visibleModalEditProfile}
-            />
+
             <ModalEditMobile
                 items={items}
                 getItems={getItems}

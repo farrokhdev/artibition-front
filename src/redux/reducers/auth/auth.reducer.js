@@ -9,7 +9,8 @@ const initial_state = {
     profile: null,
     id: null,
     roles: null,
-    editingLocation:{}
+    editingLocation:{},
+    showEditProfileVisible:false,
 }
 
 const authReducer = (state = initial_state, { type, payload }) => {
@@ -21,6 +22,12 @@ const authReducer = (state = initial_state, { type, payload }) => {
                 pending: true,
 
                 error: null
+            }
+        case types.PROFILE_MODAL_VISIBLE :
+            console.log("profile Modal Visible", payload)
+            return{
+                ...state,
+                showEditProfileVisible : payload,
             }
 
         case types.SET_PHONENUMBER:

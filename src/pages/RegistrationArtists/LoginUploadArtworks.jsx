@@ -127,7 +127,7 @@ function LoginUploadArtworks({ next, prev }) {
                 </Link>*/}
 
                 <Link
-                    to={"/panel/add-artwork"}
+                    to={"/panel/register-artist-add-artwork"}
                     state={{ from: "/panel/registration-artists" }}
                 // to="/panel/add-artwork"
                 >
