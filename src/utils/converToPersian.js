@@ -148,3 +148,38 @@ export function isDashboardStatus(value) {
             }
     }
 }
+
+export function stateTo(state) {
+    switch (state) {
+        case 'pending':
+            return {
+                "title": "در حال پیگیری",
+                "type": "inprogress",
+                "block": ""
+            }
+        case 'unread':
+            return {
+                "title": "منتظر پاسخ شما",
+                "type": "replied",
+                "block": ""
+            }
+        case 'close':
+            return {
+                "title": "بسته شده",
+                "type": "closed",
+                "block": ""
+            }
+        case 'read':
+            return {
+                "title": "خوانده شده",
+                "type": "inprogress",
+                "block": ""
+            }
+        default:
+            return {
+                "title": "",
+                "type": "",
+                "block": ""
+            }
+    }
+}

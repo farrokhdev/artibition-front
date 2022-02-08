@@ -1,5 +1,5 @@
 
-// export const BASE_URL = " http://192.168.0.23:8808/api/v1";
+// export const BASE_URL = "http://192.168.0.23:8808/api/v1";
 // export const BASE_URL = " http://192.168.0.113:8000/api/v1";
 // export const BASE_URL = " http://192.168.0.145:8000/api/v1";
 
@@ -59,7 +59,9 @@ export const FOLLOW_COLLECTIONS = "/social-network/follow/collections/";
 export const FOLLOW_ARTISTS = "/social-network/follow/artists/";
 export const SELLERS_REQUEST = "/artist/sellers/";
 export const ARTIST_BY_GALLERY = (id) => `/${id}/artists/define/`;
-
+export const TICKET = "/ticket/";
+export const TICKET_ID =(id)=> `/ticket/${id}/`;
+export const TICKET_REPLY = (id)=> `/ticket/${id}/reply/`;
 export const ACCOUNT_PROFILE = "/account/profile/";
 export const PRODUCT_DETAIL = (id) => `/products/${id}/`;
 export const MESSAGES_ASSERTION = "/message/assertion/";

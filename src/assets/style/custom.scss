@@ -6173,17 +6173,17 @@ a.sec-timeline {
 //     margin-right: 25px;
 // }
 
-.inprogress .ticket-status {
+.inprogress.ticket-status {
     background: #f3fff8;
     color: #15aa56;
 }
 
-.replied .ticket-status {
+.replied.ticket-status {
     color: #f10e4c;
     background: #fff3f7;
 }
 
-.closed .ticket-status {
+.closed.ticket-status {
     background: #f7f7f7;
     color: #adafb3;
 }

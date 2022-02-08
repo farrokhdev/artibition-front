@@ -7,6 +7,7 @@ import { GetLanguage } from '../../utils/utils'
 import moment from 'jalali-moment';
 import { isStatusPurchases } from '../../utils/converToPersian';
 import ModalCommission from './ModalCommission';
+import { Link } from 'react-router-dom';
 
 function Delivered({ purchasesProp }) {
 
@@ -32,9 +33,11 @@ function Delivered({ purchasesProp }) {
                         <br />
                         {t("content-panel-mypurchases.paid.empty.text2")}
                     </p>
-                    <button type="button" className="btn btn-default">
-                        {t("content-panel-mypurchases.paid.empty.btn")}
-                    </button>
+                    <Link to="/site/artworks">
+                        <button type="button" className="btn btn-default">
+                            {t("content-panel-mypurchases.paid.empty.btn")}
+                        </button>
+                    </Link>
                 </div>
             }
             :{purchasesProp &&

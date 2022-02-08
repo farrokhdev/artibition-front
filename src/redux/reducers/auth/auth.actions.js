@@ -43,3 +43,10 @@ export const editingLocation = (data) => (
     }
 )
 
+export const showEditProfileVisible = (data) =>(
+    {
+        type : types.PROFILE_MODAL_VISIBLE,
+        payload : data
+    }
+)
+
