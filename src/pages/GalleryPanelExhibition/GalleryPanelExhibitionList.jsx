@@ -12,12 +12,16 @@ import moment from "jalali-moment";
 import { useSelector } from "react-redux";
 import { sample } from "lodash";
 import { useDispatch } from "react-redux";
+import queryString from 'query-string';
 import { editExhibitionModeFunc, exhibitionId } from "../../redux/reducers/Gallery/gallery.actions";
 
 
 function GalleryPanelExhibitionList() {
 
     const [galleries, setGalleries] = useState([])
+    const [params, setParams] = useState({
+        page_size: 999999
+    })
 
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -33,7 +37,7 @@ function GalleryPanelExhibitionList() {
     }
 
     useEffect(() => {
-        apiServices.get(EXHIBITION(id), "")
+        apiServices.get(EXHIBITION(id), queryString.stringify(params))
             .then(res => {
                 if (res.data) {
                     console.log(res.data.data.results);
@@ -70,7 +74,7 @@ function GalleryPanelExhibitionList() {
                             return (
                                 <tr key={index}>
                                     <td data-label={t("gallery-panel-exhibition.table.row")} className="persian-num">{index + 1}</td>
-                                    <td data-label={t("gallery-panel-exhibition.table.image")}><img src={gallery.poster[0].exact_url} width="1776" height="1776"
+                                    <td data-label={t("gallery-panel-exhibition.table.image")}><img src={gallery.poster[0]?.exact_url} width="1776" height="1776"
                                         alt=""
                                         className="img-responsive center-block" /></td>
                                     <td data-label={t("gallery-panel-exhibition.table.gallery_name")}>{i18next.language === 'fa-IR' ?

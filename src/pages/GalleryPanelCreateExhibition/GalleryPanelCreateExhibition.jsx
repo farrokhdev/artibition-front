@@ -49,10 +49,11 @@ function GalleryPanelCreateExhibition() {
 
 
     const onFinish = (form) => {
-        console.log(editExhibitionMode);
+
         if (editExhibitionMode || posters.length > 0) {
             if (form.type) {
                 if (form.category && form.category.length > 0) {
+                    console.log(form);
                     const payload = {
                         "translations": {
                             "en": {
@@ -69,10 +70,10 @@ function GalleryPanelCreateExhibition() {
                         "type": form.type,
                         "category": form.category,
                         "product_status": "sale",
-                        "virtual_start_date": `${form.virtual_start_date.format("YYYY-MM-DD")}${form.virtual_start_time.toISOString().slice(10)}`,
-                        "virtual_end_date": `${form.virtual_end_date.format("YYYY-MM-DD")}${form.virtual_end_time.toISOString().slice(10)}`,
-                        "real_start_date": `${form.real_start_date.format("YYYY-MM-DD")}${form.real_start_time.toISOString().slice(10)}`,
-                        "real_end_date": `${form.real_end_date.format("YYYY-MM-DD")}${form.real_end_time.toISOString().slice(10)}`,
+                        "virtual_start_date": `${form.virtual_start_date?.format("YYYY-MM-DD")}${form.virtual_start_time?.toISOString().slice(10)}`,
+                        "virtual_end_date": `${form.virtual_end_date?.format("YYYY-MM-DD")}${form.virtual_end_time?.toISOString().slice(10)}`,
+                        "real_start_date": `${form.real_start_date?.format("YYYY-MM-DD")}${form.real_start_time?.toISOString().slice(10)}`,
+                        "real_end_date": `${form.real_end_date?.format("YYYY-MM-DD")}${form.real_end_time?.toISOString().slice(10)}`,
                         "address": [
                             {
                                 "point": point,
@@ -234,7 +235,7 @@ function GalleryPanelCreateExhibition() {
                                 >
                                     <div className="public-group">
                                         <Form.Item name={'exhibition_name_fa'}>
-                                            <Input className="form-control input-public " required={i18next.language === 'fa_IR'} placeholder={t("gallery-panel-create-exhibition.exhibition_name_fa")} />
+                                            <Input className="form-control input-public " required={i18next.language === 'fa-IR' ? true : false} placeholder={t("gallery-panel-create-exhibition.exhibition_name_fa")} />
                                         </Form.Item>
                                     </div>
                                 </div>
@@ -474,7 +475,7 @@ function GalleryPanelCreateExhibition() {
                                 >
                                     <div className="form-group">
                                         <Form.Item name={"statement_fa"}>
-                                            <TextArea required={i18next.language === 'fa_IR'} id="info-213" className="form-control "
+                                            <TextArea required={i18next.language === 'fa-IR'} id="info-213" className="form-control "
                                                 placeholder={t("gallery-panel-create-exhibition.exhibition_contact_placeholder_fa")}
                                                 rows="8"></TextArea>
                                         </Form.Item>
@@ -504,7 +505,7 @@ function GalleryPanelCreateExhibition() {
                                 >
                                     <div className="form-group">
                                         <Form.Item name={"activity_time_fa"}>
-                                            <TextArea required={i18next.language === 'fa_IR'} id="info-213" className="form-control "
+                                            <TextArea required={i18next.language === 'fa-IR'} id="info-213" className="form-control "
                                                 placeholder={t("gallery-panel-create-exhibition.exhibition_time_work_placeholder_fa")}
                                                 rows="6"></TextArea>
                                         </Form.Item>
@@ -536,7 +537,7 @@ function GalleryPanelCreateExhibition() {
                                         })}>
                                             <div className="public-group ">
                                                 <Form.Item name={"address_fa"}>
-                                                    <Input className="form-control input-public " required={i18next.language === 'fa_IR'} placeholder={t("gallery-panel-create-exhibition.address_fa")} />
+                                                    <Input className="form-control input-public " required={i18next.language === 'fa-IR'} placeholder={t("gallery-panel-create-exhibition.address_fa")} />
                                                 </Form.Item>
 
                                             </div>

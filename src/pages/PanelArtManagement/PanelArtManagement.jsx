@@ -17,6 +17,7 @@ function PanelArtManagement() {
     const [loading, setLoading] = useState(false);
     const [productList, setProductList] = useState([]);
     const [suggestionsCount, setSuggestionsCount] = useState("");
+    const [test, setTest] = useState(false)
     const [params, setParams] = useState({
         page: 1,
         status: "",
@@ -58,6 +59,16 @@ function PanelArtManagement() {
         getProductList()
     }, [params])
 
+
+
+
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setTest(!test)
+    //     }, 500)
+    //     apiServices.get("/panel/users/", "")
+    // })
+
     return (
         <>
             <HeaderPanel t={t} />
@@ -79,11 +90,8 @@ function PanelArtManagement() {
                             <div className="col ">
                                 <div className="d-flex justify-custom">
                                     <Link
-
                                         to={"/panel/add-artwork"}
-                                         state={{ from: "/panel/art-management" }}
-                                        
-                                        // to="/panel/add-artwork" 
+                                        state={{ from: "/panel/art-management" }}
                                         type="button" className="btn-outline-blue">
                                         <img src={add_icon} width="12" height="12" alt="" className="mx-2" />
                                         <span>{t("content-panel-manage-artworks.btn")}</span>
