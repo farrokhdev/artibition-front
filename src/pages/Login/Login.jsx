@@ -185,21 +185,6 @@ function Login(props) {
         </div>
       </div>
 
-      <div className="col-lg-5   hidden-sm hidden-xs ">
-        <img
-          src={login}
-          width="730"
-          height="902"
-          alt=""
-          className="img-responsive"
-        />
-      </div>
-
-      <div className="clearfix"></div>
-      <Statistics />
-
-      <div className="clearfix"></div>
-
       <BasketFooter />
     </div>
   );

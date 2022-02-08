@@ -2,9 +2,9 @@
 
 // export const BASE_URL = " http://192.168.0.23:8808/api/v1";
 // export const BASE_URL = " http://192.168.0.113:8000/api/v1";
-// export const BASE_URL = " http://192.168.0.145:8000/api/v1";
+export const BASE_URL = " http://192.168.0.145:8000/api/v1";
 
-export const BASE_URL = "https://api.artibition.gallery/api/v1";
+// export const BASE_URL = "https://api.artibition.gallery/api/v1";
 
 export const COOKIE_EXPIRES = 1;
 export const LOGIN = "/account/login/";
@@ -92,6 +92,7 @@ export const APPLY_DISCOUNT = (id) =>
 export const ADDRESSES_EDIT = (id) => `/account/location/${id}/`;
 export const EXHIBITION_LIST = "/exhibition";
 export const CART_ME_ADD_ITEM = `${BASE_URL}/carts/add/`;
-export const ADD_ARTIST_TO_GALLERY = (galleryId) => `/${galleryId}/add-artists`
+export const ADD_ARTIST_TO_GALLERY = (galleryId) => `/${galleryId}/add-artists/`
 export const EXHIBITION_INFO = (galleryId, exhibitionId) => `/${galleryId}/exhibition/${exhibitionId}/`
-export const EXHIBITION_PRODUCT = (galleryId, exhibitionId) => `/${galleryId}/exhibition/${exhibitionId}/artist-product`
+export const EXHIBITION_PRODUCT = (galleryId, exhibitionId) => `/${galleryId}/exhibition/${exhibitionId}/artist-product/`
+export const SEND_MESSAGE = `/message/sendmessage/`
