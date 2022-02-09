@@ -6,11 +6,18 @@ import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { useSelector } from 'react-redux';
+import { setProfile, showEditProfileVisible } from "../../redux/reducers/auth/auth.actions";
+import ModalEditProfile from '../../pages/PanelProfile/ModalEditProfile';
 
 function SidebarPanel(props) {
     const { t, i18n } = useTranslation();
     const { roles } = useSelector((state) => state.authReducer)
     const { galleryProfile } = useSelector((state) => state.galleryReducer)
+
+    const handleShowModal = () => {
+        props.showEditProfileVisible(true)
+    }
+
     const getUserRole = () => {
         let userRole = "user"
         if (typeof roles === "string") {
@@ -53,7 +60,7 @@ function SidebarPanel(props) {
                         <div className="sidebar-mobile">
                             <span className="persian-num pull-dir">{props?.auth?.profile?.mobile}</span>
                             <a href="#">
-                                <img src={edit} width="32" height="32" alt="" className="pull-dir img-responsive" />
+                                <img src={edit} onClick={handleShowModal} width="32" height="32" alt="" className="pull-dir img-responsive" />
                             </a>
                         </div>
                     </div>
@@ -100,6 +107,8 @@ function SidebarPanel(props) {
                                     className="sidebar-nav-margin">{t("drawer-panel.nav-my-albums")}</span></Link></li>
                                 <li className="sidebar-icon my-4" id="liked"><Link to="/panel/favorites"><span
                                     className="sidebar-nav-margin">{t("drawer-panel.nav-favorits")}</span></Link></li>
+                                <li className="sidebar-icon my-4 " id="messages"><Link to="/panel/messages"><span
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-messages")}</span></Link></li>
                                 <li className="sidebar-icon my-4" id="content"><Link to="/panel/contents"><span
                                     className="sidebar-nav-margin">محتوا</span></Link></li>
                                 <li className="sidebar-icon my-4" id="my-albums"><Link to="/panel/my-collections"><span
@@ -169,8 +178,16 @@ function SidebarPanel(props) {
                     <p>{t("drawer-panel.invite.text")}</p>
                 </div>
             </div>
+            <ModalEditProfile
+            />
         </div>
     )
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        showEditProfileVisible: (data) => dispatch(showEditProfileVisible(data))
+    }
 }
 
 const mapStateToProps = (store) => {
@@ -180,4 +197,6 @@ const mapStateToProps = (store) => {
 }
 
 
-export default connect(mapStateToProps)(SidebarPanel)
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(SidebarPanel)

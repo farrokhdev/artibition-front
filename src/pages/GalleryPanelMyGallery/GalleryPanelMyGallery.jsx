@@ -5,8 +5,23 @@ import { t } from 'i18next';
 import GalleryPanelMyGalleryList from "./GalleryPanelMyGalleryList";
 import CreateGallery from "./CreateGallery";
 import BasketFooterPanel from "../../components/BasketFooterPanel/BasketFooterPanel";
+import { useEffect } from "react";
+import apiServices from "../../utils/api.services";
+import { useState } from "react";
 
 function GalleryPanelMyGallery() {
+
+
+    const [test, setTest] = useState(false)
+
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setTest(!test)
+    //     }, 500)
+    //     apiServices.get("/account/profile/", "")
+    // })
+
+
     return (
         <>
             <HeaderPanel t={t} />
@@ -15,14 +30,14 @@ function GalleryPanelMyGallery() {
                 <div className="custom-container" style={{ minHeight: "820px" }}>
                     <div className="row box-dir-reverse dir">
                         <div className="col-md-8">
-                            <GalleryPanelMyGalleryList/>
+                            <GalleryPanelMyGalleryList />
                         </div>
                         <div className="col-md-4">
-                            <CreateGallery/>
+                            <CreateGallery />
                         </div>
                     </div>
                 </div>
-                <BasketFooterPanel/>
+                <BasketFooterPanel />
             </div>
         </>
     )

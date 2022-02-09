@@ -195,6 +195,7 @@ function CreateArtist() {
 
                     <div className="modal-body text-dir">
                         {siteArtists.map((artist, index) => {
+                            console.log(artist);
                             return (
                                 <div className="d-flex" style={{ padding: "20px", margin: "20px 0" }}>
                                     <div className="d-flex" style={{ width: "40px", height: "50px", padding: "10px", alignItems: "center", justifyContent: "center" }}>

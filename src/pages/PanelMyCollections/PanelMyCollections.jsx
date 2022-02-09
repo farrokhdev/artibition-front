@@ -17,6 +17,7 @@ import { ARTIST_ME, SOCIAL_NETWORK_COLLECTIONS } from '../../utils';
 import queryString from 'query-string';
 import { useSelector } from 'react-redux';
 import moment from "jalali-moment";
+import { Link } from 'react-router-dom';
 function PanelMyCollections() {
 
 
@@ -73,15 +74,15 @@ function PanelMyCollections() {
                             <h2 className="greencolor text-dir">ثبت گالری</h2>
                             <p className="text-dir">اگر صاحب گالری هستید آن را ثبت نمایید</p>
                         </div>
-                        <a href="#" className="btn-box-1 btn-green pull-left">
+                        <Link to="/panel/gallery-info" className="btn-box-1 btn-green pull-left">
                             <img src={flesh_left} width="16" height="16" className="center-block" />
-                        </a>
+                        </Link>
                         <div className="clearfix"></div>
                     </div>
 
 
                     <div className="row">
-                        <div className="col-lg-8">
+                        <div className="col-lg-12">
                             <div className="box box-2">
                                 <div className="sec4">
                                     <div className="public-header">
@@ -138,7 +139,7 @@ function PanelMyCollections() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-4">
+                        {/* <div className="col-lg-4">
                             <div className=" box box-3">
                                 <div className="d-flex box-dir-reverse public-header">
                                     <div className="col-9">
@@ -175,7 +176,7 @@ function PanelMyCollections() {
                                     </button>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                     <Suggestions />
                     <RecentlyVeiws />

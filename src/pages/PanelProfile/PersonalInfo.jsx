@@ -1,20 +1,23 @@
 import React, { useState } from 'react';
-import { t } from 'i18next';
+import i18next, { t } from 'i18next';
 
 import edit_name from '../../assets/img/edit_name.svg';
 import { connect } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from 'react-redux';
 import { editingLocation } from '../../redux/reducers/auth/auth.actions';
+import moment from 'jalali-moment';
+import { showEditProfileVisible } from '../../redux/reducers/auth/auth.actions';
+
 function PersonalInfo(props) {
     const { t, i18n } = useTranslation();
     console.log(props.auth.profile)
     const dispach = useDispatch()
-    const { setVisibleModalEditProfile, setvisibleEditMobile, setvisibleEditEmail, setVisibleAddAddress, profile } = props;
+    const { setvisibleEditMobile, setvisibleEditEmail, setVisibleAddAddress, profile } = props;
     const [showModal, setshowModal] = useState(false);
 
     const handleShowModal = () => {
-        setVisibleModalEditProfile(true)
+        props.showEditProfileVisible(true)
     }
 
     const handleEditMobile = () => {
@@ -97,7 +100,7 @@ function PersonalInfo(props) {
                     <div className="col-sm-6">
                         <div className="form-group text-dir">
                             <span className="lable-panel">{t('content-panel-profile.personal-info.date')}</span>
-                            <span className="input-panel persian-num">{props?.auth?.profile?.birth_date}</span>
+                            <span className="input-panel persian-num">{props?.auth?.profile?.birth_date ? moment(props?.auth?.profile?.birth_date).locale(i18next?.language === 'fa-IR' ? 'fa' : 'en').format('YYYY/MM/DD') : ""}</span>
                         </div>
                     </div>
                     <div className="col-sm-6">
@@ -124,20 +127,23 @@ function PersonalInfo(props) {
                         return (
 
                             <label key={key} className="d-flex container-radio  justify-content-between text-dir box-dir-reverse">
-                                {/* {dispach(locationId(item?.id))} */}
-                                {i18n.language === 'fa-IR' ?
-                                    item?.translations?.fa?.city + "،" + item?.translations?.fa?.address :
-                                    item?.translations?.en?.city + "،" + item?.translations?.en?.address
-                                }
                                 {item?.is_default ?
-                                    <span className="default">{t('content-panel-profile.personal-info.address.default')}</span>
+                                    <>
+                                        {i18n.language === 'fa-IR' ?
+                                            item?.translations?.fa?.city + "،" + item?.translations?.fa?.address :
+                                            item?.translations?.en?.city + "،" + item?.translations?.en?.address
+                                        }
+                                        <span className="default">{t('content-panel-profile.personal-info.address.default')}</span>
+                                        <input type="radio" checked="checked" name="radio" />
+                                        <span className="checkmark-radio"></span>
+                                        <a href="#" className="edit-address">
+                                            <img src={edit_name} onClick={() => { handleAddAddress(); dispach(editingLocation(item)) }} width="32" height="32" className="text-dir" alt="" />
+                                        </a>
+
+                                    </>
+
                                     : ""}
 
-                                <input type="radio" checked="checked" name="radio" />
-                                <span className="checkmark-radio"></span>
-                                <a href="#" className="edit-address">
-                                    <img src={edit_name} onClick={() => { handleAddAddress(); dispach(editingLocation(item)) }} width="32" height="32" className="text-dir" alt="" />
-                                </a>
                             </label>
                         )
                     })}
@@ -147,6 +153,11 @@ function PersonalInfo(props) {
     )
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        showEditProfileVisible: (data) => dispatch(showEditProfileVisible(data))
+    }
+}
 
 const mapStateToProps = (store) => {
     return {
@@ -155,4 +166,4 @@ const mapStateToProps = (store) => {
 }
 
 
-export default connect(mapStateToProps)(PersonalInfo)
+export default connect(mapStateToProps, mapDispatchToProps)(PersonalInfo)

@@ -1270,6 +1270,7 @@
       "price": "USD",
       "spacial": "Spacial",
       "sold_out": "Sold out",
+      "not_sold" : "Not sold",
       "btn_next": "Next",
       "btn_prev": "Prev"
     },

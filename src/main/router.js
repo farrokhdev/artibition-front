@@ -159,7 +159,7 @@ const RouterConfig = (props) => {
                         <Route path="success-payment" element={<SuccessPayment />} />
                         <Route path="unsuccess-payment" element={<UnsuccessPayment />} />
                         <Route path="*" element={<Navigate to="/panel/profile" replace />} />
-
+                        <Route path="register-artist-add-artwork" element={<AddArtwork />} />
                     </>
                 }
             </Route>
