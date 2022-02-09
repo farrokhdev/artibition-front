@@ -6,16 +6,17 @@ import {connect} from "react-redux";
 import {Form, Input} from 'antd';
 import APIService from "../../utils/api.services";
 import {PROFILE} from "../../utils";
-import {setProfile} from "../../redux/reducers/auth/auth.actions";
+import {setProfile , showEditProfileVisible} from "../../redux/reducers/auth/auth.actions";
+
+// import { useDispatch , useSelector } from 'react-redux';
 
 function ModalEditProfile(props) {
     const {t, i18n} = useTranslation();
     const [form] = Form.useForm();
 
-    const {setVisibleModalEditProfile, visibleModalEditProfile} = props;
-
     const handleClose = () => {
-        setVisibleModalEditProfile(false)
+        props.showEditProfileVisible(false)
+        // setVisibleModalEditProfile(false)
     }
 
     const updateProfile = (values) => {
@@ -50,7 +51,7 @@ function ModalEditProfile(props) {
             <Modal
                 centered
                 className=""
-                visible={visibleModalEditProfile}
+                visible={props.auth.showEditProfileVisible}
                 onOk={handleClose}
                 onCancel={handleClose}
                 width={600}
@@ -140,6 +141,7 @@ function ModalEditProfile(props) {
 const mapDispatchToProps = (dispatch) => {
     return {
         setProfile : (data) => dispatch(setProfile(data)),
+        showEditProfileVisible : (data) => dispatch(showEditProfileVisible(data))
     }
 }
 
