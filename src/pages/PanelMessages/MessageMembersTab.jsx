@@ -12,7 +12,7 @@ import queryString from "query-string";
 function MessageMembersTab() {
     
 
-    const [messages, setMessages] = useState();
+    const [messages, setMessages] = useState([]);
     const [message, setMessage] = useState();
     const [params, setParams] = useState({});
     const [count, setCount] = useState();
@@ -25,7 +25,7 @@ function MessageMembersTab() {
         ApiServices.get(`${MESSAGES_INBOX}${id}/`, "")
             .then(res => {
                 if (res.data) {
-                    setMessage(res.data.data)
+                    setMessage(res?.data?.data)
                 }
             })
             .catch(reason => {
@@ -38,9 +38,9 @@ function MessageMembersTab() {
         ApiServices.get(MESSAGES_INBOX, queryString.stringify(params))
             .then(res => {
                 if (res.data) {
-                    console.log(res.data.data)
-                    setMessages(res.data.data)
-                    setCount(res.data.data.count)
+                    console.log(res?.data?.data)
+                    setMessages(res?.data?.data)
+                    setCount(res?.data?.data?.count)
                 }
             })
             .catch(reason => {
