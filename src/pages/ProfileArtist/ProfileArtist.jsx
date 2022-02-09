@@ -41,9 +41,9 @@ function ProfileArtist() {
 
     })
     function useQuery() {
-        
+
         return new URLSearchParams(useLocation().search);
-        
+
     }
     var id;
 
@@ -62,6 +62,7 @@ function ProfileArtist() {
         apiServices.get(ARTIST_PROFILE(id), queryString.stringify(params))
             .then(res => {
                 if (res.data) {
+                    console.log(res.data.data);
                     setArtistProfile(res.data.data)
                 }
             })
@@ -74,7 +75,7 @@ function ProfileArtist() {
         getArtistProfile()
     }, [params]);
     console.log("profile", artistProfile)
-    console.log("id",i18n)
+    console.log("id", i18n)
     return (
         <>
             <div className="container mx-auto px-0 w-100 bg-white">
@@ -110,11 +111,11 @@ function ProfileArtist() {
                                             {/* <img src={Aydin_Aghdashloo_04} width="192" height="192" */}
                                             <img src={artistProfile?.bg_image?.exact_url} width="192" height="192"
                                                 className="img-responsive" alt={i18n.language === 'fa-IR' ?
-                                                artistProfile?.owner?.translations?.fa?.first_name + " " +
-                                                artistProfile?.owner?.translations?.fa?.last_name :
-                                                artistProfile?.owner?.translations?.en?.first_name + " " +
-                                                artistProfile?.owner?.translations?.en?.last_name
-                                            } />
+                                                    artistProfile?.owner?.translations?.fa?.first_name + " " +
+                                                    artistProfile?.owner?.translations?.fa?.last_name :
+                                                    artistProfile?.owner?.translations?.en?.first_name + " " +
+                                                    artistProfile?.owner?.translations?.en?.last_name
+                                                } />
                                         </div>
                                         <button type="button" className="btn-follow center-block">{t("artwork.follow")}</button>
                                     </div>
@@ -124,15 +125,15 @@ function ProfileArtist() {
                                                 <div className="col px-0">
                                                     <div className="artist-name text-dir">
                                                         {i18n.language === 'fa-IR' ?
-                                                        <>
-                                                            <span>{artistProfile?.owner?.translations?.fa?.first_name}</span> 
-                                                            <span>{artistProfile?.owner?.translations?.fa?.last_name }</span>
-                                                        </>
+                                                            <>
+                                                                <span>{artistProfile?.owner?.translations?.fa?.first_name}</span>
+                                                                <span>{artistProfile?.owner?.translations?.fa?.last_name}</span>
+                                                            </>
                                                             :
-                                                        <>
-                                                            <span>{artistProfile?.owner?.translations?.en?.first_name}</span> 
-                                                            <span>{artistProfile?.owner?.translations?.en?.last_name }</span>
-                                                        </>
+                                                            <>
+                                                                <span>{artistProfile?.owner?.translations?.en?.first_name}</span>
+                                                                <span>{artistProfile?.owner?.translations?.en?.last_name}</span>
+                                                            </>
                                                         }
                                                     </div>
                                                 </div>
@@ -148,7 +149,7 @@ function ProfileArtist() {
                                             <p className="artist-shortbio text-dir">
                                                 {/* {t("artist_profile.text_banner")} */}
                                                 {i18n.language === 'fa-IR' ?
-                                                    artistProfile?.translations?.fa?.biography:
+                                                    artistProfile?.translations?.fa?.biography :
                                                     artistProfile?.translations?.en?.biography}
                                                 <span>
                                                     <a href="#">
@@ -170,7 +171,7 @@ function ProfileArtist() {
 
                         <Tabs className='' defaultActiveKey="1" onChange={callback}>
                             <TabPane className="mx-4" tab={t("artist_profile.tabs.artworks")} key="1">
-                                <ArtworksTab artistId={artistProfile?.id} translations={artistProfile?.owner?.translations}/>
+                                <ArtworksTab artistId={artistProfile?.id} translations={artistProfile?.owner?.translations} />
                             </TabPane>
                             <TabPane tab={t("artist_profile.tabs.albums")} key="2">
                                 <AlbumsTab
@@ -183,10 +184,10 @@ function ProfileArtist() {
                                 <BiographyTab artistId={id} artistBio={artistProfile?.translations} />
                             </TabPane>
                             <TabPane tab={t("artist_profile.tabs.exhibitions")} key="4">
-                                <ExhibitionsTab artistId={id}/>
+                                <ExhibitionsTab artistId={id} />
                             </TabPane>
                             <TabPane tab={t("artist_profile.tabs.content")} key="5">
-                                <ContentTab artistId={artistProfile?.id}/>
+                                <ContentTab artistId={artistProfile?.id} />
                             </TabPane>
 
 
@@ -200,6 +201,8 @@ function ProfileArtist() {
             <ModalSendMessage
                 setVisibleShowSendMessage={setVisibleShowSendMessage}
                 visibleShowSendMessage={visibleShowSendMessage}
+            // receiverId={}
+
             />
 
             <ModalVeiwAlbums
