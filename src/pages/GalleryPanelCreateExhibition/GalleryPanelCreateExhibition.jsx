@@ -569,7 +569,7 @@ function GalleryPanelCreateExhibition() {
                                 <div className="col-sm-6">
                                     <div className="public-group">
                                         <Form.Item name={"phone"}>
-                                            <Input className="form-control input-public  persian-num" required placeholder={t("gallery-panel-create-exhibition.phone_number")} />
+                                            <Input type={"tel"} className="form-control input-public  persian-num" required placeholder={t("gallery-panel-create-exhibition.phone_number")} />
                                         </Form.Item>
 
                                     </div>

@@ -7,38 +7,76 @@ import { Pagination } from 'antd';
 import TableArtworks from './TableArtworks';
 
 import add_icon from '../../assets/img/add.png';
-import { PRODUCTS_ME } from '../../utils/index'
+import { GALLERY_PRODUCTS, PRODUCTS_ME } from '../../utils/index'
 import queryString from 'query-string';
 import apiServices from '../../utils/api.services';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function PanelArtManagement() {
 
     const [loading, setLoading] = useState(false);
     const [productList, setProductList] = useState([]);
     const [suggestionsCount, setSuggestionsCount] = useState("");
-    const [test, setTest] = useState(false)
     const [params, setParams] = useState({
         page: 1,
         status: "",
 
     });
 
+    const { id } = useSelector((state) => state.galleryReducer)
+
+
+    const { roles } = useSelector((state) => state.authReducer)
+    const getUserRole = () => {
+        let userRole = "user"
+        if (typeof roles === "string") {
+            return roles
+        } else {
+            if (roles && roles.length > 0) {
+                if (roles.includes("seller")) {
+                    userRole = "seller"
+                }
+                if (roles.includes("artist")) {
+                    userRole = "artist"
+                }
+            } else {
+                userRole = 'user'
+            }
+        }
+        return userRole
+    }
+
 
 
     // Get my product list
     const getProductList = () => {
         setLoading(true)
-        apiServices.get(PRODUCTS_ME, queryString.stringify(params))
-            .then(resp => {
-                setLoading(false)
-                setProductList(resp.data.data.results)
-                setSuggestionsCount(resp.data.data.count)
-            })
-            .catch(err => {
-                setLoading(false)
-                console.error(err);
-            })
+        if (getUserRole() === "gallery") {
+            apiServices.get(GALLERY_PRODUCTS(id), queryString.stringify(params))
+                .then(res => {
+                    setLoading(false)
+                    setProductList(res.data.data.results)
+                    setSuggestionsCount(res.data.data.count)
+                })
+                .catch(err => {
+                    setLoading(false)
+                    console.error(err);
+                })
+        }
+        else {
+            apiServices.get(PRODUCTS_ME, queryString.stringify(params))
+                .then(resp => {
+                    setLoading(false)
+                    setProductList(resp.data.data.results)
+                    setSuggestionsCount(resp.data.data.count)
+                })
+                .catch(err => {
+                    setLoading(false)
+                    console.error(err);
+                })
+        }
+
     }
 
     // This section is for filtering the status of the list of works
@@ -61,13 +99,6 @@ function PanelArtManagement() {
 
 
 
-
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         setTest(!test)
-    //     }, 500)
-    //     apiServices.get("/panel/users/", "")
-    // })
 
     return (
         <>
