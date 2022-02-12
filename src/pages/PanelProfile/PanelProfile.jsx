@@ -59,8 +59,13 @@ const Panelprofile = (props) => {
         setLoading(true)
         APIService.get(PROFILE, queryString.stringify(params))
             .then(resp => {
-                console.log(resp.data.data);
                 setLoading(false)
+                props.setProfile({
+                    ...props.state,
+                    profile: resp.data.data,
+                    id: resp.data.data.id,
+                    roles: resp.data.data.roles,
+                });
                 // console.log("items.resp==>", resp.data.data.locations.map((item) => {
                 //     return { value: item?.id }
 

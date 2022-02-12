@@ -112,6 +112,7 @@ function ModalAddGallery(props) {
                             </button>
                         </div>
                         <div className="modal-header">
+                        {/* ایجاد کالکشن */}
                             <h5 className="fontbold28 aligncenter" id="exampleModalLabel">{t("artwork.modal_similar_artwork.title")}</h5>
                         </div>
                         <div className="modal-body">
