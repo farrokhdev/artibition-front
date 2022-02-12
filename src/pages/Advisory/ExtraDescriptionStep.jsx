@@ -19,11 +19,11 @@ function ExtraDescriptionStep({ prev, next }) {
             ...advistoryform,
             "translations": {
                 // "en": {
-                //     "about": i18next.language === 'fa-IR' ? "" : values?.discribtion
+                //     "describtion": i18next.language === 'fa-IR' ? "" : values?.describtion
 
                 // },
                 "fa": {
-                    "discribtion": values?.discribtion
+                    "describtion": values?.describtion
                 }
             },
             "products_id": chooseProducts
@@ -92,7 +92,7 @@ function ExtraDescriptionStep({ prev, next }) {
                         </div>
                         <div className="mrgt64 col-md-6 mx-auto">
                             <div className="form-group">
-                                <Form.Item name="discribtion">
+                                <Form.Item name="describtion">
                                     <TextArea required={GetLanguage() === 'fa-IR' ? true : false} rows={"8"} className="form-control text-align-dir" rows="8" placeholder={t("advisory.extra_description_step.description_placeholder")} />
                                 </Form.Item>
                                 {/* <textarea className="form-control text-align-dir" rows="8" placeholder={t("advisory.extra_description_step.description_placeholder")}></textarea> */}

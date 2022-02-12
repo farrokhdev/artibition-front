@@ -9159,3 +9159,7 @@ iframe {
     display: block !important;
     margin: 10px auto;
 }
+
+.tether-element.tether-element-attached-bottom.tether-element-attached-center.tether-target-attached-top.tether-target-attached-center.tether-enabled {
+    z-index: 200000 ;
+}

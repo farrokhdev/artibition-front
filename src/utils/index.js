@@ -1,8 +1,9 @@
 
 
 // export const BASE_URL = " http://192.168.0.23:8808/api/v1";
+// export const BASE_URL = " http://192.168.0.100:8000/api/v1";
 // export const BASE_URL = " http://192.168.0.113:8000/api/v1";
-// export const BASE_URL = " http://192.168.0.145:8000/api/v1";
+// export const BASE_URL = " http://192.168.0.182:8000/api/v1";
 
 export const BASE_URL = "https://api.artibition.gallery/api/v1";
 
@@ -54,6 +55,7 @@ export const ARTIST_CONTENT = "/artist/content/";
 export const ARTIST_EXHIBITION = (id) => `/artist/${id}/exhibition/`;
 export const WALLET = "/accounting/wallet/me/";
 export const WALLET_TRANSACTIONS = "/accounting/wallet-transactions/";
+export const WALLET_TRANSACTIONS_REQUEST = "/accounting/transaction-requests/"
 export const GALLERY_FOLLOW = "/social-network/follow/";
 export const FOLLOW_PRODUCTS = "/social-network/follow/products/";
 export const FOLLOW_COLLECTIONS = "/social-network/follow/collections/";

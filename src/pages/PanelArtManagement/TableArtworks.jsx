@@ -31,7 +31,8 @@ function TableArtworks({ productList }) {
                         <td data-label={t("content-panel-dashboard.tables.edition")} className="persian-num">{item?.items[0]?.edition_number}</td>
                         <td data-label={t("content-panel-dashboard.tables.price")} className="persian-num">{item?.length} در {item?.width}</td>
                         <td data-label={t("content-panel-dashboard.tables.paid")} className="persian-num">{item?.items[0]?.toman_price}</td>
-                        <td data-label={t("content-panel-dashboard.tables.discount")} className="persian-num">{item?.discount?.type === "percentage" ? item?.discount?.value : item?.discount?.value}</td>
+                        {/* {order.product_item.product.discount.value}{order.product_item.product.discount.type === "percentage" ? "%" : ""} */}
+                        <td data-label={t("content-panel-dashboard.tables.discount")} className="persian-num">{item?.discount?.value}{item?.discount?.type === "percentage" ? "%" : ""}</td>
                         <td data-label={t("content-panel-dashboard.tables.details")} className="">{momentJalaali(item?.modified_date).format(` jYYYY/jMM/jDD`)}</td>
                         <td data-label={t("content-panel-dashboard.tables.details")} className="">{momentJalaali(item?.creation_date).format(` jYYYY/jMM/jDD`)}</td>
                         <td data-label={t("content-panel-dashboard.tables.paid")} className="persian-num">{item?.items[0]?.toman_price}</td>

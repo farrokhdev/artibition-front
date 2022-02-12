@@ -52,9 +52,16 @@ function PersonalInfo(props) {
                                 {i18n.language === 'fa-IR' ?
                                     props.auth?.profile?.translations?.fa?.first_name + " " +
                                     props.auth?.profile?.translations?.fa?.last_name :
-                                    props.auth?.profile?.translations?.en?.first_name + " " +
-                                    props.auth?.profile?.translations?.en?.last_name
+                                   profile?.translations?.en?.first_name + " " +
+                                   profile?.translations?.en?.last_name
                                 }
+                                {console.log("props.auth?.profile?.translations?.fa?.first_name" , props.auth?.profile?.translations?.fa?.first_name)}
+                                {/* {i18n.language === 'fa-IR' ?
+                                    profile?.translations?.fa?.first_name + " " +
+                                    profile?.translations?.fa?.last_name :
+                                    profile?.translations?.en?.first_name + " " +
+                                    profile?.translations?.en?.last_name
+                                } */}
                             </span>
                         </div>
                     </div>
@@ -127,22 +134,22 @@ function PersonalInfo(props) {
                         return (
 
                             <label key={key} className="d-flex container-radio  justify-content-between text-dir box-dir-reverse">
-                                {item?.is_default ?
-                                    <>
-                                        {i18n.language === 'fa-IR' ?
-                                            item?.translations?.fa?.city + "،" + item?.translations?.fa?.address :
-                                            item?.translations?.en?.city + "،" + item?.translations?.en?.address
-                                        }
+                                <>
+                                    {i18n.language === 'fa-IR' ?
+                                        item?.translations?.fa?.city + "،" + item?.translations?.fa?.address :
+                                        item?.translations?.en?.city + "،" + item?.translations?.en?.address
+                                    }
+                                    {item?.is_default ?
                                         <span className="default">{t('content-panel-profile.personal-info.address.default')}</span>
-                                        <input type="radio" checked="checked" name="radio" />
-                                        <span className="checkmark-radio"></span>
-                                        <a href="#" className="edit-address">
-                                            <img src={edit_name} onClick={() => { handleAddAddress(); dispach(editingLocation(item)) }} width="32" height="32" className="text-dir" alt="" />
-                                        </a>
+                                        : ""}
+                                    <input type="radio" checked="checked" name="radio" />
+                                    <span className="checkmark-radio"></span>
+                                    <a href="#" className="edit-address">
+                                        <img src={edit_name} onClick={() => { handleAddAddress(); dispach(editingLocation(item)) }} width="32" height="32" className="text-dir" alt="" />
+                                    </a>
 
-                                    </>
+                                </>
 
-                                    : ""}
 
                             </label>
                         )

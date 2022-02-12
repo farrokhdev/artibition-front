@@ -1193,6 +1193,7 @@
         "tag_en": "Add tag",
         "text_tag_en": ".Adding one or multiple tags facilitates the process of receiving your artworks for your fans and audiences",
         "next_step": "Next",
+        "final-step": "Final step",
         "cencel": "Cancel"
       },
       "sale_info": "Sale info",
@@ -1270,7 +1271,7 @@
       "price": "USD",
       "spacial": "Spacial",
       "sold_out": "Sold out",
-      "not_sold" : "Not sold",
+      "not_sold": "Not sold",
       "btn_next": "Next",
       "btn_prev": "Prev"
     },
