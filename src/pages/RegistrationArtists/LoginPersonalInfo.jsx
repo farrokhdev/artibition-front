@@ -7,6 +7,7 @@ import DatePicker, { Calendar } from 'react-datepicker2';
 import moment from 'moment-jalaali';
 import edit_name from '../../assets/img/edit_name.svg';
 
+
 function LoginPersonalInfo({ next, prev, userProfil }) {
 
     const [form] = Form.useForm();

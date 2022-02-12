@@ -3,7 +3,7 @@ import { Form, Input, Select, Checkbox, Switch, message, Button, Space } from 'a
 import change_icon from '../../assets/img/change.png';
 import classnames from 'classnames';
 import { GetLanguage } from '../../utils/utils'
-import { t } from 'i18next';
+import i18next, { t } from 'i18next';
 import { useSelector, useDispatch } from 'react-redux';
 import apiServices from '../../utils/api.services';
 import { ARTIST_BY_GALLERY, ARTWORK_BY_GALLERY, PRODUCTS } from '../../utils';
@@ -24,7 +24,11 @@ function SellInformation({ prev, next }) {
     const Language = GetLanguage();
     const { id } = useSelector((state) => state.galleryReducer)
 
-
+    const listinvestmentType = [
+        { label: "درصدی", value: "percentage" },
+        { label: "تومانی", value: "toman" },
+        { label: "دلاری", value: "dollar" }
+    ]
 
 
     let [searchParams, setSearchParams] = useSearchParams()
@@ -64,8 +68,8 @@ function SellInformation({ prev, next }) {
                 }
             ],
             "discount": {
-                "type": "percentage",
-                "value": 20,
+                "type": values?.discount_price ? values?.discount_price : "toman",
+                "value": i18next.language === 'fa-IR' ? values?.percent_discount_rial : values?.percent_discount_dolar,
                 "duration": 3600
             },
 
@@ -415,11 +419,12 @@ function SellInformation({ prev, next }) {
                                                 className='form-control'
                                                 id="sel1"
                                                 placeholder={t("content-panel-add-artwork.discount_base")}
+                                                options={listinvestmentType}
                                                 allowClear
                                             >
+                                                {/* <Option value="تخفیف براساس درصد">تخفیف براساس درصد</Option>
                                                 <Option value="تخفیف براساس درصد">تخفیف براساس درصد</Option>
-                                                <Option value="تخفیف براساس درصد">تخفیف براساس درصد</Option>
-                                                <Option value="تخفیف براساس درصد">تخفیف براساس درصد</Option>
+                                                <Option value="تخفیف براساس درصد">تخفیف براساس درصد</Option> */}
                                             </Select>
                                         </Form.Item>
 
@@ -530,7 +535,7 @@ function SellInformation({ prev, next }) {
                     <div className="adv-btn">
                         <button onClick={() => prev()} type="button" className="btn-prev ">{t("content-panel-add-artwork.previous_step")}</button>
                         <button htmlType="submit" className="btn-next pull-left">
-                            {t("content-panel-add-artwork.art_info.next_step")}
+                            {t("content-panel-add-artwork.art_info.final-step")}
                         </button>
                     </div>
                 </Form>

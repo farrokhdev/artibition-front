@@ -27,6 +27,7 @@ function BoxStatusArtwork() {
         "rejected": 0,
         "active": 0
     }
+    
 
     useEffect(() => {
         apiServices.get(PRODUCTS, queryString.stringify(params))
