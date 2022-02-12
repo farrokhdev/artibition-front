@@ -1,7 +1,7 @@
-import types from './exhibition.types';
+import types from './filters.types';
 
 
-export const filtersReducer = (data) => (
+export const setFilters = (data) => (
     {
         type: types.FILTERS_COLLAPSE,
         payload: data

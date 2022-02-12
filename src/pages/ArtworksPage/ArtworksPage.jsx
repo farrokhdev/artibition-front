@@ -33,8 +33,15 @@ import {
 import apiServices from "../../utils/api.services";
 import { useNavigate } from "react-router-dom";
 import { follow } from "../../utils/utils";
+import { connect } from "react-redux";
+import { setFilters } from "../../redux/reducers/Filters/filters.action";
 
-function ArtworksPage() {
+function ArtworksPage(props) {
+  console.log(
+    "🚀 ~ file: ArtworksPage.jsx ~ line 40 ~ ArtworksPage ~ props",
+    props.filters.filters_reducer
+  );
+
   let navigate = useNavigate();
   const { t, i18n } = useTranslation();
 
@@ -58,7 +65,22 @@ function ArtworksPage() {
     status: "active",
     order: selectedOption,
     page: 1,
+    size_id: props?.filters?.filters_reducer?.size_id,
+    category_id: props?.filters?.filters_reducer?.category_id,
+    toman_price_range_min:
+      props?.filters?.filters_reducer?.toman_price_range_min,
+    toman_price_range_max:
+      props?.filters?.filters_reducer?.toman_price_range_max,
+    dollar_price_range_min:
+      props?.filters?.filters_reducer?.dollar_price_range_min,
+    dollar_price_range_max:
+      props?.filters?.filters_reducer?.dollar_price_range_max,
   });
+
+  console.log(
+    "🚀 ~ file: ArtworksPage.jsx ~ line 65 ~ ArtworksPage ~ params",
+    params
+  );
   const [categorieParams, setCategorieParams] = useState({
     page: 1,
   });
@@ -217,7 +239,13 @@ function ArtworksPage() {
     getProductTechniques();
     getProductMaterials();
     getProductSizes();
-  }, [params, materialParams, techniqueParams, selectedOption]);
+  }, [
+    params,
+    materialParams,
+    techniqueParams,
+    selectedOption,
+    props.filters?.filters_reducer,
+  ]);
 
   return (
     <>
@@ -1142,5 +1170,16 @@ function ArtworksPage() {
     </>
   );
 }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setFilters: (data) => dispatch(setFilters(data)),
+  };
+};
 
-export default ArtworksPage;
+const mapStateToProps = (store) => {
+  return {
+    filters: store.filtersReducer,
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ArtworksPage);
