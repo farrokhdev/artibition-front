@@ -6,10 +6,10 @@ import { GetLanguage } from '../../utils/utils'
 import i18next, { t } from 'i18next';
 import { useSelector, useDispatch } from 'react-redux';
 import apiServices from '../../utils/api.services';
-import { ARTIST_BY_GALLERY, ARTWORK_BY_GALLERY, PRODUCTS } from '../../utils';
+import { ARTIST_BY_GALLERY, ARTWORK_BY_GALLERY, GALLERY_PRODUCTS, PRODUCTS } from '../../utils';
 import { artworkForm } from '../../redux/reducers/Artwork/artwork.action';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
-import { useNavigate, useSearchParams, useLocation} from 'react-router-dom';
+import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
 const { Option } = Select;
 
 function SellInformation({ prev, next }) {
@@ -83,7 +83,7 @@ function SellInformation({ prev, next }) {
 
 
         if (searchParams.get("back") || getUserRole() === "gallery") {
-            apiServices.post(ARTWORK_BY_GALLERY(id, searchParams.get("artist_id")), payload)
+            apiServices.post(GALLERY_PRODUCTS(id), payload)
                 .then(res => {
                     if (res.data) {
 
@@ -98,7 +98,7 @@ function SellInformation({ prev, next }) {
                     } else {
                         message.error({
                             content: 'خطا در ثبت اطلاعات', style: {
-                                marginTop: '10vh'
+                                marginTop: '110px'
                             }
                         })
                     }
@@ -118,7 +118,7 @@ function SellInformation({ prev, next }) {
                             },
                         })
                         setTimeout(() => {
-                            navigate(Location?.state?.from ,  { state: {current : 2 } })
+                            navigate(Location?.state?.from, { state: { current: 2 } })
                             // next()
                             // navigate(next())
                         }, 500);

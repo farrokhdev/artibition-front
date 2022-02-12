@@ -458,7 +458,12 @@
     "info-box": {
       "register": {
         "title": "Register gallery",
-        "text": ".In case you own a gallery, register it"
+        "text": ".In case you own a gallery, register it",
+        "created": "Your request has been made",
+        "pending": "Pending",
+        "correction": "Needs correction",
+        "rejected": "Rejected",
+        "approved": "Approved"
       },
       "artists": {
         "title": "Register artists",

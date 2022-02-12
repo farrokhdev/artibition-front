@@ -51,7 +51,6 @@ const Panelprofile = (props) => {
         return userRole
     }
 
-    // console.log(getUserRole());
 
 
 
@@ -60,7 +59,6 @@ const Panelprofile = (props) => {
         setLoading(true)
         APIService.get(PROFILE, queryString.stringify(params))
             .then(resp => {
-                // console.log("profillleeeeeeeeeee", resp.data.data);
                 setLoading(false)
                 props.setProfile({
                     ...props.state,
@@ -87,10 +85,6 @@ const Panelprofile = (props) => {
     useEffect(() => {
         getItems()
     }, [params])
-
-    // useEffect(() => {
-    //     console.log(roles);
-    // }, [])
 
 
     return (
