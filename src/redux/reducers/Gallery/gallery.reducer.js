@@ -6,8 +6,7 @@ const initial_state = {
     selected_artwork_redux: [],
     galleryProfile: null,
     editGalleryMode: false,
-    editExhibitionMode: false,
-    exhibitionId: null
+
 }
 
 const galleryReducer = (state = initial_state, { type, payload }) => {
@@ -19,12 +18,7 @@ const galleryReducer = (state = initial_state, { type, payload }) => {
                 ...state,
                 id: payload,
             }
-        case types.EXHIBITION_ID:
-            console.log("payload=>", payload);
-            return {
-                ...state,
-                exhibitionId: payload,
-            }
+
         case types.GALLERY_PROFILE:
             console.log("payload=>", payload);
             return {
@@ -36,12 +30,6 @@ const galleryReducer = (state = initial_state, { type, payload }) => {
             return {
                 ...state,
                 editGalleryMode: payload,
-            }
-        case types.EDIT_EXHIBITION_MODE:
-            console.log("payload=>", payload);
-            return {
-                ...state,
-                editExhibitionMode: payload,
             }
         case types.SELECTED_ARTWORKS:
             console.log("payload=>", payload);

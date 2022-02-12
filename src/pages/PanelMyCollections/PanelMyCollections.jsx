@@ -30,6 +30,27 @@ function PanelMyCollections() {
     });
 
 
+    const { roles } = useSelector((state) => state.authReducer)
+    const getUserRole = () => {
+        let userRole = "user"
+        if (typeof roles === "string") {
+            return roles
+        } else {
+            if (roles && roles.length > 0) {
+                if (roles.includes("seller")) {
+                    userRole = "seller"
+                }
+                if (roles.includes("artist")) {
+                    userRole = "artist"
+                }
+            } else {
+                userRole = 'user'
+            }
+        }
+        return userRole
+    }
+
+
     const Language = GetLanguage();
     const getMyAulbumCollection = () => {
         apiServices.get(SOCIAL_NETWORK_COLLECTIONS, queryString.stringify(params))
@@ -42,20 +63,22 @@ function PanelMyCollections() {
             })
     }
 
-    const getArtistDetails = ()=>{
-        apiServices.get(ARTIST_ME,"")
-            .then(res=>{
+    const getArtistDetails = () => {
+        apiServices.get(ARTIST_ME, "")
+            .then(res => {
                 // console.log("res.data.data", res.data.data);
                 setartistDetails(res.data.data)
             })
-            .catch(err=>{
+            .catch(err => {
                 console.log(err);
             })
     }
 
     useEffect(() => {
         getMyAulbumCollection();
-        getArtistDetails();
+        if (getUserRole() === "artist") {
+            getArtistDetails();
+        }
     }, []);
     const handleShowAddGallery = () => {
         setVisibleAddGallery(true)
@@ -122,7 +145,7 @@ function PanelMyCollections() {
 
                                                     <tr>
                                                         <td data-label="ردیف">{key + 1}</td>
-                                                        <td data-label="عنوان"><span>{Language === 'fa-IR' ? myAulbum?.translations?.fa?.title : myAulbum?.translations?.en?.title }</span></td>
+                                                        <td data-label="عنوان"><span>{Language === 'fa-IR' ? myAulbum?.translations?.fa?.title : myAulbum?.translations?.en?.title}</span></td>
                                                         <td data-label="تعداد آثار"><span>{myAulbum?.likes_count}</span></td>
                                                         <td data-label="آخرین ویرایش"><span>{moment(myAulbum?.modified_date, 'YYYY/MM/DD').locale('fa').format('YYYY/MM/DD')}</span></td>
                                                         <td data-label="جزئیات">
@@ -133,7 +156,7 @@ function PanelMyCollections() {
                                                     </tr>
                                                 )
                                             })}
-                                          
+
                                         </tbody>
                                     </table>
                                 </div>

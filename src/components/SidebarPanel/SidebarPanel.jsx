@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
 import { useSelector } from 'react-redux';
 import { setProfile, showEditProfileVisible } from "../../redux/reducers/auth/auth.actions";
 import ModalEditProfile from '../../pages/PanelProfile/ModalEditProfile';
+import { message } from 'antd';
 
 function SidebarPanel(props) {
     const { t, i18n } = useTranslation();
@@ -16,6 +17,15 @@ function SidebarPanel(props) {
 
     const handleShowModal = () => {
         props.showEditProfileVisible(true)
+    }
+
+
+    const copyToClipboard = () => {
+        navigator.clipboard.writeText(`با دعوت دوستان خود از آرتیبیشن حمایت نمایید\n\n` + `${window.location.origin}`)
+        message.success({
+            content: "با موفقیت کپی شد",
+            style: { marginTop: "110px" }
+        })
     }
 
     const getUserRole = () => {
@@ -57,12 +67,14 @@ function SidebarPanel(props) {
                                     props.auth?.profile?.translations?.en?.last_name
                             }
                         </span>
-                        <div className="sidebar-mobile">
-                            <span className="persian-num pull-dir">{props?.auth?.profile?.mobile}</span>
-                            <a href="#">
-                                <img src={edit} onClick={handleShowModal} width="32" height="32" alt="" className="pull-dir img-responsive" />
-                            </a>
-                        </div>
+                        {getUserRole() !== "gallery" &&
+                            <div className="sidebar-mobile">
+                                <span className="persian-num pull-dir">{props?.auth?.profile?.mobile}</span>
+                                <a href="#">
+                                    <img src={edit} onClick={handleShowModal} width="32" height="32" alt="" className="pull-dir img-responsive" />
+                                </a>
+                            </div>
+                        }
                     </div>
                     <div className="clearfix" />
                 </div>
@@ -171,7 +183,7 @@ function SidebarPanel(props) {
                 </div>
 
                 <div className=" justify-content-end ">
-                    <button type="button" className="d-flex btn-outline-pink box-dir-reverse">
+                    <button type="button" className="d-flex btn-outline-pink box-dir-reverse" onClick={() => { copyToClipboard() }}>
                         <img src={invite} className="mx-2 mt-1" width="20" height="20" alt="" />
                         <span className="">{t("drawer-panel.invite.btn")}</span>
                     </button>
