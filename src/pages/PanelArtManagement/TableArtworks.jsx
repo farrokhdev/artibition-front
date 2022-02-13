@@ -27,7 +27,7 @@ function TableArtworks({ productList }) {
                             // className="img-responsive"
                             />
                         </td>
-                        <td data-label={t("content-panel-dashboard.tables.code")} className="persian-num">{item?.unique_code.substr(item?.unique_code.length - 12)}</td>
+                        <td data-label={t("content-panel-dashboard.tables.code")} className="persian-num">{item?.unique_code?.substr(item?.unique_code.length - 12)}</td>
                         <td data-label={t("content-panel-dashboard.tables.price")} className="persian-num">{item?.length} در {item?.width}</td>
                         <td data-label={t("content-panel-dashboard.tables.paid")} className="persian-num">{item?.items[0]?.toman_price}</td>
                         <td data-label={t("content-panel-dashboard.tables.discount")} className="persian-num">{item?.discount?.value}{item?.discount?.type === "percentage" ? "%" : ""}</td>
