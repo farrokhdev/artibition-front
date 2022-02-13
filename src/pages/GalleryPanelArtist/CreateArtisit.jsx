@@ -28,9 +28,17 @@ function CreateArtist() {
     const [form] = Form.useForm()
     const { TextArea } = Input
     const { id } = useSelector((state) => state.galleryReducer)
+
     let selectedArtist = {
-        artists_id_list: []
+        "artists_id_list": []
     }
+
+    galleryArtists.map(item => {
+        selectedArtist.artists_id_list.push(item.id)
+    })
+
+
+
 
 
     const handleChange = (e) => {
@@ -40,20 +48,35 @@ function CreateArtist() {
             const index = selectedArtist.artists_id_list.indexOf(e.target.value)
             selectedArtist.artists_id_list.splice(index, 1)
         }
-        console.log(selectedArtist.artists_id_list);
     }
     const confirmAddArtist = () => {
         console.log(selectedArtist);
         apiServices.post(ADD_ARTIST_TO_GALLERY(id), selectedArtist)
-
             .then(res => {
                 if (res.data) {
-                    console.log(res.data.data);
+                    message.success({
+                        content: "با موفقیت انجام شد",
+                        style: { marginTop: "110px" }
+                    })
+                    setShowExistArtist(false)
                 }
+                else {
+                    message.error({
+                        content: "عملیات موفقیت آمیز نبود",
+                        style: { marginTop: "110px" }
+                    })
+                }
+
+
             })
             .catch(err => {
+                message.error({
+                    content: "عملیات موفقیت آمیز نبود",
+                    style: { marginTop: "110px" }
+                })
                 console.log(err);
             })
+
     }
 
     useEffect(() => {
@@ -146,9 +169,9 @@ function CreateArtist() {
                 <div className="pull-dir">
                     <span className="bolder-title">{t("gallery-panel-artist.create_artist")}</span>
                 </div>
-                <Button className="btn-box-1 btn-pink pull-left" onClick={() => { setShowArtistSource(true) }}>
-                    <img src={whitePlus} width="16" height="16" className="center-block" />
-                </Button>
+                <button className="btn-box-1 btn-pink pull-left" onClick={() => { setShowArtistSource(true) }}>
+                    <img src={whitePlus} width="16" height="16" style={{ top: "2px" }} className="center-block" />
+                </button>
                 <div className="clearfix"></div>
             </div>
             <Modal visible={showArtistSource}

@@ -2,6 +2,9 @@
 export const BASE_URL = " http://192.168.0.23:8808/api/v1";
 // export const BASE_URL = " http://192.168.0.100:8000/api/v1";
 // export const BASE_URL = " http://192.168.0.113:8000/api/v1";
+// export const BASE_URL = " http://192.168.0.145:8000/api/v1";
+// export const BASE_URL = " http://192.168.0.141:8000/api/v1";
+// export const BASE_URL = " http://192.168.0.100:8000/api/v1";
 // export const BASE_URL = " http://192.168.0.182:8000/api/v1";
 
 // export const BASE_URL = "http://api.artibition.gallery/api/v1";
@@ -62,8 +65,8 @@ export const FOLLOW_ARTISTS = "/social-network/follow/artists/";
 export const SELLERS_REQUEST = "/artist/sellers/";
 export const ARTIST_BY_GALLERY = (id) => `/${id}/artists/define/`;
 export const TICKET = "/ticket/";
-export const TICKET_ID =(id)=> `/ticket/${id}/`;
-export const TICKET_REPLY = (id)=> `/ticket/${id}/reply/`;
+export const TICKET_ID = (id) => `/ticket/${id}/`;
+export const TICKET_REPLY = (id) => `/ticket/${id}/reply/`;
 export const ACCOUNT_PROFILE = "/account/profile/";
 export const PRODUCT_DETAIL = (id) => `/products/${id}/`;
 export const MESSAGES_ASSERTION = "/message/assertion/";
@@ -80,8 +83,7 @@ export const GALLERY_BIDS = (gallery_id) => `/gallery/${gallery_id}/bids/`;
 export const GALLERY_EDIT_BIDS = (gallery_id, bid_id) => `/gallery/${gallery_id}/bids/${bid_id}/`;
 export const ARTIST_BY_PRODUCT = '/artist/product/'
 export const RETERND_ORDER_ITEM = (id) => `/orders/buyers/${id}/return_item/`
-export const PRODUCT_BY_ARTIST = (galleryId, artistId) =>
-  `/${galleryId}/exhibition/artist/${artistId}/product/`;
+export const PRODUCT_BY_ARTIST = (galleryId, artistId) => `/${galleryId}/exhibition/artist/${artistId}/product/`;
 export const CART_ME = "/carts/me/";
 export const CART_ME_REMOVE_ITEM = `${BASE_URL}/carts/remove/`;
 export const CART_ME_CHECKOUT = `${BASE_URL}/carts/checkout/`;
@@ -90,13 +92,12 @@ export const ORDER = (id) => `/orders/${id}/`;
 export const ADDRESSES = "/account/location/";
 export const EDIT_ADDRESSES = (id) => `/account/location/${id}/`
 export const COMPLETE_ORDER = (id) => `/orders/${id}/complete_order/`;
-export const APPLY_DISCOUNT = (id) =>
-  `${BASE_URL}/orders/${id}/apply_discount/`;
+export const APPLY_DISCOUNT = (id) => `${BASE_URL}/orders/${id}/apply_discount/`;
 export const ADDRESSES_EDIT = (id) => `/account/location/${id}/`;
 export const EXHIBITION_LIST = "/exhibition";
 export const CART_ME_ADD_ITEM = `${BASE_URL}/carts/add/`;
-export const ADD_ARTIST_TO_GALLERY = (galleryId) => `/${galleryId}/add-artists/`
+export const ADD_ARTIST_TO_GALLERY = (galleryId) => `/${galleryId}/add-artists`
 export const EXHIBITION_INFO = (galleryId, exhibitionId) => `/${galleryId}/exhibition/${exhibitionId}/`
-export const EXHIBITION_PRODUCT = (galleryId, exhibitionId) => `/${galleryId}/exhibition/${exhibitionId}/artist-product/`
+export const EXHIBITION_PRODUCT = (galleryId, exhibitionId) => `/${galleryId}/exhibition/${exhibitionId}/artist-product`
 export const SEND_MESSAGE = `/message/sendmessage/`
 export const GALLERY_PRODUCTS = (galleryId) => `/gallery/${galleryId}/products/`

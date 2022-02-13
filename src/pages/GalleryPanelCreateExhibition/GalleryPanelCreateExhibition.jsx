@@ -41,8 +41,8 @@ function GalleryPanelCreateExhibition() {
     const [exhibitionType, setExhibitionType] = useState(undefined)
     const dispatch = useDispatch()
     const { id } = useSelector((state) => state.galleryReducer)
-    const { exhibitionId } = useSelector((state) => state.galleryReducer)
-    const { editExhibitionMode } = useSelector((state) => state.galleryReducer)
+    const { exhibitionId } = useSelector((state) => state.exhibitionReducer)
+    const { editExhibitionMode } = useSelector((state) => state.exhibitionReducer)
     const navigate = useNavigate()
     const [form] = Form.useForm()
 
@@ -70,10 +70,10 @@ function GalleryPanelCreateExhibition() {
                         "type": form.type,
                         "category": form.category,
                         "product_status": "sale",
-                        "virtual_start_date": `${form.virtual_start_date?.format("YYYY-MM-DD")}${form.virtual_start_time?.toISOString().slice(10)}`,
-                        "virtual_end_date": `${form.virtual_end_date?.format("YYYY-MM-DD")}${form.virtual_end_time?.toISOString().slice(10)}`,
-                        "real_start_date": `${form.real_start_date?.format("YYYY-MM-DD")}${form.real_start_time?.toISOString().slice(10)}`,
-                        "real_end_date": `${form.real_end_date?.format("YYYY-MM-DD")}${form.real_end_time?.toISOString().slice(10)}`,
+                        "virtual_start_date": form.virtual_start_date ? `${form.virtual_start_date?.format("YYYY-MM-DD")}${form.virtual_start_time?.toISOString().slice(10)}` : "",
+                        "virtual_end_date": form.virtual_end_date ? `${form.virtual_end_date?.format("YYYY-MM-DD")}${form.virtual_end_time?.toISOString().slice(10)}` : "",
+                        "real_start_date": form.real_start_date ? `${form.real_start_date?.format("YYYY-MM-DD")}${form.real_start_time?.toISOString().slice(10)}` : "",
+                        "real_end_date": form.real_start_date ? `${form.real_end_date?.format("YYYY-MM-DD")}${form.real_end_time?.toISOString().slice(10)}` : "",
                         "address": [
                             {
                                 "point": point,
@@ -199,7 +199,9 @@ function GalleryPanelCreateExhibition() {
                             statement_fa: value.translations?.fa?.statement,
                             address_fa: value.address?.find(e => e.is_default === true)?.translations?.fa?.address,
                             address_en: value.address?.find(e => e.is_default === true)?.translations?.en?.address,
-                            phone: value.phone
+                            phone: value.phone,
+                            artists: value.artist,
+                            category: value.category
                         })
                     }
                 })
@@ -449,7 +451,7 @@ function GalleryPanelCreateExhibition() {
                             <div className="row">
                                 <div className="col-sm-12 col-xs-6 text-dir">
                                     <Form.Item name={"category"} className='exhibitionFormCategory'>
-                                        <Checkbox.Group required options={categories} />
+                                        <Checkbox.Group required options={categories} value={[2, 3]} />
                                     </Form.Item>
                                 </div>
                             </div>

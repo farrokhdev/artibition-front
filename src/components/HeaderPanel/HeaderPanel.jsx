@@ -26,6 +26,28 @@ function HeaderPanel(props) {
     }, 200);
   };
 
+
+
+  const { roles } = useSelector((state) => state.authReducer)
+  const getUserRole = () => {
+    let userRole = "user"
+    if (typeof roles === "string") {
+      return roles
+    } else {
+      if (roles && roles.length > 0) {
+        if (roles.includes("seller")) {
+          userRole = "seller"
+        }
+        if (roles.includes("artist")) {
+          userRole = "artist"
+        }
+      } else {
+        userRole = 'user'
+      }
+    }
+    return userRole
+  }
+
   return (
     <div className="d-flex header panel-header box-dir-reverse dir right-0">
       <div className="col col-lg-2  px-0">
@@ -79,9 +101,11 @@ function HeaderPanel(props) {
                 className="pull-dir"
               />
             </a>
-            <a href="#" className="btn-panel-header hidden-sm hidden-xs">
-              <img src={message} width="24" height="24" alt="pull-dir" />
-            </a>
+            {getUserRole() !== "gallery" &&
+              <Link to={"/panel/messages"} className="btn-panel-header hidden-sm hidden-xs">
+                <img src={message} width="24" height="24" alt="pull-dir" />
+              </Link>
+            }
             <a href="#" className="btn-panel-header btn-changelang">
               <button
                 onClick={() =>

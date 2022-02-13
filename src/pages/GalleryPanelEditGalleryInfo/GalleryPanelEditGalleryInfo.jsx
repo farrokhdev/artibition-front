@@ -33,7 +33,7 @@ function GalleryPanelEditGalleryInfo() {
     const [showMap, setShowMap] = useState(false)
 
     const { id } = useSelector((state) => state.galleryReducer)
-    const { editGalleryMode } = useSelector((state) => state.galleryReducer)
+    const { editGalleryMode } = useSelector((state) => state.exhibitionReducer)
 
     const Language = GetLanguage()
     const dispatch = useDispatch()

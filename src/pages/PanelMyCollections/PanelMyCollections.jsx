@@ -30,6 +30,27 @@ function PanelMyCollections() {
     });
 
 
+    const { roles } = useSelector((state) => state.authReducer)
+    const getUserRole = () => {
+        let userRole = "user"
+        if (typeof roles === "string") {
+            return roles
+        } else {
+            if (roles && roles.length > 0) {
+                if (roles.includes("seller")) {
+                    userRole = "seller"
+                }
+                if (roles.includes("artist")) {
+                    userRole = "artist"
+                }
+            } else {
+                userRole = 'user'
+            }
+        }
+        return userRole
+    }
+
+
     const Language = GetLanguage();
     const getMyAulbumCollection = () => {
         apiServices.get(SOCIAL_NETWORK_COLLECTIONS, queryString.stringify(params))
@@ -42,20 +63,22 @@ function PanelMyCollections() {
             })
     }
 
-    const getArtistDetails = ()=>{
-        apiServices.get(ARTIST_ME,"")
-            .then(res=>{
+    const getArtistDetails = () => {
+        apiServices.get(ARTIST_ME, "")
+            .then(res => {
                 // console.log("res.data.data", res.data.data);
                 setartistDetails(res.data.data)
             })
-            .catch(err=>{
+            .catch(err => {
                 console.log(err);
             })
     }
 
     useEffect(() => {
-        // getMyAulbumCollection();
-        getArtistDetails();
+        if (getUserRole() === "artist") {
+            getArtistDetails();
+        }
+
     }, []);
     
 
@@ -130,7 +153,7 @@ function PanelMyCollections() {
 
                                                     <tr>
                                                         <td data-label="ردیف">{key + 1}</td>
-                                                        <td data-label="عنوان"><span>{Language === 'fa-IR' ? myAulbum?.translations?.fa?.title : myAulbum?.translations?.en?.title }</span></td>
+                                                        <td data-label="عنوان"><span>{Language === 'fa-IR' ? myAulbum?.translations?.fa?.title : myAulbum?.translations?.en?.title}</span></td>
                                                         <td data-label="تعداد آثار"><span>{myAulbum?.likes_count}</span></td>
                                                         <td data-label="آخرین ویرایش"><span>{moment(myAulbum?.modified_date, 'YYYY/MM/DD').locale('fa').format('YYYY/MM/DD')}</span></td>
                                                         <td data-label="جزئیات">
@@ -141,50 +164,13 @@ function PanelMyCollections() {
                                                     </tr>
                                                 )
                                             })}
-                                          
+
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
-                        {/* <div className="col-lg-4">
-                            <div className=" box box-3">
-                                <div className="d-flex box-dir-reverse public-header">
-                                    <div className="col-9">
-                                        <div className="d-flex pull-dir">
-                                            <h2 className="default-title text-dir">اطلاعات هنری</h2>
-                                        </div>
-                                    </div>
-                                    <div className="col">
-                                        <div className="d-flex justify-custom">
-                                            <a href="#">
-                                                <img src={edit_icon} width="32" height="32" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="box3-body">
-                                    <div
-
-                                        className={classnames("", {
-                                            "fa-resume": GetLanguage() === 'fa-IR',
-                                            "d-none": GetLanguage() === 'en-US'
-                                        })}
-                                    // className="fa-resume"
-                                    >
-                                        <div className="bolder-title text-dir">رزومه</div>
-                                        <p className="text-justify">{artistDetails?.translations?.fa?.biography}</p>
-                                    </div>
-                                    <div className="en-resume en">
-                                        <span className="bolder-title">Resume</span>
-                                        <p className="text-justify">{artistDetails?.translations?.en?.biography}</p>
-                                    </div>
-                                    <button type="button" className="btn btn-default" data-toggle="modal"
-                                        data-target="#exhibition-list">لیست نمایشگاه‌ها
-                                    </button>
-                                </div>
-                            </div>
-                        </div> */}
+                      
                     </div>
                     <Suggestions />
                     <RecentlyVeiws />
