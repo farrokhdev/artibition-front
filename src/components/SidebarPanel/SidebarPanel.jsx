@@ -61,10 +61,13 @@ function SidebarPanel(props) {
                                     galleryProfile.translations?.en?.title
                                 :
                                 i18n.language === 'fa-IR' ?
-                                    props.auth?.profile?.translations?.fa?.first_name + " " +
-                                    props.auth?.profile?.translations?.fa?.last_name :
-                                    props.auth?.profile?.translations?.en?.first_name + " " +
-                                    props.auth?.profile?.translations?.en?.last_name
+                                    props.auth?.profile?.translations?.fa ?
+                                        props.auth?.profile?.translations?.fa?.first_name + " " + props.auth?.profile?.translations?.fa?.last_name
+                                        : ""
+                                    :
+                                    props.auth?.profile?.translations?.en ?
+                                        profile?.translations?.en?.first_name + " " + profile?.translations?.en?.last_name
+                                        : ""
                             }
                         </span>
                         {getUserRole() !== "gallery" &&

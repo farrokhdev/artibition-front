@@ -50,18 +50,14 @@ function PersonalInfo(props) {
                             <span className="lable-panel">{t('content-panel-profile.personal-info.fullname')}</span>
                             <span className="input-panel">
                                 {i18n.language === 'fa-IR' ?
-                                    props.auth?.profile?.translations?.fa?.first_name + " " +
-                                    props.auth?.profile?.translations?.fa?.last_name :
-                                    profile?.translations?.en?.first_name + " " +
-                                    profile?.translations?.en?.last_name
+                                    props.auth?.profile?.translations?.fa ?
+                                        props.auth?.profile?.translations?.fa?.first_name + " " + props.auth?.profile?.translations?.fa?.last_name
+                                        : ""
+                                    :
+                                    props.auth?.profile?.translations?.en ?
+                                        profile?.translations?.en?.first_name + " " + profile?.translations?.en?.last_name
+                                        : ""
                                 }
-                                {console.log("props.auth?.profile?.translations?.fa?.first_name", props.auth?.profile?.translations?.fa?.first_name)}
-                                {/* {i18n.language === 'fa-IR' ?
-                                    profile?.translations?.fa?.first_name + " " +
-                                    profile?.translations?.fa?.last_name :
-                                    profile?.translations?.en?.first_name + " " +
-                                    profile?.translations?.en?.last_name
-                                } */}
                             </span>
                         </div>
                     </div>
