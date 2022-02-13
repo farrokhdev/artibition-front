@@ -93,7 +93,9 @@ function SellInformation({ prev, next }) {
                             },
                         })
                         setTimeout(() => {
-                            navigate(searchParams.get("back"))
+                            // navigate(searchParams.get("back"))
+                            console.log(Location);
+                            navigate(Location?.state?.from)
                         }, 500);
                     } else {
                         message.error({

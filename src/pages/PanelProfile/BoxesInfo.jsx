@@ -5,6 +5,7 @@ import felsh_left from '../../assets/img/felsh-left.png';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import classnames from 'classnames'
+import CreateGallery from '../GalleryPanelMyGallery/CreateGallery';
 
 function BoxesInfo({ items }) {
 
@@ -171,15 +172,7 @@ function BoxesInfo({ items }) {
                         </div>
                     </div>
                     <div className="col-md-4 ">
-                        <div className="d-flex box-dir-reverse box box-1">
-                            <div className="pull-dir">
-                                <h2 className="greencolor text-dir">{t('content-panel-profile.info-box.register.title')}</h2>
-                                <p className="text-dir">{t('content-panel-profile.info-box.register.text')}</p>
-                            </div>
-                            <Link to="/panel/gallery-info" className="btn-box-1 btn-green pull-left">
-                                <img src={felsh_left} width="16" height="16" className="center-block" />
-                            </Link>
-                        </div>
+                        <CreateGallery />
                     </div>
                 </>
             }
@@ -200,16 +193,7 @@ function BoxesInfo({ items }) {
                         </div>
                     </div>
                     <div className="col-md-4 ">
-                        <div className="d-flex box-dir-reverse box box-1">
-                            <div className="pull-dir">
-                                <h2 className="greencolor text-dir">{t('content-panel-profile.info-box.register.title')}</h2>
-                                <p className="text-dir">{t('content-panel-profile.info-box.register.text')}</p>
-                            </div>
-                            <Link to="/panel/gallery-info" className="btn-box-1 btn-green pull-left">
-                                <img src={felsh_left} width="16" height="16" className="center-block" />
-                            </Link>
-                            <div className="clearfix"></div>
-                        </div>
+                        <CreateGallery />
                     </div>
                 </>
             }
@@ -230,16 +214,7 @@ function BoxesInfo({ items }) {
                         </div>
                     </div>
                     <div className="col-md-4 ">
-                        <div className="d-flex box-dir-reverse box box-1">
-                            <div className="pull-dir">
-                                <h2 className="greencolor text-dir">{t('content-panel-profile.info-box.register.title')}</h2>
-                                <p className="text-dir">{t('content-panel-profile.info-box.register.text')}</p>
-                            </div>
-                            <Link to="/panel/gallery-info" className="btn-box-1 btn-green pull-left">
-                                <img src={felsh_left} width="16" height="16" className="center-block" />
-                            </Link>
-                            <div className="clearfix"></div>
-                        </div>
+                        <CreateGallery />
                     </div>
                 </>
             }

@@ -38,6 +38,7 @@ function GalleryPanelMyGalleryList() {
 
     const goToEditGallery = (gallery) => {
         dispatch(galleryId(gallery.id))
+        dispatch(galleryProfile(gallery))
         dispatch(editGalleryModeFunc(true))
         dispatch(setProfile({ roles: "gallery" }))
         navigate("/panel/gallery-info")
@@ -86,7 +87,7 @@ function GalleryPanelMyGalleryList() {
                         return (
                             <tr>
                                 <td data-label={t("gallery-panel-my-gallery.table.row")} className="persian-num">{galleryIndex + 1}</td>
-                                <td data-label={t("gallery-panel-my-gallery.table.logo")}><img src={artwork1} width="1776" height="1776"
+                                <td data-label={t("gallery-panel-my-gallery.table.logo")}><img src={gallery.logo.exact_url} width="1776" height="1776"
                                     alt=""
                                     className="img-responsive center-block" /></td>
                                 <td data-label={t("gallery-panel-my-gallery.table.gallery_name")}>{i18next.language === 'fa-IR' ? gallery.translations?.fa?.title : gallery.translations?.en?.title}</td>
