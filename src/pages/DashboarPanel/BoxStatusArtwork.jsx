@@ -61,7 +61,11 @@ function BoxStatusArtwork() {
             <div className="d-blcok d-lg-flex box-dir-reverse ">
                 <div className="col-12 col-md-3 px-0 w-100">
                     <img src={new_artwork} width="40" height="30" alt="new-artwork" className="center-block" />
-                    <Link to="/panel/add-artwork">
+                    <Link
+                     to={"/panel/add-artwork"}
+                     state={{ from: "/panel/dashboard" }}
+                    // to="/panel/add-artwork"
+                    >
                         <button type="button" className="d-flex align-items-center justify-content-center box-dir-reverse btn-outline-blue">
                             <img src={add_icon} width="12" height="12" alt="add-icon" className="mx-2" />
                             <span>{t("content-panel-dashboard.box_status.btn")}</span>

@@ -52,10 +52,10 @@ function PersonalInfo(props) {
                                 {i18n.language === 'fa-IR' ?
                                     props.auth?.profile?.translations?.fa?.first_name + " " +
                                     props.auth?.profile?.translations?.fa?.last_name :
-                                   profile?.translations?.en?.first_name + " " +
-                                   profile?.translations?.en?.last_name
+                                    profile?.translations?.en?.first_name + " " +
+                                    profile?.translations?.en?.last_name
                                 }
-                                {console.log("props.auth?.profile?.translations?.fa?.first_name" , props.auth?.profile?.translations?.fa?.first_name)}
+                                {console.log("props.auth?.profile?.translations?.fa?.first_name", props.auth?.profile?.translations?.fa?.first_name)}
                                 {/* {i18n.language === 'fa-IR' ?
                                     profile?.translations?.fa?.first_name + " " +
                                     profile?.translations?.fa?.last_name :
@@ -113,7 +113,15 @@ function PersonalInfo(props) {
                     <div className="col-sm-6">
                         <div className="form-group text-dir">
                             <span className="lable-panel">{t('content-panel-profile.personal-info.username')}</span>
-                            <span className="input-panel persian-num">{props?.auth?.profile?.username}</span>
+                            <span className="input-panel persian-num">
+                                {i18n.language === 'fa-IR' ?
+                                    props.auth?.profile?.translations?.fa?.nick_name
+                                    :
+                                    profile?.translations?.en?.nick_name
+                                }
+                            </span>
+                            {/* <span className="input-panel persian-num">{props?.auth?.profile?.username}</span> */}
+
                         </div>
                     </div>
                 </div>

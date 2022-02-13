@@ -75,6 +75,13 @@ function PanleMyAlbums() {
         }
     }, [params]);
 
+    
+    useEffect(() => {
+        if (visibleAddGallery === false && artistDetails?.id) {
+            getMyAulbumCollection();
+        }
+    }, [visibleAddGallery]);
+
     useEffect(() => {
 
 

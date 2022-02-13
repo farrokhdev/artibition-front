@@ -281,7 +281,8 @@
       "cancel_offer": "Cancel the offer"
     },
     "modal_similar_artwork": {
-      "title": "Similar artworks"
+      "title": "Similar artworks",
+      "title1": "Add collections"
     },
     "modal_bidding_artwork": {
       "title": "Send offer",
@@ -848,6 +849,7 @@
       "title": "Artwork info",
       "artwork_name": "",
       "artwork_title": "Artwork title",
+      "artist_title": "Artist name",
       "artwork_subject": "Subject",
       "artwork_field": "Category",
       "artwork_technique": "Technique",
@@ -1176,6 +1178,7 @@
         "title": "Artwork info",
         "artwork_name": "",
         "artwork_title": "Artwork title",
+        "artist_title": "Artist name",
         "artwork_subject": "Subject",
         "artwork_field": "Category",
         "artwork_technique": "Technique",

@@ -9,7 +9,7 @@ import classnames from 'classnames';
 import flesh_left from '../../assets/img/felsh-left.png';
 import edit_icon from '../../assets/img/edit_name.svg';
 import rdbewaopdm840 from '../../assets/img/mainpage/rdbewaopdm840.jpg';
-import ModalAddGallery from './ModalAddGallery';
+import ModalAddCollections from './ModalAddCollections';
 import RecentlyVeiws from './RecentlyVeiws';
 import Suggestions from './Suggestions';
 import apiServices from '../../utils/api.services';
@@ -21,7 +21,7 @@ import { Link } from 'react-router-dom';
 function PanelMyCollections() {
 
 
-    const [visibleAddGallery, setVisibleAddGallery] = useState(false);
+    const [visibleAddCollections, setVisibleAddCollections] = useState(false);
     const { id } = useSelector((state) => state.authReducer)
     const [aulbum, setAulbum] = useState([]);
     const [artistDetails, setartistDetails] = useState({});
@@ -54,11 +54,19 @@ function PanelMyCollections() {
     }
 
     useEffect(() => {
-        getMyAulbumCollection();
+        // getMyAulbumCollection();
         getArtistDetails();
     }, []);
+    
+
+    useEffect(() => {
+        if (visibleAddCollections === false) {
+            getMyAulbumCollection();
+        }
+    }, [visibleAddCollections]);
+
     const handleShowAddGallery = () => {
-        setVisibleAddGallery(true)
+        setVisibleAddCollections(true)
     }
 
     return (
@@ -181,9 +189,9 @@ function PanelMyCollections() {
                     <Suggestions />
                     <RecentlyVeiws />
 
-                    <ModalAddGallery
-                        setVisibleAddGallery={setVisibleAddGallery}
-                        visibleAddGallery={visibleAddGallery}
+                    <ModalAddCollections
+                        setVisibleAddCollections={setVisibleAddCollections}
+                        visibleAddCollections={visibleAddCollections}
                     />
 
 

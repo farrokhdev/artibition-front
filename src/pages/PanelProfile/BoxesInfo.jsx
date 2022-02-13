@@ -4,6 +4,7 @@ import { t } from 'i18next';
 import felsh_left from '../../assets/img/felsh-left.png';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { message } from 'antd';
 
 function BoxesInfo({ items }) {
 
@@ -121,9 +122,21 @@ function BoxesInfo({ items }) {
                                 <h2 className="pinkcolor text-dir">{t('content-panel-profile.info-box.seller.title')}</h2>
                                 <p className="text-dir">{t('content-panel-profile.info-box.seller.text')}</p>
                             </div>
-                            <Link to="/panel/become-seller" className="btn-box-1 btn-pink pull-left">
-                                <img src={felsh_left} width="16" height="16" className="center-block" />
-                            </Link>
+                            {items?.is_approved ?
+                                <Link to="/panel/become-seller" className="btn-box-1 btn-pink pull-left">
+                                    <img src={felsh_left} width="16" height="16" className="center-block" />
+                                </Link>
+                                :
+                                <Link to="" onClick={() => {
+                                    message.error({
+                                        content: 'لطفاابتدااطلاعات پروفایل خود را تکمیل کنید', style: {
+                                            marginTop: '10vh',
+                                        },
+                                    })
+                                }} className="btn-box-1 btn-pink pull-left">
+                                    <img src={felsh_left} width="16" height="16" className="center-block" />
+                                </Link>
+                            }
                             <div className="clearfix"></div>
                         </div>
                     </div>
@@ -139,7 +152,13 @@ function BoxesInfo({ items }) {
                                     <img src={felsh_left} width="16" height="16" className="center-block" />
                                 </Link>
                                 :
-                                <Link to="" className=" btn-box-1 btn-purple pull-left">
+                                <Link to="" onClick={() => {
+                                    message.error({
+                                        content: 'لطفاابتدااطلاعات پروفایل خود را تکمیل کنید', style: {
+                                            marginTop: '10vh',
+                                        },
+                                    })
+                                }} className=" btn-box-1 btn-purple pull-left">
                                     <img src={felsh_left} width="16" height="16" className="center-block" />
                                 </Link>
                             }
@@ -152,9 +171,21 @@ function BoxesInfo({ items }) {
                                 <h2 className="greencolor text-dir">{t('content-panel-profile.info-box.register.title')}</h2>
                                 <p className="text-dir">{t('content-panel-profile.info-box.register.text')}</p>
                             </div>
-                            <Link to="/panel/gallery-info" className="btn-box-1 btn-green pull-left">
-                                <img src={felsh_left} width="16" height="16" className="center-block" />
-                            </Link>
+                            {items?.is_approved ?
+                                <Link to="/panel/gallery-info" className="btn-box-1 btn-green pull-left">
+                                    <img src={felsh_left} width="16" height="16" className="center-block" />
+                                </Link>
+                                :
+                                <Link to="" onClick={() => {
+                                    message.error({
+                                        content: 'لطفاابتدااطلاعات پروفایل خود را تکمیل کنید', style: {
+                                            marginTop: '10vh',
+                                        },
+                                    })
+                                }} className="btn-box-1 btn-green pull-left">
+                                    <img src={felsh_left} width="16" height="16" className="center-block" />
+                                </Link>
+                            }
                             <div className="clearfix"></div>
                         </div>
                     </div>

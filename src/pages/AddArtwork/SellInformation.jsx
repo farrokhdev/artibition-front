@@ -9,7 +9,10 @@ import apiServices from '../../utils/api.services';
 import { ARTIST_BY_GALLERY, ARTWORK_BY_GALLERY, PRODUCTS } from '../../utils';
 import { artworkForm } from '../../redux/reducers/Artwork/artwork.action';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
-import { useNavigate, useSearchParams, useLocation} from 'react-router-dom';
+import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
+import DatePicker, { Calendar } from 'react-datepicker2';
+import moment from 'moment-jalaali';
+
 const { Option } = Select;
 
 function SellInformation({ prev, next }) {
@@ -56,10 +59,9 @@ function SellInformation({ prev, next }) {
 
 
     const onFinish = (values) => {
-        console.log("values1", values);
         let payload = {
             ...lastform,
-            ...values,
+            // ...values,
             "items": [
                 {
                     "edition_number": null,
@@ -70,7 +72,7 @@ function SellInformation({ prev, next }) {
             "discount": {
                 "type": values?.discount_price ? values?.discount_price : "toman",
                 "value": i18next.language === 'fa-IR' ? values?.percent_discount_rial : values?.percent_discount_dolar,
-                "duration": 3600
+                "duration": moment(values?.duration).hour(0).minute(0).second(0).diff(moment(Date.now()), 'seconds')
             },
 
         }
@@ -118,7 +120,7 @@ function SellInformation({ prev, next }) {
                             },
                         })
                         setTimeout(() => {
-                            navigate(Location?.state?.from ,  { state: {current : 2 } })
+                            navigate(Location?.state?.from, { state: { current: 2 } })
                             // next()
                             // navigate(next())
                         }, 500);
@@ -508,7 +510,7 @@ function SellInformation({ prev, next }) {
                                         <div className="public-group">
                                             <Form.Item
                                                 className="w-100"
-                                                name="date"
+                                                name="duration"
                                                 rules={[
                                                     {
                                                         required: true,
@@ -516,14 +518,24 @@ function SellInformation({ prev, next }) {
                                                     }
                                                 ]}>
 
-                                                <Input
+                                                {/* <Input
                                                     type="text"
                                                     id="info-207"
                                                     className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
                                                     placeholder={t("content-panel-add-artwork.date")}
-                                                />
+                                                /> */}
 
+                                                <DatePicker
+                                                    className="form-control input-public "
+                                                    placeholder={t("content-panel-add-artwork.date")}
+                                                    timePicker={false}
+                                                    isGregorian={false}
+                                                    // name="duration"
+                                                    // id="duration"
+
+                                                />
                                             </Form.Item>
+
                                             {/* <input className="form-control input-public persian-num " required placeholder="" value="1368/06/21"/> */}
                                             {/* <label className="lable-public">تاریخ</label> */}
                                         </div>

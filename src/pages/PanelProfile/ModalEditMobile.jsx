@@ -54,6 +54,9 @@ function ModalEditMobile(props) {
                 if (res.data) {
                     setShowNumber(true)
                     getItems();
+                    setvisibleEditMobile(false)
+                } else {
+                    message.error({ content: "مجددا درخواست اعتبار سنجی دهید", style: { marginTop: '10vh' } })
                 }
             })
             .catch(err => {

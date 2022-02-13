@@ -20,6 +20,7 @@ function PanelArtManagement() {
     const [suggestionsCount, setSuggestionsCount] = useState("");
     const [products, setProducts] = useState({});
 
+
     const [params, setParams] = useState({
         page: 1,
         status: "",
@@ -52,6 +53,7 @@ function PanelArtManagement() {
 
 
 
+
     const countStatus = {
         "pending": 0,
         "pending_edition": 0,
@@ -59,8 +61,7 @@ function PanelArtManagement() {
         "active": 0
     }
 
-
-    console.log("products", products);
+    const AllCountStatus = products.active + products['pending_edition'] + products.pending + products.rejected
 
 
     // Get my product list
@@ -182,9 +183,7 @@ function PanelArtManagement() {
                                 <Radio value={""} style={{ margin: "0 30px" }}>
                                     {t("content-panel-manage-artworks.filters.all")}
                                     <p className='text-dir mx-4 px-3'>
-                                        {
-                                            products.active + products['pending_edition'] + products.pending + products.rejected
-                                        }
+                                        {AllCountStatus ? AllCountStatus : 0}
                                     </p>
                                 </Radio>
                                 <Radio value={"active"} style={{ margin: "0 30px" }}>
