@@ -282,7 +282,7 @@ function GalleryPanelUploadExhibitionArtwork() {
                             <div className=" artist-upload-row">
                                 <div className="artist-name-row">
                                     <div className="artist-avatar pull-dir">
-                                        <img className="img-responsive" src={artist.bg_image?.exact_url} height="192" width="192" alt="" />
+                                        <img className="img-responsive" src={artist?.bg_image?.exact_url} height="192" width="192" alt="" />
                                     </div>
                                     <h4 className="artists-name text-dir">
                                         <span>
@@ -523,7 +523,7 @@ function GalleryPanelUploadExhibitionArtwork() {
                                         <div className="exist-artwork-row">
                                             <div className="artist-name-row">
                                                 <div className="artist-avatar pull-right">
-                                                    <img className="img-responsive" src={artist.bg_image.exact_url} height="192" width="192" alt="" />
+                                                    <img className="img-responsive" src={artist?.bg_image?.exact_url} height="192" width="192" alt="" />
                                                 </div>
                                                 <h4 className="artists-name text-dir">
                                                     <span>{i18next.language === "fa-IR" ? artist?.translations?.fa?.nick_name : artist?.translations?.en?.nick_name}</span>

@@ -43,6 +43,7 @@ function ModalSendMessage(props) {
                         style: { marginTop: "110px" }
                     })
                 }
+                setVisibleShowSendMessage(false)
             })
             .catch(err => {
                 message.error({
