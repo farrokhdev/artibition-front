@@ -10,6 +10,9 @@ import { ARTIST_BY_GALLERY, ARTWORK_BY_GALLERY, GALLERY_PRODUCTS, PRODUCTS } fro
 import { artworkForm } from '../../redux/reducers/Artwork/artwork.action';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
+import DatePicker, { Calendar } from 'react-datepicker2';
+import moment from 'moment-jalaali';
+
 const { Option } = Select;
 
 function SellInformation({ prev, next }) {
@@ -56,10 +59,9 @@ function SellInformation({ prev, next }) {
 
 
     const onFinish = (values) => {
-        console.log("values1", values);
         let payload = {
             ...lastform,
-            ...values,
+            // ...values,
             "items": [
                 {
                     "edition_number": null,
@@ -70,7 +72,7 @@ function SellInformation({ prev, next }) {
             "discount": {
                 "type": values?.discount_price ? values?.discount_price : "toman",
                 "value": i18next.language === 'fa-IR' ? values?.percent_discount_rial : values?.percent_discount_dolar,
-                "duration": 3600
+                "duration": moment(values?.duration).hour(0).minute(0).second(0).diff(moment(Date.now()), 'seconds')
             },
 
         }
@@ -313,10 +315,6 @@ function SellInformation({ prev, next }) {
                                                                             placeholder={t("content-panel-add-artwork.price_ir")}
                                                                         />
                                                                     </Form.Item>
-
-                                                                    {/* <a href="#" className="btn-change">
-                                                        <img src={change_icon} width="24" height="24" alt="" className="" />
-                                                    </a> */}
                                                                 </div>
                                                                 <div className="public-group">
                                                                     <Form.Item
@@ -355,8 +353,6 @@ function SellInformation({ prev, next }) {
                         }
                     </div>
 
-                    {/* {!isValidEdition ? */}
-
                     <div className="row">
                         {isValidSaleInformation || !isValidEdition ?
                             <>
@@ -365,31 +361,30 @@ function SellInformation({ prev, next }) {
                                         <Form.Item name="is_sold" valuePropName="checked" noStyle>
                                             <Checkbox type="checkbox"></Checkbox>
                                         </Form.Item>
-                                        {/* <input type="checkbox" value=""/> */}
+                                      
                                         <span className='mx-2'>{t("content-panel-add-artwork.artwork_sold")}</span>
-                                        {/* <span className="checkmark"></span> */}
+                                        
                                     </label>
                                 </div>
 
                                 <div className="col-sm-12">
                                     <label className="d-flex box-dir-reverse lable-checkbox public-group text-dir pr-0">
-                                        {/* <input type="checkbox" checked value=""/> */}
+                                        
                                         <Form.Item name="can_bid" valuePropName="checked" noStyle>
                                             <Checkbox type="checkbox"></Checkbox>
                                         </Form.Item>
                                         <span className='mx-2'>{t("content-panel-add-artwork.could_offer")}</span>
-                                        {/* <span className="checkmark"></span> */}
+                                      
                                         <span className="input-help">{t("content-panel-add-artwork.could_offer_text")}</span>
                                     </label>
                                 </div>
                                 <div className="col-sm-12">
                                     <label className=" lable-checkbox public-group text-dir pr-0  mt-5">
-                                        {/* <input type="checkbox"/> */}
+                                       
                                         <Form.Item valuePropName="checked">
                                             <Switch type="checkbox" checked={isValidation} onChange={e => setisValidation(e)}></Switch>
                                         </Form.Item>
-                                        {console.log("is_send_invitation", isValidation)}
-                                        {/* <span className="switchbtn round"></span> */}
+                                
                                         <span className="label-switchbtn">{t("content-panel-add-artwork.discount_price")}</span>
                                     </label>
                                 </div>
@@ -424,21 +419,9 @@ function SellInformation({ prev, next }) {
                                                 options={listinvestmentType}
                                                 allowClear
                                             >
-                                                {/* <Option value="تخفیف براساس درصد">تخفیف براساس درصد</Option>
-                                                <Option value="تخفیف براساس درصد">تخفیف براساس درصد</Option>
-                                                <Option value="تخفیف براساس درصد">تخفیف براساس درصد</Option> */}
                                             </Select>
                                         </Form.Item>
 
-
-
-
-
-                                        {/* <select className="form-control" id="sel1">
-                                <option>تخفیف براساس درصد</option>
-                                <option>تخفیف براساس درصد</option>
-                                <option>تخفیف براساس درصد</option>
-                            </select> */}
                                     </div>
                                 </div>
                                 : ""}
@@ -469,9 +452,7 @@ function SellInformation({ prev, next }) {
                                                 />
 
                                             </Form.Item>
-                                            {/* <input className="form-control input-public " required placeholder=""
-                                   value=""/> */}
-                                            {/* <label className="lable-public">درصد تخفیف قیمت ریالی</label> */}
+                                           
                                         </div>
                                         <a href="#" className="btn-change">
                                             <img src={change_icon} width="24" height="24" alt="" className="" />
@@ -497,9 +478,6 @@ function SellInformation({ prev, next }) {
                                                 />
 
                                             </Form.Item>
-                                            {/* <input className="form-control input-public " required placeholder=""
-                                   value=""/> */}
-                                            {/* <label className="lable-public">درصد تخفیف قمیت دلاری</label> */}
                                         </div>
                                     </div>
                                 </div>
@@ -510,7 +488,7 @@ function SellInformation({ prev, next }) {
                                         <div className="public-group">
                                             <Form.Item
                                                 className="w-100"
-                                                name="date"
+                                                name="duration"
                                                 rules={[
                                                     {
                                                         required: true,
@@ -518,16 +496,13 @@ function SellInformation({ prev, next }) {
                                                     }
                                                 ]}>
 
-                                                <Input
-                                                    type="text"
-                                                    id="info-207"
-                                                    className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
+                                                <DatePicker
+                                                    className="form-control input-public "
                                                     placeholder={t("content-panel-add-artwork.date")}
+                                                    timePicker={false}
+                                                    isGregorian={false}
                                                 />
-
                                             </Form.Item>
-                                            {/* <input className="form-control input-public persian-num " required placeholder="" value="1368/06/21"/> */}
-                                            {/* <label className="lable-public">تاریخ</label> */}
                                         </div>
                                     </div>
                                 </div>

@@ -7,6 +7,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { editGalleryModeFunc } from "../../redux/reducers/Gallery/gallery.actions";
 import { setProfile } from "../../redux/reducers/auth/auth.actions";
+import { useSelector } from "react-redux";
+import { message } from "antd";
 
 
 
@@ -15,9 +17,20 @@ function CreateGallery() {
     const navigate = useNavigate()
 
 
+
+    const { profile } = useSelector((state) => state.authReducer)
+
     const goToNewGallery = () => {
-        dispatch(editGalleryModeFunc(false))
-        navigate("/panel/gallery-info")
+        if (profile?.is_approved) {
+            dispatch(editGalleryModeFunc(false))
+            navigate("/panel/gallery-info")
+        } else {
+            message.error({
+                content: 'لطفاابتدااطلاعات پروفایل خود را تکمیل کنید',
+                style: { marginTop: '10vh' }
+            })
+        }
+
     }
 
     return (

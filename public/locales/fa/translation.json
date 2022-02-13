@@ -279,7 +279,8 @@
       "cancel_offer": "رد پیشنهاد"
     },
     "modal_similar_artwork": {
-      "title": "آثار مشابه"
+      "title": "آثار مشابه",
+      "title1" :"ایجاد کالکشن"
     },
     "modal_bidding_artwork": {
       "title": "ارسال پیشنهاد به هنرمند",
@@ -1124,6 +1125,8 @@
       "title": "اطلاعات هنری",
       "artwork_name": "Artwork Name",
       "artwork_title": "عنوان اثر",
+      "artwork_titles" : "Artwork title",
+      "artist_name" :"نام هنرمند",
       "artwork_subject": "موضوع",
       "artwork_field": "رشته هنری",
       "artwork_technique": "تکنیک",

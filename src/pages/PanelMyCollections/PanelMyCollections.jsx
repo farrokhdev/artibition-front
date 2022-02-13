@@ -9,7 +9,7 @@ import classnames from 'classnames';
 import flesh_left from '../../assets/img/felsh-left.png';
 import edit_icon from '../../assets/img/edit_name.svg';
 import rdbewaopdm840 from '../../assets/img/mainpage/rdbewaopdm840.jpg';
-import ModalAddGallery from './ModalAddGallery';
+import ModalAddCollections from './ModalAddCollections';
 import RecentlyVeiws from './RecentlyVeiws';
 import Suggestions from './Suggestions';
 import apiServices from '../../utils/api.services';
@@ -22,7 +22,7 @@ import CreateGallery from '../GalleryPanelMyGallery/CreateGallery';
 function PanelMyCollections() {
 
 
-    const [visibleAddGallery, setVisibleAddGallery] = useState(false);
+    const [visibleAddCollections, setVisibleAddCollections] = useState(false);
     const { id } = useSelector((state) => state.authReducer)
     const [aulbum, setAulbum] = useState([]);
     const [artistDetails, setartistDetails] = useState({});
@@ -76,13 +76,21 @@ function PanelMyCollections() {
     }
 
     useEffect(() => {
-        getMyAulbumCollection();
         if (getUserRole() === "artist") {
             getArtistDetails();
         }
+
     }, []);
+    
+
+    useEffect(() => {
+        if (visibleAddCollections === false) {
+            getMyAulbumCollection();
+        }
+    }, [visibleAddCollections]);
+
     const handleShowAddGallery = () => {
-        setVisibleAddGallery(true)
+        setVisibleAddCollections(true)
     }
 
     return (
@@ -164,51 +172,14 @@ function PanelMyCollections() {
                                 </div>
                             </div>
                         </div>
-                        {/* <div className="col-lg-4">
-                            <div className=" box box-3">
-                                <div className="d-flex box-dir-reverse public-header">
-                                    <div className="col-9">
-                                        <div className="d-flex pull-dir">
-                                            <h2 className="default-title text-dir">اطلاعات هنری</h2>
-                                        </div>
-                                    </div>
-                                    <div className="col">
-                                        <div className="d-flex justify-custom">
-                                            <a href="#">
-                                                <img src={edit_icon} width="32" height="32" />
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="box3-body">
-                                    <div
-
-                                        className={classnames("", {
-                                            "fa-resume": GetLanguage() === 'fa-IR',
-                                            "d-none": GetLanguage() === 'en-US'
-                                        })}
-                                    // className="fa-resume"
-                                    >
-                                        <div className="bolder-title text-dir">رزومه</div>
-                                        <p className="text-justify">{artistDetails?.translations?.fa?.biography}</p>
-                                    </div>
-                                    <div className="en-resume en">
-                                        <span className="bolder-title">Resume</span>
-                                        <p className="text-justify">{artistDetails?.translations?.en?.biography}</p>
-                                    </div>
-                                    <button type="button" className="btn btn-default" data-toggle="modal"
-                                        data-target="#exhibition-list">لیست نمایشگاه‌ها
-                                    </button>
-                                </div>
-                            </div>
-                        </div> */}
+                      
                     </div>
                     <Suggestions />
                     <RecentlyVeiws />
 
-                    <ModalAddGallery
-                        setVisibleAddGallery={setVisibleAddGallery}
-                        visibleAddGallery={visibleAddGallery}
+                    <ModalAddCollections
+                        setVisibleAddCollections={setVisibleAddCollections}
+                        visibleAddCollections={visibleAddCollections}
                     />
 
 

@@ -53,6 +53,10 @@ function ModalEditEmail(props) {
                 if (res.data) {
                     setShowEmail(true)
                     getItems();
+                    setvisibleEditEmail(false)
+                } else {
+                    message.error({ content: "مجددا درخواست اعتبار سنجی دهید", style: { marginTop: '10vh' } })
+
                 }
             })
             .catch(err => {
