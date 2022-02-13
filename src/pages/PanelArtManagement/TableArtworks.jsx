@@ -27,11 +27,9 @@ function TableArtworks({ productList }) {
                             // className="img-responsive"
                             />
                         </td>
-                        <td data-label={t("content-panel-dashboard.tables.code")} className="persian-num">{item?.id}</td>
-                        <td data-label={t("content-panel-dashboard.tables.edition")} className="persian-num">{item?.items[0]?.edition_number}</td>
+                        <td data-label={t("content-panel-dashboard.tables.code")} className="persian-num">{item?.unique_code.substr(item?.unique_code.length - 12)}</td>
                         <td data-label={t("content-panel-dashboard.tables.price")} className="persian-num">{item?.length} در {item?.width}</td>
                         <td data-label={t("content-panel-dashboard.tables.paid")} className="persian-num">{item?.items[0]?.toman_price}</td>
-                        {/* {order.product_item.product.discount.value}{order.product_item.product.discount.type === "percentage" ? "%" : ""} */}
                         <td data-label={t("content-panel-dashboard.tables.discount")} className="persian-num">{item?.discount?.value}{item?.discount?.type === "percentage" ? "%" : ""}</td>
                         <td data-label={t("content-panel-dashboard.tables.details")} className="">{momentJalaali(item?.modified_date).format(` jYYYY/jMM/jDD`)}</td>
                         <td data-label={t("content-panel-dashboard.tables.details")} className="">{momentJalaali(item?.creation_date).format(` jYYYY/jMM/jDD`)}</td>
@@ -59,7 +57,7 @@ function TableArtworks({ productList }) {
                             <td>{t("content-panel-manage-artworks.tables.row")}</td>
                             <td>{t("content-panel-manage-artworks.tables.image")}</td>
                             <td>{t("content-panel-manage-artworks.tables.code")}</td>
-                            <td className='min-width-td-2'>{t("content-panel-manage-artworks.tables.edition")}</td>
+                            {/* <td className='min-width-td-2'>{t("content-panel-manage-artworks.tables.edition")}</td> */}
                             <td className='min-width-td-2'>{t("content-panel-manage-artworks.tables.size")}</td>
                             <td className='min-width-td-4'>{t("content-panel-manage-artworks.tables.price")}</td>
                             <td className='min-width-td-1'>{t("content-panel-manage-artworks.tables.discount")}</td>

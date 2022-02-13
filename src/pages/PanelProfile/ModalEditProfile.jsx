@@ -27,12 +27,13 @@ function ModalEditProfile(props) {
                 [lang]: {
                     "first_name": values['first_name'],
                     "last_name": values['last_name'],
+                    "nick_name": values['nick_name']
                 }
             },
             "email": values['email'],
             "birth_date": values?.birth_date.format("YYYY-MM-DD"),
             "national_code": values['national_code'],
-            "username": values['username']
+            // "username": values['username']
         }
 
         // console.log("dataaaaaaaaaaa" , data);
@@ -81,8 +82,7 @@ function ModalEditProfile(props) {
                             national_code: props?.auth?.profile?.national_code,
                             birth_date: moment(props?.auth?.profile?.birth_date, "YYYY-MM-DD"),
                             email: props?.auth?.profile?.email,
-                            username: props?.auth?.profile?.username
-
+                            nick_name: i18n.language === 'fa-IR' ? props?.auth?.profile?.translations?.fa?.nick_name : props?.auth?.profile?.translations?.en?.nick_name,
                         }}
 
                     >
@@ -125,7 +125,7 @@ function ModalEditProfile(props) {
                             </div> */}
                             <div className="col-sm-6">
                                 <Form.Item className="public-group text-right"
-                                    label={t("content-panel-profile.personal-info.username")} name={'username'}>
+                                    label={t("content-panel-profile.personal-info.username")} name={'nick_name'}>
                                     <Input className="form-control input-public " />
                                 </Form.Item>
                             </div>
