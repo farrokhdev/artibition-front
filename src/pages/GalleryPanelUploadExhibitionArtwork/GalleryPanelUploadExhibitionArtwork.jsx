@@ -24,7 +24,7 @@ import OneUpload from "../../components/OneUpload/OneUpload";
 import queryString from "query-string";
 import Collection from "../CollectionsList/Collection";
 import ExistArtworkCollection from "./ExistArtworkCollection";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { exhibitionForm } from "../../redux/reducers/Exhibition/exhibition.action";
 import OneUploadCircle from "../../components/OneUploadCircle/OneUploadCircle";
 
@@ -480,14 +480,19 @@ function GalleryPanelUploadExhibitionArtwork() {
                                 <button type="button" className="btn-black center-block" data-target="#exist-artworks" data-toggle="modal" onClick={() => { setShowExistArtwork(true) }}>
                                     انتخاب از آثار موجود
                                 </button>
-                                <button type="button" className="btn-black center-block mrgt16" data-target="#modal-import { useLocation } from 'react-router-dom';edit-price" data-toggle="modal" onClick={() => {
+                                {/* <button type="button" className="btn-black center-block mrgt16" data-target="#modal-import { useLocation } from 'react-router-dom';edit-price" data-toggle="modal" onClick={() => {
                                     navigate({
                                         pathname: '/panel/add-artwork',
                                         search: `?artist_id=${selectedArtist}&back=/panel/upload-exhibition-artwotk`,
+                                        state: { from: "/panel/upload-exhibition-artwotk" }
                                     });
                                 }}>
                                     افزودن اثر جدید
-                                </button>
+                                </button> */}
+                                <Link to={`/panel/add-artwork?artist_id=${selectedArtist}`} className="btn-black center-block mrgt16"
+                                    state={{ from: "/panel/upload-exhibition-artwotk" }}>
+                                    افزودن اثر جدید
+                                </Link>
                             </div>
                         </div>
 
@@ -513,16 +518,15 @@ function GalleryPanelUploadExhibitionArtwork() {
                         <div className="modal-body">
                             <div className="container">
                                 {selectedArtists.map((artist, index) => {
-                                    // console.log(index, artist);
+                                    console.log("ARTIST", artist);
                                     return (
                                         <div className="exist-artwork-row">
                                             <div className="artist-name-row">
                                                 <div className="artist-avatar pull-right">
-                                                    <img className="img-responsive" src="img/Aydin_Aghdashloo_04@3x.jpg" height="192" width="192" alt="" />
+                                                    <img className="img-responsive" src={artist.bg_image.exact_url} height="192" width="192" alt="" />
                                                 </div>
-                                                <h4 className="artists-name">
-                                                    <span>آیدین</span>
-                                                    <span>آغداشلو</span>
+                                                <h4 className="artists-name text-dir">
+                                                    <span>{i18next.language === "fa-IR" ? artist?.translations?.fa?.nick_name : artist?.translations?.en?.nick_name}</span>
                                                 </h4>
                                             </div>
                                             <div className="artist-artworks-row advisory-select">

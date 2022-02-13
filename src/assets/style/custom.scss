@@ -9156,10 +9156,32 @@ iframe {
     direction: ltr !important;
 }
 
-.ant-upload-circle .ant-upload-select{
+.ant-upload-circle .ant-upload-select-picture-card{
     border-radius: 50%;
-    display: block !important;
-    margin: 10px auto;
+    // display: block !important;
+    // margin: 10px auto;
+}
+
+.ant-upload-circle .ant-upload-list-item-list-type-picture-card{
+    border-radius: 50%;
+}
+
+
+.ant-upload-circle .ant-upload-list-item-list-type-picture-card img{
+    border-radius: 50%;
+}
+
+.ant-upload-circle .ant-upload-list-item{
+    padding: 5px !important;
+}
+
+.ant-upload-circle .ant-upload-list-picture-card-container{
+    display: block;
+    margin: 0 auto;
+}
+.ant-upload-circle .ant-upload.ant-upload-select{
+    display: block;
+    margin: 0 auto;
 }
 
 .tether-element.tether-element-attached-bottom.tether-element-attached-center.tether-target-attached-top.tether-target-attached-center.tether-enabled {

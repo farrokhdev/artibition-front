@@ -33,7 +33,7 @@ function GalleryPanelEditGalleryInfo() {
     const [showMap, setShowMap] = useState(false)
 
     const { id } = useSelector((state) => state.galleryReducer)
-    const { editGalleryMode } = useSelector((state) => state.exhibitionReducer)
+    const { editGalleryMode } = useSelector((state) => state.galleryReducer)
 
     const Language = GetLanguage()
     const dispatch = useDispatch()
@@ -47,21 +47,21 @@ function GalleryPanelEditGalleryInfo() {
             apiServices.get(GALLERY(id), "")
                 .then(res => {
                     if (res.data) {
-                        console.log(res.data.data);
                         const value = res.data.data;
                         form.setFieldsValue({
                             title_en: value.translations?.en?.title,
                             title: value.translations?.fa?.title,
-                            city: Language === "fa-IR" ? value.locations?.find(e => e.is_default === true).translations?.fa?.city : value.locations?.find(e => e.is_default === true).translations?.en?.city,
-                            country: Language === "fa-IR" ? value.locations?.find(e => e.is_default === true).translations?.fa?.country : value.locations?.find(e => e.is_default === true).translations?.en?.country,
+                            city: Language === "fa-IR" ? value?.locations[0]?.translations?.fa?.city : value?.locations[0]?.translations?.en?.city,
+                            country: Language === "fa-IR" ? value.locations[0]?.translations?.fa?.country : value.locations[0]?.translations?.en?.country,
                             description_en: value.translations?.en?.description,
                             description: value.translations?.fa?.description,
                             work_hours_en: value.translations?.en?.work_hours,
                             work_hours: value.translations?.fa?.work_hours,
-                            address_en: value.locations?.find(e => e.is_default === true).translations?.en?.address,
-                            address: value.locations?.find(e => e.is_default === true).translations?.fa?.address,
+                            address_en: value?.locations[0]?.translations?.en?.address,
+                            address: value?.locations[0]?.translations?.fa?.address,
                             phone: value.phone
                         })
+                        setPoint(value.locations[0]?.point)
                     }
                 })
                 .catch(err => {
