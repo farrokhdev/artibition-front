@@ -18,6 +18,7 @@ import queryString from 'query-string';
 import { useSelector } from 'react-redux';
 import moment from "jalali-moment";
 import { Link } from 'react-router-dom';
+import CreateGallery from '../GalleryPanelMyGallery/CreateGallery';
 function PanelMyCollections() {
 
 
@@ -100,7 +101,7 @@ function PanelMyCollections() {
                 <div className="custom-container">
 
 
-                    <div className="d-flex box-dir-reverse box box-1">
+                    {/* <div className="d-flex box-dir-reverse box box-1">
                         <div className="text-dir">
                             <h2 className="greencolor text-dir">ثبت گالری</h2>
                             <p className="text-dir">اگر صاحب گالری هستید آن را ثبت نمایید</p>
@@ -109,7 +110,8 @@ function PanelMyCollections() {
                             <img src={flesh_left} width="16" height="16" className="center-block" />
                         </Link>
                         <div className="clearfix"></div>
-                    </div>
+                    </div> */}
+                    <CreateGallery />
 
 
                     <div className="row">
