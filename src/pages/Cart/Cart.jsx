@@ -34,12 +34,21 @@ function Cart() {
       .get(CART_ME, "")
       .then((res) => {
         if (res?.data?.data?.product_items?.length > 0) {
+          console.log(
+            ".then --------- res?.data?.data?.product_items",
+            res?.data?.data?.product_items
+          );
           const tempProductItems = res?.data?.data?.product_items.map(
             (product_item) => {
-              const { discount, toman_price, dollar_price } =
-                product_item?.product;
+              console.log(
+                ".then --------- product_item",
+                product_item?.product?.toman_price
+              );
+              const { discount } = product_item?.product;
+              const { toman_price, dollar_price } = product_item;
               const price =
                 i18n.language === "fa-IR" ? toman_price : dollar_price;
+              console.log(".then --------- price,discount", price, discount);
               let discountCash = 0;
               let paymentPrice = parseInt(price);
               let discountPercent = 0;
@@ -51,14 +60,19 @@ function Cart() {
                   paymentPrice = price - discountCash;
                 } else {
                   discountCash = parseInt(discount?.value);
-                  discountPercent = (discountCash / parseInt(price)) * 100;
+                  discountPercent = (
+                    (discountCash / parseInt(price)) *
+                    100
+                  ).toFixed(2);
                   paymentPrice = parseInt(price) - discountCash;
                 }
               }
+
               return {
                 ...product_item,
                 discountCash,
                 paymentPrice,
+                price,
                 discountPercent,
               };
             }
@@ -255,6 +269,20 @@ function Cart() {
                                     )
                                 : ""}
                             </span>
+                          </div>
+                        </div>
+
+                        <div className="price-row d-flex">
+                          <div className="col-xs-9">
+                            <button
+                              type="button"
+                              className="btn btn-continue"
+                              onClick={() => navigate("/site/artworks")}
+                            >
+                              {t("cart.full.next")}
+                            </button>
+                          </div>
+                          <div className="col-xs-9">
                             <button
                               type="button"
                               className="btn btn-continue"
@@ -262,7 +290,7 @@ function Cart() {
                                 handleCheckoutCart();
                               }}
                             >
-                              {t("cart.full.next")}
+                              {t("cart.full.add_order")}
                             </button>
                           </div>
                         </div>

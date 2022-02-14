@@ -31,18 +31,22 @@ function Payment() {
     setCurrent(current - 1);
   };
   const getData = (id) => {
-    apiServices
-      .get(ORDER(id))
-      .then((res) => {
-        if (res?.data?.code === 200) {
-          setOrder(res?.data?.data);
+    try {
+      apiServices
+        .get(ORDER(id))
+        .then((res) => {
+          if (res?.data?.code === 200) {
+            setOrder(res?.data?.data);
+            setLoading(false);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
           setLoading(false);
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        setLoading(false);
-      });
+        });
+    } catch {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
