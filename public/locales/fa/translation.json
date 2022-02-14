@@ -279,7 +279,8 @@
       "cancel_offer": "رد پیشنهاد"
     },
     "modal_similar_artwork": {
-      "title": "آثار مشابه"
+      "title": "آثار مشابه",
+      "title1" :"ایجاد کالکشن"
     },
     "modal_bidding_artwork": {
       "title": "ارسال پیشنهاد به هنرمند",
@@ -495,7 +496,12 @@
     "info-box": {
       "register": {
         "title": "ثبت گالری",
-        "text": "اگر صاحب گالری هستید آن را ثبت نمایید"
+        "text": "اگر صاحب گالری هستید آن را ثبت نمایید",
+        "created": "درخواست شما با موفقیت ثبت شد",
+        "pending": "در حال بررسی",
+        "correction": "نیازمند اصلاح",
+        "rejected": "رد شده",
+        "approved": "تایید شده"
       },
       "artists": {
         "title": "ثبت‌نام هنرمندان",
@@ -1119,6 +1125,8 @@
       "title": "اطلاعات هنری",
       "artwork_name": "Artwork Name",
       "artwork_title": "عنوان اثر",
+      "artwork_titles" : "Artwork title",
+      "artist_name" :"نام هنرمند",
       "artwork_subject": "موضوع",
       "artwork_field": "رشته هنری",
       "artwork_technique": "تکنیک",
@@ -1136,6 +1144,7 @@
       "tag_en": "افزودن تگ (انگلیسی)",
       "text_tag_en": "تگ‌های انگلیسی به جستجوی آسان‌تر آثار شما توسط علاقه‌مندان خارجی زبان کمک می‌نماید",
       "next_step": "مرحله بعد",
+      "final-step": "ثبت نهایی",
       "cencel": "انصراف"
     },
     "sale_info": "اطلاعات فروش",
@@ -1212,7 +1221,7 @@
       "price": "تومان",
       "spacial": "ویژه",
       "sold_out": "فروخته شد",
-      "not_sold" : "فروخته نشده",
+      "not_sold": "فروخته نشده",
       "btn_next": "ادامه",
       "btn_prev": "قبلی"
     },

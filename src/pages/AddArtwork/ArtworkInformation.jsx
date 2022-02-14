@@ -7,13 +7,13 @@ import { GetLanguage } from '../../utils/utils'
 import MultipleUpload from '../../components/MultiUpload/MultiUpload';
 import apiServices from '../../utils/api.services';
 import { useNavigate } from 'react-router-dom';
-import { useSelector ,useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import queryString from 'query-string';
 import { MATERIALS_CATEGORIES, PRODUCTS, PRODUCTS_CATEGORIES, SOCIAL_NETWORK_COLLECTIONS, SUBJECTS_CATEGORISE, TECHNIQUS_CATEGORIES } from '../../utils';
 import { artworkForm } from '../../redux/reducers/Artwork/artwork.action';
 
 function ArtworkInformation({ next, prev }) {
-    
+
     const [form] = Form.useForm();
     const { Option } = Select;
     const dispach = useDispatch()
@@ -31,11 +31,11 @@ function ArtworkInformation({ next, prev }) {
     const [sotialCollection, setSotialCollection] = useState([]);
     const Language = GetLanguage();
     const [params, setParams] = useState({
-        owner_id : id,
+        owner_id: id,
     });
 
 
-    console.log("categorys" , categorys);
+    console.log("categorys", categorys);
 
     // The job of this constant is to send the information needed to make the artwork
     const onFinish = (values) => {
@@ -43,34 +43,36 @@ function ArtworkInformation({ next, prev }) {
             "translations": {
                 "fa": {
                     "title": values.title,
-                    "about": values?.discribtion
+                    "about": values?.discribtion,
+                    "artist_name": values?.artist_name
                 }, "en": {
                     "title": values.title_en,
-                    "about": values?.discribtion_en
+                    "about": values?.discribtion_en,
+                    "artist_name": values?.artist_name_en
                 }
             },
-            "category":newArtwork?.category_id,
-            "material":materialId?.material_id,
+            "category": newArtwork?.category_id,
+            "material": materialId?.material_id,
             "subject": subjectId?.subject_id,
             "technique": techniqueId?.technique_id,
-            "jalali_creation_year":values?.jalali_creation_year,
-            "width":values?.width,
-            "length":values?.length,
-            "weight":values?.weight,
-            "medias" : uploadList,
+            "jalali_creation_year": values?.jalali_creation_year,
+            "width": values?.width,
+            "length": values?.length,
+            "weight": values?.weight,
+            "medias": uploadList,
             "is_special": false,
             "view_only": false,
             "is_sold": false,
-            
+
             "tags_en": [values.tags_en],
             "tags_fa": [values.tags_fa],
 
 
         }
-        
+
         dispach(artworkForm(payload))
         next()
-      
+
         // console.log('Success:', values);
     };
 
@@ -121,14 +123,14 @@ function ArtworkInformation({ next, prev }) {
             material_id: value
         })
     }
-    
+
     // Get the list of collections and select it as dropdown
-    const getCollections = ()=>{
+    const getCollections = () => {
         apiServices.get(SOCIAL_NETWORK_COLLECTIONS, queryString.stringify(params))
-            .then(res=>{
+            .then(res => {
                 // setSotialCollection(res.data.data.map(item=>{}))
             })
-            .catch(err=>{
+            .catch(err => {
                 console.log(err);
             })
     }
@@ -139,56 +141,56 @@ function ArtworkInformation({ next, prev }) {
 
     useEffect(() => {
         // If there is a device id, its dependent services will be run if selected
-        if(newArtwork?.category_id){
-
-        
-        // Gets and displays a list of topics by filtering the art field
-        apiServices.get(SUBJECTS_CATEGORISE(newArtwork?.category_id), "")
-            .then(res => {
-                setSubject(res.data.data.map(item => {
-
-                    if (Language === 'fa-IR') {
-                        return { label: item?.translations?.fa?.title, value: item?.id }
-                    } else {
-                        return { label: item?.translations?.en?.title, value: item?.id }
-                    }
-                }))
-            })
-            .catch(err => {
-                console.log(err);
-            })
+        if (newArtwork?.category_id) {
 
 
-        // Receives and displays a list of techniques by filtering the art background
-        apiServices.get(TECHNIQUS_CATEGORIES(newArtwork?.category_id), "")
-            .then(res => {
-                setTechnique(res.data.data.map(item => {
+            // Gets and displays a list of topics by filtering the art field
+            apiServices.get(SUBJECTS_CATEGORISE(newArtwork?.category_id), "")
+                .then(res => {
+                    setSubject(res.data.data.map(item => {
 
-                    if (Language === 'fa-IR') {
-                        return { label: item?.translations?.fa?.title, value: item?.id }
-                    } else {
-                        return { label: item?.translations?.en?.title, value: item?.id }
-                    }
-                }))
-            })
-            .catch(err => {
-                console.log(err);
-            })
+                        if (Language === 'fa-IR') {
+                            return { label: item?.translations?.fa?.title, value: item?.id }
+                        } else {
+                            return { label: item?.translations?.en?.title, value: item?.id }
+                        }
+                    }))
+                })
+                .catch(err => {
+                    console.log(err);
+                })
 
-        apiServices.get(MATERIALS_CATEGORIES(newArtwork?.category_id), "")
-            .then(res => {
-                setMaterial(res.data.data.map(item => {
 
-                    if (Language === 'fa-IR') {
-                        return { label: item?.translations?.fa?.title, value: item?.id }
-                    } else {
-                        return { label: item?.translations?.en?.title, value: item?.id }
-                    }
-                }))
-            })
-            .catch(err => {
-                console.log(err);
-            })
+            // Receives and displays a list of techniques by filtering the art background
+            apiServices.get(TECHNIQUS_CATEGORIES(newArtwork?.category_id), "")
+                .then(res => {
+                    setTechnique(res.data.data.map(item => {
+
+                        if (Language === 'fa-IR') {
+                            return { label: item?.translations?.fa?.title, value: item?.id }
+                        } else {
+                            return { label: item?.translations?.en?.title, value: item?.id }
+                        }
+                    }))
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+
+            apiServices.get(MATERIALS_CATEGORIES(newArtwork?.category_id), "")
+                .then(res => {
+                    setMaterial(res.data.data.map(item => {
+
+                        if (Language === 'fa-IR') {
+                            return { label: item?.translations?.fa?.title, value: item?.id }
+                        } else {
+                            return { label: item?.translations?.en?.title, value: item?.id }
+                        }
+                    }))
+                })
+                .catch(err => {
+                    console.log(err);
+                })
         }
 
     }, [newArtwork]);
@@ -272,6 +274,71 @@ function ArtworkInformation({ next, prev }) {
                                             type="text"
                                             id="info-202"
                                             className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
+                                            placeholder={t("content-panel-add-artwork.art_info.artwork_titles")}
+                                        />
+
+                                    </Form.Item>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div className="d-block d-sm-flex box-dir-reverse w-100">
+                            <div
+
+                                className={classnames("", {
+                                    "col-sm-6": GetLanguage() === 'fa-IR',
+                                    "d-none": GetLanguage() === 'en-US'
+                                })}
+                            >
+                                <div className="public-group">
+
+                                    <Form.Item
+                                        className="w-100 "
+                                        name="artist_name"
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message: 'required',
+                                            }
+                                        ]}>
+
+                                        <Input
+                                            type="text"
+                                            id="info-201"
+                                            className="form-control input-public border-0 px-2  d-flex"
+                                            placeholder={t("content-panel-add-artwork.art_info.artist_name")}
+                                        />
+
+
+                                    </Form.Item>
+                                </div>
+                            </div>
+
+                            <div
+
+                                className={classnames("", {
+                                    "col-sm-6": GetLanguage() === 'fa-IR',
+                                    "col-sm-12": GetLanguage() === 'en-US'
+                                })}
+                            >
+                                <div className="public-group en">
+
+                                    <Form.Item
+                                        className="w-100"
+                                        name="artist_name_en"
+                                        rules={[
+                                            {
+                                                required: true,
+                                                message: 'required',
+                                            }
+                                        ]}>
+
+                                        <Input
+                                            type="text"
+                                            id="info-202"
+                                            className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
                                             placeholder={t("content-panel-add-artwork.art_info.artwork_name")}
                                         />
 
@@ -280,6 +347,7 @@ function ArtworkInformation({ next, prev }) {
                                 </div>
                             </div>
                         </div>
+
                         <div className="d-block d-sm-flex box-dir-reverse w-100">
                             <div className="col-sm-6">
                                 <div className="public-group">
@@ -657,9 +725,9 @@ function ArtworkInformation({ next, prev }) {
 
                 </div>
                 <div className="adv-btn">
-                    <button 
-                    // onClick={() => prev()} 
-                    type="button" className="btn-prev ">
+                    <button
+                        // onClick={() => prev()} 
+                        type="button" className="btn-prev ">
                         <span>{t("content-panel-add-artwork.art_info.cencel")}</span>
                     </button>
                     <button htmlType="submit" className="btn-next pull-left">

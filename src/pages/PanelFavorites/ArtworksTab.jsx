@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { FOLLOW_PRODUCTS } from '../../utils';
+import { FOLLOW_PRODUCTS, GALLERY_FOLLOW } from '../../utils';
 import apiServices from '../../utils/api.services';
 import CardArtwork from './CardArtwork';
 import queryString from 'query-string';
@@ -36,7 +36,7 @@ function ArtworksTab() {
             {
                 favoriteArtworks?.length && favoriteArtworks?.map((artworks) => {
                     return (
-                        <CardArtwork artworks={artworks} />
+                        <CardArtwork artworks={artworks}/>
                     )
                 })
             }

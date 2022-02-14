@@ -3,7 +3,7 @@ import BasketFooterPanel from '../../components/BasketFooterPanel/BasketFooterPa
 import HeaderPanel from '../../components/HeaderPanel/HeaderPanel';
 import SidebarPanel from '../../components/SidebarPanel/SidebarPanel';
 import { t } from 'i18next';
-import { Pagination } from 'antd';
+import { Pagination, Radio } from 'antd';
 import TableArtworks from './TableArtworks';
 
 import add_icon from '../../assets/img/add.png';
@@ -18,9 +18,13 @@ function PanelArtManagement() {
     const [loading, setLoading] = useState(false);
     const [productList, setProductList] = useState([]);
     const [suggestionsCount, setSuggestionsCount] = useState("");
+    const [products, setProducts] = useState({});
+
+
     const [params, setParams] = useState({
         page: 1,
         status: "",
+        is_sold: ""
 
     });
 
@@ -49,6 +53,17 @@ function PanelArtManagement() {
 
 
 
+
+    const countStatus = {
+        "pending": 0,
+        "pending_edition": 0,
+        "rejected": 0,
+        "active": 0
+    }
+
+    const AllCountStatus = products.active + products['pending_edition'] + products.pending + products.rejected
+
+
     // Get my product list
     const getProductList = () => {
         setLoading(true)
@@ -70,6 +85,27 @@ function PanelArtManagement() {
                     setLoading(false)
                     setProductList(resp.data.data.results)
                     setSuggestionsCount(resp.data.data.count)
+
+                    resp.data.data.results.map((item) => {
+                        switch (item.status) {
+                            case "pending":
+                                countStatus.pending += 1
+                                break;
+                            case "active":
+                                countStatus.active += 1
+                                break;
+                            case "rejected":
+                                countStatus.rejected += 1
+                                break;
+                            case "pending_edition":
+                                countStatus['pending_edition'] += 1
+                                break;
+                            default:
+                                break;
+                        }
+
+                    })
+                    setProducts(countStatus)
                 })
                 .catch(err => {
                     setLoading(false)
@@ -81,10 +117,19 @@ function PanelArtManagement() {
 
     // This section is for filtering the status of the list of works
     const handleStatus = (e) => {
-        setParams({
-            ...params, status: e
-        })
+        if (e === "is_sold") {
+
+            setParams({
+                ...params, is_sold: true
+            })
+        } else {
+
+            setParams({
+                ...params, status: e, is_sold: false
+            })
+        }
     }
+
 
     // Shows us the position of the page we are on
     const handeSelectPage = (e) => {
@@ -131,7 +176,51 @@ function PanelArtManagement() {
                             </div>
                         </div>
                         <div className="row box-dir-reverse text-dir">
-                            <div className="col-12 col-sm-6 col-xl-3 ">
+
+                            <Radio.Group
+                                onChange={(e) => { handleStatus(e.target.value) }}
+                            >
+                                <Radio value={""} style={{ margin: "0 30px" }}>
+                                    {t("content-panel-manage-artworks.filters.all")}
+                                    <p className='text-dir mx-4 px-3'>
+                                        {AllCountStatus ? AllCountStatus : 0}
+                                    </p>
+                                </Radio>
+                                <Radio value={"active"} style={{ margin: "0 30px" }}>
+                                    {t("content-panel-manage-artworks.filters.active")}
+                                    <p className='text-dir mx-4 px-3'>{products.active}</p>
+                                </Radio>
+                                <Radio value={"pending_edition"} style={{ margin: "0 30px" }}>
+                                    {t("content-panel-manage-artworks.filters.modification")}
+                                    <p className='text-dir mx-4 px-3'>{products['pending_edition']}</p>
+                                </Radio>
+                                <Radio value={"pending"} style={{ margin: "0 30px" }}>
+                                    {t("content-panel-manage-artworks.filters.pending")}
+                                    <p className='text-dir mx-4 px-3'>{products.pending}</p>
+                                </Radio>
+                                <Radio value={"rejected"} style={{ margin: "0 30px" }}>
+                                    {t("content-panel-manage-artworks.filters.not_approved")}
+                                    <p className='text-dir mx-4 px-3'>{products.rejected}</p>
+                                </Radio>
+                                <Radio value={"is_sold"} style={{ margin: "0 30px" }}>
+                                    {t("content-panel-manage-artworks.filters.sold")}
+                                    {/* <p className='text-dir mx-4 px-3'>{products.is_sold}</p> */}
+                                </Radio>
+
+                            </Radio.Group>
+
+                            {/* <div className="col-12 col-sm-6 col-xl-3 ">
+                                <label className="container-radio">{t("content-panel-manage-artworks.filters.all")}
+                                    <input id="tab-11" data-bs-toggle="tab"
+                                        data-bs-target="#profiletab1"
+                                        role="tab" aria-controls="profiletab1"
+                                        aria-selected="true"
+                                        type="radio" name="radio" onClick={() => handleStatus("")} />
+                                    <span className="checkmark-radio"></span>
+                                </label>
+                                <p className='text-dir mx-4 px-3'>1</p>
+                            </div> */}
+                            {/* <div className="col-12 col-sm-6 col-xl-3 ">
                                 <label className="container-radio">{t("content-panel-manage-artworks.filters.all")}
                                     <input id="tab-11" data-bs-toggle="tab"
                                         data-bs-target="#profiletab1"
@@ -192,11 +281,11 @@ function PanelArtManagement() {
                                         data-bs-target="#profiletab1"
                                         role="tab" aria-controls="profiletab1"
                                         aria-selected="true"
-                                        type="radio" name="radio" onClick={() => handleStatus("")} />
+                                        type="radio" name="radio" onChange={(e) => handleIsSold(e) } />
                                     <span className="checkmark-radio"></span>
                                 </label>
                                 <p className='text-dir mx-4 px-3'>1</p>
-                            </div>
+                            </div> */}
 
                         </div>
 

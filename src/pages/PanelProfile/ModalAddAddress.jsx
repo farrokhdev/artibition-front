@@ -20,7 +20,7 @@ function ModalAddAddress({ setVisibleAddAddress, visibleAddAddress, locations })
     const Language = GetLanguage();
 
 
-    console.log("editingLocationss===> ", editingLocation);
+    // console.log("editingLocationss===> ", editingLocation);
 
     const handleClose = () => {
         setVisibleAddAddress(false)
@@ -65,7 +65,7 @@ function ModalAddAddress({ setVisibleAddAddress, visibleAddAddress, locations })
                         setVisibleAddAddress(false)
                         message.success({ content: "اطلاعات با موفقیت ثبت شد", style: { marginTop: '10vh' } })
                     } else {
-                        console.log(res.response)
+                        // console.log(res.response)
                         message.error({ content: "خطا در ثبت اطلاعات", style: { marginTop: '10vh' } })
                     }
                 })
@@ -74,7 +74,7 @@ function ModalAddAddress({ setVisibleAddAddress, visibleAddAddress, locations })
 
     useEffect(() => {
         if (editingLocation?.id) {
-            console.log("editingLocation?.city", editingLocation?.translations?.fa?.city)
+            // console.log("editingLocation?.city", editingLocation?.translations?.fa?.city)
             form.setFieldsValue({
                 city:  editingLocation?.translations?.fa?.city,
                 address: editingLocation?.translations?.fa?.address,
@@ -87,7 +87,7 @@ function ModalAddAddress({ setVisibleAddAddress, visibleAddAddress, locations })
                 }
             }
             )
-            console.log(form.getFieldValue("address"));
+            // console.log(form.getFieldValue("address"));
         }
     }, [editingLocation]);
 

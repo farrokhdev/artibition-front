@@ -17,6 +17,7 @@ import { ARTIST_ALBUMS, ARTIST_ME, SOCIAL_NETWORK_COLLECTIONS } from '../../util
 import queryString from 'query-string';
 import { useSelector } from 'react-redux';
 import moment from "jalali-moment";
+import CreateGallery from '../GalleryPanelMyGallery/CreateGallery';
 function PanleMyAlbums() {
 
 
@@ -75,6 +76,13 @@ function PanleMyAlbums() {
         }
     }, [params]);
 
+    
+    useEffect(() => {
+        if (visibleAddGallery === false && artistDetails?.id) {
+            getMyAulbumCollection();
+        }
+    }, [visibleAddGallery]);
+
     useEffect(() => {
 
 
@@ -93,16 +101,7 @@ function PanleMyAlbums() {
                 <div className="custom-container">
 
 
-                    <div className="d-flex box-dir-reverse box box-1">
-                        <div className="text-dir">
-                            <h2 className="greencolor text-dir">ثبت گالری</h2>
-                            <p className="text-dir">اگر صاحب گالری هستید آن را ثبت نمایید</p>
-                        </div>
-                        <a href="#" className="btn-box-1 btn-green pull-left">
-                            <img src={flesh_left} width="16" height="16" className="center-block" />
-                        </a>
-                        <div className="clearfix"></div>
-                    </div>
+                    <CreateGallery/>
 
 
                     <div className="row">

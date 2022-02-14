@@ -12,6 +12,11 @@ export function isAccept(value) {
                 title: t("content-panel-orders.filters.to_artibition"),
                 css: "pending-state"
             }
+        case "pending_edition":
+            return {
+                title: t("content-panel-orders.filters.to_artibition"),
+                css: "pending-state"
+            }
         case "sent_to_buyer":
             return {
                 title: t("content-panel-orders.filters.artibition_to_customer"),

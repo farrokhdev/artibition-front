@@ -13,7 +13,7 @@ import { useSelector } from "react-redux";
 import { sample } from "lodash";
 import { useDispatch } from "react-redux";
 import queryString from 'query-string';
-import { editExhibitionModeFunc, exhibitionId } from "../../redux/reducers/Gallery/gallery.actions";
+import { editExhibitionModeFunc, exhibitionId } from "../../redux/reducers/Exhibition/exhibition.action";
 
 
 function GalleryPanelExhibitionList() {

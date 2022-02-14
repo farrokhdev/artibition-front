@@ -42,6 +42,8 @@ function GalleryIntroduction() {
 
     id = query.get("id")
 
+
+
     function callback(key) {
         console.log(key);
     }

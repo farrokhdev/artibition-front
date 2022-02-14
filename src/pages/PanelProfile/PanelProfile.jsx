@@ -51,7 +51,6 @@ const Panelprofile = (props) => {
         return userRole
     }
 
-    console.log(getUserRole());
 
 
 
@@ -61,10 +60,16 @@ const Panelprofile = (props) => {
         APIService.get(PROFILE, queryString.stringify(params))
             .then(resp => {
                 setLoading(false)
-                console.log("items.resp==>", resp.data.data.locations.map((item) => {
-                    return { value: item?.id }
+                props.setProfile({
+                    ...props.state,
+                    profile: resp.data.data,
+                    id: resp.data.data.id,
+                    roles: resp.data.data.roles,
+                });
+                // console.log("items.resp==>", resp.data.data.locations.map((item) => {
+                //     return { value: item?.id }
 
-                }));
+                // }));
                 setItems(resp.data.data)
                 setlocations(resp.data.data.locations.map((item) => {
                     return { value: item?.id }
@@ -80,10 +85,6 @@ const Panelprofile = (props) => {
     useEffect(() => {
         getItems()
     }, [params])
-
-    useEffect(() => {
-        console.log(roles);
-    }, [])
 
 
     return (

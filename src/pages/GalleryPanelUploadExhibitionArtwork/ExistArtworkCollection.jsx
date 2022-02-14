@@ -46,6 +46,7 @@ const SliderSetting = {
 
 function ExistArtworkCollection({ artistID, selectedArtwork, setSelectedArtwork }) {
     const handleChange = (e) => {
+        console.log(e.target.name);
         let temp = selectedArtwork
         const json = {
             id: artistID,
@@ -69,7 +70,7 @@ function ExistArtworkCollection({ artistID, selectedArtwork, setSelectedArtwork 
                 }
             }
         }
-        console.log(temp);
+        // console.log(temp);
         setSelectedArtwork(temp)
     }
 

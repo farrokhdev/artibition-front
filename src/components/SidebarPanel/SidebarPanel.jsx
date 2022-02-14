@@ -2,20 +2,42 @@ import React from 'react';
 import profile_pic from '../../assets/img/profile_pic.svg';
 import edit from '../../assets/img/edit.svg';
 import invite from '../../assets/img/invite.svg';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { connect } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { useSelector } from 'react-redux';
 import { setProfile, showEditProfileVisible } from "../../redux/reducers/auth/auth.actions";
 import ModalEditProfile from '../../pages/PanelProfile/ModalEditProfile';
+import { message } from 'antd';
+import { editGalleryModeFunc, galleryId } from '../../redux/reducers/Gallery/gallery.actions';
+import { useDispatch } from 'react-redux';
 
 function SidebarPanel(props) {
     const { t, i18n } = useTranslation();
     const { roles } = useSelector((state) => state.authReducer)
     const { galleryProfile } = useSelector((state) => state.galleryReducer)
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const handleShowModal = () => {
         props.showEditProfileVisible(true)
+    }
+
+
+    const goToEditGallery = () => {
+        dispatch(galleryId(galleryProfile?.id))
+        dispatch(editGalleryModeFunc(true))
+        dispatch(setProfile({ roles: "gallery" }))
+        navigate("/panel/gallery-info")
+    }
+
+
+    const copyToClipboard = () => {
+        navigator.clipboard.writeText(`با دعوت دوستان خود از آرتیبیشن حمایت نمایید\n\n` + `${window.location.origin}`)
+        message.success({
+            content: "با موفقیت کپی شد",
+            style: { marginTop: "110px" }
+        })
     }
 
     const getUserRole = () => {
@@ -51,18 +73,30 @@ function SidebarPanel(props) {
                                     galleryProfile.translations?.en?.title
                                 :
                                 i18n.language === 'fa-IR' ?
-                                    props.auth?.profile?.translations?.fa?.first_name + " " +
-                                    props.auth?.profile?.translations?.fa?.last_name :
-                                    props.auth?.profile?.translations?.en?.first_name + " " +
-                                    props.auth?.profile?.translations?.en?.last_name
+                                    props.auth?.profile?.translations?.fa ?
+                                        props.auth?.profile?.translations?.fa?.first_name + " " + props.auth?.profile?.translations?.fa?.last_name
+                                        : ""
+                                    :
+                                    props.auth?.profile?.translations?.en ?
+                                    props?.auth?.profile?.translations?.en?.first_name + " " + props?.auth?.profile?.translations?.en?.last_name
+                                        : ""
                             }
                         </span>
-                        <div className="sidebar-mobile">
-                            <span className="persian-num pull-dir">{props?.auth?.profile?.mobile}</span>
-                            <a href="#">
-                                <img src={edit} onClick={handleShowModal} width="32" height="32" alt="" className="pull-dir img-responsive" />
-                            </a>
-                        </div>
+                        {getUserRole() !== "gallery" ?
+                            <div className="sidebar-mobile">
+                                <span className="persian-num pull-dir">{props?.auth?.profile?.mobile}</span>
+                                <a href="#">
+                                    <img src={edit} onClick={handleShowModal} width="32" height="32" alt="" className="pull-dir img-responsive" />
+                                </a>
+                            </div>
+                            :
+                            <div className="sidebar-mobile">
+                                {/* <span className="persian-num pull-dir">{props?.auth?.profile?.mobile}</span> */}
+                                <div style={{ cursor: "pointer" }}>
+                                    <img src={edit} onClick={goToEditGallery} width="32" height="32" alt="" className="pull-dir img-responsive" />
+                                </div>
+                            </div>
+                        }
                     </div>
                     <div className="clearfix" />
                 </div>
@@ -171,7 +205,7 @@ function SidebarPanel(props) {
                 </div>
 
                 <div className=" justify-content-end ">
-                    <button type="button" className="d-flex btn-outline-pink box-dir-reverse">
+                    <button type="button" className="d-flex btn-outline-pink box-dir-reverse" onClick={() => { copyToClipboard() }}>
                         <img src={invite} className="mx-2 mt-1" width="20" height="20" alt="" />
                         <span className="">{t("drawer-panel.invite.btn")}</span>
                     </button>

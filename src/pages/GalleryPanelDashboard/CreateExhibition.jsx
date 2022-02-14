@@ -4,7 +4,7 @@ import { t } from 'i18next';
 import whitePlus from "../../assets/img/plus-white.png"
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { editExhibitionModeFunc, exhibitionId } from "../../redux/reducers/Gallery/gallery.actions";
+import { editExhibitionModeFunc, exhibitionId } from "../../redux/reducers/Exhibition/exhibition.action";
 
 
 function CreateExhibition() {
@@ -14,7 +14,6 @@ function CreateExhibition() {
     const dispatch = useDispatch()
 
     const handleGoToExhibition = () => {
-
         dispatch(editExhibitionModeFunc(false))
         dispatch(exhibitionId(null))
         navigate("/panel/create-exhibition")
@@ -26,7 +25,7 @@ function CreateExhibition() {
                 <span className="bolder-title">{t("gallery-panel-exhibition.create_exhibition")}</span>
             </div>
             <button onClick={() => { handleGoToExhibition() }} className="btn-box-1 btn-pink pull-left">
-                <img src={whitePlus} width="16" height="16" className="center-block" />
+                <img src={whitePlus} width="16" height="16" style={{ top: "2px" }} className="center-block" />
             </button>
             <div className="clearfix"></div>
         </div>
