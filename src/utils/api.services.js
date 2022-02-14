@@ -51,6 +51,15 @@ class APIService {
                 return err
             })
     }
+    deleteByParams(uri,params) {
+        return axios.delete(`${BASE_URL}${uri}?${params}`)
+            .then(res => {
+                return res
+            })
+            .catch(err => {
+                return err
+            })
+    }
 
     patchByID(uri, id, payload) {
         return axios.patch(`${BASE_URL}${uri}/${id}`, payload)

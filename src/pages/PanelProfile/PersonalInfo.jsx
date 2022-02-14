@@ -55,7 +55,7 @@ function PersonalInfo(props) {
                                         : ""
                                     :
                                     props.auth?.profile?.translations?.en ?
-                                        profile?.translations?.en?.first_name + " " + profile?.translations?.en?.last_name
+                                        props?.auth?.profile?.translations?.en?.first_name + " " + props?.auth?.profile?.translations?.en?.last_name
                                         : ""
                                 }
                             </span>
