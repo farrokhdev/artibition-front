@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { t } from 'i18next';
+import i18next, { t } from 'i18next';
 import Slider from "react-slick";
 
 import Artwork1 from '../../assets/img/mainpage/hnrpqkfiup@3x.jpg'
@@ -118,8 +118,10 @@ function ExistArtworkCollection({ artistID, selectedArtwork, setSelectedArtwork 
                 {artworks.length > 0 ?
 
                     artworks.map((product, productIndex) => {
+                        console.log("PRODUCT", product);
                         return (
                             product.items.map((edition, editionIndex) => {
+                                console.log("EDITION", edition);
                                 return (
                                     <div className="cols">
                                         <label className="lable-checkbox">
@@ -133,26 +135,28 @@ function ExistArtworkCollection({ artistID, selectedArtwork, setSelectedArtwork 
                                             <span className="checkmark"></span>
                                             <div className="col-img">
                                                 <div className="tags tags-off persian-num">30 %</div>
-                                                <img src={Artwork1} width="840" height="840" alt="آرتیبیشن" className="img-responsive" />
+                                                <img src={product?.medias[0]?.exact_url} width="840" height="840" alt="آرتیبیشن" className="img-responsive" />
                                             </div>
                                         </label>
                                         <div className="col-body text-dir dir">
                                             <h6 className="col-title">
-                                                <span className="col-name">آیدین</span>
-                                                <span className="col-name">آغداشلو</span>
+                                                <span className="col-name">{i18next.language === "fa-IR" ? product?.owner?.translations?.fa?.first_name : product?.owner?.translations?.en?.first_name}</span>
+                                                <span className="col-name">{i18next.language === "fa-IR" ? product?.owner?.translations?.fa?.last_name : product?.owner?.translations?.en?.last_name}</span>
                                             </h6>
                                             <div className="col-dimension">
                                                 <span className="col-dimension-title">ابعاد:</span>
                                                 <span className="col-dimension-body">
-                                                    <span className="dimension-width">60</span>
+                                                    <span className="dimension-width">{product?.width}</span>
                                                     <span> در </span>
-                                                    <span className="dimension-height">60</span>
+                                                    <span className="dimension-height">{product?.length}</span>
                                                 </span>
                                             </div>
                                             <div className="col-price">
-                                                <span className="col-price-num">22.000.000</span>
+                                                <span className="col-price-num">{i18next.language === 'fa-IR' ? edition?.base_toman_price : edition?.base_dollar_price}</span>
                                                 <span className="col-price-unit">تومان</span>
-                                                <span className="edit-price" data-toggle="modal" data-target="modal-edit-price"><img src={edit_name} width="32" height="32" alt="" /></span>
+                                                {/* <span className="edit-price" data-toggle="modal" data-target="modal-edit-price">
+                                                    <img src={edit_name} width="32" height="32" alt="" />
+                                                </span> */}
                                             </div>
                                         </div>
                                     </div>

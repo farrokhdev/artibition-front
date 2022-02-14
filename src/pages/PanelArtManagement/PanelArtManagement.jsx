@@ -163,17 +163,19 @@ function PanelArtManagement() {
                                     <h2 className="default-title w-100 text-dir">{t("content-panel-manage-artworks.title")}</h2>
                                 </div>
                             </div>
-                            <div className="col ">
-                                <div className="d-flex justify-custom">
-                                    <Link
-                                        to={"/panel/add-artwork"}
-                                        state={{ from: "/panel/art-management" }}
-                                        type="button" className="btn-outline-blue">
-                                        <img src={add_icon} width="12" height="12" alt="" className="mx-2" />
-                                        <span>{t("content-panel-manage-artworks.btn")}</span>
-                                    </Link>
+                            {getUserRole() !== "gallery" &&
+                                <div className="col ">
+                                    <div className="d-flex justify-custom">
+                                        <Link
+                                            to={"/panel/add-artwork"}
+                                            state={{ from: "/panel/art-management" }}
+                                            type="button" className="btn-outline-blue">
+                                            <img src={add_icon} width="12" height="12" alt="" className="mx-2" />
+                                            <span>{t("content-panel-manage-artworks.btn")}</span>
+                                        </Link>
+                                    </div>
                                 </div>
-                            </div>
+                            }
                         </div>
                         <div className="row box-dir-reverse text-dir">
 

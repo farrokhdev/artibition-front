@@ -36,6 +36,7 @@ function ModalSendMessage(props) {
                         content: "پیام با موفقیت ارسال شد",
                         style: { marginTop: "110px" }
                     })
+                    setVisibleShowSendMessage(false)
                 }
                 else {
                     message.error({
@@ -43,7 +44,7 @@ function ModalSendMessage(props) {
                         style: { marginTop: "110px" }
                     })
                 }
-                setVisibleShowSendMessage(false)
+
             })
             .catch(err => {
                 message.error({

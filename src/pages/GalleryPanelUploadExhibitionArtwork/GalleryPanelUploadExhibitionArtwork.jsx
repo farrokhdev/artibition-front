@@ -70,16 +70,6 @@ function GalleryPanelUploadExhibitionArtwork() {
     const navigate = useNavigate()
 
 
-    // useEffect(() => {
-    //     console.log(selectedArtworks);
-    // }, [selectedArtworks])
-
-
-    // useEffect(() => {
-    //     console.log(selectedArtistId);
-    // }, [selectedArtistId])
-
-
     const sendData = () => {
         let temp = []
         selectedArtworks.map((item, index) => {
@@ -518,7 +508,7 @@ function GalleryPanelUploadExhibitionArtwork() {
                         <div className="modal-body">
                             <div className="container">
                                 {selectedArtists.map((artist, index) => {
-                                    console.log("ARTIST", artist);
+                                    // console.log("ARTIST", artist);
                                     return (
                                         <div className="exist-artwork-row">
                                             <div className="artist-name-row">

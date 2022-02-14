@@ -84,33 +84,61 @@ function SellInformation({ prev, next }) {
 
 
 
-        if (searchParams.get("back") || getUserRole() === "gallery") {
-            apiServices.post(GALLERY_PRODUCTS(id), payload)
-                .then(res => {
-                    if (res.data) {
+        if (getUserRole() === "gallery") {
+            if (searchParams.get("artist_id")) {
+                apiServices.post(ARTWORK_BY_GALLERY(id, searchParams.get("artist_id")), payload)
+                    .then(res => {
+                        if (res.data) {
+                            message.success({
+                                content: 'اثر با موفقیت ثبت شد', style: {
+                                    marginTop: '110px',
+                                },
+                            })
+                            setTimeout(() => {
+                                console.log(Location);
+                                navigate(Location?.state?.from)
+                            }, 500);
+                        } else {
+                            message.error({
+                                content: 'خطا در ثبت اطلاعات',
+                                style: { marginTop: '110px' }
+                            })
+                        }
 
-                        message.success({
-                            content: 'اثر با موفقیت ثبت شد', style: {
-                                marginTop: '110px',
-                            },
-                        })
-                        setTimeout(() => {
-                            // navigate(searchParams.get("back"))
-                            console.log(Location);
-                            navigate(Location?.state?.from)
-                        }, 500);
-                    } else {
-                        message.error({
-                            content: 'خطا در ثبت اطلاعات', style: {
-                                marginTop: '110px'
-                            }
-                        })
-                    }
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
 
-                })
-                .catch(err => {
-                    console.log(err);
-                })
+            } else {
+                apiServices.post(GALLERY_PRODUCTS(id), payload)
+                    .then(res => {
+                        if (res.data) {
+
+                            message.success({
+                                content: 'اثر با موفقیت ثبت شد', style: {
+                                    marginTop: '110px',
+                                },
+                            })
+                            setTimeout(() => {
+                                // navigate(searchParams.get("back"))
+                                console.log(Location);
+                                navigate(Location?.state?.from)
+                            }, 500);
+                        } else {
+                            message.error({
+                                content: 'خطا در ثبت اطلاعات', style: {
+                                    marginTop: '110px'
+                                }
+                            })
+                        }
+
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+            }
+
         } else {
             apiServices.post(PRODUCTS, payload)
                 .then(res => {
@@ -361,30 +389,30 @@ function SellInformation({ prev, next }) {
                                         <Form.Item name="is_sold" valuePropName="checked" noStyle>
                                             <Checkbox type="checkbox"></Checkbox>
                                         </Form.Item>
-                                      
+
                                         <span className='mx-2'>{t("content-panel-add-artwork.artwork_sold")}</span>
-                                        
+
                                     </label>
                                 </div>
 
                                 <div className="col-sm-12">
                                     <label className="d-flex box-dir-reverse lable-checkbox public-group text-dir pr-0">
-                                        
+
                                         <Form.Item name="can_bid" valuePropName="checked" noStyle>
                                             <Checkbox type="checkbox"></Checkbox>
                                         </Form.Item>
                                         <span className='mx-2'>{t("content-panel-add-artwork.could_offer")}</span>
-                                      
+
                                         <span className="input-help">{t("content-panel-add-artwork.could_offer_text")}</span>
                                     </label>
                                 </div>
                                 <div className="col-sm-12">
                                     <label className=" lable-checkbox public-group text-dir pr-0  mt-5">
-                                       
+
                                         <Form.Item valuePropName="checked">
                                             <Switch type="checkbox" checked={isValidation} onChange={e => setisValidation(e)}></Switch>
                                         </Form.Item>
-                                
+
                                         <span className="label-switchbtn">{t("content-panel-add-artwork.discount_price")}</span>
                                     </label>
                                 </div>
@@ -452,7 +480,7 @@ function SellInformation({ prev, next }) {
                                                 />
 
                                             </Form.Item>
-                                           
+
                                         </div>
                                         <a href="#" className="btn-change">
                                             <img src={change_icon} width="24" height="24" alt="" className="" />

@@ -123,7 +123,7 @@ function DetailsArtwork() {
         if (res.data) {
           setProductDetail(res.data.data);
           setEditionValue(res.data.data?.items[0]);
-          setMessageReceiverId(res.data.data?.owner?.id)
+          setMessageReceiverId(res?.data?.data?.owner?.id)
         }
       })
       .catch((err) => {
