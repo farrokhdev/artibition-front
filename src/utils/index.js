@@ -61,8 +61,8 @@ export const FOLLOW_ARTISTS = "/social-network/follow/artists/";
 export const SELLERS_REQUEST = "/artist/sellers/";
 export const ARTIST_BY_GALLERY = (id) => `/${id}/artists/define/`;
 export const TICKET = "/ticket/";
-export const TICKET_ID =(id)=> `/ticket/${id}/`;
-export const TICKET_REPLY = (id)=> `/ticket/${id}/reply/`;
+export const TICKET_ID = (id) => `/ticket/${id}/`;
+export const TICKET_REPLY = (id) => `/ticket/${id}/reply/`;
 export const ACCOUNT_PROFILE = "/account/profile/";
 export const PRODUCT_DETAIL = (id) => `/products/${id}/`;
 export const MESSAGES_ASSERTION = "/message/assertion/";
@@ -99,3 +99,4 @@ export const EXHIBITION_INFO = (galleryId, exhibitionId) => `/${galleryId}/exhib
 export const EXHIBITION_PRODUCT = (galleryId, exhibitionId) => `/${galleryId}/exhibition/${exhibitionId}/artist-product/`
 export const SEND_MESSAGE = `/message/sendmessage/`
 export const GALLERY_PRODUCTS = (galleryId) => `/gallery/${galleryId}/products/`
+// export const PROMOTIONS = '/events/promotions/'
