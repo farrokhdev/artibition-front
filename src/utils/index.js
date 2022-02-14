@@ -59,6 +59,7 @@ export const WALLET = "/accounting/wallet/me/";
 export const WALLET_TRANSACTIONS = "/accounting/wallet-transactions/";
 export const WALLET_TRANSACTIONS_REQUEST = "/accounting/transaction-requests/"
 export const GALLERY_FOLLOW = "/social-network/follow/";
+export const DELETE_FOLLOW = (id) => `/social-network/follow/${id}/`;
 export const FOLLOW_PRODUCTS = "/social-network/follow/products/";
 export const FOLLOW_COLLECTIONS = "/social-network/follow/collections/";
 export const FOLLOW_ARTISTS = "/social-network/follow/artists/";
@@ -101,3 +102,4 @@ export const EXHIBITION_INFO = (galleryId, exhibitionId) => `/${galleryId}/exhib
 export const EXHIBITION_PRODUCT = (galleryId, exhibitionId) => `/${galleryId}/exhibition/${exhibitionId}/artist-product`
 export const SEND_MESSAGE = `/message/sendmessage/`
 export const GALLERY_PRODUCTS = (galleryId) => `/gallery/${galleryId}/products/`
+// export const PROMOTIONS = '/events/promotions/'

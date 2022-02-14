@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import searchIcon from "../../assets/img/search.svg";
 import filterIcon from "../../assets/img/Filter.svg";
 import logo from "../../assets/img/logo.svg";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import ModalSetDimention from "./ModalSetDimention";
 import { isLogin } from "../../utils/utils";
@@ -14,35 +14,51 @@ import queryString from "query-string";
 import apiServices from "../../utils/api.services";
 
 function Header(props) {
-  console.log(
-    "🚀 ~ file: Header.jsx ~ line 17 ~ Header ~ props",
-    props.filters.filters_reducer
-  );
   const { t, i18n } = useTranslation();
   let navigate = useNavigate();
+  let location = useLocation();
 
   const [toman_price_range_min, setToman_price_range_min] = useState();
   const [toman_price_range_max, setToman_price_range_max] = useState();
   const [dollar_price_range_min, setDollar_price_range_min] = useState();
   const [dollar_price_range_max, setDollar_price_range_max] = useState();
+  const [filters, setFilters] = useState();
+  console.log("🚀 ~ file: Header.jsx ~ line 30 ~ Header ~ filters", filters);
   const [visibleSetDimentionModal, setVisibleSetDimentionModal] =
     useState(false);
-  const [categorieParams, setCategorieParams] = useState({
+  const [categoriesParams, setCategoriesParams] = useState({
     page: 1,
   });
   const [params, setParams] = useState({
     status: "active",
     page: 1,
   });
-  //   console.log("🚀 ~ file: Header.jsx ~ line 30 ~ Header ~ params", params);
 
+  const [toggleRoute, setToggleRoute] = useState(false);
   //filters state
   const [categories, setCategories] = useState();
   const [categoriesId, setCategoriesId] = useState([]);
-
+  let categoriesIdTotal = [];
+  const filterCategories = () => {
+    for (var key in categoriesId) {
+      if (categoriesId[key] === true) {
+        categoriesIdTotal.push(parseInt(key));
+      }
+    }
+    setFilters((state) => ({ ...state, category_id: categoriesIdTotal }));
+    return null;
+  };
   const [sizes, setSizes] = useState();
   const [sizesId, setSizesId] = useState([]);
-
+  const filterSizes = () => {
+    let sizesIdTotal = [];
+    for (var key in sizesId) {
+      if (sizesId[key] === true) {
+        sizesIdTotal.push(parseInt(key));
+      }
+    }
+    return setFilters((state) => ({ ...state, size_id: sizesIdTotal }));
+  };
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
 
@@ -58,24 +74,12 @@ function Header(props) {
   };
 
   const getFilterParams = () => {
-    let sizesIdTotal = [];
-    let categoriesIdTotal = [];
-    for (var key in sizesId) {
-      if (sizesId[key] === true) {
-        sizesIdTotal.push(parseInt(key));
-      }
-    }
-    for (var key in categoriesId) {
-      if (categoriesId[key] === true) {
-        categoriesIdTotal.push(parseInt(key));
-      }
-    }
-    props.setFilters({
-      ...props.state,
+    filterCategories();
+    filterSizes();
+    setFilters((state) => ({
+      ...state,
       page: 1,
       status: "active",
-      size_id: sizesIdTotal,
-      category_id: categoriesIdTotal,
       toman_price_range_min:
         i18n.language === "fa-IR"
           ? toman_price_range_min
@@ -92,12 +96,13 @@ function Header(props) {
           : dollar_price_range_max
           ? dollar_price_range_max
           : 0,
-    });
-  };
+    }));
 
+    setToggleRoute(true);
+  };
   const getProductCategories = () => {
     apiServices
-      .get(PRODUCTS_CATEGORIES, queryString.stringify(categorieParams))
+      .get(PRODUCTS_CATEGORIES, queryString.stringify(categoriesParams))
       .then((res) => {
         if (res.data) {
           setCategories(res.data.data);
@@ -124,12 +129,29 @@ function Header(props) {
     getProductCategories();
     getProductSizes();
   }, []);
-  //   useEffect(() => {
-  //     props.setFilters({
-  //       ...props.state,
-  //       params,
-  //     });
-  //   }, [params?.length]);
+
+  useEffect(() => {
+    if (toggleRoute && location.pathname !== "/site/artworks") {
+      navigate(
+        `/site/artworks/?${queryString.stringify(filters, {
+          arrayFormat: "comma",
+          skipNull: true,
+          skipEmptyString: true,
+        })}`
+      );
+    } else {
+      if (toggleRoute) {
+        navigate(
+          `/site/artworks/?${queryString.stringify(filters, {
+            arrayFormat: "comma",
+            skipNull: true,
+            skipEmptyString: true,
+          })}`,
+          { replace: true }
+        );
+      }
+    }
+  }, [toggleRoute]);
   return (
     <div className="default-header ">
       <div className="row content-header-site">
@@ -157,7 +179,6 @@ function Header(props) {
               type="button"
               data-toggle="collapse"
               data-target="#top-filter"
-              onClick={() => navigate("/site/artworks")}
             >
               <img src={filterIcon} height="15" width="16" alt="فیلتر" />
               <span>{t("filter-header.title")}</span>
@@ -229,12 +250,14 @@ function Header(props) {
                         name={item.id}
                         type="checkbox"
                         value={item.id}
-                        onClick={(e) => {
+                        onChange={(e) => {
                           setCategoriesId({
                             ...categoriesId,
                             [e.target.name]: e.target.checked,
                           });
+                          // filterCategories();
                         }}
+                        // onClick={filterCategories}
                       />
                       <span>
                         {i18n.language === "fa-IR"
@@ -316,35 +339,6 @@ function Header(props) {
                       <span className="checkmark"></span>
                     </label>
                   </div>
-                </div>
-              </div>
-              <div className="col-md-2 ">
-                <h3 className="filter-menu-title text-dir">
-                  {t("filter-header.color.title")}
-                </h3>
-                <div className="filter-menu-body ">
-                  <table className="table  color ">
-                    <tbody>
-                      <tr>
-                        <td id="color201">#9a2aba</td>
-                        <td id="color202">#4a24b7</td>
-                        <td id="color203">#0460ff</td>
-                        <td id="color204">#00a2d8</td>
-                      </tr>
-                      <tr>
-                        <td id="color205">#ffaa00</td>
-                        <td id="color206">#fd6b00</td>
-                        <td id="color207">#fe4310</td>
-                        <td id="color208">#bb2a61</td>
-                      </tr>
-                      <tr>
-                        <td id="color209">#68a53c</td>
-                        <td id="color210">#dae229</td>
-                        <td id="color211">#e8e337</td>
-                        <td id="color212">#e9b61d</td>
-                      </tr>
-                    </tbody>
-                  </table>
                 </div>
               </div>
               <div className="col-md-2 ">
@@ -431,6 +425,8 @@ function Header(props) {
                 type="button"
                 className="btn-black btn-doFilter col-3 mx-auto"
                 onClick={getFilterParams}
+                data-toggle="collapse"
+                data-target="#top-filter"
               >
                 اعمال فیلتر
               </button>

@@ -7,3 +7,8 @@ export const setFilters = (data) => (
         payload: data
     }
 )
+export const clearFilterStorage = () => (
+    {
+        type: types.CLEAR_FILTER_STORAGE,
+    }
+)

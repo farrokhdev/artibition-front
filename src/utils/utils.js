@@ -1,11 +1,10 @@
 import cookie from "react-cookies";
 import qs from "qs";
-import { BASE_URL, COOKIE_EXPIRES, GALLERY_FOLLOW } from "./index";
+import { BASE_URL, COOKIE_EXPIRES, DELETE_FOLLOW, GALLERY_FOLLOW } from "./index";
 import { message } from "antd";
 import { useTranslation } from "react-i18next";
 import momentJalaali from "moment-jalaali";
 import apiServices from "./api.services";
-
 export function Arraify(data) {
   if (!data) return [];
 

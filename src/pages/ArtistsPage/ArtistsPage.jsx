@@ -332,11 +332,11 @@ function ArtistsPage(props) {
                             </div>
                             <div className="d-flex collection-secondrow">
                               <div className="col-6  pad-l2 px-0">
-                                {/* <img src={mainpage1_2} width="420" height="420"
-                                                     className="img-responsive"/> */}
+
                                 <img
                                   src={
-                                    item?.product && item.product[1]?.exact_url
+                                    // item?.product && item.product[1]?.exact_url
+                                    item?.product && item?.product[0]?.product_base_info?.medias[0]?.exact_url
                                   }
                                   width="420"
                                   height="420"
@@ -344,11 +344,10 @@ function ArtistsPage(props) {
                                 />
                               </div>
                               <div className="col-6  pad-r2 px-0">
-                                {/* <img src={mainpage1_3} width="420" height="420"
-                                                     className="img-responsive"/> */}
                                 <img
                                   src={
-                                    item?.product && item.product[2]?.exact_url
+                                    // item?.product && item.product[2]?.exact_url
+                                    item?.product && item?.product[1]?.product_base_info?.medias[0]?.exact_url
                                   }
                                   width="420"
                                   height="420"
@@ -382,8 +381,16 @@ function ArtistsPage(props) {
                               <Link to={`/site/artist-profile/?id=${item?.id}`}>
                                 <span className="col-name pull-dir">
                                   {i18n.language === "fa-IR"
-                                    ? item.translations?.fa?.nick_name
-                                    : item.translations?.en?.nick_name}
+                                    ?
+                                    item?.owner?.translations?.fa ?
+                                      item?.owner?.translations?.fa?.first_name + " " + item?.owner?.translations?.fa?.last_name
+                                      : ""
+
+                                    :
+                                    item?.owner?.translations?.en ?
+                                      item?.owner?.translations?.en?.first_name + " " + item?.owner?.translations?.en?.last_name
+                                      : ""
+                                  }
                                 </span>
                               </Link>
                             </h6>
