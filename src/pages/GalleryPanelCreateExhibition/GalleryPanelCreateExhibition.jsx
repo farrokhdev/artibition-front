@@ -70,13 +70,13 @@ function GalleryPanelCreateExhibition() {
                         "type": form.type,
                         "category": form.category,
                         "product_status": "sale",
-                        "virtual_start_date": form.virtual_start_date ? `${form.virtual_start_date?.format("YYYY-MM-DD")}${form.virtual_start_time?.toISOString().slice(10)}` : "",
-                        "virtual_end_date": form.virtual_end_date ? `${form.virtual_end_date?.format("YYYY-MM-DD")}${form.virtual_end_time?.toISOString().slice(10)}` : "",
-                        "real_start_date": form.real_start_date ? `${form.real_start_date?.format("YYYY-MM-DD")}${form.real_start_time?.toISOString().slice(10)}` : "",
-                        "real_end_date": form.real_start_date ? `${form.real_end_date?.format("YYYY-MM-DD")}${form.real_end_time?.toISOString().slice(10)}` : "",
+                        "virtual_start_date": form.virtual_start_date ? `${form.virtual_start_date?.format("YYYY-MM-DD")}${form.virtual_start_time?.toISOString().slice(10)}` : null,
+                        "virtual_end_date": form.virtual_end_date ? `${form.virtual_end_date?.format("YYYY-MM-DD")}${form.virtual_end_time?.toISOString().slice(10)}` : null,
+                        "real_start_date": form.real_start_date ? `${form.real_start_date?.format("YYYY-MM-DD")}${form.real_start_time?.toISOString().slice(10)}` : null,
+                        "real_end_date": form.real_start_date ? `${form.real_end_date?.format("YYYY-MM-DD")}${form.real_end_time?.toISOString().slice(10)}` : null,
                         "address": [
                             {
-                                "point": point,
+                                // "point": point?.latitude ? point : null,
                                 "translations": {
                                     "fa": {
                                         "address": i18next.language === 'fa-IR' ? form.address_fa : "",
@@ -99,6 +99,13 @@ function GalleryPanelCreateExhibition() {
                         "artist": form.artists,
                         "poster": posters,
                         "product": []
+                    }
+                    if (form?.type === "virtual") {
+
+                    } else if (form?.type === "real") {
+                        payload.address[0]["point"] = point
+                    } else if (form?.type === "virtual_real") {
+                        payload.address[0]["point"] = point
                     }
                     console.log(payload);
                     dispatch(exhibitionForm(payload))

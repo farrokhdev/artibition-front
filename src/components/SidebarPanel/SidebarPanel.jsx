@@ -78,7 +78,7 @@ function SidebarPanel(props) {
                                         : ""
                                     :
                                     props.auth?.profile?.translations?.en ?
-                                    props?.auth?.profile?.translations?.en?.first_name + " " + props?.auth?.profile?.translations?.en?.last_name
+                                        props.auth?.profile?.translations?.en?.first_name + " " + props.auth?.profile?.translations?.en?.last_name
                                         : ""
                             }
                         </span>

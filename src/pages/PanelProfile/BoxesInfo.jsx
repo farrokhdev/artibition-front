@@ -146,8 +146,7 @@ function BoxesInfo({ items }) {
                         <div className="clearfix"></div>
                     </>
                 )
-
-
+                
 
             case "approved":
                 return (
@@ -162,8 +161,6 @@ function BoxesInfo({ items }) {
                         <div className="clearfix"></div>
                     </>
                 )
-
-
             default:
                 break;
         }
@@ -219,11 +216,9 @@ function BoxesInfo({ items }) {
                 <>
                     <div className="col-md-4">
                         <div className="box box-1">
-
                             {items?.request_seller &&
                                 getRequsetStatus(items.request_seller, "seller")
                             }
-
                         </div >
                     </div >
                     <div className="col-md-4">

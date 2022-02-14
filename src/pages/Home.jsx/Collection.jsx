@@ -89,7 +89,7 @@ export default function Collection() {
                                             <div className=" collection-firstrow m-0">
                                                 <img src={item.products[0]?.medias[0]?.exact_url} className="img-responsive w-100" />
                                             </div>
-                                            {item.products[1] || item.products[2] && <div className="d-flex collection-secondrow  px-0">
+                                            {<div className="d-flex collection-secondrow  px-0">
                                                 {item.products[1] && <div className="col px-0  mt-2">
                                                     <img src={item.products[1]?.medias[1]?.exact_url}
                                                         className="img-responsive clolection-image w-100" />
