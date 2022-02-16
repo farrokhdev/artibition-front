@@ -318,6 +318,7 @@ function GalleryPanelUploadExhibitionArtwork() {
                                                 {
                                                     return (
                                                         artwork.selected.map((showArtwork, showArtworkIndex) => {
+                                                            console.log(showArtwork);
                                                             return (
                                                                 <div className="cols" tabIndex="-1" style={{ padding: "0 5px", cursor: "unset" }}>
                                                                     <div className="col-img">
@@ -521,7 +522,8 @@ function GalleryPanelUploadExhibitionArtwork() {
                     footer={[]}>
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">{t("gallery-panel-create-exhibition.add_new_artist.title")}</h5>
+                            {/* <h5 className="modal-title" id="exampleModalLabel">{t("gallery-panel-create-exhibition.add_new_artist.title")}</h5> */}
+                            <h5 className="modal-title" id="exampleModalLabel">{"انتخاب آثار"}</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={() => { setShowExistArtwork(false) }}>
                                 <span aria-hidden="true">×</span>
                             </button>

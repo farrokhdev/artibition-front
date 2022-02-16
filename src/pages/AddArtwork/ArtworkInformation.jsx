@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Input, Select, Checkbox, message } from 'antd';
 import cloud_upload from '../../assets/img/cloud-upload.svg'
-import { t, use } from 'i18next';
+import i18next, { t, use } from 'i18next';
 import classnames from 'classnames';
 import { GetLanguage } from '../../utils/utils'
 import MultipleUpload from '../../components/MultiUpload/MultiUpload';
@@ -11,6 +11,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import queryString from 'query-string';
 import { ARTIST_PROFILE, GALLERY_ARTISTS, MATERIALS_CATEGORIES, PRODUCTS, PRODUCTS_CATEGORIES, SOCIAL_NETWORK_COLLECTIONS, SUBJECTS_CATEGORISE, TECHNIQUS_CATEGORIES } from '../../utils';
 import { artworkForm } from '../../redux/reducers/Artwork/artwork.action';
+import artist from '../../assets/img/Aydin_Aghdashloo_04@3x.jpg'
 
 function ArtworkInformation({ next, prev }) {
 
@@ -21,6 +22,7 @@ function ArtworkInformation({ next, prev }) {
     const { gallery_id } = useSelector((state) => state.galleryReducer)
     const navigate = useNavigate();
     const [uploadList, setUploadList] = useState([])
+    const [artists, setArtists] = useState([])
     const [categorys, setCategorys] = useState([]);
     const [newArtwork, setNewArtwork] = useState({ category_id: undefined })
     const [subject, setSubject] = useState([]);
@@ -161,10 +163,10 @@ function ArtworkInformation({ next, prev }) {
     }
 
     const getArtistDetails = () => {
-        apiServices.get(GALLERY_ARTISTS(id), "")
+        apiServices.get(GALLERY_ARTISTS(gallery_id), "")
             .then(res => {
                 if (res.data) {
-                    console.log(res.data);
+                    setArtists(res.data.data.results)
                 }
             })
             .catch(err => {
@@ -243,8 +245,29 @@ function ArtworkInformation({ next, prev }) {
         }
     }, [])
 
+    // useEffect(() => {
+    //     console.log();
+    // }, [])
+
     return (
         <>
+            {getUserRole() === "gallery" && searchParams.get("artist_id") &&
+                artists.map((item) => {
+                    if (item.id == searchParams.get("artist_id")) {
+                        return (
+                            < div className="artist-name-row">
+                                <div className="artist-avatar pull-dir">
+                                    <img className="img-responsive" src={item.bg_image?.exact_url} height="192" width="192" />
+                                </div>
+                                <h4 className="artists-name text-dir">
+                                    <span>{i18next.language === "fa-IR" ? `${item.owner?.translations?.fa?.first_name} ${item.owner?.translations?.fa?.last_name}` : `${item.owner?.translations?.en?.first_name} ${item.owner?.translations?.en?.last_name}`}</span>
+                                </h4>
+                            </div>
+                        )
+                    }
+                })
+            }
+
             <h3 className="info-title mrgt64 require text-dir">{t("content-panel-add-artwork.upload.title")}</h3>
 
 
@@ -326,7 +349,7 @@ function ArtworkInformation({ next, prev }) {
                             </div>
                         </div>
 
-                        {!(getUserRole === "gallery") && !(searchParams.get("artist_id")) &&
+                        {!(getUserRole() === "gallery") && !(searchParams.get("artist_id")) &&
                             <div className="d-block d-sm-flex box-dir-reverse w-100">
                                 <div
 

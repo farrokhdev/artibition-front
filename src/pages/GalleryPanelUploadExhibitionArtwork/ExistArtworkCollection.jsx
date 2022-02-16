@@ -56,7 +56,6 @@ function ExistArtworkCollection({ artistID, selectedArtwork, setSelectedArtwork 
     // const [productsArray, setProductArray] = useState([])
     const [productsArray, setProductArray] = useState(reduxSelectedArtworks)
     const handleChange = (e) => {
-        console.log(e.target.name);
         let temp = reduxSelectedArtworks
         const json = {
             id: artistID,
@@ -84,8 +83,6 @@ function ExistArtworkCollection({ artistID, selectedArtwork, setSelectedArtwork 
         dispatch(reduxSelectedArtworksFunc(temp));
         let tempProduct = []
         temp.map((item, index) => {
-
-            console.log(item);
             tempProduct.push(...item.selected)
         })
 
@@ -112,15 +109,12 @@ function ExistArtworkCollection({ artistID, selectedArtwork, setSelectedArtwork 
             })
     }, [])
 
-    useEffect(() => {
-        console.log(productsArray);
-    }, [productsArray])
+    
 
 
     const checkedI = (edition) => {
         let flag = false
         productsArray.map((item) => {
-            console.log(item?.selected?.some(e => e.product_item_id === edition.id));
             if (item?.selected?.some(e => e.product_item_id === edition.id)) {
                 flag = true
             }
