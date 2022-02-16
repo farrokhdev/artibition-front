@@ -79,8 +79,8 @@ export function isStatusPurchases(value) {
             }
         case "pending":
             return {
-                title: " در انتظار پاسخ",
-                css: "pending"
+                title: "پرداخت شده",
+                css: "accept"
             }
         default:
             return {

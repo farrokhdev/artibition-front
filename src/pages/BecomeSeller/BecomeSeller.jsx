@@ -16,7 +16,7 @@ function BecomeSeller() {
     const onFinish = (values) => {
         let payload = {
             "agreement_doc": uploadList[0],
-            
+
         }
 
         apiServices.post(SELLERS_REQUEST, payload)
@@ -69,11 +69,17 @@ function BecomeSeller() {
                     <div className="artist-info mt-5 pt-5">
                         <h5 class="adv-title">آپلود اطلاعات فروشنده</h5>
                         <p>فایل تکمیل شده خود را آپلود کنید</p>
-                        <CoverUpload setUploadList={setUploadList} uploadList={uploadList} Example_word={Example_word}/>
+
+                        <CoverUpload setUploadList={setUploadList} uploadList={uploadList} Example_word={Example_word} />
                     </div>
 
                 </div>
+                {uploadList?.length > 0 ? 
                 <button htmlType="submit" className="btn-black center-block mt-5">{t("gallery-panel-edit-gallery-info.btn_confirm_info")}</button>
+                : 
+                <button disabled className="btn-black center-block mt-5">{t("gallery-panel-edit-gallery-info.btn_confirm_info")}</button>
+
+                }
 
             </Form>
 

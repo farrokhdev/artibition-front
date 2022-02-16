@@ -31,10 +31,10 @@ function LoginPersonalInfo({ next, prev, userProfil }) {
             "birth_date": values?.birth_date.format("YYYY-MM-DD"),
             "mobile": values?.mobile,
             "email": values?.email,
-            "join_magazine" : values?.join_magazine,
+            "join_magazine": values?.join_magazine,
 
         }
-    
+
         apiServices.patch(ACCOUNT_PROFILE, payload)
             .then(res => {
                 if (res.data) {
@@ -59,7 +59,7 @@ function LoginPersonalInfo({ next, prev, userProfil }) {
             nick_name: userProfil?.translations?.fa?.nick_name,
             mobile: userProfil?.mobile,
             email: userProfil?.email,
-            birth_date: moment(userProfil?.birth_date, "YYYY-MM-DD"),
+            birth_date: userProfil?.birth_date && moment(userProfil?.birth_date, "YYYY-MM-DD"),
             join_magazine: userProfil?.join_magazine
 
         })
@@ -90,7 +90,6 @@ function LoginPersonalInfo({ next, prev, userProfil }) {
                             required placeholder="نام"
                             value="" />
                     </Form.Item>
-                  
                 </div>
                 <div class="public-group en">
                     <Form.Item
@@ -106,7 +105,7 @@ function LoginPersonalInfo({ next, prev, userProfil }) {
                             required placeholder="First Name"
                             value="" />
                     </Form.Item>
-                   
+
                 </div>
                 <div class="public-group">
                     <Form.Item
@@ -122,7 +121,7 @@ function LoginPersonalInfo({ next, prev, userProfil }) {
                             required placeholder="نام خانوادگی"
                             value="" />
                     </Form.Item>
-                   
+
                 </div>
                 <div class="public-group en">
                     <Form.Item
@@ -138,7 +137,7 @@ function LoginPersonalInfo({ next, prev, userProfil }) {
                             required placeholder="Last Name"
                             value="" />
                     </Form.Item>
-                  
+
                 </div>
                 <div class="public-group">
                     <Form.Item
@@ -155,22 +154,22 @@ function LoginPersonalInfo({ next, prev, userProfil }) {
                             value="" />
                     </Form.Item>
 
-                   
+
                 </div>
                 <div class="public-group">
-                        <Form.Item
-                            className="w-100 "
-                            name="mobile"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: "تکمیل این فیلد ضروری است",
-                                }
-                            ]}>
-                            <Input className="form-control input-public border-0 px-4  d-flex"
-                                required placeholder="شماره همراه"
-                                value="" />
-                        </Form.Item>
+                    <Form.Item
+                        className="w-100 "
+                        name="mobile"
+                        rules={[
+                            {
+                                required: true,
+                                message: "تکمیل این فیلد ضروری است",
+                            }
+                        ]}>
+                        <Input className="form-control input-public border-0 px-4  d-flex"
+                            required placeholder="شماره همراه"
+                            value="" />
+                    </Form.Item>
                 </div>
                 <div class="public-group">
                     <Form.Item

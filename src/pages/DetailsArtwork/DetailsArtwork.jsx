@@ -322,6 +322,7 @@ function DetailsArtwork() {
                 <div className="d-flex box-dir-reverse ">
                   <div className="col-xs-3">
                     <div className="artist-avatar">
+                      {console.log("productDetail" , productDetail)}
                       <img
                         src={artist4}
                         width="408"

@@ -80,7 +80,7 @@ function ModalEditProfile(props) {
                             first_name: i18n.language === 'fa-IR' ? props?.auth?.profile?.translations?.fa?.first_name : props?.auth?.profile?.translations?.en?.first_name,
                             last_name: i18n.language === 'fa-IR' ? props?.auth?.profile?.translations?.fa?.last_name : props?.auth?.profile?.translations?.en?.last_name,
                             national_code: props?.auth?.profile?.national_code,
-                            birth_date: moment(props?.auth?.profile?.birth_date, "YYYY-MM-DD"),
+                            birth_date: props?.auth?.profile?.birth_date &&  moment(props?.auth?.profile?.birth_date, "YYYY-MM-DD") ,
                             email: props?.auth?.profile?.email,
                             nick_name: i18n.language === 'fa-IR' ? props?.auth?.profile?.translations?.fa?.nick_name : props?.auth?.profile?.translations?.en?.nick_name,
                         }}

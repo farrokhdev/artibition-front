@@ -61,7 +61,7 @@ function Artists(props) {
                     <div className="artist-avatar">
                       <img
                         className="img-responsive"
-                        src={item.bg_image}
+                        src={item.bg_image?.exact_url}
                         height="192"
                         width="192"
                         alt={

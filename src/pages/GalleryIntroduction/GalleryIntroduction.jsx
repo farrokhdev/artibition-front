@@ -28,13 +28,13 @@ function GalleryIntroduction() {
     const [params, setParams] = useState({
         search: "",
         page: 1,
-        
+
     })
-    
+
     function useQuery() {
-        
+
         return new URLSearchParams(useLocation().search);
-        
+
     }
     var id;
 
@@ -75,7 +75,7 @@ function GalleryIntroduction() {
         getGalleryExhibition()
     }, [params]);
 
-    console.log("id",galleryIntroduction)
+    console.log("id", galleryIntroduction)
     return (
         <>
             <div className="container">
@@ -84,9 +84,9 @@ function GalleryIntroduction() {
 
                 <div className="container">
                     <ul className="breadcrumb">
-                        <li><a href="#">{t("artwork.artibition")}</a></li>
-                        <li><a href="#">{t("artist_profile.artists")}</a></li>
-                        <li><a href="#">{t("gallery-panel-my-gallery.my_gallery")}</a></li>
+                        <li><a>{t("artwork.artibition")}</a></li>
+                        <li><a>{t("artist_profile.artists")}</a></li>
+                        <li><a>{i18n.language === 'fa-IR' ? galleryIntroduction?.translations?.fa?.title : galleryIntroduction?.translations?.en?.title}</a></li>
                         <li class="active">{t("artist_profile.introduction")}</li>
                     </ul>
                     <div >
@@ -97,19 +97,19 @@ function GalleryIntroduction() {
                             <img src={galleryIntroduction?.logo?.exact_url} width="110" height="110" alt="هان گالری" className="img-responsive" />
                         </div>
                         {i18n.language === 'fa-IR' ?
-                        <>
-                        <h2 className="gallery-name">{galleryIntroduction?.translations?.fa?.title}</h2>
-                        <span className="gallery-location">{galleryIntroduction?.locations[0]?.translations?.fa?.city}</span>
-                        <p className="text-justify">{galleryIntroduction?.translations?.fa?.description}</p>
-                        </>
-                        :
-                        <>
-                        <h2 className="gallery-name">{galleryIntroduction?.translations?.en?.title}</h2>
-                        <span className="gallery-location">{galleryIntroduction?.locations[0]?.translations?.en?.city}</span>
-                        <p className="text-justify">{galleryIntroduction?.translations?.en?.description}</p>
-                        </>
-    }
-                        <button className="btn btn-galleryfollow" onClick={() => follow({activity:'following',content:'gallery',object_id:id})}>
+                            <>
+                                <h2 className="gallery-name">{galleryIntroduction?.translations?.fa?.title}</h2>
+                                <span className="gallery-location">{galleryIntroduction?.locations[0]?.translations?.fa?.city}</span>
+                                <p className="text-justify">{galleryIntroduction?.translations?.fa?.description}</p>
+                            </>
+                            :
+                            <>
+                                <h2 className="gallery-name">{galleryIntroduction?.translations?.en?.title}</h2>
+                                <span className="gallery-location">{galleryIntroduction?.locations[0]?.translations?.en?.city}</span>
+                                <p className="text-justify">{galleryIntroduction?.translations?.en?.description}</p>
+                            </>
+                        }
+                        <button className="btn btn-galleryfollow" onClick={() => follow({ activity: 'following', content: 'gallery', object_id: id })}>
                             <img src={circleplus1} height="17" width="17" alt="" />
                             <span>{t("artwork.follow")}</span>
                         </button>
@@ -122,22 +122,22 @@ function GalleryIntroduction() {
                                     <ul className="nav d-block ">
                                         <Tabs className="antd-tabnav" defaultActiveKey="1" onChange={callback}>
                                             <TabPane className="mx-5 antd-tabnav" tab={t("artist_profile.introduction")} key="1">
-                                                <Introduction id={id} galleryIntroduction={galleryIntroduction} galleryExhibition={galleryExhibition}/>
+                                                <Introduction id={id} galleryIntroduction={galleryIntroduction} galleryExhibition={galleryExhibition} />
                                             </TabPane>
                                             <TabPane tab={t("drawer-panel.nav-exhibitions")} key="2">
-                                                <Exhibition id={id} galleryExhibition={galleryExhibition}/>
+                                                <Exhibition id={id} galleryExhibition={galleryExhibition} />
                                             </TabPane>
                                             <TabPane tab={t("nav-menu-artworks")} key="3">
-                                                <Artworks id={id}/>
+                                                <Artworks id={id} />
                                             </TabPane>
                                             <TabPane tab={t("artist_profile.artists")} key="4">
                                                 <Artist id={id} />
                                             </TabPane>
                                             <TabPane tab={t("Journal")} key="5">
-                                                <Journal id={id}/>
+                                                <Journal id={id} />
                                             </TabPane>
                                             <TabPane tab={t("gallery-panel-edit-gallery-info.contact_info")} key="6">
-                                                <GalleryContact galleryIntroduction={galleryIntroduction}/>
+                                                <GalleryContact galleryIntroduction={galleryIntroduction} />
                                             </TabPane>
 
 

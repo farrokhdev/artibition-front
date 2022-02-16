@@ -76,7 +76,7 @@ function ProfileArtist() {
     useEffect(() => {
         getArtistProfile()
     }, [params]);
- 
+
 
     return (
         <>
@@ -128,12 +128,12 @@ function ProfileArtist() {
                                                     <div className="artist-name text-dir">
                                                         {i18n.language === 'fa-IR' ?
                                                             <>
-                                                                <span>{artistProfile?.owner?.translations?.fa?.first_name}</span>
+                                                                <span>{artistProfile?.owner?.translations?.fa?.first_name} </span>
                                                                 <span>{artistProfile?.owner?.translations?.fa?.last_name}</span>
                                                             </>
                                                             :
                                                             <>
-                                                                <span>{artistProfile?.owner?.translations?.en?.first_name}</span>
+                                                                <span>{artistProfile?.owner?.translations?.en?.first_name} </span>
                                                                 <span>{artistProfile?.owner?.translations?.en?.last_name}</span>
                                                             </>
                                                         }
