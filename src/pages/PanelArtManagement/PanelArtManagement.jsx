@@ -28,7 +28,7 @@ function PanelArtManagement() {
 
     });
 
-    const { id } = useSelector((state) => state.galleryReducer)
+    const { gallery_id } = useSelector((state) => state.galleryReducer)
 
 
     const { roles } = useSelector((state) => state.authReducer)
@@ -68,7 +68,7 @@ function PanelArtManagement() {
     const getProductList = () => {
         setLoading(true)
         if (getUserRole() === "gallery") {
-            apiServices.get(GALLERY_PRODUCTS(id), queryString.stringify(params))
+            apiServices.get(GALLERY_PRODUCTS(gallery_id), queryString.stringify(params))
                 .then(res => {
                     setLoading(false)
                     setProductList(res.data.data.results)
@@ -292,7 +292,7 @@ function PanelArtManagement() {
                         </div>
 
 
-                        <TableArtworks id productList={productList} />
+                        <TableArtworks productList={productList} />
 
 
                         <div className=" row-pagination">

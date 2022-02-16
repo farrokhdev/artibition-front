@@ -17,10 +17,10 @@ function GalleryPanelArtistList() {
         page_size: 9999999
     })
 
-    const { id } = useSelector((state) => state.galleryReducer)
+    const { gallery_id } = useSelector((state) => state.galleryReducer)
 
     useEffect(() => {
-        apiServices.get(GALLERY_ARTISTS(id), queryString.stringify(params))
+        apiServices.get(GALLERY_ARTISTS(gallery_id), queryString.stringify(params))
             .then(res => {
                 if (res.data) {
                     setArtists(res.data.data.results)

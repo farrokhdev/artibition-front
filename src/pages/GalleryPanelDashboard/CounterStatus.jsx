@@ -7,12 +7,12 @@ import { useSelector } from 'react-redux'
 
 function CounterStatus() {
 
-    const { id } = useSelector((state) => state.galleryReducer)
+    const { gallery_id } = useSelector((state) => state.galleryReducer)
 
     const [artworksStatus, setArtworkSatus] = useState()
 
     useEffect(() => {
-        apiServices.get(GALLERY_PANEL_DASHBOARD(id), "")
+        apiServices.get(GALLERY_PANEL_DASHBOARD(gallery_id), "")
             .then(res => {
                 if (res.data) {
                     setArtworkSatus(res.data.data)

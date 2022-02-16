@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Input, Select, Checkbox, message } from 'antd';
 import cloud_upload from '../../assets/img/cloud-upload.svg'
-import { t } from 'i18next';
+import { t, use } from 'i18next';
 import classnames from 'classnames';
 import { GetLanguage } from '../../utils/utils'
 import MultipleUpload from '../../components/MultiUpload/MultiUpload';
 import apiServices from '../../utils/api.services';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import queryString from 'query-string';
-import { MATERIALS_CATEGORIES, PRODUCTS, PRODUCTS_CATEGORIES, SOCIAL_NETWORK_COLLECTIONS, SUBJECTS_CATEGORISE, TECHNIQUS_CATEGORIES } from '../../utils';
+import { ARTIST_PROFILE, GALLERY_ARTISTS, MATERIALS_CATEGORIES, PRODUCTS, PRODUCTS_CATEGORIES, SOCIAL_NETWORK_COLLECTIONS, SUBJECTS_CATEGORISE, TECHNIQUS_CATEGORIES } from '../../utils';
 import { artworkForm } from '../../redux/reducers/Artwork/artwork.action';
 
 function ArtworkInformation({ next, prev }) {
@@ -18,6 +18,7 @@ function ArtworkInformation({ next, prev }) {
     const { Option } = Select;
     const dispach = useDispatch()
     const { id } = useSelector((state) => state.authReducer)
+    const { gallery_id } = useSelector((state) => state.galleryReducer)
     const navigate = useNavigate();
     const [uploadList, setUploadList] = useState([])
     const [categorys, setCategorys] = useState([]);
@@ -29,6 +30,7 @@ function ArtworkInformation({ next, prev }) {
     const [material, setMaterial] = useState([]);
     const [materialId, setMaterialId] = useState({ material_id: [] })
     const [sotialCollection, setSotialCollection] = useState([]);
+    let [searchParams, setSearchParams] = useSearchParams()
     const Language = GetLanguage();
     const [params, setParams] = useState({
         owner_id: id,
@@ -36,6 +38,29 @@ function ArtworkInformation({ next, prev }) {
 
 
     console.log("categorys", categorys);
+
+
+
+
+    const { roles } = useSelector((state) => state.authReducer)
+    const getUserRole = () => {
+        let userRole = "user"
+        if (typeof roles === "string") {
+            return roles
+        } else {
+            if (roles && roles.length > 0) {
+                if (roles.includes("seller")) {
+                    userRole = "seller"
+                }
+                if (roles.includes("artist")) {
+                    userRole = "artist"
+                }
+            } else {
+                userRole = 'user'
+            }
+        }
+        return userRole
+    }
 
     // The job of this constant is to send the information needed to make the artwork
     const onFinish = (values) => {
@@ -135,6 +160,18 @@ function ArtworkInformation({ next, prev }) {
             })
     }
 
+    const getArtistDetails = () => {
+        apiServices.get(GALLERY_ARTISTS(id), "")
+            .then(res => {
+                if (res.data) {
+                    console.log(res.data);
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
     useEffect(() => {
         getCollections();
     }, []);
@@ -199,6 +236,12 @@ function ArtworkInformation({ next, prev }) {
     useEffect(() => {
         getListCategory();
     }, []);
+
+    useEffect(() => {
+        if (searchParams.get("artist_id")) {
+            getArtistDetails()
+        }
+    }, [])
 
     return (
         <>
@@ -283,70 +326,73 @@ function ArtworkInformation({ next, prev }) {
                             </div>
                         </div>
 
+                        {!(getUserRole === "gallery") && !(searchParams.get("artist_id")) &&
+                            <div className="d-block d-sm-flex box-dir-reverse w-100">
+                                <div
 
-                        <div className="d-block d-sm-flex box-dir-reverse w-100">
-                            <div
+                                    className={classnames("", {
+                                        "col-sm-6": GetLanguage() === 'fa-IR',
+                                        "d-none": GetLanguage() === 'en-US'
+                                    })}
+                                >
+                                    <div className="public-group">
 
-                                className={classnames("", {
-                                    "col-sm-6": GetLanguage() === 'fa-IR',
-                                    "d-none": GetLanguage() === 'en-US'
-                                })}
-                            >
-                                <div className="public-group">
+                                        <Form.Item
+                                            className="w-100 "
+                                            name="artist_name"
+                                            rules={[
+                                                {
+                                                    required: true,
+                                                    message: 'required',
+                                                }
+                                            ]}>
 
-                                    <Form.Item
-                                        className="w-100 "
-                                        name="artist_name"
-                                        rules={[
-                                            {
-                                                required: true,
-                                                message: 'required',
-                                            }
-                                        ]}>
-
-                                        <Input
-                                            type="text"
-                                            id="info-201"
-                                            className="form-control input-public border-0 px-2  d-flex"
-                                            placeholder={t("content-panel-add-artwork.art_info.artist_name")}
-                                        />
+                                            <Input
+                                                type="text"
+                                                id="info-201"
+                                                className="form-control input-public border-0 px-2  d-flex"
+                                                placeholder={t("content-panel-add-artwork.art_info.artist_name")}
+                                            />
 
 
-                                    </Form.Item>
+                                        </Form.Item>
+                                    </div>
+                                </div>
+
+                                <div
+
+                                    className={classnames("", {
+                                        "col-sm-6": GetLanguage() === 'fa-IR',
+                                        "col-sm-12": GetLanguage() === 'en-US'
+                                    })}
+                                >
+                                    <div className="public-group en">
+
+                                        <Form.Item
+                                            className="w-100"
+                                            name="artist_name_en"
+                                            rules={[
+                                                {
+                                                    required: true,
+                                                    message: 'required',
+                                                }
+                                            ]}>
+
+                                            <Input
+                                                type="text"
+                                                id="info-202"
+                                                className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
+                                                placeholder={t("content-panel-add-artwork.art_info.artwork_name")}
+                                            />
+
+                                        </Form.Item>
+
+                                    </div>
                                 </div>
                             </div>
+                        }
 
-                            <div
 
-                                className={classnames("", {
-                                    "col-sm-6": GetLanguage() === 'fa-IR',
-                                    "col-sm-12": GetLanguage() === 'en-US'
-                                })}
-                            >
-                                <div className="public-group en">
-
-                                    <Form.Item
-                                        className="w-100"
-                                        name="artist_name_en"
-                                        rules={[
-                                            {
-                                                required: true,
-                                                message: 'required',
-                                            }
-                                        ]}>
-
-                                        <Input
-                                            type="text"
-                                            id="info-202"
-                                            className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                            placeholder={t("content-panel-add-artwork.art_info.artwork_name")}
-                                        />
-
-                                    </Form.Item>
-
-                                </div>
-                            </div>
-                        </div>
 
                         <div className="d-block d-sm-flex box-dir-reverse w-100">
                             <div className="col-sm-6">

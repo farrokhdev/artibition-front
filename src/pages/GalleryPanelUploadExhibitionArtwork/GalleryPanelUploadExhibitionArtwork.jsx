@@ -25,7 +25,7 @@ import queryString from "query-string";
 import Collection from "../CollectionsList/Collection";
 import ExistArtworkCollection from "./ExistArtworkCollection";
 import { Link, useNavigate } from "react-router-dom";
-import { exhibitionForm } from "../../redux/reducers/Exhibition/exhibition.action";
+import { exhibitionForm, reduxSelectedArtworksFunc } from "../../redux/reducers/Exhibition/exhibition.action";
 import OneUploadCircle from "../../components/OneUploadCircle/OneUploadCircle";
 
 const { TextArea } = Input
@@ -43,10 +43,20 @@ function GalleryPanelUploadExhibitionArtwork() {
     const [selectedArtworks, setSelectedArtworks] = useState([])
     const [artworkToChange, setArtworkToChange] = useState({})
     const [artistToChange, setArtistToChange] = useState({})
+    const [reRender, setReRender] = useState(false)
     const dispatch = useDispatch()
-    const { id } = useSelector((state) => state.galleryReducer)
+    const navigate = useNavigate()
+    const { gallery_id } = useSelector((state) => state.galleryReducer)
     const { exhibitionId } = useSelector((state) => state.exhibitionReducer)
     const { editExhibitionMode } = useSelector((state) => state.exhibitionReducer)
+    const { reduxSelectedArtworks } = useSelector((state) => state.exhibitionReducer)
+
+
+
+    useEffect(() => {
+        // dispatch(reduxSelectedArtworksFunc(["DSFCDS", "dsfsdfds"]));
+        // console.log("reduxSelectedArtworks", reduxSelectedArtworks);
+    }, [])
 
 
 
@@ -67,19 +77,28 @@ function GalleryPanelUploadExhibitionArtwork() {
     })
 
     const [form] = Form.useForm()
-    const navigate = useNavigate()
 
 
     const sendData = () => {
         let temp = []
-        selectedArtworks.map((item, index) => {
+        // selectedArtworks.map((item, index) => {
+        //     temp.push(...item.selected)
+        // })
+        reduxSelectedArtworks.map((item, index) => {
             temp.push(...item.selected)
         })
         lastform["product"] = temp
-        apiServices.post(EXHIBITION(id), lastform)
+        apiServices.post(EXHIBITION(gallery_id), lastform)
             .then(res => {
                 if (res.data) {
                     // console.log(res.data.data);
+                    message.success({
+                        content: "نمایشگاه با موفقیت ساخته شد",
+                        style: { marginTop: "110px" }
+                    })
+                    setTimeout(() => {
+                        navigate("/panel/exhibitions")
+                    }, 500)
                 }
                 else {
                     message.error(res.response.data.message)
@@ -94,7 +113,7 @@ function GalleryPanelUploadExhibitionArtwork() {
 
     const getExhibitionProduct = () => {
         editExhibitionMode &&
-            apiServices.get(EXHIBITION_PRODUCT(id, exhibitionId), queryString.stringify(params))
+            apiServices.get(EXHIBITION_PRODUCT(gallery_id, exhibitionId), queryString.stringify(params))
                 .then(res => {
                     if (res.data) {
                         // console.log(res.data.data.results);
@@ -118,7 +137,8 @@ function GalleryPanelUploadExhibitionArtwork() {
                         })
                         // console.log(temp);
                         // console.log("IIIDDDD", artistsTemp);
-                        setSelectedArtworks(temp)
+                        // setSelectedArtworks(temp)
+                        dispatch(reduxSelectedArtworksFunc(temp));
                         // console.log(myObject);
                         setSelectedArtistId(artistsTemp)
 
@@ -134,7 +154,7 @@ function GalleryPanelUploadExhibitionArtwork() {
 
 
     const getGalleryArtists = () => {
-        apiServices.get(GALLERY_ARTISTS(id), queryString.stringify(params))
+        apiServices.get(GALLERY_ARTISTS(gallery_id), queryString.stringify(params))
             .then(res => {
                 if (res.data) {
                     let filter = []
@@ -208,7 +228,7 @@ function GalleryPanelUploadExhibitionArtwork() {
             }
 
 
-            apiServices.post(ARTIST_BY_GALLERY(id), payload)
+            apiServices.post(ARTIST_BY_GALLERY(gallery_id), payload)
                 .then(res => {
                     if (res.data) {
                         let temp = lastform
@@ -239,7 +259,8 @@ function GalleryPanelUploadExhibitionArtwork() {
 
 
     const changePriceFinish = (form) => {
-        let temp = selectedArtworks
+        // let temp = selectedArtworks
+        let temp = reduxSelectedArtworks
 
         for (let i = 0; i < temp.length; i++) {
             if (temp[i].id === artistToChange.id) {
@@ -253,7 +274,8 @@ function GalleryPanelUploadExhibitionArtwork() {
             }
         }
         // console.log(temp);
-        setSelectedArtworks(temp)
+        // setSelectedArtworks(temp)
+        dispatch(reduxSelectedArtworksFunc(temp));
     }
 
 
@@ -288,7 +310,8 @@ function GalleryPanelUploadExhibitionArtwork() {
                                         // console.log("selectedArtworks", selectedArtworks)
                                     }
                                     {
-                                        selectedArtworks.map((artwork, artworkIndex) => {
+                                        // selectedArtworks.map((artwork, artworkIndex) => {
+                                        reduxSelectedArtworks.map((artwork, artworkIndex) => {
                                             // console.log("AAAAAAAAA",selectedArtists);
 
                                             if (artwork.id === artist.id) {
@@ -520,7 +543,8 @@ function GalleryPanelUploadExhibitionArtwork() {
                                                 </h4>
                                             </div>
                                             <div className="artist-artworks-row advisory-select">
-                                                <ExistArtworkCollection artistID={artist.id} selectedArtwork={selectedArtworks} setSelectedArtwork={setSelectedArtworks} />
+                                                {/* <ExistArtworkCollection artistID={artist.id} selectedArtwork={selectedArtworks} setSelectedArtwork={setSelectedArtworks} /> */}
+                                                <ExistArtworkCollection artistID={artist.id} selectedArtwork={reduxSelectedArtworks} setSelectedArtwork={setSelectedArtworks} />
                                             </div>
                                         </div>
                                     )

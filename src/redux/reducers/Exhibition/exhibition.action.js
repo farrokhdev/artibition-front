@@ -21,3 +21,11 @@ export const exhibitionId = (data) => (
         payload: data
     }
 )
+
+
+export const reduxSelectedArtworksFunc = (data) => (
+    {
+        type: types.REDUX_SELECTED_ARTWORKS,
+        payload: data
+    }
+)

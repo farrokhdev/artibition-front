@@ -16,7 +16,7 @@ function ModalEditBidding(props) {
 
     const { setvisibleEditModal, visibleEditModal, editionValue } = props;
     const [offerValues, setOfferValues] = useState();
-    const { id } = useSelector((state) => state.galleryReducer)
+    const { gallery_id } = useSelector((state) => state.galleryReducer)
     const { roles } = useSelector((state) => state.authReducer)
     const getUserRole = () => {
         let userRole = "user"
@@ -49,7 +49,7 @@ function ModalEditBidding(props) {
         }
 
         if (getUserRole() === "gallery") {
-            apiServices.patch(GALLERY_EDIT_BIDS(id, editionValue?.id), payload)
+            apiServices.patch(GALLERY_EDIT_BIDS(gallery_id, editionValue?.id), payload)
                 .then(res => {
                     if (res.data) {
                         message.success({

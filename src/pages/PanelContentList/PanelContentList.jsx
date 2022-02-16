@@ -17,7 +17,7 @@ import { GetLanguage } from '../../utils/utils'
 
 function PanelContentList() {
 
-    const { id } = useSelector((state) => state.galleryReducer)
+    const { gallery_id } = useSelector((state) => state.galleryReducer)
     const Language = GetLanguage();
     const [artistContent, setArtistContent] = useState();
     const [artistProfile, setArtistProfile] = useState({});
@@ -48,7 +48,7 @@ function PanelContentList() {
 
     const getArtistContent = () => {
         if (getUserRole() === "gallery") {
-            apiServices.get(GALLERY_CONTENT(id), "")
+            apiServices.get(GALLERY_CONTENT(gallery_id), "")
                 .then(res => {
                     if (res.data) {
                         setArtistContent(res.data.data.results)

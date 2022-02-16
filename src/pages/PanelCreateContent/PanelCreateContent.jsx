@@ -24,7 +24,7 @@ function PanelCreateContent() {
 
     const [isSelected, setIsSelected] = useState(false);
     const [isSelectedVideo, setIsSelectedVideo] = useState(false);
-    const { id } = useSelector((state) => state.galleryReducer)
+    const { gallery_id } = useSelector((state) => state.galleryReducer)
 
 
     const { roles } = useSelector((state) => state.authReducer)
@@ -62,7 +62,7 @@ function PanelCreateContent() {
             "type": "other",
             "is_active": true,
             "link": values?.link,
-            "object_id": getUserRole() === "gallery" ? id : artistId,
+            "object_id": getUserRole() === "gallery" ? gallery_id : artistId,
             "content_type": getUserRole() === "gallery" ? "gallery" : "artist",
             "content_file": uploadList,
             "poster": poster[0]
