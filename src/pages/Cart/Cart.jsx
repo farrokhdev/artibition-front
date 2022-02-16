@@ -9,12 +9,14 @@ import empty from "../../assets/img/Empty.svg";
 import CartItem from "./CartItem";
 import CartItemDisable from "./CartItemDisable";
 import ArthibitionProperties from "../../components/ArthibitionProperies/ArthibitionProperties";
+import flashLeft from "../../assets/img/felsh-left.png";
 import apiServices from "../../utils/api.services";
 import {
   CART_ME,
   CART_ME_CHECKOUT,
   CART_ME_CLEAR_CART,
   CART_ME_REMOVE_ITEM,
+  GET_ORDERS,
   ORDER,
 } from "../../utils";
 import { useNavigate } from "react-router-dom";
@@ -27,6 +29,7 @@ function Cart() {
   const { t, i18n } = useTranslation();
   const [product_items, setProduct_items] = useState();
   const [totalPrice, setTotalPrice] = useState(0);
+  const [pendingOrders, setPendingOrders] = useState([]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const getData = () => {
@@ -34,25 +37,17 @@ function Cart() {
       .get(CART_ME, "")
       .then((res) => {
         if (res?.data?.data?.product_items?.length > 0) {
-          console.log(
-            ".then --------- res?.data?.data?.product_items",
-            res?.data?.data?.product_items
-          );
           const tempProductItems = res?.data?.data?.product_items.map(
             (product_item) => {
-              console.log(
-                ".then --------- product_item",
-                product_item?.product?.toman_price
-              );
               const { discount } = product_item?.product;
               const { toman_price, dollar_price } = product_item;
               const price =
                 i18n.language === "fa-IR" ? toman_price : dollar_price;
-              console.log(".then --------- price,discount", price, discount);
+
               let discountCash = 0;
               let paymentPrice = parseInt(price);
               let discountPercent = 0;
-              if (!isNil(discount)) {
+              if (!isNil(discount) && !isNil(discount?.value)) {
                 if (discount?.type === "percentage") {
                   discountPercent = discount?.value;
                   discountCash =
@@ -92,8 +87,34 @@ function Cart() {
         console.log(err);
       });
   };
+  const getPendingOrders = async () => {
+    let token = Token() ? "Bearer " + Token() : undefined;
+
+    const tempHeader = {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: token,
+    };
+    axios
+      .get(GET_ORDERS, {
+        headers: tempHeader,
+        params: { status: "pending-payment" },
+      })
+      .then((res) => {
+        if (res?.data?.code === 200) {
+          if (res?.data?.data?.results?.length > 0) {
+            const tempPendingOrders = res?.data?.data?.results?.map((item) => ({
+              id: item.id,
+              tracking_code: item.tracking_code,
+            }));
+            setPendingOrders(tempPendingOrders);
+          }
+        }
+      });
+  };
   useEffect(() => {
     getData();
+    getPendingOrders();
   }, []);
   const removeSingleProduct = (id, edition_number) => {
     let token = Token() ? "Bearer " + Token() : undefined;
@@ -167,7 +188,50 @@ function Cart() {
       <div className="container mx-auto px-0 w-100 bg-white">
         <Header />
         <Menu />
+        {pendingOrders?.length > 0 && (
+          <div className="container dir">
+            <div className="emptystate">
+              <h3 className="persian-num">
+                {i18n.language === "fa-IR"
+                  ? `شما ${pendingOrders?.length} سفارش دارید `
+                  : `You
+                have ${pendingOrders?.length} orders, click to complete`}
+              </h3>
 
+              {pendingOrders?.map((item, index) => {
+                return (
+                  <div className="d-flex box-dir-reverse box box-1">
+                    <div className="text-dir">
+                      <h2 className="greencolor persian-num">
+                        {i18n.language === "fa-IR" ? "سفارش" : "order"}
+                        {index + 1}
+                      </h2>
+                      <p>{t("cart.view-pay")}</p>
+                    </div>
+                    <div
+                      className="btn-box-1 btn-green pull-left"
+                      style={{ cursor: "pointer" }}
+                      onClick={() =>
+                        navigate("/panel/payment", {
+                          state: { orderId: item.id },
+                        })
+                      }
+                    >
+                      <img
+                        src={flashLeft}
+                        width="16"
+                        height="16"
+                        className="center-block"
+                        alt=""
+                      />
+                    </div>
+                    <div className="clearfix"></div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
         {/* ------------- EMPTY STATE -------------- */}
         {product_items?.length < 1 && (
           <div className="container dir">
