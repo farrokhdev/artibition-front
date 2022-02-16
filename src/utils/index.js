@@ -1,5 +1,5 @@
 
-export const BASE_URL = " http://192.168.0.23:8808/api/v1";
+// export const BASE_URL = " http://192.168.0.23:8808/api/v1";
 // export const BASE_URL = " http://192.168.0.100:8000/api/v1";
 // export const BASE_URL = " http://192.168.0.113:8000/api/v1";
 // export const BASE_URL = " http://192.168.0.145:8000/api/v1";
@@ -9,7 +9,7 @@ export const BASE_URL = " http://192.168.0.23:8808/api/v1";
 // export const BASE_URL = " http://local.devmoj.ir/api/v1";
 
 
-// export const BASE_URL  = "https://api.artibition.gallery/api/v1";
+export const BASE_URL  = "https://api.artibition.gallery/api/v1";
 
 export const COOKIE_EXPIRES = 1;
 export const LOGIN = "/account/login/";
@@ -48,6 +48,7 @@ export const GALLERY = (id) => `/gallery/${id}/`;
 export const GALLERY_EXHIBITION = (id) => `/${id}/exhibition/`;
 export const GALLERY_ARTISTS = (id) => `/${id}/artists/`;
 export const GALLERY_CONTENT = (id) => `/${id}/content/`;
+export const GALLERY_CONTENT_DETAILS = (gallery_id, content_id) => `/${gallery_id}/content/${content_id}/`;
 export const ARTIST = "/artist/";
 export const ARTIST_ME = "/artist/me/";
 
@@ -56,6 +57,7 @@ export const ARTIST_PRODUCTS = "/products/";
 export const ARTIST_CATEGORY = "/social-network/collections/";
 export const ARTIST_PROFILE = (id) => `/artist/${id}/`;
 export const ARTIST_CONTENT = "/artist/content/";
+export const ARTIST_CONTENT_DETAILS = (content_id) => `/artist/content/${content_id}`;
 export const ARTIST_EXHIBITION = (id) => `/artist/${id}/exhibition/`;
 export const WALLET = "/accounting/wallet/me/";
 export const WALLET_TRANSACTIONS = "/accounting/wallet-transactions/";

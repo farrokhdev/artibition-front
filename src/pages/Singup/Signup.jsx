@@ -1,17 +1,18 @@
-import React, {useState} from 'react';
-import {Form, Input, message} from "antd";
+import React, { useState } from 'react';
+import { Form, Input, message } from "antd";
 import google_icon from '../../assets/img/google.jpg';
 import signup from '../../assets/img/login.jpg';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ModalOtp from './ModalOtp';
 import user_icon from '../../assets/img/username.png';
 import lock_icon from '../../assets/img/password.png';
 import Statistics from '../../components/Statistics/Statistics';
 import BasketFooter from '../../components/BasketFooter/BasketFooter';
 import HeaderAuthPages from '../../components/HeaderAuthPages/HeaderAuthPages';
-import {t} from 'i18next';
+import { t } from 'i18next';
 import APIService from "../../utils/api.services";
-import {REGISTER} from "../../utils";
+import { REGISTER } from "../../utils";
+import GoogleLoginButton from '../../components/GoogleLoginButton/GoogleLoginButton';
 
 export default function Signup() {
 
@@ -43,7 +44,7 @@ export default function Signup() {
                 <div className="default-header promotion-head">
                     <div className="d-flex content-box-header-auth">
 
-                        <HeaderAuthPages/>
+                        <HeaderAuthPages />
 
                     </div>
                 </div>
@@ -70,7 +71,7 @@ export default function Signup() {
                                         }
                                     ]}>
                                     <Input
-                                        prefix={<img src={user_icon}/>}
+                                        prefix={<img src={user_icon} />}
                                         type="text"
                                         className="input-public form-control border-0 px-2  d-flex"
                                         placeholder={t("placeholder-username")}
@@ -90,7 +91,7 @@ export default function Signup() {
                                     ]}>
                                     <Input.Password
                                         iconRender={visible => (visible ? t("hidden-password") : t("show-password"))}
-                                        prefix={<img src={lock_icon}/>}
+                                        prefix={<img src={lock_icon} />}
                                         type="password"
                                         className="input-public form-control border-0 px-2  d-flex"
                                         placeholder={t("placeholder-password")}
@@ -99,7 +100,7 @@ export default function Signup() {
                                 </Form.Item>
 
                                 <p className="login-term">{t("describtion-low.text-info-part1")}<Link className="mx-2"
-                                                                                                      to="#">{t("describtion-low.text-link")}</Link>{t("describtion-low.text-info-part2")}
+                                    to="#">{t("describtion-low.text-link")}</Link>{t("describtion-low.text-info-part2")}
                                 </p>
                                 <div className="clearfix"></div>
                                 <button className="btn btn-signup">{t("signup_btn-text")}</button>
@@ -107,28 +108,29 @@ export default function Signup() {
                             </Form>
 
 
-                            <button type="button" className="btn btn-google">
+                            {/* <button type="button" className="btn btn-google">
                                 <img src={google_icon} width="26" height="26" alt="google-icon" className=""/>
                                 <span>{t("google-login-text-button")}</span>
-                            </button>
+                            </button> */}
+                            <GoogleLoginButton />
                             <p className="login-term1">{t("forget-signup-text.text")}<Link
                                 to="/auth/login">{t("forget-signup-text.link")}</Link></p>
                         </div>
                         <div className="col-lg-5  hidden-sm hidden-xs px-0">
-                            <img src={signup} width="730" height="902" alt="" className="img-responsive"/>
+                            <img src={signup} width="730" height="902" alt="" className="img-responsive" />
                         </div>
                     </div>
 
 
                     <div className="clearfix"></div>
-                    <Statistics/>
+                    <Statistics />
 
                 </div>
 
 
             </div>
             <div className="clearfix"></div>
-            <BasketFooter/>
+            <BasketFooter />
 
             <ModalOtp
                 visibleOtpModal={visibleOtpModal}

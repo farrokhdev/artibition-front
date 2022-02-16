@@ -141,7 +141,10 @@ function PanelContentList() {
                                                     <td data-label={t("content-panel-contents.table.date_publish")} className="persian-num">{moment(content?.creation_date).locale(Language === 'fa-IR' ? 'fa' : 'en').format('YYYY/MM/DD')}</td>
                                                     <td data-label={t("content-panel-contents.table.status")}>{content?.is_active ? t("content-panel-contents.table.active") : t("content-panel-contents.table.inactive")}</td>
                                                     <td data-label={t("content-panel-contents.table.details")} className="status">
-                                                        <button type="button" className="btn-outline-blue">{t("content-panel-contents.table.edit")}</button>
+                                                        {/* <button type="button" className="btn-outline-blue">{t("content-panel-contents.table.edit")}</button> */}
+                                                        <Link to={`/panel/create-content?content_id=${content.id}`} className="btn-outline-blue">
+                                                            {t("content-panel-contents.table.edit")}
+                                                        </Link>
                                                     </td>
                                                 </tr>
 
