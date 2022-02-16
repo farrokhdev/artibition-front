@@ -35,6 +35,7 @@ function ProfileArtist() {
     const [visibleShowSendMessage, setVisibleShowSendMessage] = useState(false);
     const [search, setSearch] = useState();
     const [artistProfile, setArtistProfile] = useState();
+    const [messageReceiverId, setMessageReceiverId] = useState(null)
     const [params, setParams] = useState({
         search: "",
         page: 1,
@@ -64,6 +65,7 @@ function ProfileArtist() {
                 if (res.data) {
                     console.log(res.data.data);
                     setArtistProfile(res.data.data)
+                    setMessageReceiverId(res?.data?.data?.owner?.id)
                 }
             })
             .catch(err => {
@@ -139,7 +141,7 @@ function ProfileArtist() {
                                                 </div>
                                                 <div className="col px-0">
                                                     <div className="d-flex justify-custom">
-                                                        <div className="artist-msg ">
+                                                        <div className="artist-msg " style={{ cursor: "pointer" }}>
                                                             <img onClick={handleShowModalSendMessage} src={message_icon} width="24" height="24" />
                                                         </div>
                                                     </div>
@@ -202,7 +204,7 @@ function ProfileArtist() {
             <ModalSendMessage
                 setVisibleShowSendMessage={setVisibleShowSendMessage}
                 visibleShowSendMessage={visibleShowSendMessage}
-            // receiverId={}
+                receiverId={messageReceiverId}
 
             />
 

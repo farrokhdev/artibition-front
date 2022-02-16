@@ -102,3 +102,4 @@ export const EXHIBITION_INFO = (galleryId, exhibitionId) => `/${galleryId}/exhib
 export const EXHIBITION_PRODUCT = (galleryId, exhibitionId) => `/${galleryId}/exhibition/${exhibitionId}/artist-product`
 export const SEND_MESSAGE = `/message/sendmessage/`
 export const GALLERY_PRODUCTS = (galleryId) => `/gallery/${galleryId}/products/`
+// export const PROMOTIONS = '/events/promotions/'

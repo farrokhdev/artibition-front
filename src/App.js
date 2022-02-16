@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
 import { isLogin } from './utils/utils'
 import RouterConfig from './main/router'
@@ -46,8 +46,8 @@ function App(props) {
                     <Route path="artist-profile" element={<ProfileArtist />} />
                     <Route path="all-galleris-list" element={<AllGallerysList />} />
                     <Route path="gallery-introduction" element={<GalleryIntroduction />} />
-                    <Route path="gallery-content-page" element={<GalleryContentPage />}  />
-                    <Route path="faq" element={<FAQ />}  />
+                    <Route path="gallery-content-page" element={<GalleryContentPage />} />
+                    <Route path="faq" element={<FAQ />} />
                     <Route path="advisory" element={<Advisory />} />
                     <Route path="advisory-submited" element={<AdvisorySubmited />} />
                     <Route path="collections-list" element={<CollectionsList />} />

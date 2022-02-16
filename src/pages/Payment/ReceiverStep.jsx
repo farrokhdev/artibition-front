@@ -19,15 +19,20 @@ const ReceiverStep = ({ next, prev, order }) => {
 
   const { t, i18n } = useTranslation();
 
-  const [receiverInfo, setReceiverInfo] = useState(initialRecieverInfo);
+  const [receiverInfo, setReceiverInfo] = useState();
   const [self_received, setSelf_received] = useState(false);
+  const [receiverText, setReceiverText] = useState();
   const [foreign, setForeign] = useState(false);
   useEffect(() => {
-    if (self_received) setReceiverInfo(initialRecieverInfo);
+    if (self_received) {
+      setReceiverInfo(initialRecieverInfo);
+      setForeign(false);
+    }
   }, [self_received]);
   useEffect(() => {
     if (foreign) setReceiverInfo({ ...receiverInfo, national_code: "" });
   }, [foreign]);
+  console.log("useEffect --------- foreign", foreign);
   const price = (
     i18n.language === "fa-IR"
       ? order.total_order_toman
@@ -42,6 +47,39 @@ const ReceiverStep = ({ next, prev, order }) => {
   )
     ?.toString()
     ?.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  const handleAddReceiver = () => {
+    if (!self_received) {
+      if (isNil(receiverInfo)) {
+        message.error(
+          t("payment.address_step.modal.enter_recipient_information")
+        );
+        return;
+      }
+      if (receiverInfo?.name?.length < 1) {
+        message.error(t("payment.address_step.modal.enter_the_recipient_name"));
+        setShowAddress(true);
+        return;
+      }
+      if (isNil(receiverInfo?.mobile) || receiverInfo?.mobile?.length < 1) {
+        message.error(t("payment.address_step.modal.enter_the_mobile_number"));
+        return;
+      }
+      if (
+        !foreign &&
+        (isNil(receiverInfo?.national_code) ||
+          receiverInfo?.national_code?.length < 1)
+      ) {
+        message.error(t("payment.address_step.modal.enter_the_national_code"));
+        return;
+      }
+    }
+    setReceiverText(
+      self_received
+        ? t("payment.address_step.modal.receiver_checkbox")
+        : `${receiverInfo?.name} ${receiverInfo?.mobile}`
+    );
+    setShowAddress(false);
+  };
   const paymentPrice = (
     i18n.language === "fa-IR"
       ? order.total_order_toman - order?.toman_discount_value
@@ -51,7 +89,9 @@ const ReceiverStep = ({ next, prev, order }) => {
     ?.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   useEffect(() => {}, []);
-  const editReceiver = () => {};
+  const editReceiver = () => {
+    setShowAddress(true);
+  };
 
   const submitFormAddReciever = (e) => {
     e.preventDefault();
@@ -61,11 +101,11 @@ const ReceiverStep = ({ next, prev, order }) => {
   const goNextStep = () => {
     if (
       !self_received &&
-      (receiverInfo.name.length < 1 || receiverInfo.mobile.length < 1)
+      (receiverInfo?.name.length < 1 || receiverInfo?.mobile.length < 1)
     ) {
       return;
     }
-    if (!self_received && !foreign && receiverInfo.national_code.length < 1) {
+    if (!self_received && !foreign && receiverInfo?.national_code.length < 1) {
       return;
     }
 
@@ -74,21 +114,22 @@ const ReceiverStep = ({ next, prev, order }) => {
       tempReceiverInfo = { self_received };
     } else {
       tempReceiverInfo = {
-        mobile: receiverInfo.mobile,
-        postal_code: receiverInfo.postal_code,
+        mobile: receiverInfo?.mobile,
+        national_code: receiverInfo?.national_code,
       };
       let fullname_fa, fullname_en;
       if (i18n.language === "fa-IR") {
-        fullname_fa = receiverInfo.name;
+        fullname_fa = receiverInfo?.name;
         tempReceiverInfo = {
           ...tempReceiverInfo,
           fullname_fa,
         };
       } else {
-        fullname_en = receiverInfo.name;
+        fullname_en = receiverInfo?.name;
         tempReceiverInfo = { ...tempReceiverInfo, fullname_en };
       }
     }
+    console.log("goNextStep --------- tempReceiverInfo", tempReceiverInfo);
     apiServices
       .patch(ORDER(order?.id), {
         receiver_info: tempReceiverInfo,
@@ -97,6 +138,14 @@ const ReceiverStep = ({ next, prev, order }) => {
       .then((res) => next())
       .catch((err) => console.log(err?.response?.data?.message));
   };
+  console.log(receiverInfo, isNil(receiverInfo));
+  let index = "";
+  if (i18n.language === "fa-IR") {
+    index = "fa";
+  } else {
+    index = "en";
+  }
+  console.log("receiverText", receiverText);
   return (
     <>
       <div className="public-header">
@@ -145,6 +194,7 @@ const ReceiverStep = ({ next, prev, order }) => {
                   data-toggle="modal"
                   data-target="#exampleModal"
                   onClick={() => {
+                    console.log("click me");
                     setShowAddress(true);
                   }}
                 >
@@ -157,17 +207,8 @@ const ReceiverStep = ({ next, prev, order }) => {
           {/* ------------------ WITH receiver STATE ---------------------- */}
           {!isNil(receiverInfo) && (
             <div className="col-md-7">
-              {/* let index = "";
-                if (i18n.language === "fa-IR") {
-                  index = "fa";
-                } else {
-                  index = "en";
-                }
-                const { translations } = item;
-                const textAddress = `${translations[index]?.state} ${translations[index]?.city} ${translations[index]?.address}`;
-                 */}
-
               <label className="container-radio text-dir">
+                {receiverText}
                 <a
                   onClick={() => {
                     editReceiver();
@@ -280,12 +321,12 @@ const ReceiverStep = ({ next, prev, order }) => {
           <div className="modal-body">
             <div className="enter-address">
               <div className="row-addaddress"></div>
-              <form className="row dir" onSubmit={submitFormAddReciever}>
+              <form className="row dir">
                 <div className="col-sm-6">
                   <div className="public-group">
                     <input
                       className="form-control input-public "
-                      value={receiverInfo.name}
+                      value={receiverInfo?.name}
                       onChange={(e) =>
                         setReceiverInfo({
                           ...receiverInfo,
@@ -301,8 +342,9 @@ const ReceiverStep = ({ next, prev, order }) => {
                 <div className="col-sm-6">
                   <div className="public-group">
                     <input
+                      type="number"
                       className="form-control input-public "
-                      value={receiverInfo.mobile}
+                      value={receiverInfo?.mobile}
                       onChange={(e) =>
                         setReceiverInfo({
                           ...receiverInfo,
@@ -318,8 +360,9 @@ const ReceiverStep = ({ next, prev, order }) => {
                 <div className="col-sm-6">
                   <div className="public-group">
                     <input
+                      type="number"
                       className="form-control input-public "
-                      value={receiverInfo.national_code}
+                      value={receiverInfo?.national_code}
                       onChange={(e) =>
                         setReceiverInfo({
                           ...receiverInfo,
@@ -341,7 +384,7 @@ const ReceiverStep = ({ next, prev, order }) => {
                   <label className="lable-checkbox public-group text-dir">
                     <input
                       type="checkbox"
-                      value={foreign}
+                      checked={foreign}
                       onChange={() => setForeign(!foreign)}
                     />
                     <span>
@@ -366,11 +409,12 @@ const ReceiverStep = ({ next, prev, order }) => {
 
                 <div className="w-100 row justify-content-center">
                   <input
-                    type="submit"
+                    // type="submit"
                     className="btn btn-black"
                     value={t(
                       "filter-header.size.dimention.select-custom-size.submit"
                     )}
+                    onClick={handleAddReceiver}
                   />
                 </div>
               </form>

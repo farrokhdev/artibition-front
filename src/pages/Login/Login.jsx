@@ -29,7 +29,6 @@ function Login(props) {
   async function getProfile() {
     await APIService.get(PROFILE, "").then((res) => {
       if (res.data) {
-        console.log(res.data.data);
         props.setProfile({
           ...props.state,
           profile: res.data.data,
@@ -70,6 +69,13 @@ function Login(props) {
               type: UPDATE_CART,
               payload: res?.data?.data?.product_items?.length,
             });
+          }
+          else {
+            console.log(res);
+            message.error({
+              content: "res",
+              style: { marginTop: "110px" }
+            })
           }
         });
         getProfile().then((res) => {

@@ -127,10 +127,10 @@ function PanelContentList() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {artistContent?.map((content) => {
+                                        {artistContent?.map((content, index) => {
                                             return (
                                                 <tr>
-                                                    <td data-label={t("content-panel-contents.table.row")} className="persian-num">1</td>
+                                                    <td data-label={t("content-panel-contents.table.row")} className="persian-num">{index + 1}</td>
                                                     <td data-label={t("content-panel-contents.table.image")}><img
                                                         src={content?.poster?.exact_url}
                                                         width="1776" height="1776"
@@ -139,7 +139,7 @@ function PanelContentList() {
                                                     <td data-label={t("content-panel-contents.table.subject")}>{content?.translations?.fa?.title}</td>
                                                     <td data-label={t("content-panel-contents.table.type")}>{content?.type}</td>
                                                     <td data-label={t("content-panel-contents.table.date_publish")} className="persian-num">{moment(content?.creation_date).locale(Language === 'fa-IR' ? 'fa' : 'en').format('YYYY/MM/DD')}</td>
-                                                    <td data-label={t("content-panel-contents.table.status")}>{t("content-panel-contents.table.active")}</td>
+                                                    <td data-label={t("content-panel-contents.table.status")}>{content?.is_active ? t("content-panel-contents.table.active") : t("content-panel-contents.table.inactive")}</td>
                                                     <td data-label={t("content-panel-contents.table.details")} className="status">
                                                         <button type="button" className="btn-outline-blue">{t("content-panel-contents.table.edit")}</button>
                                                     </td>

@@ -487,6 +487,7 @@ function AddressStep({ next, prev, order }) {
                     <input
                       className="form-control input-public "
                       required
+                      type="number"
                       name="postal_code"
                       value={formFields.postal_code}
                       onChange={(e) => {
