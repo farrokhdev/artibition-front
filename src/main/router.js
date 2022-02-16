@@ -43,6 +43,7 @@ import PanelMyCollections from '../pages/PanelMyCollections/PanelMyCollections';
 import BecomeSeller from '../pages/BecomeSeller/BecomeSeller';
 import PanelBiddingPrice from '../pages/PanelBiddingPrice/PanelBiddingPrice';
 import { useSelector } from 'react-redux';
+import GalleryPanelAddArtwork from '../pages/GalleryPanelAddArtwork/GalleryPanelAddArtwork';
 
 const RouterConfig = (props) => {
 

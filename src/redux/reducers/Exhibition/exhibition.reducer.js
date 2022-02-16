@@ -4,7 +4,8 @@ const initial_state = {
     is_send_invitation: false,
     lastform: {},
     editExhibitionMode: false,
-    exhibitionId: null
+    exhibitionId: null,
+    reduxSelectedArtworks: []
 }
 
 const exhibitionReducer = (state = initial_state, { type, payload }) => {
@@ -27,6 +28,13 @@ const exhibitionReducer = (state = initial_state, { type, payload }) => {
             return {
                 ...state,
                 editExhibitionMode: payload,
+            }
+
+        case types.REDUX_SELECTED_ARTWORKS:
+            console.log("payload=>", payload);
+            return {
+                ...state,
+                reduxSelectedArtworks: payload,
             }
         default:
             return state;

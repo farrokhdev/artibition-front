@@ -23,7 +23,7 @@ function PanelOrders() {
 
 
     const { roles } = useSelector((state) => state.authReducer)
-    const { id } = useSelector((state) => state.galleryReducer)
+    const { gallery_id } = useSelector((state) => state.galleryReducer)
     const getUserRole = () => {
         let userRole = "user"
         if (typeof roles === "string") {
@@ -49,7 +49,7 @@ function PanelOrders() {
     const getIgetOrdersLisItems = () => {
         setLoading(true)
         if (getUserRole() === "gallery") {
-            apiServices.get(`/gallery/${id}/orders/`, queryString.stringify(params))
+            apiServices.get(`/gallery/${gallery_id}/orders/`, queryString.stringify(params))
                 .then(res => {
                     if (res.data) {
                         setLoading(false)
@@ -157,7 +157,7 @@ function PanelOrders() {
                         </div>
 
 
-                        <TableOrders id orderList={orderList} />
+                        <TableOrders orderList={orderList} />
 
 
                         <div className=" row-pagination">

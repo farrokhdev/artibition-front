@@ -32,7 +32,7 @@ function GalleryPanelEditGalleryInfo() {
     const [zoom, setZoom] = useState(11)
     const [showMap, setShowMap] = useState(false)
 
-    const { id } = useSelector((state) => state.galleryReducer)
+    const { gallery_id } = useSelector((state) => state.galleryReducer)
     const { editGalleryMode } = useSelector((state) => state.galleryReducer)
 
     const Language = GetLanguage()
@@ -43,8 +43,8 @@ function GalleryPanelEditGalleryInfo() {
 
 
     useEffect(() => {
-        if (id && editGalleryMode) {
-            apiServices.get(GALLERY(id), "")
+        if (gallery_id && editGalleryMode) {
+            apiServices.get(GALLERY(gallery_id), "")
                 .then(res => {
                     if (res.data) {
                         const value = res.data.data;
@@ -114,8 +114,8 @@ function GalleryPanelEditGalleryInfo() {
             "cover": (uploadListCover && uploadListCover.length > 0) ? uploadListCover[0] : undefined,
             "logo": (uploadListLogo && uploadListLogo.length > 0) ? uploadListLogo[0] : undefined
         }
-        if (id && editGalleryMode) {
-            apiServices.patch(GALLERY(id), payload)
+        if (gallery_id && editGalleryMode) {
+            apiServices.patch(GALLERY(gallery_id), payload)
                 .then(res => {
                     if (res.data) {
                         dispatch(editGalleryModeFunc(false))

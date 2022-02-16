@@ -29,7 +29,7 @@ function PanelBiddingPrice() {
 
 
     const { roles } = useSelector((state) => state.authReducer)
-    const { id } = useSelector((state) => state.galleryReducer)
+    const { gallery_id } = useSelector((state) => state.galleryReducer)
     const getUserRole = () => {
         let userRole = "user"
         if (typeof roles === "string") {
@@ -51,7 +51,7 @@ function PanelBiddingPrice() {
 
     const getOfferValue = () => {
         if (getUserRole() === "gallery") {
-            apiServices.get(GALLERY_BIDS(id), "")
+            apiServices.get(GALLERY_BIDS(gallery_id), "")
                 .then(res => {
                     if (res.data) {
                         setOfferValue(res.data.data.results)
