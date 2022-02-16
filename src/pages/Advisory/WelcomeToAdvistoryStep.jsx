@@ -3,7 +3,7 @@ import { t } from 'i18next';
 import classnames from 'classnames';
 import { GetLanguage } from "../../utils/utils";
 import { Form, Input, Select } from 'antd';
-import { PRODUCTS_CATEGORIES } from "../../utils";
+import { CORE_CATEGORIS, PRODUCTS_CATEGORIES } from "../../utils";
 import apiServices from "../../utils/api.services";
 import { useDispatch, useSelector } from 'react-redux';
 import { advistoryForm as EditingAdvistoryForm } from '../../redux/reducers/advistory/advistory.action';
@@ -47,8 +47,25 @@ function WelcomeToAdvistoryStep({ prev, next }) {
     }
 
 
+    // const getListCategory = () => {
+    //     apiServices.get(PRODUCTS_CATEGORIES, "")
+    //         .then(res => {
+
+    //             setCategorys(res.data.data.results.map(item => {
+    //                 if (Language === 'fa-IR') {
+    //                     return { label: item?.translations?.fa?.title, value: item?.id }
+    //                 } else {
+    //                     return { label: item?.translations?.en?.title, value: item?.id }
+    //                 }
+    //             }))
+    //         })
+    //         .catch(err => {
+    //             console.log(err);
+    //         })
+    // }
+
     const getListCategory = () => {
-        apiServices.get(PRODUCTS_CATEGORIES, "")
+        apiServices.get(CORE_CATEGORIS, "")
             .then(res => {
 
                 setCategorys(res.data.data.results.map(item => {

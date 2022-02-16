@@ -402,7 +402,7 @@ function ArtistsPage(props) {
                             </h6>
                             <button
                               type="button"
-                              className={"pull-dir btn-follow followed" + (item?.likes ? "followed" : "")}
+                              className={"pull-dir btn-follow followed" + (item?.likes ? "" : "followed")}
                               onClick={() =>
                                 follow({
                                   activity: "following",
