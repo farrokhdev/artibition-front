@@ -58,19 +58,25 @@ function Promotions() {
                                 <h3 className="d-flex box-dir-reverse gray-title">
                                     <i className="glyphicon glyphicon-time mx-2"></i>
                                     {
-                                        moment(promotion.start_date, 'YYYY/MM/DD').locale(i18next.language === 'fa-IR' ? 'fa' : 'en').format('MMMM') === moment(promotion.end_date, 'YYYY/MM/DD').locale(i18next.language === 'fa-IR' ? 'fa' : 'en').format('MMMM') ?
+                                        promotion?.start_date && promotion?.end_date ? 
+                                        moment(promotion?.start_date, 'YYYY/MM/DD').locale(i18next?.language === 'fa-IR' ? 'fa' : 'en').format('MMMM') === moment(promotion?.end_date, 'YYYY/MM/DD').locale(i18next?.language === 'fa-IR' ? 'fa' : 'en').format('MMMM') ?
                                             <>
-                                                <span className='persian-num'>{moment(promotion.start_date, 'YYYY/MM/DD').locale(i18next.language === 'fa-IR' ? 'fa' : 'en').format('DD')}</span>
+                                                <span className='persian-num'>{moment(promotion?.start_date, 'YYYY/MM/DD').locale(i18next?.language === 'fa-IR' ? 'fa' : 'en').format('DD')}</span>
                                                 <span>{t("content-panel-dashboard.promotion.to")}</span>
-                                                <span className='persian-num'>{moment(promotion.end_date, 'YYYY/MM/DD').locale(i18next.language === 'fa-IR' ? 'fa' : 'en').format('DD')}</span>
-                                                <span>{moment(promotion.end_date, 'YYYY/MM/DD').locale(i18next.language === 'fa-IR' ? 'fa' : 'en').format('MMMM')}</span>
+                                                <span className='persian-num'>{moment(promotion?.end_date, 'YYYY/MM/DD').locale(i18next?.language === 'fa-IR' ? 'fa' : 'en').format('DD')}</span>
+                                                <span>{moment(promotion?.end_date, 'YYYY/MM/DD').locale(i18next?.language === 'fa-IR' ? 'fa' : 'en').format('MMMM')}</span>
+                                            </>
+                                        
+
+                                            :
+                                            
+                                            <>
+                                                <span className='persian-num'>{moment(promotion?.start_date, 'YYYY/MM/DD').locale(i18next?.language === 'fa-IR' ? 'fa' : 'en').format('DD MMMM')}</span>
+                                                <span>{t("content-panel-dashboard.promotion.to")}</span>
+                                                <span className='persian-num'>{moment(promotion?.end_date, 'YYYY/MM/DD').locale(i18next?.language === 'fa-IR' ? 'fa' : 'en').format('DD MMMM')}</span>
                                             </>
                                             :
-                                            <>
-                                                <span className='persian-num'>{moment(promotion.start_date, 'YYYY/MM/DD').locale(i18next.language === 'fa-IR' ? 'fa' : 'en').format('DD MMMM')}</span>
-                                                <span>{t("content-panel-dashboard.promotion.to")}</span>
-                                                <span className='persian-num'>{moment(promotion.end_date, 'YYYY/MM/DD').locale(i18next.language === 'fa-IR' ? 'fa' : 'en').format('DD MMMM')}</span>
-                                            </>
+                                            ""
                                     }
                                 </h3>
                                 <p className="text-dir">

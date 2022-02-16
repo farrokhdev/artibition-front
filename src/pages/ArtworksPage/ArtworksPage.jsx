@@ -959,10 +959,10 @@ function ArtworksPage(props) {
                                     product.medias &&
                                     product.medias[0]?.exact_url
                                   }
-                                  width="840"
+                                  width="280"
                                   alt="آرتیبیشن"
                                   className="img-responsive"
-                                  style={{ height: 400 }}
+                                  style={{ height: 280 }}
                                 />
                                 <div className="tab-overly">
                                   <a
