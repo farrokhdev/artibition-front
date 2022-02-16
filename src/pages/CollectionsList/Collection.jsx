@@ -4,6 +4,7 @@ import Slider from "react-slick";
 
 import Artwork1 from '../../assets/img/mainpage/hnrpqkfiup@3x.jpg'
 import { useTranslation } from "react-i18next";
+import { follow } from "../../utils/utils";
 
 
 const SliderSetting = {
@@ -40,7 +41,7 @@ const SliderSetting = {
 }
 
 
-function Collection({collectionItem}) {
+function Collection({ collectionItem }) {
     const { t, i18n } = useTranslation();
 
     return (
@@ -48,20 +49,29 @@ function Collection({collectionItem}) {
             <div className="row w-100 text-dir dir">
                 <div className="col-sm-9">
                     <h4 className="fontbold19 justify-content-unset">
-                    {i18n.language === 'fa-IR' ?
-                    collectionItem?.translations?.fa?.title
-                    :
-                    collectionItem?.translations?.en?.title
-                    }
+                        {i18n.language === 'fa-IR' ?
+                            collectionItem?.translations?.fa?.title
+                            :
+                            collectionItem?.translations?.en?.title
+                        }
                     </h4>
                     <span className="collection-artistname">
-                    {i18n.language === 'fa-IR' ?
-                    collectionItem?.owner?.translations?.fa?.first_name + ' ' + collectionItem?.owner?.translations?.fa?.last_name
-                    :
-                    collectionItem?.owner?.translations?.en?.first_name + ' ' + collectionItem?.owner?.translations?.en?.last_name
-                }
+                        {i18n.language === 'fa-IR' ?
+                            collectionItem?.owner?.translations?.fa?.first_name + ' ' + collectionItem?.owner?.translations?.fa?.last_name
+                            :
+                            collectionItem?.owner?.translations?.en?.first_name + ' ' + collectionItem?.owner?.translations?.en?.last_name
+                        }
                     </span>
-                    <button type="button" className="btn-follow">{t("collections-list.follow")}</button>
+                    <button type="button" className="btn-follow" 
+                     onClick={() =>
+                        follow({
+                          activity: "following",
+                          content: "collection",
+                          object_id: collectionItem.id,
+                        })
+                      }
+                    >{t("collections-list.follow")}</button>
+
                 </div>
                 <div className="col-sm-3">
                     <a href="#" className="btn-readmore pull-dir-rev" data-toggle="modal" data-target="#modal-listalbum2">
@@ -74,21 +84,21 @@ function Collection({collectionItem}) {
 
 
             <Slider {...SliderSetting} className="mrgt20">
-                {collectionItem?.products?.map((item,index) =>
-                <div className="cols" key={index}>
-                    <div className="col-img" style={{ marginLeft: "20px" }}>
-                        <img src={item.medias[0]?.exact_url} width="840" height="840" alt="آرتیبیشن" className="img-responsive" />
-                        <div className="tab-overly dir">
-                            <a href="#" className="btn-see">
-                                <span className="view-icon pull-dir"></span>
-                                <span>{t("collections-list.view")}</span>
-                            </a>
-                            <a href="#" className="btn-sale">{t("collections-list.shop_now")}</a>
-                            <a href="#" className="like-icon"></a>
+                {collectionItem?.products?.map((item, index) =>
+                    <div className="cols" key={index}>
+                        <div className="col-img" style={{ marginLeft: "20px" }}>
+                            <img src={item.medias[0]?.exact_url} width="840" height="840" alt="آرتیبیشن" className="img-responsive" />
+                            <div className="tab-overly dir">
+                                <a href="#" className="btn-see">
+                                    <span className="view-icon pull-dir"></span>
+                                    <span>{t("collections-list.view")}</span>
+                                </a>
+                                <a href="#" className="btn-sale">{t("collections-list.shop_now")}</a>
+                                <a href="#" className="like-icon"></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                    )}
+                )}
                 {/* <div className="cols">
                     <div className="col-img" style={{ marginLeft: "20px" }}>
                         <img src={Artwork1} width="840" height="840" alt="آرتیبیشن" className="img-responsive" />

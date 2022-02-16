@@ -15,7 +15,7 @@ function FollowersTab() {
         content_type: "artist"
     });
 
-    console.log("rols==>", roles);
+  
     const getFollowers = () => {
         apiServices.get(FOLLOW_ARTISTS, queryString.stringify(params))
             .then(res => {
@@ -37,9 +37,9 @@ function FollowersTab() {
     return (
         <div className="row">
             {
-                followerArtworks?.length && followerArtworks?.map((follower) => {
+                followerArtworks?.length && followerArtworks?.map((followers) => {
                     return (
-                        <CardFollower fallower={follower} />
+                        <CardFollower followers={followers} getFollowers={getFollowers} />
                     )
                 })
             }

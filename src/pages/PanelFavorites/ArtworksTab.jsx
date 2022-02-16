@@ -16,6 +16,7 @@ function ArtworksTab() {
 
     console.log("rols==>", roles);
     const getFollowProduct = () => {
+        console.log("tesssst")
         apiServices.get(FOLLOW_PRODUCTS, queryString.stringify(params))
             .then(res => {
                 if (res.data) {
@@ -36,7 +37,7 @@ function ArtworksTab() {
             {
                 favoriteArtworks?.length && favoriteArtworks?.map((artworks) => {
                     return (
-                        <CardArtwork artworks={artworks}/>
+                        <CardArtwork artworks={artworks} getFollowProduct={getFollowProduct}/>
                     )
                 })
             }

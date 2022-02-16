@@ -8,7 +8,7 @@ import { t } from 'i18next';
 import ModalVeiwAlbums from './ModalVeiwAlbums';
 import classnames from 'classnames';
 import {GetLanguage} from '../../utils/utils';
-import { ARTIST_CATEGORY } from '../../utils';
+import { ARTIST_ALBUMS, ARTIST_CATEGORY } from '../../utils';
 import apiServices from '../../utils/api.services';
 import queryString from 'query-string'
 import { useTranslation } from 'react-i18next';
@@ -22,12 +22,15 @@ function AlbumsTab({ownerId , setVisibleShowAlbums}) {
   const [artistCategory, setArtistCategory] = useState();
   const [params, setParams] = useState({
       // search: "",
+      // owner_id: ownerId,
       page: 1,
-      owner_id: ownerId,
+      artist_id : ownerId
 
   })
   const getArtistCategory = () => {
-      apiServices.get(ARTIST_CATEGORY, queryString.stringify(params))
+    // ARTIST_ALBUMS
+      apiServices.get(ARTIST_ALBUMS, queryString.stringify(params))
+      // apiServices.get(ARTIST_ALBUMS, queryString.stringify(params))
           .then(res => {
               if (res.data) {
                   setArtistCategory(res.data.data)
@@ -37,14 +40,15 @@ function AlbumsTab({ownerId , setVisibleShowAlbums}) {
               console.log("err", err)
           })
   }
-  useEffect(() => {
-      setParams(state => ({ ...state, artist_id: ownerId }))
-  }, [ownerId]);
+  // useEffect(() => {
+  //     setParams(state => ({ ...state, artist_id: ownerId }))
+  // }, [ownerId]);
 
   useEffect(() => {
       getArtistCategory()
   }, [params]);
-console.log("data",artistCategory)
+
+
     return (
       <>
         <div id="artist2" className="tab-pane ">
@@ -65,8 +69,9 @@ console.log("data",artistCategory)
             <div style={{overflow : 'auto'}} className="owl-carousel d-flex">
               {item.products?.map((itm,inx) => 
                 <div className="cols mx-4">
+                  {console.log("iteeeemmmm" , item)}
                     <div className="col-img">
-                        <img src={itm.medias[0]?.exact_url} width="840" height="840"
+                        <img src={item?.artist?.media[0]?.exact_url} width="840" height="840"
                              alt="آرتیبیشن"
                              className="img-responsive"/>
                         <div className="tab-overly">

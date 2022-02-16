@@ -40,23 +40,21 @@ export default function NavbarMenuHeader(props) {
     getProductCategories();
   }, [categorieParams]);
 
+
   return (
     <nav className="navbar w-100 margin-dir">
       <div className=" collapse navbar-collapse  px-0 w-100" id="menu">
         <button className="nav-close" type="button"></button>
-        <ul className=" nav nav-header-menu box-dir-reverse">
+        <ul className=" nav nav-header-menu box-dir-reverse justify-content-center">
+
           <li className="dropdown mega-dropdown ">
-            <a href="#" className="dropdown-toggle" data-toggle="dropdown">
-              {t("nav-menu-artworks")}
-            </a>
+            <a href="#" className="dropdown-toggle" data-toggle="dropdown">{t("nav-menu-artworks")}</a>
             <div className="dropdown-menu mega-dropdown-menu vertical-tabs bg-dropdown-menu">
               <div className="row ">
                 <div className="col-sm-3">
                   <ul className="nav nav-tabs">
-                    <li className="active">
-                      <a data-toggle="tab" href="#nav1">
-                        {t("nav-submenu.artworks.artField.title")}
-                      </a>
+                    <li className="active"><a data-toggle="tab" href="#nav1">{t("nav-submenu.artworks.artField.title")}</a>
+
                     </li>
                     <li>
                       <a data-toggle="tab" href="#nav2">
@@ -82,7 +80,7 @@ export default function NavbarMenuHeader(props) {
                         <div className="col-md-7 col-sm-6">
                           <ul className="vertical-nav">
                             <li onClick={() => navigate("/site/artworks")}>
-                              <a href="#">
+                              <a>
                                 {t("nav-submenu.artworks.artField.all")}
                               </a>
                             </li>
@@ -98,7 +96,7 @@ export default function NavbarMenuHeader(props) {
                                   "🚀 ~ file: NavbarMenuHeader.jsx ~ line 90 ~ NavbarMenuHeader ~ item",
                                   item
                                 )}
-                                <a href="#">
+                                <a>
                                   {i18n.language === "fa-IR"
                                     ? item.translations?.fa?.title
                                     : item.translations?.en?.title}{" "}
@@ -106,6 +104,8 @@ export default function NavbarMenuHeader(props) {
                               </li>
                             ))}
                           </ul>
+
+
                         </div>
                         <div className="col-md-5 col-sm-6">
                           <img
@@ -180,9 +180,9 @@ export default function NavbarMenuHeader(props) {
                         <div className="col-md-7 col-sm-6">
                           <ul className="vertical-nav">
                             <li>
-                              <a href="#">
+                              <Link to="/site/artists">
                                 {t("nav-submenu.showroom.category.all")}
-                              </a>
+                              </Link>
                             </li>
                             <li>
                               <a href="#">
@@ -428,7 +428,6 @@ export default function NavbarMenuHeader(props) {
           </li>
           <li
             className="dropdown mega-dropdown"
-            //  onClick={() => navigate('/site/advisory')}
           >
             {isLogin() ? (
               <Link to="/site/advisory" className="dropdown-toggle sales">

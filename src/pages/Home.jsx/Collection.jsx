@@ -18,7 +18,7 @@ import apiServices from '../../utils/api.services';
 import { ARTIST_CATEGORY } from '../../utils';
 import QueryString from 'qs';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Popover } from 'antd';
 
 
@@ -84,21 +84,31 @@ export default function Collection() {
                         <div style={{ overflow: 'auto' }} className="owl-carousel d-flex" id="tab6">
                             {artistCategory?.results?.map((item, index) =>
                                 <div>
-                                    <a href="#" className="cols">
+                                    <Link to="/site/collections-list" className="cols">
                                         <div className="col-img mx-4">
                                             <div className=" collection-firstrow m-0">
-                                                <img src={item.products[0]?.medias[0]?.exact_url} className="img-responsive w-100" />
+                                                <img src={item?.products[0]?.medias[0]?.exact_url} className="img-responsive w-100" />
                                             </div>
-                                            {<div className="d-flex collection-secondrow  px-0">
+                                             { <div className="d-flex collection-secondrow  px-0">
                                                 {item.products[1] && <div className="col px-0  mt-2">
-                                                    <img src={item.products[1]?.medias[1]?.exact_url}
+                                                    <img src={item?.products[1]?.medias[0]?.exact_url}
                                                         className="img-responsive clolection-image w-100" />
                                                 </div>}
-                                                {item.products[2] && <div className="col px-0 mr-2 mt-2">
-                                                    <img src={item.products[2]?.medias[2]?.exact_url}
+                                                {item?.products[2] && <div className="col px-0 mr-2 mt-2">
+                                                    <img src={item?.products[2]?.medias[0]?.exact_url}
                                                         className="img-responsive clolection-image w-100" />
                                                 </div>}
                                             </div>}
+                                            {/* {item?.products[1] || item?.products[2] && <div className="d-flex collection-secondrow  px-0">
+                                                {item.products[1] && <div className="col px-0  mt-2">
+                                                    <img src={item?.products[1]?.medias[1]?.exact_url}
+                                                        className="img-responsive clolection-image w-100" />
+                                                </div>}
+                                                {item?.products[2] && <div className="col px-0 mr-2 mt-2">
+                                                    <img src={item?.products[2]?.medias[2]?.exact_url}
+                                                        className="img-responsive clolection-image w-100" />
+                                                </div>}
+                                            </div>} */}
                                         </div>
                                         <div className="col-body">
                                             <h6 className="col-title">
@@ -119,7 +129,7 @@ export default function Collection() {
                                                 </span>
                                             </div>
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
                             )}
 

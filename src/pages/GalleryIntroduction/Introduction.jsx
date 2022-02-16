@@ -86,7 +86,7 @@ function Introduction({id, galleryIntroduction, galleryExhibition}) {
                                 <ul className="nav ">
                                     <Tabs defaultActiveKey="1" onChange={callback}>
                                         <TabPane className="mx-5" tab={t("nav-submenu.artworks.artField.all_artworks")} key="1">
-                                            <AllArtworks />
+                                            <AllArtworks id={id}/>
                                         </TabPane>
                                         <TabPane tab={t("filter-header.category.painting")} key="2">
 

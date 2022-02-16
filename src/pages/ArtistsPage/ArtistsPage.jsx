@@ -74,7 +74,7 @@ function ArtistsPage(props) {
       )
       .then((res) => {
         if (res.data) {
-          setArtistList(res.data.data);
+          setArtistList(res.data.data.results);
         }
       })
       .catch((err) => {
@@ -84,7 +84,7 @@ function ArtistsPage(props) {
 
   const getProductCategories = () => {
     apiServices
-      .get(PRODUCTS_CATEGORIES)
+      .get(PRODUCTS_CATEGORIES, "")
       .then((res) => {
         if (res.data) {
           setCategories(res.data.data);
@@ -95,17 +95,21 @@ function ArtistsPage(props) {
       });
   };
 
+  const callBack = ()=>{
+    getArtistList()
+  }
+
   useEffect(() => {
     getArtistList();
     getProductCategories();
   }, [params]);
 
-  useEffect(() => {
-    setParams((state) => ({
-      ...state,
-      is_official: artistIsOfficial?.is_official,
-    }));
-  }, [artistIsOfficial]);
+  // useEffect(() => {
+  //   setParams((state) => ({
+  //     ...state,
+  //     is_official: artistIsOfficial?.is_official,
+  //   }));
+  // }, [artistIsOfficial]);
 
   console.log("props", props);
   return (
@@ -278,12 +282,12 @@ function ArtistsPage(props) {
                               type="checkbox"
                               // value={false}
                               name="is_official"
-                              onClick={(e) => {
-                                setArtistIsOfficial({
-                                  ...categoriesId,
-                                  [e.target.name]: e.target.checked,
-                                });
-                              }}
+                              // onClick={(e) => {
+                              //   setArtistIsOfficial({
+                              //     ...categoriesId,
+                              //     [e.target.name]: e.target.checked,
+                              //   });
+                              // }}
                             />
                             <span>{t("artists.filter.artist.special")}</span>
                             <span className="checkmark"></span>
@@ -317,7 +321,7 @@ function ArtistsPage(props) {
               <div className="col-md-9 col-sm-12">
                 <div className="artist-list">
                   <div className="row box-dir-reverse">
-                    {artistList?.results?.map((item, index) => (
+                    {artistList?.map((item, index) => (
                       <div className="col-sm-4">
                         <a href="#" className="cols">
                           <div className="col-img">
@@ -396,12 +400,14 @@ function ArtistsPage(props) {
                             </h6>
                             <button
                               type="button"
-                              className="btn-follow pull-dir"
+                              className={"pull-dir btn-follow followed" + (item?.likes ? "followed" : "")}
                               onClick={() =>
                                 follow({
                                   activity: "following",
                                   content: "artist",
-                                  object_id: item.id,
+                                  object_id: item?.id,
+                                  action : item?.likes,
+                                  callBack
                                 })
                               }
                             >

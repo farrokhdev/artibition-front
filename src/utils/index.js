@@ -1,13 +1,13 @@
 
 // export const BASE_URL = " http://192.168.0.23:8808/api/v1";
 // export const BASE_URL = " http://192.168.0.100:8000/api/v1";
-// export const BASE_URL = " http://192.168.0.113:8000/api/v1";
+export const BASE_URL = " http://192.168.0.113:8000/api/v1";
 // export const BASE_URL = " http://192.168.0.145:8000/api/v1";
 // export const BASE_URL = " http://192.168.0.141:8000/api/v1";
 // export const BASE_URL = " http://192.168.0.100:8000/api/v1";
 // export const BASE_URL = " http://192.168.0.182:8000/api/v1";
 
-export const BASE_URL = "https://api.artibition.gallery/api/v1";
+// export const BASE_URL = "http://api.artibition.gallery/api/v1";
 
 export const COOKIE_EXPIRES = 1;
 export const LOGIN = "/account/login/";
@@ -59,7 +59,7 @@ export const WALLET = "/accounting/wallet/me/";
 export const WALLET_TRANSACTIONS = "/accounting/wallet-transactions/";
 export const WALLET_TRANSACTIONS_REQUEST = "/accounting/transaction-requests/"
 export const GALLERY_FOLLOW = "/social-network/follow/";
-export const DELETE_FOLLOW = (id) => `/social-network/follow/${id}/`;
+export const DELETE_FOLLOW = (id) => `/social-network/follow/${id}`;
 export const FOLLOW_PRODUCTS = "/social-network/follow/products/";
 export const FOLLOW_COLLECTIONS = "/social-network/follow/collections/";
 export const FOLLOW_ARTISTS = "/social-network/follow/artists/";

@@ -19,12 +19,14 @@ import lhggrzlgoc3 from "../../assets/img/artworks/lhggrzlgoc@3x.jpg";
 import hyxvpfinmx3 from "../../assets/img/artworks/hyxvpfinmx@3x.jpg";
 import ayvglbkdfo3 from "../../assets/img/artworks/ayvglbkdfo@3x.jpg";
 import gbazvsspbk3 from "../../assets/img/artworks/gbazvsspbk@3x.jpg";
-import { Pagination } from "antd";
+import { message, Pagination } from "antd";
 import { t } from "i18next";
 import { useTranslation } from "react-i18next";
 import queryString from "query-string";
 import {
   ARTIST_PRODUCTS,
+  DELETE_FOLLOW,
+  GALLERY_FOLLOW,
   PRODUCTS_CATEGORIES,
   PRODUCTS_MATERIALS,
   PRODUCTS_SIZES,
@@ -213,6 +215,10 @@ function ArtworksPage(props) {
         console.log("err", err);
       });
   };
+
+  const callBack = () => {
+    getProductList()
+  }
 
   const getProductMaterials = () => {
     apiServices
@@ -534,25 +540,25 @@ function ArtworksPage(props) {
                             onClick={() =>
                               i18n.language === "fa-IR"
                                 ? setParams((state) => ({
-                                    ...state,
-                                    toman_price_range_min: toman_price_range_min
-                                      ? toman_price_range_min
-                                      : 0,
-                                    toman_price_range_max: toman_price_range_max
-                                      ? toman_price_range_max
-                                      : 0,
-                                  }))
+                                  ...state,
+                                  toman_price_range_min: toman_price_range_min
+                                    ? toman_price_range_min
+                                    : 0,
+                                  toman_price_range_max: toman_price_range_max
+                                    ? toman_price_range_max
+                                    : 0,
+                                }))
                                 : setParams((state) => ({
-                                    ...state,
-                                    dollar_price_range_min:
-                                      dollar_price_range_min
-                                        ? dollar_price_range_min
-                                        : 0,
-                                    dollar_price_range_max:
-                                      dollar_price_range_max
-                                        ? dollar_price_range_max
-                                        : 0,
-                                  }))
+                                  ...state,
+                                  dollar_price_range_min:
+                                    dollar_price_range_min
+                                      ? dollar_price_range_min
+                                      : 0,
+                                  dollar_price_range_max:
+                                    dollar_price_range_max
+                                      ? dollar_price_range_max
+                                      : 0,
+                                }))
                             }
                           >
                             {t("artworkList.filter.price.action")}
@@ -914,20 +920,20 @@ function ArtworksPage(props) {
                             className="btn btn-ok pull-dir"
                             onClick={() =>
                               width_min ||
-                              width_max ||
-                              height_min ||
-                              height_max ||
-                              length_max ||
-                              length_min
+                                width_max ||
+                                height_min ||
+                                height_max ||
+                                length_max ||
+                                length_min
                                 ? setParams((state) => ({
-                                    ...state,
-                                    width_min: width_min,
-                                    width_max: width_max,
-                                    height_min: height_min,
-                                    height_max: height_max,
-                                    length_min: length_min,
-                                    length_max: length_max,
-                                  }))
+                                  ...state,
+                                  width_min: width_min,
+                                  width_max: width_max,
+                                  height_min: height_min,
+                                  height_max: height_max,
+                                  length_min: length_min,
+                                  length_max: length_max,
+                                }))
                                 : filterSizes()
                             }
                           >
@@ -981,17 +987,18 @@ function ArtworksPage(props) {
                                   >
                                     {t("card_artwork.request_buy")}
                                   </a>
-                                  <a
-                                    href="#"
-                                    className="like-icon isLike"
+                                  <button
+                                    className={"like-icon " + (product?.likes ? "isLike" : "")}
                                     onClick={() =>
                                       follow({
                                         content: "product",
                                         activity: "like",
                                         object_id: product?.id,
+                                        action : product?.likes,
+                                        callBack
                                       })
                                     }
-                                  ></a>
+                                  ></button>
                                 </div>
                               </div>
                               <div className="col-body ">
