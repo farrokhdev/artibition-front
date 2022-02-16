@@ -8,8 +8,8 @@ import OneUpload from '../../components/OneUpload/OneUpload';
 import cloude_upload_icon from '../../assets/img/cloud-upload.svg';
 import { Form, Input, Select, Checkbox, message, Radio } from 'antd';
 import apiServices from '../../utils/api.services';
-import { ARTIST_ME, CORE_CONTENT } from '../../utils';
-import { useNavigate } from 'react-router-dom';
+import { ARTIST_CONTENT_DETAILS, ARTIST_ME, CORE_CONTENT, GALLERY_CONTENT_DETAILS } from '../../utils';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import TextArea from 'antd/es/input/TextArea';
 import { useSelector } from 'react-redux';
 
@@ -24,6 +24,7 @@ function PanelCreateContent() {
 
     const [isSelected, setIsSelected] = useState(false);
     const [isSelectedVideo, setIsSelectedVideo] = useState(false);
+    let [searchParams, setSearchParams] = useSearchParams()
     const { gallery_id } = useSelector((state) => state.galleryReducer)
 
 
@@ -45,6 +46,33 @@ function PanelCreateContent() {
             }
         }
         return userRole
+    }
+
+    const getContentDetails = () => {
+        if (searchParams.get("content_id")) {
+            if (getUserRole() === "gallery") {
+                apiServices.get(GALLERY_CONTENT_DETAILS(gallery_id, searchParams.get("content_id")), "")
+                    .then(res => {
+                        if (res.data) {
+                            console.log(res.data);
+                        }
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+            }
+            else if (getUserRole() === "artist") {
+                apiServices.get(ARTIST_CONTENT_DETAILS(searchParams.get("content_id")), "")
+                    .then(res => {
+                        if (res.data) {
+                            console.log(res.data);
+                        }
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+            }
+        }
     }
 
     const onFinish = (values) => {
@@ -95,12 +123,15 @@ function PanelCreateContent() {
             .then(res => {
                 if (res.data) {
                     setArtistId(res.data.data.id)
-                    // console.log(res.data.data.id);
                 }
             })
             .catch(err => {
                 console.log(err);
             })
+    }, [])
+
+    useEffect(() => {
+        getContentDetails()
     }, [])
 
 

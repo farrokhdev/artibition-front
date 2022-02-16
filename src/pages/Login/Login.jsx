@@ -10,7 +10,7 @@ import BasketFooter from "../../components/BasketFooter/BasketFooter";
 import { useTranslation } from "react-i18next";
 import HeaderAuthPages from "../../components/HeaderAuthPages/HeaderAuthPages";
 import APIService from "../../utils/api.services";
-import { CART_ME, LOGIN, PROFILE } from "../../utils/index";
+import { BASE_URL, CART_ME, LOGIN, PROFILE } from "../../utils/index";
 import { setToken } from "../../utils/utils";
 import "antd/dist/antd.css";
 import { message } from "antd";
@@ -18,6 +18,9 @@ import { connect } from "react-redux";
 import { setProfile } from "../../redux/reducers/auth/auth.actions";
 import { useSelector, useDispatch } from "react-redux";
 import { UPDATE_CART } from "../../redux/reducers/cart/cart.types";
+import { GoogleLogin } from 'react-google-login';
+import * as axios from 'axios'
+import GoogleLoginButton from "../../components/GoogleLoginButton/GoogleLoginButton";
 
 function Login(props) {
   const { t } = useTranslation();
@@ -25,6 +28,36 @@ function Login(props) {
   const { roles } = useSelector((state) => state.authReducer);
   const [loading, setLoading] = useState(true);
   let userRole = "user";
+
+  const handleGoogleLogin = (result) => {
+    axios.post(`${BASE_URL}/account/google-login/`, { "token": result.tokenId })
+      .then(res => {
+        if (res.data) {
+          setToken({
+            "access": res.data.data.access,
+            "refresh": res.data.data.refresh
+          })
+          getProfile().then((res) => {
+            message.success("به آرتیبیشن خوش آمدید");
+            console.log(userRole);
+            if (userRole !== "user") {
+              setTimeout(() => {
+                window.location.href = "/panel/dashboard";
+              }, 500);
+            } else {
+              setTimeout(() => {
+                window.location.href = "/panel/profile";
+              }, 500);
+            }
+          });
+        }
+      })
+
+  }
+
+  const handleGoogleFailure = () => {
+
+  }
 
   async function getProfile() {
     await APIService.get(PROFILE, "").then((res) => {
@@ -159,7 +192,7 @@ function Login(props) {
                 </button>
               </Form>
 
-              <button type="button" className="btn btn-google">
+              {/* <button type="button" className="btn btn-google">
                 <img
                   src={google_icon}
                   width="26"
@@ -168,7 +201,29 @@ function Login(props) {
                   className=""
                 />
                 <span>{t("google-login-text-button")}</span>
-              </button>
+              </button> */}
+
+
+
+              {/* <GoogleLogin
+                clientId="764080299273-at3j8asddt5gdhpgpef7q4j9vbrsp67n.apps.googleusercontent.com"
+                buttonText="Google Login"
+                onSuccess={handleGoogleLogin}
+                onFailure={handleGoogleFailure}
+                render={renderProps => (
+                  <button type="button" className="btn btn-google" onClick={renderProps.onClick}>
+                    <img
+                      src={google_icon}
+                      width="26"
+                      height="26"
+                      alt="ثبت نام در آرتیبیشن"
+                      className=""
+                    />
+                    <span>{t("google-login-text-button")}</span>
+                  </button>
+                )} /> */}
+
+              <GoogleLoginButton />
               <p className="login-term1">
                 {t("is-registered-question")}
                 <Link to="/auth/signup">{t("signup-text")}</Link>
