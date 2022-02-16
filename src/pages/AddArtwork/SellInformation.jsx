@@ -25,7 +25,7 @@ function SellInformation({ prev, next }) {
     const [isValidEdition, setIsValidEdition] = useState(false);
     const [isValidSaleInformation, setIsValidSaleInformation] = useState(false);
     const Language = GetLanguage();
-    const { id } = useSelector((state) => state.galleryReducer)
+    const { gallery_id } = useSelector((state) => state.galleryReducer)
 
     const listinvestmentType = [
         { label: "درصدی", value: "percentage" },
@@ -86,7 +86,7 @@ function SellInformation({ prev, next }) {
 
         if (getUserRole() === "gallery") {
             if (searchParams.get("artist_id")) {
-                apiServices.post(ARTWORK_BY_GALLERY(id, searchParams.get("artist_id")), payload)
+                apiServices.post(ARTWORK_BY_GALLERY(gallery_id, searchParams.get("artist_id")), payload)
                     .then(res => {
                         if (res.data) {
                             message.success({
@@ -111,7 +111,7 @@ function SellInformation({ prev, next }) {
                     })
 
             } else {
-                apiServices.post(GALLERY_PRODUCTS(id), payload)
+                apiServices.post(GALLERY_PRODUCTS(gallery_id), payload)
                     .then(res => {
                         if (res.data) {
 

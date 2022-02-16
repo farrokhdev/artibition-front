@@ -26,7 +26,7 @@ function GalleryPanelExhibitionList() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    const { id } = useSelector((state) => state.galleryReducer)
+    const { gallery_id } = useSelector((state) => state.galleryReducer)
 
 
 
@@ -37,7 +37,7 @@ function GalleryPanelExhibitionList() {
     }
 
     useEffect(() => {
-        apiServices.get(EXHIBITION(id), queryString.stringify(params))
+        apiServices.get(EXHIBITION(gallery_id), queryString.stringify(params))
             .then(res => {
                 if (res.data) {
                     console.log(res.data.data.results);

@@ -40,7 +40,7 @@ function GalleryPanelCreateExhibition() {
     })
     const [exhibitionType, setExhibitionType] = useState(undefined)
     const dispatch = useDispatch()
-    const { id } = useSelector((state) => state.galleryReducer)
+    const { gallery_id } = useSelector((state) => state.galleryReducer)
     const { exhibitionId } = useSelector((state) => state.exhibitionReducer)
     const { editExhibitionMode } = useSelector((state) => state.exhibitionReducer)
     const navigate = useNavigate()
@@ -165,12 +165,12 @@ function GalleryPanelCreateExhibition() {
 
 
     useEffect(() => {
-        apiServices.get(GALLERY_ARTISTS(id), queryString.stringify(params))
+        apiServices.get(GALLERY_ARTISTS(gallery_id), queryString.stringify(params))
             .then(res => {
                 if (res.data) {
                     const options = []
                     res.data.data.results.map((artist, index) => {
-                        options.push({ label: `${artist.translations.fa ? artist.translations.fa.nick_name : ""} | ${artist.translations.en ? artist.translations.en.nick_name : ""}`, value: artist.id })
+                        options.push({ label: `${artist?.owner?.translations?.fa?.first_name} ${artist?.owner?.translations?.fa?.last_name} | ${artist?.owner?.translations?.en?.first_name} ${artist?.owner?.translations?.en?.last_name}`, value: artist.id })
                     })
                     setArtistOption(options)
 
@@ -182,8 +182,8 @@ function GalleryPanelCreateExhibition() {
     }, [])
 
     useEffect(() => {
-        if (editExhibitionMode && id) {
-            apiServices.get(EXHIBITION_INFO(id, exhibitionId), "")
+        if (editExhibitionMode && gallery_id) {
+            apiServices.get(EXHIBITION_INFO(gallery_id, exhibitionId), "")
                 .then(res => {
                     if (res.data) {
                         const value = res.data.data

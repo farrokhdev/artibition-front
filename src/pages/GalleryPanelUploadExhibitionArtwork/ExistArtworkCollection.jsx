@@ -8,6 +8,9 @@ import apiServices from "../../utils/api.services";
 import { PRODUCTS } from "../../utils";
 import queryString from 'query-string'
 import { message } from "antd";
+import { useDispatch } from "react-redux";
+import { reduxSelectedArtworksFunc } from "../../redux/reducers/Exhibition/exhibition.action";
+import { useSelector } from "react-redux";
 
 const SliderSetting = {
     dots: false,
@@ -45,9 +48,16 @@ const SliderSetting = {
 
 
 function ExistArtworkCollection({ artistID, selectedArtwork, setSelectedArtwork }) {
+
+
+
+    const { reduxSelectedArtworks } = useSelector((state) => state.exhibitionReducer)
+    const dispatch = useDispatch()
+    // const [productsArray, setProductArray] = useState([])
+    const [productsArray, setProductArray] = useState(reduxSelectedArtworks)
     const handleChange = (e) => {
         console.log(e.target.name);
-        let temp = selectedArtwork
+        let temp = reduxSelectedArtworks
         const json = {
             id: artistID,
             selected: [JSON.parse(e.target.name)]
@@ -70,8 +80,16 @@ function ExistArtworkCollection({ artistID, selectedArtwork, setSelectedArtwork 
                 }
             }
         }
-        // console.log(temp);
-        setSelectedArtwork(temp)
+        // setSelectedArtwork(temp)
+        dispatch(reduxSelectedArtworksFunc(temp));
+        let tempProduct = []
+        temp.map((item, index) => {
+
+            console.log(item);
+            tempProduct.push(...item.selected)
+        })
+
+        setProductArray(tempProduct)
     }
 
 
@@ -94,6 +112,21 @@ function ExistArtworkCollection({ artistID, selectedArtwork, setSelectedArtwork 
             })
     }, [])
 
+    useEffect(() => {
+        console.log(productsArray);
+    }, [productsArray])
+
+
+    const checkedI = (edition) => {
+        let flag = false
+        productsArray.map((item) => {
+            console.log(item?.selected?.some(e => e.product_item_id === edition.id));
+            if (item?.selected?.some(e => e.product_item_id === edition.id)) {
+                flag = true
+            }
+        })
+        return flag
+    }
 
     return (
         <div className="collection-list-row">
@@ -118,19 +151,21 @@ function ExistArtworkCollection({ artistID, selectedArtwork, setSelectedArtwork 
                 {artworks.length > 0 ?
 
                     artworks.map((product, productIndex) => {
-                        console.log("PRODUCT", product);
+                        // console.log("PRODUCT", product);
                         return (
                             product.items.map((edition, editionIndex) => {
-                                console.log("EDITION", edition);
+                                // console.log("EDITION", edition);
                                 return (
                                     <div className="cols">
                                         <label className="lable-checkbox">
-                                            <input type="checkbox" value="" name={JSON.stringify({
-                                                product_id: product.id,
-                                                product_item_id: edition.id,
-                                                reserved_toman_price: edition.toman_price,
-                                                reserved_dollar_price: edition.dollar_price
-                                            })}
+                                            <input type="checkbox"
+                                                defaultChecked={checkedI(edition)}
+                                                name={JSON.stringify({
+                                                    product_id: product.id,
+                                                    product_item_id: edition.id,
+                                                    reserved_toman_price: edition.toman_price,
+                                                    reserved_dollar_price: edition.dollar_price
+                                                })}
                                                 onChange={(e) => { handleChange(e) }} />
                                             <span className="checkmark"></span>
                                             <div className="col-img">

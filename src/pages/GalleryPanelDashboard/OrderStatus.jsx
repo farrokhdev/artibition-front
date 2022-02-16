@@ -15,7 +15,7 @@ function OrderStatus() {
 
 
     const [orders, setOrders] = useState([])
-    const { id } = useSelector((state) => state.galleryReducer)
+    const { gallery_id } = useSelector((state) => state.galleryReducer)
     const [orderList, setOrderList] = useState("");
     const [suggestionsCount, setSuggestionsCount] = useState("");
     const [params, setParams] = useState({
@@ -45,7 +45,7 @@ function OrderStatus() {
 
     useEffect(() => {
         if (getUserRole() === "gallery") {
-            apiServices.get(`/gallery/${id}/orders/`, "")
+            apiServices.get(`/gallery/${gallery_id}/orders/`, "")
                 .then(res => {
                     if (res.data) {
                         setOrders(res.data.data.results)

@@ -27,7 +27,7 @@ function CreateArtist() {
     })
     const [form] = Form.useForm()
     const { TextArea } = Input
-    const { id } = useSelector((state) => state.galleryReducer)
+    const { gallery_id } = useSelector((state) => state.galleryReducer)
 
     let selectedArtist = {
         "artists_id_list": []
@@ -51,7 +51,7 @@ function CreateArtist() {
     }
     const confirmAddArtist = () => {
         console.log(selectedArtist);
-        apiServices.post(ADD_ARTIST_TO_GALLERY(id), selectedArtist)
+        apiServices.post(ADD_ARTIST_TO_GALLERY(gallery_id), selectedArtist)
             .then(res => {
                 if (res.data) {
                     message.success({
@@ -59,6 +59,7 @@ function CreateArtist() {
                         style: { marginTop: "110px" }
                     })
                     setShowExistArtist(false)
+                    setShowArtistSource(false)
                 }
                 else {
                     message.error({
@@ -82,7 +83,7 @@ function CreateArtist() {
     useEffect(() => {
 
         if (showExistArtist) {
-            apiServices.get(GALLERY_ARTISTS(id), queryString.stringify(params))
+            apiServices.get(GALLERY_ARTISTS(gallery_id), queryString.stringify(params))
                 .then(res => {
                     if (res.data) {
                         setGalleryArtists(res.data.data.results)
@@ -142,7 +143,7 @@ function CreateArtist() {
             }
 
 
-            apiServices.post(ARTIST_BY_GALLERY(id), payload)
+            apiServices.post(ARTIST_BY_GALLERY(gallery_id), payload)
                 .then(res => {
                     if (res.data) {
                         setUploadList([]);
