@@ -2,14 +2,17 @@ import React, { useState } from "react";
 import i18next, { t } from 'i18next';
 import { Form, Input, message } from 'antd';
 import { GetLanguage } from "../../utils/utils";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import apiServices from "../../utils/api.services";
 import { ADVISOR } from "../../utils";
 import { useNavigate } from "react-router-dom";
+import { chooseProduct as EditingchooseProduct } from '../../redux/reducers/advistory/advistory.action';
+import { advistoryForm as EditingAdvistoryForm } from '../../redux/reducers/advistory/advistory.action';
 
 function ExtraDescriptionStep({ prev, next }) {
 
     const [form] = Form.useForm();
+    const dispach = useDispatch();
     const navigate = useNavigate();
     const { TextArea } = Input;
     const { chooseProducts, advistoryform } = useSelector((state) => state.advistoryReducer)
@@ -54,6 +57,8 @@ function ExtraDescriptionStep({ prev, next }) {
             .then(res => {
                 if (res.data) {
                     navigate("/")
+                    dispach(EditingchooseProduct([]))
+                    dispach(EditingAdvistoryForm({}))
                     message.success({
                         content: 'اطلاعات شما با موفقیت ثبت شد', style: {
                             marginTop: '110px',

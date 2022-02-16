@@ -87,15 +87,17 @@ export default function Collection() {
                                     <Link to="/site/collections-list" className="cols">
                                         <div className="col-img mx-4">
                                             <div className=" collection-firstrow m-0">
-                                                <img src={item?.products[0]?.medias[0]?.exact_url} className="img-responsive w-100" />
+                                                <img src={item?.products[0]?.medias[0]?.exact_url} width="280" height="280" className="img-responsive w-100" />
                                             </div>
-                                             { <div className="d-flex collection-secondrow  px-0">
+                                            {<div className="d-flex collection-secondrow  px-0">
                                                 {item.products[1] && <div className="col px-0  mt-2">
                                                     <img src={item?.products[1]?.medias[0]?.exact_url}
+                                                        width="280" height="280"
                                                         className="img-responsive clolection-image w-100" />
                                                 </div>}
                                                 {item?.products[2] && <div className="col px-0 mr-2 mt-2">
                                                     <img src={item?.products[2]?.medias[0]?.exact_url}
+                                                        width="280" height="280"
                                                         className="img-responsive clolection-image w-100" />
                                                 </div>}
                                             </div>}

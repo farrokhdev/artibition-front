@@ -329,8 +329,10 @@ function ArtistsPage(props) {
                               {/* <img src={mainpage1_1} className="img-responsive"/> */}
                               <img
                                 src={
-                                  item?.product && item.product[0]?.exact_url
+                                  item?.product && item.product[0]?.product_base_info?.medias[0]?.exact_url
                                 }
+                                width="280"
+                                height="280"
                                 className="img-responsive"
                               />
                             </div>
@@ -340,10 +342,10 @@ function ArtistsPage(props) {
                                 <img
                                   src={
                                     // item?.product && item.product[1]?.exact_url
-                                    item?.product && item?.product[0]?.product_base_info?.medias[0]?.exact_url
+                                    item?.product && item?.product[1]?.product_base_info?.medias[0]?.exact_url
                                   }
-                                  width="420"
-                                  height="420"
+                                  width="280"
+                                  height="280"
                                   className="img-responsive"
                                 />
                               </div>
@@ -351,10 +353,10 @@ function ArtistsPage(props) {
                                 <img
                                   src={
                                     // item?.product && item.product[2]?.exact_url
-                                    item?.product && item?.product[1]?.product_base_info?.medias[0]?.exact_url
+                                    item?.product && item?.product[2]?.product_base_info?.medias[0]?.exact_url
                                   }
-                                  width="420"
-                                  height="420"
+                                  width="280"
+                                  height="280"
                                   className="img-responsive"
                                 />
                               </div>
@@ -365,8 +367,8 @@ function ArtistsPage(props) {
                               <Link to={`/site/artist-profile/?id=${item?.id}`}>
                                 <img
                                   src={item.bg_image?.exact_url}
-                                  width="408"
-                                  height="408"
+                                  width="280"
+                                  height="280"
                                   alt=""
                                   className="img-responsive"
                                 />
