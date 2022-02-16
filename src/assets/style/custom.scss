@@ -227,7 +227,7 @@ a:hover {
     display: inline-block;
 }
 
-.menu .navbar-nav li a {
+.menu .nav-header-menu li a {
     padding: 15px 25px;
     color: #141414;
     transition: all .5s ease 0s;
@@ -6917,6 +6917,14 @@ p.upload-size {
     background: url("../img/circle-plus.png") no-repeat right center #fff;
     border: 1px solid #141414;
     background-position: 80px;
+}
+
+.btn-follow-isActive{
+    background: url("../img/circle-plus-2.png") no-repeat right center #ec008c;
+    background-position: 80px;
+    border: 1px solid #ec008c;
+    transition: all 0.5s ease 0s;
+    color: #fff;
 }
 
 .btn-follow:hover,

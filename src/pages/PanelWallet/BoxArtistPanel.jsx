@@ -103,13 +103,13 @@ function BoxArtistPanel() {
                             {transactions?.map((item, key) => {
                                 return (
                                     <tr key={key} className=''>
-                                        <td data-label="نوع">{item.type}</td>
-                                        <td data-label="مبلغ (تومان)" className="persian-num">{stateType(item?.amount).title}</td>
-
-                                        <td data-label="شماره حساب" className="persian-num">{item.type === "withdraw" ? 123456789
+                                        <td data-label="نوع">{stateType(item?.type)?.title}</td>
+                                        <td data-label="مبلغ (تومان)" className="persian-num">{item?.amount}</td>
+                                        <td data-label="شماره حساب" className="persian-num">{item?.type === "withdraw" ? 123456789
                                             : "-"}</td>
+
                                         <td data-label="تاریخ درخواست" className="persian-num">
-                                            {item.creation_date ? moment(item.creation_date).locale('fa').format('YYYY/MM/DD') : ""}
+                                            {item?.creation_date ? moment(item.creation_date).locale('fa').format('YYYY/MM/DD') : ""}
                                         </td>
                                     </tr>
                                 )

@@ -280,7 +280,7 @@
     },
     "modal_similar_artwork": {
       "title": "آثار مشابه",
-      "title1" :"ایجاد کالکشن"
+      "title1": "ایجاد کالکشن"
     },
     "modal_bidding_artwork": {
       "title": "ارسال پیشنهاد به هنرمند",
@@ -1126,8 +1126,8 @@
       "title": "اطلاعات هنری",
       "artwork_name": "Artwork Name",
       "artwork_title": "عنوان اثر",
-      "artwork_titles" : "Artwork title",
-      "artist_name" :"نام هنرمند",
+      "artwork_titles": "Artwork title",
+      "artist_name": "نام هنرمند",
       "artwork_subject": "موضوع",
       "artwork_field": "رشته هنری",
       "artwork_technique": "تکنیک",
@@ -1264,6 +1264,7 @@
       "cart": "سبد خرید شما",
       "total_price": "مبلغ قابل پرداخت",
       "next": "ادامه فرآیند خرید",
+      "add_order": "ثبت سفارش",
       "price_unit": "تومان",
       "less_price_received_separately": "هزینه سفارش‌های کمتر از ۱ میلیون تومان به صورت جداگانه دریافت می‌شود"
     },
@@ -1335,7 +1336,11 @@
         "receiver_checkbox": "گیرنده اثر خودم هستم",
         "send_friend_checkbox": "اثر را برای دوستم ارسال می‌کنم",
         "confirm_btn": "ثبت و تأیید آدرس",
-        "select_address_map": "انتخاب آدرس روی نقشه"
+        "select_address_map": "انتخاب آدرس روی نقشه",
+        "enter_recipient_information": "اطلاعات گیرنده را وارد کنید",
+        "enter_the_recipient_name": "نام گیرنده را وارد کنید",
+        "enter_the_mobile_number": "شماره همراه را وارد کنید",
+        "enter_the_national_code": "کد ملی را وارد کنید"
       }
     },
     "pay_step": {

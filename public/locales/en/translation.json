@@ -1393,7 +1393,11 @@
         "send_friend_checkbox": "I'll send the artwork to my friend",
         "receiver_select": "Select  reciever",
         "confirm_btn": "Confirm",
-        "select_address_map": "Select address on map"
+        "select_address_map": "Select address on map",
+        "enter_recipient_information": "Enter recipient information",
+        "enter_the_recipient_name": "Enter the recipient name",
+        "enter_the_mobile_number": "Enter the mobile number",
+        "enter_the_national_code": "Enter the national code"
       }
     },
     "pay_step": {

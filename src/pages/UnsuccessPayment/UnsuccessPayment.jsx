@@ -22,12 +22,12 @@ function UnsuccessPayment() {
               className="img-responsive"
             />
             <h1>{t("unsuccess-payment.title")}</h1>
-            <div className="tracking-id">
+            {/* <div className="tracking-id">
               <span className="pull-dir">
                 {t("unsuccess-payment.tracing_no")}
               </span>
               <span className="persian-num">۱۲۶۲۳</span>
-            </div>
+            </div> */}
             <h2>{t("unsuccess-payment.try_again")}</h2>
             <button
               onClick={() => navigate("/")}

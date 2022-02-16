@@ -1,41 +1,17 @@
-import React,{useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import { t } from 'i18next';
-import artwork_image from '../../assets/img/mainpage/rdbewaopdm840.jpg';
-import { deletFollow, GetLanguage } from '../../utils/utils'
+import { GetLanguage } from '../../utils/utils'
 import { handleShowImage } from '../../utils/showImageProduct';
-import { follow } from "../../utils/utils";
-import apiServices from '../../utils/api.services';
-import queryString from "query-string";
-import { DELETE_FOLLOW } from '../../utils';
-import { message } from 'antd';
+import { follow } from '../../utils/utils';
 
-function CardArtwork({ artworks }) {
+
+function CardArtwork({ artworks, getFollowProduct }) {
     const Language = GetLanguage();
-    const [params, setParams] = useState({
-        activity: "like",
-        content: "product",
-    });
-    console.log("artworks==> ", artworks)
 
-
-    const deletFollow = ({ id }) => {
-       
-        apiServices
-          .deleteByParams(DELETE_FOLLOW(id),queryString.stringify(params) )
-          .then((res) => {
-            if (res.data) {
-              message.success({
-                content: "درخواست شما با موفقیت ثبت شد",
-                style: {
-                  marginTop: "110px",
-                },
-              });
-            }
-          })
-          .catch((err) => {
-            console.log("err", err);
-          });
-      };
+    const callBack = () => {
+        getFollowProduct()
+      }
+    
 
     return (
         <div className="col-sm-3">
@@ -54,18 +30,15 @@ function CardArtwork({ artworks }) {
                         </button>
                         <button
                             onClick={() =>
-                                deletFollow({
-                                    activity: "like",
+                                follow({
                                     content: "product",
-                                    id: artworks.id,
+                                    activity: "like",
+                                    object_id: artworks?.id,
+                                    action: artworks?.likes,
+                                    callBack
                                 })
                             }
-                            // onClick={()=>{
-                            //     Follow(
-                            //         // item?.following?.follow?.is_active ?
-                            //         //     item?.following?.follow?.id :
-                            //         //     item?.id, item?.following?.follow?.is_active)
-                            // }}
+
                             type="button" className="like-icon isLike"
                         ></button>
                     </div>

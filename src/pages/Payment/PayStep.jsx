@@ -74,7 +74,6 @@ function PayStep({ next, prev, order }) {
     apiServices
       .post(COMPLETE_ORDER(order?.id), { payment_method })
       .then((res) => {
-        console.log(".then --------- res", res);
         if (res?.data?.code === 200) {
           navigate("/panel/success-payment");
         }
