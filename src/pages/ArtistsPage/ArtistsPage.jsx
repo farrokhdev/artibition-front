@@ -332,8 +332,9 @@ function ArtistsPage(props) {
                                   item?.product && item.product[0]?.product_base_info?.medias[0]?.exact_url
                                 }
                                 width="280"
-                                height="280"
+                                // height="280"
                                 className="img-responsive"
+                                style={{height:280}}
                               />
                             </div>
                             <div className="d-flex collection-secondrow">
@@ -402,7 +403,7 @@ function ArtistsPage(props) {
                             </h6>
                             <button
                               type="button"
-                              className={"pull-dir btn-follow followed" + (item?.likes ? "followed" : "")}
+                              className={"pull-dir btn-follow followed" + (item?.likes ? "" : "followed")}
                               onClick={() =>
                                 follow({
                                   activity: "following",

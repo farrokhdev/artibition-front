@@ -87,9 +87,10 @@ function ArtworksTab({ artistId, translations }) {
                       <img
                         src={item.medias[0]?.exact_url}
                         width="280"
-                        height="280"
+                        // height="280"
                         alt="آرتیبیشن"
                         className="img-responsive"
+                        style={{height:280}}
                       />
 
                       <div className="tab-overly">

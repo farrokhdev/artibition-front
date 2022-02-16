@@ -17,7 +17,7 @@ export function isAccept(value) {
                 title: t("content-panel-orders.filters.to_artibition"),
                 css: "pending-state"
             }
-        case "sent_to_buyer":
+        case "sent-to-buyer":
             return {
                 title: t("content-panel-orders.filters.artibition_to_customer"),
                 css: "accepted"
@@ -32,7 +32,7 @@ export function isAccept(value) {
                 title: t("content-panel-orders.filters.Review"),
                 css: "bluestyle"
             }
-        case "available in arthibition":
+        case "available-in-arthibition":
             return {
                 title: "موجود در آرتیبیشن",
                 css: "accept "
@@ -42,7 +42,7 @@ export function isAccept(value) {
                 title: "پرداخت شده",
                 css: "accept "
             }
-        case "returned by buyer":
+        case "returned-by-buyer":
             return {
                 title: "مرجوعی",
                 css: "pending"
@@ -67,7 +67,7 @@ export function isStatusPurchases(value) {
                 title: "تحویل شده",
                 css: "accept"
             }
-        case "returned by buyer":
+        case "returned-by-buyer":
             return {
                 title: "مرجوعی",
                 css: "pending"
@@ -79,8 +79,8 @@ export function isStatusPurchases(value) {
             }
         case "pending":
             return {
-                title: " در انتظار پاسخ",
-                css: "pending"
+                title: "پرداخت شده",
+                css: "accept"
             }
         default:
             return {
