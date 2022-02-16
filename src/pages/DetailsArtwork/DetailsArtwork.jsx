@@ -41,7 +41,7 @@ import {
   ORDER_BUYER_ME,
   PRODUCT_DETAIL,
 } from "../../utils";
-import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import apiServices from "../../utils/api.services";
 import QueryString from "qs";
 import queryString from "query-string";
@@ -836,12 +836,12 @@ function DetailsArtwork() {
                 <div className="col-xs-4">
                   <div className="d-flex box-dir-reverse justify-custom">
                     {/* <a href="#" className="btn-readmore pull-dir">همه آثار<span className="hidden-xs">هنرمند</span></a> */}
-                    <div className="btn-readmore pull-left ">
+                    <Link to={`/site/artist-profile/?id=${artist_id}`} className="btn-readmore pull-left ">
                       {t("artwork.all_artworks_artist.text1")}
                       <span className="hidden-xs">
                         {t("artwork.all_artworks_artist.text2")}
                       </span>
-                    </div>
+                    </Link>
                   </div>
                 </div>
               </div>

@@ -7,7 +7,7 @@ import apiServices from '../../utils/api.services';
 import QueryString from 'qs';
 import { useTranslation } from 'react-i18next';
 
-function AllArtworks() {
+function AllArtworks({id}) {
 
     const { t, i18n } = useTranslation();
 
@@ -15,6 +15,7 @@ function AllArtworks() {
     const [params, setParams] = useState({
         search: "",
         page: 1,
+        gallery_id: id
         
     })
     const settings = {

@@ -74,8 +74,8 @@ function ProfileArtist() {
     useEffect(() => {
         getArtistProfile()
     }, [params]);
-    console.log("profile", artistProfile)
-    console.log("id", i18n)
+ 
+
     return (
         <>
             <div className="container mx-auto px-0 w-100 bg-white">
@@ -177,7 +177,8 @@ function ProfileArtist() {
                                 <AlbumsTab
                                     // handleShowVeiwAlbumModals={handleShowVeiwAlbumModal}
                                     setVisibleShowAlbums={setVisibleShowAlbums}
-                                    ownerId={artistProfile?.owner?.id}
+                                    // ownerId={artistProfile?.owner?.id}
+                                    ownerId={artistProfile?.id}
                                 />
                             </TabPane>
                             <TabPane tab={t("artist_profile.tabs.biography")} key="3">

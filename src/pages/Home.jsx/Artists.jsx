@@ -49,7 +49,7 @@ function Artists(props) {
             {console.log("artists", artists)}
             {artists?.results?.map((item, index) => (
               <div className="col col-sm-3 my-4">
-                <a href="#" className="artist-latest">
+                <Link to={`/site/artist-profile/?id=${item?.id}`} className="artist-latest">
                   <img
                     src={item.artworks_images[0]?.exact_url}
                     width="528"
@@ -87,7 +87,7 @@ function Artists(props) {
                       </span>
                     </h4>
                   </div>
-                </a>
+                </Link>
               </div>
             ))}
           </div>

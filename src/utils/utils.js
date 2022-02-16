@@ -112,7 +112,26 @@ export function timeToStr(time, format) {
   return "";
 }
 
-export const follow = ({ activity, content, object_id }) => {
+export const follow = ({ activity, content, object_id ,callBack , action }) => {
+  if (action) {
+    apiServices
+      .delete(DELETE_FOLLOW(object_id),"")
+      .then((res) => {
+        if (res.status === 204) {
+          callBack()
+          message.success({
+            content: "اثر با موفقیت حذف شد",
+            style: {
+              marginTop: "110px",
+            },
+          });
+        }
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
+  } else {
+    
   const payload = {
     content_type: content,
     activity_type: activity,
@@ -122,6 +141,7 @@ export const follow = ({ activity, content, object_id }) => {
     .post(GALLERY_FOLLOW, payload)
     .then((res) => {
       if (res.data) {
+        callBack()
         message.success({
           content: "درخواست شما با موفقیت ثبت شد",
           style: {
@@ -133,4 +153,5 @@ export const follow = ({ activity, content, object_id }) => {
     .catch((err) => {
       console.log("err", err);
     });
+  }
 };
