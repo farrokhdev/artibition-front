@@ -86,8 +86,8 @@ function ArtworksTab({ artistId, translations }) {
                     <div className="col-img">
                       <img
                         src={item.medias[0]?.exact_url}
-                        width="936"
-                        height="1212"
+                        width="280"
+                        height="280"
                         alt="آرتیبیشن"
                         className="img-responsive"
                       />

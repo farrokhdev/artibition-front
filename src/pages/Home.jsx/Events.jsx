@@ -78,10 +78,14 @@ export default function Events() {
                                                     item.type
                                                 }
                                             </div>
-                                            <img src={item.gallery?.poster && item.gallery?.poster[0]?.exact_url} width="840"
+                                            {/* <img src={item.gallery?.poster && item.gallery?.poster[0]?.exact_url} width="840"
                                                 height="840"
                                                 alt="آرتیبیشن"
-                                                className="img-responsive events" />
+                                                className="img-responsive events" /> */}
+                                                 <img src={item?.poster && item?.poster[0]?.exact_url} width="280"
+                                                height="270"
+                                                alt="آرتیبیشن"
+                                                className="img-responsive" />
                                         </div>
                                         <div className="col-body">
                                             <div className="finished-tag">{t('promotion-competition.banner.finished')}</div>
