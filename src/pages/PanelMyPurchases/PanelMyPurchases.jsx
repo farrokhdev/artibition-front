@@ -20,7 +20,7 @@ function PanelMyPurchases() {
 
     const [purchase, setPurchase] = react.useState()
     const [params, setParams] = react.useState({
-        paid_status: "paid"
+        paid_status: "orders_paid"
     })
 
     function callback(key) {
@@ -58,11 +58,11 @@ function PanelMyPurchases() {
                                 </div>
                             </div>
                             <div className="default-tab tab-3 tab-interval purchase ">
-                                <Tabs className='dir' defaultActiveKey="paid" onChange={callback}>
-                                    <TabPane className="mx-4" tab={t("content-panel-mypurchases.paid.title")} key="paid">
+                                <Tabs className='dir' defaultActiveKey="orders_paid" onChange={callback}>
+                                    <TabPane className="mx-4" tab={t("content-panel-mypurchases.paid.title")} key="orders_paid">
                                         <Paid purchasesProp={purchase} />
                                     </TabPane>
-                                    <TabPane tab={t("content-panel-mypurchases.delivered.title")} key="delivered">
+                                    <TabPane tab={t("content-panel-mypurchases.delivered.title")} key="orders_received">
                                         <Delivered purchasesProp={purchase} />
                                     </TabPane>
                                     {/* <TabPane tab={t("content-panel-mypurchases.bidding.title")} key="3">

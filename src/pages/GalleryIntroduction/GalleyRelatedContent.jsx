@@ -29,7 +29,7 @@ function GalleyRelatedContent({ galleryExhibition, galleryIntroduction }) {
                 <div className="gallery-img">
                   <div className="tags tags-events">مجازی</div>
                   <img
-                    src={content?.poster?.exact_url}
+                    src={content?.poster[0]?.exact_url}
                     height="840"
                     width="840"
                     alt=""

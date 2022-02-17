@@ -85,7 +85,9 @@ function PanelContentList() {
 
 
     useEffect(() => {
-        setParams({ artist_content__id: artistProfile?.id })
+        if (artistProfile?.id) {
+            setParams({ artist_content__id: artistProfile?.id })
+        }
     }, [artistProfile?.id]);
 
     useEffect(() => {
