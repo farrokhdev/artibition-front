@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
+import { Routes, Route, BrowserRouter, Navigate, useLocation } from 'react-router-dom';
 import { isLogin } from './utils/utils'
 import RouterConfig from './main/router'
 import { useTranslation } from 'react-i18next';
@@ -21,17 +21,33 @@ import GalleryContentPage from './pages/GalleryIntroduction/GalleryContentPage';
 import FAQ from './pages/FAQ/FAQ';
 import DetailsPromotion from './pages/DetailsPromoton/DetailsPromotion';
 import PromotionCompetition from './pages/PromotionCompetition/PromotionCompetition';
+import ReactGA from 'react-ga'
 
-
+ReactGA.initialize('UA-220199370-1')
 
 function App(props) {
     const { t, i18n } = useTranslation();
+    let location = useLocation()
+
     const changeLanguage = (lng) => {
         i18n.changeLanguage(lng);
     };
 
+
+    const pageViewTeacking = () => {
+        const pathname = location.pathname
+        if (pathname.includes("/site/") || pathname === "/") {
+            ReactGA.pageview(location.pathname)
+        }
+    }
+    useEffect(() => {
+        pageViewTeacking()
+    }, [location])
+
+
+
     return (
-        <BrowserRouter>
+        <>
             <Routes>
                 <Route path="/" element={<Home />}>
                     <Route index path="home" element={<Home />} />
@@ -70,7 +86,7 @@ function App(props) {
                     </Route>
                 </Routes>
             }
-        </BrowserRouter>
+        </>
     )
 }
 

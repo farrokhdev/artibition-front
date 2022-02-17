@@ -79,17 +79,17 @@ function GalleryPanelEditGalleryInfo() {
             "translations": {
                 "en": {
                     "title": values?.title_en,
-                    "address": values?.address_en,
-                    "city": Language === "fa-IR" ? null : values?.city,
-                    "country": Language === "fa-IR" ? null : values?.country,
+                    // "address": values?.address_en,
+                    // "city": Language === "fa-IR" ? null : values?.city,
+                    // "country": Language === "fa-IR" ? null : values?.country,
                     "work_hours": values?.work_hours_en,
                     "description": values?.description_en
                 },
                 "fa": {
                     "title": values?.title,
-                    "address": values?.address,
-                    "city": Language === "fa-IR" ? values?.city : null,
-                    "country": Language === "fa-IR" ? values?.country : null,
+                    // "address": values?.address,
+                    // "city": Language === "fa-IR" ? values?.city : null,
+                    // "country": Language === "fa-IR" ? values?.country : null,
                     "work_hours": values?.work_hours,
                     "description": values?.description
                 }
@@ -102,10 +102,13 @@ function GalleryPanelEditGalleryInfo() {
                 "translations": {
                     "en": {
                         "address": values?.address_en,
-
+                        "city": Language === "fa-IR" ? null : values?.city,
+                        "country": Language === "fa-IR" ? null : values?.country,
                     },
                     "fa": {
                         "address": values?.address,
+                        "city": Language === "fa-IR" ? values?.city : null,
+                        "country": Language === "fa-IR" ? values?.country : null,
                     }
                 }
                 , point
