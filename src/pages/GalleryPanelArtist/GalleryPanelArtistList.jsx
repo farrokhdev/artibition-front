@@ -54,7 +54,7 @@ function GalleryPanelArtistList() {
                                 <td data-label={t("gallery-panel-artist.table.image")}><img src={artist?.bg_image?.exact_url} width="1776" height="1776"
                                     alt=""
                                     className="img-responsive center-block" /></td>
-                                <td data-label={t("gallery-panel-artist.table.artist_name")}>{i18next.language === 'fa-IR' ? artist.translations?.fa?.nick_name : artist.translations?.en?.nick_name}</td>
+                                <td data-label={t("gallery-panel-artist.table.artist_name")}>{i18next.language === 'fa-IR' ? `${artist.owner?.translations?.fa?.first_name} ${artist.owner?.translations?.fa?.last_name}` : `${artist.owner?.translations?.en?.first_name} ${artist.owner?.translations?.en?.last_name}`}</td>
                                 <td data-label={t("gallery-panel-artist.table.exhibitions")} className="status">
                                     <a href="#" className="bluestyle">{t("gallery-panel-artist.table.exhibitions_list")}</a>
                                 </td>

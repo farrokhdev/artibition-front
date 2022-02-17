@@ -29,6 +29,7 @@ function Home() {
       style: { marginTop: "110px" }
     })
   }
+  
 
   return (
     <>

@@ -53,18 +53,6 @@ function GalleryPanelUploadExhibitionArtwork() {
 
 
 
-    useEffect(() => {
-        // dispatch(reduxSelectedArtworksFunc(["DSFCDS", "dsfsdfds"]));
-        // console.log("reduxSelectedArtworks", reduxSelectedArtworks);
-    }, [])
-
-
-
-
-
-
-
-
 
 
 
@@ -289,7 +277,7 @@ function GalleryPanelUploadExhibitionArtwork() {
                         // console.log("selectedArtists", selectedArtists)
                     }
                     {selectedArtists.map((artist, artistIndex) => {
-                        // console.log(selectedArtists);
+                        // console.log(artist);
                         return (
                             <div className=" artist-upload-row">
                                 <div className="artist-name-row">
@@ -312,7 +300,7 @@ function GalleryPanelUploadExhibitionArtwork() {
                                     {
                                         // selectedArtworks.map((artwork, artworkIndex) => {
                                         reduxSelectedArtworks.map((artwork, artworkIndex) => {
-                                            // console.log("AAAAAAAAA",selectedArtists);
+                                            // console.log("AAAAAAAAA", artwork);
 
                                             if (artwork.id === artist.id) {
                                                 {
@@ -326,21 +314,21 @@ function GalleryPanelUploadExhibitionArtwork() {
                                                                         <img src="/static/media/hnrpqkfiup@3x.27cdebb9.jpg" width="200" height="200" alt="آرتیبیشن" className="img-responsive" />
                                                                     </div>
                                                                     <div className="col-body text-dir dir">
-                                                                        <h6 className="col-title">
+                                                                        {/* <h6 className="col-title">
                                                                             <span className="col-name">آیدین</span>
                                                                             <span className="col-name">آغداشلو</span>
-                                                                        </h6>
-                                                                        <div className="col-dimension">
+                                                                        </h6> */}
+                                                                        {/* <div className="col-dimension">
                                                                             <span className="col-dimension-title">ابعاد:</span>
                                                                             <span className="col-dimension-body">
                                                                                 <span className="dimension-width">60</span>
                                                                                 <span> در </span>
                                                                                 <span className="dimension-height">60</span>
                                                                             </span>
-                                                                        </div>
+                                                                        </div> */}
                                                                         <div className="col-price">
-                                                                            <span className="col-price-num">22.000.000</span>
-                                                                            <span className="col-price-unit">تومان</span>
+                                                                            <span className="col-price-num">{i18next.language === "fa-IR" ? showArtwork?.reserved_toman_price : showArtwork?.reserved_dollar_price}</span>
+                                                                            <span className="col-price-unit">{t("upload-exhibition-artwork.price")}</span>
                                                                             <span className="edit-price" data-toggle="modal" data-target="modal-edit-price" style={{ cursor: "pointer" }} onClick={() => {
                                                                                 setArtistToChange(artist)
                                                                                 setArtworkToChange(showArtwork)
