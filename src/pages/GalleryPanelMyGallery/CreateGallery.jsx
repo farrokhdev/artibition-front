@@ -34,7 +34,7 @@ function CreateGallery() {
     }
 
     return (
-        <div className="d-flex box-dir-reverse box box-1">
+        <div className="d-flex box-dir-reverse box box-1 dir">
             <div className="text-dir">
                 <h2 className="greencolor">{t("content-panel-dashboard.box_gallery.new_gallery")}</h2>
                 <p>{t("content-panel-dashboard.box_gallery.info_gallery")}</p>
