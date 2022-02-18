@@ -54,7 +54,15 @@ function PanelCreateContent() {
                 apiServices.get(GALLERY_CONTENT_DETAILS(gallery_id, searchParams.get("content_id")), "")
                     .then(res => {
                         if (res.data) {
-                            console.log(res.data);
+                            const value = res.data.data;
+                            form.setFieldsValue({
+                                title_en: value?.translations?.en?.title,
+                                description_en: value?.translations?.en?.description,
+                                title: value?.translations?.fa?.title,
+                                description: value?.translations?.fa?.description,
+                                link: value?.link
+                            })
+                            setImageOrVideo(value.type)
                         }
                     })
                     .catch(err => {
@@ -76,6 +84,7 @@ function PanelCreateContent() {
     }
 
     const onFinish = (values) => {
+        console.log(values);
         let payload = {
             "translations": {
                 "en": {
@@ -87,7 +96,7 @@ function PanelCreateContent() {
                     "description": values?.description
                 }
             },
-            "type": "other",
+            "type": imageOrVideo,
             "is_active": true,
             "link": values?.link,
             "object_id": getUserRole() === "gallery" ? gallery_id : artistId,
@@ -279,7 +288,7 @@ function PanelCreateContent() {
                                     </div>
                                 </div> */}
                                 <div className="col  px-0">
-                                    <Radio.Group onChange={(e) => { setImageOrVideo(e.target.value) }}>
+                                    <Radio.Group onChange={(e) => { setImageOrVideo(e.target.value) }} value={imageOrVideo}>
                                         <Radio value={"video"} style={{ margin: "0 30px" }}>{t("content-panel-create-content.upload_poster.video")}</Radio>
                                         <Radio value={"image"} style={{ margin: "0 30px" }}>{t("content-panel-create-content.upload_poster.image")}</Radio>
                                     </Radio.Group>

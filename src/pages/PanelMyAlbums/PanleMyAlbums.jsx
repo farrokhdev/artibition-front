@@ -18,10 +18,12 @@ import queryString from 'query-string';
 import { useSelector } from 'react-redux';
 import moment from "jalali-moment";
 import CreateGallery from '../GalleryPanelMyGallery/CreateGallery';
+import ModalEditBiography from './ModalEditBiography';
 function PanleMyAlbums() {
 
 
     const [visibleAddGallery, setVisibleAddGallery] = useState(false);
+    const [visibleEditBiography, setVisibleEditBiography] = useState(false);
     const { id } = useSelector((state) => state.authReducer)
     const [aulbum, setAulbum] = useState([]);
     const [artistDetails, setartistDetails] = useState({});
@@ -39,7 +41,7 @@ function PanleMyAlbums() {
         apiServices.get(ARTIST_ALBUMS, queryString.stringify(params))
             .then(res => {
                 setAulbum(res.data.data.results)
-                console.log("resAulbum", res);
+                // console.log("resAulbum", res);
             })
             .catch(err => {
                 console.log(err);
@@ -50,7 +52,7 @@ function PanleMyAlbums() {
     const getArtistDetails = () => {
         apiServices.get(ARTIST_ME, "")
             .then(res => {
-                
+
                 setartistDetails(res.data.data)
             })
             .catch(err => {
@@ -70,13 +72,13 @@ function PanleMyAlbums() {
 
     // If there are params, this service should be called once
     useEffect(() => {
-        if (Object?.keys(params).length){
+        if (Object?.keys(params).length) {
             getMyAulbumCollection();
 
         }
     }, [params]);
 
-    
+
     useEffect(() => {
         if (visibleAddGallery === false && artistDetails?.id) {
             getMyAulbumCollection();
@@ -84,8 +86,6 @@ function PanleMyAlbums() {
     }, [visibleAddGallery]);
 
     useEffect(() => {
-
-
         getArtistDetails();
     }, []);
 
@@ -101,7 +101,7 @@ function PanleMyAlbums() {
                 <div className="custom-container">
 
 
-                    <CreateGallery/>
+                    <CreateGallery />
 
 
                     <div className="row">
@@ -140,7 +140,7 @@ function PanleMyAlbums() {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            { aulbum?.map((myAulbum, key) => {
+                                            {aulbum?.map((myAulbum, key) => {
                                                 return (
 
                                                     <tr>
@@ -172,9 +172,9 @@ function PanleMyAlbums() {
                                     </div>
                                     <div className="col">
                                         <div className="d-flex justify-custom">
-                                            <a href="#">
+                                            <div onClick={() => { setVisibleEditBiography(true) }} style={{ cursor: "pointer" }}>
                                                 <img src={edit_icon} width="32" height="32" />
-                                            </a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -207,6 +207,12 @@ function PanleMyAlbums() {
                     <ModalAddGallery
                         setVisibleAddGallery={setVisibleAddGallery}
                         visibleAddGallery={visibleAddGallery}
+                    />
+                    <ModalEditBiography
+                        setVisibleEditBiography={setVisibleEditBiography}
+                        visibleEditBiography={visibleEditBiography}
+                        callback={getArtistDetails}
+                        data={artistDetails}
                     />
 
 

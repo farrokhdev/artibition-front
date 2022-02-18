@@ -84,6 +84,7 @@ function GalleryPanelUploadExhibitionArtwork() {
                         content: "نمایشگاه با موفقیت ساخته شد",
                         style: { marginTop: "110px" }
                     })
+                    dispatch(reduxSelectedArtworksFunc([]))
                     setTimeout(() => {
                         navigate("/panel/exhibitions")
                     }, 500)
