@@ -68,6 +68,12 @@ export default function AllProducts() {
     getProductList()
   }
 
+  const handleApproved = (e) => {
+    setParams({
+        ...params, category_id: e
+    })
+}
+
   useEffect(() => {
     getProductCategories();
   }, [categorieParams]);
@@ -78,41 +84,7 @@ export default function AllProducts() {
   console.log("product", productList)
 
   return (
-    // <div className="allproducts">
-    //   <div className="row">
-    //     <div className="public-header">
-    //       <div className="col-xs-8 visible-sm visible-xs">
-    //         <h2 className="default-title">آثار</h2>
-    //       </div>
-    //       <a
-    //         href="#"
-    //         className="btn-readmore pull-left"
-    //         onClick={() => navigate("/site/artworks")}
-    //       >
-    //         {t("see-all")}
-    //       </a>
-    //     </div>
-    //     <div className="clearfix"></div>
-    //     <div className="col-sm-12">
-    //       <div className="default-tab tab-1 tab-interval">
-    //         <div className="tab-overflow">
-    //           <ul className="nav nav-tabs alltab-1" id="alltab-1">
-    //             <li className="active">
-    //               <a data-toggle="tab" href="#home">
-    //                 {t("nav-submenu.artworks.artField.all")}
-    //               </a>
-    //             </li>
-    //             {categories?.results?.map((item, index) => (
-    //               <li>
-    //                 <a data-toggle="tab" href="#menu1">
-    //                   {i18n.language === "fa-IR"
-    //                     ? item.translations?.fa?.title
-    //                     : item.translations?.en?.title}{" "}
-    //                 </a>
-    //               </li>
-    //             ))}
-    //           </ul>
-
+ 
 
               <div className="allproducts">
                 <div className="row">
@@ -134,7 +106,7 @@ export default function AllProducts() {
                           </li>
                           {categories?.results?.map((item, index) => (
                             <li>
-                              <a data-toggle="tab" href="#menu1">
+                              <a onClick={()=>handleApproved(item?.id)} data-toggle="tab" >
                                 {i18n.language === "fa-IR"
                                   ? item.translations?.fa?.title
                                   : item.translations?.en?.title}{" "}

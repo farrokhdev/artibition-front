@@ -22,6 +22,13 @@ export const setProfile = (data) => (
     }
 )
 
+export const setOpenModal = (data) => (
+    {
+        type : types.OPEN_MODAL,
+        payload : data
+    }
+)
+
 export const loginSuccess = (data) => (
     {
         type: types.LOGIN_SUCCESS,

@@ -13,11 +13,16 @@ import AllProducts from "./AllProducts";
 import Slider from "./Slider";
 import Menu from "./Menu";
 import { message, Modal } from "antd";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from "react-i18next";
-
+import remove from '../../assets/img/remove.svg'
+import { setOpenModal } from '../../redux/reducers/auth/auth.actions';
+import { Link } from "react-router-dom";
+import { isLogin } from '../../utils/utils'
 
 function Home() {
+  const dispatch = useDispatch();
+  const { is_Open_Modal } = useSelector((state) => state.authReducer)
   const { t, i18n } = useTranslation();
 
   const [showPromotion, setShowPromotion] = useState(false)
@@ -29,10 +34,47 @@ function Home() {
       style: { marginTop: "110px" }
     })
   }
-  
+
+  console.log("is Open Modal", is_Open_Modal);
 
   return (
     <>
+
+      {!!is_Open_Modal ? <div class="notification-signup ">
+        <button type="button" class="remove-noti">
+          <img src={remove} width="19" height="19" alt="" onClick={() => dispatch(setOpenModal(!is_Open_Modal))} />
+        </button>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9">
+              <p>عضویت با موفقیت انجام شد. اگر می‌خواهید به عنوان هنرمند فعالیت نمایید دکمه روبرو را کلیک کنید. برای
+                فعالیت به عنوان گالری‌دار از<a href="#"> اینجا </a>وارد شوید.</p>
+            </div>
+            <div class="col-sm-3">
+              {isLogin() ? (
+                <Link to={"/panel/profile"} 
+                onClick={() => {
+                  message.error({
+                    content: "لطفا ابتدا اطلاعات پروفایل خود را تکمیل کنید", style: {
+                        marginTop: '110px',
+                    },
+                })
+                }} type="button" class="btn-noti" data-toggle="modal" data-target="#verify-artist">فعالیت به عنوان هنرمند</Link>
+
+              ) :
+                <Link to={"/auth/login"}
+                  onClick={() => {
+                    message.error("لطفا ابتدا وارد حساب کاربری شوید");
+                  }}
+                  type="button" class="btn-noti" data-toggle="modal" data-target="#verify-artist">فعالیت به عنوان هنرمند</Link>
+
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+        : ""
+      }
       <div className="container mx-auto px-0 w-100">
         <Header />
         <Menu />
