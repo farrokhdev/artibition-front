@@ -53,6 +53,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { UPDATE_CART } from "../../redux/reducers/cart/cart.types";
 import { numDiscriminant } from "../../utils/discriminant";
+import { DEFAULT_URL_IMAGE } from "../../utils/defaultImage";
 function DetailsArtwork() {
   let navigate = useNavigate();
 
@@ -322,9 +323,8 @@ function DetailsArtwork() {
                 <div className="d-flex box-dir-reverse ">
                   <div className="col-xs-3">
                     <div className="artist-avatar">
-                      {console.log("productDetail" , productDetail)}
                       <img
-                        src={artist4}
+                        src={productDetail?.artist_image?.exact_url ? productDetail?.artist_image?.exact_url : DEFAULT_URL_IMAGE}
                         width="408"
                         height="408"
                         alt=""
@@ -492,16 +492,18 @@ function DetailsArtwork() {
                     </div>
                   </div>
                 </div>
-                {console.log("value", editionValue)}
+                {console.log("valueeee", editionValue)}
                 <div className="artwork-seller text-dir">
                   <div className="d-flex box-dir-reverse">
                     <img src={alert_icon} width="20" height="20" alt="" />
                     <span className="orangecolor">
                       {i18n.language === "fa_IR"
+
+
                         ? momentJalaali(productDetail?.creation_date)
                           .locale("fa")
                           .fromNow()
-                        : moment(productDetail?.creation_date).fromNow()}{" "}
+                        : moment(productDetail?.creation_date).locale("fa").fromNow()}{" "}
                       این اثر قیمت گذاری شده است
                     </span>
                   </div>
@@ -513,8 +515,8 @@ function DetailsArtwork() {
                       <div className="d-flex justify-content-center artwork-price">
                         <span className="artwork-pricenum persian-num">
                           {i18n.language === "fa-IR"
-                            ? numDiscriminant(editionValue?.toman_price)
-                            : numDiscriminant(editionValue?.dollar_price)}
+                             ? numDiscriminant(Math.floor(editionValue?.toman_price))
+                             : numDiscriminant(Math.floor(editionValue?.dollar_price))} 
                         </span>
                         <span>{t("toman")}</span>
                       </div>
@@ -536,8 +538,8 @@ function DetailsArtwork() {
                       <div className="d-flex justify-content-center artwork-price">
                         <span className="artwork-pricenum persian-num">
                           {i18n.language === "fa-IR"
-                            ? numDiscriminant(editionValue?.toman_price)
-                            : numDiscriminant(editionValue?.dollar_price)}
+                            ? numDiscriminant(Math.floor(editionValue?.toman_price))
+                            : numDiscriminant(Math.floor(editionValue?.dollar_price))}
                         </span>
                         <span>{t("toman")}</span>
                       </div>
@@ -573,7 +575,7 @@ function DetailsArtwork() {
                                 " "}
                             </strong>
                             {t("artwork.bid_artwork.text2")}
-                            {/* {t("toman")}   */}
+                            
                           </p>
                         </div>
                         <div className="col-2 px-0">
@@ -1625,6 +1627,7 @@ function DetailsArtwork() {
           artistProduct={artistProduct}
           productDetail={productDetail}
           artist_id={artist_id}
+          getProductDetail={getProductDetail}
         />
         <ModalSendMessage
           visibleShowSendMessage={showSendMessage}

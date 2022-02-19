@@ -112,6 +112,13 @@ function Login(props) {
           }
         });
         getProfile().then((res) => {
+          // props.auth.profile?.is_approved &&
+          //   message.error({
+          //     content: 'لطفا اطلاعات پروفایل خود را تکمیل کنید', style: {
+          //         marginTop: '220px',
+          //     },
+          // })
+          
           message.success("به آرتیبیشن خوش آمدید");
           console.log(userRole);
           if (userRole !== "user") {
@@ -191,37 +198,6 @@ function Login(props) {
                   {t("login-btn-text")}
                 </button>
               </Form>
-
-              {/* <button type="button" className="btn btn-google">
-                <img
-                  src={google_icon}
-                  width="26"
-                  height="26"
-                  alt="ثبت نام در آرتیبیشن"
-                  className=""
-                />
-                <span>{t("google-login-text-button")}</span>
-              </button> */}
-
-
-
-              {/* <GoogleLogin
-                clientId="764080299273-at3j8asddt5gdhpgpef7q4j9vbrsp67n.apps.googleusercontent.com"
-                buttonText="Google Login"
-                onSuccess={handleGoogleLogin}
-                onFailure={handleGoogleFailure}
-                render={renderProps => (
-                  <button type="button" className="btn btn-google" onClick={renderProps.onClick}>
-                    <img
-                      src={google_icon}
-                      width="26"
-                      height="26"
-                      alt="ثبت نام در آرتیبیشن"
-                      className=""
-                    />
-                    <span>{t("google-login-text-button")}</span>
-                  </button>
-                )} /> */}
 
               <GoogleLoginButton />
               <p className="login-term1">

@@ -11,6 +11,7 @@ const initial_state = {
     roles: null,
     editingLocation:{},
     showEditProfileVisible:false,
+    is_Open_Modal: false,
 }
 
 const authReducer = (state = initial_state, { type, payload }) => {
@@ -28,6 +29,12 @@ const authReducer = (state = initial_state, { type, payload }) => {
             return{
                 ...state,
                 showEditProfileVisible : payload,
+            }
+
+        case types.OPEN_MODAL :
+            console.log("open Modal" , payload)
+            return {
+                ...state , is_Open_Modal : payload
             }
 
         case types.SET_PHONENUMBER:

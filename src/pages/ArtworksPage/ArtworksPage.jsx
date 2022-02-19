@@ -33,7 +33,7 @@ import {
   PRODUCTS_TECHNIQUES,
 } from "../../utils";
 import apiServices from "../../utils/api.services";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { follow } from "../../utils/utils";
 import { connect } from "react-redux";
 import {
@@ -43,6 +43,8 @@ import {
 
 function ArtworksPage(props) {
   let location = useLocation();
+
+  let [searchParams, setSearchParams] = useSearchParams();
 
   let navigate = useNavigate();
   const { t, i18n } = useTranslation();
@@ -183,6 +185,22 @@ function ArtworksPage(props) {
         console.log("err", err);
       });
   };
+
+  useEffect(() => {
+    // console.log("searchParams" , searchParams.get('category_id'));
+    if (searchParams.get('category_id')) {
+      // getProductList()
+      setParams({
+        ...params, category_id: searchParams.get('category_id')
+      })
+    } else {
+      setParams({
+        ...params, category_id: ""
+      })
+    }
+  }, [searchParams]);
+
+
   const getProductCategories = () => {
     apiServices
       .get(PRODUCTS_CATEGORIES, queryString.stringify(categorieParams))
@@ -242,7 +260,7 @@ function ArtworksPage(props) {
 
   const getProductSizes = () => {
     apiServices
-      .get(PRODUCTS_SIZES)
+      .get(PRODUCTS_SIZES, "")
       .then((res) => {
         if (res.data) {
           setSizes(res.data.data);
@@ -257,6 +275,9 @@ function ArtworksPage(props) {
   // const filter = () => {
   //   setParams(state => ({ ...state, category_id: categoriesIdTotal, technique_id: techniquesIdTotal, material_id: materialsIdTotal,size_id: sizesIdTotal }))
   // }
+  // useEffect(() => {
+
+  // }, []);
   useEffect(() => {
     getProductList();
     getProductCategories();
@@ -324,7 +345,7 @@ function ArtworksPage(props) {
                     </span>
                     <button
                       className="btn clear-tag mx-3"
-                      // onClick={() => props.clearFilterStorage()}
+                    // onClick={() => props.clearFilterStorage()}
                     >
                       <div className="d-flex box-dir-reverse align-items-center">
                         <img
@@ -501,7 +522,7 @@ function ArtworksPage(props) {
                                 props?.filters?.filters_reducer
                                   ?.toman_price_range_min
                                   ? props?.filters?.filters_reducer
-                                      ?.toman_price_range_min
+                                    ?.toman_price_range_min
                                   : "0"
                               }
                               onChange={(e) =>
@@ -522,7 +543,7 @@ function ArtworksPage(props) {
                                 props?.filters?.filters_reducer
                                   ?.toman_price_range_max
                                   ? props?.filters?.filters_reducer
-                                      ?.toman_price_range_max
+                                    ?.toman_price_range_max
                                   : "0"
                               }
                               onChange={(e) =>
@@ -994,7 +1015,7 @@ function ArtworksPage(props) {
                                         content: "product",
                                         activity: "like",
                                         object_id: product?.id,
-                                        action : product?.likes,
+                                        action: product?.likes,
                                         callBack
                                       })
                                     }
@@ -1041,7 +1062,7 @@ function ArtworksPage(props) {
                                     <span className="col-price-unit">
                                       {t("toman")}
                                     </span>
-                                    <span className="tag-gift  w-100">
+                                    {/* <span className="tag-gift  w-100">
                                       <div className="d-flex text-dir position-gift-card-artwork">
                                         <img
                                           className=""
@@ -1051,7 +1072,7 @@ function ArtworksPage(props) {
                                           alt=""
                                         />
                                       </div>
-                                    </span>
+                                    </span> */}
                                   </div>
                                 </div>
                               </div>
