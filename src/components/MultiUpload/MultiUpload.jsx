@@ -59,7 +59,7 @@ function MultipleUpload({ uploadList, setUploadList, defaultName }) {
             className="ml-1  mt-2"
             type="radio"
           />
-          <span className="pb-2 mx-2">{defaultName, "عکس کاور"}</span>
+          <span className="pb-2 mx-2">{defaultName ? defaultName : "عکس کاور"}</span>
         </div>,
       ];
     },

@@ -16,7 +16,7 @@ import artwork10 from '../../assets/img/artworks/hnrpqkfiup@3x.jpg'
 import edit_name from '../../assets/img/edit_name.svg'
 import change_icon from '../../assets/img/change.png'
 import apiServices from "../../utils/api.services";
-import { ARTIST_BY_GALLERY, EXHIBITION, EXHIBITION_PRODUCT, GALLERY_ARTISTS } from "../../utils";
+import { ARTIST_BY_GALLERY, EXHIBITION, EXHIBITION_INFO, EXHIBITION_PRODUCT, GALLERY_ARTISTS } from "../../utils";
 import { Form, Input, message, Modal, Button, Spin } from "antd";
 import { GetLanguage } from "../../utils/utils";
 import MultipleUpload from "../../components/MultiUpload/MultiUpload";
@@ -69,33 +69,62 @@ function GalleryPanelUploadExhibitionArtwork() {
 
     const sendData = () => {
         let temp = []
-        // selectedArtworks.map((item, index) => {
-        //     temp.push(...item.selected)
-        // })
         reduxSelectedArtworks.map((item, index) => {
             temp.push(...item.selected)
         })
         lastform["product"] = temp
-        apiServices.post(EXHIBITION(gallery_id), lastform)
-            .then(res => {
-                if (res.data) {
-                    // console.log(res.data.data);
-                    message.success({
-                        content: "نمایشگاه با موفقیت ساخته شد",
-                        style: { marginTop: "110px" }
-                    })
-                    dispatch(reduxSelectedArtworksFunc([]))
-                    setTimeout(() => {
-                        navigate("/panel/exhibitions")
-                    }, 500)
-                }
-                else {
-                    message.error(res.response.data.message)
-                }
-            })
-            .catch(err => {
-                console.log(err);
-            })
+        console.log(editExhibitionMode);
+        console.log(gallery_id);
+
+        if (editExhibitionMode && gallery_id) {
+            apiServices.patch(EXHIBITION_INFO(gallery_id, exhibitionId), lastform)
+                .then(res => {
+                    if (res.data) {
+                        message.success({
+                            content: "نمایشگاه با موفقیت ویرایش شد",
+                            style: { marginTop: "110px" }
+                        })
+                        dispatch(reduxSelectedArtworksFunc([]))
+                        dispatch(exhibitionForm({}))
+                        setTimeout(() => {
+                            navigate("/panel/exhibitions")
+                        }, 500)
+                    }
+                    else {
+                        console.log(res);
+                        // message.error({
+                        //     content: res.message,
+                        //     style: { marginTop: "110px" }
+                        // })
+                    }
+                })
+        }
+        else {
+            apiServices.post(EXHIBITION(gallery_id), lastform)
+                .then(res => {
+                    if (res.data) {
+
+                        message.success({
+                            content: "نمایشگاه با موفقیت ساخته شد",
+                            style: { marginTop: "110px" }
+                        })
+                        dispatch(reduxSelectedArtworksFunc([]))
+                        dispatch(exhibitionForm({}))
+                        setTimeout(() => {
+                            navigate("/panel/exhibitions")
+                        }, 500)
+                    }
+                    else {
+                        message.error({
+                            content: res.response.data.message,
+                            style: { marginTop: "110px" }
+                        })
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        }
     }
 
 

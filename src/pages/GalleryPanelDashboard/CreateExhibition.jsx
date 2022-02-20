@@ -4,7 +4,7 @@ import { t } from 'i18next';
 import whitePlus from "../../assets/img/plus-white.png"
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { editExhibitionModeFunc, exhibitionId } from "../../redux/reducers/Exhibition/exhibition.action";
+import { editExhibitionModeFunc, exhibitionId, reduxSelectedArtworksFunc } from "../../redux/reducers/Exhibition/exhibition.action";
 
 
 function CreateExhibition() {
@@ -15,6 +15,7 @@ function CreateExhibition() {
 
     const handleGoToExhibition = () => {
         dispatch(editExhibitionModeFunc(false))
+        dispatch(reduxSelectedArtworksFunc([]))
         dispatch(exhibitionId(null))
         navigate("/panel/create-exhibition")
     }

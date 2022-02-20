@@ -18,6 +18,7 @@ function GoogleLoginButton() {
     let userRole = "user";
 
     const handleGoogleLogin = (result) => {
+        // console.log(result);
         axios.post(`${BASE_URL}/account/google-login/`, { "token": result.tokenId })
             .then(res => {
                 if (res.data) {
@@ -27,7 +28,6 @@ function GoogleLoginButton() {
                     })
                     getProfile().then((res) => {
                         message.success("به آرتیبیشن خوش آمدید");
-                        console.log(userRole);
                         if (userRole !== "user") {
                             setTimeout(() => {
                                 window.location.href = "/panel/dashboard";
@@ -80,8 +80,10 @@ function GoogleLoginButton() {
 
     return (
         <GoogleLogin
-            clientId="764080299273-at3j8asddt5gdhpgpef7q4j9vbrsp67n.apps.googleusercontent.com"
+            // clientId="202027304973-72kvch2949e95ue1ecp7hmh2buh8mg62.apps.googleusercontent.com"
+            clientId="571325083241-4hdsarr7dlo2ppsoa77ppqs952m8ige6.apps.googleusercontent.com"
             buttonText="Google Login"
+            // GOOGLE_CLIENT_SECRET="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",
             onSuccess={handleGoogleLogin}
             onFailure={handleGoogleFailure}
             render={renderProps => (
