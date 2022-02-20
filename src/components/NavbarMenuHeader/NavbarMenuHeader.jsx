@@ -161,8 +161,10 @@ export default function NavbarMenuHeader(props) {
                         {t("category")}
                       </a>
                     </li>
-                    <li onClick={() => navigate("/site/all-galleris-list")}>
-                      <a data-toggle="tab" href="#nav12">
+                    <li
+                      onClick={() => navigate("/site/all-galleris-list")}
+                    >
+                      <a data-toggle="tab" >
                         {t("galleries")}
                       </a>
                     </li>

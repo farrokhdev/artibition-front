@@ -112,6 +112,13 @@ function Login(props) {
           }
         });
         getProfile().then((res) => {
+          // props.auth.profile?.is_approved &&
+          //   message.error({
+          //     content: 'لطفا اطلاعات پروفایل خود را تکمیل کنید', style: {
+          //         marginTop: '220px',
+          //     },
+          // })
+          
           message.success("به آرتیبیشن خوش آمدید");
           console.log(userRole);
           if (userRole !== "user") {
