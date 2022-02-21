@@ -40,6 +40,8 @@ import {
   clearFilterStorage,
   setFilters,
 } from "../../redux/reducers/Filters/filters.action";
+import { numDiscriminant } from "../../utils/discriminant";
+
 
 function ArtworksPage(props) {
   let location = useLocation();
@@ -186,6 +188,7 @@ function ArtworksPage(props) {
       });
   };
 
+
   useEffect(() => {
     // console.log("searchParams" , searchParams.get('category_id'));
     if (searchParams.get('category_id')) {
@@ -238,6 +241,13 @@ function ArtworksPage(props) {
     getProductList()
   }
 
+  const discountPrice = (price, discount, type) => {
+    if (type === "percentage") {
+      return numDiscriminant((100 - discount) * price / 100)
+    } else {
+      return numDiscriminant(price - discount)
+    }
+  }
   const getProductMaterials = () => {
     apiServices
       .get(
@@ -975,6 +985,10 @@ function ArtworksPage(props) {
                           <div className="col-sm-4 ">
                             <div className="cols ">
                               <div className="col-img">
+                                {/* <div class="tags tags-spacial">ویژه</div> */}
+                                {product?.discount ?
+                                  <div class="tags tags-off persian-num"> {numDiscriminant(product?.discount?.value)}{product?.discount?.type === "percentage" ? "%" : t("toman")} </div>
+                                  : ""}
                                 <img
                                   src={
                                     product.medias &&
@@ -1023,6 +1037,13 @@ function ArtworksPage(props) {
                                 </div>
                               </div>
                               <div className="col-body ">
+
+
+
+                                {product?.is_sold ?
+                                  <div class="finished-tag">فروخته شد</div>
+                                  : ""
+                                }
                                 <h6 className="col-title text-dir">
                                   {i18n.language === "fa-IR" ? (
                                     <span className="col-name">
@@ -1057,11 +1078,16 @@ function ArtworksPage(props) {
                                 <div className="col-price text-dir">
                                   <div className="d-flex box-dir-reverse">
                                     <span className="col-price-num">
-                                      {product.toman_price}
+                                      {product?.discount ? discountPrice(product.toman_price, product?.discount?.value, product?.discount?.type) : ""} {product?.discount ? t("toman") : ""}
                                     </span>
-                                    <span className="col-price-unit">
+                                    {/* <span className="col-price-unit">
                                       {t("toman")}
+                                    </span> */}
+                                    <span className={`persian-num ${product?.discount ? "col-price-off" : ""}`}>
+                                      {numDiscriminant(product.toman_price)} {product?.toman_price ? t("toman") : ""}
                                     </span>
+
+
                                     {/* <span className="tag-gift  w-100">
                                       <div className="d-flex text-dir position-gift-card-artwork">
                                         <img

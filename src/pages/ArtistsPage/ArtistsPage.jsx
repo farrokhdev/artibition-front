@@ -24,11 +24,13 @@ import queryString from "query-string";
 import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
 import { setProfile } from "../../redux/reducers/auth/auth.actions";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { follow } from "../../utils/utils";
 
 function ArtistsPage(props) {
+
   const { t, i18n } = useTranslation();
+  let [searchParams, setSearchParams] = useSearchParams();
 
   const [search, setSearch] = useState();
   const [artistList, setArtistList] = useState();
@@ -36,14 +38,12 @@ function ArtistsPage(props) {
   const [artistIsOfficial, setArtistIsOfficial] = useState({
     is_official: false,
   });
-  console.log(
-    "🚀 ~ file: ArtistsPage.jsx ~ line 37 ~ ArtistsPage ~ artistIsOfficial",
-    artistIsOfficial
-  );
+
   const [params, setParams] = useState({
     status: "active",
     page: 1,
   });
+
   //filters state
   const [categories, setCategories] = useState();
   const [categoriesId, setCategoriesId] = useState([]);
@@ -95,9 +95,22 @@ function ArtistsPage(props) {
       });
   };
 
-  const callBack = ()=>{
+  const callBack = () => {
     getArtistList()
   }
+
+  useEffect(() => {
+    if (searchParams.get('artist_type_id')) {
+      setParams({
+        ...params, artist_type_id: searchParams.get('artist_type_id')
+      })
+    } else {
+      setParams({
+        ...params, artist_type_id: ""
+      })
+    }
+  }, [searchParams]);
+
 
   useEffect(() => {
     getArtistList();
@@ -282,12 +295,12 @@ function ArtistsPage(props) {
                               type="checkbox"
                               // value={false}
                               name="is_official"
-                              // onClick={(e) => {
-                              //   setArtistIsOfficial({
-                              //     ...categoriesId,
-                              //     [e.target.name]: e.target.checked,
-                              //   });
-                              // }}
+                            // onClick={(e) => {
+                            //   setArtistIsOfficial({
+                            //     ...categoriesId,
+                            //     [e.target.name]: e.target.checked,
+                            //   });
+                            // }}
                             />
                             <span>{t("artists.filter.artist.special")}</span>
                             <span className="checkmark"></span>
@@ -332,9 +345,8 @@ function ArtistsPage(props) {
                                   item?.product && item.product[0]?.product_base_info?.medias[0]?.exact_url
                                 }
                                 width="280"
-                                // height="280"
-                                className="img-responsive"
-                                style={{height:280}}
+                                className="img-responsive clolection-image1"
+
                               />
                             </div>
                             <div className="d-flex collection-secondrow">
@@ -348,6 +360,7 @@ function ArtistsPage(props) {
                                   width="280"
                                   height="280"
                                   className="img-responsive"
+                                  style={{ height: 120 }}
                                 />
                               </div>
                               <div className="col-6  pad-r2 px-0">
@@ -359,6 +372,8 @@ function ArtistsPage(props) {
                                   width="280"
                                   height="280"
                                   className="img-responsive"
+                                  style={{ height: 120 }}
+
                                 />
                               </div>
                             </div>
@@ -409,12 +424,12 @@ function ArtistsPage(props) {
                                   activity: "following",
                                   content: "artist",
                                   object_id: item?.id,
-                                  action : item?.likes,
+                                  action: item?.likes,
                                   callBack
                                 })
                               }
                             >
-                              {t("artwork.follow")}
+                              {item?.likes ? t("artwork.following") : t("artwork.follow")}
                             </button>
                           </div>
                         </a>

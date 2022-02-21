@@ -9,6 +9,7 @@ import artwork1 from "../../assets/img/artworks/artwork-1.jpg";
 import live_veiw_icon from "../../assets/img/artworks/live_view.svg";
 import share_icon from "../../assets/img/share.svg";
 import like_selected_icon from "../../assets/img/liked_selected.svg";
+import liked_icon from "../../assets/img/Liked.svg";
 import artist4 from "../../assets/img/artist-4.jpg";
 import circle_plus from "../../assets/img/circle-plus-1.png";
 import ask_me_icon from "../../assets/img/ask_me.svg";
@@ -131,6 +132,10 @@ function DetailsArtwork() {
         console.log("err", err);
       });
   };
+
+  const callBack = () => {
+    getProductDetail()
+  }
   const getArtistProduct = () => {
     apiServices
       .get(ARTIST_PRODUCTS, QueryString.stringify(artistParams))
@@ -297,6 +302,7 @@ function DetailsArtwork() {
                     }}>
                       <img src={share_icon} height="31" width="31" alt="" />
                     </button>
+                    {console.log("productDetail?.likes", productDetail)}
                     <div
                       className="like-option"
                       onClick={() =>
@@ -304,15 +310,26 @@ function DetailsArtwork() {
                           content: "product",
                           activity: "like",
                           object_id: productDetail?.id,
+                          action: productDetail?.likes,
+                          callBack
                         })
                       }
                     >
-                      <img
-                        src={like_selected_icon}
-                        height="31"
-                        width="31"
-                        alt=""
-                      />
+                      {productDetail?.likes ?
+                        <img
+                          src={liked_icon}
+                          height="31"
+                          width="31"
+                          alt=""
+                        />
+                        :
+                        <img
+                          src={like_selected_icon}
+                          height="31"
+                          width="31"
+                          alt=""
+                        />
+                      }
                     </div>
                   </div>
                 </div>
@@ -453,39 +470,49 @@ function DetailsArtwork() {
                         </h3>
                       </div>
                       <div className="d-flex box-dir-reverse row-listdetail">
-                        <span className="col-xs-4 detail-title text-dir">
-                          {t("artwork.count.title")}
-                        </span>
+                        {productDetail?.items[0]?.edition_number ?
+                          <span className="col-xs-4 detail-title text-dir">
+                            {t("artwork.count.title")}
+                          </span>
+                          : ""}
                         <div className="col-xs-8 text-dir">
                           <div className="d-flex box-dir-reverse">
-                            <h3 className="detail-name ">
-                              <span claclassNamess="persian-num">
-                                {productDetail?.items?.length}
-                              </span>
-                              <span>{t("artwork.count.number")}</span>
-                            </h3>
-                            <select
-                              className="form-control num-select text-dir"
-                              id="sel1"
-                              onChange={(event) =>
-                                setEditionValue(event.target.value)
-                              }
-                            >
-                              {productDetail?.items?.map((item, index) => (
-                                <option
-                                  key={index}
-                                  value={item}
-                                  selected={index === 0 ? "selected" : null}
-                                >
-                                  {i18n.language === "fa-IR"
-                                    ? ` ادیشن ${item.edition_number}`
-                                    : ` eddition number ${item.edition_number}`}
-                                </option>
-                              ))}
+                            {productDetail?.items[0]?.edition_number ?
+                              <h3 className="detail-name ">
+                                <span claclassNamess="persian-num">
+                                  {productDetail?.items?.length}
+                                </span>
+                                <span>{t("artwork.count.number")}</span>
+                              </h3>
+                              : ""
+                            }
 
-                              {/* <option value="2">ادیشن 2</option>
-                                                            <option value="3">ادیشن 3</option> */}
-                            </select>
+                            {productDetail?.items[0]?.edition_number ?
+                              <select
+                                className="form-control num-select text-dir"
+                                id="sel1"
+                                onChange={(event) =>
+                                  setEditionValue(event.target.value)
+                                }
+                              >
+                                {productDetail?.items?.map((item, index) => (
+
+                                  item.edition_number ?
+                                    <option
+                                      key={index}
+                                      value={item}
+                                      selected={index === 0 ? "selected" : null}
+                                    >
+                                      {i18n.language === "fa-IR"
+                                        ? ` ادیشن ${item.edition_number}`
+                                        : ` eddition number ${item.edition_number}`}
+                                    </option>
+                                    : ""
+                                ))}
+                              </select>
+                              : ""}
+
+
                           </div>
                         </div>
                       </div>
@@ -515,8 +542,8 @@ function DetailsArtwork() {
                       <div className="d-flex justify-content-center artwork-price">
                         <span className="artwork-pricenum persian-num">
                           {i18n.language === "fa-IR"
-                             ? numDiscriminant(Math.floor(editionValue?.toman_price))
-                             : numDiscriminant(Math.floor(editionValue?.dollar_price))} 
+                            ? numDiscriminant(Math.floor(editionValue?.toman_price))
+                            : numDiscriminant(Math.floor(editionValue?.dollar_price))}
                         </span>
                         <span>{t("toman")}</span>
                       </div>
@@ -575,7 +602,7 @@ function DetailsArtwork() {
                                 " "}
                             </strong>
                             {t("artwork.bid_artwork.text2")}
-                            
+
                           </p>
                         </div>
                         <div className="col-2 px-0">

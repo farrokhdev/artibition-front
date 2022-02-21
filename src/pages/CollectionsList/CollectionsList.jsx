@@ -91,7 +91,7 @@ function CollectionsList() {
                     </div>
                     <div className="content-body">
                         {artistCategory?.results?.map((item) => 
-                            <Collection collectionItem={item}/>
+                            <Collection collectionItem={item} getArtistCategory={getArtistCategory}/>
                         )}
                         {/* <Collection/>
                         <Collection/> */}
