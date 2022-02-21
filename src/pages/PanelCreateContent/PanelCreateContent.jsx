@@ -60,7 +60,7 @@ function PanelCreateContent() {
                                 description_en: value?.translations?.en?.description,
                                 title: value?.translations?.fa?.title,
                                 description: value?.translations?.fa?.description,
-                                link: value?.link
+                                link: value?.content_video_url
                             })
                             setImageOrVideo(value.type)
                         }
@@ -98,7 +98,7 @@ function PanelCreateContent() {
             },
             "type": imageOrVideo,
             "is_active": true,
-            "link": values?.link,
+            "content_video_url": values?.link,
             "object_id": getUserRole() === "gallery" ? gallery_id : artistId,
             "content_type": getUserRole() === "gallery" ? "gallery" : "artist",
             "content_file": uploadList,

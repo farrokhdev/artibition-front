@@ -9202,7 +9202,13 @@ iframe {
     z-index: 200000 ;
 }
 
+
+.ant-upload-list-picture-card .ant-upload-list-item:hover .ant-upload-list-item-info {
+    background: rgba(0,0,0,0.3) !important;
+}
+
 .go2072408551 {
     max-width: none;
     padding: 0px;
 }
+

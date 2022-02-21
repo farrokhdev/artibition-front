@@ -80,10 +80,6 @@ class APIService {
                 return err
             })
     }
-
-
-    
-
 }
 
 export default new APIService();

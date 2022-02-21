@@ -73,9 +73,9 @@ function HeaderPanel(props) {
         </div>
       </div>
       <div className="col col-lg-8  px-0">
-        <div className="d-none d-lg-flex box-dir-reverse justify-content-center ">
+        {/* <div className="d-none d-lg-flex box-dir-reverse justify-content-center ">
           <NavbarMenuHeader t={t} />
-        </div>
+        </div> */}
       </div>
       <div className="col col-lg-2  px-0">
         <div className="d-flex box-dir-reverse ">

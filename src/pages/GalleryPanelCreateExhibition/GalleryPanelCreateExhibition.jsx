@@ -19,6 +19,7 @@ import { useNavigate } from "react-router-dom";
 import DatePicker, { Calendar } from 'react-datepicker2';
 import moment from 'jalali-moment'
 import queryString from 'query-string';
+import ExhibitionUploadPoster from '../../components/ExhibitionUploadPoster/ExhibitionUploadPoster';
 
 const { Option } = Select;
 const { TextArea } = Input;
@@ -32,6 +33,7 @@ function GalleryPanelCreateExhibition() {
     const [artistsOption, setArtistOption] = useState([])
     const [posters, setPosters] = useState([])
     const [categories, setCategories] = useState([])
+    const [categoryDefaultValue, setCategoryDefaultValue] = useState([])
     const [params, setParams] = useState({
         page_size: 9999999
     })
@@ -70,10 +72,39 @@ function GalleryPanelCreateExhibition() {
                         "type": form.type,
                         "category": form.category,
                         "product_status": "sale",
-                        "virtual_start_date": form.virtual_start_date ? `${form.virtual_start_date?.format("YYYY-MM-DD")}${form.virtual_start_time?.toISOString().slice(10)}` : null,
-                        "virtual_end_date": form.virtual_end_date ? `${form.virtual_end_date?.format("YYYY-MM-DD")}${form.virtual_end_time?.toISOString().slice(10)}` : null,
-                        "real_start_date": form.real_start_date ? `${form.real_start_date?.format("YYYY-MM-DD")}${form.real_start_time?.toISOString().slice(10)}` : null,
-                        "real_end_date": form.real_start_date ? `${form.real_end_date?.format("YYYY-MM-DD")}${form.real_end_time?.toISOString().slice(10)}` : null,
+                        // "virtual_start_date": form.virtual_start_date ? `${form.virtual_start_date?.format("YYYY-MM-DD")}${form.virtual_start_time?.toISOString().slice(10)}` : null,
+                        // "virtual_end_date": form.virtual_end_date ? `${form.virtual_end_date?.format("YYYY-MM-DD")}${form.virtual_end_time?.toISOString().slice(10)}` : null,
+                        // "real_start_date": form.real_start_date ? `${form.real_start_date?.format("YYYY-MM-DD")}${form.real_start_time?.toISOString().slice(10)}` : null,
+                        // "real_end_date": form.real_end_date ? `${form.real_end_date?.format("YYYY-MM-DD")}${form.real_end_time?.toISOString().slice(10)}` : null,
+                        "virtual_start_date": form.virtual_start_date ? form.virtual_start_date?.set({
+                            hour: form.virtual_start_time?.get('hour'),
+                            minute: form.virtual_start_time?.get('minute'),
+                            second: 0,
+                            millisecond: 0,
+                        }).toISOString() : null,
+
+                        "virtual_end_date": form.virtual_end_date ? form.virtual_end_date?.set({
+                            hour: form.virtual_end_time?.get('hour'),
+                            minute: form.virtual_end_time?.get('minute'),
+                            second: 0,
+                            millisecond: 0,
+                        }).toISOString() : null,
+
+                        "real_start_date": form.real_start_date ? form.real_start_date?.set({
+                            hour: form.real_start_time?.get('hour'),
+                            minute: form.real_start_time?.get('minute'),
+                            second: 0,
+                            millisecond: 0,
+                        }).toISOString() : null,
+
+                        "real_end_date": form.real_end_date ? form.real_end_date?.set({
+                            hour: form.real_end_time?.get('hour'),
+                            minute: form.real_end_time?.get('minute'),
+                            second: 0,
+                            millisecond: 0,
+                        }).toISOString() : null,
+
+
                         "address": [
                             {
                                 // "point": point?.latitude ? point : null,
@@ -111,18 +142,23 @@ function GalleryPanelCreateExhibition() {
                     dispatch(exhibitionForm(payload))
                     navigate("/panel/upload-exhibition-artwotk")
                 } else {
+                    console.log("HERE 1");
                     message.error({
                         content: "حداقل باید یک رشته هنری انتخاب کنید",
                         style: { marginTop: "110px" }
                     })
                 }
             } else {
+                console.log("HERE 2");
+
                 message.error({
                     content: "لطفا نوع نمایشگاه خود را انتخاب کنید",
                     style: { marginTop: "110px" }
                 })
             }
         } else {
+            console.log("HERE 3");
+
             message.error({
                 content: "لطفا پوستر نمایشگاه خود را آپلود کنید",
                 style: { marginTop: "110px" }
@@ -188,6 +224,11 @@ function GalleryPanelCreateExhibition() {
                     if (res.data) {
                         const value = res.data.data
                         setPoint(value.address?.find(e => e.is_default === true)?.point)
+                        setExhibitionType(value.type)
+                        const tempCategory = []
+                        value.category.map((item) => {
+                            tempCategory.push(item?.id)
+                        })
                         form.setFieldsValue({
                             exhibition_name_fa: value.translations?.fa?.name,
                             exhibition_name_en: value.translations?.en?.name,
@@ -208,7 +249,7 @@ function GalleryPanelCreateExhibition() {
                             address_en: value.address?.find(e => e.is_default === true)?.translations?.en?.address,
                             phone: value.phone,
                             artists: value.artist,
-                            category: value.category
+                            category: tempCategory
                         })
                     }
                 })
@@ -231,7 +272,8 @@ function GalleryPanelCreateExhibition() {
                         form={form}>
                         <h3 className="info-title mrgt64 require text-dir">{t("gallery-panel-create-exhibition.upload_poster.title")}</h3>
                         <p className="mrgb20 text-dir">{t("gallery-panel-create-exhibition.upload_poster.description")}</p>
-                        <MultipleUpload uploadList={posters} setUploadList={setPosters} defaultName={"عکس اصلی"} />
+                        {/* <MultipleUpload uploadList={posters} setUploadList={setPosters} defaultName={"عکس اصلی"} /> */}
+                        <ExhibitionUploadPoster uploadList={posters} setUploadList={setPosters} defaultName={"عکس اصلی"} />
                         <div className="info-sec">
                             <h3 className="info-title mrgt64 text-dir">{t("gallery-panel-create-exhibition.exhibition_info")}</h3>
                             <div className="row">
@@ -458,7 +500,10 @@ function GalleryPanelCreateExhibition() {
                             <div className="row">
                                 <div className="col-sm-12 col-xs-6 text-dir">
                                     <Form.Item name={"category"} className='exhibitionFormCategory'>
-                                        <Checkbox.Group required options={categories} value={[2, 3]} />
+                                        <Checkbox.Group required options={categories}
+                                        // defaultValue={categoryDefaultValue} 
+                                        // defaultValue={["2"]}
+                                        />
                                     </Form.Item>
                                 </div>
                             </div>
