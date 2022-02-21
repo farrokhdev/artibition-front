@@ -20,6 +20,7 @@ import apiServices from '../../utils/api.services';
 import queryString from 'query-string'
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
+import { follow } from '../../utils/utils';
 
 function ProfileArtist() {
 
@@ -73,6 +74,10 @@ function ProfileArtist() {
             })
     }
 
+    const callBack = ()=>{
+        getArtistProfile()
+    }
+
     useEffect(() => {
         getArtistProfile()
     }, [params]);
@@ -119,7 +124,19 @@ function ProfileArtist() {
                                                     artistProfile?.owner?.translations?.en?.last_name
                                                 } />
                                         </div>
-                                        <button type="button" className="btn-follow center-block">{t("artwork.follow")}</button>
+                                        <button
+                                    className={"btn-follow center-block " + (artistProfile?.likes ? "followed" : "")}
+                                    onClick={() =>
+                                      follow({
+                                        content: "artist",
+                                        activity: "following",
+                                        object_id: artistProfile?.id,
+                                        action: artistProfile?.likes,
+                                        callBack
+                                      })
+                                    }
+                                  > {artistProfile?.likes ? t("artwork.following") : t("artwork.follow")}</button>
+                                        
                                     </div>
                                     <div className="col-12 col-md-8">
                                         <div className="artist-bio">

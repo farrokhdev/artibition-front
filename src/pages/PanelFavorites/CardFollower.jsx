@@ -19,7 +19,8 @@ function CardFollower({ followers, getFollowers }) {
                     alt="آیدین آغداشلو" />
                 <h3 className="avatar-name">{Language === 'fa-IR' ? followers?.owner?.translations?.fa?.first_name + " " + followers?.owner?.translations?.fa?.last_name  : followers?.owner?.translations?.en?.first_name + " " + followers?.owner?.translations?.en?.last_name }</h3>
                 <button type="button" 
-                className={"btn-follow " + (followers?.likes ? "btn-follow:hover" : "")}
+                // className={"btn-follow " + (followers?.likes ? "btn-follow:hover" : "")}
+                className={"pull-dir btn-follow followed" + (followers?.likes ? "" : "followed")}
                   onClick={() =>
                     follow({
                         content: "artist",
@@ -31,7 +32,7 @@ function CardFollower({ followers, getFollowers }) {
                 }
               
                  
-                 >{t("artwork.follow")}</button>
+                 > {followers?.likes ? t("artwork.following") : t("artwork.follow")}</button>
             </div>
         </div>
     )

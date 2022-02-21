@@ -98,9 +98,9 @@ function Artist({id}) {
                             <h6 class="gallery-artist-name">
                                 <span>
                                 {i18n.language === 'fa-IR' ?
-                                item.translations?.fa?.nick_name
+                                item?.owner?.translations?.fa?.first_name + " " + item?.owner?.translations?.fa?.last_name 
                                 :
-                                item.translations?.en?.nick_name
+                                item.translations?.en?.first_name + " " + item.translations?.en?.last_name 
                 }
                                 </span>
                                 {/* <span>آغداشلو</span> */}

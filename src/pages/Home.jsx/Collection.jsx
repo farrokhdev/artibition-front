@@ -21,7 +21,6 @@ import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 import { Popover } from 'antd';
 
-
 export default function Collection() {
     let navigate = useNavigate();
     const { t, i18n } = useTranslation();
@@ -29,6 +28,8 @@ export default function Collection() {
     const [params, setParams] = useState({
         page: 1,
     })
+
+
     const getArtistCategory = () => {
         apiServices.get(ARTIST_CATEGORY, QueryString.stringify(params))
             .then(res => {
@@ -57,7 +58,6 @@ export default function Collection() {
 
         <div className="collection">
             <div className="row">
-
                 <div className="public-header d-flex">
                     <div className="col-6 col-md-8 ">
                         <div className="d-flex">
@@ -82,26 +82,26 @@ export default function Collection() {
                     <div className="collection-body">
 
                         <div style={{ overflow: 'auto' }} className="owl-carousel d-flex" id="tab6">
-                            {artistCategory?.results?.map((item, index) =>
-                                <div>
-                                    <Link to="/site/collections-list" className="cols">
-                                        <div className="col-img mx-4">
-                                            <div className=" collection-firstrow m-0">
-                                                <img src={item?.products[0]?.medias[0]?.exact_url} width="280" height="280" className="img-responsive w-100" />
-                                            </div>
-                                            {<div className="d-flex collection-secondrow  px-0">
-                                                {item.products[1] && <div className="col px-0  mt-2">
-                                                    <img src={item?.products[1]?.medias[0]?.exact_url}
-                                                        width="280" height="280"
-                                                        className="img-responsive clolection-image w-100" />
+                                {artistCategory?.results?.map((item, index) =>
+                                    <div>
+                                        <Link to="/site/collections-list" className="cols">
+                                            <div className="col-img mx-4">
+                                                <div className=" collection-firstrow m-0">
+                                                    <img src={item?.products[0]?.medias[0]?.exact_url} width="280" height="280" className="img-responsive clolection-image1 w-100"/>
+                                                </div>
+                                                {<div className="d-flex collection-secondrow  px-0">
+                                                    {item.products[1] && <div className="col px-0  mt-2">
+                                                        <img src={item?.products[1]?.medias[0]?.exact_url}
+                                                            width="280" height="280"
+                                                            className="img-responsive clolection-image w-100" />
+                                                    </div>}
+                                                    {item?.products[2] && <div className="col px-0 mr-2 mt-2">
+                                                        <img src={item?.products[2]?.medias[0]?.exact_url}
+                                                            width="280" height="280"
+                                                            className="img-responsive clolection-image w-100" />
+                                                    </div>}
                                                 </div>}
-                                                {item?.products[2] && <div className="col px-0 mr-2 mt-2">
-                                                    <img src={item?.products[2]?.medias[0]?.exact_url}
-                                                        width="280" height="280"
-                                                        className="img-responsive clolection-image w-100" />
-                                                </div>}
-                                            </div>}
-                                            {/* {item?.products[1] || item?.products[2] && <div className="d-flex collection-secondrow  px-0">
+                                                {/* {item?.products[1] || item?.products[2] && <div className="d-flex collection-secondrow  px-0">
                                                 {item.products[1] && <div className="col px-0  mt-2">
                                                     <img src={item?.products[1]?.medias[1]?.exact_url}
                                                         className="img-responsive clolection-image w-100" />
@@ -111,29 +111,29 @@ export default function Collection() {
                                                         className="img-responsive clolection-image w-100" />
                                                 </div>}
                                             </div>} */}
-                                        </div>
-                                        <div className="col-body">
-                                            <h6 className="col-title">
-                                                <span className="col-name">
-                                                    {i18n.language === 'fa-IR' ?
-                                                        item?.translations?.fa?.title
-                                                        :
-                                                        item?.translations?.en?.title
-                                                    }</span>
-                                            </h6>
-                                            <div className="col-dimension">
-                                                <span className="col-dimension-title">
-                                                    {i18n.language === 'fa-IR' ?
-                                                        item?.owner?.translations?.fa?.first_name + ' ' + item?.owner?.translations?.fa?.last_name
-                                                        :
-                                                        item?.owner?.translations?.en?.first_name + ' ' + item?.owner?.translations?.en?.last_name
-                                                    }
-                                                </span>
                                             </div>
-                                        </div>
-                                    </Link>
-                                </div>
-                            )}
+                                            <div className="col-body">
+                                                <h6 className="col-title">
+                                                    <span className="col-name">
+                                                        {i18n.language === 'fa-IR' ?
+                                                            item?.translations?.fa?.title
+                                                            :
+                                                            item?.translations?.en?.title
+                                                        }</span>
+                                                </h6>
+                                                <div className="col-dimension">
+                                                    <span className="col-dimension-title">
+                                                        {i18n.language === 'fa-IR' ?
+                                                            item?.owner?.translations?.fa?.first_name + ' ' + item?.owner?.translations?.fa?.last_name
+                                                            :
+                                                            item?.owner?.translations?.en?.first_name + ' ' + item?.owner?.translations?.en?.last_name
+                                                        }
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </Link>
+                                    </div>
+                                )}
 
                         </div>
                     </div>

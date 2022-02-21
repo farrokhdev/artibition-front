@@ -5,7 +5,7 @@ import Slider from "react-slick";
 import Artwork1 from '../../assets/img/mainpage/hnrpqkfiup@3x.jpg'
 import { useTranslation } from "react-i18next";
 import { follow } from "../../utils/utils";
-
+import { useNavigate } from "react-router-dom";
 
 const SliderSetting = {
     dots: false,
@@ -41,9 +41,14 @@ const SliderSetting = {
 }
 
 
-function Collection({ collectionItem }) {
+function Collection({ collectionItem , getArtistCategory}) {
     const { t, i18n } = useTranslation();
+    let navigate = useNavigate();
 
+    const callBack = ()=>{
+        getArtistCategory()
+      }
+      
     return (
         <div className="collection-list-row">
             <div className="row w-100 text-dir dir">
@@ -62,12 +67,29 @@ function Collection({ collectionItem }) {
                             collectionItem?.owner?.translations?.en?.first_name + ' ' + collectionItem?.owner?.translations?.en?.last_name
                         }
                     </span>
-                    <button type="button" className="btn-follow" 
+
+                    {/* <button type="button" className={`like-icon ${product?.likes ? "isLike" : ""}`}
+                                      // onClick={() => follow({activity:'like',content:'artist',object_id:product.artist_id})}
+                                      onClick={() =>
+                                        follow({
+                                          activity: "like",
+                                          content: "product",
+                                          object_id: product.id,
+                                          action: product?.likes,
+                                          callBack
+                                        })
+                                      }
+                                    ></button> */}
+
+
+                    <button type="button" className={`pull-dir btn-follow followed ${collectionItem?.follow? "" : "followed"}`}
                      onClick={() =>
                         follow({
                           activity: "following",
                           content: "collection",
+                          action: collectionItem?.follow,
                           object_id: collectionItem.id,
+                          callBack
                         })
                       }
                     >{t("collections-list.follow")}</button>
@@ -87,9 +109,15 @@ function Collection({ collectionItem }) {
                 {collectionItem?.products?.map((item, index) =>
                     <div className="cols" key={index}>
                         <div className="col-img" style={{ marginLeft: "20px" }}>
-                            <img src={item.medias[0]?.exact_url} width="840" height="840" alt="آرتیبیشن" className="img-responsive" />
+                            <img src={item.medias[0]?.exact_url} width="840" style={{height: 250}} alt="آرتیبیشن" className="img-responsive" />
                             <div className="tab-overly dir">
-                                <a href="#" className="btn-see">
+                                <a
+                                onClick={() =>
+                                    navigate(
+                                      `/site/artworks-detail/?id=${item?.id}`
+                                    )
+                                  }
+                                className="btn-see">
                                     <span className="view-icon pull-dir"></span>
                                     <span>{t("collections-list.view")}</span>
                                 </a>

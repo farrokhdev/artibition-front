@@ -63,6 +63,7 @@ function WelcomeToAdvistoryStep({ prev, next }) {
     //             console.log(err);
     //         })
     // }
+    
 
     const getListCategory = () => {
         apiServices.get(CORE_CATEGORIS, "")

@@ -12,11 +12,13 @@ import { ARTIST_ALBUMS, ARTIST_CATEGORY } from '../../utils';
 import apiServices from '../../utils/api.services';
 import queryString from 'query-string'
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from "react-router-dom";
 
 function AlbumsTab({ownerId , setVisibleShowAlbums}) {
 
   // const {handleShowVeiwAlbumModal} = handleShowVeiwAlbumModals;
   const { t, i18n } = useTranslation();
+  let navigate = useNavigate();
 
   const [search, setSearch] = useState();
   const [artistCategory, setArtistCategory] = useState();
@@ -75,11 +77,16 @@ function AlbumsTab({ownerId , setVisibleShowAlbums}) {
                              alt="آرتیبیشن"
                              className="img-responsive"/>
                         <div className="tab-overly">
-                            <a href="#" className="btn-see">
+                            <a onClick={() =>
+                              navigate(
+                                `/site/artworks-detail/?id=${item?.id}&artist_id=${item?.artist?.id}`
+                              )
+                            }  className="btn-see">
                                 <span className="view-icon pull-right"></span>
                                 <span>{t("card_artwork.veiw")}</span>
                             </a>
-                            <a href="#" className="btn-sale">{t("card_artwork.request_buy")}</a>
+                            <a  className="btn-sale">{t("card_artwork.request_buy")}</a>
+
                             <a href="#" className="like-icon"></a>
                         </div>
                     </div>
