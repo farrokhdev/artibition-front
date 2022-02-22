@@ -111,4 +111,5 @@ export const SEND_MESSAGE = `/message/sendmessage/`;
 export const GALLERY_PRODUCTS = (galleryId) =>
   `/gallery/${galleryId}/products/`;
 export const GET_ORDERS = `${BASE_URL}/orders/`;
+export const SEARCH_PRODUCTS = `${BASE_URL}/search/products/`;
 // export const PROMOTIONS = '/events/promotions/'
