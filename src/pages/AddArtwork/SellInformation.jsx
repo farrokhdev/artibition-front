@@ -61,7 +61,7 @@ function SellInformation({ prev, next }) {
     const onFinish = (values) => {
         let payload = {
             ...lastform,
-            // ...values,
+            ...values,
             "items": [
                 {
                     "edition_number": null,

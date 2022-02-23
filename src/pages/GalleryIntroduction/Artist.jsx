@@ -108,6 +108,19 @@ function Artist({ id }) {
                                 <button type="button" class="btn btn-default"><span class="hidden-xs px-1">مشاهده
                                 </span> همه آثار </button>
                             </div>
+                            <h6 class="gallery-artist-name">
+                                <span>
+                                {i18n.language === 'fa-IR' ?
+                                item?.owner?.translations?.fa?.first_name + " " + item?.owner?.translations?.fa?.last_name 
+                                :
+                                item.translations?.en?.first_name + " " + item.translations?.en?.last_name 
+                }
+                                </span>
+                                {/* <span>آغداشلو</span> */}
+                            </h6>
+                            <button type="button" class="btn btn-default"><span class="hidden-xs px-1">مشاهده
+                            </span> همه آثار </button>
+
                         </div>
                         <div class="col-sm-9 col-xs-8">
                             {getArtistProducts(item.id)}

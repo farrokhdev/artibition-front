@@ -6,31 +6,15 @@ import Menu from "../../components/Menu/Menu";
 import filter_icon from "../../assets/img/Filter.svg";
 import clear_icon from "../../assets/img/clear.svg";
 import search_icon from "../../assets/img/search.svg";
-import jpaytrkase3 from "../../assets/img/artworks/jpaytrkase@3x.jpg";
-import hnrpqkfiup3 from "../../assets/img/artworks/hnrpqkfiup@3x.jpg";
-import nqliiocbif from "../../assets/img/artworks/nqliiocbif@3x.jpg";
-import ucuurcufbm from "../../assets/img/artworks/ucuurcufbm@3x.jpg";
-import gift_icon from "../../assets/img/gift.svg";
-import artwork3 from "../../assets/img/artworks/3.jpg";
-import rdbewaopdm3 from "../../assets/img/artworks/rdbewaopdm@3x.jpg";
-import hezvtaokhv3 from "../../assets/img/artworks/hezvtaokhv@3x.jpg";
-import ffhxzfmfyx3 from "../../assets/img/artworks/ffhxzfmfyx@3x.jpg";
-import lhggrzlgoc3 from "../../assets/img/artworks/lhggrzlgoc@3x.jpg";
-import hyxvpfinmx3 from "../../assets/img/artworks/hyxvpfinmx@3x.jpg";
-import ayvglbkdfo3 from "../../assets/img/artworks/ayvglbkdfo@3x.jpg";
-import gbazvsspbk3 from "../../assets/img/artworks/gbazvsspbk@3x.jpg";
 import { message, Pagination } from "antd";
-import { t } from "i18next";
 import { useTranslation } from "react-i18next";
 import queryString from "query-string";
 import {
   ARTIST_PRODUCTS,
-  DELETE_FOLLOW,
-  GALLERY_FOLLOW,
   PRODUCTS_CATEGORIES,
   PRODUCTS_MATERIALS,
   PRODUCTS_SIZES,
-  PRODUCTS_TECHNIQUES,
+  PRODUCTS_TECHNIQUES, SEARCH_PRODUCTS,
 } from "../../utils";
 import apiServices from "../../utils/api.services";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
@@ -40,6 +24,8 @@ import {
   clearFilterStorage,
   setFilters,
 } from "../../redux/reducers/Filters/filters.action";
+import { numDiscriminant } from "../../utils/discriminant";
+
 
 function ArtworksPage(props) {
   let location = useLocation();
@@ -52,6 +38,7 @@ function ArtworksPage(props) {
   function useQuery() {
     return new URLSearchParams(useLocation().search);
   }
+
   let query = useQuery();
 
   let category_id = [];
@@ -73,6 +60,8 @@ function ArtworksPage(props) {
 
   const [search, setSearch] = useState();
   const [materialSearch, setMaterialSearch] = useState();
+  const [discount, setDiscount] = useState(query.get("discount"));
+  const [discountRange, setDiscountRange] = useState();
   const [techniqueSearch, setTechniqueSearch] = useState();
   const [toman_price_range_min, setToman_price_range_min] = useState(
     query.get("toman_price_range_min")
@@ -92,15 +81,16 @@ function ArtworksPage(props) {
   const [selectedOption, setSelectedOption] = useState("popularity");
 
   const [params, setParams] = useState({
-    status: "active",
-    order: selectedOption,
-    page: 1,
-    size_id: size_id,
-    category_id: category_id,
-    toman_price_range_min: toman_price_range_min,
-    toman_price_range_max: toman_price_range_max,
-    dollar_price_range_min: dollar_price_range_min,
-    dollar_price_range_max: dollar_price_range_max,
+    // status: "active",
+    // order: selectedOption,
+    // page: 1,
+    // size_id: size_id,
+    // category_id: category_id,
+    // toman_price_range_min: toman_price_range_min,
+    // toman_price_range_max: toman_price_range_max,
+    // dollar_price_range_min: dollar_price_range_min,
+    // dollar_price_range_max: dollar_price_range_max,
+    // discount: discount
   });
 
   const [categorieParams, setCategorieParams] = useState({
@@ -186,16 +176,13 @@ function ArtworksPage(props) {
       });
   };
 
+
   useEffect(() => {
     // console.log("searchParams" , searchParams.get('category_id'));
     if (searchParams.get('category_id')) {
       // getProductList()
       setParams({
         ...params, category_id: searchParams.get('category_id')
-      })
-    } else {
-      setParams({
-        ...params, category_id: ""
       })
     }
   }, [searchParams]);
@@ -238,6 +225,13 @@ function ArtworksPage(props) {
     getProductList()
   }
 
+  const discountPrice = (price, discount, type) => {
+    if (type === "percentage") {
+      return numDiscriminant((100 - discount) * price / 100)
+    } else {
+      return numDiscriminant(price - discount)
+    }
+  }
   const getProductMaterials = () => {
     apiServices
       .get(
@@ -270,32 +264,35 @@ function ArtworksPage(props) {
         console.log("err", err);
       });
   };
-  // console.log("size",sizesIdTotal)
-  //filter submit
-  // const filter = () => {
-  //   setParams(state => ({ ...state, category_id: categoriesIdTotal, technique_id: techniquesIdTotal, material_id: materialsIdTotal,size_id: sizesIdTotal }))
-  // }
-  // useEffect(() => {
 
-  // }, []);
+  const getDiscount = () => {
+    apiServices
+      .get(
+        SEARCH_PRODUCTS,
+        queryString.stringify(params, {
+          arrayFormat: "comma",
+          skipNull: true,
+          skipEmptyString: true,
+        })
+      )
+      .then((res) => {
+        if (res.data) {
+          setProductList(res.data.data);
+        }
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
+  }
+
   useEffect(() => {
     getProductList();
     getProductCategories();
     getProductTechniques();
     getProductMaterials();
     getProductSizes();
+    getDiscount();
   }, [params]);
-  // useEffect(() => {
-  //   getProductList();
-  // }, [
-  //   materialParams,
-  //   techniqueParams,
-  //   selectedOption,
-  //   size_id,
-  //   category_id,
-  //   toman_price_range_min,
-  //   toman_price_range_max,
-  // ]);
 
   useEffect(() => {
     return () => {
@@ -345,7 +342,14 @@ function ArtworksPage(props) {
                     </span>
                     <button
                       className="btn clear-tag mx-3"
-                    // onClick={() => props.clearFilterStorage()}
+                      style={Object.keys(params).length > 0 ? { display: "unset" } : { display: "none" }}
+                      onClick={() => {
+                        setParams({})
+                        navigate(
+                          `/site/artworks`
+                        )
+                        window.location.reload()
+                      }}
                     >
                       <div className="d-flex box-dir-reverse align-items-center">
                         <img
@@ -463,9 +467,9 @@ function ArtworksPage(props) {
                                 name={item.id}
                                 type="checkbox"
                                 value={item.id}
-                                // defaultChecked={
-                                //   category_id && category_id[index]
-                                // }
+                                defaultChecked={
+                                  category_id?.includes(item?.id)
+                                }
                                 onClick={(e) => {
                                   setCategoriesId({
                                     ...categoriesId,
@@ -603,7 +607,14 @@ function ArtworksPage(props) {
                     <div id="collapse4" className="panel-collapse collapse in">
                       <div className="panel-body">
                         <label className="switch pull-dir">
-                          <input type="checkbox" checked />
+                          <input type="checkbox"
+                            defaultChecked={
+                              discount
+                            }
+                            onChange={() =>
+                              setDiscount(!discount)
+                            }
+                          />
                           <span className="switchbtn round"></span>
                           <span className="label-switchbtn">
                             {t("artworkList.filter.discount.show")}
@@ -612,20 +623,44 @@ function ArtworksPage(props) {
                         <div className="clearfix"></div>
                         <div className="md-mrgt30">
                           <label className="lable-checkbox text-dir">
-                            <input type="checkbox" value="" />
+                            <input type="checkbox" value=""
+                              onChange={(t) =>
+                                setDiscountRange(20)
+                              } />
                             <span>{t("artworkList.filter.discount.up20")}</span>
                             <span className="checkmark"></span>
                           </label>
                           <label className="lable-checkbox text-dir">
-                            <input type="checkbox" value="" />
+                            <input type="checkbox" value=""
+                              onChange={() =>
+                                setDiscountRange(30)
+                              } />
                             <span>{t("artworkList.filter.discount.up30")}</span>
                             <span className="checkmark"></span>
                           </label>
                           <label className="lable-checkbox text-dir">
-                            <input type="checkbox" value="" />
+                            <input type="checkbox" value=""
+                              onChange={() =>
+                                setDiscountRange(50)
+                              } />
                             <span>{t("artworkList.filter.discount.up50")}</span>
                             <span className="checkmark"></span>
                           </label>
+                        </div>
+                        <div className="d-flex pull-dir-rev">
+                          <button
+                            type="button"
+                            className="btn btn-ok pull-dir"
+                            onClick={() =>
+                              setParams((state) => ({
+                                ...state,
+                                have_discount: discount,
+                                discount: discountRange
+                              }))
+                            }
+                          >
+                            {t("artworkList.filter.price.action")}
+                          </button>
                         </div>
                       </div>
                     </div>
@@ -975,6 +1010,11 @@ function ArtworksPage(props) {
                           <div className="col-sm-4 ">
                             <div className="cols ">
                               <div className="col-img">
+                                {/* <div class="tags tags-spacial">ویژه</div> */}
+                                {product?.discount ?
+                                  <div
+                                    class="tags tags-off persian-num"> {numDiscriminant(product?.discount?.value)}{product?.discount?.type === "percentage" ? "%" : t("toman")} </div>
+                                  : ""}
                                 <img
                                   src={
                                     product.medias &&
@@ -1023,6 +1063,12 @@ function ArtworksPage(props) {
                                 </div>
                               </div>
                               <div className="col-body ">
+
+
+                                {product?.is_sold ?
+                                  <div class="finished-tag">فروخته شد</div>
+                                  : ""
+                                }
                                 <h6 className="col-title text-dir">
                                   {i18n.language === "fa-IR" ? (
                                     <span className="col-name">
@@ -1057,11 +1103,17 @@ function ArtworksPage(props) {
                                 <div className="col-price text-dir">
                                   <div className="d-flex box-dir-reverse">
                                     <span className="col-price-num">
-                                      {product.toman_price}
+                                      {product?.discount ? discountPrice(product.toman_price, product?.discount?.value, product?.discount?.type) : ""} {product?.discount ? t("toman") : ""}
                                     </span>
-                                    <span className="col-price-unit">
+                                    {/* <span className="col-price-unit">
                                       {t("toman")}
+                                    </span> */}
+                                    <span
+                                      className={`persian-num ${product?.discount ? "col-price-off" : ""}`}>
+                                      {numDiscriminant(product.toman_price)} {product?.toman_price ? t("toman") : ""}
                                     </span>
+
+
                                     {/* <span className="tag-gift  w-100">
                                       <div className="d-flex text-dir position-gift-card-artwork">
                                         <img
@@ -1097,6 +1149,7 @@ function ArtworksPage(props) {
     </>
   );
 }
+
 const mapDispatchToProps = (dispatch) => {
   return {
     setFilters: (data) => dispatch(setFilters(data)),

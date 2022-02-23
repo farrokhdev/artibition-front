@@ -7,19 +7,24 @@ import { t } from "i18next";
 import { Tabs, Radio, Space, message } from "antd";
 import { useNavigate, Link } from "react-router-dom";
 import { isLogin } from "../../utils/utils";
-import { PRODUCTS_CATEGORIES } from "../../utils";
+import { PRODUCTS_CATEGORIES, CORE_CATEGORIS } from "../../utils";
 import queryString from "query-string";
 import apiServices from "../../utils/api.services";
 import { useTranslation } from "react-i18next";
+import { GetLanguage } from "../../utils/utils";
 
 const { TabPane } = Tabs;
 export default function NavbarMenuHeader(props) {
   let navigate = useNavigate();
+  const Language = GetLanguage();
   const { t, i18n } = useTranslation();
+  const [categorys, setCategorys] = useState([]);
   const [categorieParams, setCategorieParams] = useState({
     page: 1,
   });
 
+
+  console.log("categorys", categorys);
   //filters state
   const [categories, setCategories] = useState();
 
@@ -35,6 +40,29 @@ export default function NavbarMenuHeader(props) {
         console.log("err", err);
       });
   };
+
+
+
+  const getListCategory = () => {
+    apiServices.get(CORE_CATEGORIS, "")
+      .then(res => {
+
+        setCategorys(res.data.data.results.map(item => {
+          if (Language === 'fa-IR') {
+            return { label: item?.translations?.fa?.title, value: item?.id }
+          } else {
+            return { label: item?.translations?.en?.title, value: item?.id }
+          }
+        }))
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
+  useEffect(() => {
+    getListCategory();
+}, []);
 
   useEffect(() => {
     getProductCategories();
@@ -186,55 +214,16 @@ export default function NavbarMenuHeader(props) {
                                 {t("nav-submenu.showroom.category.all")}
                               </Link>
                             </li>
-                            <li>
-                              <a href="#">
-                                {t("nav-submenu.showroom.category.painter")}
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                {t(
-                                  "nav-submenu.showroom.category.calligrapher"
-                                )}
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                {t(
-                                  "nav-submenu.showroom.category.photographer"
-                                )}
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                {t("nav-submenu.showroom.category.sculptor")}
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                {t("nav-submenu.showroom.category.calligramer")}
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                {t("nav-submenu.showroom.category.graphist")}
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                {t("nav-submenu.showroom.category.printmaker")}
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                {t("nav-submenu.showroom.category.cartoonist")}
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                {t("nav-submenu.showroom.category.sketcher")}
-                              </a>
-                            </li>
+
+                            {categorys?.length && categorys?.map(item=>{
+                              return(
+                                <li>
+                                  
+                                <Link to={`/site/artists/?artist_type_id=${item?.value}`} >{item?.label}</Link>
+                              </li>
+                               )
+                            })} 
+                            
                           </ul>
                         </div>
                         <div className="col-md-5 col-sm-6">

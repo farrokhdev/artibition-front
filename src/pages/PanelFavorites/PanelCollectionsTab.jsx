@@ -82,6 +82,9 @@ function PanelCollectionsTab() {
                     followCollections?.length && followCollections?.map((collections) => {
                         return (
                             <>
+                            {console.log("followCollectionsssss" ,followCollections)}
+                            {console.log("followCollectionsssss1" ,collections)}
+
                                 <div className="collection-block-header">
                                     <div className="d-flex box-dir-reverse">
                                         <div className="d-block col-xs-9 px-0">
@@ -89,7 +92,7 @@ function PanelCollectionsTab() {
                                                 <div className="col">
                                                     <h3 className="artist-title text-dir">{collections?.translations?.fa?.title}</h3>
                                                     <span className="collection-artistname text-dir">{collections?.translations?.fa?.description}</span>
-                                                    <button type="button" className="btn-follow followed" 
+                                                    <button type="button" className="btn-follow followed px-5" 
                                                      onClick={() =>
                                                         follow({
                                                             content: "collection",

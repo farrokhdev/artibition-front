@@ -9,10 +9,10 @@ import { ARTIST_PRODUCTS } from "../../utils";
 import QueryString from "qs";
 import { useTranslation } from "react-i18next";
 import { follow } from "../../utils/utils";
-
+import { useNavigate } from "react-router-dom";
 function Artworks() {
   const { t, i18n } = useTranslation();
-
+  let navigate = useNavigate();
   const [galleryProducts, setGalleryProducts] = useState();
   const [params, setParams] = useState({
     status: "active",
@@ -83,10 +83,16 @@ function Artworks() {
                           height="1232"
                           alt="آرتیبیشن"
                           class="img-responsive"
-                          style={{ height: 400 }}
+                          style={{ height: 250 }}
                         />
                         <div class="tab-overly">
-                          <a href="#" class="btn-see">
+                          <a 
+                           onClick={() =>
+                            navigate(
+                              `/site/artworks-detail/?id=${artworks.id}&artist_id=${artworks.artist_id}`
+                            )
+                          } 
+                          class="btn-see">
                             <span class="view-icon pull-right"></span>
                             <span>{t("artwork.view-artwork")}</span>
                           </a>

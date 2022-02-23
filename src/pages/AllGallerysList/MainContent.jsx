@@ -78,7 +78,7 @@ function MainContent() {
                                     <div className="col-md-3 col-sm-4 col-xs-6">
                                         <Link to={`/site/gallery-introduction/?id=${gallery?.id}`} className="gallery-logo-block">
                                             <div className="gallery-logo-img">
-                                                <img src={gallery?.logo ? gallery?.logo?.exact_url : DEFAULT_URL_IMAGE} width="110" height="110" alt=""
+                                                <img src={gallery?.logo ? gallery?.logo?.exact_url : DEFAULT_URL_IMAGE} width="286"  style={{height:180}} alt=""
                                                     className="img-responsive center-block" />
                                             </div>
                                             <h3 className="fontbold19">

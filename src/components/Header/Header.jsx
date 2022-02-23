@@ -22,8 +22,8 @@ function Header(props) {
   const [toman_price_range_max, setToman_price_range_max] = useState();
   const [dollar_price_range_min, setDollar_price_range_min] = useState();
   const [dollar_price_range_max, setDollar_price_range_max] = useState();
+  const [discount, setDiscount] = useState(false);
   const [filters, setFilters] = useState();
-  console.log("🚀 ~ file: Header.jsx ~ line 30 ~ Header ~ filters", filters);
   const [visibleSetDimentionModal, setVisibleSetDimentionModal] =
     useState(false);
   const [categoriesParams, setCategoriesParams] = useState({
@@ -80,22 +80,23 @@ function Header(props) {
       ...state,
       page: 1,
       status: "active",
+      discount: discount,
       toman_price_range_min:
         i18n.language === "fa-IR"
           ? toman_price_range_min
             ? toman_price_range_min
-            : 0
+            : ""
           : dollar_price_range_min
           ? dollar_price_range_min
-          : 0,
+          : "",
       toman_price_range_max:
         i18n.language === "fa-IR"
           ? toman_price_range_max
             ? toman_price_range_max
-            : 0
+            : ""
           : dollar_price_range_max
           ? dollar_price_range_max
-          : 0,
+          : "",
     }));
 
     setToggleRoute(true);
@@ -131,7 +132,7 @@ function Header(props) {
   }, []);
 
   useEffect(() => {
-    if (toggleRoute && location.pathname !== "/site/artworks") {
+    if (toggleRoute && location.pathname !== "/site/artworks/") {
       navigate(
         `/site/artworks/?${queryString.stringify(filters, {
           arrayFormat: "comma",
@@ -149,6 +150,7 @@ function Header(props) {
           })}`,
           { replace: true }
         );
+        window.location.reload()
       }
     }
   }, [toggleRoute]);
@@ -284,7 +286,6 @@ function Header(props) {
                         type="text"
                         className="value persian-num"
                         data-index="0"
-                        defaultValue="0"
                         onChange={(e) =>
                           i18n.language === "fa-IR"
                             ? setToman_price_range_min(e.target.value)
@@ -298,7 +299,6 @@ function Header(props) {
                         type="text"
                         className="value  persian-num"
                         data-index="1"
-                        defaultValue="0"
                         onChange={(e) =>
                           i18n.language === "fa-IR"
                             ? setToman_price_range_max(e.target.value)
@@ -315,7 +315,14 @@ function Header(props) {
                 </h3>
                 <div className="filter-menu-body">
                   <label className="switch pull-dir">
-                    <input type="checkbox" checked />
+                    <input type="checkbox"
+                           defaultValue={
+                             discount
+                           }
+                           onChange={() =>
+                               setDiscount(!discount)
+                           }
+                    />
                     <span className="switchbtn round"></span>
                     <span className="label-switchbtn">
                       {t("filter-header.discount.text-switch")}
