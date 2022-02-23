@@ -18,7 +18,7 @@ import { t } from 'i18next';
 
 function ArthibitionProperties() {
     return (
-        <div className="row-property d-flex">
+        <div className="row-property d-flex dir">
             <div className="col-md-3 col-sm-6 d-flex flex-wrap">
                 <img src={shipping_icon} width="40" height="40" alt="" className="pull-right" />
                 <h6>{t("cart.properties.delivery_arthibition")}</h6>

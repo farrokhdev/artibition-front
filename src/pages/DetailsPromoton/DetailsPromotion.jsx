@@ -3,7 +3,7 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Menu from "../../components/Menu/Menu";
 import { Breadcrumb, Pagination, Tabs } from "antd";
-import { t } from "i18next";
+import i18next, { t } from "i18next";
 
 import more_icon from "../../assets/img/more.svg";
 import promotion_5 from "../../assets/img/promotion/promotion-5.jpg";
@@ -15,6 +15,7 @@ import box from "../../assets/img/box.svg";
 import PromotionArtwork from "./PromotionArtwork";
 import { PRODUCTS, PROMOTIONS } from "../../utils";
 import apiServices from "../../utils/api.services";
+import { Link } from "react-router-dom";
 
 function DetailsPromotion() {
   const { TabPane } = Tabs;
@@ -57,9 +58,13 @@ function DetailsPromotion() {
             className="d-flex box-dir-reverse breadcrumb"
             separator=""
           >
-            <Breadcrumb.Item>{t("artwork.artibition")}</Breadcrumb.Item>
-            <Breadcrumb.Separator>{">"}</Breadcrumb.Separator>
-            <Breadcrumb.Item href="">
+            <Breadcrumb.Item>
+              <Link to={"/"}>
+                {t("artwork.artibition")}
+              </Link>
+            </Breadcrumb.Item>
+            <Breadcrumb.Separator>{i18next.language === "fa-IR" ? ">" : "<"}</Breadcrumb.Separator>
+            <Breadcrumb.Item>
               {t("promotion.banner.title")}
             </Breadcrumb.Item>
           </Breadcrumb>
@@ -106,7 +111,7 @@ function DetailsPromotion() {
             <TabPane className="" tab={t("promotion.categories.all")} key="1">
               <div className="tab-content">
                 <div id="artforgift1" className="tab-pane fade active in">
-                  <div className="row">
+                  <div className="row dir">
                     {promotions?.results?.map((item, index) => (
                       <div className="col-md-6 ">
                         <PromotionArtwork key={index} item={item} />
@@ -126,9 +131,9 @@ function DetailsPromotion() {
               </div>
             </TabPane>
             <TabPane tab={t("promotion.categories.painting")} key="2">
-              <div className="tab-content">
+              {/* <div className="tab-content">
                 <div id="artforgift1" className="tab-pane fade active in">
-                  <div className="row">
+                  <div className="row dir">
                     <div className="col-md-6 ">
                       <PromotionArtwork />
                       <PromotionArtwork />
@@ -143,12 +148,12 @@ function DetailsPromotion() {
                     <Pagination total={50} />
                   </div>
                 </div>
-              </div>
+              </div> */}
             </TabPane>
             <TabPane tab={t("promotion.categories.photography")} key="3">
-              <div className="tab-content">
+              {/* <div className="tab-content">
                 <div id="artforgift1" className="tab-pane fade active in">
-                  <div className="row">
+                  <div className="row dir">
                     <div className="col-md-6 ">
                       <PromotionArtwork />
                       <PromotionArtwork />
@@ -163,12 +168,12 @@ function DetailsPromotion() {
                     <Pagination total={50} />
                   </div>
                 </div>
-              </div>
+              </div> */}
             </TabPane>
             <TabPane tab={t("promotion.categories.sculpture")} key="4">
-              <div className="tab-content">
+              {/* <div className="tab-content">
                 <div id="artforgift1" className="tab-pane fade active in">
-                  <div className="row">
+                  <div className="row dir">
                     <div className="col-md-6 ">
                       <PromotionArtwork />
                       <PromotionArtwork />
@@ -183,12 +188,12 @@ function DetailsPromotion() {
                     <Pagination total={50} />
                   </div>
                 </div>
-              </div>
+              </div> */}
             </TabPane>
             <TabPane tab={t("promotion.categories.calligram")} key="5">
-              <div className="tab-content">
+              {/* <div className="tab-content">
                 <div id="artforgift1" className="tab-pane fade active in">
-                  <div className="row">
+                  <div className="row dir">
                     <div className="col-md-6 ">
                       <PromotionArtwork />
                       <PromotionArtwork />
@@ -203,12 +208,12 @@ function DetailsPromotion() {
                     <Pagination total={50} />
                   </div>
                 </div>
-              </div>
+              </div> */}
             </TabPane>
             <TabPane tab={t("promotion.categories.calligraphy")} key="6">
-              <div className="tab-content">
+              {/* <div className="tab-content">
                 <div id="artforgift1" className="tab-pane fade active in">
-                  <div className="row">
+                  <div className="row dir">
                     <div className="col-md-6 ">
                       <PromotionArtwork />
                       <PromotionArtwork />
@@ -223,12 +228,12 @@ function DetailsPromotion() {
                     <Pagination total={50} />
                   </div>
                 </div>
-              </div>
+              </div> */}
             </TabPane>
             <TabPane tab={t("promotion.categories.printmaking")} key="7">
-              <div className="tab-content">
+              {/* <div className="tab-content">
                 <div id="artforgift1" className="tab-pane fade active in">
-                  <div className="row">
+                  <div className="row dir">
                     <div className="col-md-6 ">
                       <PromotionArtwork />
                       <PromotionArtwork />
@@ -243,12 +248,12 @@ function DetailsPromotion() {
                     <Pagination total={50} />
                   </div>
                 </div>
-              </div>
+              </div> */}
             </TabPane>
             <TabPane tab={t("promotion.categories.graphic")} key="8">
-              <div className="tab-content">
+              {/* <div className="tab-content">
                 <div id="artforgift1" className="tab-pane fade active in">
-                  <div className="row">
+                  <div className="row dir">
                     <div className="col-md-6 ">
                       <PromotionArtwork />
                       <PromotionArtwork />
@@ -263,12 +268,12 @@ function DetailsPromotion() {
                     <Pagination total={50} />
                   </div>
                 </div>
-              </div>
+              </div> */}
             </TabPane>
             <TabPane tab={t("promotion.categories.drawing")} key="9">
-              <div className="tab-content">
+              {/* <div className="tab-content">
                 <div id="artforgift1" className="tab-pane fade active in">
-                  <div className="row">
+                  <div className="row dir">
                     <div className="col-md-6 ">
                       <PromotionArtwork />
                       <PromotionArtwork />
@@ -283,7 +288,7 @@ function DetailsPromotion() {
                     <Pagination total={50} />
                   </div>
                 </div>
-              </div>
+              </div> */}
             </TabPane>
           </Tabs>
         </div>

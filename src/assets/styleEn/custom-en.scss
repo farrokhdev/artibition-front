@@ -7804,7 +7804,7 @@ select.input-public {
     font-family: "Roboto Light", sans-serif;
     padding: 2px 10px;
     position: absolute;
-    top: 29rem;
+    top: 10px;
     right: 0;
     // display: none;
     font-size: 13px;
@@ -9206,4 +9206,14 @@ iframe {
 .go2072408551 {
     max-width: none;
     padding: 0px;
+}
+
+
+.tab-m-0 .ant-tabs-nav{
+    margin: 0 0px 17px 0px !important
+}
+
+.tab-center .ant-tabs-nav-wrap{
+    justify-content: center;
+    display: flex !important;
 }

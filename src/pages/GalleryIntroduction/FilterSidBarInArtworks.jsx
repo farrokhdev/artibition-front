@@ -263,7 +263,7 @@ function FilterSidBarInArtworks() {
                   </label>
                 ))}
               </div>
-              <div className="d-flex justify-custom">
+              <div className="d-flex pull-dir-rev">
                 <button
                   type="button"
                   className="btn btn-ok pull-dir"
@@ -319,30 +319,30 @@ function FilterSidBarInArtworks() {
                   />
                 </div>
               </div>
-              <div className="d-flex justify-custom">
+              <div className="d-flex pull-dir-rev">
                 <button
                   type="button"
                   className="btn btn-ok pull-dir"
                   onClick={() =>
                     i18n.language === "fa-IR"
                       ? setParams((state) => ({
-                          ...state,
-                          toman_price_range_min: toman_price_range_min
-                            ? toman_price_range_min
-                            : 0,
-                          toman_price_range_max: toman_price_range_max
-                            ? toman_price_range_max
-                            : 0,
-                        }))
+                        ...state,
+                        toman_price_range_min: toman_price_range_min
+                          ? toman_price_range_min
+                          : 0,
+                        toman_price_range_max: toman_price_range_max
+                          ? toman_price_range_max
+                          : 0,
+                      }))
                       : setParams((state) => ({
-                          ...state,
-                          dollar_price_range_min: dollar_price_range_min
-                            ? dollar_price_range_min
-                            : 0,
-                          dollar_price_range_max: dollar_price_range_max
-                            ? dollar_price_range_max
-                            : 0,
-                        }))
+                        ...state,
+                        dollar_price_range_min: dollar_price_range_min
+                          ? dollar_price_range_min
+                          : 0,
+                        dollar_price_range_max: dollar_price_range_max
+                          ? dollar_price_range_max
+                          : 0,
+                      }))
                   }
                 >
                   {t("artworkList.filter.price.action")}
@@ -459,11 +459,12 @@ function FilterSidBarInArtworks() {
                     </label>
                   ))}
                 </div>
-                <div className="d-flex justify-custom">
+                <div className="d-flex pull-dir-rev">
                   <button
                     type="button"
                     className="btn btn-ok pull-dir"
                     onClick={filterTechniques}
+                    style={{ position: "unset" }}
                   >
                     {t("artworkList.filter.size.submit")}
                   </button>
@@ -534,11 +535,12 @@ function FilterSidBarInArtworks() {
                     </label>
                   ))}
                 </div>
-                <div className="d-flex justify-custom">
+                <div className="d-flex pull-dir-rev">
                   <button
                     type="button"
                     className="btn btn-ok pull-dir"
                     onClick={filterMaterials}
+                    style={{ position: "unset" }}
                   >
                     {t("artworkList.filter.size.submit")}
                   </button>
@@ -647,26 +649,26 @@ function FilterSidBarInArtworks() {
                   </div>
                 </div>
               </div>
-              <div className="d-flex justify-custom">
+              <div className="d-flex pull-dir-rev">
                 <button
                   type="button"
                   className="btn btn-ok pull-dir"
                   onClick={() =>
                     width_min ||
-                    width_max ||
-                    height_min ||
-                    height_max ||
-                    length_max ||
-                    length_min
+                      width_max ||
+                      height_min ||
+                      height_max ||
+                      length_max ||
+                      length_min
                       ? setParams((state) => ({
-                          ...state,
-                          width_min: width_min,
-                          width_max: width_max,
-                          height_min: height_min,
-                          height_max: height_max,
-                          length_min: length_min,
-                          length_max: length_max,
-                        }))
+                        ...state,
+                        width_min: width_min,
+                        width_max: width_max,
+                        height_min: height_min,
+                        height_max: height_max,
+                        length_min: length_min,
+                        length_max: length_max,
+                      }))
                       : filterSizes()
                   }
                 >

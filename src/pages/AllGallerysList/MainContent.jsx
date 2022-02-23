@@ -53,13 +53,13 @@ function MainContent() {
                     </div>
                 </div>
             </div>
-            <div className="default-content">
+            <div className="default-content dir">
                 <div className="content-header">
                     <div className="row">
                         <div className="col-sm-3 col-xs-6">
                         </div>
-                        <div className="col-xs-6 col-sm-offset-3 ml-auto">
-                            <div className="form-group pull-left">
+                        <div className="col-xs-6 col-sm-offset-3 m-dir-rev-auto">
+                            <div className="form-group pull-dir-rev">
                                 <select className="form-control" id="sel1">
                                     <option>{t("select_province.all_province")}</option>
                                     <option>{t("select_province.tehran_city")}</option>

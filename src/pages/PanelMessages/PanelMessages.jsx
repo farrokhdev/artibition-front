@@ -34,7 +34,7 @@ function PanelMessages() {
 
                             <div className="default-tab tab-3 tab-interval purchase ">
 
-                                <Tabs className='' defaultActiveKey="1" onChange={callback}>
+                                <Tabs className='dir tab-m-0' defaultActiveKey="1" onChange={callback}>
                                     <TabPane className="mx-4" tab={t("content-panel-messages.tabs.notifications")} key="1">
                                         <NotificationTab />
                                     </TabPane>

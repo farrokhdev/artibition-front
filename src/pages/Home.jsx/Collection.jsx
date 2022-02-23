@@ -56,7 +56,7 @@ export default function Collection() {
     return (
 
         <div className="collection">
-            <div className="row">
+            <div className="row dir">
 
                 <div className="public-header d-flex">
                     <div className="col-6 col-md-8 ">
@@ -74,7 +74,7 @@ export default function Collection() {
                         </div>
                     </div>
                     <div className="col-6 col-md-4 ">
-                        <div className="btn-readmore pull-left " onClick={() => navigate('/site/collections-list')}>{t("collection-all")}</div>
+                        <div className="btn-readmore pull-dir-rev " onClick={() => navigate('/site/collections-list')}>{t("collection-all")}</div>
                     </div>
                 </div>
 

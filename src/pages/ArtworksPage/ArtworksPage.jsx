@@ -335,7 +335,7 @@ function ArtworksPage(props) {
 
         <div className="default-content">
           <div className="content-header">
-            <div className="d-flex box-dir-reverse">
+            <div className="d-flex box-dir-reverse dir">
               <div className="col-sm-3 col-xs-6">
                 <div type="button" className="filter-btn">
                   <div className="d-flex box-dir-reverse align-items-center">
@@ -362,7 +362,7 @@ function ArtworksPage(props) {
                 </div>
               </div>
               <div className="col">
-                <div className="d-flex justify-custom">
+                <div className="d-flex pull-dir-rev">
                   <div className="form-group pull-left">
                     <select
                       className="form-control"
@@ -392,7 +392,7 @@ function ArtworksPage(props) {
             </div>
           </div>
           <div className="content-body">
-            <div className="d-flex box-dir-reverse">
+            <div className="d-flex box-dir-reverse dir">
               <div className="col-md-3 filter-side ">
                 <div className="panel-group" id="accordion">
                   <div className="panel panel-default">
@@ -482,7 +482,7 @@ function ArtworksPage(props) {
                             </label>
                           ))}
                         </div>
-                        <div className="d-flex justify-custom">
+                        <div className="d-flex pull-dir-rev">
                           <button
                             type="button"
                             className="btn btn-ok pull-dir"
@@ -554,7 +554,7 @@ function ArtworksPage(props) {
                             />
                           </div>
                         </div>
-                        <div className="d-flex justify-custom">
+                        <div className="d-flex pull-dir-rev">
                           <button
                             type="button"
                             className="btn btn-ok pull-dir"
@@ -716,7 +716,7 @@ function ArtworksPage(props) {
                             ))}
                           </div>
                         </div>
-                        <div className="d-flex justify-custom">
+                        <div className="d-flex pull-dir-rev">
                           <button
                             type="button"
                             className="btn btn-ok pull-dir"
@@ -806,7 +806,7 @@ function ArtworksPage(props) {
                             ))}
                           </div>
                         </div>
-                        <div className="d-flex justify-custom">
+                        <div className="d-flex pull-dir-rev">
                           <button
                             type="button"
                             className="btn btn-ok pull-dir"
@@ -935,7 +935,7 @@ function ArtworksPage(props) {
                             </div>
                           </div>
                         </div>
-                        <div className="d-flex justify-custom">
+                        <div className="d-flex pull-dir-rev">
                           <button
                             type="button"
                             className="btn btn-ok pull-dir"

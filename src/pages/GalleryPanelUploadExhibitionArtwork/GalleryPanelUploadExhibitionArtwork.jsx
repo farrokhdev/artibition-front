@@ -559,7 +559,7 @@ function GalleryPanelUploadExhibitionArtwork() {
                                                     <img className="img-responsive" src={artist?.bg_image?.exact_url} height="192" width="192" alt="" />
                                                 </div>
                                                 <h4 className="artists-name text-dir">
-                                                    <span>{i18next.language === "fa-IR" ? artist?.translations?.fa?.nick_name : artist?.translations?.en?.nick_name}</span>
+                                                    <span>{i18next.language === "fa-IR" ? `${artist?.owner?.translations?.fa?.first_name} ${artist?.owner?.translations?.fa?.last_name}` : `${artist?.owner?.translations?.en?.first_name} ${artist?.owner?.translations?.en?.last_name}`}</span>
                                                 </h4>
                                             </div>
                                             <div className="artist-artworks-row advisory-select">

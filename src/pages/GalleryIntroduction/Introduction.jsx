@@ -11,7 +11,7 @@ import QueryString from 'qs';
 import { GALLERY_ARTISTS, GALLERY_EXHIBITION } from '../../utils';
 import { useTranslation } from 'react-i18next';
 
-function Introduction({id, galleryIntroduction, galleryExhibition}) {
+function Introduction({ id, galleryIntroduction, galleryExhibition }) {
 
     const { TabPane } = Tabs;
     const { t, i18n } = useTranslation();
@@ -19,7 +19,7 @@ function Introduction({id, galleryIntroduction, galleryExhibition}) {
     const [params, setParams] = useState({
         search: "",
         page: 1,
-        
+
     })
     function callback(key) {
         console.log(key);
@@ -27,14 +27,14 @@ function Introduction({id, galleryIntroduction, galleryExhibition}) {
 
     const getGalleryArtists = () => {
         apiServices.get(GALLERY_ARTISTS(id), QueryString.stringify(params))
-        .then(res => {
-            if (res.data) {
-                setGalleryArtists(res.data.data)
-            }
-        })
-        .catch(err => {
-            console.log("err", err)
-        })
+            .then(res => {
+                if (res.data) {
+                    setGalleryArtists(res.data.data)
+                }
+            })
+            .catch(err => {
+                console.log("err", err)
+            })
     }
 
     useEffect(() => {
@@ -45,17 +45,17 @@ function Introduction({id, galleryIntroduction, galleryExhibition}) {
         <div className="tab-content">
             <div id="gallery1" className="tab-pane fade in active">
                 <div className="content-body">
-                    <IntroducingTheExhibition galleryIntroduction={galleryIntroduction} galleryExhibition={galleryExhibition}/>
+                    <IntroducingTheExhibition galleryIntroduction={galleryIntroduction} galleryExhibition={galleryExhibition} />
                 </div>
-                <div className="events" style={{ marginLeft: '30px' }}>
+                <div className="events">
 
                     <div class="row ">
                         <div class="d-flex public-header">
                             <div class="col-xs-8">
-                                <h2 class="text-right default-title">{t("artist_profile.tabs.exhibitions")}</h2>
+                                <h2 class="text-dir default-title">{t("artist_profile.tabs.exhibitions")}</h2>
                             </div>
                             <div class="col-xs-4">
-                                <a href="#" class="btn-readmore pull-left">{t("artist_profile.tabs.all_exhibitions")}</a>
+                                <a href="#" class="btn-readmore pull-dir-rev" style={{ position: "unset" }}>{t("artist_profile.tabs.all_exhibitions")}</a>
 
                             </div>
                         </div>
@@ -63,30 +63,30 @@ function Introduction({id, galleryIntroduction, galleryExhibition}) {
                     </div>
                 </div>
 
-                <GalleyRelatedContent galleryExhibition={galleryExhibition} galleryIntroduction={galleryIntroduction}/>
+                <GalleyRelatedContent galleryExhibition={galleryExhibition} galleryIntroduction={galleryIntroduction} />
 
-                <div className="events" style={{ marginLeft: '30px' }}>
-                    <div className="row">
+                <div className="events">
+                    <div>
                         <div className="d-flex public-header">
                             <div className="col-xs-8">
-                                <h2 className="text-right default-title">{t("nav-menu-artworks")}</h2>
+                                <h2 className="text-dir default-title">{t("nav-menu-artworks")}</h2>
                             </div>
                             <div className="col-xs-4">
-                                <a href="#" className="btn-readmore pull-left">{t("nav-submenu.artworks.artField.all")}</a>
+                                <a href="#" className="btn-readmore pull-dir-rev d-block" style={{ position: "unset" }}>{t("nav-submenu.artworks.artField.all")}</a>
                             </div>
                         </div>
                         <div className="clearfix"></div>
                     </div>
                 </div>
                 <div className="default-tab tab-3 tab-interval">
-                    <div className="row">
+                    <div className="">
                         <div className="tab-overflow">
                             <div className="col-md-12">
 
                                 <ul className="nav ">
                                     <Tabs defaultActiveKey="1" onChange={callback}>
                                         <TabPane className="mx-5" tab={t("nav-submenu.artworks.artField.all_artworks")} key="1">
-                                            <AllArtworks id={id}/>
+                                            <AllArtworks id={id} />
                                         </TabPane>
                                         <TabPane tab={t("filter-header.category.painting")} key="2">
 
@@ -144,13 +144,13 @@ function Introduction({id, galleryIntroduction, galleryExhibition}) {
 
                             <div class="gallery-artists">
                                 <div className="events">
-                                    <div className="row">
+                                    <div className="">
                                         <div className="d-flex public-header">
                                             <div className="col-xs-9">
-                                                <h2 className="text-right default-title">{t("artist_profile.artists")}</h2>
+                                                <h2 className="text-dir default-title">{t("artist_profile.artists")}</h2>
                                             </div>
-                                            <div className="col-xs-4 w-auto">
-                                                <a href="#" className="btn-readmore pull-left ">{t("nav-submenu.showroom.category.all")}</a>
+                                            <div className="col-xs-3">
+                                                <a href="#" className="btn-readmore pull-dir-rev" style={{ position: "unset" }}>{t("nav-submenu.showroom.category.all")}</a>
                                             </div>
                                         </div>
                                         <div className="clearfix"></div>
@@ -162,18 +162,18 @@ function Introduction({id, galleryIntroduction, galleryExhibition}) {
                                     {galleryArtists?.results?.map((artist) => {
                                         return (
 
-                                            <div className="gallery-artist-img">
+                                            <div className="gallery-artist-img ml-1 pl-3">
                                                 <img src={artist?.bg_image?.exact_url} width="192" height="192" alt=""
-                                                    className="ml-5 pl-3 img-fluid" />
+                                                    className="img-fluid" />
                                                 <h6 className="gallery-artist-name">
-                                                {i18n.language === 'fa-IR' ?
-                                                    <>
-                                                    <span>{artist?.translations?.fa?.nick_name}</span>
-                                                    </>
-                                                    :
-                                                    <>
-                                                    <span>{artist?.translations?.en?.nick_name}</span>
-                                                    </>}
+                                                    {i18n.language === 'fa-IR' ?
+                                                        <>
+                                                            <span>{`${artist?.owner?.translations?.fa?.first_name} ${artist?.owner?.translations?.fa?.last_name}`}</span>
+                                                        </>
+                                                        :
+                                                        <>
+                                                            <span>{`${artist?.owner?.translations?.en?.first_name} ${artist?.owner?.translations?.en?.last_name}`}</span>
+                                                        </>}
                                                 </h6>
                                                 <button type="button" class=" btn-follow">{t("artwork.follow")}</button>
 
@@ -184,9 +184,9 @@ function Introduction({id, galleryIntroduction, galleryExhibition}) {
 
                                 <div class="articles">
                                     <div class="public-header">
-                                        <div class="row">
-                                            <div class="col-xs-12 w-auto">
-                                                <h2 class="default-title">{t("news-and-article-art.articles")}</h2>
+                                        <div class="">
+                                            <div class="col-xs-12">
+                                                <h2 class="default-title text-dir">{t("news-and-article-art.articles")}</h2>
                                             </div>
                                         </div>
                                     </div>

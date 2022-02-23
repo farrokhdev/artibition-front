@@ -61,7 +61,6 @@ function ConfirmMobile() {
                                                 <Input
                                                     iconRender={visible => (visible ? t("hidden-password") :  t("show-password"))}
                                                     // prefix={<img src={lock_icon}/>}
-                                                    type="number"
                                                     className="input-public form-control border-0 px-2  d-flex"
                                                     placeholder={t("placeholder-username")}
                                             />

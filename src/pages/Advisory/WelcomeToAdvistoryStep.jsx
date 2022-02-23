@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { t } from 'i18next';
+import i18next, { t } from 'i18next';
 import classnames from 'classnames';
 import { GetLanguage } from "../../utils/utils";
 import { Form, Input, Select } from 'antd';
@@ -135,7 +135,10 @@ function WelcomeToAdvistoryStep({ prev, next }) {
                                         ]}>
 
                                         <Select
-                                            className="form-control text-dir  px-2  d-flex" id="adv1"
+                                            className={classnames("", {
+                                                "ant-select-rtl": i18next.language === 'fa-IR',
+                                            })}
+                                            style={{ border: "1px solid #ccc" }} id="adv1"
                                             placeholder={t("content-panel-add-artwork.art_info.artwork_field")}
                                             options={categorys}
                                             allowClear
@@ -172,7 +175,10 @@ function WelcomeToAdvistoryStep({ prev, next }) {
                                         ]}>
 
                                         <Select
-                                            className="form-control text-dir  px-2  d-flex" id="adv1"
+                                            className={classnames("", {
+                                                "ant-select-rtl": i18next.language === 'fa-IR',
+                                            })}
+                                            style={{ border: "1px solid #ccc" }}
                                             options={listInvestment}
                                             allowClear
                                             id="info-203"
@@ -208,7 +214,10 @@ function WelcomeToAdvistoryStep({ prev, next }) {
                                         ]}>
 
                                         <Select
-                                            className="form-control text-dir  px-2  d-flex" id="adv1"
+                                            className={classnames("", {
+                                                "ant-select-rtl": i18next.language === 'fa-IR',
+                                            })}
+                                            style={{ border: "1px solid #ccc" }}
                                             options={listinvestmentType}
                                             allowClear
                                             id="info-203"
@@ -245,7 +254,10 @@ function WelcomeToAdvistoryStep({ prev, next }) {
                                         ]}>
 
                                         <Select
-                                            className="form-control text-dir  px-2  d-flex" id="adv1"
+                                            className={classnames("", {
+                                                "ant-select-rtl": i18next.language === 'fa-IR',
+                                            })}
+                                            style={{ border: "1px solid #ccc" }}
                                             value={artistname}
                                             options={listInvestment}
                                             onChange={(value) => { setArtistName(value) }}
@@ -312,7 +324,10 @@ function WelcomeToAdvistoryStep({ prev, next }) {
                                         ]}>
 
                                         <Select
-                                            className="form-control text-dir  px-2  d-flex" id="adv1"
+                                            className={classnames("", {
+                                                "ant-select-rtl": i18next.language === 'fa-IR',
+                                            })}
+                                            style={{ border: "1px solid #ccc" }}
                                             options={listInvestmentRange}
                                             allowClear
                                             id="info-203"

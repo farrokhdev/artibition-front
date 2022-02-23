@@ -113,7 +113,7 @@ function SidebarPanel(props) {
                                 <li className="sidebar-icon my-4" id="financial"><Link to="/panel/orders"><span
                                     className="sidebar-nav-margin">{t("drawer-panel.nav-orders")}</span></Link></li>
                                 <li className="sidebar-icon my-4" id="content"><Link to="/panel/contents"><span
-                                    className="sidebar-nav-margin">محتوا</span></Link></li>
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-content")}</span></Link></li>
                                 <li className="sidebar-icon my-4" id="mypurchase"><Link to="/panel/bidding-price"><span
                                     className="sidebar-nav-margin">{t("drawer-panel.biding-price")}</span></Link></li>
                                 <li className="sidebar-icon my-4" id="my-albums"><Link to="/panel/exhibitions"><span
@@ -144,9 +144,9 @@ function SidebarPanel(props) {
                                 <li className="sidebar-icon my-4 " id="messages"><Link to="/panel/messages"><span
                                     className="sidebar-nav-margin">{t("drawer-panel.nav-messages")}</span></Link></li>
                                 <li className="sidebar-icon my-4" id="content"><Link to="/panel/contents"><span
-                                    className="sidebar-nav-margin">محتوا</span></Link></li>
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-content")}</span></Link></li>
                                 <li className="sidebar-icon my-4" id="my-albums"><Link to="/panel/my-collections"><span
-                                    className="sidebar-nav-margin">کالکشن های من</span></Link></li>
+                                    className="sidebar-nav-margin">{t("drawer-panel.nav-my-collections")}</span></Link></li>
                                 <li className="sidebar-icon my-4" id="mypurchase"><Link to="/panel/bidding-price"><span
                                     className="sidebar-nav-margin">{t("drawer-panel.biding-price")}</span></Link></li>
                                 <li className="sidebar-icon " id="profile"><Link to="/panel/profile"><span
@@ -205,7 +205,7 @@ function SidebarPanel(props) {
                 </div>
 
                 <div className=" justify-content-end ">
-                    <button type="button" className="d-flex btn-outline-pink box-dir-reverse" onClick={() => { copyToClipboard() }}>
+                    <button type="button" className="d-flex btn-outline-pink box-dir-reverse dir" style={{ alignItems: "center" }} onClick={() => { copyToClipboard() }}>
                         <img src={invite} className="mx-2 mt-1" width="20" height="20" alt="" />
                         <span className="">{t("drawer-panel.invite.btn")}</span>
                     </button>

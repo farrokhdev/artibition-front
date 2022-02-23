@@ -54,6 +54,7 @@ import { useDispatch } from "react-redux";
 import { UPDATE_CART } from "../../redux/reducers/cart/cart.types";
 import { numDiscriminant } from "../../utils/discriminant";
 import { DEFAULT_URL_IMAGE } from "../../utils/defaultImage";
+import ArthibitionProperties from "../../components/ArthibitionProperies/ArthibitionProperties";
 function DetailsArtwork() {
   let navigate = useNavigate();
 
@@ -237,7 +238,7 @@ function DetailsArtwork() {
           </Breadcrumb>
 
           <div className="clearfix"></div>
-          <div className="d-block d-md-flex box-dir-reverse">
+          <div className="d-block d-md-flex box-dir-reverse dir">
             <div className="col-md-6 px-0 px-sm-3">
               <div className="artwork-imggallery">
                 <div
@@ -714,65 +715,9 @@ function DetailsArtwork() {
             </div>
           </div>
 
-          <div className="d-blcok d-lg-flex box-dir-reverse row-property">
-            <div className="col">
-              <div className="row box-dir-reverse ">
-                <div className="col-12 col-md-6 col-xl-3">
-                  <div className="d-flex box-dir-reverse align-items-center p-2">
-                    <img
-                      src={shiping_icon}
-                      width="40"
-                      height="40"
-                      alt=""
-                      className="pull-dir"
-                    />
-                    <h6>{t("artwork.delivery")}</h6>
-                  </div>
-                </div>
-                <div className="col-12 col-md-6 col-xl-3">
-                  <div className="d-flex box-dir-reverse align-items-center p-2">
-                    <img
-                      src={refund_icon}
-                      width="40"
-                      height="40"
-                      alt=""
-                      className="pull-dir"
-                    />
-                    <h6>
-                      <span className="persian-num">7</span>
-                      {t("artwork.referral")}
-                    </h6>
-                  </div>
-                </div>
-                <div className="col-12 col-md-6 col-xl-3">
-                  <div className="d-flex box-dir-reverse align-items-center p-2">
-                    <img
-                      src={secure_payment_icon}
-                      width="40"
-                      height="40"
-                      alt=""
-                      className="pull-dir"
-                    />
-                    <h6>{t("artwork.safe_payment")}</h6>
-                  </div>
-                </div>
-                <div className="col-12 col-md-6 col-xl-3">
-                  <div className="d-flex box-dir-reverse align-items-center p-2">
-                    <img
-                      src={original_icon}
-                      width="40"
-                      height="40"
-                      alt=""
-                      className="pull-dir"
-                    />
-                    <h6>{t("artwork.originality_guaranteed")}</h6>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <ArthibitionProperties/>
 
-          <Tabs className="" defaultActiveKey="1" onChange={callback}>
+          <Tabs className="tab-m-0" defaultActiveKey="1" onChange={callback}>
             <TabPane
               className="mx-4"
               tab={t("artwork.about_artwork.tab_title")}
@@ -813,7 +758,7 @@ function DetailsArtwork() {
                   {t("artwork.tags.title")}
                 </h2>
               </div>
-              <ul className="d-flex tags-horizontal box-dir-reverse">
+              <ul className="d-flex tags-horizontal box-dir-reverse dir">
                 {productDetail?.tags?.map((item) => (
                   <li>
                     <a href="#">{item.title}</a>
@@ -826,7 +771,7 @@ function DetailsArtwork() {
           </div>
           <div className=" artwork-artist">
             <div className="public-header">
-              <div className="row box-dir-reverse">
+              <div className="row box-dir-reverse dir">
                 <div className="col-xs-8 text-dir">
                   <h2 className="default-title text-dir">
                     {" "}
@@ -837,7 +782,7 @@ function DetailsArtwork() {
                   </h2>
                 </div>
                 <div className="col-xs-4">
-                  <div className="d-flex box-dir-reverse justify-custom">
+                  <div className="d-flex box-dir-reverse pull-dir-rev">
                     {/* <a href="#" className="btn-readmore pull-dir">همه آثار<span className="hidden-xs">هنرمند</span></a> */}
                     <Link to={`/site/artist-profile/?id=${artist_id}`} className="btn-readmore pull-left ">
                       {t("artwork.all_artworks_artist.text1")}
@@ -1028,7 +973,7 @@ function DetailsArtwork() {
             </div>
             <div
               style={{ overflow: "auto" }}
-              className="owl-carousel d-flex"
+              className="owl-carousel d-flex dir"
               id="tab4"
             >
               <a href="#" className="cols  mx-4 pb-4">
@@ -1308,7 +1253,7 @@ function DetailsArtwork() {
                     <div id="view" className="tab-pane fade in active">
                       <div
                         style={{ overflow: "auto" }}
-                        className="owl-carousel d-flex"
+                        className="owl-carousel d-flex dir"
                         id="tab4"
                       >
                         <a href="#" className="cols  mx-4 pb-4">

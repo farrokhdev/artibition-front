@@ -4,7 +4,7 @@ import newsletter from '../../assets/img/newsletter.svg';
 export default function Newslatter() {
     return (
         <div className="newsletter">
-        <div className="d-block d-lg-flex">
+        <div className="d-block d-lg-flex dir">
             <div className="col ">
                 <div className="row w-100">
                     <div className="newsletter-right w-100">

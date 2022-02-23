@@ -114,20 +114,20 @@ function PanelMyCollections() {
                     <CreateGallery />
 
 
-                    <div className="row">
+                    <div className="row dir">
                         <div className="col-lg-12">
                             <div className="box box-2">
                                 <div className="sec4">
                                     <div className="public-header">
 
                                         <div className="d-flex box-dir-reverse">
-                                            <div className="col">
+                                            <div className="col p-0">
                                                 <div className="d-flex pull-dir">
                                                     <h2 className="default-title ">کالکشن ها</h2>
                                                 </div>
                                             </div>
-                                            <div className="col w-100">
-                                                <div className="d-flex justify-custom w-100">
+                                            <div className="col p-0">
+                                                <div className="d-flex pull-dir-rev">
                                                     <button onClick={handleShowAddGallery} type="button" className="btn btn-more" data-target="#addnewcollection"
                                                         data-toggle="modal">افزودن کالکشن
                                                     </button>

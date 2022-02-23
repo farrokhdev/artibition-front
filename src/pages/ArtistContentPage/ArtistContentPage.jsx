@@ -8,7 +8,7 @@ import i18next, { t } from 'i18next';
 import Footer from '../../components/Footer/Footer';
 import { Link, useNavigate, useParams } from "react-router-dom";
 import apiServices from '../../utils/api.services';
-import { GALLERY, GALLERY_CONTENT_DETAILS } from '../../utils';
+import { ARTIST_CONTENT_DETAILS, ARTIST_PROFILE } from '../../utils';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { Breadcrumb, message, Spin } from 'antd';
@@ -19,38 +19,37 @@ import telegram from "../../assets/img/telegram.svg";
 import linkedIn from "../../assets/img/linkedIn.svg";
 import twitter from "../../assets/img/twitter.svg";
 import { LinkedinShareButton, TelegramShareButton, TwitterShareButton, WhatsappShareButton } from 'react-share';
+import queryString from 'query-string'
 
 
-function GalleryContentPage() {
+function ArtistContentPage() {
 
     let params = useParams();
     const navigate = useNavigate()
     const [contentDetails, setContentDetilas] = useState()
-    const [galleryDetails, setGalleryDetilas] = useState()
     const [loading, setLoading] = useState(true)
+    const [artistProfile, setArtistProfile] = useState()
     const [nav1, setNav1] = useState(null)
     const [nav2, setNav2] = useState(null)
 
 
 
-
-    const getGalleryDetails = () => {
-        apiServices.get(GALLERY(params.galleryId), "")
+    const getArtistProfile = () => {
+        apiServices.get(ARTIST_PROFILE(params.artistId), queryString.stringify(params))
             .then(res => {
                 if (res.data) {
-                    setGalleryDetilas(res.data.data)
+                    console.log(res.data.data);
+                    setArtistProfile(res.data.data)
                 }
             })
             .catch(err => {
-                console.log(err);
+                console.log("err", err)
             })
     }
 
-
     const getContentDetails = () => {
-        apiServices.get(GALLERY_CONTENT_DETAILS(params.galleryId, params.contentId), "")
+        apiServices.get(ARTIST_CONTENT_DETAILS(params.contentId), "")
             .then(res => {
-                // console.log(res);
                 if (res?.response?.status === 404) {
                     navigate("/site/page-404")
                 }
@@ -73,7 +72,7 @@ function GalleryContentPage() {
     useEffect(() => {
         setLoading(true)
         getContentDetails()
-        getGalleryDetails()
+        getArtistProfile()
     }, [])
 
 
@@ -91,16 +90,6 @@ function GalleryContentPage() {
                         </>
                         :
                         <>
-                            {/* <ul className="breadcrumb">
-                                <li><a href="#">{t("artwork.artibition")}</a></li>
-                                <li><a href="#">{t("artist_profile.artists")}</a></li>
-                                <li><a href="#">{t("gallery-panel-my-gallery.my_gallery")}</a></li>
-                                <li><a href="#">{t("Journal")}</a></li>
-                                <li className="active">{t("Lorem_ipsum_Arthibition_gallery")}</li>
-                            </ul> */}
-
-
-
 
                             <Breadcrumb
                                 className="d-flex box-dir-reverse breadcrumb"
@@ -113,23 +102,27 @@ function GalleryContentPage() {
                                 </Breadcrumb.Item>
                                 <Breadcrumb.Separator>{i18next.language === 'fa-IR' ? ">" : "<"}</Breadcrumb.Separator>
                                 <Breadcrumb.Item>
-                                    <Link to={"/site/all-galleris-list"}>
-                                        گالری ها
+                                    <Link to={"/site/artists"}>
+                                        هنرمندان
                                     </Link>
                                 </Breadcrumb.Item>
                                 <Breadcrumb.Separator>{i18next.language === 'fa-IR' ? ">" : "<"}</Breadcrumb.Separator>
                                 <Breadcrumb.Item>
-                                    <Link to={`/site/gallery-introduction/?id=${params.galleryId}`}>
+                                    {/* <Link to={`/site/gallery-introduction/?id=${params.galleryId}`}> */}
+                                    <Link to={`/site/artist-profile/?id=${params.artistId}`}>
                                         {i18next.language === 'fa-IR' ?
-                                            galleryDetails?.translations?.fa?.title :
-                                            galleryDetails?.translations?.en?.title
+                                            artistProfile?.owner?.translations?.fa?.first_name + " " +
+                                            artistProfile?.owner?.translations?.fa?.last_name :
+                                            artistProfile?.owner?.translations?.en?.first_name + " " +
+                                            artistProfile?.owner?.translations?.en?.last_name
                                         }
                                     </Link>
                                 </Breadcrumb.Item>
                                 <Breadcrumb.Separator>{i18next.language === 'fa-IR' ? ">" : "<"}</Breadcrumb.Separator>
                                 <Breadcrumb.Item>
-                                    <Link to={`/site/gallery-introduction/?id=${params.galleryId}`}>
-                                        مجله
+                                    {/* <Link to={`/site/gallery-introduction/?id=${params.galleryId}`}> */}
+                                    <Link to={`/site/artist-profile/?id=${params.artistId}`}>
+                                        محتوا
                                     </Link>
                                 </Breadcrumb.Item>
                                 <Breadcrumb.Separator>{i18next.language === 'fa-IR' ? ">" : "<"}</Breadcrumb.Separator>
@@ -182,16 +175,12 @@ function GalleryContentPage() {
 
 
                                     <div className="content-txt">
-                                        <h2 className="fontbold28">{contentDetails?.translations?.fa?.title}</h2>
+                                        <h2 className="fontbold28">{i18next.language === 'fa-IR' ? contentDetails?.translations?.fa?.title : contentDetails?.translations?.en?.title}</h2>
                                         <div className="content-date">
-                                            {/* <span className="persian-num">22</span>
-                                    <span>تیر</span>
-                                    <span className="persian-num">99</span> */}
-                                            <span>{moment(contentDetails?.creation_date, 'YYYY/MM/DD').locale(i18next?.language === 'fa-IR' ? 'fa' : 'en').format('D MMMM YYYY')}</span>
-
+                                            <span>{moment(contentDetails?.creation_date, 'YYYY/MM/DD').locale(i18next.language === 'fa-IR' ? 'fa' : 'en').format('D MMMM YYYY')}</span>
                                         </div>
                                         <p className="text-justify" style={{ whiteSpace: "pre-wrap" }}>
-                                            {contentDetails?.translations?.fa?.description}
+                                            {i18next.language === 'fa-IR' ? contentDetails?.translations?.fa?.description : contentDetails?.translations?.en?.description}
                                         </p>
                                         {/* <p className="text-justify">
                                             انتخاب هنرمندان این نمایشگاه با سیاستی از پیش تعیین‌شده بر روی هنرمندان برجسته تاریخ هنر ایران،
@@ -246,9 +235,11 @@ function GalleryContentPage() {
                                     </div>
                                 </div>
                                 <div className="col-sm-4">
-                                    <h3 className="default-title mrgb32 mrgt16 text-dir">{`سایر محتوای گالری ${i18next.language === 'fa-IR' ?
-                                        galleryDetails?.translations?.fa?.title :
-                                        galleryDetails?.translations?.en?.title
+                                    <h3 className="default-title mrgb32 mrgt16 text-dir">{`سایر محتوای ${i18next.language === 'fa-IR' ?
+                                        artistProfile?.owner?.translations?.fa?.first_name + " " +
+                                        artistProfile?.owner?.translations?.fa?.last_name :
+                                        artistProfile?.owner?.translations?.en?.first_name + " " +
+                                        artistProfile?.owner?.translations?.en?.last_name
                                         }`}</h3>
                                     {[1, 2, 3, 4].map((item) => {
                                         return (
@@ -303,4 +294,4 @@ function GalleryContentPage() {
     )
 }
 
-export default GalleryContentPage;
+export default ArtistContentPage;

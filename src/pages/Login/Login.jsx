@@ -96,7 +96,7 @@ function Login(props) {
     APIService.post(LOGIN, values).then((res) => {
       if (res.data) {
         setToken(res.data.data);
-        APIService.get(CART_ME, {}).then((res) => {
+        APIService.get(CART_ME, "").then((res) => {
           if (res.data.code === 200) {
             dispatch({
               type: UPDATE_CART,

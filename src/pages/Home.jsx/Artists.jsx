@@ -40,7 +40,7 @@ function Artists(props) {
   }, [params]);
   return (
     <div className="artists">
-      <div className="d-block d-lg-flex flex-row-reverse">
+      <div className="d-block d-lg-flex flex-row-reverse dir">
         {/* <h5 className="artists-title visible-xs">هنرمندان آرتیبشن</h5> */}
         {/* <h5 className="artists-title">هنرمندان آرتیبشن</h5> */}
         <div className="col col-lg-8">
