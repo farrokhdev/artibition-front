@@ -7,7 +7,7 @@ import { isLogin } from '../../utils/utils'
 export default function Newslatter() {
     return (
         <div className="newsletter">
-            <div className="d-block d-lg-flex">
+            <div className="d-block d-lg-flex dir">
                 <div className="col ">
                     <div className="row w-100">
                         <div className="newsletter-right w-100">
@@ -19,7 +19,6 @@ export default function Newslatter() {
                                 <button type="button">{t("subscribe-newsletter-home.submit-email-btn")}</button>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <div className="clearfix visible-xs"></div>
@@ -31,11 +30,11 @@ export default function Newslatter() {
                                 <Link to="/panel/profile">
                                     <button type="button" className="btn-nlupload">{t("upload")}</button>
                                 </Link>
-                                : 
+                                :
                                 <Link to="/auth/login">
                                     <button type="button" className="btn-nlupload">{t("upload")}</button>
                                 </Link>
-                                }
+                            }
                         </div>
                     </div>
 

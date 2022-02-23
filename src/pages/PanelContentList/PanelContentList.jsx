@@ -110,7 +110,7 @@ function PanelContentList() {
 
 
 
-                    <div className="d-block d-md-flex box-dir-reverse">
+                    <div className="d-block d-md-flex box-dir-reverse dir">
                         <div className="col-md-8">
                             <div className="box artistpanel-5">
                                 <div className="public-header">

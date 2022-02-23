@@ -70,10 +70,10 @@ export default function NavbarMenuHeader(props) {
 
 
   return (
-    <nav className="navbar w-100 margin-dir">
+    <nav className="navbar w-100">
       <div className=" collapse navbar-collapse  px-0 w-100" id="menu">
         <button className="nav-close" type="button"></button>
-        <ul className=" nav nav-header-menu box-dir-reverse justify-content-center">
+        <ul className=" nav nav-header-menu box-dir-reverse justify-content-center dir">
 
           <li className="dropdown mega-dropdown ">
             <a href="#" className="dropdown-toggle" data-toggle="dropdown">{t("nav-menu-artworks")}</a>

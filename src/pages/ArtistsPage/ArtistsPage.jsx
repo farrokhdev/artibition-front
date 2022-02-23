@@ -158,7 +158,7 @@ function ArtistsPage(props) {
 
         <div className="default-content">
           <div className="content-header">
-            <div className="d-flex box-dir-reverse">
+            <div className="d-flex box-dir-reverse dir">
               <div className="col-sm-3 col-xs-6">
                 <div type="button" className="filter-btn">
                   <div className="d-flex box-dir-reverse align-items-center">
@@ -182,7 +182,7 @@ function ArtistsPage(props) {
                 </div>
               </div>
               <div className="col">
-                <div className="d-flex justify-custom">
+                <div className="d-flex pull-dir-rev">
                   <div className="form-group pull-left">
                     <select
                       className="form-control"
@@ -212,7 +212,7 @@ function ArtistsPage(props) {
             </div>
           </div>
           <div className="content-body">
-            <div className="d-flex box-dir-reverse">
+            <div className="d-flex box-dir-reverse dir">
               <div className="col-md-3  filter-side">
                 <div className="panel-group" id="accordion">
                   <div className="panel panel-default">

@@ -74,7 +74,7 @@ function Advisory() {
                     responsive={false}
                 >
                     {steps.map(item => (
-                        <Step key={item.title} title={item.title} />
+                        <Step key={item.title} title={item.title} className="step-perisan-num" />
                     ))}
                 </Steps>
 

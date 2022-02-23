@@ -7,7 +7,7 @@ function Suggestions() {
     return (
         <div className="box box-4 ">
         <div className="suggestions">
-        <div className="row">
+        <div className="row dir">
             <div className="col-sm-12">
                 <h2 className="d-flex default-title text-right box-dir-reverse">{t("suggestion-home.title")}</h2>
             </div>

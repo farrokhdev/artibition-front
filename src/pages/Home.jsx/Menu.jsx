@@ -14,7 +14,7 @@ export default function Menu() {
   const { t } = useTranslation();
   return (
     <div className="menu">
-      <div className="row">
+      <div className="row dir">
         <div className="col-md-1 "></div>
         <div className="col-md-10 col-sm-11 col-xs-12 w-100">
           <NavbarMenuHeader />

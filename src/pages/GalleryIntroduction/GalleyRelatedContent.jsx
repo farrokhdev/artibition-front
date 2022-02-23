@@ -21,13 +21,14 @@ function GalleyRelatedContent({ galleryExhibition, galleryIntroduction }) {
 
   return (
     <div className="container-fluid">
-      {galleryExhibition?.results?.map((content) => {
-        return (
-          <div className="col-sm-6 float-right">
-            <div className="galley-related-content">
+      <div className="galley-related-content">
+        {galleryExhibition?.results?.map((content) => {
+          console.log(content);
+          return (
+            <div className="col-sm-6" style={{ maxWidth: "100%" }}>
               <div className="gallery-maxwidth">
                 <div className="gallery-img">
-                  <div className="tags tags-events">مجازی</div>
+                  <div className="tags tags-events">{t(`gallery-panel-exhibition.table.${content.type}`)}</div>
                   <img
                     src={content?.poster[0]?.exact_url}
                     height="840"
@@ -63,11 +64,10 @@ function GalleyRelatedContent({ galleryExhibition, galleryIntroduction }) {
                     <Timer
                       initialTime={timeExpire(
                         content.end_date[
-                          `${
-                            content.type === "virtual_real"
-                              ? "virtual"
-                              : content.type
-                          }_end_date`
+                        `${content.type === "virtual_real"
+                          ? "virtual"
+                          : content.type
+                        }_end_date`
                         ]
                       )}
                       direction="backward"
@@ -76,7 +76,7 @@ function GalleyRelatedContent({ galleryExhibition, galleryIntroduction }) {
                         <div
                           style={{
                             direction: "ltr",
-                            textAlign: "right",
+                            textAlign: "center",
                           }}
                           className="timers"
                         >
@@ -108,9 +108,11 @@ function GalleyRelatedContent({ galleryExhibition, galleryIntroduction }) {
                 </div>
               </div>
             </div>
-          </div>
-        );
-      })}
+
+          );
+        })}
+      </div>
+
     </div>
   );
 }

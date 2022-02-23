@@ -529,7 +529,7 @@ function GalleryPanelCreateExhibition() {
                                 >
                                     <div className="form-group">
                                         <Form.Item name={"statement_fa"}>
-                                            <TextArea required={i18next.language === 'fa-IR'} id="info-213" className="form-control "
+                                            <TextArea dir='rtl' required={i18next.language === 'fa-IR'} id="info-213" className="form-control "
                                                 placeholder={t("gallery-panel-create-exhibition.exhibition_contact_placeholder_fa")}
                                                 rows="8"></TextArea>
                                         </Form.Item>
@@ -544,7 +544,7 @@ function GalleryPanelCreateExhibition() {
                                 >
                                     <div className="form-group ">
                                         <Form.Item name={"statement_en"}>
-                                            <TextArea required className="form-control" placeholder={t("gallery-panel-create-exhibition.exhibition_contact_placeholder_en")}
+                                            <TextArea dir='ltr' required className="form-control" placeholder={t("gallery-panel-create-exhibition.exhibition_contact_placeholder_en")}
                                                 rows="8"></TextArea>
                                         </Form.Item>
 
@@ -559,7 +559,7 @@ function GalleryPanelCreateExhibition() {
                                 >
                                     <div className="form-group">
                                         <Form.Item name={"activity_time_fa"}>
-                                            <TextArea required={i18next.language === 'fa-IR'} id="info-213" className="form-control "
+                                            <TextArea dir='rtl' required={i18next.language === 'fa-IR'} id="info-213" className="form-control "
                                                 placeholder={t("gallery-panel-create-exhibition.exhibition_time_work_placeholder_fa")}
                                                 rows="6"></TextArea>
                                         </Form.Item>
@@ -574,7 +574,7 @@ function GalleryPanelCreateExhibition() {
                                 >
                                     <div className="form-group ">
                                         <Form.Item name={"activity_time_en"}>
-                                            <TextArea required className="form-control" placeholder={t("gallery-panel-create-exhibition.exhibition_time_work_placeholder_en")}
+                                            <TextArea dir='ltr' required className="form-control" placeholder={t("gallery-panel-create-exhibition.exhibition_time_work_placeholder_en")}
                                                 rows="6"></TextArea>
                                         </Form.Item>
 

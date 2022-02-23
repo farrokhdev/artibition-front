@@ -76,7 +76,7 @@ function CollectionsList() {
                 <div className="default-content">
                     <div className="content-header">
                         <div className="d-flex box-dir-reverse">
-                            <div className="col">
+                            <div className="col p-0">
                                 <div className="d-flex justify-custom">
                                     <div className="form-group pull-left">
                                         <select className="form-control dir" id="sel1">

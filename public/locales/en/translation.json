@@ -182,7 +182,7 @@
     "action-text": "Register artwork"
   },
   "artibition-events": {
-    "title": "ARTHIBITION ARTISTS"
+    "title": "ARTHIBITION EVENTS"
   },
   "news-and-article-art": {
     "title": "ART NEWS AND EVENTS",
@@ -449,6 +449,7 @@
     "nav-exhibitions": "Exhibitions",
     "nav-artists": "Artists",
     "nav-my-galleries": "My galleries",
+    "nav-my-collections": "My collections",
     "nav-content": "Content",
     "invite": {
       "btn": "Invite friends",
@@ -1299,7 +1300,7 @@
     "arthibition_address_1": "Tehran, Shariati Ave., Kousha St., Naseri St., Ghandi (Daria) St., No. 6.",
     "arthibition_address_2": "",
     "contact": "Contact",
-    "phone": "+989122121030",
+    "phone": "+98 9122121030",
     "back_home": "Back homepage"
   },
   "collections-list": {
@@ -1501,5 +1502,9 @@
   },
   "add-new-artist-by-gallery": {
     "upload_avatar_error": "Please upload avatar for artist"
+  },
+  "page404": {
+    "title": "Oops! Page not found",
+    "btn": "Go back home"
   }
 }

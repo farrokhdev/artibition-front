@@ -486,6 +486,7 @@
     "nav-exhibitions": "نمایشگاه ها",
     "nav-artists": "هنرمندان",
     "nav-my-galleries": "گالری‌های من",
+    "nav-my-collections": "آلبوم های من",
     "nav-content": "محتوا",
     "invite": {
       "btn": "دعوت دوستان",
@@ -1444,5 +1445,9 @@
   },
   "add-new-artist-by-gallery": {
     "upload_avatar_error": "لطفا یک عکس برای هنرمند آپلود کنید"
+  },
+  "page404": {
+    "title": "متأسفانه صفحه مورد نظر یافت نشد",
+    "btn": "بازگشت به صفحه اصلی"
   }
 }

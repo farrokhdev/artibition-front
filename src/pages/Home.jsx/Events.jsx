@@ -54,13 +54,13 @@ export default function Events() {
     }, [exhibitionList]);
     return (
         <div className="events">
-            <div className="row">
+            <div className="row dir">
                 <div className="d-flex public-header">
                     <div className="col-xs-8">
-                        <h2 className="text-right default-title">{t("artibition-events.title")}</h2>
+                        <h2 className="text-dir default-title">{t("artibition-events.title")}</h2>
                     </div>
                     <div className="col-xs-4">
-                        <a href="#" className="btn-readmore pull-left">{t("event-all")}</a>
+                        <a href="#" className="btn-readmore pull-dir-rev">{t("event-all")}</a>
                     </div>
                 </div>
                 <div className="clearfix"></div>

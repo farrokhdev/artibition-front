@@ -1,5 +1,5 @@
 import React from "react";
-import { t } from 'i18next';
+import i18next, { t } from 'i18next';
 import Slider from "react-slick";
 
 import Artwork1 from '../../assets/img/mainpage/hnrpqkfiup@3x.jpg'
@@ -14,6 +14,7 @@ const SliderSetting = {
     slidesToShow: 4,
     slidesToScroll: 4,
     initialSlide: 0,
+    // rtl: true,
     responsive: [
         {
             breakpoint: 1024,
@@ -105,11 +106,12 @@ function Collection({ collectionItem , getArtistCategory}) {
 
 
 
-            <Slider {...SliderSetting} className="mrgt20">
+            <Slider {...SliderSetting} className="mrgt20 dir">
                 {collectionItem?.products?.map((item, index) =>
                     <div className="cols" key={index}>
-                        <div className="col-img" style={{ marginLeft: "20px" }}>
-                            <img src={item.medias[0]?.exact_url} width="840" style={{height: 250}} alt="آرتیبیشن" className="img-responsive" />
+                        <div className="col-img" style={i18next.language === 'fa-IR' ? { marginLeft: "20px" } : { marginRight: "20px" }}>
+                            <img src={item.medias[0]?.exact_url} width="840" height="840" alt="آرتیبیشن" className="img-responsive" />
+
                             <div className="tab-overly dir">
                                 <a
                                 onClick={() =>

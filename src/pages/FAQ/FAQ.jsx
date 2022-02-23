@@ -27,9 +27,9 @@ export default function FAQ() {
                     </div>
                     <div class="default-content">
                         <div class="inner-vertical-tab">
-                            <div class="row">
+                            <div class="row dir">
                                 <div class="col-md-2 col-sm-3">
-                                    <ul class="nav nav-tabs">
+                                    <ul class="nav nav-tabs text-dir">
                                         <li class=""><a data-toggle="tab" href="#faq1">{t("all_faq")}</a></li>
                                         <li><a data-toggle="tab" href="#faq2">{t("artist_profile.artists")}</a></li>
                                         <li><a data-toggle="tab" href="#faq3">{t("artist_profile.collection")}</a></li>
@@ -37,7 +37,7 @@ export default function FAQ() {
                                     </ul>
                                 </div>
                                 <div class="col-md-7 col-sm-9">
-                                    <div class="tab-content">
+                                    <div class="tab-content text-dir">
                                         <div id="faq1" class="tab-pane fade in active">
                                             <div class="panel-group accordion-body" id="accordion">
                                                 <div class="panel panel-default">

@@ -111,7 +111,7 @@ function PanelOrders() {
                         <div className="public-header mrgb32">
                             <h2 className=" default-title text-dir">{t("content-panel-dashboard.tables.orders")}</h2>
                         </div>
-                        <div className="row box-dir-reverse text-dir">
+                        <div className="row box-dir-reverse text-dir m-0">
                             <div className="col-12 col-sm-6 col-xl-3 px-0">
                                 <label className="container-radio">{t("content-panel-orders.filters.all")}
                                     <input

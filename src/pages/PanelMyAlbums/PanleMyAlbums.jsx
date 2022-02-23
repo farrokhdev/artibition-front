@@ -104,20 +104,20 @@ function PanleMyAlbums() {
                     <CreateGallery />
 
 
-                    <div className="row">
+                    <div className="row dir">
                         <div className="col-lg-8">
                             <div className="box box-2">
                                 <div className="sec4">
                                     <div className="public-header">
 
                                         <div className="d-flex box-dir-reverse">
-                                            <div className="col">
+                                            <div className="col p-0">
                                                 <div className="d-flex pull-dir">
                                                     <h2 className="default-title ">مجموعه‌ها</h2>
                                                 </div>
                                             </div>
-                                            <div className="col w-100">
-                                                <div className="d-flex justify-custom w-100">
+                                            <div className="col p-0">
+                                                <div className="d-flex pull-dir-rev">
                                                     <button onClick={handleShowAddGallery} type="button" className="btn btn-more" data-target="#addnewcollection"
                                                         data-toggle="modal">افزودن مجموعه
                                                     </button>
@@ -165,13 +165,13 @@ function PanleMyAlbums() {
                         <div className="col-lg-4">
                             <div className=" box box-3">
                                 <div className="d-flex box-dir-reverse public-header">
-                                    <div className="col-9">
+                                    <div className="col p-0">
                                         <div className="d-flex pull-dir">
                                             <h2 className="default-title text-dir">اطلاعات هنری</h2>
                                         </div>
                                     </div>
-                                    <div className="col">
-                                        <div className="d-flex justify-custom">
+                                    <div className="col p-0">
+                                        <div className="d-flex pull-dir-rev">
                                             <div onClick={() => { setVisibleEditBiography(true) }} style={{ cursor: "pointer" }}>
                                                 <img src={edit_icon} width="32" height="32" />
                                             </div>

@@ -116,7 +116,7 @@ export default function AllProducts() {
                         </ul>
                       </div>
 
-                      <div className="tab-content">
+                      <div className="tab-content dir">
                         <div id="home" className="tab-pane fade in active">
 
                           <div style={{ overflow: 'auto' }} className="owl-carousel d-flex" id="tab1">

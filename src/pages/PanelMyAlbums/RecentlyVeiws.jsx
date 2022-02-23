@@ -8,7 +8,7 @@ function RecentlyVeiws() {
         
         <div className="box box-5">
         <div className="recently-view">
-        <div className="row">
+        <div className="row dir">
             <div className="col-sm-12">
                 <h2 className="d-flex default-title text-right box-dir-reverse">{t("my-recent-views-home.title")}</h2>
             </div>

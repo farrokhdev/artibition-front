@@ -20,6 +20,7 @@ import apiServices from '../../utils/api.services';
 import queryString from 'query-string'
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
+import i18next from 'i18next';
 import { follow } from '../../utils/utils';
 
 function ProfileArtist() {
@@ -109,7 +110,7 @@ function ProfileArtist() {
                 </Breadcrumb>
 
                 <div className="artist-intro">
-                    <div className="artist-cover">
+                    <div className="artist-cover dir">
                         <div className="col-12  col-xl-7 mx-auto">
                             <div className="artist-info">
                                 <div className="d-block d-md-flex box-dir-reverse ">
@@ -157,7 +158,7 @@ function ProfileArtist() {
                                                     </div>
                                                 </div>
                                                 <div className="col px-0">
-                                                    <div className="d-flex justify-custom">
+                                                    <div className="d-flex pull-dir-rev">
                                                         <div className="artist-msg " style={{ cursor: "pointer" }}>
                                                             <img onClick={handleShowModalSendMessage} src={message_icon} width="24" height="24" />
                                                         </div>
@@ -172,10 +173,10 @@ function ProfileArtist() {
                                                     artistProfile?.translations?.en?.biography}
                                                 <span>
                                                     <a href="#">
-                                                        <div className='d-flex align-items-center'>{t("artwork.about_artwork.more")}
+                                                        <span className=''>{t("artwork.about_artwork.more")}
 
-                                                            <img src={arrow_left_icon} width="16" height="16" alt="" />
-                                                        </div>
+                                                            <img src={arrow_left_icon} width="16" height="16" alt="" style={i18next.language === 'fa-IR' ? {} : { transform: "rotate(180deg)" }} />
+                                                        </span>
                                                     </a>
                                                 </span>
                                             </p>
@@ -185,11 +186,11 @@ function ProfileArtist() {
                             </div>
                         </div>
                     </div>
-                    <div className="artist-art">
+                    <div className="artist-art dir">
 
 
-                        <Tabs className='' defaultActiveKey="1" onChange={callback}>
-                            <TabPane className="mx-4" tab={t("artist_profile.tabs.artworks")} key="1">
+                        <Tabs className='tab-m-0' defaultActiveKey="1" onChange={callback}>
+                            <TabPane className="" tab={t("artist_profile.tabs.artworks")} key="1">
                                 <ArtworksTab artistId={artistProfile?.id} translations={artistProfile?.owner?.translations} />
                             </TabPane>
                             <TabPane tab={t("artist_profile.tabs.albums")} key="2">

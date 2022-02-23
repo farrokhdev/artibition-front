@@ -75,10 +75,9 @@ function GalleryIntroduction() {
         getGalleryExhibition()
     }, [params]);
 
-    console.log("id", galleryIntroduction)
     return (
         <>
-            <div className="container">
+            <div className="container dir">
                 <Header />
                 <Menu />
 
@@ -120,8 +119,8 @@ function GalleryIntroduction() {
                             <div class="tab-overflow">
                                 <div class="inner-tab">
                                     <ul className="nav d-block ">
-                                        <Tabs className="antd-tabnav" defaultActiveKey="1" onChange={callback}>
-                                            <TabPane className="mx-5 antd-tabnav" tab={t("artist_profile.introduction")} key="1">
+                                        <Tabs className="antd-tabnav tab-m-0 tab-center" defaultActiveKey="1" onChange={callback}>
+                                            <TabPane className=" antd-tabnav" tab={t("artist_profile.introduction")} key="1">
                                                 <Introduction id={id} galleryIntroduction={galleryIntroduction} galleryExhibition={galleryExhibition} />
                                             </TabPane>
                                             <TabPane tab={t("drawer-panel.nav-exhibitions")} key="2">

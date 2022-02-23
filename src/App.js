@@ -22,6 +22,8 @@ import FAQ from './pages/FAQ/FAQ';
 import DetailsPromotion from './pages/DetailsPromoton/DetailsPromotion';
 import PromotionCompetition from './pages/PromotionCompetition/PromotionCompetition';
 import ReactGA from 'react-ga'
+import Page404 from './pages/Page404/Page404';
+import ArtistContentPage from './pages/ArtistContentPage/ArtistContentPage';
 
 ReactGA.initialize('UA-220199370-1')
 
@@ -48,7 +50,7 @@ function App(props) {
 
     return (
         <>
-        
+
             <Routes>
                 <Route path="/" element={<Home />}>
                     <Route index path="home" element={<Home />} />
@@ -63,15 +65,17 @@ function App(props) {
                     <Route path="artist-profile" element={<ProfileArtist />} />
                     <Route path="all-galleris-list" element={<AllGallerysList />} />
                     <Route path="gallery-introduction" element={<GalleryIntroduction />} />
-                    <Route path="gallery-content-page" element={<GalleryContentPage />} />
+                    <Route path="gallery-content/:galleryId/:contentId" element={<GalleryContentPage />} />
+                    <Route path="artist-content/:artistId/:contentId" element={<ArtistContentPage />} />
                     <Route path="faq" element={<FAQ />} />
                     <Route path="advisory" element={<Advisory />} />
                     <Route path="advisory-submited" element={<AdvisorySubmited />} />
                     <Route path="collections-list" element={<CollectionsList />} />
                     <Route path="promotion/:id" element={<DetailsPromotion />} />
                     <Route path="promotion-competition/:id" element={<PromotionCompetition />} />
+                    <Route path="page-404" element={<Page404 />} />
 
-                    <Route path="*" element={<Navigate to="/site/artworks" replace />} />
+                    <Route path="*" element={<Page404 />} />
                 </Route>
             </Routes>
             {isLogin() ?

@@ -30,7 +30,7 @@ function ArtworksTab({ artistId, translations }) {
     status: "active",
   });
   const getArtistArts = () => {
-    console.log("params" , params);
+    console.log("params", params);
     apiServices
       .get(ARTIST_PRODUCTS, queryString.stringify(params))
       .then((res) => {
@@ -60,8 +60,8 @@ function ArtworksTab({ artistId, translations }) {
     <div id="artist1" className="tab-pane fade in active">
       <div className="content-header">
         <div className="d-flex">
-          <div className="col ">
-            <div className="d-flex justify-custom box-dir-reverse">
+          <div className="col" style={{ padding: "0" }}>
+            <div className="d-flex pull-dir-rev box-dir-reverse">
               <div className="form-group pull-dir">
                 <select className="form-control text-dir" id="sel1">
                   <option>{t("artworkList.filter.last_update")}</option>
@@ -90,7 +90,7 @@ function ArtworksTab({ artistId, translations }) {
                         // height="280"
                         alt="آرتیبیشن"
                         className="img-responsive"
-                        style={{height:280}}
+                        style={{ height: 280 }}
                       />
 
                       <div className="tab-overly">

@@ -67,7 +67,7 @@ function PersonalInfo(props) {
                             {props?.auth?.profile?.mobile ?
                                 <span className="input-panel persian-num">
                                     {props?.auth?.profile?.mobile}
-                                    <button type="button" class="btn-green en-lang pull-left text-light ml-5">تایید شده</button>
+                                    <div className="btn-green en-lang text-light m-2 p-2" style={{display:"inline-block"}}>تایید شده</div>
                                 </span>
                                 : <span className="lable-panel" onClick={handleEditMobile}>
                                     شماره همراه خود را تایید کنید
@@ -89,7 +89,7 @@ function PersonalInfo(props) {
                             {props?.auth?.profile?.email ?
                                 <span className="input-panel en-lang">
                                     {props?.auth?.profile?.email}
-                                    <button type="button" class="btn-green pull-left text-light ml-5">تایید شده</button>
+                                    <div className="btn-green text-light m-2 p-2" style={{display:"inline-block"}}>تایید شده</div>
                                 </span>
 
                                 : <span className="lable-panel" onClick={handleEditEmailAprove}>

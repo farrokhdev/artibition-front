@@ -226,7 +226,7 @@ function CreateArtist() {
                                         <Checkbox value={artist.id} defaultChecked={galleryArtists.some(e => e.id === artist.id)} disabled={galleryArtists.some(e => e.id === artist.id)} onChange={(e) => { handleChange(e) }} />
                                     </div>
                                     <div className="d-flex" style={{ width: "100px", height: "50px", padding: "10px", alignItems: "center", justifyContent: "center" }}>
-                                        <img src={artist?.media[0]?.exact_url} style={{ width: "70px" }} />
+                                        <img src={artist?.bg_image?.exact_url} style={{ width: "70px" }} />
                                     </div>
                                     <div className="d-flex" style={{ flex: "1", height: "50px", padding: "10px", alignItems: "center", fontSize: "18px" }}>
                                         <p> {i18next.language === "fa-IR" ? `${artist?.owner?.translations?.fa?.first_name} ${artist?.owner?.translations?.fa?.last_name}` : `${artist?.owner?.translations?.en?.first_name} ${artist?.owner?.translations?.en?.last_name}`} </p>

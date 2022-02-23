@@ -56,8 +56,8 @@ function Artworks() {
               </button>
             </div>
           </div>
-          <div class="col-xs-6 col-sm-offset-3 ml-0">
-            <div class="form-group pull-left">
+          <div class="col">
+            <div class="form-group pull-dir-rev">
               <select class="form-control" id="sel1">
                 <option>{t("artworkList.filter.last_update")}</option>
                 <option>{t("artworkList.filter.sell")}</option>

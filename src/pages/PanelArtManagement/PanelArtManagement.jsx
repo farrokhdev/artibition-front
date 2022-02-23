@@ -157,7 +157,7 @@ function PanelArtManagement() {
                 <h2 className=" default-title text-dir">{t("content-panel-dashboard.tables.orders")}</h2>
             </div> */}
 
-                        <div className="d-flex box-dir-reverse public-header mrgb32">
+                        <div className="d-flex box-dir-reverse public-header mrgb32 dir">
                             <div className="col">
                                 <div className="d-flex justify-custom">
                                     <h2 className="default-title w-100 text-dir">{t("content-panel-manage-artworks.title")}</h2>
@@ -165,7 +165,7 @@ function PanelArtManagement() {
                             </div>
                             {getUserRole() !== "gallery" &&
                                 <div className="col ">
-                                    <div className="d-flex justify-custom">
+                                    <div className="d-flex pull-dir-rev">
                                         <Link
                                             to={"/panel/add-artwork"}
                                             state={{ from: "/panel/art-management" }}
@@ -177,32 +177,32 @@ function PanelArtManagement() {
                                 </div>
                             }
                         </div>
-                        <div className="row box-dir-reverse text-dir">
+                        <div className="row box-dir-reverse text-dir dir">
 
                             <Radio.Group
                                 onChange={(e) => { handleStatus(e.target.value) }}
                             >
                                 <Radio value={""} style={{ margin: "0 30px" }}>
                                     {t("content-panel-manage-artworks.filters.all")}
-                                    <p className='text-dir mx-4 px-3'>
+                                    <p className='text-dir'>
                                         {AllCountStatus ? AllCountStatus : 0}
                                     </p>
                                 </Radio>
                                 <Radio value={"active"} style={{ margin: "0 30px" }}>
                                     {t("content-panel-manage-artworks.filters.active")}
-                                    <p className='text-dir mx-4 px-3'>{products.active}</p>
+                                    <p className='text-dir'>{products.active}</p>
                                 </Radio>
                                 <Radio value={"pending_edition"} style={{ margin: "0 30px" }}>
                                     {t("content-panel-manage-artworks.filters.modification")}
-                                    <p className='text-dir mx-4 px-3'>{products['pending_edition']}</p>
+                                    <p className='text-dir'>{products['pending_edition']}</p>
                                 </Radio>
                                 <Radio value={"pending"} style={{ margin: "0 30px" }}>
                                     {t("content-panel-manage-artworks.filters.pending")}
-                                    <p className='text-dir mx-4 px-3'>{products.pending}</p>
+                                    <p className='text-dir'>{products.pending}</p>
                                 </Radio>
                                 <Radio value={"rejected"} style={{ margin: "0 30px" }}>
                                     {t("content-panel-manage-artworks.filters.not_approved")}
-                                    <p className='text-dir mx-4 px-3'>{products.rejected}</p>
+                                    <p className='text-dir'>{products.rejected}</p>
                                 </Radio>
                                 <Radio value={"is_sold"} style={{ margin: "0 30px" }}>
                                     {t("content-panel-manage-artworks.filters.sold")}

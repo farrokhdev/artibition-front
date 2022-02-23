@@ -5,7 +5,7 @@ import hnrpqkfiup from '../../assets/img/mainpage/hnrpqkfiup@3x.jpg';
 
 export default function Suggestions() {
     return (
-        <div className="suggestions box box-5">
+        <div className="suggestions">
         <div className="row dir">
             <div className="col-sm-12">
                 <h2 className="default-title text-dir">{t("suggestion-home.title")}</h2>

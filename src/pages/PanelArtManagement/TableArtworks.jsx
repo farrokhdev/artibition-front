@@ -34,8 +34,8 @@ function TableArtworks({ productList }) {
                         <td data-label={t("content-panel-dashboard.tables.details")} className="">{momentJalaali(item?.modified_date).format(` jYYYY/jMM/jDD`)}</td>
                         <td data-label={t("content-panel-dashboard.tables.details")} className="">{momentJalaali(item?.creation_date).format(` jYYYY/jMM/jDD`)}</td>
                         <td data-label={t("content-panel-dashboard.tables.paid")} className="persian-num">{item?.items[0]?.toman_price}</td>
-
                         <td data-label={t("content-panel-dashboard.tables.status")} className="persian-num status text-dir text-md-center">{isAccept(item?.status).title}</td>
+                        <td> </td>
                         <td data-label={t("content-panel-dashboard.tables.action")}>
                             <button className="btn-outline-blue" type="button" data-toggle="modal"
                                 data-target="#modal-replied-price">{t("content-panel-dashboard.tables.veiw")}

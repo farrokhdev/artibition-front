@@ -58,7 +58,7 @@ function PanelMyPurchases() {
                                 </div>
                             </div>
                             <div className="default-tab tab-3 tab-interval purchase ">
-                                <Tabs className='dir' defaultActiveKey="orders_paid" onChange={callback}>
+                                <Tabs className='dir tab-m-0' defaultActiveKey="orders_paid" onChange={callback}>
                                     <TabPane className="mx-4" tab={t("content-panel-mypurchases.paid.title")} key="orders_paid">
                                         <Paid purchasesProp={purchase} />
                                     </TabPane>
