@@ -90,7 +90,8 @@ function ArtworksPage(props) {
     // toman_price_range_max: toman_price_range_max,
     // dollar_price_range_min: dollar_price_range_min,
     // dollar_price_range_max: dollar_price_range_max,
-    // discount: discount
+    // discount: discountو
+  
   });
 
   const [categorieParams, setCategorieParams] = useState({
@@ -102,6 +103,8 @@ function ArtworksPage(props) {
   const [techniqueParams, setTechniquesetParams] = useState({
     search: "",
   });
+  const [suggestionsCount, setSuggestionsCount] = useState("");
+
 
   //filters state
   const [categories, setCategories] = useState();
@@ -169,6 +172,7 @@ function ArtworksPage(props) {
       .then((res) => {
         if (res.data) {
           setProductList(res.data.data);
+          setSuggestionsCount(res.data.data.count)
         }
       })
       .catch((err) => {
@@ -186,6 +190,12 @@ function ArtworksPage(props) {
       })
     }
   }, [searchParams]);
+
+  const handeSelectPage = (e) => {
+    setParams({
+      ...params, page: e
+    })
+  }
 
 
   const getProductCategories = () => {
@@ -1012,7 +1022,8 @@ function ArtworksPage(props) {
                               "finished": product?.is_sold,
                             })}>
                               <div className="col-img">
-                                {/* <div class="tags tags-spacial">ویژه</div> */}
+                                {product?.is_special && <div class="tags tags-spacial">ویژه</div>
+                                }
                                 {product?.discount ?
                                   <div
                                     class="tags tags-off persian-num"> {numDiscriminant(product?.discount?.value)}{product?.discount?.type === "percentage" ? "%" : t("toman")} </div>
@@ -1139,7 +1150,13 @@ function ArtworksPage(props) {
                 </div>
 
                 <div className=" row-pagination">
-                  <Pagination total={50} />
+                  <Pagination
+                    defaultCurrent={1}
+                    total={suggestionsCount}
+                    defaultPageSize={10}
+                    onChange={(e) => handeSelectPage(e)}
+                  // total={50} 
+                  />
                 </div>
               </div>
             </div>

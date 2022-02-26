@@ -24,13 +24,14 @@ import queryString from "query-string";
 import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
 import { setProfile } from "../../redux/reducers/auth/auth.actions";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams,useNavigate } from "react-router-dom";
 import { follow } from "../../utils/utils";
 
 function ArtistsPage(props) {
 
   const { t, i18n } = useTranslation();
   let [searchParams, setSearchParams] = useSearchParams();
+  let navigate = useNavigate();
 
   const [search, setSearch] = useState();
   const [artistList, setArtistList] = useState();
@@ -42,6 +43,7 @@ function ArtistsPage(props) {
   const [params, setParams] = useState({
     status: "active",
     page: 1,
+    category_id:""
   });
 
   //filters state
@@ -166,7 +168,17 @@ function ArtistsPage(props) {
                     <span className="mx-2">
                       {t("artworkList.filter.title")}
                     </span>
-                    <button className="btn clear-tag mx-3">
+                    <button 
+                    className="btn clear-tag mx-3"
+                    style={Object.keys(params.category_id).length > 0 ? { display: "unset" } : { display: "none" }}
+                    onClick={() => {
+                      setParams({})
+                      navigate(
+                        `/site/artists`
+                      )
+                      // window.location.reload()
+                    }}
+                    >
                       <div className="d-flex box-dir-reverse align-items-center">
                         <img
                           className="mx-2"
@@ -231,7 +243,7 @@ function ArtistsPage(props) {
                       <div className="panel-body">
                         <div className="checkbox-row">
                           <label className="lable-checkbox text-dir">
-                            <input type="checkbox" checked value="" />
+                            <input type="checkbox"  value="" />
                             <span>{t("artists.filter.expert.all")}</span>
                             <span className="checkmark"></span>
                           </label>
@@ -286,7 +298,7 @@ function ArtistsPage(props) {
                       <div className="panel-body">
                         <div className="checkbox-row">
                           <label className="lable-checkbox text-dir">
-                            <input type="checkbox" checked value="" />
+                            <input type="checkbox"  value="" />
                             <span>{t("artists.filter.artist.all")}</span>
                             <span className="checkmark"></span>
                           </label>
@@ -346,7 +358,6 @@ function ArtistsPage(props) {
                                 }
                                 width="280"
                                 className="img-responsive clolection-image1"
-
                               />
                             </div>
                             <div className="d-flex collection-secondrow">
@@ -360,7 +371,7 @@ function ArtistsPage(props) {
                                   width="280"
                                   height="280"
                                   className="img-responsive"
-                                  style={{ height: 120 }}
+                                  style={{ height: 120,width : 180 }}
                                 />
                               </div>
                               <div className="col-6  pad-r2 px-0">
@@ -372,7 +383,7 @@ function ArtistsPage(props) {
                                   width="280"
                                   height="280"
                                   className="img-responsive"
-                                  style={{ height: 120 }}
+                                  style={{ height: 120 , width : 180}}
 
                                 />
                               </div>

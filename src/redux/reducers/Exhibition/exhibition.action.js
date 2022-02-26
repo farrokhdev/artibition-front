@@ -15,6 +15,14 @@ export const editExhibitionModeFunc = (data) => (
     }
 )
 
+export const editContentModeFunc = (data) => (
+    {
+        type: types.EDIT_CONTENT_MODE,
+        payload: data
+    }
+)
+
+
 export const exhibitionId = (data) => (
     {
         type: types.EXHIBITION_ID,

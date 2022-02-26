@@ -60,14 +60,14 @@ function IntroducingTheExhibition({ galleryIntroduction, galleryExhibition }) {
                                 </h3>
                                 <div class="row-galleryinfo d-flex">
                                     <div class="col-sm-7">
-                                        <img src={HanLogo} width="110" height="110" alt=""
+                                        <img src={galleryIntroduction?.logo?.exact_url} width="110" height="110" alt=""
                                             class="img-responsive pull-dir" />
                                         <div class="gallery-innerinfo text-dir">
                                             {i18n.language === 'fa-IR' ?
                                                 <>
                                                     <h3>
                                                         {onPerforming && onPerforming[0]?.translations?.fa?.name}
-                                                        
+
                                                     </h3>
                                                     <p>
                                                         {/* {onPerforming && onPerforming[0]?.locations[0]?.translations?.city} */}
@@ -134,7 +134,7 @@ function IntroducingTheExhibition({ galleryIntroduction, galleryExhibition }) {
                                     </h3>
                                     <div class="row-galleryinfo">
                                         <div class="col-sm-7">
-                                            <img src={HanLogo} width="110" height="110" alt=""
+                                            <img src={galleryIntroduction?.logo?.exact_url} width="110" height="110" alt=""
                                                 class="img-responsive pull-right" />
                                             <div class="gallery-innerinfo">
                                                 {i18n.language === 'fa-IR' ?
@@ -206,45 +206,47 @@ function IntroducingTheExhibition({ galleryIntroduction, galleryExhibition }) {
                                                 sortedExpired && sortedExpired[0]?.translations?.en?.statement
                                             }
                                         </h3>
-                                        <div class="row-galleryinfo">
+                                     
+                                        <div class="row-galleryinfo d-flex">
                                             <div class="col-sm-7">
-                                                <img src={HanLogo} width="110" height="110" alt=""
-                                                    class="img-responsive pull-right" />
-                                                <div class="gallery-innerinfo">
+                                                <img src={galleryIntroduction?.logo?.exact_url} width="110" height="110" alt=""
+                                                    class="img-responsive pull-dir" />
+                                                <div class="gallery-innerinfo text-dir">
                                                     {i18n.language === 'fa-IR' ?
                                                         <>
                                                             <h3>
-                                                                {sortedExpired && sortedExpired[0]?.translations?.fa?.name}
+                                                            {sortedExpired && sortedExpired[0]?.translations?.fa?.name}
 
                                                             </h3>
                                                             <p>
-                                                                {/* {sortedExpired && sortedExpired[0]?.locations[0]?.translations?.city} */}
+                                                                {/* {onPerforming && onPerforming[0]?.locations[0]?.translations?.city} */}
                                                             </p>
                                                         </>
                                                         :
                                                         <>
                                                             <h3>
-                                                                {sortedExpired && sortedExpired[0]?.translations?.fa?.title}
+                                                               {sortedExpired && sortedExpired[0]?.translations?.fa?.title}
 
                                                             </h3>
                                                             <p>
-                                                                {/* {sortedExpired && sortedExpired[0]?.locations[0]?.translations?.city} */}
+                                                                {/* {onPerforming && onPerforming[0]?.locations[0]?.translations?.city} */}
                                                             </p>
                                                         </>}
                                                 </div>
                                             </div>
                                             <div class="col-sm-5">
                                                 <div class="gallery-daterow">
-                                                    <span class="gallery-date">آغاز</span>
-                                                    <span class="gallery-datenum persian-num">{timeToStr(sortedExpired && sortedExpired[0]?.start_date[`${sortedExpired[0]?.type === 'virtual_real' ? 'virtual' : sortedExpired[0]?.type}_start_date`], "jYYYY/jMM/jDD")}</span>
+                                                    <span class="gallery-date pull-dir">آغاز</span>
+                                                    <span class="gallery-datenum persian-num m-0">{timeToStr(sortedExpired && sortedExpired[0]?.start_date[`${sortedExpired[0]?.type === 'virtual_real' ? 'virtual' : sortedExpired[0]?.type}_start_date`], "jYYYY/jMM/jDD")}</span>
                                                 </div>
                                                 <div class="clearfix"></div>
                                                 <div class="gallery-daterow">
-                                                    <span class="gallery-date">پایان</span>
-                                                    <span class="gallery-datenum persian-num">{timeToStr(sortedExpired && sortedExpired[0]?.end_date[`${sortedExpired[0]?.type === 'virtual_real' ? 'virtual' : sortedExpired[0]?.type}_end_date`], "jYYYY/jMM/jDD")}</span>
+                                                    <span class="gallery-date pull-dir">پایان</span>
+                                                    <span class="gallery-datenum persian-num m-0">{timeToStr(sortedExpired && sortedExpired[0]?.end_date[`${sortedExpired[0]?.type === 'virtual_real' ? 'virtual' : sortedExpired[0]?.type}_end_date`], "jYYYY/jMM/jDD")}</span>
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
                                 <div class="gallery-txt">

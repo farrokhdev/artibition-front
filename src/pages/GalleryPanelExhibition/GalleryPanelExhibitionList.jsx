@@ -28,6 +28,7 @@ function GalleryPanelExhibitionList() {
 
     const { gallery_id } = useSelector((state) => state.galleryReducer)
 
+    
 
 
     const handleEditExhibition = (e, data) => {

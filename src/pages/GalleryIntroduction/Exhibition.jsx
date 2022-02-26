@@ -68,7 +68,7 @@ function Exhibition({ id, galleryExhibition }) {
                                 </h3>
                                 <div class="row-galleryinfo d-flex">
                                     <div class="col-sm-7">
-                                        <img src={HanLogo} width="110" height="110" alt=""
+                                        <img src={item?.gallery?.logo?.exact_url} width="110" height="110" alt=""
                                             class="img-responsive pull-dir" />
                                         <div class="gallery-innerinfo text-dir">
                                             {i18n.language === 'fa-IR' ?
@@ -139,7 +139,7 @@ function Exhibition({ id, galleryExhibition }) {
                                 </h3>
                                 <div className="row-galleryinfo">
                                     <div className="col-sm-7">
-                                        <img src={HanLogo} width="110" height="110" alt=""
+                                        <img src={item?.gallery?.logo?.exact_url} width="110" height="110" alt=""
                                             className="img-responsive pull-right" />
                                         <div className="gallery-innerinfo">
                                             {i18n.language === 'fa-IR' ?
