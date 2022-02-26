@@ -8,10 +8,11 @@ import OneUpload from '../../components/OneUpload/OneUpload';
 import cloude_upload_icon from '../../assets/img/cloud-upload.svg';
 import { Form, Input, Select, Checkbox, message, Radio } from 'antd';
 import apiServices from '../../utils/api.services';
-import { ARTIST_CONTENT_DETAILS, ARTIST_ME, CORE_CONTENT, GALLERY_CONTENT_DETAILS } from '../../utils';
+import { ARTIST_CONTENT_DETAILS, ARTIST_ME, CORE_CONTENT, CORE_CONTENT_ID, GALLERY_CONTENT, GALLERY_CONTENT_DETAILS } from '../../utils';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import TextArea from 'antd/es/input/TextArea';
 import { useSelector } from 'react-redux';
+
 
 function PanelCreateContent() {
     const navigate = useNavigate();
@@ -21,7 +22,8 @@ function PanelCreateContent() {
     const [poster, setPoster] = useState([])
     const [imageOrVideo, setImageOrVideo] = useState()
     const [artistId, setArtistId] = useState()
-
+    
+    const { editContentMode } = useSelector((state) => state.exhibitionReducer)
     const [isSelected, setIsSelected] = useState(false);
     const [isSelectedVideo, setIsSelectedVideo] = useState(false);
     let [searchParams, setSearchParams] = useSearchParams()
@@ -48,83 +50,126 @@ function PanelCreateContent() {
         return userRole
     }
 
-    const getContentDetails = () => {
-        if (searchParams.get("content_id")) {
-            if (getUserRole() === "gallery") {
-                apiServices.get(GALLERY_CONTENT_DETAILS(gallery_id, searchParams.get("content_id")), "")
-                    .then(res => {
-                        if (res.data) {
-                            const value = res.data.data;
-                            form.setFieldsValue({
-                                title_en: value?.translations?.en?.title,
-                                description_en: value?.translations?.en?.description,
-                                title: value?.translations?.fa?.title,
-                                description: value?.translations?.fa?.description,
-                                link: value?.content_video_url
-                            })
-                            setImageOrVideo(value.type)
-                        }
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    })
-            }
-            else if (getUserRole() === "artist") {
-                apiServices.get(ARTIST_CONTENT_DETAILS(searchParams.get("content_id")), "")
-                    .then(res => {
-                        if (res.data) {
-                            console.log(res.data);
-                        }
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    })
-            }
-        }
-    }
+    // const getContentDetails = () => {
+    //     if (searchParams.get("content_id")) {
+    //         if (getUserRole() === "gallery") {
+    //             apiServices.get(GALLERY_CONTENT_DETAILS(gallery_id, searchParams.get("content_id")), "")
+    //                 .then(res => {
+    //                     if (res.data) {
+    //                         const value = res.data.data;
+    //                         form.setFieldsValue({
+    //                             title_en: value?.translations?.en?.title,
+    //                             description_en: value?.translations?.en?.description,
+    //                             title: value?.translations?.fa?.title,
+    //                             description: value?.translations?.fa?.description,
+    //                             link: value?.content_video_url
+    //                         })
+    //                         setImageOrVideo(value.type)
+    //                     }
+    //                 })
+    //                 .catch(err => {
+    //                     console.log(err);
+    //                 })
+    //         }
+    //         else if (getUserRole() === "artist") {
+    //             apiServices.get(ARTIST_CONTENT_DETAILS(searchParams.get("content_id")), "")
+    //                 .then(res => {
+    //                     if (res.data) {
+    //                         console.log(res.data);
+    //                     }
+    //                 })
+    //                 .catch(err => {
+    //                     console.log(err);
+    //                 })
+    //         }
+    //     }
+    // }
 
     const onFinish = (values) => {
         console.log(values);
-        let payload = {
-            "translations": {
-                "en": {
-                    "title": values?.title_en,
-                    "description": values?.description_en
+        if (editContentMode) {
+            let payload = {
+                "translations": {
+                    "en": {
+                        "title": values?.title_en,
+                        "description": values?.description_en
+                    },
+                    "fa": {
+                        "title": values?.title,
+                        "description": values?.description
+                    }
                 },
-                "fa": {
-                    "title": values?.title,
-                    "description": values?.description
-                }
-            },
-            "type": imageOrVideo,
-            "is_active": true,
-            "content_video_url": values?.link,
-            "object_id": getUserRole() === "gallery" ? gallery_id : artistId,
-            "content_type": getUserRole() === "gallery" ? "gallery" : "artist",
-            "content_file": uploadList,
-            "poster": poster[0]
-        }
-        console.log(payload);
+                "type": imageOrVideo,
+                "is_active": true,
+                "content_video_url": values?.link,
+                "object_id": getUserRole() === "gallery" ? gallery_id : artistId,
+                "content_type": getUserRole() === "gallery" ? "gallery" : "artist",
+                "content_file": uploadList,
+                "poster": poster[0]
+            }
+            console.log(payload);
 
-        apiServices.post(CORE_CONTENT, payload)
-            .then(res => {
-                if (res.data) {
-                    message.success({
-                        content: 'محتوا با موفقیت ساخته شد', style: {
-                            marginTop: '10vh',
-                        },
-                    })
-                    setTimeout(() => {
-                        navigate('/panel/contents')
-                    }, 500);
-                } else {
-                    message.error({
-                        content: 'خطا در ثبت اطلاعات', style: {
-                            marginTop: '10vh'
-                        }
-                    })
-                }
-            })
+            apiServices.patch(CORE_CONTENT_ID(searchParams.get("content_id")), payload)
+                .then(res => {
+                    if (res.data) {
+                        message.success({
+                            content: 'محتوا با موفقیت ویرایش شد', style: {
+                                marginTop: '10vh',
+                            },
+                        })
+                        setTimeout(() => {
+                            navigate('/panel/contents')
+                        }, 500);
+                    } else {
+                        message.error({
+                            content: 'خطا در ثبت اطلاعات', style: {
+                                marginTop: '10vh'
+                            }
+                        })
+                    }
+                })
+        }else{
+            let payload = {
+                "translations": {
+                    "en": {
+                        "title": values?.title_en,
+                        "description": values?.description_en
+                    },
+                    "fa": {
+                        "title": values?.title,
+                        "description": values?.description
+                    }
+                },
+                "type": imageOrVideo,
+                "is_active": true,
+                "content_video_url": values?.link,
+                "object_id": getUserRole() === "gallery" ? gallery_id : artistId,
+                "content_type": getUserRole() === "gallery" ? "gallery" : "artist",
+                "content_file": uploadList,
+                "poster": poster[0]
+            }
+            console.log(payload);
+
+            apiServices.post(CORE_CONTENT, payload)
+                .then(res => {
+                    if (res.data) {
+                        message.success({
+                            content: 'محتوا با موفقیت ساخته شد', style: {
+                                marginTop: '10vh',
+                            },
+                        })
+                        setTimeout(() => {
+                            navigate('/panel/contents')
+                        }, 500);
+                    } else {
+                        message.error({
+                            content: 'خطا در ثبت اطلاعات', style: {
+                                marginTop: '10vh'
+                            }
+                        })
+                    }
+                })
+        }
     }
 
     useEffect(() => {
@@ -140,8 +185,56 @@ function PanelCreateContent() {
     }, [])
 
     useEffect(() => {
-        getContentDetails()
-    }, [])
+        // const getContentDetails = () => {
+            if (searchParams.get("content_id")) {
+                if (getUserRole() === "gallery") {
+                    apiServices.get(GALLERY_CONTENT_DETAILS(gallery_id, searchParams.get("content_id")), "")
+                        .then(res => {
+                            if (res.data) {
+                                const value = res.data.data;
+                                form.setFieldsValue({
+                                    title_en: value?.translations?.en?.title,
+                                    description_en: value?.translations?.en?.description,
+                                    title: value?.translations?.fa?.title,
+                                    description: value?.translations?.fa?.description,
+                                    link: value?.content_video_url
+                                })
+                                setImageOrVideo(value.type)
+                            }
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        })
+                }
+                else if (getUserRole() === "artist") {
+                    apiServices.get(ARTIST_CONTENT_DETAILS(searchParams.get("content_id")), "")
+                        .then(res => {
+                            if (res.data) {
+                                console.log(res.data);
+                                const value = res.data.data;
+                                form.setFieldsValue({
+                                    title_en: value?.translations?.en?.title,
+                                    description_en: value?.translations?.en?.description,
+                                    title: value?.translations?.fa?.title,
+                                    description: value?.translations?.fa?.description,
+                                    link: value?.content_video_url
+                                })
+                                setImageOrVideo(value.type)
+                            }
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        })
+                }
+            }
+        // }
+        
+    }, []);
+    
+
+    // useEffect(() => {
+    //     getContentDetails()
+    // }, [])
 
 
     return (

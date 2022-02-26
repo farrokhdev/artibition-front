@@ -6,17 +6,20 @@ import { ARTIST_PRODUCTS } from '../../utils';
 import apiServices from '../../utils/api.services';
 import QueryString from 'qs';
 import { useTranslation } from 'react-i18next';
+import { follow } from "../../utils/utils";
+import { useNavigate } from 'react-router-dom';
 
-function AllArtworks({id}) {
+function AllArtworks({ id }) {
 
     const { t, i18n } = useTranslation();
+    let navigate = useNavigate();
 
     const [artistList, setArtistList] = useState();
     const [params, setParams] = useState({
         search: "",
         page: 1,
         gallery_id: id
-        
+
     })
     const settings = {
         dots: true,
@@ -64,6 +67,9 @@ function AllArtworks({id}) {
             })
     }
 
+    const callBack = () => {
+        getArtistList()
+    }
 
     useEffect(() => {
         getArtistList()
@@ -82,14 +88,18 @@ function AllArtworks({id}) {
                             <div style={{ overflow: 'auto' }} className="owl-carousel d-flex" id="tab1">
                                 {artistList?.results?.map((artworks) => {
                                     return (
-                                        <a href="#" className="cols  mx-4">
+                                        <a className="cols  mx-4">
                                             <div className="col-img">
                                                 <img
                                                     src={artworks.medias[0]?.exact_url}
                                                     alt="artibition"
                                                     className="img-responsive" />
                                                 <div className="tab-overly">
-                                                    <span className="btn-see hidden-xs hidden-sm">
+                                                    <span onClick={() =>
+                                                        navigate(
+                                                            `/site/artworks-detail/?id=${artworks.id}`
+                                                        )
+                                                    } className="btn-see hidden-xs hidden-sm">
                                                         <span className="view-icon pull-right"></span>
                                                         <span>{t("artwork.view-artwork")}</span>
                                                     </span>
@@ -97,49 +107,61 @@ function AllArtworks({id}) {
                                                         <span className="hidden-xs hidden-sm">{t("artwork.btn-action-to-shop")}</span>
                                                         <span className="shopping-cart-xs visible-xs visible-sm"></span>
                                                     </button>
-                                                    <button type="button" className="like-icon isLike"></button>
+                                                    <button
+                                                        className={"like-icon " + (artworks?.likes ? "isLike" : "")}
+                                                        onClick={() =>
+                                                            follow({
+                                                                content: "product",
+                                                                activity: "like",
+                                                                object_id: artworks?.id,
+                                                                action: artworks?.likes,
+                                                                callBack
+                                                            })
+                                                        }
+                                                    ></button>
+                                                    {/* <button type="button" className="like-icon isLike"></button> */}
                                                 </div>
                                             </div>
                                             <div className="col-body">
-                                            {i18n.language === 'fa-IR' ?
-                                            <>
-                                                <h6 className="col-title">
-                                                    <span className="col-name">{artworks.translations?.fa?.artist_name}</span>
-                                                    {/* <span className="col-name">حسینی</span> */}
-                                                </h6>
-                                                <div className="col-dimension">
-                                                    <span className="col-dimension-title">ابعاد:</span>
-                                                    <span className="col-dimension-body">
-                                                        <span className="dimension-width">{artworks.width}</span>
-                                                        <span> در </span>
-                                                        <span className="dimension-height">{artworks.height}</span>
-                                                    </span>
-                                                </div>
-                                                <div className="col-price">
-                                                    <span className="col-price-num">{artworks.items?.base_toman_price}</span>
-                                                    <span className="col-price-unit text-right">تومان</span>
-                                                </div>
-                                            </>
+                                                {i18n.language === 'fa-IR' ?
+                                                    <>
+                                                        <h6 className="col-title">
+                                                            <span className="col-name">{artworks.translations?.fa?.artist_name}</span>
+                                                            {/* <span className="col-name">حسینی</span> */}
+                                                        </h6>
+                                                        <div className="col-dimension">
+                                                            <span className="col-dimension-title">ابعاد:</span>
+                                                            <span className="col-dimension-body">
+                                                                <span className="dimension-width">{artworks.width}</span>
+                                                                <span> در </span>
+                                                                <span className="dimension-height">{artworks.height}</span>
+                                                            </span>
+                                                        </div>
+                                                        <div className="col-price">
+                                                            <span className="col-price-num">{artworks.items?.base_toman_price}</span>
+                                                            <span className="col-price-unit text-right">تومان</span>
+                                                        </div>
+                                                    </>
                                                     :
                                                     <>
-                                                <h6 className="col-title">
-                                                    <span className="col-name">{artworks.translations?.en?.artist_name}</span>
-                                                    {/* <span className="col-name">حسینی</span> */}
-                                                </h6>
-                                                <div className="col-dimension">
-                                                    <span className="col-dimension-title">ابعاد:</span>
-                                                    <span className="col-dimension-body">
-                                                        <span className="dimension-width">{artworks.width}</span>
-                                                        <span> در </span>
-                                                        <span className="dimension-height">{artworks.height}</span>
-                                                    </span>
-                                                </div>
-                                                <div className="col-price">
-                                                    <span className="col-price-num">{artworks.items?.base_dollar_price}</span>
-                                                    <span className="col-price-unit">$</span>
-                                                </div>
+                                                        <h6 className="col-title">
+                                                            <span className="col-name">{artworks.translations?.en?.artist_name}</span>
+                                                            {/* <span className="col-name">حسینی</span> */}
+                                                        </h6>
+                                                        <div className="col-dimension">
+                                                            <span className="col-dimension-title">ابعاد:</span>
+                                                            <span className="col-dimension-body">
+                                                                <span className="dimension-width">{artworks.width}</span>
+                                                                <span> در </span>
+                                                                <span className="dimension-height">{artworks.height}</span>
+                                                            </span>
+                                                        </div>
+                                                        <div className="col-price">
+                                                            <span className="col-price-num">{artworks.items?.base_dollar_price}</span>
+                                                            <span className="col-price-unit">$</span>
+                                                        </div>
                                                     </>
-                                    }
+                                                }
                                             </div>
                                         </a>
 
@@ -148,7 +170,7 @@ function AllArtworks({id}) {
 
                             </div>
                         </div>
-                       
+
                     </div>
                 </div>
             </div>

@@ -10,7 +10,7 @@ import QueryString from "qs";
 import { useTranslation } from "react-i18next";
 import { follow } from "../../utils/utils";
 import { useNavigate } from "react-router-dom";
-function Artworks() {
+function Artworks({id}) {
   const { t, i18n } = useTranslation();
   let navigate = useNavigate();
   const [galleryProducts, setGalleryProducts] = useState();
@@ -18,6 +18,7 @@ function Artworks() {
     status: "active",
     search: "",
     page: 1,
+    // gallery_id:id
   });
   function callback(key) {
     console.log(key);

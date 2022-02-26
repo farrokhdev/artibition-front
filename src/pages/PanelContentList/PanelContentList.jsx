@@ -6,13 +6,15 @@ import BasketFooterPanel from '../../components/BasketFooterPanel/BasketFooterPa
 
 import artwork1 from '../../assets/img/artworks/artwork-1.jpg';
 import plus_white_icon from '../../assets/img/plus-white.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import apiServices from '../../utils/api.services';
 import { ARTIST_CONTENT, ARTIST_ME, GALLERY_CONTENT } from '../../utils';
 import queryString from 'query-string';
 import { useSelector } from 'react-redux';
 import moment from 'jalali-moment';
 import { GetLanguage } from '../../utils/utils'
+import { editContentModeFunc } from '../../redux/reducers/Exhibition/exhibition.action';
+import { useDispatch } from 'react-redux';
 
 
 function PanelContentList() {
@@ -21,6 +23,9 @@ function PanelContentList() {
     const Language = GetLanguage();
     const [artistContent, setArtistContent] = useState();
     const [artistProfile, setArtistProfile] = useState({});
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const { roles } = useSelector((state) => state.authReducer)
     const getUserRole = () => {
@@ -83,6 +88,18 @@ function PanelContentList() {
             })
     }
 
+    const handleEditExhibition = (e, data) => {
+        // dispatch(exhibitionId(data.id))
+        dispatch(editContentModeFunc(true))
+        navigate(`/panel/create-content?content_id=${data.id}`)
+    }
+
+    const handleGoToContentList = () => {
+        dispatch(editContentModeFunc(false))
+        navigate("/panel/create-content")
+        // dispatch(reduxSelectedArtworksFunc([]))
+        // dispatch(exhibitionId(null))
+    }
 
     useEffect(() => {
         if (artistProfile?.id) {
@@ -144,9 +161,12 @@ function PanelContentList() {
                                                     <td data-label={t("content-panel-contents.table.status")}>{content?.is_active ? t("content-panel-contents.table.active") : t("content-panel-contents.table.inactive")}</td>
                                                     <td data-label={t("content-panel-contents.table.details")} className="status">
                                                         {/* <button type="button" className="btn-outline-blue">{t("content-panel-contents.table.edit")}</button> */}
-                                                        <Link to={`/panel/create-content?content_id=${content.id}`} className="btn-outline-blue">
+                                                        <button
+                                                            // to={`/panel/create-content?content_id=${content.id}`} 
+                                                            onClick={(e) => { handleEditExhibition(e, content) }}
+                                                            className="btn-outline-blue">
                                                             {t("content-panel-contents.table.edit")}
-                                                        </Link>
+                                                        </button>
                                                     </td>
                                                 </tr>
 
@@ -161,9 +181,12 @@ function PanelContentList() {
                                 <div className="pull-dir">
                                     <span className="bolder-title">{t("content-panel-contents.create_content")}</span>
                                 </div>
-                                <Link to="/panel/create-content" className="btn-box-1 btn-pink pull-left">
+                                <button
+                                    // to="/panel/create-content"
+                                    onClick={() => { handleGoToContentList() }}
+                                    className="btn-box btn-pink pull-left">
                                     <img src={plus_white_icon} width="16" height="16" className="center-block" />
-                                </Link>
+                                </button>
                                 <div className="clearfix"></div>
                             </div>
                         </div>

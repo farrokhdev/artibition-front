@@ -146,6 +146,8 @@ function OrderStatus() {
 
                 </tbody>
             </table>
+
+
             <div className="row-pagination">
                 <Pagination defaultCurrent={1}
                     total={suggestionsCount}
