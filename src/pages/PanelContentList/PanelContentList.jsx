@@ -139,7 +139,7 @@ function PanelContentList() {
                                                         alt=""
                                                         className="img-responsive center-block" /></td>
                                                     <td data-label={t("content-panel-contents.table.subject")}>{content?.translations?.fa?.title}</td>
-                                                    <td data-label={t("content-panel-contents.table.type")}>{content?.type}</td>
+                                                    <td data-label={t("content-panel-contents.table.type")}>{t(`content-panel-contents.table.${content?.type}`)}</td>
                                                     <td data-label={t("content-panel-contents.table.date_publish")} className="persian-num">{moment(content?.creation_date).locale(Language === 'fa-IR' ? 'fa' : 'en').format('YYYY/MM/DD')}</td>
                                                     <td data-label={t("content-panel-contents.table.status")}>{content?.is_active ? t("content-panel-contents.table.active") : t("content-panel-contents.table.inactive")}</td>
                                                     <td data-label={t("content-panel-contents.table.details")} className="status">

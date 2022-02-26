@@ -34,10 +34,10 @@ export default function Events() {
     }
     function onChange(val) {
         if (4.95 * 1000 < val && val < 5 * 1000) {
-          console.log('changed!');
+            console.log('changed!');
         }
-      }
-      
+    }
+
     useEffect(() => {
         getExhibitionList()
     }, []);
@@ -72,24 +72,25 @@ export default function Events() {
                                     <a href="#" className={`cols ${exhibitionSituation && exhibitionSituation === 'expired' ? 'finished' : ''}`}>
                                         <div className="col-img">
                                             <div className="tags tags-events">
-                                                {i18n.language === 'fa-IR' ?
+                                                {t(`gallery-panel-exhibition.table.${item.type}`)}
+                                                {/* {i18n.language === 'fa-IR' ?
                                                     item.type === "real" ? 'حضوری' : item.type === 'virtual' ? 'مجازی' : 'مجازی - حضوری'
                                                     :
                                                     item.type
-                                                }
+                                                } */}
                                             </div>
                                             {/* <img src={item.gallery?.poster && item.gallery?.poster[0]?.exact_url} width="840"
                                                 height="840"
                                                 alt="آرتیبیشن"
                                                 className="img-responsive events" /> */}
-                                                 <img src={item?.poster && item?.poster[0]?.exact_url} width="280"
+                                            <img src={item?.poster && item?.poster[0]?.exact_url} width="280"
                                                 height="270"
                                                 alt="آرتیبیشن"
                                                 className="img-responsive" />
                                         </div>
-                                        <div className="col-body">
+                                        <div className="col-body" style={{ position: "relative" }}>
                                             <div className="finished-tag">{t('promotion-competition.banner.finished')}</div>
-                                            <h6 className="col-title text-right">
+                                            <h6 className="col-title text-dir">
                                                 <span className="col-name ">{
                                                     i18n.language === 'fa-IR' ?
                                                         item.translations?.fa?.name
@@ -97,7 +98,7 @@ export default function Events() {
                                                         item.translations?.en?.name
                                                 }</span>
                                             </h6>
-                                            <div className="col-dimension text-right">
+                                            <div className="col-dimension text-dir">
                                                 <span className="col-dimension-title ">{
                                                     i18n.language === 'fa-IR' ?
                                                         item.gallery?.translations?.fa?.title
@@ -114,11 +115,11 @@ export default function Events() {
                                                     </div>
                                                 </div>
                                                 :
-                                                <div className="col-date text-right">
-                                                    <span className="persian-num">{timeToStr(item.start_date[`${item.type=== 'virtual_real'? 'virtual' : item.type}_start_date`], "jDD")}</span>
+                                                <div className="col-date text-dir">
+                                                    <span className="persian-num">{timeToStr(item.start_date[`${item.type === 'virtual_real' ? 'virtual' : item.type}_start_date`], "jDD")}</span>
                                                     <span>الی</span>
-                                                    <span className="persian-num">{timeToStr(item.end_date[`${item.type=== 'virtual_real'? 'virtual' : item.type}_end_date`], "jDD")}</span>
-                                                    <span>{timeToStr(item.end_date[`${item.type=== 'virtual_real'? 'virtual' : item.type}_end_date`], "jMM")}</span>
+                                                    <span className="persian-num">{timeToStr(item.end_date[`${item.type === 'virtual_real' ? 'virtual' : item.type}_end_date`], "jDD")}</span>
+                                                    <span>{timeToStr(item.end_date[`${item.type === 'virtual_real' ? 'virtual' : item.type}_end_date`], "jMM")}</span>
                                                 </div>
                                             }
                                         </div>

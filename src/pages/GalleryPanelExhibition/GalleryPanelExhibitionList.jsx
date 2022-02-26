@@ -60,7 +60,7 @@ function GalleryPanelExhibitionList() {
                     <tr>
                         <td>{t("gallery-panel-exhibition.table.row")}</td>
                         <td>{t("gallery-panel-exhibition.table.image")}</td>
-                        <td>{t("gallery-panel-exhibition.table.gallery_name")}</td>
+                        <td>{t("gallery-panel-exhibition.table.exhibition_name")}</td>
                         <td>{t("gallery-panel-exhibition.table.type")}</td>
                         <td>{t("gallery-panel-exhibition.table.start")}</td>
                         <td>{t("gallery-panel-exhibition.table.end")}</td>
