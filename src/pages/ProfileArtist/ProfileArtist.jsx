@@ -26,9 +26,34 @@ import { follow } from '../../utils/utils';
 function ProfileArtist() {
 
     const { TabPane } = Tabs;
+    const [activeKey, setActiveKey] = useState("1")
 
     function callback(key) {
         console.log(key);
+        setActiveKey(key)
+
+    }
+
+    const TabName = () => {
+        switch (activeKey) {
+            case "1":
+                return t("artist_profile.tabs.artworks")
+
+            case "2":
+                return t("artist_profile.tabs.albums")
+
+            case "3":
+                return t("artist_profile.tabs.biography")
+
+            case "4":
+                return t("artist_profile.tabs.exhibitions")
+
+            case "5":
+                return t("artist_profile.tabs.content")
+
+            default:
+                break;
+        }
     }
 
     const { t, i18n } = useTranslation();
@@ -75,7 +100,7 @@ function ProfileArtist() {
             })
     }
 
-    const callBack = ()=>{
+    const callBack = () => {
         getArtistProfile()
     }
 
@@ -106,7 +131,7 @@ function ProfileArtist() {
                             artistProfile?.owner?.translations?.en?.last_name
                         }</Breadcrumb.Item>
                     <Breadcrumb.Separator>{'>'}</Breadcrumb.Separator>
-                    <Breadcrumb.Item className="active persian-num">{t("artist_profile.tabs.artworks")}</Breadcrumb.Item>
+                    <Breadcrumb.Item className="active persian-num">{TabName()}</Breadcrumb.Item>
                 </Breadcrumb>
 
                 <div className="artist-intro">
@@ -126,18 +151,18 @@ function ProfileArtist() {
                                                 } />
                                         </div>
                                         <button
-                                    className={"btn-follow center-block " + (artistProfile?.likes ? "followed" : "")}
-                                    onClick={() =>
-                                      follow({
-                                        content: "artist",
-                                        activity: "following",
-                                        object_id: artistProfile?.id,
-                                        action: artistProfile?.likes,
-                                        callBack
-                                      })
-                                    }
-                                  > {artistProfile?.likes ? t("artwork.following") : t("artwork.follow")}</button>
-                                        
+                                            className={"btn-follow center-block " + (artistProfile?.likes ? "followed" : "")}
+                                            onClick={() =>
+                                                follow({
+                                                    content: "artist",
+                                                    activity: "following",
+                                                    object_id: artistProfile?.id,
+                                                    action: artistProfile?.likes,
+                                                    callBack
+                                                })
+                                            }
+                                        > {artistProfile?.likes ? t("artwork.following") : t("artwork.follow")}</button>
+
                                     </div>
                                     <div className="col-12 col-md-8">
                                         <div className="artist-bio">
@@ -189,7 +214,7 @@ function ProfileArtist() {
                     <div className="artist-art dir">
 
 
-                        <Tabs className='tab-m-0' defaultActiveKey="1" onChange={callback}>
+                        <Tabs className='tab-m-0' activeKey={activeKey} onChange={callback}>
                             <TabPane className="" tab={t("artist_profile.tabs.artworks")} key="1">
                                 <ArtworksTab artistId={artistProfile?.id} translations={artistProfile?.owner?.translations} />
                             </TabPane>

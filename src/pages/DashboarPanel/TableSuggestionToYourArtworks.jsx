@@ -8,12 +8,19 @@ import moment from 'jalali-moment'
 import { GetLanguage } from '../../utils/utils';
 import { isBiddingPrice } from '../../utils/converToPersian';
 import { handleShowImage } from '../../utils/showImageProduct';
+import ModalSuggestion from './ModalSuggestion';
 
 function TableSuggestionToYourArtworks() {
 
     const [offerValue, setOfferValue] = useState([]);
     const Language = GetLanguage();
+    const [visibleShowModal, setVisibleShowModal] = useState(false);
+    const [bidId, setBidId] = useState();
 
+    const handleShowModal = (id) => {
+        setVisibleShowModal(true)
+        setBidId(id)
+    }
 
     const getOrderBid = () => {
         apiServices.get(ORDER_BUYER_ME, "")
@@ -75,7 +82,8 @@ function TableSuggestionToYourArtworks() {
                                                 <td data-label={t("content-panel-dashboard.tables.status")} className="persian-num status text-center">{isBiddingPrice(item?.status).title}</td>
                                                 <td data-label={t("content-panel-dashboard.tables.details")} className="status"></td>
                                                 <td>
-                                                    <button className="btn-outline-blue" type="button" data-toggle="modal"
+                                    
+                                                    <button onClick={() => { handleShowModal(item?.id) }} className="btn-outline-blue" type="button" data-toggle="modal"
                                                         data-target="#modal-replied-suggestion">{t("content-panel-dashboard.tables.reply")}
                                                     </button>
                                                 </td>
@@ -98,6 +106,12 @@ function TableSuggestionToYourArtworks() {
                 }
 
             </div>
+
+            <ModalSuggestion
+                bidId={bidId}
+                visibleShowModal={visibleShowModal}
+                setVisibleShowModal={setVisibleShowModal}
+            />
 
         </div>
     )

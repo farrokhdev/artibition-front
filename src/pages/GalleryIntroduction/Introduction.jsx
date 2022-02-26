@@ -10,6 +10,7 @@ import apiServices from '../../utils/api.services';
 import QueryString from 'qs';
 import { GALLERY_ARTISTS, GALLERY_EXHIBITION } from '../../utils';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 function Introduction({ id, galleryIntroduction, galleryExhibition }) {
 
@@ -72,7 +73,7 @@ function Introduction({ id, galleryIntroduction, galleryExhibition }) {
                                 <h2 className="text-dir default-title">{t("nav-menu-artworks")}</h2>
                             </div>
                             <div className="col-xs-4">
-                                <a href="#" className="btn-readmore pull-dir-rev d-block" style={{ position: "unset" }}>{t("nav-submenu.artworks.artField.all")}</a>
+                                <Link to="/site/artworks" className="btn-readmore pull-dir-rev d-block" style={{ position: "unset" }}>{t("nav-submenu.artworks.artField.all")}</Link>
                             </div>
                         </div>
                         <div className="clearfix"></div>
@@ -150,7 +151,7 @@ function Introduction({ id, galleryIntroduction, galleryExhibition }) {
                                                 <h2 className="text-dir default-title">{t("artist_profile.artists")}</h2>
                                             </div>
                                             <div className="col-xs-3">
-                                                <a href="#" className="btn-readmore pull-dir-rev" style={{ position: "unset" }}>{t("nav-submenu.showroom.category.all")}</a>
+                                                <Link to="/site/artists" className="btn-readmore pull-dir-rev" style={{ position: "unset" }}>{t("nav-submenu.showroom.category.all")}</Link>
                                             </div>
                                         </div>
                                         <div className="clearfix"></div>

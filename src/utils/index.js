@@ -1,13 +1,13 @@
 // export const BASE_URL = " http://192.168.0.23:8808/api/v1";
 // export const BASE_URL = " http://192.168.0.100:8000/api/v1";
-// export const BASE_URL = " http://192.168.0.113:8000/api/v1";
+export const BASE_URL = " http://192.168.0.113:8000/api/v1";
 // export const BASE_URL = " http://192.168.0.145:8000/api/v1";
 // export const BASE_URL = " http://192.168.0.141:8000/api/v1";
 // export const BASE_URL = " http://192.168.0.100:8000/api/v1";
 // export const BASE_URL = " http://192.168.0.182:8000/api/v1";
 // export const BASE_URL = " http://local.devmoj.ir/api/v1";
 
-export const BASE_URL = "https://api.artibition.gallery/api/v1";
+// export const BASE_URL = "https://api.artibition.gallery/api/v1";
 
 export const COOKIE_EXPIRES = 1;
 export const LOGIN = "/account/login/";
@@ -29,6 +29,7 @@ export const PRODUCTS_ME = "/products/me/";
 export const PRODUCTS = "/products/";
 export const PRE_UPLOAD = "/core/upload/";
 export const CORE_CONTENT = "/core/content/";
+export const CORE_CONTENT_ID = (id)=> `/core/content/${id}/`;
 export const CORE_CATEGORIS = "/core/category/";
 export const PRODUCTS_CATEGORIES = "/products/categories/";
 export const PRODUCTS_TECHNIQUES = "/products/techniques/";
@@ -43,6 +44,7 @@ export const MATERIALS_CATEGORIES = (id) =>
 export const SOCIAL_NETWORK_COLLECTIONS = "/social-network/collections/";
 export const GALLERY_LIST = "/gallery/";
 export const GALLERY = (id) => `/gallery/${id}/`;
+export const GALLERY_COUNT_PENDING = "/gallery/count_pending_orders/";
 export const GALLERY_EXHIBITION = (id) => `/${id}/exhibition/`;
 export const GALLERY_ARTISTS = (id) => `/${id}/artists/`;
 export const GALLERY_CONTENT = (id) => `/${id}/content/`;

@@ -18,7 +18,7 @@ import apiServices from '../../utils/api.services';
 import QueryString from 'qs';
 import { useLocation } from 'react-router-dom';
 import { follow } from '../../utils/utils';
-
+import done from '../../assets/img/done.svg'
 
 function GalleryIntroduction() {
     const { TabPane } = Tabs;
@@ -30,6 +30,8 @@ function GalleryIntroduction() {
         page: 1,
 
     })
+
+    console.log("galleryIntroduction=====>>>", galleryIntroduction);
 
     function useQuery() {
 
@@ -51,6 +53,7 @@ function GalleryIntroduction() {
         apiServices.get(GALLERY(id), QueryString.stringify(params))
             .then(res => {
                 if (res.data) {
+                    // console.log("resssssssssss" , res.data)
                     setGalleryIntroduction(res.data.data)
                 }
             })
@@ -70,6 +73,11 @@ function GalleryIntroduction() {
                 console.log("err", err)
             })
     }
+
+    const callBack = () => {
+        getGalleryIntroduction()
+    }
+
     useEffect(() => {
         getGalleryIntroduction()
         getGalleryExhibition()
@@ -84,7 +92,7 @@ function GalleryIntroduction() {
                 <div className="container">
                     <ul className="breadcrumb">
                         <li><a>{t("artwork.artibition")}</a></li>
-                        <li><a>{t("artist_profile.artists")}</a></li>
+                        <li><a>{t("galleries")}</a></li>
                         <li><a>{i18n.language === 'fa-IR' ? galleryIntroduction?.translations?.fa?.title : galleryIntroduction?.translations?.en?.title}</a></li>
                         <li class="active">{t("artist_profile.introduction")}</li>
                     </ul>
@@ -108,9 +116,31 @@ function GalleryIntroduction() {
                                 <p className="text-justify">{galleryIntroduction?.translations?.en?.description}</p>
                             </>
                         }
-                        <button className="btn btn-galleryfollow" onClick={() => follow({ activity: 'following', content: 'gallery', object_id: id })}>
-                            <img src={circleplus1} height="17" width="17" alt="" />
-                            <span>{t("artwork.follow")}</span>
+                        <button
+                            //  className={"pull-dir btn-follow followed" + (galleryIntroduction?.following ? "" : "followed")}
+                            className={`btn btn-galleryfollow ${galleryIntroduction?.following ? "" : "followed"}`}
+                            onClick={() =>
+                                follow({
+                                    content: 'gallery',
+                                    activity: 'following',
+                                    object_id: galleryIntroduction?.id,
+                                    action: galleryIntroduction?.following,
+                                    callBack
+                                })
+                            }
+                        // onClick={() => follow({ activity: 'following', content: 'gallery', object_id: id })}
+                        >
+                            {galleryIntroduction?.following ?
+                                <>
+                                    <img src={circleplus1} height="17" width="17" alt="" />
+                                    <span>{t("artwork.follow")}</span>
+                                </>
+                                :
+                                <>
+                                    <img src={done} height="17" width="17" alt=""  />
+                                    <span>{t("artwork.following")}</span>
+                                </>
+                            }
                         </button>
                     </div>
 
@@ -124,7 +154,7 @@ function GalleryIntroduction() {
                                                 <Introduction id={id} galleryIntroduction={galleryIntroduction} galleryExhibition={galleryExhibition} />
                                             </TabPane>
                                             <TabPane tab={t("drawer-panel.nav-exhibitions")} key="2">
-                                                <Exhibition id={id} galleryExhibition={galleryExhibition} />
+                                                <Exhibition id={id} galleryExhibition={galleryExhibition} galleryIntroduction={galleryIntroduction}/>
                                             </TabPane>
                                             <TabPane tab={t("nav-menu-artworks")} key="3">
                                                 <Artworks id={id} />

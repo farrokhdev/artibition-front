@@ -2025,6 +2025,16 @@ input:checked + .switchbtn:before {
     padding: 8px 23px;
 }
 
+.btn-galleryfollow.followed {
+    // background: url("../img/done.svg") no-repeat right center #fff;
+    background-size: 17px;
+    background-position: 80px;
+    padding: 8px 23px;
+    border: 1px solid #13b834;
+    color: #13b834;
+
+}
+
 .btn-galleryfollow img {
     margin-left: 3px;
 }
@@ -5447,6 +5457,9 @@ a.sec-timeline {
 .btn-box-1 img {
     position: relative;
     top: 15px;
+}
+.btn-box img {
+    position: relative;
 }
 
 .btn-pink,

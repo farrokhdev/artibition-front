@@ -9,6 +9,7 @@ import { editExhibitionModeFunc, exhibitionId, reduxSelectedArtworksFunc } from 
 
 function CreateExhibition() {
 
+    
 
     const navigate = useNavigate()
     const dispatch = useDispatch()

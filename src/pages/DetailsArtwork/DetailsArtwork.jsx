@@ -537,6 +537,8 @@ function DetailsArtwork() {
                   </div>
                 </div>
 
+                {console.log("editionValue==>" , editionValue)}
+
                 {editionValue?.is_sold ? (
                   <div className="d-block d-md-flex box-dir-reverse artwork-priceblock soldout">
                     <div className="col px-0">
