@@ -808,7 +808,8 @@
       "active": "فعال",
       "inactive": "غیرفعال",
       "edit": "ویرایش",
-      "video": "ویدیوئی"
+      "video": "ویدیوئی",
+      "other": "سایر"
     }
   },
   "content-panel-create-content": {
@@ -888,7 +889,7 @@
     "table": {
       "row": "ردیف",
       "image": "تصویر",
-      "gallery_name": "نام گالری",
+      "exhibition_name": "نام نمایشگاه",
       "type": "نوع",
       "start": "شروع",
       "end": "پایان",
@@ -1449,5 +1450,8 @@
   "page404": {
     "title": "متأسفانه صفحه مورد نظر یافت نشد",
     "btn": "بازگشت به صفحه اصلی"
+  },
+  "clipboard": {
+    "success_message": "با موفقیت کپی شد"
   }
 }

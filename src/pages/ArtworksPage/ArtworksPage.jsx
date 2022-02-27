@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import Menu from "../../components/Menu/Menu";
-
+import classnames from 'classnames';
 import filter_icon from "../../assets/img/Filter.svg";
 import clear_icon from "../../assets/img/clear.svg";
 import search_icon from "../../assets/img/search.svg";
@@ -1018,7 +1018,9 @@ function ArtworksPage(props) {
                       return (
                         <>
                           <div className="col-sm-4 ">
-                            <div className="cols ">
+                            <div className={classnames("cols", {
+                              "finished": product?.is_sold,
+                            })}>
                               <div className="col-img">
                                 {product?.is_special && <div class="tags tags-spacial">ویژه</div>
                                 }
@@ -1078,7 +1080,7 @@ function ArtworksPage(props) {
 
 
                                 {product?.is_sold ?
-                                  <div class="finished-tag">فروخته شد</div>
+                                  <div class="finished-tag">{t("card_artwork.sold")}</div>
                                   : ""
                                 }
                                 <h6 className="col-title text-dir">

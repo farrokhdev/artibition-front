@@ -30,7 +30,7 @@ function Home() {
   const copyToClipboard = () => {
     navigator.clipboard.writeText(document.getElementById("code").innerHTML);
     message.success({
-      content: "با موفقیت کپی شد",
+      content: t("clipboard.success_message"),
       style: { marginTop: "110px" }
     })
   }
@@ -48,18 +48,23 @@ function Home() {
           <div class="row">
             <div class="col-md-9">
               <p>عضویت با موفقیت انجام شد. اگر می‌خواهید به عنوان هنرمند فعالیت نمایید دکمه روبرو را کلیک کنید. برای
-                فعالیت به عنوان گالری‌دار از<a href="#"> اینجا </a>وارد شوید.</p>
+                فعالیت به عنوان گالری‌دار از
+                <a href="#">
+                  اینجا
+                </a>
+                وارد شوید.
+              </p>
             </div>
             <div class="col-sm-3">
               {isLogin() ? (
-                <Link to={"/panel/profile"} 
-                onClick={() => {
-                  message.error({
-                    content: "لطفا ابتدا اطلاعات پروفایل خود را تکمیل کنید", style: {
+                <Link to={"/panel/profile"}
+                  onClick={() => {
+                    message.error({
+                      content: "لطفا ابتدا اطلاعات پروفایل خود را تکمیل کنید", style: {
                         marginTop: '110px',
-                    },
-                })
-                }} type="button" class="btn-noti" data-toggle="modal" data-target="#verify-artist">فعالیت به عنوان هنرمند</Link>
+                      },
+                    })
+                  }} type="button" class="btn-noti" data-toggle="modal" data-target="#verify-artist">فعالیت به عنوان هنرمند</Link>
 
               ) :
                 <Link to={"/auth/login"}

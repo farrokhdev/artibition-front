@@ -427,6 +427,7 @@ function ArtistsPage(props) {
                                 </span>
                               </Link>
                             </h6>
+                            <br/>
                             <button
                               type="button"
                               className={"pull-dir btn-follow followed" + (item?.likes ? "" : "followed")}
