@@ -360,9 +360,7 @@ function DetailsArtwork() {
                             ? productDetail?.translations?.fa?.artist_name
                             : productDetail?.translations?.en?.artist_name}
                         </h2>
-                        {/* {console.log("productDetail===>" ,productDetail)} */}
-                        {console.log("artist id", artist_id)}
-                        {artist_id &&
+                        {artist_id === "null" ? "" : 
                           <button
                             type="button"
                             className="btn btn-galleryfollow pull-dir"
