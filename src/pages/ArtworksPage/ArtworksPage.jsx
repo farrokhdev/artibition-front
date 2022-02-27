@@ -81,7 +81,7 @@ function ArtworksPage(props) {
   const [selectedOption, setSelectedOption] = useState("popularity");
 
   const [params, setParams] = useState({
-    // status: "active",
+    status: "active",
     // order: selectedOption,
     // page: 1,
     // size_id: size_id,
@@ -421,7 +421,7 @@ function ArtworksPage(props) {
                         </a>
                       </h4>
                     </div>
-                    <div id="collapse1" className="panel-collapse collapse in">
+                    <div id="collapse1" className="panel-collapse collapse show">
                       <div className="panel-body">
                         <div className="nl-input filter-search">
                           <input
@@ -462,7 +462,7 @@ function ArtworksPage(props) {
                         </a>
                       </h4>
                     </div>
-                    <div id="collapse2" className="panel-collapse collapse in">
+                    <div id="collapse2" className="panel-collapse collapse show">
                       <div className="panel-body">
                         <div className="checkbox-row">
                           <label className="lable-checkbox text-dir">
@@ -520,7 +520,7 @@ function ArtworksPage(props) {
                         </a>
                       </h4>
                     </div>
-                    <div id="collapse3" className="panel-collapse collapse in">
+                    <div id="collapse3" className="panel-collapse collapse show">
                       <div className="panel-body">
                         <div className="rangeslider">
                           <div id="slider" dir="rtl"></div>
@@ -614,7 +614,7 @@ function ArtworksPage(props) {
                         </a>
                       </h4>
                     </div>
-                    <div id="collapse4" className="panel-collapse collapse in">
+                    <div id="collapse4" className="panel-collapse collapse show">
                       <div className="panel-body">
                         <label className="switch pull-dir">
                           <input type="checkbox"
@@ -687,7 +687,7 @@ function ArtworksPage(props) {
                         </a>
                       </h4>
                     </div>
-                    <div id="collapse5" className="panel-collapse collapse in">
+                    <div id="collapse5" className="panel-collapse collapse show">
                       <div className="panel-body">
                         <label className="switch pull-dir">
                           <input type="checkbox" />
@@ -711,7 +711,7 @@ function ArtworksPage(props) {
                         </a>
                       </h4>
                     </div>
-                    <div id="collapse7" className="panel-collapse collapse in">
+                    <div id="collapse7" className="panel-collapse collapse show">
                       <div className="panel-body">
                         <div className="nl-input filter-search ">
                           <input
@@ -785,7 +785,7 @@ function ArtworksPage(props) {
                         </a>
                       </h4>
                     </div>
-                    <div id="collapse8" className="panel-collapse collapse">
+                    <div id="collapse8" className="panel-collapse collapse show">
                       <div className="panel-body"></div>
                     </div>
                   </div>
@@ -801,7 +801,7 @@ function ArtworksPage(props) {
                         </a>
                       </h4>
                     </div>
-                    <div id="collapse9" className="panel-collapse collapse in">
+                    <div id="collapse9" className="panel-collapse collapse show">
                       <div className="panel-body ">
                         <div className="nl-input filter-search ">
                           <input
@@ -875,7 +875,7 @@ function ArtworksPage(props) {
                         </a>
                       </h4>
                     </div>
-                    <div id="collapse10" className="panel-collapse collapse in">
+                    <div id="collapse10" className="panel-collapse collapse show">
                       <div className="panel-body">
                         {sizes?.results?.map((item, index) => (
                           <label className="lable-checkbox text-dir">
