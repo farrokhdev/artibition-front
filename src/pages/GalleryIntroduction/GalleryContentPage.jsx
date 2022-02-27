@@ -6,12 +6,13 @@ import poster2 from '../../assets/img/artworks/poster2.jpg';
 import articles101 from '../../assets/img/articles/101.jpg'
 import i18next, { t } from 'i18next';
 import Footer from '../../components/Footer/Footer';
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import apiServices from '../../utils/api.services';
-import { GALLERY, GALLERY_CONTENT_DETAILS } from '../../utils';
+import { GALLERY, GALLERY_CONTENT, GALLERY_CONTENT_DETAILS } from '../../utils';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { Breadcrumb, message, Spin } from 'antd';
+import queryString from 'query-string'
 import moment from 'jalali-moment';
 import Slider from "react-slick";
 import whatsapp from "../../assets/img/whatsapp.svg";
@@ -25,14 +26,30 @@ function GalleryContentPage() {
 
     let params = useParams();
     const navigate = useNavigate()
+    let location = useLocation()
     const [contentDetails, setContentDetilas] = useState()
     const [galleryDetails, setGalleryDetilas] = useState()
+    const [galleryContents, setGalleryContents] = useState()
     const [loading, setLoading] = useState(true)
     const [nav1, setNav1] = useState(null)
     const [nav2, setNav2] = useState(null)
+    const [query, setQuery] = useState({
+        page_size: 5
+    })
 
 
 
+    const getGalleryContent = () => {
+        apiServices.get(GALLERY_CONTENT(params.galleryId), queryString.stringify(query))
+            .then(res => {
+                if (res.data) {
+                    setGalleryContents(res.data.data.results)
+                }
+            })
+            .catch(err => {
+                console.log("err", err)
+            })
+    }
 
     const getGalleryDetails = () => {
         apiServices.get(GALLERY(params.galleryId), "")
@@ -74,7 +91,8 @@ function GalleryContentPage() {
         setLoading(true)
         getContentDetails()
         getGalleryDetails()
-    }, [])
+        getGalleryContent()
+    }, [location])
 
 
     return (
@@ -249,22 +267,26 @@ function GalleryContentPage() {
                                     <h3 className="default-title mrgb32 mrgt16 text-dir">{`سایر محتوای گالری ${i18next.language === 'fa-IR' ?
                                         galleryDetails?.translations?.fa?.title :
                                         galleryDetails?.translations?.en?.title
-                                        }`}</h3>
-                                    {[1, 2, 3, 4].map((item) => {
-                                        return (
-                                            <div className="more-articles">
-                                                <img src={articles101} width="1152" height="1152" alt=""
-                                                    className="img-responsive pull-dir" />
-                                                <div className="more-articles-title">
-                                                    <h6 className='text-dir' >مروری بر نقاشی های جلال شباهنگی (از دشتها و کویرها گل و مرغ ها و حجم های شیشه‌ای)</h6>
-                                                    <div className="content-date">
-                                                        <span className="persian-num">22</span>
-                                                        <span>تیر</span>
-                                                        <span className="persian-num">99</span>
+                                        }`}
+                                    </h3>
+                                    {galleryContents && galleryContents.map((item) => {
+                                        if (item.id != params.contentId) {
+                                            return (
+                                                <Link to={`/site/gallery-content/${params.galleryId}/${item.id}`}>
+                                                    <div className="more-articles">
+                                                        <img src={item?.poster?.exact_url} width="1152" height="1152" alt=""
+                                                            className="img-responsive pull-dir" />
+                                                        <div className="more-articles-title">
+                                                            <h6 className='text-dir'>{i18next.language === 'fa-IR' ? item?.translations?.fa?.title : item?.translations?.en?.title}</h6>
+                                                            <div className="content-date">
+                                                                <span className="persian-num">{moment(item?.creation_date, 'YYYY/MM/DD').locale(i18next?.language === 'fa-IR' ? 'fa' : 'en').format('D MMMM YYYY')}</span>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        )
+                                                </Link>
+
+                                            )
+                                        }
                                     })}
                                 </div>
                                 <div className="clearfix"></div>
@@ -272,23 +294,23 @@ function GalleryContentPage() {
                                     <div className="content-more">
                                         <h3 className="default-title text-dir">{t("read_more")}</h3>
                                         <div className="row">
-                                            {[1, 2, 3, 4].map((item) => {
-                                                return (
-                                                    <div className="col-sm-6">
-                                                        <div className="more-articles">
-                                                            <img src={articles101} width="1152" height="1152" alt=""
-                                                                className="img-responsive pull-dir" />
-                                                            <div className="more-articles-title">
-                                                                <h6 className='text-dir' >مروری بر نقاشی های جلال شباهنگی (از دشتها و کویرها گل و مرغ ها و حجم های شیشه‌ای)</h6>
-                                                                <div className="content-date">
-                                                                    <span className="persian-num">22</span>
-                                                                    <span>تیر</span>
-                                                                    <span className="persian-num">99</span>
+                                            {galleryContents && galleryContents.map((item) => {
+                                                if (item.id != params.contentId) {
+                                                    return (
+                                                        <Link to={`/site/gallery-content/${params.galleryId}/${item.id}`} className="col-sm-6">
+                                                            <div className="more-articles">
+                                                                <img src={item?.poster?.exact_url} width="1152" height="1152" alt=""
+                                                                    className="img-responsive pull-dir" />
+                                                                <div className="more-articles-title">
+                                                                    <h6 className='text-dir' >{i18next.language === 'fa-IR' ? item?.translations?.fa?.title : item?.translations?.en?.title}</h6>
+                                                                    <div className="content-date">
+                                                                        <span className="persian-num">{moment(item?.creation_date, 'YYYY/MM/DD').locale(i18next?.language === 'fa-IR' ? 'fa' : 'en').format('D MMMM YYYY')}</span>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                )
+                                                        </Link>
+                                                    )
+                                                }
                                             })}
                                         </div>
                                     </div>

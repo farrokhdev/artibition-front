@@ -811,7 +811,8 @@
       "active": "Active",
       "inactive": "Inactive",
       "edit": "Edit",
-      "video": "Video"
+      "video": "Video",
+      "other": "Other"
     }
   },
   "content-panel-create-content": {
@@ -946,7 +947,7 @@
     "table": {
       "row": "#",
       "image": "Image",
-      "gallery_name": "Exhibition name",
+      "exhibition_name": "Exhibition name",
       "type": "Type",
       "start": "Start",
       "end": "End",
@@ -1506,5 +1507,8 @@
   "page404": {
     "title": "Oops! Page not found",
     "btn": "Go back home"
+  },
+  "clipboard": {
+    "success_message": "Copied successfully"
   }
 }

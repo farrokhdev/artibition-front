@@ -52,7 +52,7 @@ function Collection({ collectionItem , getArtistCategory}) {
       
     return (
         <div className="collection-list-row">
-            <div className="row w-100 text-dir dir">
+            <div className="row text-dir dir">
                 <div className="col-sm-9">
                     <h4 className="fontbold19 justify-content-unset">
                         {i18n.language === 'fa-IR' ?

@@ -6,9 +6,9 @@ import poster2 from '../../assets/img/artworks/poster2.jpg';
 import articles101 from '../../assets/img/articles/101.jpg'
 import i18next, { t } from 'i18next';
 import Footer from '../../components/Footer/Footer';
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import apiServices from '../../utils/api.services';
-import { ARTIST_CONTENT_DETAILS, ARTIST_PROFILE } from '../../utils';
+import { ARTIST_CONTENT, ARTIST_CONTENT_DETAILS, ARTIST_PROFILE } from '../../utils';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { Breadcrumb, message, Spin } from 'antd';
@@ -26,12 +26,31 @@ function ArtistContentPage() {
 
     let params = useParams();
     const navigate = useNavigate()
+    const location = useLocation()
     const [contentDetails, setContentDetilas] = useState()
     const [loading, setLoading] = useState(true)
     const [artistProfile, setArtistProfile] = useState()
+    const [artistContents, setArtistContents] = useState()
     const [nav1, setNav1] = useState(null)
     const [nav2, setNav2] = useState(null)
+    const [query, setQuery] = useState({
+        artist_content__id: params.artistId
+    })
 
+
+
+    const getArtistContent = () => {
+        apiServices.get(ARTIST_CONTENT, queryString.stringify(query))
+            .then(res => {
+                if (res.data) {
+                    setArtistContents(res.data.data.results)
+                    console.log("res.data.data.results", res.data.data.results);
+                }
+            })
+            .catch(err => {
+                console.log("err", err)
+            })
+    }
 
 
     const getArtistProfile = () => {
@@ -73,7 +92,8 @@ function ArtistContentPage() {
         setLoading(true)
         getContentDetails()
         getArtistProfile()
-    }, [])
+        getArtistContent()
+    }, [location])
 
 
     return (
@@ -240,22 +260,26 @@ function ArtistContentPage() {
                                         artistProfile?.owner?.translations?.fa?.last_name :
                                         artistProfile?.owner?.translations?.en?.first_name + " " +
                                         artistProfile?.owner?.translations?.en?.last_name
-                                        }`}</h3>
-                                    {[1, 2, 3, 4].map((item) => {
-                                        return (
-                                            <div className="more-articles">
-                                                <img src={articles101} width="1152" height="1152" alt=""
-                                                    className="img-responsive pull-dir" />
-                                                <div className="more-articles-title">
-                                                    <h6 className='text-dir' >مروری بر نقاشی های جلال شباهنگی (از دشتها و کویرها گل و مرغ ها و حجم های شیشه‌ای)</h6>
-                                                    <div className="content-date">
-                                                        <span className="persian-num">22</span>
-                                                        <span>تیر</span>
-                                                        <span className="persian-num">99</span>
+                                        }`}
+                                    </h3>
+                                    {artistContents && artistContents.map((item) => {
+                                        if (item.id != params.contentId) {
+                                            return (
+                                                <Link to={`/site/artist-content/${params.galleryId}/${item.id}`}>
+                                                    <div className="more-articles">
+                                                        <img src={item?.poster?.exact_url} width="1152" height="1152" alt=""
+                                                            className="img-responsive pull-dir" />
+                                                        <div className="more-articles-title">
+                                                            <h6 className='text-dir'>{i18next.language === 'fa-IR' ? item?.translations?.fa?.title : item?.translations?.en?.title}</h6>
+                                                            <div className="content-date">
+                                                                <span className="persian-num">{moment(item?.creation_date, 'YYYY/MM/DD').locale(i18next?.language === 'fa-IR' ? 'fa' : 'en').format('D MMMM YYYY')}</span>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        )
+                                                </Link>
+
+                                            )
+                                        }
                                     })}
                                 </div>
                                 <div className="clearfix"></div>
@@ -263,23 +287,24 @@ function ArtistContentPage() {
                                     <div className="content-more">
                                         <h3 className="default-title text-dir">{t("read_more")}</h3>
                                         <div className="row">
-                                            {[1, 2, 3, 4].map((item) => {
-                                                return (
-                                                    <div className="col-sm-6">
-                                                        <div className="more-articles">
-                                                            <img src={articles101} width="1152" height="1152" alt=""
-                                                                className="img-responsive pull-dir" />
-                                                            <div className="more-articles-title">
-                                                                <h6 className='text-dir' >مروری بر نقاشی های جلال شباهنگی (از دشتها و کویرها گل و مرغ ها و حجم های شیشه‌ای)</h6>
-                                                                <div className="content-date">
-                                                                    <span className="persian-num">22</span>
-                                                                    <span>تیر</span>
-                                                                    <span className="persian-num">99</span>
+                                            {artistContents && artistContents.map((item) => {
+                                                if (item.id != params.contentId) {
+                                                    return (
+                                                        <Link to={`/site/artist-content/${params.galleryId}/${item.id}`} className="col-sm-6">
+                                                            <div className="more-articles">
+                                                                <img src={item?.poster?.exact_url} width="1152" height="1152" alt=""
+                                                                    className="img-responsive pull-dir" />
+                                                                <div className="more-articles-title">
+                                                                    <h6 className='text-dir' >{i18next.language === 'fa-IR' ? item?.translations?.fa?.title : item?.translations?.en?.title}</h6>
+                                                                    <div className="content-date">
+                                                                        <span className="persian-num">{moment(item?.creation_date, 'YYYY/MM/DD').locale(i18next?.language === 'fa-IR' ? 'fa' : 'en').format('D MMMM YYYY')}</span>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                )
+                                                        </Link>
+                                                    )
+                                                }
+
                                             })}
                                         </div>
                                     </div>

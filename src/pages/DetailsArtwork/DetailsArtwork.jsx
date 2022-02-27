@@ -49,7 +49,7 @@ import queryString from "query-string";
 import { useTranslation } from "react-i18next";
 import moment from "moment-jalaali";
 import momentJalaali from "moment-jalaali";
-import { follow, Token } from "../../utils/utils";
+import { follow, isLogin, Token } from "../../utils/utils";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { UPDATE_CART } from "../../redux/reducers/cart/cart.types";
@@ -165,7 +165,9 @@ function DetailsArtwork() {
   useEffect(() => {
     getProductDetail();
     getArtistProduct();
-    getOfferValue();
+    if (isLogin()) {
+      getOfferValue();
+    }
   }, [params, toggle]);
 
   console.log("detail", productDetail);
@@ -744,7 +746,7 @@ function DetailsArtwork() {
             </div>
           </div>
 
-          <ArthibitionProperties/>
+          <ArthibitionProperties />
 
           <Tabs className="tab-m-0" defaultActiveKey="1" onChange={callback}>
             <TabPane
@@ -823,7 +825,7 @@ function DetailsArtwork() {
                 </div>
               </div>
             </div>
-            <div style={{ overflow: "auto" }} className="d-flex owl-carousel">
+            <div style={{ overflow: "auto" }} className="d-flex owl-carousel dir">
               {/* {console.log("artistProduct",artistProduct)} */}
               {artistProduct?.results?.map((item, index) => (
                 <div className="cols mx-4 pb-3">
@@ -880,7 +882,7 @@ function DetailsArtwork() {
                         <span className="dimension-height">{item.height}</span>
                       </span>
                     </div>
-                    <div className="col-price">
+                    <div className="col-price text-dir">
                       <span className="col-price-num">
                         {i18n.language === "fa-IR"
                           ? numDiscriminant(item.toman_price)
