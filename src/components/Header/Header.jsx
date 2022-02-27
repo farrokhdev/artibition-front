@@ -9,9 +9,10 @@ import { isLogin } from "../../utils/utils";
 import { connect, useSelector } from "react-redux";
 import { setFilters } from "../../redux/reducers/Filters/filters.action";
 import { Row } from "antd";
-import { PRODUCTS_CATEGORIES, PRODUCTS_SIZES } from "../../utils";
+import {PRODUCTS_CATEGORIES, PRODUCTS_SIZES, SEARCH} from "../../utils";
 import queryString from "query-string";
 import apiServices from "../../utils/api.services";
+import {value} from "lodash/seq";
 
 function Header(props) {
   const { t, i18n } = useTranslation();
@@ -24,6 +25,10 @@ function Header(props) {
   const [dollar_price_range_max, setDollar_price_range_max] = useState();
   const [discount, setDiscount] = useState(false);
   const [filters, setFilters] = useState();
+  const [search, setSearch] = useState("");
+  const [visibleResults, setVisibleResults] = useState(false);
+  const [searchCat, setSearchCat] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
   const [visibleSetDimentionModal, setVisibleSetDimentionModal] =
     useState(false);
   const [categoriesParams, setCategoriesParams] = useState({
@@ -131,6 +136,23 @@ function Header(props) {
     getProductSizes();
   }, []);
 
+
+  useEffect(() => {
+    if(search.length >= 3){
+      setVisibleResults(true)
+      apiServices
+          .get(SEARCH, queryString.stringify({search: search, object: searchCat}))
+          .then((res) => {
+            if (res.data) {
+              setSearchResult(res.data.data);
+            }
+          })
+          .catch((err) => {
+            console.log("err", err);
+          });
+    }
+  }, [search, searchCat]);
+
   useEffect(() => {
     if (toggleRoute && location.pathname !== "/site/artworks/") {
       navigate(
@@ -154,6 +176,24 @@ function Header(props) {
       }
     }
   }, [toggleRoute]);
+
+  const strToLink = (data, id) =>{
+    switch (data){
+      case "product":
+        return `/site/artworks-detail/?id=${id}`
+      case "collection":
+        return ""
+      case "gallery":
+        return `/site/gallery-introduction/?id=${id}`
+      case "album":
+        return ""
+
+      case "artist":
+        return `/site/artist-profile/?id=${id}`
+      default:
+        return ""
+    }
+  }
   return (
     <div className="default-header ">
       <div className="row content-header-site">
@@ -172,6 +212,7 @@ function Header(props) {
               name="search"
               autocomplete="off"
               className="mainsearch"
+              onChange={(t) => setSearch(t.target.value)}
             />
             <button className="btn-searchicon" type="submit">
               <img src={searchIcon} width="24" height="24" alt="جستجو" />
@@ -186,44 +227,32 @@ function Header(props) {
               <span>{t("filter-header.title")}</span>
             </button>
           </div>
-          <div className="autocomplete">
+          <div className="autocomplete" style={visibleResults ? {display:"unset"} : {display:"none"}}>
             <ul className="predict">
-              <li>
-                <a href="#">پرویز تناولی</a>
-              </li>
-              <li>
-                <a href="#">پرویز اعتصامی</a>
-              </li>
-              <li>
-                <a href="#">پرتو فرومنش</a>
-              </li>
-              <li>
-                <a href="#">پروین اعتصامی</a>
-              </li>
-              <li>
-                <a href="#">پرتره</a>
-              </li>
-              <li>
-                <a href="#">گالری هان - نمایشگاه عکاسی پرندگان</a>
-              </li>
-              <li>
-                <a href="#">گالری آرتیبیشن - نمایشگاه نقاشی آبرنگ پرتره</a>
-              </li>
+              {searchResult.map((item, key) =>
+                <li key={key}>
+                  <a href={strToLink(item.type_result, item.id)}>{item.title}</a>
+                </li>
+              )}
+
             </ul>
             <div className="predict-cat">
               <span className="graycolor">فیلتر نتایج بر اساس:</span>
               <ul>
                 <li>
-                  <a href="#">هنرمند</a>
+                  <a onClick={()=> setSearchCat("artist")}>هنرمند</a>
                 </li>
                 <li>
-                  <a href="#">نام اثر</a>
+                  <a onClick={()=> setSearchCat("product")}>نام اثر</a>
                 </li>
                 <li>
-                  <a href="#">نمایشگاه</a>
+                  <a onClick={()=> setSearchCat("gallery")}>نمایشگاه</a>
                 </li>
                 <li>
-                  <a href="#">گالری</a>
+                  <a onClick={()=> setSearchCat("gallery")}>گالری</a>
+                </li>
+                <li>
+                  <a onClick={()=> setSearchCat("")}>حذف فیلتر</a>
                 </li>
               </ul>
             </div>

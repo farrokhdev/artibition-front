@@ -14,7 +14,7 @@ import QueryString from 'qs';
 import { follow } from '../../utils/utils';
 import { Link } from 'react-router-dom';
 
-export default function AllProducts() {
+export default function AllProducts({categories}) {
 
   let navigate = useNavigate();
   const { t, i18n } = useTranslation();
@@ -24,8 +24,8 @@ export default function AllProducts() {
   const [params, setParams] = useState({
     status: "active",
     search: "",
-    page: 1
-
+    page: 1,
+    category_id: ""
   })
 
 
@@ -45,24 +45,6 @@ export default function AllProducts() {
     page: 1,
   });
 
-  //filters state
-  const [categories, setCategories] = useState();
-
-  const getProductCategories = () => {
-    apiServices
-      .get(PRODUCTS_CATEGORIES, queryString.stringify(categorieParams))
-      .then((res) => {
-        if (res.data) {
-          setCategories(res.data.data);
-        }
-      })
-      .catch((err) => {
-        console.log("err", err);
-      });
-  };
-
-
-
 
   const callBack = () => {
     getProductList()
@@ -73,10 +55,6 @@ export default function AllProducts() {
         ...params, category_id: e
     })
 }
-
-  useEffect(() => {
-    getProductCategories();
-  }, [categorieParams]);
 
   useEffect(() => {
     getProductList()
@@ -99,20 +77,17 @@ export default function AllProducts() {
                     <div className="default-tab tab-1 tab-interval">
                       <div className="tab-overflow">
                         <ul className="nav nav-tabs alltab-1" id="alltab-1">
-                          <li className="active">
-                            <a data-toggle="tab" href="#home">
+                          <li className={params.category_id === "" ? "active" : ""}>
+                            <a data-toggle="tab" href="#home"  onClick={() => handleApproved("")}>
                               {t("nav-submenu.artworks.artField.all")}
-                            </a>
-                          </li>
-                          {categories?.results?.map((item, index) => (
-                            <li>
-                              <a onClick={()=>handleApproved(item?.id)} data-toggle="tab" >
-                                {i18n.language === "fa-IR"
-                                  ? item.translations?.fa?.title
-                                  : item.translations?.en?.title}{" "}
-                              </a>
-                            </li>
-                          ))}
+                            </a></li>
+                          {categories?.map((item, key) =>
+                              <li key={key} className={params.category_id === item.id ? "active" : ""}>
+                                <a data-toggle="tab" href="#home" onClick={() => handleApproved(item.id)}>
+                                  {i18n.language === "fa-IR" ? item.translations.fa.title : item.translations.en.title}
+                                </a>
+                              </li>
+                          )}
                         </ul>
                       </div>
 

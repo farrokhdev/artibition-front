@@ -35,6 +35,8 @@ export const PRODUCTS_CATEGORIES = "/products/categories/";
 export const PRODUCTS_TECHNIQUES = "/products/techniques/";
 export const PRODUCTS_MATERIALS = "/products/materials/";
 export const PRODUCTS_SIZES = "/products/sizes/";
+export const PRODUCTS_LAST = "/products/last_seen/";
+export const PRODUCTS_SUGGESTION = "/products/suggestion/";
 export const SUBJECTS_CATEGORISE = (id) =>
   `/products/categories/${id}/subjects/`;
 export const TECHNIQUS_CATEGORIES = (id) =>
@@ -115,5 +117,8 @@ export const SEND_MESSAGE = `/message/sendmessage/`;
 export const GALLERY_PRODUCTS = (galleryId) =>
   `/gallery/${galleryId}/products/`;
 export const GET_ORDERS = `${BASE_URL}/orders/`;
-export const SEARCH_PRODUCTS = `${BASE_URL}/search/products/`;
+export const SEARCH_PRODUCTS = `/search/products/`;
+export const SEARCH = `/search/`;
+export const FAQ_ = `/management/faqs/`;
+export const FAQ_CATEGORY = `/management/faq-categories/`;
 // export const PROMOTIONS = '/events/promotions/'
