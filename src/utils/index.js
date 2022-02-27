@@ -29,7 +29,7 @@ export const PRODUCTS_ME = "/products/me/";
 export const PRODUCTS = "/products/";
 export const PRE_UPLOAD = "/core/upload/";
 export const CORE_CONTENT = "/core/content/";
-export const CORE_CONTENT_ID = (id)=> `/core/content/${id}/`;
+export const CORE_CONTENT_ID = (id) => `/core/content/${id}/`;
 export const CORE_CATEGORIS = "/core/category/";
 export const PRODUCTS_CATEGORIES = "/products/categories/";
 export const PRODUCTS_TECHNIQUES = "/products/techniques/";
@@ -42,6 +42,7 @@ export const TECHNIQUS_CATEGORIES = (id) =>
 export const MATERIALS_CATEGORIES = (id) =>
   `/products/categories/${id}/materials/`;
 export const SOCIAL_NETWORK_COLLECTIONS = "/social-network/collections/";
+export const SOCIAL_NETWORK_COLLECTIONS_ID = (id) => `/social-network/collections/${id}/`;
 export const GALLERY_LIST = "/gallery/";
 export const GALLERY = (id) => `/gallery/${id}/`;
 export const GALLERY_COUNT_PENDING = "/gallery/count_pending_orders/";
@@ -53,6 +54,7 @@ export const ARTIST = "/artist/";
 export const ARTIST_ME = "/artist/me/";
 
 export const ARTIST_ALBUMS = "/artist/albums/";
+export const ARTIST_ALBUMS_ID = (id) => `/artist/albums/${id}/`;
 export const ARTIST_PRODUCTS = "/products/";
 export const ARTIST_CATEGORY = "/social-network/collections/";
 export const ARTIST_PROFILE = (id) => `/artist/${id}/`;

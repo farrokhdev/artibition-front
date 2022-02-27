@@ -89,7 +89,6 @@ function PanelContentList() {
     }
 
     const handleEditExhibition = (e, data) => {
-        // dispatch(exhibitionId(data.id))
         dispatch(editContentModeFunc(true))
         navigate(`/panel/create-content?content_id=${data.id}`)
     }
@@ -97,8 +96,6 @@ function PanelContentList() {
     const handleGoToContentList = () => {
         dispatch(editContentModeFunc(false))
         navigate("/panel/create-content")
-        // dispatch(reduxSelectedArtworksFunc([]))
-        // dispatch(exhibitionId(null))
     }
 
     useEffect(() => {

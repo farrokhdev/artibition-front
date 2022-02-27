@@ -19,10 +19,20 @@ import { useSelector } from 'react-redux';
 import moment from "jalali-moment";
 import CreateGallery from '../GalleryPanelMyGallery/CreateGallery';
 import ModalEditBiography from './ModalEditBiography';
+import { editMyAulbumModeFunc } from '../../redux/reducers/auth/auth.actions';
+import { useDispatch } from 'react-redux';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import ModalEditAulbum from './ModalEditAulbum';
+
 function PanleMyAlbums() {
 
+    let [searchParams, setSearchParams] = useSearchParams()
+
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const [visibleAddGallery, setVisibleAddGallery] = useState(false);
+    const [visibleEditGallery, setVisibleEditGallery] = useState(false);
     const [visibleEditBiography, setVisibleEditBiography] = useState(false);
     const { id } = useSelector((state) => state.authReducer)
     const [aulbum, setAulbum] = useState([]);
@@ -31,7 +41,7 @@ function PanleMyAlbums() {
     const [params, setParams] = useState({
 
     });
-
+    const [aulbumDetails, setAulbumDetails] = useState();
 
 
 
@@ -93,6 +103,13 @@ function PanleMyAlbums() {
         setVisibleAddGallery(true)
     }
 
+    const handleShowEditGallery = (myAulbum) => {
+        setVisibleEditGallery(true)
+        setAulbumDetails(myAulbum)
+
+    }
+
+
     return (
         <>
             <HeaderPanel t={t} />
@@ -118,7 +135,10 @@ function PanleMyAlbums() {
                                             </div>
                                             <div className="col p-0">
                                                 <div className="d-flex pull-dir-rev">
-                                                    <button onClick={handleShowAddGallery} type="button" className="btn btn-more" data-target="#addnewcollection"
+                                                    <button
+                                                        // onClick={() => { handleGoToAddAulbum() }}
+                                                        onClick={handleShowAddGallery}
+                                                        type="button" className="btn btn-more" data-target="#addnewcollection"
                                                         data-toggle="modal">افزودن مجموعه
                                                     </button>
                                                 </div>
@@ -149,7 +169,10 @@ function PanleMyAlbums() {
                                                         <td data-label="تعداد آثار"><span>{myAulbum?.likes_count}</span></td>
                                                         <td data-label="آخرین ویرایش"><span>{moment(myAulbum?.artist?.modified_date, 'YYYY/MM/DD').locale('fa').format('YYYY/MM/DD')}</span></td>
                                                         <td data-label="جزئیات">
-                                                            <button type="button" className="btn-outline-blue" data-target="#addnewcollection"
+                                                            <button
+                                                                // onClick={(e) => { handleEditExhibition(e, myAulbum) }}
+                                                                onClick={() => handleShowEditGallery(myAulbum)}
+                                                                type="button" className="btn-outline-blue" data-target="#addnewcollection"
                                                                 data-toggle="modal">ویرایش
                                                             </button>
                                                         </td>
@@ -208,6 +231,13 @@ function PanleMyAlbums() {
                         setVisibleAddGallery={setVisibleAddGallery}
                         visibleAddGallery={visibleAddGallery}
                     />
+
+                    <ModalEditAulbum
+                        aulbumDetails={aulbumDetails}
+                        setVisibleEditGallery={setVisibleEditGallery}
+                        visibleEditGallery={visibleEditGallery}
+                    />
+
                     <ModalEditBiography
                         setVisibleEditBiography={setVisibleEditBiography}
                         visibleEditBiography={visibleEditBiography}

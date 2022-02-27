@@ -19,10 +19,13 @@ import { useSelector } from 'react-redux';
 import moment from "jalali-moment";
 import { Link } from 'react-router-dom';
 import CreateGallery from '../GalleryPanelMyGallery/CreateGallery';
+import ModalEditCollections from './ModalEditCollections';
 function PanelMyCollections() {
 
 
     const [visibleAddCollections, setVisibleAddCollections] = useState(false);
+    const [visibleEditCollections, setVisibleEditCollections] = useState(false);
+    const [collectionsDetails, setCollectionsDetails] = useState();
     const { id } = useSelector((state) => state.authReducer)
     const [aulbum, setAulbum] = useState([]);
     const [artistDetails, setartistDetails] = useState({});
@@ -81,7 +84,7 @@ function PanelMyCollections() {
         }
 
     }, []);
-    
+
 
     useEffect(() => {
         if (visibleAddCollections === false) {
@@ -92,6 +95,13 @@ function PanelMyCollections() {
     const handleShowAddGallery = () => {
         setVisibleAddCollections(true)
     }
+
+    const handleShowEditcollections = (mycollection) => {
+        setVisibleEditCollections(true)
+        setCollectionsDetails(mycollection)
+
+    }
+
 
     return (
         <>
@@ -159,7 +169,9 @@ function PanelMyCollections() {
                                                         <td data-label="تعداد آثار"><span>{myAulbum?.likes_count}</span></td>
                                                         <td data-label="آخرین ویرایش"><span>{moment(myAulbum?.modified_date, 'YYYY/MM/DD').locale('fa').format('YYYY/MM/DD')}</span></td>
                                                         <td data-label="جزئیات">
-                                                            <button type="button" className="btn-outline-blue" data-target="#addnewcollection"
+                                                            <button
+                                                                onClick={() => handleShowEditcollections(myAulbum)}
+                                                                type="button" className="btn-outline-blue" data-target="#addnewcollection"
                                                                 data-toggle="modal">ویرایش
                                                             </button>
                                                         </td>
@@ -172,7 +184,7 @@ function PanelMyCollections() {
                                 </div>
                             </div>
                         </div>
-                      
+
                     </div>
                     <Suggestions />
                     <RecentlyVeiws />
@@ -180,6 +192,11 @@ function PanelMyCollections() {
                     <ModalAddCollections
                         setVisibleAddCollections={setVisibleAddCollections}
                         visibleAddCollections={visibleAddCollections}
+                    />
+                    <ModalEditCollections
+                        collectionsDetails={collectionsDetails}
+                        visibleEditCollections={visibleEditCollections}
+                        setVisibleEditCollections={setVisibleEditCollections}
                     />
 
 

@@ -57,3 +57,10 @@ export const showEditProfileVisible = (data) =>(
     }
 )
 
+
+export const editMyAulbumModeFunc = (data) => (
+    {
+        type: types.EDIT_MY_AULBUM_MODE,
+        payload: data
+    }
+)
