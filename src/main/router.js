@@ -103,6 +103,7 @@ const RouterConfig = (props) => {
                     getUserRole() === "artist" &&
                     <>
                         <Route path="dashboard" element={<DashboardPanel />} />
+                        <Route path="edit-albums/:id" element={<PanleMyAlbums />} />
                         <Route path="my-albums" element={<PanleMyAlbums />} />
                         <Route path="orders" element={<PanelOrders />} />
                         <Route path="art-management" element={<PanelArtManagement />} />

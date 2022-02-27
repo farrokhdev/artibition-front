@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { message, Modal, Checkbox } from 'antd';
+import { message, Modal } from 'antd';
 import edit_icon from '../../assets/img/edit_name.svg';
 import close_icon from '../../assets/img/clear.svg';
 import { Form, Input } from "antd";
@@ -11,48 +11,27 @@ import jpaytrkase3 from '../../assets/img/artworks/jpaytrkase@3x.jpg';
 
 import TextArea from 'antd/es/input/TextArea';
 import apiServices from '../../utils/api.services';
-import { ARTIST_ALBUMS, PRODUCTS_ME, SOCIAL_NETWORK_COLLECTIONS } from '../../utils';
+import { FOLLOW_PRODUCTS, PRODUCTS_ME, SOCIAL_NETWORK_COLLECTIONS, SOCIAL_NETWORK_COLLECTIONS_ID } from '../../utils';
 import { useNavigate } from 'react-router-dom';
 import queryString from 'query-string';
 import { GetLanguage } from '../../utils/utils'
 import { handleShowImage } from '../../utils/showImageProduct';
 
-function ModalAddGallery(props) {
+function ModalEditCollections(props) {
 
     const [form] = Form.useForm();
     const navigate = useNavigate();
     let Language = GetLanguage();
-    const { visibleAddGallery, setVisibleAddGallery } = props;
+    const { visibleEditCollections, setVisibleEditCollections, collectionsDetails } = props;
+    const [chooseFollowProducts, setchooseFollowProducts] = useState([]);
     const [chooseProduct, setchooseProduct] = useState([]);
-    const [productList, setProductList] = useState([]);
-
-    // const [params, setParams] = useState({
-    //     page: 1,
-    //     status: "",
-
-    // });
+    const [params, setParams] = useState({
+        "activity_type": "like",
+        "content_type": "product",
+    });
 
 
 
-    // Get my product list
-    const getProductList = () => {
-        // setLoading(true)
-        apiServices.get(PRODUCTS_ME, "")
-            .then(resp => {
-                // setLoading(false)
-                setProductList(resp.data.data.results)
-                console.log("resp.data.data.results=====>>>", resp.data.data.results);
-                // setSuggestionsCount(resp.data.data.count)
-            })
-            .catch(err => {
-                // setLoading(false)
-                console.error(err);
-            })
-    }
-
-    useEffect(() => {
-        getProductList();
-    }, []);
     const onFinish = (values) => {
         let payload = {
             "translations": {
@@ -64,9 +43,10 @@ function ModalAddGallery(props) {
                     "description": values?.description_en
                 }
             },
-            "products_id": chooseProduct,
+            "products_id": chooseProduct
+            // "likes": chooseProduct 
         }
-        apiServices.post(ARTIST_ALBUMS, payload)
+        apiServices.patch(SOCIAL_NETWORK_COLLECTIONS_ID(collectionsDetails?.id), payload)
             .then(res => {
                 if (res.data) {
                     message.success({
@@ -74,10 +54,9 @@ function ModalAddGallery(props) {
                             marginTop: '10vh',
                         },
                     })
-                    setVisibleAddGallery(false)
-                    // setTimeout(() => {
-                    // navigate('/panel/my-albums')
-                    // }, 500);
+                    setTimeout(() => {
+                        setVisibleEditCollections(false);
+                    }, 500);
                 } else {
                     console.log(res.response)
                     message.error({
@@ -88,10 +67,37 @@ function ModalAddGallery(props) {
                 }
             })
     }
+
+    const getProductsFollow = () => {
+        apiServices.get(FOLLOW_PRODUCTS, queryString.stringify(params))
+            .then(res => {
+                console.log("res.data.data.results==>>", res.data.data.results);
+                setchooseFollowProducts(res.data.data.results)
+            })
+    }
     const handleClose = () => {
-        setVisibleAddGallery(false);
+        setVisibleEditCollections(false);
     }
 
+    useEffect(() => {
+        getProductsFollow();
+    }, []);
+
+
+    useEffect(() => {
+        if (collectionsDetails?.id) {
+            console.log("collectionsDetails", collectionsDetails)
+            setchooseProduct(collectionsDetails?.products?.map((details) => {
+                return details?.id
+            }))
+            form.setFieldsValue({
+                title: collectionsDetails?.translations?.fa?.title,
+                title_en: collectionsDetails?.translations?.en?.title,
+                description: collectionsDetails?.translations?.fa?.description,
+                description_en: collectionsDetails?.translations?.en?.description
+            })
+        }
+    }, [collectionsDetails]);
 
     return (
         <React.Fragment>
@@ -100,7 +106,7 @@ function ModalAddGallery(props) {
                 centered
                 className=""
                 style={{ marginTop: '100px' }}
-                visible={visibleAddGallery}
+                visible={visibleEditCollections}
                 onOk={handleClose}
                 onCancel={handleClose}
                 width={'100vw'}
@@ -122,7 +128,7 @@ function ModalAddGallery(props) {
                             </button>
                         </div>
                         <div className="modal-header">
-                            <h5 className="fontbold28 aligncenter" id="exampleModalLabel">{t("artwork.modal_similar_artwork.title")}</h5>
+                            <h5 className="fontbold28 aligncenter" id="exampleModalLabel">{t("artwork.modal_similar_artwork.title1")}</h5>
                         </div>
                         <div className="modal-body">
                             <div className="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1">
@@ -229,8 +235,9 @@ function ModalAddGallery(props) {
                             <div className="container advisory-select">
                                 <div className="row-gridimg">
                                     <div className="row">
-                                        {productList?.map((artworksLike) => {
+                                        {chooseFollowProducts?.map((artworksLike) => {
                                             return (
+
                                                 <div className="cols col-sm-3 col-xs-6">
                                                     <label className="lable-checkbox">
                                                         <input type="checkbox" value={artworksLike?.id} checked={chooseProduct.includes(artworksLike?.id)} onChange={e => {
@@ -244,6 +251,7 @@ function ModalAddGallery(props) {
                                                         <div className="col-img">
                                                             <img
                                                                 src={artworksLike && handleShowImage(artworksLike)}
+                                                                // src={artworksLike?.medias[0].exact_url}
                                                                 width="840" height="1259"
                                                                 alt="آرتیبیشن"
                                                                 className="img-responsive" />
@@ -260,6 +268,7 @@ function ModalAddGallery(props) {
                                                     <div className="col-body">
                                                         <h6 className="col-title">
                                                             <span className="col-name">{Language === 'fa-IR' ? artworksLike?.translations?.fa?.artist_name : artworksLike?.translations?.en?.artist_name}</span>
+                                                            {/* <span className="col-name">آغداشلو</span> */}
                                                         </h6>
                                                         <div className="col-dimension">
 
@@ -271,7 +280,7 @@ function ModalAddGallery(props) {
                                                             </span>
                                                         </div>
                                                         <div className="col-price">
-                                                            <span className="col-price-num">22.000.000</span>
+                                                            <span className="col-price-num">{Language === 'fa-IR' ? artworksLike?.toman_price : artworksLike?.dollar_price}</span>
                                                             <span className="col-price-unit">تومان</span>
 
                                                         </div>
@@ -296,4 +305,4 @@ function ModalAddGallery(props) {
     )
 }
 
-export default ModalAddGallery
+export default ModalEditCollections

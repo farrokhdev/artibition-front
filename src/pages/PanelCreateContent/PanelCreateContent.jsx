@@ -50,41 +50,6 @@ function PanelCreateContent() {
         return userRole
     }
 
-    // const getContentDetails = () => {
-    //     if (searchParams.get("content_id")) {
-    //         if (getUserRole() === "gallery") {
-    //             apiServices.get(GALLERY_CONTENT_DETAILS(gallery_id, searchParams.get("content_id")), "")
-    //                 .then(res => {
-    //                     if (res.data) {
-    //                         const value = res.data.data;
-    //                         form.setFieldsValue({
-    //                             title_en: value?.translations?.en?.title,
-    //                             description_en: value?.translations?.en?.description,
-    //                             title: value?.translations?.fa?.title,
-    //                             description: value?.translations?.fa?.description,
-    //                             link: value?.content_video_url
-    //                         })
-    //                         setImageOrVideo(value.type)
-    //                     }
-    //                 })
-    //                 .catch(err => {
-    //                     console.log(err);
-    //                 })
-    //         }
-    //         else if (getUserRole() === "artist") {
-    //             apiServices.get(ARTIST_CONTENT_DETAILS(searchParams.get("content_id")), "")
-    //                 .then(res => {
-    //                     if (res.data) {
-    //                         console.log(res.data);
-    //                     }
-    //                 })
-    //                 .catch(err => {
-    //                     console.log(err);
-    //                 })
-    //         }
-    //     }
-    // }
-
     const onFinish = (values) => {
         console.log(values);
         if (editContentMode) {

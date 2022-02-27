@@ -12,6 +12,8 @@ const initial_state = {
     editingLocation:{},
     showEditProfileVisible:false,
     is_Open_Modal: false,
+    editMyAulbumMode: false,
+
 }
 
 const authReducer = (state = initial_state, { type, payload }) => {
@@ -98,6 +100,13 @@ const authReducer = (state = initial_state, { type, payload }) => {
                 otp: payload.otp,
 
             }
+
+            case types.EDIT_MY_AULBUM_MODE:
+                console.log("payload ==>" , payload);
+                return{
+                    ...state,
+                    editMyAulbumMode:payload,
+                }
 
         
         case types.EDITING_LOCATION:

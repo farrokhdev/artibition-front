@@ -105,7 +105,7 @@ function ModalAddCollections(props) {
 
                     <div className="modal-content px-0 px-md-0">
                         <div className="d-flex justify-content-end">
-                            <button>
+                            <button type="reset">
                                 <span onClick={handleClose} aria-hidden="true" aria-label="Close">
                                     <img className="btn-close-modal" src={close_icon} alt="close-icon" />
                                 </span>
