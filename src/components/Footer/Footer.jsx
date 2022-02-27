@@ -51,7 +51,7 @@ export default function Footer() {
                                         <li><a href="#">{t("footer.guid.artist-register")}</a></li>
                                         <li><a href="#">{t("footer.guid.create-gallery")}</a></li>
                                         <li><a href="#">{t("footer.guid.purchase")}</a></li>
-                                        <li><a href="#">{t("footer.guid.faq")}</a></li>
+                                        <li><a href="/site/faq">{t("footer.guid.faq")}</a></li>
                                     </ul>
                                 </div>
                             </div>

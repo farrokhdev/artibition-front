@@ -5,7 +5,7 @@ import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
 import {follow} from "../../utils/utils";
 import apiServices from "../../utils/api.services";
-import {PRODUCTS_LAST} from "../../utils";
+import {PRODUCTS_LAST, PRODUCTS_SUGGESTION} from "../../utils";
 import queryString from "query-string";
 
 
@@ -16,7 +16,7 @@ export default function Suggestions({categories}) {
 
     const getProductList = () => {
         apiServices
-            .get(PRODUCTS_LAST, queryString.stringify({category: category}))
+            .get(PRODUCTS_SUGGESTION, queryString.stringify({category: category}))
             .then((res) => {
                 if (res.data) {
                     setSug(res.data.data.results);
