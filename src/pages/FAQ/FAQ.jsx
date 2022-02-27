@@ -89,7 +89,7 @@ export default function FAQ() {
                                                                 </a>
                                                             </h4>
                                                         </div>
-                                                        <div id={"collapse" + key} className="panel-collapse collapse in">
+                                                        <div id={"collapse" + key} className="panel-collapse collapse ">
                                                             <div className="panel-body">
                                                                 <p>
                                                                     {i18n.language === "fa-IR" ? item.translations.fa.answer : item.translations.en.answer}

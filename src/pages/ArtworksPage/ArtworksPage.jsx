@@ -91,7 +91,7 @@ function ArtworksPage(props) {
     // dollar_price_range_min: dollar_price_range_min,
     // dollar_price_range_max: dollar_price_range_max,
     // discount: discountو
-  
+
   });
 
   const [categorieParams, setCategorieParams] = useState({
@@ -1024,7 +1024,8 @@ function ArtworksPage(props) {
                               <div className="col-img">
                                 {product?.is_special && <div class="tags tags-spacial">ویژه</div>
                                 }
-                                {product?.discount ?
+                                {console.log("product================>", product)}
+                                {product?.discount?.value ?
                                   <div
                                     class="tags tags-off persian-num"> {numDiscriminant(product?.discount?.value)}{product?.discount?.type === "percentage" ? "%" : t("toman")} </div>
                                   : ""}
@@ -1116,15 +1117,21 @@ function ArtworksPage(props) {
                                 <div className="col-price text-dir">
                                   <div className="d-flex box-dir-reverse">
                                     <span className="col-price-num">
-                                      {product?.discount ? discountPrice(product.toman_price, product?.discount?.value, product?.discount?.type) : ""} {product?.discount ? t("toman") : ""}
+                                      {product?.discount ?
+                                        discountPrice(product.toman_price, product?.discount?.value, product?.discount?.type) :
+                                        numDiscriminant(product.toman_price)
+                                      }
+                                      {product?.discount ? t("toman") : ""}
                                     </span>
                                     {/* <span className="col-price-unit">
                                       {t("toman")}
                                     </span> */}
-                                    <span
-                                      className={`persian-num ${product?.discount ? "col-price-off" : ""}`}>
-                                      {numDiscriminant(product.toman_price)} {product?.toman_price ? t("toman") : ""}
-                                    </span>
+                                    {product?.discount?.value &&
+                                      <span
+                                        className={`persian-num ${product?.discount ? "col-price-off" : ""}`}>
+                                        {numDiscriminant(product.toman_price)} {product?.toman_price ? t("toman") : ""}
+                                      </span>
+                                    }
 
 
                                     {/* <span className="tag-gift  w-100">
