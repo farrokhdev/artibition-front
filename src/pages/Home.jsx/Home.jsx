@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import Header from "../../components/Header/Header";
 
 import Footer from "../../components/Footer/Footer";
@@ -19,6 +19,8 @@ import remove from '../../assets/img/remove.svg'
 import { setOpenModal } from '../../redux/reducers/auth/auth.actions';
 import { Link } from "react-router-dom";
 import { isLogin } from '../../utils/utils'
+import apiServices from "../../utils/api.services";
+import {PRODUCTS_CATEGORIES} from "../../utils";
 
 function Home() {
   const dispatch = useDispatch();
@@ -26,6 +28,7 @@ function Home() {
   const { t, i18n } = useTranslation();
 
   const [showPromotion, setShowPromotion] = useState(false)
+  const [categories, setCats] = useState([]);
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(document.getElementById("code").innerHTML);
@@ -35,7 +38,18 @@ function Home() {
     })
   }
 
-  console.log("is Open Modal", is_Open_Modal);
+  useEffect(() => {
+    apiServices
+        .get(PRODUCTS_CATEGORIES, "")
+        .then((res) => {
+          if (res.data) {
+            setCats(res.data.data.results);
+          }
+        })
+        .catch((err) => {
+          console.log("err", err);
+        });
+  }, [])
 
   return (
     <>
@@ -84,12 +98,12 @@ function Home() {
         <Header />
         <Menu />
         <Slider />
-        <AllProducts />
+        <AllProducts categories={categories} />
         <Artists />
         <Events />
         <News />
-        <Suggestions />
-        <RecentlyVeiws />
+        <Suggestions categories={categories} />
+        <RecentlyVeiws categories={categories} />
         <Newsletter />
         <Collection />
         <Modal

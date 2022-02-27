@@ -1,428 +1,127 @@
-import { t } from 'i18next';
-import React from 'react';
+import {t} from 'i18next';
+import React, {useEffect, useState} from 'react';
 import hnrpqkfiup from '../../assets/img/mainpage/hnrpqkfiup@3x.jpg';
+import apiServices from "../../utils/api.services";
+import {ARTIST_PRODUCTS, PRODUCTS_CATEGORIES, PRODUCTS_LAST, SEARCH} from "../../utils";
+import queryString from "query-string";
+import {useTranslation} from "react-i18next";
+import {Link} from "react-router-dom";
+import {follow} from "../../utils/utils";
 
-export default function RecentlyNews() {
+export default function RecentlyNews({categories}) {
+    const [lastProducts, setLast] = useState([]);
+    const [category, setCategory] = useState("");
+
+    const { t, i18n } = useTranslation();
+
+    const callBack = () => {
+        getProductList()
+    }
+    const getProductList = () => {
+        apiServices
+            .get(PRODUCTS_LAST, queryString.stringify({category: category}))
+            .then((res) => {
+                if (res.data) {
+                    setLast(res.data.data.results);
+                }
+            })
+            .catch((err) => {
+                console.log("err", err);
+            });
+    };
+    useEffect(() => {
+        getProductList()
+    }, [category])
+
     return (
         <div className="recently-view">
-        <div className="row dir">
-            <div className="col-sm-12">
-                <h2 className="default-title text-dir">{t("my-recent-views-home.title")}</h2>
-            </div>
-            <div className="col-xs-12">
-                <div className="default-tab tab-3 tab-interval">
-                    <div className="tab-overflow">
-                        <ul className="nav nav-tabs" id="alltab-3">
-                        <li className="active"><a data-toggle="tab" href="#home">{t("nav-submenu.artworks.artField.all")}</a></li>
-                            <li><a data-toggle="tab" href="#menu1">{t("nav-submenu.artworks.artField.painting")}</a></li>
-                            <li><a data-toggle="tab" href="#menu2">{t("nav-submenu.artworks.artField.calligraphy")}</a></li>
-                            <li><a data-toggle="tab" href="#menu3">{t("nav-submenu.artworks.artField.photography")}</a></li>
-                            <li><a data-toggle="tab" href="#menu4">{t("nav-submenu.artworks.artField.sculpture")}</a></li>
-                            <li><a data-toggle="tab" href="#menu5">{t("nav-submenu.artworks.artField.calligram")}</a></li>
-                            <li><a data-toggle="tab" href="#menu6">{t("nav-submenu.artworks.artField.graphic")}</a></li>
-                            <li><a data-toggle="tab" href="#menu7">{t("nav-submenu.artworks.artField.printmaking")}</a></li>
-                            <li><a data-toggle="tab" href="#menu8">{t("nav-submenu.artworks.artField.drawing")}</a></li>
-                        </ul>
-                    </div>
-                    <div className="tab-content">
-                        <div id="view" className="tab-pane fade in active">
+            <div className="row dir">
+                <div className="col-sm-12">
+                    <h2 className="default-title text-dir">{t("my-recent-views-home.title")}</h2>
+                </div>
+                <div className="col-xs-12">
+                    <div className="default-tab tab-3 tab-interval">
+                        <div className="tab-overflow">
+                            <ul className="nav nav-tabs" id="alltab-3">
+                                <li className={category === "" ? "active" : ""}>
+                                    <a data-toggle="tab" href="#home"  onClick={() => setCategory("")}>
+                                        {t("nav-submenu.artworks.artField.all")}
+                                    </a></li>
+                                {categories?.map((item, key) =>
+                                    <li key={key} className={category === item.id ? "active" : ""}>
+                                        <a data-toggle="tab" href="#home" onClick={() => setCategory(item.id)}>
+                                            {i18n.language === "fa-IR" ? item.translations.fa.title : item.translations.en.title}
+                                        </a>
+                                    </li>
+                                )}
+                            </ul>
+                        </div>
+                        <div className="tab-content">
+                            <div id="view" className="tab-pane fade in active">
 
-                        <div style={{overflow : 'auto'}} className="owl-carousel d-flex" id="tab4">
+                                <div style={{overflow: 'auto'}} className="owl-carousel d-flex" id="tab4">
+                                    {lastProducts?.map((product, key) =>
+                                            <div key={key} className="cols  mx-4">
+                                                <div className="col-img">
+                                                    <img
 
-                                {/* <a href="#" className="cols">
-                                    <div className="col-img">
-                                        <div className="tags tags-off persian-num">30 %</div>
-                                        <img src="img/mainpage/hnrpqkfiup@3x.jpg" width="840" height="840"
-                                             alt="آرتیبیشن"
-                                             className="img-responsive"/>
-                                        <div className="tab-overly">
-                                            <span className="btn-see hidden-xs hidden-sm">
-                                                <span className="view-icon pull-right"></span>
-                                                <span>مشاهده اثر</span>
-                                            </span>
-                                            <button type="button" className="btn-sale">
-                                                <span className="hidden-xs hidden-sm">درخواست خرید</span>
-                                                <span className="shopping-cart-xs visible-xs visible-sm"></span>
-                                            </button>
-                                            <button type="button" className="like-icon isLike"></button>
-                                        </div>
-                                    </div>
-                                    <div className="col-body">
-                                        <h6 className="col-title">
-                                            <span className="col-name">رضا</span>
-                                            <span className="col-name">حسینی</span>
-                                        </h6>
-                                        <div className="col-dimension">
-                                            <span className="col-dimension-title">ابعاد:</span>
-                                            <span className="col-dimension-body">
-                                        <span className="dimension-width">60</span>
-                                        <span> در </span>
-                                        <span className="dimension-height">60</span>
+                                                        src={product.medias && product.medias[0]?.exact_url}
+                                                        alt="artibition"
+                                                        className="img-responsive" />
+                                                    <div className="tab-overly">
+                                                        <Link to={`/site/artworks-detail/?id=${product.id}&artist_id=${product.artist_id}`} className="btn-see hidden-xs hidden-sm">
+                                                            <span className="view-icon pull-right"></span>
+                                                            <span>{t("artwork.view-artwork")}</span>
+                                                        </Link>
+                                                        <button type="button" className="btn-sale">
+                                                            <span className="hidden-xs hidden-sm">{t("artwork.btn-action-to-shop")}</span>
+                                                            <span className="shopping-cart-xs visible-xs visible-sm"></span>
+                                                        </button>
+                                                        <button type="button" className={`like-icon ${product?.likes ? "isLike" : ""}`}
+                                                            // onClick={() => follow({activity:'like',content:'artist',object_id:product.artist_id})}
+                                                                onClick={() =>
+                                                                    follow({
+                                                                        activity: "like",
+                                                                        content: "product",
+                                                                        object_id: product.id,
+                                                                        action: product?.likes,
+                                                                        callBack
+                                                                    })
+                                                                }
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div className="col-body">
+                                                    <h6 className="col-title">
+                                                        {i18n.language === 'fa-IR' ?
+                                                            <span className="col-name">{product?.translations?.fa?.artist_name}</span>
+                                                            :
+                                                            <span className="col-name">{product?.translations?.en?.artist_name}</span>
+                                                        }
+                                                    </h6>
+                                                    <div className="col-dimension">
+                                                        <span className="col-dimension-title">ابعاد:</span>
+                                                        <span className="col-dimension-body">
+                                      <span className="dimension-width">{product.width}</span>
+                                      <span className="mx-2"> {t("card_artwork.size.in")} </span>
+                                      <span className="dimension-height">{product.height}</span>
                                     </span>
-                                        </div>
-                                        <div className="col-price">
-                                            <span className="col-price-num">2.100.000</span>
-                                            <span className="col-price-unit">تومان</span>
-                                            <span className="persian-num col-price-off">5.000.000</span>
-                                        </div>
-                                    </div>
-                                </a> */}
+                                                    </div>
+                                                    <div className="col-price">
+                                                        <span className="col-price-num">{product.toman_price}</span>
+                                                        <span className="col-price-unit">{t("toman")}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    )}
 
-
-                            <a href="#" className="cols  mx-4">
-                                    <div className="col-img">
-                                        <div className="tags tags-off persian-num">30 %</div>
-                                        <img  
-                                           
-                                            src={hnrpqkfiup} 
-                                             alt="آرتیبیشن"
-                                             className="img-responsive"/>
-                                        <div className="tab-overly">
-                                            <span className="btn-see hidden-xs hidden-sm">
-                                                <span className="view-icon pull-right"></span>
-                                                <span>مشاهده اثر</span>
-                                            </span>
-                                            <button type="button" className="btn-sale">
-                                                <span className="hidden-xs hidden-sm">درخواست خرید</span>
-                                                <span className="shopping-cart-xs visible-xs visible-sm"></span>
-                                            </button>
-                                            <button type="button" className="like-icon isLike"></button>
-                                        </div>
-                                    </div>
-                                    <div className="col-body">
-                                        <h6 className="col-title">
-                                            <span className="col-name">رضا</span>
-                                            <span className="col-name">حسینی</span>
-                                        </h6>
-                                        <div className="col-dimension">
-                                            <span className="col-dimension-title">ابعاد:</span>
-                                            <span className="col-dimension-body">
-                                        <span className="dimension-width">60</span>
-                                        <span> در </span>
-                                        <span className="dimension-height">60</span>
-                                    </span>
-                                        </div>
-                                        <div className="col-price">
-                                            <span className="col-price-num">22.000.000</span>
-                                            <span className="col-price-unit">تومان</span>
-                                            <span className="persian-num col-price-off">5.000.000</span>
-                                        </div>
-                                    </div>
-                                </a>
-
-                                <a href="#" className="cols  mx-4">
-                                    <div className="col-img">
-                                        <div className="tags tags-off persian-num">30 %</div>
-                                        <img  
-                                           
-                                            src={hnrpqkfiup} 
-                                             alt="آرتیبیشن"
-                                             className="img-responsive"/>
-                                        <div className="tab-overly">
-                                            <span className="btn-see hidden-xs hidden-sm">
-                                                <span className="view-icon pull-right"></span>
-                                                <span>مشاهده اثر</span>
-                                            </span>
-                                            <button type="button" className="btn-sale">
-                                                <span className="hidden-xs hidden-sm">درخواست خرید</span>
-                                                <span className="shopping-cart-xs visible-xs visible-sm"></span>
-                                            </button>
-                                            <button type="button" className="like-icon isLike"></button>
-                                        </div>
-                                    </div>
-                                    <div className="col-body">
-                                        <h6 className="col-title">
-                                            <span className="col-name">رضا</span>
-                                            <span className="col-name">حسینی</span>
-                                        </h6>
-                                        <div className="col-dimension">
-                                            <span className="col-dimension-title">ابعاد:</span>
-                                            <span className="col-dimension-body">
-                                        <span className="dimension-width">60</span>
-                                        <span> در </span>
-                                        <span className="dimension-height">60</span>
-                                    </span>
-                                        </div>
-                                        <div className="col-price">
-                                            <span className="col-price-num">22.000.000</span>
-                                            <span className="col-price-unit">تومان</span>
-                                            <span className="persian-num col-price-off">5.000.000</span>
-                                        </div>
-                                    </div>
-                                </a>
-
-                                <a href="#" className="cols  mx-4">
-                                    <div className="col-img">
-                                        <div className="tags tags-off persian-num">30 %</div>
-                                        <img  
-                                           
-                                            src={hnrpqkfiup} 
-                                             alt="آرتیبیشن"
-                                             className="img-responsive"/>
-                                        <div className="tab-overly">
-                                            <span className="btn-see hidden-xs hidden-sm">
-                                                <span className="view-icon pull-right"></span>
-                                                <span>مشاهده اثر</span>
-                                            </span>
-                                            <button type="button" className="btn-sale">
-                                                <span className="hidden-xs hidden-sm">درخواست خرید</span>
-                                                <span className="shopping-cart-xs visible-xs visible-sm"></span>
-                                            </button>
-                                            <button type="button" className="like-icon isLike"></button>
-                                        </div>
-                                    </div>
-                                    <div className="col-body">
-                                        <h6 className="col-title">
-                                            <span className="col-name">رضا</span>
-                                            <span className="col-name">حسینی</span>
-                                        </h6>
-                                        <div className="col-dimension">
-                                            <span className="col-dimension-title">ابعاد:</span>
-                                            <span className="col-dimension-body">
-                                        <span className="dimension-width">60</span>
-                                        <span> در </span>
-                                        <span className="dimension-height">60</span>
-                                    </span>
-                                        </div>
-                                        <div className="col-price">
-                                            <span className="col-price-num">22.000.000</span>
-                                            <span className="col-price-unit">تومان</span>
-                                            <span className="persian-num col-price-off">5.000.000</span>
-                                        </div>
-                                    </div>
-                                </a>
-
-                                <a href="#" className="cols  mx-4">
-                                    <div className="col-img">
-                                        <div className="tags tags-off persian-num">30 %</div>
-                                        <img  
-                                           
-                                            src={hnrpqkfiup} 
-                                             alt="آرتیبیشن"
-                                             className="img-responsive"/>
-                                        <div className="tab-overly">
-                                            <span className="btn-see hidden-xs hidden-sm">
-                                                <span className="view-icon pull-right"></span>
-                                                <span>مشاهده اثر</span>
-                                            </span>
-                                            <button type="button" className="btn-sale">
-                                                <span className="hidden-xs hidden-sm">درخواست خرید</span>
-                                                <span className="shopping-cart-xs visible-xs visible-sm"></span>
-                                            </button>
-                                            <button type="button" className="like-icon isLike"></button>
-                                        </div>
-                                    </div>
-                                    <div className="col-body">
-                                        <h6 className="col-title">
-                                            <span className="col-name">رضا</span>
-                                            <span className="col-name">حسینی</span>
-                                        </h6>
-                                        <div className="col-dimension">
-                                            <span className="col-dimension-title">ابعاد:</span>
-                                            <span className="col-dimension-body">
-                                        <span className="dimension-width">60</span>
-                                        <span> در </span>
-                                        <span className="dimension-height">60</span>
-                                    </span>
-                                        </div>
-                                        <div className="col-price">
-                                            <span className="col-price-num">22.000.000</span>
-                                            <span className="col-price-unit">تومان</span>
-                                            <span className="persian-num col-price-off">5.000.000</span>
-                                        </div>
-                                    </div>
-                                </a>
-
-                                <a href="#" className="cols  mx-4">
-                                    <div className="col-img">
-                                        <div className="tags tags-off persian-num">30 %</div>
-                                        <img  
-                                           
-                                            src={hnrpqkfiup} 
-                                             alt="آرتیبیشن"
-                                             className="img-responsive"/>
-                                        <div className="tab-overly">
-                                            <span className="btn-see hidden-xs hidden-sm">
-                                                <span className="view-icon pull-right"></span>
-                                                <span>مشاهده اثر</span>
-                                            </span>
-                                            <button type="button" className="btn-sale">
-                                                <span className="hidden-xs hidden-sm">درخواست خرید</span>
-                                                <span className="shopping-cart-xs visible-xs visible-sm"></span>
-                                            </button>
-                                            <button type="button" className="like-icon isLike"></button>
-                                        </div>
-                                    </div>
-                                    <div className="col-body">
-                                        <h6 className="col-title">
-                                            <span className="col-name">رضا</span>
-                                            <span className="col-name">حسینی</span>
-                                        </h6>
-                                        <div className="col-dimension">
-                                            <span className="col-dimension-title">ابعاد:</span>
-                                            <span className="col-dimension-body">
-                                        <span className="dimension-width">60</span>
-                                        <span> در </span>
-                                        <span className="dimension-height">60</span>
-                                    </span>
-                                        </div>
-                                        <div className="col-price">
-                                            <span className="col-price-num">22.000.000</span>
-                                            <span className="col-price-unit">تومان</span>
-                                            <span className="persian-num col-price-off">5.000.000</span>
-                                        </div>
-                                    </div>
-                                </a>
-
-                                <a href="#" className="cols  mx-4">
-                                    <div className="col-img">
-                                        <div className="tags tags-off persian-num">30 %</div>
-                                        <img  
-                                           
-                                            src={hnrpqkfiup} 
-                                             alt="آرتیبیشن"
-                                             className="img-responsive"/>
-                                        <div className="tab-overly">
-                                            <span className="btn-see hidden-xs hidden-sm">
-                                                <span className="view-icon pull-right"></span>
-                                                <span>مشاهده اثر</span>
-                                            </span>
-                                            <button type="button" className="btn-sale">
-                                                <span className="hidden-xs hidden-sm">درخواست خرید</span>
-                                                <span className="shopping-cart-xs visible-xs visible-sm"></span>
-                                            </button>
-                                            <button type="button" className="like-icon isLike"></button>
-                                        </div>
-                                    </div>
-                                    <div className="col-body">
-                                        <h6 className="col-title">
-                                            <span className="col-name">رضا</span>
-                                            <span className="col-name">حسینی</span>
-                                        </h6>
-                                        <div className="col-dimension">
-                                            <span className="col-dimension-title">ابعاد:</span>
-                                            <span className="col-dimension-body">
-                                        <span className="dimension-width">60</span>
-                                        <span> در </span>
-                                        <span className="dimension-height">60</span>
-                                    </span>
-                                        </div>
-                                        <div className="col-price">
-                                            <span className="col-price-num">22.000.000</span>
-                                            <span className="col-price-unit">تومان</span>
-                                            <span className="persian-num col-price-off">5.000.000</span>
-                                        </div>
-                                    </div>
-                                </a>
-
-                                <a href="#" className="cols  mx-4">
-                                    <div className="col-img">
-                                        <div className="tags tags-off persian-num">30 %</div>
-                                        <img  
-                                           
-                                            src={hnrpqkfiup} 
-                                             alt="آرتیبیشن"
-                                             className="img-responsive"/>
-                                        <div className="tab-overly">
-                                            <span className="btn-see hidden-xs hidden-sm">
-                                                <span className="view-icon pull-right"></span>
-                                                <span>مشاهده اثر</span>
-                                            </span>
-                                            <button type="button" className="btn-sale">
-                                                <span className="hidden-xs hidden-sm">درخواست خرید</span>
-                                                <span className="shopping-cart-xs visible-xs visible-sm"></span>
-                                            </button>
-                                            <button type="button" className="like-icon isLike"></button>
-                                        </div>
-                                    </div>
-                                    <div className="col-body">
-                                        <h6 className="col-title">
-                                            <span className="col-name">رضا</span>
-                                            <span className="col-name">حسینی</span>
-                                        </h6>
-                                        <div className="col-dimension">
-                                            <span className="col-dimension-title">ابعاد:</span>
-                                            <span className="col-dimension-body">
-                                        <span className="dimension-width">60</span>
-                                        <span> در </span>
-                                        <span className="dimension-height">60</span>
-                                    </span>
-                                        </div>
-                                        <div className="col-price">
-                                            <span className="col-price-num">22.000.000</span>
-                                            <span className="col-price-unit">تومان</span>
-                                            <span className="persian-num col-price-off">5.000.000</span>
-                                        </div>
-                                    </div>
-                                </a>
-
-                                <a href="#" className="cols  mx-4">
-                                    <div className="col-img">
-                                        <div className="tags tags-off persian-num">30 %</div>
-                                        <img  
-                                           
-                                            src={hnrpqkfiup} 
-                                             alt="آرتیبیشن"
-                                             className="img-responsive"/>
-                                        <div className="tab-overly">
-                                            <span className="btn-see hidden-xs hidden-sm">
-                                                <span className="view-icon pull-right"></span>
-                                                <span>مشاهده اثر</span>
-                                            </span>
-                                            <button type="button" className="btn-sale">
-                                                <span className="hidden-xs hidden-sm">درخواست خرید</span>
-                                                <span className="shopping-cart-xs visible-xs visible-sm"></span>
-                                            </button>
-                                            <button type="button" className="like-icon isLike"></button>
-                                        </div>
-                                    </div>
-                                    <div className="col-body">
-                                        <h6 className="col-title">
-                                            <span className="col-name">رضا</span>
-                                            <span className="col-name">حسینی</span>
-                                        </h6>
-                                        <div className="col-dimension">
-                                            <span className="col-dimension-title">ابعاد:</span>
-                                            <span className="col-dimension-body">
-                                        <span className="dimension-width">60</span>
-                                        <span> در </span>
-                                        <span className="dimension-height">60</span>
-                                    </span>
-                                        </div>
-                                        <div className="col-price">
-                                            <span className="col-price-num">22.000.000</span>
-                                            <span className="col-price-unit">تومان</span>
-                                            <span className="persian-num col-price-off">5.000.000</span>
-                                        </div>
-                                    </div>
-                                </a>
-
-
-                               
+                                </div>
                             </div>
-                        </div>
-                        <div id="view1" className="tab-pane fade">
-                            <h3>Menu 1</h3>
-                            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                commodo
-                                consequat.</p>
-                        </div>
-                        <div id="view2" className="tab-pane fade">
-                            <h3>Menu 2</h3>
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                                laudantium,
-                                totam rem aperiam.</p>
-                        </div>
-                        <div id="view3" className="tab-pane fade">
-                            <h3>Menu 3</h3>
-                            <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
-                                explicabo.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
     )
 }
