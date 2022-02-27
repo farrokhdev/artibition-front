@@ -1,8 +1,7 @@
-import {t} from 'i18next';
+
 import React, {useEffect, useState} from 'react';
-import hnrpqkfiup from '../../assets/img/mainpage/hnrpqkfiup@3x.jpg';
 import apiServices from "../../utils/api.services";
-import {ARTIST_PRODUCTS, PRODUCTS_CATEGORIES, PRODUCTS_LAST, SEARCH} from "../../utils";
+import {PRODUCTS_LAST} from "../../utils";
 import queryString from "query-string";
 import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
@@ -19,7 +18,7 @@ export default function RecentlyNews({categories}) {
     }
     const getProductList = () => {
         apiServices
-            .get(PRODUCTS_LAST, queryString.stringify({category: category}))
+            .get(PRODUCTS_LAST, queryString.stringify({category_id: category}))
             .then((res) => {
                 if (res.data) {
                     setLast(res.data.data.results);
@@ -64,7 +63,6 @@ export default function RecentlyNews({categories}) {
                                             <div key={key} className="cols  mx-4">
                                                 <div className="col-img">
                                                     <img
-
                                                         src={product.medias && product.medias[0]?.exact_url}
                                                         alt="artibition"
                                                         className="img-responsive" />
