@@ -358,28 +358,32 @@ function DetailsArtwork() {
                             ? productDetail?.translations?.fa?.artist_name
                             : productDetail?.translations?.en?.artist_name}
                         </h2>
-                        <button
-                          type="button"
-                          className="btn btn-galleryfollow pull-dir"
-                          onClick={() =>
-                            follow({
-                              content: "artist",
-                              activity: "following",
-                              object_id: artist_id,
-                            })
-                          }
-                        >
-                          <div className="d-flex box-dir-reverse">
-                            <img
-                              src={circle_plus}
-                              width="17"
-                              height="17"
-                              alt=""
-                              className="pull-right"
-                            />
-                            <span>{t("artwork.follow")}</span>
-                          </div>
-                        </button>
+                        {/* {console.log("productDetail===>" ,productDetail)} */}
+                        {console.log("artist id", artist_id)}
+                        {artist_id &&
+                          <button
+                            type="button"
+                            className="btn btn-galleryfollow pull-dir"
+                            onClick={() =>
+                              follow({
+                                content: "artist",
+                                activity: "following",
+                                object_id: artist_id,
+                              })
+                            }
+                          >
+                            <div className="d-flex box-dir-reverse">
+                              <img
+                                src={circle_plus}
+                                width="17"
+                                height="17"
+                                alt=""
+                                className="pull-right"
+                              />
+                              <span>{t("artwork.follow")}</span>
+                            </div>
+                          </button>
+                        }
                       </div>
                       <div className="col-sm-6">
                         <button type="button" className="btn-askme pull-left" onClick={() => { setShowSendMessage(true) }}>
@@ -520,24 +524,26 @@ function DetailsArtwork() {
                     </div>
                   </div>
                 </div>
-                {console.log("valueeee", editionValue)}
+
                 <div className="artwork-seller text-dir">
-                  <div className="d-flex box-dir-reverse">
-                    <img src={alert_icon} width="20" height="20" alt="" />
-                    <span className="orangecolor">
-                      {i18n.language === "fa_IR"
+                  {!productDetail?.view_only ?
+                    <div className="d-flex box-dir-reverse">
+                      <img src={alert_icon} width="20" height="20" alt="" />
+                      <span className="orangecolor">
+                        {i18n.language === "fa_IR"
 
 
-                        ? momentJalaali(productDetail?.creation_date)
-                          .locale("fa")
-                          .fromNow()
-                        : moment(productDetail?.creation_date).locale("fa").fromNow()}{" "}
-                      این اثر قیمت گذاری شده است
-                    </span>
-                  </div>
+                          ? momentJalaali(productDetail?.creation_date)
+                            .locale("fa")
+                            .fromNow()
+                          : moment(productDetail?.creation_date).locale("fa").fromNow()}{" "}
+                        این اثر قیمت گذاری شده است
+                      </span>
+                    </div>
+                    : ""}
                 </div>
 
-                {console.log("editionValue==>" , editionValue)}
+
 
                 {editionValue?.is_sold ? (
                   <div className="d-block d-md-flex box-dir-reverse artwork-priceblock soldout">
@@ -564,27 +570,32 @@ function DetailsArtwork() {
                   </div>
                 ) : (
                   <div className="d-block d-md-flex box-dir-reverse artwork-priceblock ">
-                    <div className="col px-0">
-                      <div className="d-flex justify-content-center artwork-price">
-                        <span className="artwork-pricenum persian-num">
-                          {i18n.language === "fa-IR"
-                            ? numDiscriminant(Math.floor(editionValue?.toman_price))
-                            : numDiscriminant(Math.floor(editionValue?.dollar_price))}
-                        </span>
-                        <span>{t("toman")}</span>
-                      </div>
-                    </div>
-                    <div className="col px-0">
-                      <div className="d-flex justify-content-center">
-                        <button
-                          type="button"
-                          className="btn btn-artwork-sell w-100"
-                          onClick={() => handleAddToCart()}
-                        >
-                          {t("artwork.request_buy")}
-                        </button>
-                      </div>
-                    </div>
+                    {!productDetail?.view_only ?
+                      <>
+                        <div className="col px-0">
+                          <div className="d-flex justify-content-center artwork-price">
+                            <span className="artwork-pricenum persian-num">
+                              {i18n.language === "fa-IR"
+                                ? numDiscriminant(Math.floor(editionValue?.toman_price))
+                                : numDiscriminant(Math.floor(editionValue?.dollar_price))}
+                            </span>
+                            <span>{t("toman")}</span>
+                          </div>
+                        </div>
+                        <div className="col px-0">
+                          <div className="d-flex justify-content-center">
+                            <button
+                              type="button"
+                              className="btn btn-artwork-sell w-100"
+                              onClick={() => handleAddToCart()}
+                            >
+                              {t("artwork.request_buy")}
+                            </button>
+                          </div>
+                        </div>
+                      </>
+                      : <span className="text-muted mx-auto text-center">این اثر فقط برای نمایش است</span>
+                    }
                   </div>
                 )}
 
@@ -744,7 +755,7 @@ function DetailsArtwork() {
             </div>
           </div>
 
-          <ArthibitionProperties/>
+          <ArthibitionProperties />
 
           <Tabs className="tab-m-0" defaultActiveKey="1" onChange={callback}>
             <TabPane
