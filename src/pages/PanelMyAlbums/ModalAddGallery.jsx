@@ -26,18 +26,18 @@ function ModalAddGallery(props) {
     const [chooseProduct, setchooseProduct] = useState([]);
     const [productList, setProductList] = useState([]);
 
-    // const [params, setParams] = useState({
-    //     page: 1,
-    //     status: "",
+    const [params, setParams] = useState({
+        page_size: 9999999
 
-    // });
+    });
 
 
 
     // Get my product list
     const getProductList = () => {
         // setLoading(true)
-        apiServices.get(PRODUCTS_ME, "")
+        // queryString.stringify(params)
+        apiServices.get(PRODUCTS_ME, queryString.stringify(params))
             .then(resp => {
                 // setLoading(false)
                 setProductList(resp.data.data.results)
@@ -51,8 +51,11 @@ function ModalAddGallery(props) {
     }
 
     useEffect(() => {
-        getProductList();
-    }, []);
+        if(visibleAddGallery === true){
+            getProductList();
+        }
+    }, [visibleAddGallery]);
+    
     const onFinish = (values) => {
         let payload = {
             "translations": {
