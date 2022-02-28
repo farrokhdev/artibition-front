@@ -5,6 +5,7 @@ import logonamad from '../../assets/img/logo@3x.jpg'
 import logomelihonar from '../../assets/img/melihonar@3x.jpg'
 import love from '../../assets/img/love.svg'
 import { t } from 'i18next';
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
     return (
@@ -51,7 +52,7 @@ export default function Footer() {
                                         <li><a href="#">{t("footer.guid.artist-register")}</a></li>
                                         <li><a href="#">{t("footer.guid.create-gallery")}</a></li>
                                         <li><a href="#">{t("footer.guid.purchase")}</a></li>
-                                        <li><a href="/site/faq">{t("footer.guid.faq")}</a></li>
+                                        <li><Link to="/site/faq">{t("footer.guid.faq")}</Link></li>
                                     </ul>
                                 </div>
                             </div>
@@ -69,7 +70,7 @@ export default function Footer() {
                                 <div className="footer-nav text-dir">
                                     <h6 className="footer-nav-header">{t("footer.artibition.title")}</h6>
                                     <ul className="footer-nav-body">
-                                        <li><a href="#">{t("footer.artibition.about-us")}</a></li>
+                                        <li><Link to="/site/about-us">{t("footer.artibition.about-us")}</Link></li>
                                         <li><a href="#">{t("footer.artibition.contact-us")}</a></li>
                                         <li><a href="#">{t("footer.artibition.collabration")}</a></li>
                                         <li><a href="#">{t("footer.artibition.collabrators")}</a></li>
