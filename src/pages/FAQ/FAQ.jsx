@@ -5,6 +5,7 @@ import apiServices from "../../utils/api.services";
 import {FAQ_, FAQ_CATEGORY} from "../../utils";
 import {useTranslation} from "react-i18next";
 import queryString from "query-string";
+import Footer from "../../components/Footer/Footer";
 
 export default function FAQ() {
     const { t, i18n } = useTranslation();
@@ -119,6 +120,7 @@ export default function FAQ() {
                     </div>
                 </div>
             </div>
+            <Footer/>
         </>
     )
 }

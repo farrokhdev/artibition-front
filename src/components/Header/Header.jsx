@@ -250,7 +250,7 @@ function Header() {
                                     <a onClick={() => setParams((state) => ({...state, object: "product"}))}>نام اثر</a>
                                 </li>
                                 <li>
-                                    <a onClick={() => setParams((state) => ({...state, object: "gallery"}))}>نمایشگاه</a>
+                                    <a onClick={() => setParams((state) => ({...state, object: "exhibition"}))}>نمایشگاه</a>
                                 </li>
                                 <li>
                                     <a onClick={() => setParams((state) => ({...state, object: "gallery"}))}>گالری</a>

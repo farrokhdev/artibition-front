@@ -25,6 +25,7 @@ import ReactGA from 'react-ga'
 import Page404 from './pages/Page404/Page404';
 import ArtistContentPage from './pages/ArtistContentPage/ArtistContentPage';
 import AboutUs from './pages/AboutUs/AboutUs';
+import Content from "./pages/Content/Content";
 
 ReactGA.initialize('UA-220199370-1')
 
@@ -74,6 +75,7 @@ function App(props) {
                     <Route path="collections-list" element={<CollectionsList />} />
                     <Route path="promotion/:id" element={<DetailsPromotion />} />
                     <Route path="promotion-competition/:id" element={<PromotionCompetition />} />
+                    <Route path="content/:slug" element={<Content />} />
                     <Route path="about-us" element={<AboutUs/>} />
                     <Route path="page-404" element={<Page404 />} />
 

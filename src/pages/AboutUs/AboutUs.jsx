@@ -1,25 +1,49 @@
-import React, { useState } from 'react'
+import React, {useEffect, useState} from 'react'
 import Header from '../../components/Header/Header';
 import Menu from '../../components/Menu/Menu';
-import { Tabs } from "antd";
+import {Tabs} from "antd";
 import aboutus from "../../assets/img/mainpage/aboutus.jpg"
 import user from '../../assets/img/user.jpg'
 import gallery2 from '../../assets/img/gallery/2.jpg'
 import Slider from "react-slick";
 import Footer from '../../components/Footer/Footer';
 import AboutUsDetails from './AboutUsDetails';
+import apiServices from "../../utils/api.services";
+import {CONTENT_DETAIL, PRODUCTS_CATEGORIES} from "../../utils";
+import queryString from "query-string";
+import {useTranslation} from "react-i18next";
 
-const { TabPane } = Tabs;
+const {TabPane} = Tabs;
 
 
 function AboutUs() {
-
+    const {t, i18n} = useTranslation();
     const [activeTabe, setactiveTabe] = useState("1");
+    const [data, setData] = useState([]);
+    const [slug, setSlug] = useState('about-us');
 
     const callBack = (key) => {
-        console.log(key)
+        setSlug(key)
         setactiveTabe(key)
     }
+
+    const getContent = (slug) => {
+        apiServices
+            .get(CONTENT_DETAIL(slug), "")
+            .then((res) => {
+                if (res.data) {
+                    setData(res.data.data);
+                }
+            })
+            .catch((err) => {
+                console.log("err", err);
+            });
+    }
+
+    useEffect(() => {
+        getContent(slug)
+    }, [slug])
+
     const settings = {
         autoplay: true,
         autoplaySpeed: 5000,
@@ -60,8 +84,8 @@ function AboutUs() {
     return (
         <>
             <div className="container mx-auto px-0 w-100 overflow-hidden">
-                <Header />
-                <Menu />
+                <Header/>
+                <Menu/>
 
                 <div className="container  mx-auto px-0 w-100">
                     <div className=" about-page default-content">
@@ -71,42 +95,23 @@ function AboutUs() {
                                     <div className="tab-overflow">
 
 
-                                        <Tabs className="nav nav-tabs" activeKey={activeTabe} id="content-page" tabPosition="left" onChange={callBack}>
-                                            <TabPane tab="درباره ما" key="1">
-
-                                            </TabPane>
-                                            <TabPane tab="توافق نامه کاربری آرتیبیشن" key="2">
-
-                                            </TabPane>
-                                            <TabPane tab="حریم خصوصی" key="3">
-
-                                            </TabPane>
-                                            <TabPane tab="کپی رایت" key="4">
-
-                                            </TabPane>
-                                            <TabPane tab="سوالات متداول" key="5">
-
-                                            </TabPane>
+                                        <Tabs className="nav nav-tabs" activeKey={activeTabe} id="content-page"
+                                              tabPosition="left" onChange={callBack}>
+                                            <TabPane tab="درباره ما" key="about-us" />
+                                            <TabPane tab="توافق نامه کاربری آرتیبیشن" key="agreement" />
+                                            <TabPane tab="حریم خصوصی" key="privacy" />
+                                            <TabPane tab="کپی رایت" key="copy-right" />
                                         </Tabs>
                                     </div>
                                 </div>
                                 <div className="col-xs-12 col-md-9 col-lg-9">
-                                    {activeTabe === "1" && <AboutUsDetails />}
-                                    {activeTabe === "2" &&
-                                        <div id="about3" className="tab-pane fade in active">
-                                            توافق نامه کاربری آرتیبیشن
-                                        </div>
-                                    }
-                                    {activeTabe === "3" &&
-                                        <div id="about3" className="tab-pane fade in active">
-                                            حریم خصوصی
-                                        </div>
-                                    }
-                                    {activeTabe === "4" &&
-                                        <div id="about4" className="tab-pane fade in active">
-                                            کپی رایت
-                                        </div>
-                                    }
+                                    <div className="tab-pane fade in"
+                                         dangerouslySetInnerHTML=
+                                             {i18n.language === "fa-IR" ?
+                                                 {__html: data?.translations?.fa?.content} :
+                                                 {__html: data?.translations?.en?.content}
+                                             }
+                                    />
                                 </div>
 
                             </div>
@@ -114,8 +119,9 @@ function AboutUs() {
                     </div>
                 </div>
             </div>
-            <Footer />
+            <Footer/>
         </>
     )
 }
+
 export default AboutUs;

@@ -121,4 +121,5 @@ export const SEARCH_PRODUCTS = `/search/products/`;
 export const SEARCH = `/search/`;
 export const FAQ_ = `/management/faqs/`;
 export const FAQ_CATEGORY = `/management/faq-categories/`;
+export const CONTENT_DETAIL = (slug) => `/management/content/${slug}/`;
 // export const PROMOTIONS = '/events/promotions/'

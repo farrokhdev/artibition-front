@@ -48,10 +48,10 @@ export default function Footer() {
                                 <div className="footer-nav text-dir">
                                     <h6 className="footer-nav-header">{t("footer.guid.title")}</h6>
                                     <ul className="footer-nav-body">
-                                        <li><a href="#">{t("footer.guid.signup-login")}</a></li>
-                                        <li><a href="#">{t("footer.guid.artist-register")}</a></li>
-                                        <li><a href="#">{t("footer.guid.create-gallery")}</a></li>
-                                        <li><a href="#">{t("footer.guid.purchase")}</a></li>
+                                        <li><a href="/site/content/guid-signup">{t("footer.guid.signup-login")}</a></li>
+                                        <li><a href="/site/content/guid-artist-register">{t("footer.guid.artist-register")}</a></li>
+                                        <li><a href="/site/content/guid-gallery">{t("footer.guid.create-gallery")}</a></li>
+                                        <li><a href="/site/content/guid-purchase">{t("footer.guid.purchase")}</a></li>
                                         <li><Link to="/site/faq">{t("footer.guid.faq")}</Link></li>
                                     </ul>
                                 </div>
@@ -60,9 +60,9 @@ export default function Footer() {
                                 <div className="footer-nav text-dir">
                                     <h6 className="footer-nav-header">{t("footer.terms-of-use.title")}</h6>
                                     <ul className="footer-nav-body">
-                                        <li><a href="#">{t("footer.terms-of-use.copyright")}</a></li>
-                                        <li><a href="#">{t("footer.terms-of-use.terms-and-conditional")}</a></li>
-                                        <li><a href="#">{t("footer.terms-of-use.policy")}</a></li>
+                                        <li><a href="/site/content/copy-right">{t("footer.terms-of-use.copyright")}</a></li>
+                                        <li><a href="/site/content/terms-and-conditional">{t("footer.terms-of-use.terms-and-conditional")}</a></li>
+                                        <li><a href="/site/content/privacy">{t("footer.terms-of-use.policy")}</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -73,7 +73,7 @@ export default function Footer() {
                                         <li><Link to="/site/about-us">{t("footer.artibition.about-us")}</Link></li>
                                         <li><a href="#">{t("footer.artibition.contact-us")}</a></li>
                                         <li><a href="#">{t("footer.artibition.collabration")}</a></li>
-                                        <li><a href="#">{t("footer.artibition.collabrators")}</a></li>
+                                        <li><a href="/site/content/collabrators">{t("footer.artibition.collabrators")}</a></li>
                                     </ul>
                                 </div>
                             </div>
