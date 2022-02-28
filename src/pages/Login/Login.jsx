@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Form, Input } from "antd";
 import login from "../../assets/img/login.jpg";
 import google_icon from "../../assets/img/google.jpg";
@@ -18,25 +18,60 @@ import { connect } from "react-redux";
 import { setProfile } from "../../redux/reducers/auth/auth.actions";
 import { useSelector, useDispatch } from "react-redux";
 import { UPDATE_CART } from "../../redux/reducers/cart/cart.types";
-import { GoogleLogin } from 'react-google-login';
-import * as axios from 'axios'
+import { GoogleLogin } from "react-google-login";
+import * as axios from "axios";
 import GoogleLoginButton from "../../components/GoogleLoginButton/GoogleLoginButton";
+import { isNil } from "lodash";
 
 function Login(props) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { roles } = useSelector((state) => state.authReducer);
   const [loading, setLoading] = useState(true);
-  let userRole = "user";
+  const [loginImage, setLoginImage] = useState(login);
+  const [statisticImage, setStatisticImage] = useState();
 
+  let userRole = "user";
+  const getLoginImage = () => {
+    axios
+      .get(`${BASE_URL}/management/content/get_login_pic/`)
+      .then((res) => {
+        if (res.data.code === 200) {
+          const data = res.data.data;
+          if (!isNil(data?.exact_url)) {
+            setLoginImage(data?.exact_url);
+          }
+        }
+      })
+      .catch((err) => console.log("GET_LOGIN_IMAGE_FAILED", err));
+  };
+  const getStatisticImage = () => {
+    axios
+      .get(`${BASE_URL}/management/content/get_state_pic/`)
+      .then((res) => {
+        if (res.data.code === 200) {
+          const data = res.data.data;
+          if (!isNil(data?.exact_url)) {
+            setStatisticImage(data?.exact_url);
+          }
+        }
+      })
+      .catch((err) => console.log("GET_LOGIN_IMAGE_FAILED", err));
+  };
+
+  useEffect(() => {
+    getLoginImage();
+    getStatisticImage();
+  }, []);
   const handleGoogleLogin = (result) => {
-    axios.post(`${BASE_URL}/account/google-login/`, { "token": result.tokenId })
-      .then(res => {
+    axios
+      .post(`${BASE_URL}/account/google-login/`, { token: result.tokenId })
+      .then((res) => {
         if (res.data) {
           setToken({
-            "access": res.data.data.access,
-            "refresh": res.data.data.refresh
-          })
+            access: res.data.data.access,
+            refresh: res.data.data.refresh,
+          });
           getProfile().then((res) => {
             message.success("به آرتیبیشن خوش آمدید");
             console.log(userRole);
@@ -51,13 +86,10 @@ function Login(props) {
             }
           });
         }
-      })
+      });
+  };
 
-  }
-
-  const handleGoogleFailure = () => {
-
-  }
+  const handleGoogleFailure = () => {};
 
   async function getProfile() {
     await APIService.get(PROFILE, "").then((res) => {
@@ -102,13 +134,12 @@ function Login(props) {
               type: UPDATE_CART,
               payload: res?.data?.data?.product_items?.length,
             });
-          }
-          else {
+          } else {
             console.log(res);
             message.error({
               content: "res",
-              style: { marginTop: "110px" }
-            })
+              style: { marginTop: "110px" },
+            });
           }
         });
         getProfile().then((res) => {
@@ -118,7 +149,7 @@ function Login(props) {
           //         marginTop: '220px',
           //     },
           // })
-          
+
           message.success("به آرتیبیشن خوش آمدید");
           console.log(userRole);
           if (userRole !== "user") {
@@ -208,7 +239,7 @@ function Login(props) {
 
             <div className="col-lg-5   hidden-sm hidden-xs ">
               <img
-                src={login}
+                src={loginImage}
                 width="730"
                 height="902"
                 alt=""
@@ -218,7 +249,18 @@ function Login(props) {
           </div>
 
           <div className="clearfix"></div>
-          <Statistics />
+          {/* Statistics was commented because product owner wants to upload an image
+           instead of this component */}
+          {/* <Statistics /> */}
+          <div className="col-lg-5   hidden-sm hidden-xs ">
+            <img
+              src={statisticImage}
+              width="810"
+              height="133"
+              alt=""
+              className="img-responsive"
+            />
+          </div>
         </div>
       </div>
 
