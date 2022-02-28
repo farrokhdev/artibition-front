@@ -41,6 +41,7 @@ function PanleMyAlbums() {
     const [params, setParams] = useState({
 
     });
+
     const [aulbumDetails, setAulbumDetails] = useState();
 
 
@@ -90,10 +91,13 @@ function PanleMyAlbums() {
 
 
     useEffect(() => {
-        if (visibleAddGallery === false && artistDetails?.id) {
-            getMyAulbumCollection();
+        if (artistDetails?.id) {
+            if (visibleAddGallery === false || visibleEditGallery === false) {
+                getMyAulbumCollection()
+
+            }
         }
-    }, [visibleAddGallery]);
+    }, [visibleAddGallery, visibleEditGallery]);
 
     useEffect(() => {
         getArtistDetails();

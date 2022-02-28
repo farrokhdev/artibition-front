@@ -31,9 +31,14 @@ function ModalEditAulbum(props) {
         setVisibleEditGallery(false);
     }
 
+    const [params, setParams] = useState({
+        page_size: 9999999
+
+    });
+
     // Get my product list
     const getProductList = () => {
-        apiServices.get(PRODUCTS_ME, "")
+        apiServices.get(PRODUCTS_ME, queryString.stringify(params))
             .then(resp => {
                 setProductList(resp.data.data.results)
                 // setSuggestionsCount(resp.data.data.count)
@@ -44,8 +49,10 @@ function ModalEditAulbum(props) {
     }
 
     useEffect(() => {
-        getProductList();
-    }, []);
+        if (visibleEditGallery === true && aulbumDetails?.id) {
+            getProductList();
+        }
+    }, [aulbumDetails?.id]);
 
     const onFinish = (values) => {
         let payload = {

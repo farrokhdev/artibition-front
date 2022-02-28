@@ -71,8 +71,8 @@ export default function Footer() {
                                     <h6 className="footer-nav-header">{t("footer.artibition.title")}</h6>
                                     <ul className="footer-nav-body">
                                         <li><Link to="/site/about-us">{t("footer.artibition.about-us")}</Link></li>
-                                        <li><a href="#">{t("footer.artibition.contact-us")}</a></li>
-                                        <li><a href="#">{t("footer.artibition.collabration")}</a></li>
+                                        <li><Link to="/site/contact-us">{t("footer.artibition.contact-us")}</Link></li>
+                                        <li><Link to="/site/work-with-us">{t("footer.artibition.collabration")}</Link></li>
                                         <li><a href="#">{t("footer.artibition.collabrators")}</a></li>
                                     </ul>
                                 </div>
