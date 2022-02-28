@@ -176,7 +176,7 @@ function ArtistsPage(props) {
                       navigate(
                         `/site/artists`
                       )
-                      // window.location.reload()
+                      window.location.reload()
                     }}
                     >
                       <div className="d-flex box-dir-reverse align-items-center">
