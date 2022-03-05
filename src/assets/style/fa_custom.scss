@@ -1,0 +1,121 @@
+.loading {
+  font-size: 14px;
+  width: 100%;
+  font-weight: 500;
+}
+
+.promotions_wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 3rem;
+
+  .category_links {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid #dfdfdf;
+    margin: 4rem 0;
+
+    justify-content: flex-start;
+
+    .category_link {
+      text-transform: capitalize;
+      font-weight: 500;
+      position: relative;
+      padding: 1rem;
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: 0px;
+        width: 100%;
+        height: 2px;
+        border-radius: 50px;
+        background-color: #848484;
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.4s ease;
+      }
+
+      &:hover {
+        &::before {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+    .category_link.active {
+      &::before {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+
+  .promotion_box {
+    display: grid;
+    // grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: 1fr 1fr;
+    row-gap: 20px;
+  }
+}
+
+// TEST BACKGROUND
+
+.test-img {
+  background: #000;
+  width: 100%;
+  min-height: 500px;
+  position: relative;
+  &:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: url("../img/test/edited-test.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+  }
+
+  img {
+    object-fit: cover;
+    object-position: center;
+    display: inline-flex !important;
+    width: 300px;
+    height: 338px !important;
+    position: absolute;
+    top: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+// filters slide
+
+.filter-side {
+  .panel-group {
+    .panel {
+      .panel-heading {
+        .panel-title {
+          text-align: initial !important;
+        }
+      }
+    }
+  }
+
+  .panel-body {
+    .lable-checkbox {
+      display: flex !important;
+    }
+  }
+}
+
+.text-center-custom {
+  text-align: center;
+}
