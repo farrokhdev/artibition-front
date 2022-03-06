@@ -1614,6 +1614,8 @@ function DetailsArtwork() {
           artist_id={artist_id}
           getProductDetail={getProductDetail}
         />
+
+        
         <ModalSendMessage
           visibleShowSendMessage={showSendMessage}
           setVisibleShowSendMessage={setShowSendMessage}

@@ -64,7 +64,7 @@ function PersonalInfo(props) {
                     <div className="col-sm-6">
                         <div className="form-group text-dir">
                             <span className="lable-panel">{t('content-panel-profile.personal-info.phone')}</span>
-                            {props?.auth?.profile?.mobile ?
+                            {props?.auth?.profile?.mobile_approved ?
                                 <span className="input-panel persian-num">
                                     {props?.auth?.profile?.mobile}
                                     <div className="btn-green en-lang text-light m-2 p-2" style={{display:"inline-block"}}>{t("content-panel-profile.info-box.register.approved")}</div>
@@ -86,7 +86,7 @@ function PersonalInfo(props) {
                     <div className="col-sm-6">
                         <div className="form-group text-dir">
                             <span className="lable-panel">{t('content-panel-profile.personal-info.email')}</span>
-                            {props?.auth?.profile?.email ?
+                            {props?.auth?.profile?.email_approved ?
                                 <span className="input-panel en-lang">
                                     {props?.auth?.profile?.email}
                                     <div className="btn-green text-light m-2 p-2" style={{display:"inline-block"}}>{t("content-panel-profile.info-box.register.approved")}</div>

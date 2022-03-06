@@ -13,20 +13,21 @@ import circle_plus_icon from '../../assets/img/circle-plus-1.png';
 import { useTranslation } from 'react-i18next';
 import { follow } from '../../utils/utils';
 import { useNavigate, useLocation } from "react-router-dom";
+import { DEFAULT_URL_IMAGE } from '../../utils/defaultImage';
 
 function ModalSimilarArtworks(props) {
     let navigate = useNavigate();
     const { t, i18n } = useTranslation();
     const [toggle, setToggle] = useState(false);
-    const { visibleSimilarArtworksModal, setVisibleSimilarArtworksModal, artistProduct, productDetail, artist_id, getProductDetail} = props;
-    
+    const { visibleSimilarArtworksModal, setVisibleSimilarArtworksModal, artistProduct, productDetail, artist_id, getProductDetail } = props;
+
     function useQuery() {
         return new URLSearchParams(useLocation().search);
-      }
+    }
     var id;
     var query = useQuery();
     id = query.get("id");
-    
+
     const [params, setParams] = useState({
         activity_type: "following",
         content_type: "artist",
@@ -39,7 +40,7 @@ function ModalSimilarArtworks(props) {
     }
 
     useEffect(() => {
-        if(id){
+        if (id) {
             getProductDetail()
         }
     }, [id]);
@@ -81,8 +82,14 @@ function ModalSimilarArtworks(props) {
                                         <div className="d-flex">
                                             <div className="col-4 col-sm-3 col-md-2 ">
                                                 <div className="artist-avatar">
-                                                    <img src={artist4} width="312" height="312" alt=""
-                                                        className="img-responsive pull-dir " />
+                                                   
+                                                    <img
+                                                        src={productDetail?.artist_image?.exact_url ? productDetail?.artist_image?.exact_url : DEFAULT_URL_IMAGE}
+                                                        width="312"
+                                                        height="312"
+                                                        alt=""
+                                                        className="img-responsive pull-right "
+                                                    />
                                                 </div>
                                             </div>
                                             <div className="col">

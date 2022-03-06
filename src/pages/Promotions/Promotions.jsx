@@ -4,7 +4,8 @@ import Header from "../../components/Header/Header";
 import Menu from "../../components/Menu/Menu";
 import { PromotionsMain } from "../../components/PromotionsComponents/PromotionsMain";
 
-export const Promotions = () => {
+
+export default function Promotions() {
   return (
     <>
       <div className="container mx-auto px-0 w-100">
@@ -16,5 +17,5 @@ export const Promotions = () => {
         <Footer />
       </div>
     </>
-  );
-};
+  )
+}

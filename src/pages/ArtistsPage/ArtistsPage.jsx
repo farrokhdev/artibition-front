@@ -239,7 +239,7 @@ function ArtistsPage(props) {
                         </a>
                       </h4>
                     </div>
-                    <div id="collapse2" className="panel-collapse collapse in">
+                    <div id="collapse2" className="panel-collapse collapse show">
                       <div className="panel-body">
                         <div className="checkbox-row">
                           <label className="lable-checkbox text-dir">
@@ -294,7 +294,7 @@ function ArtistsPage(props) {
                         </a>
                       </h4>
                     </div>
-                    <div id="collapse3" className="panel-collapse collapse in">
+                    <div id="collapse3" className="panel-collapse collapse show">
                       <div className="panel-body">
                         <div className="checkbox-row">
                           <label className="lable-checkbox text-dir">
