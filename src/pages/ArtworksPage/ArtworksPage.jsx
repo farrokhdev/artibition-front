@@ -197,6 +197,14 @@ function ArtworksPage(props) {
     })
   }
 
+  const discountPrice = (price, discount, type) => {
+    if (type === "percentage") {
+      return numDiscriminant((100 - discount) * price / 100)
+    } else {
+      return numDiscriminant(price - discount)
+    }
+  }
+
 
   const getProductCategories = () => {
     apiServices
@@ -235,13 +243,7 @@ function ArtworksPage(props) {
     getProductList()
   }
 
-  const discountPrice = (price, discount, type) => {
-    if (type === "percentage") {
-      return numDiscriminant((100 - discount) * price / 100)
-    } else {
-      return numDiscriminant(price - discount)
-    }
-  }
+
   const getProductMaterials = () => {
     apiServices
       .get(
@@ -1121,7 +1123,7 @@ function ArtworksPage(props) {
                                         discountPrice(product.toman_price, product?.discount?.value, product?.discount?.type) :
                                         numDiscriminant(product.toman_price)
                                       }
-                                      {product?.discount ? t("toman") : ""}
+                                      {product?.discount || product?.toman_price ? t("toman") : ""}
                                     </span>
                                     {/* <span className="col-price-unit">
                                       {t("toman")}

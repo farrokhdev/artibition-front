@@ -63,6 +63,8 @@ function SidebarPanel(props) {
         <div className="sidebar active " id="mySidebar">
             <div className="inner-sidebar" data-spy="affix" data-offset-top="205">
                 <div className="sidebar-info mb-5">
+                    {/* <img src={props.auth?.profile?.media?  props.auth?.profile?.media[0]?.exact_url : profile_pic} width="56" height="56" alt=""
+                        className="pull-dir sidebar-avatar img-responsive" /> */}
                     <img src={profile_pic} width="56" height="56" alt=""
                         className="pull-dir sidebar-avatar img-responsive" />
                     <div className="sidebar-personal-info text-dir">
