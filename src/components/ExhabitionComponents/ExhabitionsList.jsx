@@ -1,5 +1,5 @@
 import React from "react";
-import { ExhabitionFilters } from "../Filters/ExhabitionFilters";
+// import { ExhabitionFilters } from "../Filters/ExhabitionFilters";
 
 export const ExhabitionsList = () => {
   return (
@@ -30,7 +30,7 @@ export const ExhabitionsList = () => {
         </div>
         <div className="content-body">
           <div className="row">
-            <ExhabitionFilters />
+            {/* <ExhabitionFilters /> */}
 
             <div className="col-md-9">
               <div className="row-gridimg">
