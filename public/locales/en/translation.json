@@ -1510,5 +1510,14 @@
   },
   "clipboard": {
     "success_message": "Copied successfully"
+  },"contact-us":{
+    "keep_in_touch":"KEEP IN TOUCH",
+    "keep_in_touch_description":"If you wish to get in touch please contact us",
+    "fullname":"Full name",
+    "email_phone":"Email or phone number",
+"description":"Description",
+"write_your_message":"Write your message...",
+"send":"Send"
   }
+
 }
