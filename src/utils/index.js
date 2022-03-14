@@ -129,3 +129,4 @@ export const CONTENT_DETAIL = (slug) => `/management/content/${slug}/`;
 export const SLIDER_PIC = "/management/content/get_slider_pic/";
 export const NEWS_LETTER_MEMBERSHIP = "/account/membership/";
 export const CONTACT_US = "/management/contact_us/";
+export const WORK_WITH_US = "/management/work_with_us/";
