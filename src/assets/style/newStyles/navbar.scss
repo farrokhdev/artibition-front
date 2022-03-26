@@ -1,0 +1,9 @@
+.nav_new {
+  width: 100%;
+  display: flex;
+
+  .active_item {
+    background-color: #eee;
+    transition: 0.3s ease;
+  }
+}
