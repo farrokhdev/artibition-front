@@ -478,23 +478,21 @@ export default function NavbarMenuHeader(props) {
       menu: ``,
     },
     {
-      title: `${
-        isLogin() ? (
-          <Link to="/site/advisory" className="sales">
-            {t("nav-menu-sales-advisor")}
-          </Link>
-        ) : (
-          <Link
-            to="/"
-            className="sales"
-            onClick={() => {
-              message.error("لطفا ابتدا وارد حساب کاربری شوید");
-            }}
-          >
-            {t("nav-menu-sales-advisor")}
-          </Link>
-        )
-      }`,
+      title: isLogin() ? (
+        <Link to="/site/advisory" className="sales">
+          {t("nav-menu-sales-advisor")}
+        </Link>
+      ) : (
+        <Link
+          to="/"
+          className="sales"
+          onClick={() => {
+            message.error("لطفا ابتدا وارد حساب کاربری شوید");
+          }}
+        >
+          {t("nav-menu-sales-advisor")}
+        </Link>
+      ),
       menu: ``,
     },
   ];

@@ -149,7 +149,7 @@ function PanelMyCollections() {
                       </tr>
                     </thead>
                     <tbody>
-                      {aulbum?.length &&
+                      {aulbum?.length ? (
                         aulbum?.map((myAulbum, key) => {
                           return (
                             <tr>
@@ -186,7 +186,12 @@ function PanelMyCollections() {
                               </td>
                             </tr>
                           );
-                        })}
+                        })
+                      ) : (
+                        <tr>
+                          <td>هیچ دیتایی وجود ندارد</td>
+                        </tr>
+                      )}
                     </tbody>
                   </table>
                 </div>

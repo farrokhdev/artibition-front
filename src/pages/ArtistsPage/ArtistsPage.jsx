@@ -24,11 +24,10 @@ import queryString from "query-string";
 import { useTranslation } from "react-i18next";
 import { connect } from "react-redux";
 import { setProfile } from "../../redux/reducers/auth/auth.actions";
-import { Link, useSearchParams,useNavigate } from "react-router-dom";
+import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import { follow } from "../../utils/utils";
 
 function ArtistsPage(props) {
-
   const { t, i18n } = useTranslation();
   let [searchParams, setSearchParams] = useSearchParams();
   let navigate = useNavigate();
@@ -43,7 +42,7 @@ function ArtistsPage(props) {
   const [params, setParams] = useState({
     status: "active",
     page: 1,
-    category_id:""
+    category_id: "",
   });
 
   //filters state
@@ -98,21 +97,22 @@ function ArtistsPage(props) {
   };
 
   const callBack = () => {
-    getArtistList()
-  }
+    getArtistList();
+  };
 
   useEffect(() => {
-    if (searchParams.get('artist_type_id')) {
+    if (searchParams.get("artist_type_id")) {
       setParams({
-        ...params, artist_type_id: searchParams.get('artist_type_id')
-      })
+        ...params,
+        artist_type_id: searchParams.get("artist_type_id"),
+      });
     } else {
       setParams({
-        ...params, artist_type_id: ""
-      })
+        ...params,
+        artist_type_id: "",
+      });
     }
   }, [searchParams]);
-
 
   useEffect(() => {
     getArtistList();
@@ -168,16 +168,18 @@ function ArtistsPage(props) {
                     <span className="mx-2">
                       {t("artworkList.filter.title")}
                     </span>
-                    <button 
-                    className="btn clear-tag mx-3"
-                    style={Object.keys(params.category_id).length > 0 ? { display: "unset" } : { display: "none" }}
-                    onClick={() => {
-                      setParams({})
-                      navigate(
-                        `/site/artists`
-                      )
-                      window.location.reload()
-                    }}
+                    <button
+                      className="btn clear-tag mx-3"
+                      style={
+                        Object.keys(params.category_id).length > 0
+                          ? { display: "unset" }
+                          : { display: "none" }
+                      }
+                      onClick={() => {
+                        setParams({});
+                        navigate(`/site/artists`);
+                        window.location.reload();
+                      }}
                     >
                       <div className="d-flex box-dir-reverse align-items-center">
                         <img
@@ -239,11 +241,14 @@ function ArtistsPage(props) {
                         </a>
                       </h4>
                     </div>
-                    <div id="collapse2" className="panel-collapse collapse show">
+                    <div
+                      id="collapse2"
+                      className="panel-collapse collapse show"
+                    >
                       <div className="panel-body">
                         <div className="checkbox-row">
                           <label className="lable-checkbox text-dir">
-                            <input type="checkbox"  value="" />
+                            <input type="checkbox" value="" />
                             <span>{t("artists.filter.expert.all")}</span>
                             <span className="checkmark"></span>
                           </label>
@@ -294,11 +299,14 @@ function ArtistsPage(props) {
                         </a>
                       </h4>
                     </div>
-                    <div id="collapse3" className="panel-collapse collapse show">
+                    <div
+                      id="collapse3"
+                      className="panel-collapse collapse show"
+                    >
                       <div className="panel-body">
                         <div className="checkbox-row">
                           <label className="lable-checkbox text-dir">
-                            <input type="checkbox"  value="" />
+                            <input type="checkbox" value="" />
                             <span>{t("artists.filter.artist.all")}</span>
                             <span className="checkmark"></span>
                           </label>
@@ -307,12 +315,12 @@ function ArtistsPage(props) {
                               type="checkbox"
                               // value={false}
                               name="is_official"
-                            // onClick={(e) => {
-                            //   setArtistIsOfficial({
-                            //     ...categoriesId,
-                            //     [e.target.name]: e.target.checked,
-                            //   });
-                            // }}
+                              // onClick={(e) => {
+                              //   setArtistIsOfficial({
+                              //     ...categoriesId,
+                              //     [e.target.name]: e.target.checked,
+                              //   });
+                              // }}
                             />
                             <span>{t("artists.filter.artist.special")}</span>
                             <span className="checkmark"></span>
@@ -345,7 +353,7 @@ function ArtistsPage(props) {
 
               <div className="col-md-9 col-sm-12">
                 <div className="artist-list">
-                  <div className="row box-dir-reverse">
+                  <div className="row box-dir-reverse gap-3">
                     {artistList?.map((item, index) => (
                       <div className="col-sm-4">
                         <a href="#" className="cols">
@@ -354,7 +362,9 @@ function ArtistsPage(props) {
                               {/* <img src={mainpage1_1} className="img-responsive"/> */}
                               <img
                                 src={
-                                  item?.product && item.product[0]?.product_base_info?.medias[0]?.exact_url
+                                  item?.product &&
+                                  item.product[0]?.product_base_info?.medias[0]
+                                    ?.exact_url
                                 }
                                 width="280"
                                 className="img-responsive clolection-image1"
@@ -362,29 +372,31 @@ function ArtistsPage(props) {
                             </div>
                             <div className="d-flex collection-secondrow">
                               <div className="col-6  pad-l2 px-0">
-
                                 <img
                                   src={
                                     // item?.product && item.product[1]?.exact_url
-                                    item?.product && item?.product[1]?.product_base_info?.medias[0]?.exact_url
+                                    item?.product &&
+                                    item?.product[1]?.product_base_info
+                                      ?.medias[0]?.exact_url
                                   }
                                   width="280"
                                   height="280"
                                   className="img-responsive"
-                                  style={{ height: 120,width : 180 }}
+                                  style={{ height: 120, width: 180 }}
                                 />
                               </div>
                               <div className="col-6  pad-r2 px-0">
                                 <img
                                   src={
                                     // item?.product && item.product[2]?.exact_url
-                                    item?.product && item?.product[2]?.product_base_info?.medias[0]?.exact_url
+                                    item?.product &&
+                                    item?.product[2]?.product_base_info
+                                      ?.medias[0]?.exact_url
                                   }
                                   width="280"
                                   height="280"
                                   className="img-responsive"
-                                  style={{ height: 120 , width : 180}}
-
+                                  style={{ height: 120, width: 180 }}
                                 />
                               </div>
                             </div>
@@ -414,34 +426,41 @@ function ArtistsPage(props) {
                               <Link to={`/site/artist-profile/?id=${item?.id}`}>
                                 <span className="col-name pull-dir">
                                   {i18n.language === "fa-IR"
-                                    ?
-                                    item?.owner?.translations?.fa ?
-                                      item?.owner?.translations?.fa?.first_name + " " + item?.owner?.translations?.fa?.last_name
+                                    ? item?.owner?.translations?.fa
+                                      ? item?.owner?.translations?.fa
+                                          ?.first_name +
+                                        " " +
+                                        item?.owner?.translations?.fa?.last_name
                                       : ""
-
-                                    :
-                                    item?.owner?.translations?.en ?
-                                      item?.owner?.translations?.en?.first_name + " " + item?.owner?.translations?.en?.last_name
-                                      : ""
-                                  }
+                                    : item?.owner?.translations?.en
+                                    ? item?.owner?.translations?.en
+                                        ?.first_name +
+                                      " " +
+                                      item?.owner?.translations?.en?.last_name
+                                    : ""}
                                 </span>
                               </Link>
                             </h6>
-                            <br/>
+                            <br />
                             <button
                               type="button"
-                              className={"pull-dir btn-follow followed" + (item?.likes ? "" : "followed")}
+                              className={
+                                "pull-dir btn-follow followed" +
+                                (item?.likes ? "" : "followed")
+                              }
                               onClick={() =>
                                 follow({
                                   activity: "following",
                                   content: "artist",
                                   object_id: item?.id,
                                   action: item?.likes,
-                                  callBack
+                                  callBack,
                                 })
                               }
                             >
-                              {item?.likes ? t("artwork.following") : t("artwork.follow")}
+                              {item?.likes
+                                ? t("artwork.following")
+                                : t("artwork.follow")}
                             </button>
                           </div>
                         </a>

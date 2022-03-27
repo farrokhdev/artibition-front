@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import search from "../../assets/img/search.svg";
 import shopping_basket from "../../assets/img/shopping_basket.svg";
-import NavbarMenuHeader from "../../components/NavbarMenuHeader/NavbarMenuHeader";
+import NavbarMenuHeaderNew from "../../components/NavbarMenuHeaderNew/NavbarMenuHeaderNew";
 import { Token } from "../../utils/utils";
 
 export default function Menu() {
@@ -17,7 +17,7 @@ export default function Menu() {
       <div className="row">
         <div className="col-md-1 "></div>
         <div className="col-md-10 col-sm-11 col-xs-12 w-100">
-          <NavbarMenuHeader />
+          <NavbarMenuHeaderNew />
         </div>
         <div className="col-md-1  show-xs">
           <a
