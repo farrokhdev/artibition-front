@@ -35,6 +35,7 @@ function ArtistsPage(props) {
   const [search, setSearch] = useState();
   const [artistList, setArtistList] = useState();
   const [selectedOption, setSelectedOption] = useState("popularity");
+
   const [artistIsOfficial, setArtistIsOfficial] = useState({
     is_official: false,
   });
@@ -355,7 +356,7 @@ function ArtistsPage(props) {
                 <div className="artist-list">
                   <div className="row box-dir-reverse gap-3">
                     {artistList?.map((item, index) => (
-                      <div className="col-sm-4">
+                      <div className="col-sm-4 mb-4">
                         <a href="#" className="cols">
                           <div className="col-img">
                             <div className="collection-firstrow">
