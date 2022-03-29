@@ -1473,6 +1473,7 @@
       "full_name_least_characters_long": "نام و نام خانوادگی باید حداقل 7 کاراکتر باشد.",
       "email_phone_least_characters_long": "اطلاعات تماس باید حداقل 9 کاراکتر باشد.",
       "enter_message": "لطفا متن پیام را وارد کنید.",
+      "upload_resume":"لطفا فایل رزومه را آپلود کنید.",
       "successful_sent": "پیام شما با موفقیت ارسال شد",
       "send_message_failed": "خطا در ارسال اطلاعات"
     }
