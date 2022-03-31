@@ -56,16 +56,20 @@ import moment from "moment-jalaali";
 import momentJalaali from "moment-jalaali";
 import { follow, isLogin, Token } from "../../utils/utils";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { UPDATE_CART } from "../../redux/reducers/cart/cart.types";
 import { numDiscriminant } from "../../utils/discriminant";
 import { DEFAULT_URL_IMAGE } from "../../utils/defaultImage";
 import ArthibitionProperties from "../../components/ArthibitionProperies/ArthibitionProperties";
+
 function DetailsArtwork() {
   let navigate = useNavigate();
 
   const { t, i18n } = useTranslation();
 
+  // GET USER ROLE
+  const { roles } = useSelector((state) => state.authReducer);
+  // GET USER ROLE ENDS
   function useQuery() {
     return new URLSearchParams(useLocation().search);
   }
@@ -399,24 +403,26 @@ function DetailsArtwork() {
                           </button>
                         )}
                       </div>
-                      <div className="col-sm-6">
-                        <button
-                          type="button"
-                          className="btn-askme pull-left"
-                          onClick={() => {
-                            setShowSendMessage(true);
-                          }}
-                        >
-                          <img
-                            src={ask_me_icon}
-                            width="24"
-                            height="24"
-                            alt=""
-                            className="pull-right"
-                          />
-                          <span>{t("artwork.ask_me")}</span>
-                        </button>
-                      </div>
+                      {roles && (
+                        <div className="col-sm-6">
+                          <button
+                            type="button"
+                            className="btn-askme pull-left"
+                            onClick={() => {
+                              setShowSendMessage(true);
+                            }}
+                          >
+                            <img
+                              src={ask_me_icon}
+                              width="24"
+                              height="24"
+                              alt=""
+                              className="pull-right"
+                            />
+                            <span>{t("artwork.ask_me")}</span>
+                          </button>
+                        </div>
+                      )}
                       <div className="clearfix"></div>
                       <div className="col-xs-12">
                         <h3 className="artwork-name text-dir">
@@ -681,14 +687,16 @@ function DetailsArtwork() {
                       <li className="col-lg-6 text-dir ">
                         {t("artwork.veiw_home")}
                       </li>
-                      <li className="col-lg-6 important text-dir">
-                        {t("artwork.shipment")}
-                      </li>
+                      {productDetail?.fast_delivery && (
+                        <li className="col-lg-6 important text-dir">
+                          {t("artwork.shipment")}
+                        </li>
+                      )}
                     </div>
                     <div className="d-block d-lg-flex box-dir-reverse">
-                      <li className="col-lg-6 text-dir ">
+                      {/* <li className="col-lg-6 text-dir ">
                         {t("artwork.show_collector")}
-                      </li>
+                      </li> */}
                       <li className="col-lg-6 text-dir ">
                         {t("artwork.visit_artwork")}
                       </li>

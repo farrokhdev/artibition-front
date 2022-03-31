@@ -17,6 +17,7 @@ import {
   PRODUCTS_TECHNIQUES,
   SEARCH_PRODUCTS,
 } from "../../utils";
+import { Slider } from "antd";
 import apiServices from "../../utils/api.services";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { follow } from "../../utils/utils";
@@ -26,6 +27,7 @@ import {
   setFilters,
 } from "../../redux/reducers/Filters/filters.action";
 import { numDiscriminant } from "../../utils/discriminant";
+import CurrencyFormat from "react-currency-format";
 
 function ArtworksPage(props) {
   let location = useLocation();
@@ -83,7 +85,7 @@ function ArtworksPage(props) {
   const [params, setParams] = useState({
     status: "active",
     // order: selectedOption,
-    // page: 1,
+
     // size_id: size_id,
     // category_id: category_id,
     // toman_price_range_min: toman_price_range_min,
@@ -309,6 +311,15 @@ function ArtworksPage(props) {
     };
   }, [location]);
 
+  const setToman = (e) => {
+    setToman_price_range_min(e[0]);
+    setToman_price_range_max(e[1]);
+  };
+  const setDollar = (e) => {
+    setDollar_price_range_min(e[0]);
+    setDollar_price_range_max(e[1]);
+  };
+
   return (
     <>
       <div className="container mx-auto px-0 w-100 bg-white">
@@ -397,9 +408,9 @@ function ArtworksPage(props) {
                       <option className="text-dir" value="price">
                         {t("artworkList.filter.sell")}
                       </option>
-                      {/* <option className="text-dir">
+                      <option className="text-dir" value="visite">
                         {t("artworkList.filter.visite")}
-                      </option> */}
+                      </option>
                     </select>
                   </div>
                 </div>
@@ -537,7 +548,7 @@ function ArtworksPage(props) {
                           <div className="col-xs-6">
                             <label>{t("artworkList.filter.price.min")}</label>
                             <input
-                              type="text"
+                              type="number"
                               className="value persian-num"
                               data-index="0"
                               defaultValue={
@@ -558,7 +569,7 @@ function ArtworksPage(props) {
                           <div className="col-xs-6">
                             <label>{t("artworkList.filter.price.max")}</label>
                             <input
-                              type="text"
+                              type="number"
                               className="value  persian-num"
                               data-index="1"
                               defaultValue={
@@ -608,6 +619,101 @@ function ArtworksPage(props) {
                           </button>
                         </div>
                       </div>
+                      {/* <div className="panel-body">
+                        <Slider
+                          tootlipFormatter
+                          className="value  persian-num price_slider"
+                          step={10}
+                          range
+                          defaultValue={[
+                            props?.filters?.filters_reducer
+                              ?.toman_price_range_min
+                              ? props?.filters?.filters_reducer
+                                  ?.toman_price_range_min
+                              : "0",
+                            props?.filters?.filters_reducer
+                              ?.toman_price_range_max
+                              ? props?.filters?.filters_reducer
+                                  ?.toman_price_range_max
+                              : "10000000",
+                          ]}
+                          reverse={true}
+                          min={
+                            props?.filters?.filters_reducer
+                              ?.toman_price_range_min
+                              ? props?.filters?.filters_reducer
+                                  ?.toman_price_range_min
+                              : 0
+                          }
+                          max={
+                            props?.filters?.filters_reducer
+                              ?.toman_price_range_max
+                              ? props?.filters?.filters_reducer
+                                  ?.toman_price_range_max
+                              : 10000
+                          }
+                          marks={{
+                            0: props?.filters?.filters_reducer
+                              ?.toman_price_range_min
+                              ? props?.filters?.filters_reducer
+                                  ?.toman_price_range_min
+                              : "حداقل قیمت (تومان)",
+                            100: props?.filters?.filters_reducer
+                              ?.toman_price_range_max
+                              ? props?.filters?.filters_reducer
+                                  ?.toman_price_range_max
+                              : "حد اکثر قیمت (تومان)",
+                          }}
+                          tipFormatter={
+                            (val) => (
+                              <CurrencyFormat
+                                value={val}
+                                displayType={"text"}
+                                thousandSeparator={true}
+                                suffix="تومان"
+                              />
+                            )
+
+                            // val + " " + "تومان"
+                          }
+                          onChange={(e) => {
+                            i18n.language === "fa-IR"
+                              ? setToman(e)
+                              : setDollar(e);
+                          }}
+                        />
+                        <div className="d-flex pull-dir-rev">
+                          <button
+                            type="button"
+                            className="btn btn-ok pull-dir"
+                            onClick={() =>
+                              i18n.language === "fa-IR"
+                                ? setParams((state) => ({
+                                    ...state,
+                                    toman_price_range_min: toman_price_range_min
+                                      ? toman_price_range_min
+                                      : 0,
+                                    toman_price_range_max: toman_price_range_max
+                                      ? toman_price_range_max
+                                      : 0,
+                                  }))
+                                : setParams((state) => ({
+                                    ...state,
+                                    dollar_price_range_min:
+                                      dollar_price_range_min
+                                        ? dollar_price_range_min
+                                        : 0,
+                                    dollar_price_range_max:
+                                      dollar_price_range_max
+                                        ? dollar_price_range_max
+                                        : 0,
+                                  }))
+                            }
+                          >
+                            {t("artworkList.filter.price.action")}
+                          </button>
+                        </div>
+                      </div> */}
                     </div>
                   </div>
                   <div className="panel panel-default">
