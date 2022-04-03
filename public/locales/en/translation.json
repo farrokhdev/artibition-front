@@ -1511,5 +1511,45 @@
   },
   "clipboard": {
     "success_message": "Copied successfully"
+  },
+  "contact-us": {
+    "keep_in_touch": "KEEP IN TOUCH",
+    "keep_in_touch_description": "If you wish to get in touch please contact us",
+    "fullname": "Full name",
+    "email_phone": "Email or phone number",
+    "description": "Description",
+    "write_your_message": "Write your message...",
+    "send": "Send",
+    "contact_info": "Contact info",
+    "artists-guide": "Artists guide",
+    "advice_on_buying_artwork": "Advice on buying artwork",
+    "email": "Email",
+    "address": "Address",
+    "support": "Support",
+    "messages": {
+      "please_enter_the_information": "Please enter the information.",
+      "full_name_least_characters_long": "Full name must be at least 7 characters long.",
+      "email_phone_least_characters_long": "Email or phone number must be at least 7 characters long.",
+      "enter_message": "Please enter the message text.",
+       "upload_resume":"Please upload your resume file.",
+      "successful_sent": "Your message has been successfully sent",
+      "send_message_failed": "Send message failed"
+    }
+  },
+  "work-with-us": {
+    "terms_cooperation": "Terms of cooperation",
+    "terms_cooperation_description": "We want to take a valuable and great step for the excellence of art in our country, which requires knowledge and artistic taste. Therefore, we intend to bring together a capable and powerful group by creating an intimate and professional environment to serve artists, art lovers and the visual arts community: If you are interested in joining us, you can send us your resume and information.",
+    "preparation_art_news": "Preparation of art news",
+    "introducing_artists": "Introducing artists to the site",
+    "introducing_galleries": "Introducing galleries and forums",
+    "art_education": "Art Education",
+    "interviewing_artists": "Interviewing artists and making music videos",
+    "contact_us": "Contact us",
+    "fullname": "Full name",
+    "email": "Email",
+    "phone": "Phone number",
+    "description": "Description",
+    "upload_resume": "Upload CV (PDF)",
+    "submit": "Submit"
   }
 }
