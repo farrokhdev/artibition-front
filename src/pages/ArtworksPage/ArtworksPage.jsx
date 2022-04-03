@@ -84,6 +84,7 @@ function ArtworksPage(props) {
 
   const [params, setParams] = useState({
     status: "active",
+    page_size:15
     // order: selectedOption,
 
     // size_id: size_id,
@@ -166,7 +167,8 @@ function ArtworksPage(props) {
         queryString.stringify(params, {
           arrayFormat: "comma",
           skipNull: true,
-          skipEmptyString: true,
+          skipEmptyString: true
+          
         })
       )
       .then((res) => {
@@ -192,9 +194,11 @@ function ArtworksPage(props) {
   }, [searchParams]);
 
   const handeSelectPage = (e) => {
+
     setParams({
       ...params,
       page: e,
+      
     });
   };
 
@@ -804,13 +808,16 @@ function ArtworksPage(props) {
                         </a>
                       </h4>
                     </div>
-                    <div
+                    <div  
                       id="collapse5"
                       className="panel-collapse collapse show"
                     >
                       <div className="panel-body">
                         <label className="switch pull-dir">
-                          <input type="checkbox" />
+                          <input type="checkbox"  onChange={()=>setParams((state) => ({
+                                ...state,
+                                for_gifting:!state?.for_gifting ? true : false 
+                              }))}/>
                           <span className="switchbtn round"></span>
                           <span className="label-switchbtn">
                             {t("artworkList.filter.art_for_gift.show")}
@@ -1319,7 +1326,7 @@ function ArtworksPage(props) {
                   <Pagination
                     defaultCurrent={1}
                     total={suggestionsCount}
-                    defaultPageSize={10}
+                    defaultPageSize={15}
                     onChange={(e) => handeSelectPage(e)}
                     // total={50}
                   />
