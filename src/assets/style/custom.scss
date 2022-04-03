@@ -598,6 +598,7 @@ a:hover {
   font-size: 15px;
 }
 
+
 .col-date .persian-num {
   font-size: 12px;
 }
@@ -9196,4 +9197,286 @@ iframe {
 .step-perisan-num .ant-steps-icon {
   font-family: Iransans-Medium, sans-serif !important;
   font-size: 15px;
+}
+.menu .navbar-nav>li:hover>a,
+.menu .navbar-nav>li:focus>a {
+  z-index: 1200;
+}
+
+.dropdown:hover .dropdown-menu {
+  margin-top: -4px !important;
+  z-index: 1000;
+}
+
+.default-header {
+  position: relative;
+  transition: all .2s ease 0s;
+}
+
+.img-active-artwork {
+  height: 70vh;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.img-responsive-height {
+  height: 100%;
+  width: auto;
+  display: block;
+  margin: 0 auto;
+}
+.ex-title{text-align: right;}
+
+.ex-title h3 {
+  font-size: 25px;
+  font-family: "Tahrir_Extra Bold", sans-serif;
+  margin-bottom: 16px;
+  margin-top: 20px;
+}
+
+.ex-title h4 {
+  font-size: 19px;
+  font-family: "Tahrir_Extra Bold" sans-serif;
+  margin-bottom: 16px;
+  margin-top: 30px;
+}
+
+.ex-title h6 {
+  font-size: 17px;
+}
+
+.ex-title button {
+  margin-top: 30px;
+}
+
+.mrgt72 {
+  margin-top: 72px;
+}
+
+.exhibition-container .gallery-artists .btn-default {
+  padding: 8px;
+  width: 100%;
+  font-size: 14px;
+  margin-top: 16px;
+  opacity: 0;
+  transition: all .5s ease 0s;
+}
+
+.exhibition-container .gallery-artist-img:hover .btn-default {
+  opacity: 1;
+}
+
+.gallery-artist-img>img {
+  width: 100%;
+  max-width: 125px;
+  margin: 0 auto 16px;
+  filter: grayscale(100%);
+  border-radius: 100%;
+}
+
+.caleander-event.side-bar .caleander-days li {
+  padding: 8px;
+  line-height: 10px;
+}
+
+.btn-see,
+.btn-see:hover,
+.btn-see:focus {
+  border: 1px solid #fff;
+  display: inline-block;
+  color: #fff;
+  padding: 8px 18px;
+  max-width: 135px;
+  white-space: nowrap;
+}
+
+
+.gallery-logo-img img {
+  width: 100%;
+  height: 100%;
+  max-width: 280px;
+  max-height: 280px;
+  border-radius: 100%;
+}
+
+.sidebar .inner-sidebar {
+  position: relative;
+  top: 100px;
+  height: 100vh;
+  overflow-y: auto;
+  padding-bottom: 100px;
+}
+
+
+.col-body {
+  padding-top: 15px;
+  display: block;
+}
+
+.addtoalbum {
+  position: fixed;
+  bottom: 0;
+  background: #fff;
+  z-index: 1000;
+  padding: 30px 0;
+  width: 100%;
+  display: none;
+  box-shadow: 0 0 5px 0 #e2e2e2;
+}
+
+.addtoalbum .btn {
+  margin-right: 32px;
+}
+
+.addtoalbum p {
+  margin-top: 8px;
+}
+
+
+.addtoalbum .close {
+  margin-top: 15px;
+  display: block;
+}
+
+.modal-dialog {
+  margin: 80px auto;
+}
+
+.selected-album {
+  color: #15aa56;
+  display: block;
+  margin-top: 10px;
+}
+
+.selected-album span {
+  margin-left: 2px;
+}
+
+.select-album-container {
+  width: 100%;
+  padding: 0 30px;
+}
+
+.select-album-container img {
+  max-width: 80px;
+  width: 100%;
+  margin-left: 16px;
+}
+
+.select-album-container .lable-checkbox.public-group.d-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center
+}
+
+.select-album-container .lable-checkbox.public-group.d-flex .checkmark {
+  top: auto;
+}
+
+.d-block {
+  display: block;
+}
+
+.blackcolor {
+  color: #474747;
+}
+
+.select-album-container .row.scroll {
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
+.select-album-container .btn-default,
+.select-album-container .btn-default:hover,
+.select-album-container .btn-default:focus {
+  padding: 4px 36px 4px 16px;
+  background: url("../img/circle-plus.png") no-repeat right center #fff;
+  border: 1px solid #141414;
+  background-position: 105px;
+  margin-left: 10px;
+}
+
+
+.sidebar-icon#my-collection {
+  background: url("../img/collection.svg") no-repeat right center;
+}
+
+.sidebar-icon#my-collection:hover,
+.sidebar-icon.active#my-collection {
+  background: url("../img/collection-blue.svg") no-repeat right center;
+
+}
+
+
+.select-album-container .input-public {
+  background: url("../img/collection.svg") no-repeat right center;
+}
+
+.select-album-container .add-newalbum {
+  width: 100%;
+  max-width: 384px;
+  margin: 0 auto;
+}
+
+.select-album-container .input-public {
+  padding-right: 30px;
+}
+
+.select-album-container .input-public::placeholder {
+  padding-right: 10px;
+}
+
+#addtoexistalbum .modal-footer,
+#addtonewalbum .modal-footer {
+  padding: 15px;
+}
+
+.container-mainimg {
+  width: 100%;
+  padding: 0 30px;
+}
+
+.select-mainimg {
+  display: flex;
+  flex-direction: row;
+}
+
+.select-mainimg .carousel-indicators {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  left: auto;
+  right: auto;
+  margin-left: 0;
+  margin-right: 0;
+  width: 72px;
+  bottom: auto;
+  top: auto;
+}
+
+.select-mainimg .carousel-indicators li {
+  width: 72px;
+  height: auto;
+  margin-bottom: 24px;
+  opacity: .5;
+  border-radius: 0;
+}
+
+.select-mainimg .carousel-indicators li.active img {
+  opacity: 1;
+  border: 2px solid #15aa56;
+}
+
+.select-mainimg .carousel-inner {
+  margin-left: 32px;
+}
+
+.select-mainimg .carousel-inner img {
+  max-height: 450px;
+  height: 100%;
+  width: auto;
+  display: block;
+  margin: 0 auto;
 }

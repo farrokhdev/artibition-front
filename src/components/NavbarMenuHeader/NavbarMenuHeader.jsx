@@ -286,7 +286,18 @@ export default function NavbarMenuHeader(props) {
                     const minutes = tempTime.minutes();
                     return (
                       <div key={exhibition?.id}>
-                        <a href="#" className="cols">
+                        <a
+                          onClick={() => {
+                            navigate("/site/exhabitions", {
+                              state: {
+                                id: exhibition?.id,
+                                gallery_id: exhibition?.gallery?.id,
+                              },
+                              replace: false,
+                            });
+                          }}
+                          className="cols"
+                        >
                           <div className="col-img">
                             <div className="tags tags-events">
                               {Language === "fa-IR" ? "مجازی" : "virtual"}

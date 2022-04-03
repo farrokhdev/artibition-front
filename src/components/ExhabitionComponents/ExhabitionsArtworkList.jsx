@@ -1,10 +1,11 @@
 import React from "react";
+import FilterSidBarInArtworks from "../../pages/GalleryIntroduction/FilterSidBarInArtworks";
 // import { ExhabitionFilters } from "../Filters/ExhabitionFilters";
 
-export const ExhabitionsList = () => {
+export const ExhabitionsArtworkList = ({ reference }) => {
   return (
     <>
-      <div className="default-content">
+      <div className="default-content" ref={reference}>
         <div className="content-header">
           <div className="row">
             <div className="col-sm-3 col-xs-6">
@@ -30,7 +31,7 @@ export const ExhabitionsList = () => {
         </div>
         <div className="content-body">
           <div className="row">
-            {/* <ExhabitionFilters /> */}
+            <FilterSidBarInArtworks />
 
             <div className="col-md-9">
               <div className="row-gridimg">
