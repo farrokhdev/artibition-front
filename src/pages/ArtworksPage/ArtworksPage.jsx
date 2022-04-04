@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import Menu from "../../components/Menu/Menu";
-import classnames from 'classnames';
+import classnames from "classnames";
 import filter_icon from "../../assets/img/Filter.svg";
 import clear_icon from "../../assets/img/clear.svg";
 import search_icon from "../../assets/img/search.svg";
@@ -14,8 +14,10 @@ import {
   PRODUCTS_CATEGORIES,
   PRODUCTS_MATERIALS,
   PRODUCTS_SIZES,
-  PRODUCTS_TECHNIQUES, SEARCH_PRODUCTS,
+  PRODUCTS_TECHNIQUES,
+  SEARCH_PRODUCTS,
 } from "../../utils";
+import { Slider } from "antd";
 import apiServices from "../../utils/api.services";
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { follow } from "../../utils/utils";
@@ -25,7 +27,7 @@ import {
   setFilters,
 } from "../../redux/reducers/Filters/filters.action";
 import { numDiscriminant } from "../../utils/discriminant";
-
+import CurrencyFormat from "react-currency-format";
 
 function ArtworksPage(props) {
   let location = useLocation();
@@ -82,8 +84,9 @@ function ArtworksPage(props) {
 
   const [params, setParams] = useState({
     status: "active",
+    page_size:15
     // order: selectedOption,
-    // page: 1,
+
     // size_id: size_id,
     // category_id: category_id,
     // toman_price_range_min: toman_price_range_min,
@@ -91,7 +94,6 @@ function ArtworksPage(props) {
     // dollar_price_range_min: dollar_price_range_min,
     // dollar_price_range_max: dollar_price_range_max,
     // discount: discountو
-
   });
 
   const [categorieParams, setCategorieParams] = useState({
@@ -104,7 +106,6 @@ function ArtworksPage(props) {
     search: "",
   });
   const [suggestionsCount, setSuggestionsCount] = useState("");
-
 
   //filters state
   const [categories, setCategories] = useState();
@@ -166,13 +167,14 @@ function ArtworksPage(props) {
         queryString.stringify(params, {
           arrayFormat: "comma",
           skipNull: true,
-          skipEmptyString: true,
+          skipEmptyString: true
+          
         })
       )
       .then((res) => {
         if (res.data) {
           setProductList(res.data.data);
-          setSuggestionsCount(res.data.data.count)
+          setSuggestionsCount(res.data.data.count);
         }
       })
       .catch((err) => {
@@ -180,31 +182,33 @@ function ArtworksPage(props) {
       });
   };
 
-
   useEffect(() => {
     // console.log("searchParams" , searchParams.get('category_id'));
-    if (searchParams.get('category_id')) {
+    if (searchParams.get("category_id")) {
       // getProductList()
       setParams({
-        ...params, category_id: searchParams.get('category_id')
-      })
+        ...params,
+        category_id: searchParams.get("category_id"),
+      });
     }
   }, [searchParams]);
 
   const handeSelectPage = (e) => {
+
     setParams({
-      ...params, page: e
-    })
-  }
+      ...params,
+      page: e,
+      
+    });
+  };
 
   const discountPrice = (price, discount, type) => {
     if (type === "percentage") {
-      return numDiscriminant((100 - discount) * price / 100)
+      return numDiscriminant(((100 - discount) * price) / 100);
     } else {
-      return numDiscriminant(price - discount)
+      return numDiscriminant(price - discount);
     }
-  }
-
+  };
 
   const getProductCategories = () => {
     apiServices
@@ -240,9 +244,8 @@ function ArtworksPage(props) {
   };
 
   const callBack = () => {
-    getProductList()
-  }
-
+    getProductList();
+  };
 
   const getProductMaterials = () => {
     apiServices
@@ -295,7 +298,7 @@ function ArtworksPage(props) {
       .catch((err) => {
         console.log("err", err);
       });
-  }
+  };
 
   useEffect(() => {
     getProductList();
@@ -311,6 +314,15 @@ function ArtworksPage(props) {
       props.clearFilterStorage();
     };
   }, [location]);
+
+  const setToman = (e) => {
+    setToman_price_range_min(e[0]);
+    setToman_price_range_max(e[1]);
+  };
+  const setDollar = (e) => {
+    setDollar_price_range_min(e[0]);
+    setDollar_price_range_max(e[1]);
+  };
 
   return (
     <>
@@ -354,13 +366,15 @@ function ArtworksPage(props) {
                     </span>
                     <button
                       className="btn clear-tag mx-3"
-                      style={Object.keys(params).length > 0 ? { display: "unset" } : { display: "none" }}
+                      style={
+                        Object.keys(params).length > 0
+                          ? { display: "unset" }
+                          : { display: "none" }
+                      }
                       onClick={() => {
-                        setParams({})
-                        navigate(
-                          `/site/artworks`
-                        )
-                        window.location.reload()
+                        setParams({});
+                        navigate(`/site/artworks`);
+                        window.location.reload();
                       }}
                     >
                       <div className="d-flex box-dir-reverse align-items-center">
@@ -398,9 +412,9 @@ function ArtworksPage(props) {
                       <option className="text-dir" value="price">
                         {t("artworkList.filter.sell")}
                       </option>
-                      {/* <option className="text-dir">
+                      <option className="text-dir" value="visite">
                         {t("artworkList.filter.visite")}
-                      </option> */}
+                      </option>
                     </select>
                   </div>
                 </div>
@@ -423,7 +437,10 @@ function ArtworksPage(props) {
                         </a>
                       </h4>
                     </div>
-                    <div id="collapse1" className="panel-collapse collapse show">
+                    <div
+                      id="collapse1"
+                      className="panel-collapse collapse show"
+                    >
                       <div className="panel-body">
                         <div className="nl-input filter-search">
                           <input
@@ -464,7 +481,10 @@ function ArtworksPage(props) {
                         </a>
                       </h4>
                     </div>
-                    <div id="collapse2" className="panel-collapse collapse show">
+                    <div
+                      id="collapse2"
+                      className="panel-collapse collapse show"
+                    >
                       <div className="panel-body">
                         <div className="checkbox-row">
                           <label className="lable-checkbox text-dir">
@@ -479,9 +499,7 @@ function ArtworksPage(props) {
                                 name={item.id}
                                 type="checkbox"
                                 value={item.id}
-                                defaultChecked={
-                                  category_id?.includes(item?.id)
-                                }
+                                defaultChecked={category_id?.includes(item?.id)}
                                 onClick={(e) => {
                                   setCategoriesId({
                                     ...categoriesId,
@@ -522,7 +540,10 @@ function ArtworksPage(props) {
                         </a>
                       </h4>
                     </div>
-                    <div id="collapse3" className="panel-collapse collapse show">
+                    <div
+                      id="collapse3"
+                      className="panel-collapse collapse show"
+                    >
                       <div className="panel-body">
                         <div className="rangeslider">
                           <div id="slider" dir="rtl"></div>
@@ -531,14 +552,14 @@ function ArtworksPage(props) {
                           <div className="col-xs-6">
                             <label>{t("artworkList.filter.price.min")}</label>
                             <input
-                              type="text"
+                              type="number"
                               className="value persian-num"
                               data-index="0"
                               defaultValue={
                                 props?.filters?.filters_reducer
                                   ?.toman_price_range_min
                                   ? props?.filters?.filters_reducer
-                                    ?.toman_price_range_min
+                                      ?.toman_price_range_min
                                   : "0"
                               }
                               onChange={(e) =>
@@ -552,14 +573,14 @@ function ArtworksPage(props) {
                           <div className="col-xs-6">
                             <label>{t("artworkList.filter.price.max")}</label>
                             <input
-                              type="text"
+                              type="number"
                               className="value  persian-num"
                               data-index="1"
                               defaultValue={
                                 props?.filters?.filters_reducer
                                   ?.toman_price_range_max
                                   ? props?.filters?.filters_reducer
-                                    ?.toman_price_range_max
+                                      ?.toman_price_range_max
                                   : "0"
                               }
                               onChange={(e) =>
@@ -577,31 +598,126 @@ function ArtworksPage(props) {
                             onClick={() =>
                               i18n.language === "fa-IR"
                                 ? setParams((state) => ({
-                                  ...state,
-                                  toman_price_range_min: toman_price_range_min
-                                    ? toman_price_range_min
-                                    : 0,
-                                  toman_price_range_max: toman_price_range_max
-                                    ? toman_price_range_max
-                                    : 0,
-                                }))
+                                    ...state,
+                                    toman_price_range_min: toman_price_range_min
+                                      ? toman_price_range_min
+                                      : 0,
+                                    toman_price_range_max: toman_price_range_max
+                                      ? toman_price_range_max
+                                      : 0,
+                                  }))
                                 : setParams((state) => ({
-                                  ...state,
-                                  dollar_price_range_min:
-                                    dollar_price_range_min
-                                      ? dollar_price_range_min
-                                      : 0,
-                                  dollar_price_range_max:
-                                    dollar_price_range_max
-                                      ? dollar_price_range_max
-                                      : 0,
-                                }))
+                                    ...state,
+                                    dollar_price_range_min:
+                                      dollar_price_range_min
+                                        ? dollar_price_range_min
+                                        : 0,
+                                    dollar_price_range_max:
+                                      dollar_price_range_max
+                                        ? dollar_price_range_max
+                                        : 0,
+                                  }))
                             }
                           >
                             {t("artworkList.filter.price.action")}
                           </button>
                         </div>
                       </div>
+                      {/* <div className="panel-body">
+                        <Slider
+                          tootlipFormatter
+                          className="value  persian-num price_slider"
+                          step={10}
+                          range
+                          defaultValue={[
+                            props?.filters?.filters_reducer
+                              ?.toman_price_range_min
+                              ? props?.filters?.filters_reducer
+                                  ?.toman_price_range_min
+                              : "0",
+                            props?.filters?.filters_reducer
+                              ?.toman_price_range_max
+                              ? props?.filters?.filters_reducer
+                                  ?.toman_price_range_max
+                              : "10000000",
+                          ]}
+                          reverse={true}
+                          min={
+                            props?.filters?.filters_reducer
+                              ?.toman_price_range_min
+                              ? props?.filters?.filters_reducer
+                                  ?.toman_price_range_min
+                              : 0
+                          }
+                          max={
+                            props?.filters?.filters_reducer
+                              ?.toman_price_range_max
+                              ? props?.filters?.filters_reducer
+                                  ?.toman_price_range_max
+                              : 10000
+                          }
+                          marks={{
+                            0: props?.filters?.filters_reducer
+                              ?.toman_price_range_min
+                              ? props?.filters?.filters_reducer
+                                  ?.toman_price_range_min
+                              : "حداقل قیمت (تومان)",
+                            100: props?.filters?.filters_reducer
+                              ?.toman_price_range_max
+                              ? props?.filters?.filters_reducer
+                                  ?.toman_price_range_max
+                              : "حد اکثر قیمت (تومان)",
+                          }}
+                          tipFormatter={
+                            (val) => (
+                              <CurrencyFormat
+                                value={val}
+                                displayType={"text"}
+                                thousandSeparator={true}
+                                suffix="تومان"
+                              />
+                            )
+
+                            // val + " " + "تومان"
+                          }
+                          onChange={(e) => {
+                            i18n.language === "fa-IR"
+                              ? setToman(e)
+                              : setDollar(e);
+                          }}
+                        />
+                        <div className="d-flex pull-dir-rev">
+                          <button
+                            type="button"
+                            className="btn btn-ok pull-dir"
+                            onClick={() =>
+                              i18n.language === "fa-IR"
+                                ? setParams((state) => ({
+                                    ...state,
+                                    toman_price_range_min: toman_price_range_min
+                                      ? toman_price_range_min
+                                      : 0,
+                                    toman_price_range_max: toman_price_range_max
+                                      ? toman_price_range_max
+                                      : 0,
+                                  }))
+                                : setParams((state) => ({
+                                    ...state,
+                                    dollar_price_range_min:
+                                      dollar_price_range_min
+                                        ? dollar_price_range_min
+                                        : 0,
+                                    dollar_price_range_max:
+                                      dollar_price_range_max
+                                        ? dollar_price_range_max
+                                        : 0,
+                                  }))
+                            }
+                          >
+                            {t("artworkList.filter.price.action")}
+                          </button>
+                        </div>
+                      </div> */}
                     </div>
                   </div>
                   <div className="panel panel-default">
@@ -616,16 +732,16 @@ function ArtworksPage(props) {
                         </a>
                       </h4>
                     </div>
-                    <div id="collapse4" className="panel-collapse collapse show">
+                    <div
+                      id="collapse4"
+                      className="panel-collapse collapse show"
+                    >
                       <div className="panel-body">
                         <label className="switch pull-dir">
-                          <input type="checkbox"
-                            defaultChecked={
-                              discount
-                            }
-                            onChange={() =>
-                              setDiscount(!discount)
-                            }
+                          <input
+                            type="checkbox"
+                            defaultChecked={discount}
+                            onChange={() => setDiscount(!discount)}
                           />
                           <span className="switchbtn round"></span>
                           <span className="label-switchbtn">
@@ -635,26 +751,29 @@ function ArtworksPage(props) {
                         <div className="clearfix"></div>
                         <div className="md-mrgt30">
                           <label className="lable-checkbox text-dir">
-                            <input type="checkbox" value=""
-                              onChange={(t) =>
-                                setDiscountRange(20)
-                              } />
+                            <input
+                              type="checkbox"
+                              value=""
+                              onChange={(t) => setDiscountRange(20)}
+                            />
                             <span>{t("artworkList.filter.discount.up20")}</span>
                             <span className="checkmark"></span>
                           </label>
                           <label className="lable-checkbox text-dir">
-                            <input type="checkbox" value=""
-                              onChange={() =>
-                                setDiscountRange(30)
-                              } />
+                            <input
+                              type="checkbox"
+                              value=""
+                              onChange={() => setDiscountRange(30)}
+                            />
                             <span>{t("artworkList.filter.discount.up30")}</span>
                             <span className="checkmark"></span>
                           </label>
                           <label className="lable-checkbox text-dir">
-                            <input type="checkbox" value=""
-                              onChange={() =>
-                                setDiscountRange(50)
-                              } />
+                            <input
+                              type="checkbox"
+                              value=""
+                              onChange={() => setDiscountRange(50)}
+                            />
                             <span>{t("artworkList.filter.discount.up50")}</span>
                             <span className="checkmark"></span>
                           </label>
@@ -667,7 +786,7 @@ function ArtworksPage(props) {
                               setParams((state) => ({
                                 ...state,
                                 have_discount: discount,
-                                discount: discountRange
+                                discount: discountRange,
                               }))
                             }
                           >
@@ -689,10 +808,16 @@ function ArtworksPage(props) {
                         </a>
                       </h4>
                     </div>
-                    <div id="collapse5" className="panel-collapse collapse show">
+                    <div  
+                      id="collapse5"
+                      className="panel-collapse collapse show"
+                    >
                       <div className="panel-body">
                         <label className="switch pull-dir">
-                          <input type="checkbox" />
+                          <input type="checkbox"  onChange={()=>setParams((state) => ({
+                                ...state,
+                                for_gifting:!state?.for_gifting ? true : false 
+                              }))}/>
                           <span className="switchbtn round"></span>
                           <span className="label-switchbtn">
                             {t("artworkList.filter.art_for_gift.show")}
@@ -713,7 +838,10 @@ function ArtworksPage(props) {
                         </a>
                       </h4>
                     </div>
-                    <div id="collapse7" className="panel-collapse collapse show">
+                    <div
+                      id="collapse7"
+                      className="panel-collapse collapse show"
+                    >
                       <div className="panel-body">
                         <div className="nl-input filter-search ">
                           <input
@@ -787,7 +915,10 @@ function ArtworksPage(props) {
                         </a>
                       </h4>
                     </div>
-                    <div id="collapse8" className="panel-collapse collapse show">
+                    <div
+                      id="collapse8"
+                      className="panel-collapse collapse show"
+                    >
                       <div className="panel-body"></div>
                     </div>
                   </div>
@@ -803,7 +934,10 @@ function ArtworksPage(props) {
                         </a>
                       </h4>
                     </div>
-                    <div id="collapse9" className="panel-collapse collapse show">
+                    <div
+                      id="collapse9"
+                      className="panel-collapse collapse show"
+                    >
                       <div className="panel-body ">
                         <div className="nl-input filter-search ">
                           <input
@@ -877,7 +1011,10 @@ function ArtworksPage(props) {
                         </a>
                       </h4>
                     </div>
-                    <div id="collapse10" className="panel-collapse collapse show">
+                    <div
+                      id="collapse10"
+                      className="panel-collapse collapse show"
+                    >
                       <div className="panel-body">
                         {sizes?.results?.map((item, index) => (
                           <label className="lable-checkbox text-dir">
@@ -988,20 +1125,20 @@ function ArtworksPage(props) {
                             className="btn btn-ok pull-dir"
                             onClick={() =>
                               width_min ||
-                                width_max ||
-                                height_min ||
-                                height_max ||
-                                length_max ||
-                                length_min
+                              width_max ||
+                              height_min ||
+                              height_max ||
+                              length_max ||
+                              length_min
                                 ? setParams((state) => ({
-                                  ...state,
-                                  width_min: width_min,
-                                  width_max: width_max,
-                                  height_min: height_min,
-                                  height_max: height_max,
-                                  length_min: length_min,
-                                  length_max: length_max,
-                                }))
+                                    ...state,
+                                    width_min: width_min,
+                                    width_max: width_max,
+                                    height_min: height_min,
+                                    height_max: height_max,
+                                    length_min: length_min,
+                                    length_max: length_max,
+                                  }))
                                 : filterSizes()
                             }
                           >
@@ -1015,22 +1152,35 @@ function ArtworksPage(props) {
               </div>
               <div className="col-md-9 ">
                 <div className="row-gridimg">
-                  <div className="row">
+                  <div className="row w-100">
                     {productList?.results?.map((product) => {
                       return (
                         <>
                           <div className="col-sm-4 ">
-                            <div className={classnames("cols", {
-                              "finished": product?.is_sold,
-                            })}>
+                            <div
+                              className={classnames("cols", {
+                                finished: product?.is_sold,
+                              })}
+                            >
                               <div className="col-img">
-                                {product?.is_special && <div class="tags tags-spacial">ویژه</div>
-                                }
-                                {console.log("product================>", product)}
-                                {product?.discount?.value ?
-                                  <div
-                                    class="tags tags-off persian-num"> {numDiscriminant(product?.discount?.value)}{product?.discount?.type === "percentage" ? "%" : t("toman")} </div>
-                                  : ""}
+                                {product?.is_special && (
+                                  <div class="tags tags-spacial">ویژه</div>
+                                )}
+                                {console.log(
+                                  "product================>",
+                                  product
+                                )}
+                                {product?.discount?.value ? (
+                                  <div class="tags tags-off persian-num">
+                                    {" "}
+                                    {numDiscriminant(product?.discount?.value)}
+                                    {product?.discount?.type === "percentage"
+                                      ? "%"
+                                      : t("toman")}{" "}
+                                  </div>
+                                ) : (
+                                  ""
+                                )}
                                 <img
                                   src={
                                     product.medias &&
@@ -1065,26 +1215,30 @@ function ArtworksPage(props) {
                                     {t("card_artwork.request_buy")}
                                   </a>
                                   <button
-                                    className={"like-icon " + (product?.likes ? "isLike" : "")}
+                                    className={
+                                      "like-icon " +
+                                      (product?.likes ? "isLike" : "")
+                                    }
                                     onClick={() =>
                                       follow({
                                         content: "product",
                                         activity: "like",
                                         object_id: product?.id,
                                         action: product?.likes,
-                                        callBack
+                                        callBack,
                                       })
                                     }
                                   ></button>
                                 </div>
                               </div>
                               <div className="col-body ">
-
-
-                                {product?.is_sold ?
-                                  <div class="finished-tag">{t("card_artwork.sold")}</div>
-                                  : ""
-                                }
+                                {product?.is_sold ? (
+                                  <div class="finished-tag">
+                                    {t("card_artwork.sold")}
+                                  </div>
+                                ) : (
+                                  ""
+                                )}
                                 <h6 className="col-title text-dir">
                                   {i18n.language === "fa-IR" ? (
                                     <span className="col-name">
@@ -1119,22 +1273,32 @@ function ArtworksPage(props) {
                                 <div className="col-price text-dir">
                                   <div className="d-flex box-dir-reverse">
                                     <span className="col-price-num">
-                                      {product?.discount ?
-                                        discountPrice(product.toman_price, product?.discount?.value, product?.discount?.type) :
-                                        numDiscriminant(product.toman_price)
-                                      }
-                                      {product?.discount || product?.toman_price ? t("toman") : ""}
+                                      {product?.discount
+                                        ? discountPrice(
+                                            product.toman_price,
+                                            product?.discount?.value,
+                                            product?.discount?.type
+                                          )
+                                        : numDiscriminant(product.toman_price)}
+                                      {product?.discount || product?.toman_price
+                                        ? t("toman")
+                                        : ""}
                                     </span>
                                     {/* <span className="col-price-unit">
                                       {t("toman")}
                                     </span> */}
-                                    {product?.discount?.value &&
+                                    {product?.discount?.value && (
                                       <span
-                                        className={`persian-num ${product?.discount ? "col-price-off" : ""}`}>
-                                        {numDiscriminant(product.toman_price)} {product?.toman_price ? t("toman") : ""}
+                                        className={`persian-num ${
+                                          product?.discount
+                                            ? "col-price-off"
+                                            : ""
+                                        }`}
+                                      >
+                                        {numDiscriminant(product.toman_price)}{" "}
+                                        {product?.toman_price ? t("toman") : ""}
                                       </span>
-                                    }
-
+                                    )}
 
                                     {/* <span className="tag-gift  w-100">
                                       <div className="d-flex text-dir position-gift-card-artwork">
@@ -1162,9 +1326,9 @@ function ArtworksPage(props) {
                   <Pagination
                     defaultCurrent={1}
                     total={suggestionsCount}
-                    defaultPageSize={10}
+                    defaultPageSize={15}
                     onChange={(e) => handeSelectPage(e)}
-                  // total={50} 
+                    // total={50}
                   />
                 </div>
               </div>

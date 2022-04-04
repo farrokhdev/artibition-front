@@ -1,0 +1,17 @@
+.price_slider {
+  .ant-slider-mark {
+    display: flex !important;
+    justify-content: space-between !important;
+    // gap: 4rem;
+    .ant-slider-mark-text {
+      display: flex !important;
+      width: fit-content !important;
+      //   transform: translateX(0) !important;
+      position: static !important;
+      font-size: 11px !important;
+    }
+    .ant-slider-mark-text:nth-child(2) {
+      transform: translateX(-50%) !important;
+    }
+  }
+}

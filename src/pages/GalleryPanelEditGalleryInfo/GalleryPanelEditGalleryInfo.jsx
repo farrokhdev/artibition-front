@@ -761,7 +761,8 @@ function GalleryPanelEditGalleryInfo() {
               className="close"
               data-dismiss="modal"
               aria-label="Close"
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
                 setShowMap(false);
               }}
             >
@@ -799,7 +800,8 @@ function GalleryPanelEditGalleryInfo() {
             <button
               type="button"
               className="btn btn-black"
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
                 setShowMap(false);
               }}
             >

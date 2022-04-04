@@ -33,7 +33,7 @@ import copy_icon from "../../assets/img/copy-share.png";
 import ModalEditOffer from "./ModalEditOffer";
 import ModalSimilarArtworks from "./ModalSimilarArtworks";
 import ModalBidding from "./ModalBidding";
-import ModalSendMessage from '../ProfileArtist/ModalSendMessage'
+import ModalSendMessage from "../ProfileArtist/ModalSendMessage";
 import { TelegramShareButton, WhatsappShareButton } from "react-share";
 import {
   ARTIST_PRODUCTS,
@@ -42,7 +42,12 @@ import {
   ORDER_BUYER_ME,
   PRODUCT_DETAIL,
 } from "../../utils";
-import { Link, useLocation, useNavigate, useSearchParams } from "react-router-dom";
+import {
+  Link,
+  useLocation,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
 import apiServices from "../../utils/api.services";
 import QueryString from "qs";
 import queryString from "query-string";
@@ -51,16 +56,20 @@ import moment from "moment-jalaali";
 import momentJalaali from "moment-jalaali";
 import { follow, isLogin, Token } from "../../utils/utils";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { UPDATE_CART } from "../../redux/reducers/cart/cart.types";
 import { numDiscriminant } from "../../utils/discriminant";
 import { DEFAULT_URL_IMAGE } from "../../utils/defaultImage";
 import ArthibitionProperties from "../../components/ArthibitionProperies/ArthibitionProperties";
+
 function DetailsArtwork() {
   let navigate = useNavigate();
 
   const { t, i18n } = useTranslation();
 
+  // GET USER ROLE
+  const { roles } = useSelector((state) => state.authReducer);
+  // GET USER ROLE ENDS
   function useQuery() {
     return new URLSearchParams(useLocation().search);
   }
@@ -77,10 +86,10 @@ function DetailsArtwork() {
   const [productDetail, setProductDetail] = useState();
   const [editionValue, setEditionValue] = useState({});
   const [artistProduct, setArtistProduct] = useState();
-  const [showShare, setShowShare] = useState(false)
-  const [showSendMessage, setShowSendMessage] = useState(false)
+  const [showShare, setShowShare] = useState(false);
+  const [showSendMessage, setShowSendMessage] = useState(false);
   const [offerValue, setOfferValue] = useState();
-  const [messageReceiverId, setMessageReceiverId] = useState(null)
+  const [messageReceiverId, setMessageReceiverId] = useState(null);
   const [toggle, setToggle] = useState(false);
   const [params, setParams] = useState({
     search: "",
@@ -109,9 +118,9 @@ function DetailsArtwork() {
     navigator.clipboard.writeText(window.location.href);
     message.success({
       content: "با موفقیت کپی شد",
-      style: { marginTop: "110px" }
-    })
-  }
+      style: { marginTop: "110px" },
+    });
+  };
 
   const { TabPane } = Tabs;
 
@@ -126,7 +135,7 @@ function DetailsArtwork() {
         if (res.data) {
           setProductDetail(res.data.data);
           setEditionValue(res.data.data?.items[0]);
-          setMessageReceiverId(res?.data?.data?.owner?.id)
+          setMessageReceiverId(res?.data?.data?.owner?.id);
         }
       })
       .catch((err) => {
@@ -135,8 +144,8 @@ function DetailsArtwork() {
   };
 
   const callBack = () => {
-    getProductDetail()
-  }
+    getProductDetail();
+  };
   const getArtistProduct = () => {
     apiServices
       .get(ARTIST_PRODUCTS, QueryString.stringify(artistParams))
@@ -208,7 +217,6 @@ function DetailsArtwork() {
         console.log(err.response.data.message);
       });
   };
-
 
   return (
     <>
@@ -299,10 +307,15 @@ function DetailsArtwork() {
                       ))}
                   </ol>
                   <div className=" artwork-options pull-dir ">
-                    <button className="share-option" onClick={() => {
-                      console.log("pfpjkweifjewhu hewuh dfuiewhfiuhebbcieh fehwh8hewf iefdheiao f buwefnhcoiwehf i")
-                      setShowShare(true)
-                    }}>
+                    <button
+                      className="share-option"
+                      onClick={() => {
+                        console.log(
+                          "pfpjkweifjewhu hewuh dfuiewhfiuhebbcieh fehwh8hewf iefdheiao f buwefnhcoiwehf i"
+                        );
+                        setShowShare(true);
+                      }}
+                    >
                       <img src={share_icon} height="31" width="31" alt="" />
                     </button>
                     {console.log("productDetail?.likes", productDetail)}
@@ -314,25 +327,20 @@ function DetailsArtwork() {
                           activity: "like",
                           object_id: productDetail?.id,
                           action: productDetail?.likes,
-                          callBack
+                          callBack,
                         })
                       }
                     >
-                      {productDetail?.likes ?
-                        <img
-                          src={liked_icon}
-                          height="31"
-                          width="31"
-                          alt=""
-                        />
-                        :
+                      {productDetail?.likes ? (
+                        <img src={liked_icon} height="31" width="31" alt="" />
+                      ) : (
                         <img
                           src={like_selected_icon}
                           height="31"
                           width="31"
                           alt=""
                         />
-                      }
+                      )}
                     </div>
                   </div>
                 </div>
@@ -344,9 +352,17 @@ function DetailsArtwork() {
                   <div className="col-xs-3">
                     <div className="artist-avatar">
                       <img
-                        src={productDetail?.artist_image?.exact_url ? productDetail?.artist_image?.exact_url : DEFAULT_URL_IMAGE}
-                        width="408"
-                        height="408"
+                        src={
+                          productDetail?.artist_image?.exact_url
+                            ? productDetail?.artist_image?.exact_url
+                            : DEFAULT_URL_IMAGE
+                        }
+                        style={{
+                          width: "80px",
+                          height: "80px",
+                          objectFit: "cover",
+                          objectPosition: "center",
+                        }}
                         alt=""
                         className="img-responsive pull-right "
                       />
@@ -360,7 +376,9 @@ function DetailsArtwork() {
                             ? productDetail?.translations?.fa?.artist_name
                             : productDetail?.translations?.en?.artist_name}
                         </h2>
-                        {artist_id === "null" ? "" : 
+                        {artist_id === "null" ? (
+                          ""
+                        ) : (
                           <button
                             type="button"
                             className="btn btn-galleryfollow pull-dir"
@@ -383,20 +401,28 @@ function DetailsArtwork() {
                               <span>{t("artwork.follow")}</span>
                             </div>
                           </button>
-                        }
+                        )}
                       </div>
-                      <div className="col-sm-6">
-                        <button type="button" className="btn-askme pull-left" onClick={() => { setShowSendMessage(true) }}>
-                          <img
-                            src={ask_me_icon}
-                            width="24"
-                            height="24"
-                            alt=""
-                            className="pull-right"
-                          />
-                          <span>{t("artwork.ask_me")}</span>
-                        </button>
-                      </div>
+                      {roles && (
+                        <div className="col-sm-6">
+                          <button
+                            type="button"
+                            className="btn-askme pull-left"
+                            onClick={() => {
+                              setShowSendMessage(true);
+                            }}
+                          >
+                            <img
+                              src={ask_me_icon}
+                              width="24"
+                              height="24"
+                              alt=""
+                              className="pull-right"
+                            />
+                            <span>{t("artwork.ask_me")}</span>
+                          </button>
+                        </div>
+                      )}
                       <div className="clearfix"></div>
                       <div className="col-xs-12">
                         <h3 className="artwork-name text-dir">
@@ -475,24 +501,27 @@ function DetailsArtwork() {
                         </h3>
                       </div>
                       <div className="d-flex box-dir-reverse row-listdetail">
-                        {productDetail?.items[0]?.edition_number ?
+                        {productDetail?.items[0]?.edition_number ? (
                           <span className="col-xs-4 detail-title text-dir">
                             {t("artwork.count.title")}
                           </span>
-                          : ""}
+                        ) : (
+                          ""
+                        )}
                         <div className="col-xs-8 text-dir">
                           <div className="d-flex box-dir-reverse">
-                            {productDetail?.items[0]?.edition_number ?
+                            {productDetail?.items[0]?.edition_number ? (
                               <h3 className="detail-name ">
                                 <span claclassNamess="persian-num">
                                   {productDetail?.items?.length}
                                 </span>
                                 <span>{t("artwork.count.number")}</span>
                               </h3>
-                              : ""
-                            }
+                            ) : (
+                              ""
+                            )}
 
-                            {productDetail?.items[0]?.edition_number ?
+                            {productDetail?.items[0]?.edition_number ? (
                               <select
                                 className="form-control num-select text-dir"
                                 id="sel1"
@@ -500,9 +529,8 @@ function DetailsArtwork() {
                                   setEditionValue(event.target.value)
                                 }
                               >
-                                {productDetail?.items?.map((item, index) => (
-
-                                  item.edition_number ?
+                                {productDetail?.items?.map((item, index) =>
+                                  item.edition_number ? (
                                     <option
                                       key={index}
                                       value={item}
@@ -512,12 +540,14 @@ function DetailsArtwork() {
                                         ? ` ادیشن ${item.edition_number}`
                                         : ` eddition number ${item.edition_number}`}
                                     </option>
-                                    : ""
-                                ))}
+                                  ) : (
+                                    ""
+                                  )
+                                )}
                               </select>
-                              : ""}
-
-
+                            ) : (
+                              ""
+                            )}
                           </div>
                         </div>
                       </div>
@@ -526,24 +556,24 @@ function DetailsArtwork() {
                 </div>
 
                 <div className="artwork-seller text-dir">
-                  {!productDetail?.view_only ?
+                  {!productDetail?.view_only ? (
                     <div className="d-flex box-dir-reverse">
                       <img src={alert_icon} width="20" height="20" alt="" />
                       <span className="orangecolor">
                         {i18n.language === "fa_IR"
-
-
                           ? momentJalaali(productDetail?.creation_date)
-                            .locale("fa")
-                            .fromNow()
-                          : moment(productDetail?.creation_date).locale("fa").fromNow()}{" "}
+                              .locale("fa")
+                              .fromNow()
+                          : moment(productDetail?.creation_date)
+                              .locale("fa")
+                              .fromNow()}{" "}
                         این اثر قیمت گذاری شده است
                       </span>
                     </div>
-                    : ""}
+                  ) : (
+                    ""
+                  )}
                 </div>
-
-
 
                 {editionValue?.is_sold ? (
                   <div className="d-block d-md-flex box-dir-reverse artwork-priceblock soldout">
@@ -551,8 +581,12 @@ function DetailsArtwork() {
                       <div className="d-flex justify-content-center artwork-price">
                         <span className="artwork-pricenum persian-num">
                           {i18n.language === "fa-IR"
-                            ? numDiscriminant(Math.floor(editionValue?.toman_price))
-                            : numDiscriminant(Math.floor(editionValue?.dollar_price))}
+                            ? numDiscriminant(
+                                Math.floor(editionValue?.toman_price)
+                              )
+                            : numDiscriminant(
+                                Math.floor(editionValue?.dollar_price)
+                              )}
                         </span>
                         <span>{t("toman")}</span>
                       </div>
@@ -570,14 +604,18 @@ function DetailsArtwork() {
                   </div>
                 ) : (
                   <div className="d-block d-md-flex box-dir-reverse artwork-priceblock ">
-                    {!productDetail?.view_only ?
+                    {!productDetail?.view_only ? (
                       <>
                         <div className="col px-0">
                           <div className="d-flex justify-content-center artwork-price">
                             <span className="artwork-pricenum persian-num">
                               {i18n.language === "fa-IR"
-                                ? numDiscriminant(Math.floor(editionValue?.toman_price))
-                                : numDiscriminant(Math.floor(editionValue?.dollar_price))}
+                                ? numDiscriminant(
+                                    Math.floor(editionValue?.toman_price)
+                                  )
+                                : numDiscriminant(
+                                    Math.floor(editionValue?.dollar_price)
+                                  )}
                             </span>
                             <span>{t("toman")}</span>
                           </div>
@@ -594,8 +632,11 @@ function DetailsArtwork() {
                           </div>
                         </div>
                       </>
-                      : <span className="text-muted mx-auto text-center">این اثر فقط برای نمایش است</span>
-                    }
+                    ) : (
+                      <span className="text-muted mx-auto text-center">
+                        این اثر فقط برای نمایش است
+                      </span>
+                    )}
                   </div>
                 )}
 
@@ -609,14 +650,13 @@ function DetailsArtwork() {
                             <strong className="persian-num px-1">
                               {i18n.language === "fa-IR"
                                 ? numDiscriminant(item.toman_price) +
-                                t("toman") +
-                                " "
+                                  t("toman") +
+                                  " "
                                 : numDiscriminant(item.dollar_price) +
-                                t("toman") +
-                                " "}
+                                  t("toman") +
+                                  " "}
                             </strong>
                             {t("artwork.bid_artwork.text2")}
-
                           </p>
                         </div>
                         <div className="col-2 px-0">
@@ -647,14 +687,16 @@ function DetailsArtwork() {
                       <li className="col-lg-6 text-dir ">
                         {t("artwork.veiw_home")}
                       </li>
-                      <li className="col-lg-6 important text-dir">
-                        {t("artwork.shipment")}
-                      </li>
+                      {productDetail?.fast_delivery && (
+                        <li className="col-lg-6 important text-dir">
+                          {t("artwork.shipment")}
+                        </li>
+                      )}
                     </div>
                     <div className="d-block d-lg-flex box-dir-reverse">
-                      <li className="col-lg-6 text-dir ">
+                      {/* <li className="col-lg-6 text-dir ">
                         {t("artwork.show_collector")}
-                      </li>
+                      </li> */}
                       <li className="col-lg-6 text-dir ">
                         {t("artwork.visit_artwork")}
                       </li>
@@ -684,8 +726,8 @@ function DetailsArtwork() {
                       </div>
                     </div>
                   ) : offerValue?.results?.map((item) =>
-                    item.product_item_id === editionValue?.id ? true : false
-                  ) ? (
+                      item.product_item_id === editionValue?.id ? true : false
+                    ) ? (
                     <div className="row">
                       <div className="col-xs-12">
                         <button
@@ -824,7 +866,10 @@ function DetailsArtwork() {
                 <div className="col-xs-4">
                   <div className="d-flex box-dir-reverse pull-dir-rev">
                     {/* <a href="#" className="btn-readmore pull-dir">همه آثار<span className="hidden-xs">هنرمند</span></a> */}
-                    <Link to={`/site/artist-profile/?id=${artist_id}`} className="btn-readmore pull-left ">
+                    <Link
+                      to={`/site/artist-profile/?id=${artist_id}`}
+                      className="btn-readmore pull-left "
+                    >
                       {t("artwork.all_artworks_artist.text1")}
                       <span className="hidden-xs">
                         {t("artwork.all_artworks_artist.text2")}
@@ -834,7 +879,10 @@ function DetailsArtwork() {
                 </div>
               </div>
             </div>
-            <div style={{ overflow: "auto" }} className="d-flex owl-carousel dir">
+            <div
+              style={{ overflow: "auto" }}
+              className="d-flex owl-carousel dir"
+            >
               {/* {console.log("artistProduct",artistProduct)} */}
               {artistProduct?.results?.map((item, index) => (
                 <div className="cols mx-4 pb-3">
@@ -1615,7 +1663,6 @@ function DetailsArtwork() {
           getProductDetail={getProductDetail}
         />
 
-        
         <ModalSendMessage
           visibleShowSendMessage={showSendMessage}
           setVisibleShowSendMessage={setShowSendMessage}
@@ -1624,52 +1671,115 @@ function DetailsArtwork() {
       </div>
 
       <Footer />
-      <Modal
-        visible={showShare}
-        width={600}
-        footer={[]}>
+      <Modal visible={showShare} width={600} footer={[]}>
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title" id="exampleModalLabel">اشتراک گذاری</h5>
-            <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={() => { setShowShare(false) }}>
+            <h5 className="modal-title" id="exampleModalLabel">
+              اشتراک گذاری
+            </h5>
+            <button
+              type="button"
+              className="close"
+              data-dismiss="modal"
+              aria-label="Close"
+              onClick={() => {
+                setShowShare(false);
+              }}
+            >
               <span aria-hidden="true">×</span>
             </button>
           </div>
 
-
           <div className="modal-body">
             <div className="d-flex">
-              <p style={{ fontSize: "18px", marginBottom: "30px", textAlign: "center" }}>شما می توانید با استفاده از روش های زیر صفحه مورد نطر خود را با دوستان خود به اشتراک بگذارید</p>
+              <p
+                style={{
+                  fontSize: "18px",
+                  marginBottom: "30px",
+                  textAlign: "center",
+                }}
+              >
+                شما می توانید با استفاده از روش های زیر صفحه مورد نطر خود را با
+                دوستان خود به اشتراک بگذارید
+              </p>
             </div>
-            <div className="row" style={{ marginBottom: "50px", justifyContent: "center" }}>
+            <div
+              className="row"
+              style={{ marginBottom: "50px", justifyContent: "center" }}
+            >
               <div className="col-6 col-sm-3 mt-3 mt-sm-0">
                 <div className="d-flex justify-content-end justify-content-sm-center">
                   <TelegramShareButton url={window.location.href}>
-                    <img src={telegram} alt="icon_Telegram" style={{ width: "50px" }} />
+                    <img
+                      src={telegram}
+                      alt="icon_Telegram"
+                      style={{ width: "50px" }}
+                    />
                   </TelegramShareButton>
                 </div>
               </div>
               <div className="col-6 col-sm-3 mt-3 mt-sm-0">
                 <div className="d-flex justify-content-start justify-content-sm-center">
                   <WhatsappShareButton url={window.location.href}>
-                    <img src={whatsapp} alt="icon_Whatsapp" style={{ width: "50px" }} />
+                    <img
+                      src={whatsapp}
+                      alt="icon_Whatsapp"
+                      style={{ width: "50px" }}
+                    />
                   </WhatsappShareButton>
                 </div>
               </div>
             </div>
             <div className="mt-4">
-              <p style={{ fontSize: "18px", marginBottom: "20px", textAlign: "center" }}>یا از طریق دکمه زیر لینک صفحه مورد نظر را کپی کنید</p>
+              <p
+                style={{
+                  fontSize: "18px",
+                  marginBottom: "20px",
+                  textAlign: "center",
+                }}
+              >
+                یا از طریق دکمه زیر لینک صفحه مورد نظر را کپی کنید
+              </p>
             </div>
             <div className="row justify-content-center">
-              <div id="box_copyLink" className="col-3 px-0" style={{ textAlign: "center" }}>
-                <button onClick={() => { copyToClipboard() }} style={{ padding: "15px 15px !important", border: "1px solid black", borderRadius: "5px", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto" }} >
-                  <p className="mb-0" style={{ fontSize: "18px", display: "inline-block" }}>کپی لینک</p>
-                  <img src={copy_icon} alt="icon_CopyLink_share" style={{ width: "20px", display: "inline-block", margin: "0 7px" }} />
+              <div
+                id="box_copyLink"
+                className="col-3 px-0"
+                style={{ textAlign: "center" }}
+              >
+                <button
+                  onClick={() => {
+                    copyToClipboard();
+                  }}
+                  style={{
+                    padding: "15px 15px !important",
+                    border: "1px solid black",
+                    borderRadius: "5px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    margin: "0 auto",
+                  }}
+                >
+                  <p
+                    className="mb-0"
+                    style={{ fontSize: "18px", display: "inline-block" }}
+                  >
+                    کپی لینک
+                  </p>
+                  <img
+                    src={copy_icon}
+                    alt="icon_CopyLink_share"
+                    style={{
+                      width: "20px",
+                      display: "inline-block",
+                      margin: "0 7px",
+                    }}
+                  />
                 </button>
               </div>
             </div>
           </div>
-
         </div>
       </Modal>
     </>
