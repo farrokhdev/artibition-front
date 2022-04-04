@@ -1,9 +1,8 @@
 import React from "react";
-import img from "../../assets/img/slider-en-2.jpg";
 import moment from "jalali-moment";
 import { isNil } from "lodash";
 
-export const HeroExhabitions = ({ reference, exhibitionInfo }) => {
+export const HeroExhibitions = ({ reference, exhibitionInfo }) => {
   function getDateObject(date) {
     if (isNil(date)) return;
     const tempDateMain = moment(date, "YYYY-MM-DD")

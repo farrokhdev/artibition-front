@@ -1473,7 +1473,7 @@
       "full_name_least_characters_long": "نام و نام خانوادگی باید حداقل 7 کاراکتر باشد.",
       "email_phone_least_characters_long": "اطلاعات تماس باید حداقل 9 کاراکتر باشد.",
       "enter_message": "لطفا متن پیام را وارد کنید.",
-      "upload_resume":"لطفا فایل رزومه را آپلود کنید.",
+      "upload_resume": "لطفا فایل رزومه را آپلود کنید.",
       "successful_sent": "پیام شما با موفقیت ارسال شد",
       "send_message_failed": "خطا در ارسال اطلاعات"
     }
@@ -1493,5 +1493,28 @@
     "description": "متن پیام",
     "upload_resume": "آپلود رزومه(PDF)",
     "submit": "ارسال"
+  },
+  "exhibitions-page": {
+    "events": "رویدادها",
+    "select-event-date": "تاریخ رویداد را انتخاب کنید",
+    "filter": "فیلتر",
+    "remove-all": "حذف همه",
+    "galleries": "گالری‌های",
+    "search-gallery": "گالری مورد نظر را جستجو کنید",
+    "to-end": "تا پایان",
+    "to-start": "تا شروع",
+    "local": "حضوری",
+    "online": "مجازی",
+    "day": "روز",
+    "min": "دقیقه",
+    "hour": "ساعت",
+    "exhibitions": "نمایشگاه‌ها",
+    "search-exhibition": "نمایشگاه مورد نظر را جستجو کنید",
+    "exhibition-type": "نوع نمایشگاه",
+    "all": "همه رویدادها",
+    "local-exhibition": "نمایشگاه‌های حضوری",
+    "online-exhibition": "نمایشگاه‌های مجازی",
+    "promotions": "فراخوان‌ها",
+    "finished": "پایان یافته"
   }
 }

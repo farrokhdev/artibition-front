@@ -1,8 +1,8 @@
 import React from "react";
-import FilterSidBarInArtworks from "../../pages/GalleryIntroduction/FilterSidBarInArtworks";
+import FilterSidBarInArtworks from "../../../pages/GalleryIntroduction/FilterSidBarInArtworks";
 // import { ExhabitionFilters } from "../Filters/ExhabitionFilters";
 
-export const ExhabitionsArtworkList = ({ reference }) => {
+export const ExhibitionsArtworkList = ({ reference }) => {
   return (
     <>
       <div className="default-content" ref={reference}>

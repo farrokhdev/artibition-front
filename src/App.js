@@ -35,8 +35,9 @@ import WorkWithUs from "./pages/WorkWithUs/WorkWithUs";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import ContactUs from "./pages/ContactUs/ContactUs";
 import Content from "./pages/Content/Content";
-import { Exhabitions } from "./pages/Exhabitions/Exhabitions";
+import ExhibitionDetail from "./pages/ExhibitionDetail";
 import Promotions from "./pages/Promotions/Promotions";
+import ExhibitionsPage from "./pages/ExhibitionsPage";
 
 ReactGA.initialize("UA-220199370-1");
 
@@ -70,7 +71,8 @@ function App(props) {
         <Routes>
           <Route path="site" animate={true}>
             <Route path="artworks" element={<ArtworksPage />} />
-            <Route path="exhabitions" element={<Exhabitions />} />
+            <Route path="exhibitionDetail" element={<ExhibitionDetail />} />
+            <Route path="exhibitions" element={<ExhibitionsPage />} />
             <Route path="promotions" element={<Promotions />} />
 
             <Route path="artworks-detail" element={<DetailsArtwork />} />

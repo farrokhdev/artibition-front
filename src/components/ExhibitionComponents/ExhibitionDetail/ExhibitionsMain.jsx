@@ -1,13 +1,13 @@
 import { isNil } from "lodash";
 import React, { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { EXHIBITION_INFO } from "../../utils";
-import apiServices from "../../utils/api.services";
-import { ArtistsExhabitions } from "./ArtistsExhabitions";
-import { ExhabitionsArtworkList } from "./ExhabitionsArtworkList";
-import { HeroExhabitions } from "./HeroExhabitions";
+import { EXHIBITION_INFO } from "../../../utils";
+import apiServices from "../../../utils/api.services";
+import { ArtistsExhibitions } from "./ArtistsExhibitions";
+import { ExhibitionsArtworkList } from "./ExhibitionsArtworkList";
+import { HeroExhibitions } from "./HeroExhibitions";
 
-export const ExhabitionsMain = () => {
+const ExhibitionsMain = () => {
   const artworksRef = useRef();
   const [artworksList, setArtworksList] = useState([]);
   const [artistsList, setArtistsList] = useState([]);
@@ -39,12 +39,12 @@ export const ExhabitionsMain = () => {
   return (
     <>
       <div className="exhabition-container">
-        <HeroExhabitions
+        <HeroExhibitions
           reference={artworksRef}
           exhibitionInfo={exhibitionInfo}
         />
-        <ArtistsExhabitions artistsList={artistsList} />
-        <ExhabitionsArtworkList
+        <ArtistsExhibitions artistsList={artistsList} />
+        <ExhibitionsArtworkList
           reference={artworksRef}
           artworksList={artworksList}
         />
@@ -52,3 +52,4 @@ export const ExhabitionsMain = () => {
     </>
   );
 };
+export default ExhibitionsMain;

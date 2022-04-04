@@ -288,7 +288,7 @@ export default function NavbarMenuHeader(props) {
                       <div key={exhibition?.id}>
                         <a
                           onClick={() => {
-                            navigate("/site/exhabitions", {
+                            navigate("/site/exhibitionDetail", {
                               state: {
                                 id: exhibition?.id,
                                 gallery_id: exhibition?.gallery?.id,
