@@ -24,10 +24,6 @@ export default function NavbarMenuHeader(props) {
   const Language = GetLanguage();
   const { t, i18n } = useTranslation();
   const [exhibitionList, setExhibitionList] = useState();
-  console.log(
-    "🚀 ~ file: NavbarMenuHeader.jsx ~ line 22 ~ NavbarMenuHeader ~ exhibitionList",
-    exhibitionList
-  );
   const [categorys, setCategorys] = useState([]);
   const [categorieParams, setCategorieParams] = useState({
     page: 1,
@@ -271,11 +267,30 @@ export default function NavbarMenuHeader(props) {
               <div className="owl-carousel" id="menu-exhibition">
                 {!isNil(exhibitionList) &&
                   exhibitionList?.map((exhibition) => {
+                    const isExhibitionHeld =
+                      moment(Object.values(exhibition?.end_date)[0]).isAfter(
+                        moment.utc(moment().format("YYYY-MM-DD HH:mm:ss"))
+                      ) &&
+                      moment(Object.values(exhibition?.start_date)[0]).isBefore(
+                        moment.utc(moment().format("YYYY-MM-DD HH:mm:ss"))
+                      );
+                    const diff = moment().diff(
+                      moment(
+                        Object.values(exhibition?.end_date)[0],
+                        "YYYY-MM-DD HH:mm:ss"
+                      )
+                    );
+                    const tempTime = moment.duration(diff, "milliseconds");
+                    const days = tempTime.days();
+                    const hours = tempTime.hours();
+                    const minutes = tempTime.minutes();
                     return (
-                      <div>
+                      <div key={exhibition?.id}>
                         <a href="#" className="cols">
                           <div className="col-img">
-                            <div className="tags tags-events">مجازی</div>
+                            <div className="tags tags-events">
+                              {Language === "fa-IR" ? "مجازی" : "virtual"}
+                            </div>
                             <img
                               src={exhibition?.poster?.[0]?.exact_url}
                               width="840"
@@ -285,20 +300,19 @@ export default function NavbarMenuHeader(props) {
                             />
                           </div>
                           <div className="col-body">
-                            {/* {console.log(
-                              "test",
-                              moment(
-                                Object.values(exhibition?.end_date)[0]
-                              ).isAfter(moment().unix())
-                            )} */}
                             {moment(
                               Object.values(exhibition?.end_date)[0]
-                            ).isBefore(moment().unix()) && (
-                              <div className="finished-tag">پایان یافته</div>
+                            ).isBefore(
+                              moment.utc(moment().format("YYYY-MM-DD HH:mm:ss"))
+                            ) && (
+                              <div className="finished-tag">
+                                {Language === "fa-IR"
+                                  ? "پایان یافته"
+                                  : "finished"}
+                              </div>
                             )}
                             <h6 className="col-title">
                               <span className="col-name">
-                                {/* نمایشگاه مجازی هنر نورانی نئون */}
                                 {Language === "fa-IR"
                                   ? exhibition?.translations?.fa?.name
                                   : exhibition?.translations?.en?.name}
@@ -312,22 +326,22 @@ export default function NavbarMenuHeader(props) {
                                       ?.title}
                               </span>
                             </div>
-                            {moment(
-                              Object.values(exhibition?.end_date)[0]
-                            ).isAfter(moment().unix()) && (
+                            {isExhibitionHeld && (
                               <div className="coundown">
                                 <div
-                                  className="timers"
-                                  data-newdate="August 10, 2021 12:00 PDT"
+                                  style={{
+                                    display: "flex",
+                                    flexDirection: "row-reverse",
+                                  }}
                                 >
                                   <span className="end">
                                     {Language === "fa-IR"
                                       ? "تا پایان"
                                       : "To End"}
                                   </span>
-                                  <div className="days"></div>
-                                  <div className="hours"></div>
-                                  <div className="minutes"></div>
+                                  <div className=" persian-num">{days}</div>
+                                  <div className="persian-num">{hours}:</div>
+                                  <div className="persian-num">{minutes}:</div>
                                 </div>
                               </div>
                             )}
@@ -336,121 +350,6 @@ export default function NavbarMenuHeader(props) {
                       </div>
                     );
                   })}
-
-                <div>
-                  <a href="#" className="cols">
-                    <div className="col-img">
-                      <div className="tags tags-events">مجازی</div>
-                      <img
-                        src={bohmer}
-                        width="840"
-                        height="840"
-                        alt="آرتیبیشن"
-                        className="img-responsive"
-                      />
-                    </div>
-                    <div className="col-body">
-                      <div className="finished-tag">پایان یافته</div>
-                      <h6 className="col-title">
-                        <span className="col-name">
-                          نمایشگاه مجازی هنر نورانی نئون
-                        </span>
-                      </h6>
-                      <div className="col-dimension">
-                        <span className="col-dimension-title">
-                          گالری آرتیبیشن
-                        </span>
-                      </div>
-                      <div className="coundown">
-                        <div
-                          className="timers"
-                          data-newdate="August 10, 2021 12:00 PDT"
-                        >
-                          <span className="end">تا پایان</span>
-                          <div className="days"></div>
-                          <div className="hours"></div>
-                          <div className="minutes"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-                <div>
-                  <a href="#" className="cols">
-                    <div className="col-img">
-                      <div className="tags tags-events">مجازی</div>
-                      <img
-                        src={bohmer}
-                        width="840"
-                        height="840"
-                        alt="آرتیبیشن"
-                        className="img-responsive"
-                      />
-                    </div>
-                    <div className="col-body">
-                      <div className="finished-tag">پایان یافته</div>
-                      <h6 className="col-title">
-                        <span className="col-name">
-                          نمایشگاه مجازی هنر نورانی نئون
-                        </span>
-                      </h6>
-                      <div className="col-dimension">
-                        <span className="col-dimension-title">
-                          گالری آرتیبیشن
-                        </span>
-                      </div>
-                      <div className="coundown">
-                        <div
-                          className="timers"
-                          data-newdate="August 10, 2021 12:00 PDT"
-                        >
-                          <span className="end">تا پایان</span>
-                          <div className="days"></div>
-                          <div className="hours"></div>
-                          <div className="minutes"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                </div>
-                <div>
-                  <a href="#" className="cols">
-                    <div className="col-img">
-                      <div className="tags tags-events">مجازی</div>
-                      <img
-                        src={bohmer}
-                        width="840"
-                        height="840"
-                        alt="آرتیبیشن"
-                        className="img-responsive"
-                      />
-                    </div>
-                    <div className="col-body">
-                      <div className="finished-tag">پایان یافته</div>
-                      <h6 className="col-title">
-                        <span className="col-name">
-                          نمایشگاه مجازی هنر نورانی نئون
-                        </span>
-                      </h6>
-                      <div className="col-dimension">
-                        <span className="col-dimension-title">
-                          گالری آرتیبیشن
-                        </span>
-                      </div>
-                      <div className="coundown">
-                        <div
-                          className="timers"
-                          data-newdate="August 10, 2021 12:00 PDT"
-                        >
-                          <span className="end">تا پایان</span>
-                          <div className="days"></div>
-                          <div className="hours"></div>
-                          <div className="minutes"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </a>
-                </div>
               </div>
             </div>
           </li>
