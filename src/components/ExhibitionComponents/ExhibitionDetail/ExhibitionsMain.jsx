@@ -16,10 +16,6 @@ const ExhibitionsMain = () => {
     apiServices
       .get(EXHIBITION_INFO(gallery_id, exhibitionId), "")
       .then((res) => {
-        console.log(
-          "🚀 ~ file: ExhabitionsMain.jsx ~ line 19 ~ getData ~ res",
-          res.data.data
-        );
         setExhibitionInfo(res.data.data);
       })
       .catch((err) => {
@@ -28,7 +24,6 @@ const ExhibitionsMain = () => {
   };
   const location = useLocation();
   useEffect(() => {
-    console.log("hi");
     if (isNil(location.state)) return;
 
     const { id, gallery_id } = location.state;

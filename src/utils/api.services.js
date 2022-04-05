@@ -25,10 +25,6 @@ class APIService {
   }
 
   get(uri, params) {
-    console.log(
-      "🚀 ~ file: api.services.js ~ line 26 ~ APIService ~ get ~ params",
-      params
-    );
     return axios
       .get(`${BASE_URL}${uri}?${params}`)
       .then((res) => {

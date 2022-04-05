@@ -1980,7 +1980,7 @@ input:checked + .switchbtn:before {
 }
 
 .row-events .cols {
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 .timers.timetoend .timer-status,
@@ -9479,4 +9479,19 @@ iframe {
   width: auto;
   display: block;
   margin: 0 auto;
+}
+.ant-statistic-content-value{
+  font-family: Iransans-Medium, sans-serif;
+  background:#f7f7f7;
+  font-size: 1.4rem;
+  color:#e68515;
+  text-align: left!important;
+}
+.en-page{
+  text-align:left;
+  direction:ltr
+}
+.fa-page{
+  text-align:right!important;
+  direction: rtl;
 }
