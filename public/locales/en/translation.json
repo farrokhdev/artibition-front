@@ -8,6 +8,7 @@
   "filter-header": {
     "title": "Filter",
     "placeholder-input-search": ".Search artwork, artist, gallery, etc",
+    "filter-btn": "Filter",
     "category": {
       "title": "Category",
       "all": "All",
@@ -785,17 +786,33 @@
       "text": ""
     },
     "collections": {
-      "title": "",
-      "btn": "",
-      "row": "",
-      "subject": "",
-      "count_artwork": "",
-      "last_edition": "",
-      "details": ""
+      "title": "collections",
+      "table": {
+        "row": "row",
+        "title": "title",
+        "artworks-count": "artworks count",
+        "latest-updates": "lateset updates",
+        "details": "details",
+        "add-btn": "Add collection"
+      },
+      "dimentions": "Dimentions"
+    },
+    "albums": {
+      "title": "albums",
+      "table": {
+        "row": "row",
+        "title": "title",
+        "artworks-count": "artworks count",
+        "latest-updates": "lateset updates",
+        "details": "details",
+        "add-btn": "Add album"
+      },
+      "dimentions": "Dimentions"
     },
     "art_info": {
-      "title": "",
-      "btn": ""
+      "title": "artwork infos",
+      "btn": "galleries list",
+      "resume": "Resume"
     }
   },
   "content-panel-contents": {
@@ -1511,5 +1528,7 @@
   },
   "clipboard": {
     "success_message": "Copied successfully"
-  }
+  },
+  "no-data": "there is no data",
+  "size": "size: "
 }

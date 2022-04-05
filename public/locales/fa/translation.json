@@ -8,6 +8,7 @@
   "filter-header": {
     "title": "فیلتر",
     "placeholder-input-search": "جستجوی نام اثر، نام هنرمند، گالری و غیره",
+    "filter-btn": "اعمال فیلتر",
     "category": {
       "title": "رشته هنری",
       "all": "همه رشته‌ها",
@@ -782,17 +783,33 @@
       "text": ""
     },
     "collections": {
-      "title": "",
-      "btn": "",
-      "row": "",
-      "subject": "",
-      "count_artwork": "",
-      "last_edition": "",
-      "details": ""
+      "title": "کالکشن ها",
+      "table": {
+        "row": "ردیف",
+        "title": "عنوان",
+        "artworks-count": "تعداد آثار",
+        "latest-updates": "آخرین ویرایش",
+        "details": "جزییات",
+        "add-btn": "افزودن کالکشن"
+      },
+      "dimentions": "ابعاد"
+    },
+    "albums": {
+      "title": "مجموعه ها",
+      "table": {
+        "row": "ردیف",
+        "title": "عنوان",
+        "artworks-count": "تعداد آثار",
+        "latest-updates": "آخرین ویرایش",
+        "details": "جزییات",
+        "add-btn": "افزودن مجموعه"
+      },
+      "dimentions": "ابعاد"
     },
     "art_info": {
-      "title": "",
-      "btn": ""
+      "title": "اطلاعات هنری",
+      "btn": "لیست نمایشگاه ها",
+      "resume": "رزومه"
     }
   },
   "content-panel-contents": {
@@ -1454,5 +1471,7 @@
   },
   "clipboard": {
     "success_message": "با موفقیت کپی شد"
-  }
+  },
+  "no-data": "هیچ دیتایی وجود ندارد",
+  "size": "ابعاد: "
 }

@@ -131,7 +131,9 @@ export default function RecentlyNews({ categories }) {
                           )}
                         </h6>
                         <div className="col-dimension">
-                          <span className="col-dimension-title">ابعاد:</span>
+                          <span className="col-dimension-title">
+                            {t("size")}
+                          </span>
                           <span className="col-dimension-body">
                             <span className="dimension-width">
                               {product.width}

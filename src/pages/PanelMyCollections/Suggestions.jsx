@@ -104,7 +104,12 @@ function Suggestions() {
                           <span className="col-name">حسینی</span>
                         </h6>
                         <div className="col-dimension">
-                          <span className="col-dimension-title">ابعاد:</span>
+                          <span className="col-dimension-title">
+                            {" "}
+                            {t(
+                              "content-panel-my-albums.collections.dimentions"
+                            )}
+                          </span>
                           <span className="col-dimension-body">
                             <span className="dimension-width">60</span>
                             <span> در </span>
@@ -152,7 +157,11 @@ function Suggestions() {
                           <span className="col-name">حسینی</span>
                         </h6>
                         <div className="col-dimension">
-                          <span className="col-dimension-title">ابعاد:</span>
+                          <span className="col-dimension-title">
+                            {t(
+                              "content-panel-my-albums.collections.dimentions"
+                            )}
+                          </span>
                           <span className="col-dimension-body">
                             <span className="dimension-width">60</span>
                             <span> در </span>
@@ -200,7 +209,12 @@ function Suggestions() {
                           <span className="col-name">حسینی</span>
                         </h6>
                         <div className="col-dimension">
-                          <span className="col-dimension-title">ابعاد:</span>
+                          <span className="col-dimension-title">
+                            {" "}
+                            {t(
+                              "content-panel-my-albums.collections.dimentions"
+                            )}
+                          </span>
                           <span className="col-dimension-body">
                             <span className="dimension-width">60</span>
                             <span> در </span>
@@ -248,7 +262,12 @@ function Suggestions() {
                           <span className="col-name">حسینی</span>
                         </h6>
                         <div className="col-dimension">
-                          <span className="col-dimension-title">ابعاد:</span>
+                          <span className="col-dimension-title">
+                            {" "}
+                            {t(
+                              "content-panel-my-albums.collections.dimentions"
+                            )}
+                          </span>
                           <span className="col-dimension-body">
                             <span className="dimension-width">60</span>
                             <span> در </span>
@@ -296,7 +315,12 @@ function Suggestions() {
                           <span className="col-name">حسینی</span>
                         </h6>
                         <div className="col-dimension">
-                          <span className="col-dimension-title">ابعاد:</span>
+                          <span className="col-dimension-title">
+                            {" "}
+                            {t(
+                              "content-panel-my-albums.collections.dimentions"
+                            )}
+                          </span>
                           <span className="col-dimension-body">
                             <span className="dimension-width">60</span>
                             <span> در </span>
@@ -344,7 +368,12 @@ function Suggestions() {
                           <span className="col-name">حسینی</span>
                         </h6>
                         <div className="col-dimension">
-                          <span className="col-dimension-title">ابعاد:</span>
+                          <span className="col-dimension-title">
+                            {" "}
+                            {t(
+                              "content-panel-my-albums.collections.dimentions"
+                            )}
+                          </span>
                           <span className="col-dimension-body">
                             <span className="dimension-width">60</span>
                             <span> در </span>
@@ -385,7 +414,9 @@ function Suggestions() {
                                             <span className="col-name">حسینی</span>
                                         </h6>
                                         <div className="col-dimension">
-                                            <span className="col-dimension-title">ابعاد:</span>
+                                            <span className="col-dimension-title"> {t(
+                                  "content-panel-my-albums.collections.dimentions"
+                                )}</span>
                                             <span className="col-dimension-body">
                                         <span className="dimension-width">60</span>
                                         <span> در </span>
