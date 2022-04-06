@@ -11,7 +11,7 @@ import RouterConfig from "./main/router";
 import { useTranslation } from "react-i18next";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Singup/Signup";
-import ArtworksPage from "./pages/ArtworksPage/ArtworksPage";
+import ArtworksPage from "./pages/ArtworksPage";
 import DetailsArtwork from "./pages/DetailsArtwork/DetailsArtwork";
 import ArtistsPage from "./pages/ArtistsPage/ArtistsPage";
 import ProfileArtist from "./pages/ProfileArtist/ProfileArtist";

@@ -38,7 +38,7 @@ const ExhibitionsMain = () => {
           reference={artworksRef}
           exhibitionInfo={exhibitionInfo}
         />
-        <ArtistsExhibitions artistsList={artistsList} />
+        {/* <ArtistsExhibitions artistsList={artistsList} /> */}
         <ExhibitionsArtworkList
           reference={artworksRef}
           artworksList={artworksList}

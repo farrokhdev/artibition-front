@@ -3,7 +3,7 @@ import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
 import AddArtwork from "../pages/AddArtwork/AddArtwork";
 import AllGallerysList from "../pages/AllGallerysList/AllGallerysList";
 import ArtistsPage from "../pages/ArtistsPage/ArtistsPage";
-import ArtworksPage from "../pages/ArtworksPage/ArtworksPage";
+import ArtworksPage from "../pages/ArtworksPage";
 import DashboardPanel from "../pages/DashboarPanel/DashboardPanel";
 import DetailsArtwork from "../pages/DetailsArtwork/DetailsArtwork";
 

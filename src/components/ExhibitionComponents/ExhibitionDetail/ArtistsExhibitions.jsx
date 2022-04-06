@@ -16,7 +16,7 @@ export const ArtistsExhibitions = () => {
             </div>
           </div>
         </div>
-        {/* <div
+        <div
           className="owl-carousel owl-rtl owl-loaded owl-drag"
           id="gallery-artists"
         >
@@ -593,7 +593,7 @@ export const ArtistsExhibitions = () => {
               <span></span>
             </button>
           </div>
-        </div> */}
+        </div>
       </div>
     </>
   );
