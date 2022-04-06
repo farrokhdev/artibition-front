@@ -1,6 +1,12 @@
 import cookie from "react-cookies";
 import qs from "qs";
-import { BASE_URL, COOKIE_EXPIRES, DELETE_FOLLOW, GALLERY_FOLLOW } from "./index";
+import { t } from "i18next";
+import {
+  BASE_URL,
+  COOKIE_EXPIRES,
+  DELETE_FOLLOW,
+  GALLERY_FOLLOW,
+} from "./index";
 import { message } from "antd";
 import { useTranslation } from "react-i18next";
 import momentJalaali from "moment-jalaali";
@@ -77,7 +83,7 @@ export function removeToken() {
   cookie.remove("refresh", { path: "/" });
   window.sessionStorage.clear();
   if (!isLogin()) {
-    message.success("شما از پنل خارج شدید.");
+    message.success(t("loggout_success"));
     setTimeout(() => {
       window.location.href = "/";
     }, 400);
@@ -112,13 +118,13 @@ export function timeToStr(time, format) {
   return "";
 }
 
-export const follow = ({ activity, content, object_id ,callBack , action }) => {
+export const follow = ({ activity, content, object_id, callBack, action }) => {
   if (action) {
     apiServices
-      .delete(DELETE_FOLLOW(object_id),"")
+      .delete(DELETE_FOLLOW(object_id), "")
       .then((res) => {
         if (res.status === 204) {
-          callBack()
+          callBack();
           message.success({
             content: "اثر با موفقیت حذف شد",
             style: {
@@ -131,27 +137,26 @@ export const follow = ({ activity, content, object_id ,callBack , action }) => {
         console.log("err", err);
       });
   } else {
-    
-  const payload = {
-    content_type: content,
-    activity_type: activity,
-    object_id: object_id,
-  };
-  apiServices
-    .post(GALLERY_FOLLOW, payload)
-    .then((res) => {
-      if (res.data) {
-        callBack()
-        message.success({
-          content: "درخواست شما با موفقیت ثبت شد",
-          style: {
-            marginTop: "110px",
-          },
-        });
-      }
-    })
-    .catch((err) => {
-      console.log("err", err);
-    });
+    const payload = {
+      content_type: content,
+      activity_type: activity,
+      object_id: object_id,
+    };
+    apiServices
+      .post(GALLERY_FOLLOW, payload)
+      .then((res) => {
+        if (res.data) {
+          callBack();
+          message.success({
+            content: "درخواست شما با موفقیت ثبت شد",
+            style: {
+              marginTop: "110px",
+            },
+          });
+        }
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
   }
 };

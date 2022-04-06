@@ -52,6 +52,7 @@ function Header() {
     return null;
   };
   const [sizes, setSizes] = useState();
+
   const [sizesId, setSizesId] = useState([]);
   const filterSizes = () => {
     let sizesIdTotal = [];
@@ -133,6 +134,8 @@ function Header() {
     getProductCategories();
     getProductSizes();
   }, []);
+
+  console.log(sizes?.results);
 
   useEffect(() => {
     if (params.search.length >= 3) {
@@ -548,6 +551,8 @@ function Header() {
       <ModalSetDimention
         visibleSetDimentionModal={visibleSetDimentionModal}
         setVisibleSetDimentionModal={setVisibleSetDimentionModal}
+        setFilters={setFilters}
+        filterSizes={filterSizes}
       />
     </div>
   );

@@ -32,8 +32,11 @@ function GalleryPanelEditGalleryInfo() {
   const [zoom, setZoom] = useState(11);
   const [showMap, setShowMap] = useState(false);
 
-  const { gallery_id } = useSelector((state) => state.galleryReducer);
-  const { editGalleryMode } = useSelector((state) => state.galleryReducer);
+  const { gallery_id, editGalleryMode } = useSelector(
+    (state) => state.galleryReducer
+  );
+
+  // console.log(editGalleryMode);
 
   const Language = GetLanguage();
   const dispatch = useDispatch();
@@ -112,7 +115,7 @@ function GalleryPanelEditGalleryInfo() {
               country: Language === "fa-IR" ? values?.country : null,
             },
           },
-          point,
+          // point,
         },
       ],
       phone: values?.phone,
@@ -130,16 +133,17 @@ function GalleryPanelEditGalleryInfo() {
         .patch(GALLERY(gallery_id), payload)
         .then((res) => {
           if (res.data) {
+            console.log(res);
             dispatch(editGalleryModeFunc(false));
-            setTimeout(() => {
-              navigate("/panel/profile");
-              message.success({
-                content: "اطلاعات شما با موفقیت ویرایش شد",
-                style: {
-                  marginTop: "110px",
-                },
-              });
-            }, 500);
+            // setTimeout(() => {
+            message.success({
+              content: "اطلاعات شما با موفقیت ویرایش شد",
+              style: {
+                marginTop: "110px",
+              },
+            });
+            navigate("/panel/profile");
+            // }, 500);
           }
         })
         .catch((err) => {
@@ -148,15 +152,16 @@ function GalleryPanelEditGalleryInfo() {
     } else {
       apiServices.post(GALLERY_LIST, payload).then((res) => {
         if (res.data) {
-          setTimeout(() => {
-            navigate("/panel/profile");
-            message.success({
-              content: "اطلاعات شما با موفقیت ثبت شد",
-              style: {
-                marginTop: "110px",
-              },
-            });
-          }, 500);
+          console.log(res);
+          // setTimeout(() => {
+          message.success({
+            content: "اطلاعات شما با موفقیت ثبت شد",
+            style: {
+              marginTop: "110px",
+            },
+          });
+          navigate("/panel/profile");
+          // }, 500);
         } else {
           message.error(res.response.data.message);
         }

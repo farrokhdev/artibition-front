@@ -112,7 +112,7 @@ function CartItem({ removeProduct, singleProduct }) {
                 {t("cart.order.code")}
               </span>
               <span className="col-xs-8 detail-name persian-num">
-                {unique_code}
+                {unique_code.slice(-12)}
               </span>
             </div>
           </div>

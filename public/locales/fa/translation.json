@@ -64,6 +64,12 @@
   },
   "login_Title": "وارد شوید",
   "logout_Title": "خروج",
+  "login_success": "به آرتیبیشن خوش آمدید",
+  "login_error": "خطا در وارد کردن اطلاعات",
+  "logout_success": "شما از پنل خارج شدید.",
+  "logout_error": "خطادر هنگام خروج",
+  "login_desc": "جهت استفاده از تمام اطلاعات آرتیبیشن لطفا اطلاعات خود را وارد نمایید",
+
   "placeholder-username": "شماره همراه یا ایمیل",
   "placeholder-password": "رمز عبور",
   "placeholder-confirm-password": "تکرار رمز عبور",

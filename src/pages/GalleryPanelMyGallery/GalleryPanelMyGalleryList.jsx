@@ -2,66 +2,15 @@ import React, { useEffect, useState } from "react";
 import i18next, { t } from "i18next";
 
 import viewBlue from "../../assets/img/view-blue.svg";
-import artwork1 from "../../assets/img/artworks/artwork-1.jpg";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import authReducer from "../../redux/reducers/auth/auth.reducer";
-import apiServices from "../../utils/api.services";
-import { GALLERY_LIST } from "../../utils";
-import { message } from "antd";
-import queryString from "query-string";
+
 import moment from "jalali-moment";
-import {
-  editGalleryModeFunc,
-  galleryId,
-  galleryProfile,
-} from "../../redux/reducers/Gallery/gallery.actions";
-import { useNavigate } from "react-router-dom";
-import { setProfile } from "../../redux/reducers/auth/auth.actions";
 
-function GalleryPanelMyGalleryList({ galleries, setGalleries }) {
-  const { id } = useSelector((state) => state.authReducer);
-  const [params, setParams] = useState({
-    owner_id: id,
-  });
-
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const goToGalleryProfile = (gallery) => {
-    dispatch(galleryId(gallery.id));
-    dispatch(galleryProfile(gallery));
-    dispatch(setProfile({ roles: "gallery" }));
-    navigate("/panel/dashboard");
-  };
-
-  const goToEditGallery = (gallery) => {
-    dispatch(galleryId(gallery.id));
-    dispatch(galleryProfile(gallery));
-    dispatch(editGalleryModeFunc(true));
-    dispatch(setProfile({ roles: "gallery" }));
-    navigate("/panel/gallery-info");
-  };
-
-  useEffect(() => {
-    console.log(params);
-    apiServices
-      .get(GALLERY_LIST, queryString.stringify(params))
-      .then((res) => {
-        if (res.data) {
-          console.log(res.data.data.results);
-          setGalleries(res.data.data.results);
-        } else {
-          message.error({
-            content: res.response.data.message,
-            style: { marginTop: "110px" },
-          });
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+function GalleryPanelMyGalleryList({
+  galleries,
+  setGalleries,
+  goToEditGallery,
+  goToGalleryProfile,
+}) {
   return (
     <div className="box artistpanel-5">
       <div className="public-header">
