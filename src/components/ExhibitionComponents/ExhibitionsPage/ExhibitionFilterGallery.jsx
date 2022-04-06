@@ -32,7 +32,7 @@ const ExhibitionFilterGallery = ({
             <button className="noborder" type="button">
               <img src={search} width="24" height="24" alt="" />
             </button>
-            <div className="constant-height md-mrgt30 text-right">
+            <div className="constant-height md-mrgt30">
               {galleries?.map((gallery) => {
                 return (
                   <label className="lable-checkbox" key={gallery.id}>

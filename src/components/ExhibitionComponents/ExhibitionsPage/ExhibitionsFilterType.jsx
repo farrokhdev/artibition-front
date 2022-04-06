@@ -22,7 +22,9 @@ const ExhibitionsFilterType = ({ t, handleChangeType }) => {
             <label className="lable-checkbox" key={index}>
               <input
                 type="checkbox"
-                onClick={() => handleChangeType(option.value)}
+                onClick={(e) =>
+                  handleChangeType(e.target.checked, option.value)
+                }
               />
               <span>{option.name}</span>
               <span className="checkmark"></span>

@@ -946,11 +946,20 @@ footer .nl-input input:focus {
 .default-content {
   padding: 40px 0 0 0;
 }
-
+.filter-side {
+  text-align: left;
+}
 .filter-side .panel-heading {
   padding: 0;
 }
-
+.filter-exhibitions {
+  display: flex;
+  text-align: left;
+  flex-direction: row-reverse;
+}
+.filter-exhibitions > * {
+  align-self: center;
+}
 .filter-side .panel-heading a {
   padding: 16px 0;
   display: block;
@@ -1327,12 +1336,17 @@ input:checked + .switchbtn:before {
   background: #fff;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.16);
   padding: 60px;
-  display: inline-block;
+  // display: inline-block;
+  display: flex;
+  flex-direction: row;
+  text-align: left;
   width: 100%;
 }
 
 .event-row {
-  display: block;
+  // display: block;
+  display: flex;
+  flex-direction: row-reverse;
   clear: both;
   padding: 20px 0;
   border-bottom: 1px solid #e4e6e9;
@@ -9107,4 +9121,27 @@ iframe {
 .tab-center .ant-tabs-nav-wrap {
   justify-content: center;
   display: flex !important;
+}
+.ant-statistic-content-value {
+  font-family: Iransans-Medium, sans-serif;
+  background: #f7f7f7;
+  font-size: 1.4rem;
+  color: #e68515;
+  text-align: right !important;
+  display: inline-block;
+}
+.countdown-container {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 20px;
+}
+.countdown-container > * {
+  align-self: center;
+  color: #e68515;
+}
+.countdown-text {
+  color: #adafb3;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 5px;
 }

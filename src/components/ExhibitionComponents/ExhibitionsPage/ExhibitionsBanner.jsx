@@ -73,65 +73,7 @@ const ExhibitionsBanner = () => {
         }}
       >
         <div className="col-md-10 col-md-offset-1">
-          <div className="gallery-banner-container">
-            <div className="col-md-6 hidden-sm hidden-xs">
-              <h3 className="event-title">{t("exhibitions-page.events")}</h3>
-              <div
-                id="myCarousel"
-                className="carousel slide"
-                data-ride="carousel"
-              >
-                <div className="carousel-inner">
-                  {!isNil(exhibitions?.results) &&
-                    new Array(Math.ceil(exhibitions?.results?.length / 3))
-                      .fill()
-                      .map((_) => exhibitions?.results?.splice(0, 3))
-                      .map((innerListExhibitions, index) => {
-                        return (
-                          <div
-                            className={`${
-                              index === 3
-                                ? "carousel-item active"
-                                : "carousel-item"
-                            }`}
-                          >
-                            {innerListExhibitions?.map((exhibition) => {
-                              return <ExhibitionDetail {...exhibition} />;
-                            })}
-                          </div>
-                        );
-                      })}
-                </div>
-                <div class="controls-top">
-                  <a
-                    class="btn-floating"
-                    href="#multi-item-example"
-                    data-slide="prev"
-                  >
-                    <i class="fa fa-chevron-left"></i>
-                  </a>
-                  <a
-                    class="btn-floating"
-                    href="#multi-item-example"
-                    data-slide="next"
-                  >
-                    <i class="fa fa-chevron-right"></i>
-                  </a>
-                </div>
-                <div className="event-control">
-                  <ol className="carousel-indicators">
-                    <li
-                      data-target="#myCarousel"
-                      data-slide-to="0"
-                      className="active"
-                    ></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                    <li data-target="#myCarousel" data-slide-to="3"></li>
-                  </ol>
-                </div>
-              </div>
-            </div>
+          <div className=" gallery-banner-container">
             <div className="col-md-6">
               <h3 className="event-title">
                 {t("exhibitions-page.select-event-date")}
@@ -191,6 +133,64 @@ const ExhibitionsBanner = () => {
                   <li>30</li>
                   <li>31</li>
                 </ul>
+              </div>
+            </div>
+            <div className="col-md-6 hidden-sm hidden-xs">
+              <h3 className="event-title">{t("exhibitions-page.events")}</h3>
+              <div
+                id="myCarousel"
+                className="carousel slide"
+                data-ride="carousel"
+              >
+                <div className="carousel-inner">
+                  {!isNil(exhibitions?.results) &&
+                    new Array(Math.ceil(exhibitions?.results?.length / 3))
+                      .fill()
+                      .map((_) => exhibitions?.results?.splice(0, 3))
+                      .map((innerListExhibitions, index) => {
+                        return (
+                          <div
+                            className={`${
+                              index === 3
+                                ? "carousel-item active"
+                                : "carousel-item"
+                            }`}
+                          >
+                            {innerListExhibitions?.map((exhibition) => {
+                              return <ExhibitionDetail {...exhibition} />;
+                            })}
+                          </div>
+                        );
+                      })}
+                </div>
+                <div class="controls-top">
+                  <a
+                    class="btn-floating"
+                    href="#multi-item-example"
+                    data-slide="prev"
+                  >
+                    <i class="fa fa-chevron-left"></i>
+                  </a>
+                  <a
+                    class="btn-floating"
+                    href="#multi-item-example"
+                    data-slide="next"
+                  >
+                    <i class="fa fa-chevron-right"></i>
+                  </a>
+                </div>
+                <div className="event-control">
+                  <ol className="carousel-indicators">
+                    <li
+                      data-target="#myCarousel"
+                      data-slide-to="0"
+                      className="active"
+                    ></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                    <li data-target="#myCarousel" data-slide-to="3"></li>
+                  </ol>
+                </div>
               </div>
             </div>
           </div>

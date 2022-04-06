@@ -598,7 +598,6 @@ a:hover {
   font-size: 15px;
 }
 
-
 .col-date .persian-num {
   font-size: 12px;
 }
@@ -1300,7 +1299,9 @@ footer .nl-input button {
 .default-content {
   padding: 40px 0 0 0;
 }
-
+.filter-side {
+  text-align: right;
+}
 .filter-side .panel-heading {
   padding: 0;
 }
@@ -1819,7 +1820,8 @@ input:checked + .switchbtn:before {
   background: #fff;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.16);
   padding: 60px;
-  display: inline-block;
+  display: flex;
+  flex-direction: row-reverse;
   width: 100%;
 }
 
@@ -1835,7 +1837,8 @@ input:checked + .switchbtn:before {
 }
 
 .event-row {
-  display: block;
+  display: flex;
+  flex-direction: row;
   clear: both;
   padding: 20px 0;
   border-bottom: 1px solid #e4e6e9;
@@ -9198,8 +9201,8 @@ iframe {
   font-family: Iransans-Medium, sans-serif !important;
   font-size: 15px;
 }
-.menu .navbar-nav>li:hover>a,
-.menu .navbar-nav>li:focus>a {
+.menu .navbar-nav > li:hover > a,
+.menu .navbar-nav > li:focus > a {
   z-index: 1200;
 }
 
@@ -9210,7 +9213,7 @@ iframe {
 
 .default-header {
   position: relative;
-  transition: all .2s ease 0s;
+  transition: all 0.2s ease 0s;
 }
 
 .img-active-artwork {
@@ -9226,7 +9229,9 @@ iframe {
   display: block;
   margin: 0 auto;
 }
-.ex-title{text-align: right;}
+.ex-title {
+  text-align: right;
+}
 
 .ex-title h3 {
   font-size: 25px;
@@ -9260,14 +9265,14 @@ iframe {
   font-size: 14px;
   margin-top: 16px;
   opacity: 0;
-  transition: all .5s ease 0s;
+  transition: all 0.5s ease 0s;
 }
 
 .exhibition-container .gallery-artist-img:hover .btn-default {
   opacity: 1;
 }
 
-.gallery-artist-img>img {
+.gallery-artist-img > img {
   width: 100%;
   max-width: 125px;
   margin: 0 auto 16px;
@@ -9291,7 +9296,6 @@ iframe {
   white-space: nowrap;
 }
 
-
 .gallery-logo-img img {
   width: 100%;
   height: 100%;
@@ -9307,7 +9311,6 @@ iframe {
   overflow-y: auto;
   padding-bottom: 100px;
 }
-
 
 .col-body {
   padding-top: 15px;
@@ -9332,7 +9335,6 @@ iframe {
 .addtoalbum p {
   margin-top: 8px;
 }
-
 
 .addtoalbum .close {
   margin-top: 15px;
@@ -9368,7 +9370,7 @@ iframe {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  align-items: center
+  align-items: center;
 }
 
 .select-album-container .lable-checkbox.public-group.d-flex .checkmark {
@@ -9398,7 +9400,6 @@ iframe {
   margin-left: 10px;
 }
 
-
 .sidebar-icon#my-collection {
   background: url("../img/collection.svg") no-repeat right center;
 }
@@ -9406,9 +9407,7 @@ iframe {
 .sidebar-icon#my-collection:hover,
 .sidebar-icon.active#my-collection {
   background: url("../img/collection-blue.svg") no-repeat right center;
-
 }
-
 
 .select-album-container .input-public {
   background: url("../img/collection.svg") no-repeat right center;
@@ -9460,7 +9459,7 @@ iframe {
   width: 72px;
   height: auto;
   margin-bottom: 24px;
-  opacity: .5;
+  opacity: 0.5;
   border-radius: 0;
 }
 
@@ -9480,18 +9479,26 @@ iframe {
   display: block;
   margin: 0 auto;
 }
-.ant-statistic-content-value{
+.ant-statistic-content-value {
   font-family: Iransans-Medium, sans-serif;
-  background:#f7f7f7;
+  background: #f7f7f7;
   font-size: 1.4rem;
-  color:#e68515;
-  text-align: left!important;
+  color: #e68515;
+  text-align: left !important;
 }
-.en-page{
-  text-align:left;
-  direction:ltr
+
+.countdown-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 }
-.fa-page{
-  text-align:right!important;
-  direction: rtl;
+.countdown-container > * {
+  align-self: center;
+  color: #e68515;
+}
+.countdown-text {
+  color: #adafb3;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 5px;
 }

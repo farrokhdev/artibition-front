@@ -8,10 +8,19 @@ const ExhibitionCard = (exhibition) => {
   const { t, i18n } = useTranslation();
   const CustomCountDown = (props) => (
     <span className="text-left" style={{ textAlign: "left" }}>
-      <Countdown format={`D : HH : mm`} {...props} />
-      <span className=" ant-statistic-content-value mt-1 text-left d-block">
-        {t("exhibitions-page.min")} {t("exhibitions-page.hour")}{" "}
-        {t("exhibitions-page.day")}
+      <Countdown format="D   :   HH   :   mm   " {...props} />
+      <span
+        className="countdown-text "
+        style={{
+          color: "#adafb3",
+          display: "flex",
+          flexDirection: "row-reverse",
+          gap: "5px",
+        }}
+      >
+        <span>{t("exhibitions-page.day")}</span>
+        <span>{t("exhibitions-page.hour")}</span>
+        <span>{t("exhibitions-page.min")}</span>
       </span>
     </span>
   );
@@ -72,20 +81,12 @@ const ExhibitionCard = (exhibition) => {
           {moment(Object.values(exhibition?.start_date)[0]).isAfter(
             moment.utc(moment().format("YYYY-MM-DD HH:mm:ss"))
           ) && (
-            <CustomCountDown
-              value={moment(Object.values(exhibition?.start_date)[0])}
-            />
-            // <span>
-            //   <Countdown
-            //     style={{ fontFamily: "Tahrir_Extra Bold" }}
-            //     value={moment(Object.values(exhibition?.start_date)[0])}
-            //     format={`D : HH : mm`}
-            //   />
-            //   <span className="ant-statistic-content-value mt-1">
-            //     {t("exhibitions-page.min")} {t("exhibitions-page.hour")}{" "}
-            //     {t("exhibitions-page.day")}
-            //   </span>
-            // </span>
+            <div>
+              <CustomCountDown
+                value={moment(Object.values(exhibition?.start_date)[0])}
+              />
+              <span>{t("exhibitions-page.to-start")}</span>
+            </div>
           )}
           {moment(Object.values(exhibition?.start_date)[0]).isBefore(
             moment.utc(moment().format("YYYY-MM-DD HH:mm:ss"))
@@ -93,20 +94,13 @@ const ExhibitionCard = (exhibition) => {
             moment(Object.values(exhibition?.end_date)[0]).isAfter(
               moment.utc(moment().format("YYYY-MM-DD HH:mm:ss"))
             ) && (
-              <CustomCountDown
-                value={moment(Object.values(exhibition?.end_date)[0])}
-              />
+              <div className="countdown-container">
+                <CustomCountDown
+                  value={moment(Object.values(exhibition?.end_date)[0])}
+                />
+                <span>{t("exhibitions-page.to-end")}</span>
+              </div>
             )}
-          {/* <div className="coundown">
-            <div className="timers" data-newdate="August 28, 2020 12:00 PDT">
-              <span className="timer-status">
-                {t("exhibitions-page.to-end")}
-              </span>
-              <div className="days"></div>
-              <div className="hours"></div>
-              <div className="minutes"></div>
-            </div>
-          </div> */}
         </div>
       </Link>
     </div>
