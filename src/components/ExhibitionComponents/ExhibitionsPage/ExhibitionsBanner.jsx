@@ -4,13 +4,15 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { EXHIBITION_LIST } from "../../../utils";
 import apiServices from "../../../utils/api.services";
+import queryString from "query-string";
+
 const ExhibitionsBanner = () => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const [exhibitions, setExhibitions] = useState([]);
   const getData = () => {
     apiServices
-      .get(EXHIBITION_LIST, "")
+      .get(EXHIBITION_LIST, queryString.stringify({ page_size: 12 }))
       .then((res) => {
         setExhibitions(res.data.data);
       })

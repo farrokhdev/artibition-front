@@ -45,8 +45,7 @@ const ExhibitionsList = () => {
           queryString.stringify({ page_size: 12, ...filter })
         )
         .then((res) => {
-          setExhibitions(res.data.data);
-          resolve({ list: res.data.data.results });
+          resolve(res.data.data);
         })
         .catch((err) => {
           console.log(err);
@@ -55,8 +54,8 @@ const ExhibitionsList = () => {
     });
   };
   const getAllExhibitions = async () => {
-    const result = await getData();
-    setAllExhibitions(result?.list);
+    const result = await getData({ page_size: 1000 });
+    setAllExhibitions(result?.results);
   };
   const getGalleries = (filter) => {
     apiServices
@@ -68,22 +67,19 @@ const ExhibitionsList = () => {
         console.log(err);
       });
   };
-  const getExhibitions = (filter) => {
-    apiServices
-      .get(
-        EXHIBITION_LIST,
-        queryString.stringify({ page_size: 1000, ...filter })
-      )
-      .then((res) => {
-        setAllExhibitions(res.data.data.results);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  const getExhibitionsForCards = async (filter) => {
+    //here we should add sidebar filters
+    const result = await getData(filter);
+    setExhibitions(result);
+  };
+  const getExhibitionsForSidebar = async (filter) => {
+    const result = await getData({ page_size: 1000, ...filter });
+    setAllExhibitions(result?.results);
   };
   const handleChangeType = (type) => {};
   useEffect(() => {
     getAllExhibitions();
+    getExhibitionsForCards();
     getGalleries();
   }, []);
   const createPagination = () => {
@@ -93,7 +89,7 @@ const ExhibitionsList = () => {
         <li
           className={`${i === exhibitions?.current_page_no ? "active" : ""} `}
         >
-          <a onClick={() => getData({ page: i })}>{i}</a>
+          <a onClick={() => getExhibitionsForCards({ page: i })}>{i}</a>
         </li>
       );
     }
@@ -122,7 +118,7 @@ const ExhibitionsList = () => {
 
                 <ExhibitionsFilterExhibition
                   exhibitions={allExhibitions}
-                  getExhibitions={getExhibitions}
+                  getExhibitions={getExhibitionsForSidebar}
                   handleFilterExhibition={handleFilterExhibition}
                 />
                 <ExhibitionsFilterType
