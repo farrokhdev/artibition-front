@@ -1,12 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import FilterSidBarInArtworks from "../../../pages/GalleryIntroduction/FilterSidBarInArtworks";
 // import { ExhabitionFilters } from "../Filters/ExhabitionFilters";
-
-export const ExhibitionsArtworkList = ({ reference }) => {
+import { ArtworksList } from "../../ArtworksPage";
+export const ExhibitionsArtworkList = ({ reference, exhibitionId }) => {
+  const [params, setParams] = useState({
+    status: "active",
+    // order: selectedOption,
+    // page: 1,
+    // size_id: size_id,
+    // category_id: category_id,
+    // toman_price_range_min: toman_price_range_min,
+    // toman_price_range_max: toman_price_range_max,
+    // dollar_price_range_min: dollar_price_range_min,
+    // dollar_price_range_max: dollar_price_range_max,
+    // discount: discountو
+  });
+  const [search, setSearch] = useState();
   return (
     <>
       <div className="default-content" ref={reference}>
-        <div className="content-header">
+        <ArtworksList
+          exhibitionId={exhibitionId}
+          params={params}
+          setParams={setParams}
+          search={search}
+          setSearch={setSearch}
+          clearFilterStorage={console.log("clearFilterStorage")}
+        />
+        {/* <div className="content-header">
           <div className="row">
             <div className="col-sm-3 col-xs-6">
               <div type="button" className="filter-btn">
@@ -663,7 +684,7 @@ export const ExhibitionsArtworkList = ({ reference }) => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

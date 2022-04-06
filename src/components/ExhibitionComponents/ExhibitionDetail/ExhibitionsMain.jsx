@@ -42,6 +42,7 @@ const ExhibitionsMain = () => {
         <ExhibitionsArtworkList
           reference={artworksRef}
           artworksList={artworksList}
+          exhibitionId={exhibitionInfo?.id}
         />
       </div>
     </>

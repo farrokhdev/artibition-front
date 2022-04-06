@@ -16,15 +16,17 @@ import {
 import apiServices from "../../utils/api.services";
 import { useLocation, useSearchParams } from "react-router-dom";
 import { numDiscriminant } from "../../utils/discriminant";
+import { isNil } from "lodash";
 
-const ArtworksList = ({
-  setParams,
-  setSearch,
-  params,
-  search,
-  clearFilterStorage,
-  filtersReducer,
-}) => {
+const ArtworksList = (props) => {
+  const {
+    setParams,
+    setSearch,
+    params,
+    search,
+    clearFilterStorage,
+    filtersReducer,
+  } = props;
   let location = useLocation();
 
   let [searchParams, setSearchParams] = useSearchParams();
@@ -143,15 +145,26 @@ const ArtworksList = ({
   };
 
   const getProductList = () => {
+    const defaultQuery = queryString.stringify(params, {
+      arrayFormat: "comma",
+      skipNull: true,
+      skipEmptyString: true,
+    });
+    console.log(
+      "testing",
+      queryString
+        .stringify({ exhibition_id: props?.exhibitionId })
+        .concat("&")
+        .concat(defaultQuery)
+    );
+    const query = isNil(props?.exhibitionId)
+      ? defaultQuery
+      : queryString
+          .stringify({ exhibition_id: props?.exhibitionId })
+          .concat("&")
+          .concat(defaultQuery);
     apiServices
-      .get(
-        ARTIST_PRODUCTS,
-        queryString.stringify(params, {
-          arrayFormat: "comma",
-          skipNull: true,
-          skipEmptyString: true,
-        })
-      )
+      .get(ARTIST_PRODUCTS, query)
       .then((res) => {
         if (res.data) {
           setProductList(res.data.data);

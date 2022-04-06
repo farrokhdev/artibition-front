@@ -101,13 +101,13 @@ const ExhibitionsList = () => {
           {
             gallery_id: [...selectedGalleries],
           },
-          { arrayFormat: "comma" }
+          { arrayFormat: "comma", skipNull: true, skipEmptyString: true }
         ),
         queryString.stringify(
           {
             type: [...selectedExhibitionsType],
           },
-          { arrayFormat: "comma" }
+          { arrayFormat: "comma", skipNull: true, skipEmptyString: true }
         ),
       ].join("&");
 
