@@ -1189,7 +1189,7 @@ function ArtworksPage(props) {
                                   width="280"
                                   alt="آرتیبیشن"
                                   className="img-responsive"
-                                  style={{ height: 280 }}
+                                  style={{ height: 280, objectFit :'contain' }}
                                 />
                                 <div className="tab-overly">
                                   <a

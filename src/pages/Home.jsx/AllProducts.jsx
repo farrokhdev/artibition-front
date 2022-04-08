@@ -103,7 +103,7 @@ export default function AllProducts({categories}) {
 
                                     src={product.medias && product.medias[0]?.exact_url}
                                     alt="artibition"
-                                    className="img-responsive" />
+                                    className="img-responsive " style={{objectFit : 'contain'}}/>
                                   <div className="tab-overly">
                                     <Link to={`/site/artworks-detail/?id=${product.id}&artist_id=${product.artist_id}`} className="btn-see hidden-xs hidden-sm">
                                       <span className="view-icon pull-right"></span>
