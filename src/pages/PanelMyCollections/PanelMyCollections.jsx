@@ -4,6 +4,7 @@ import HeaderPanel from "../../components/HeaderPanel/HeaderPanel";
 import SidebarPanel from "../../components/SidebarPanel/SidebarPanel";
 import { t } from "i18next";
 import { GetLanguage } from "../../utils/utils";
+// import { useTranslation } from "react-i18next";
 
 import ModalAddCollections from "./ModalAddCollections";
 import RecentlyVeiws from "../Home.jsx/RecentlyVeiws";
@@ -16,6 +17,8 @@ import moment from "jalali-moment";
 import CreateGallery from "../GalleryPanelMyGallery/CreateGallery";
 import ModalEditCollections from "./ModalEditCollections";
 function PanelMyCollections() {
+  // const { t, i18n } = useTranslation();
+
   const [visibleAddCollections, setVisibleAddCollections] = useState(false);
   const [visibleEditCollections, setVisibleEditCollections] = useState(false);
   const [collectionsDetails, setCollectionsDetails] = useState();
@@ -118,7 +121,9 @@ function PanelMyCollections() {
                     <div className="d-flex box-dir-reverse">
                       <div className="col p-0">
                         <div className="d-flex pull-dir">
-                          <h2 className="default-title ">کالکشن ها</h2>
+                          <h2 className="default-title ">
+                            {t("content-panel-my-albums.collections.title")}
+                          </h2>
                         </div>
                       </div>
                       <div className="col p-0">
@@ -130,7 +135,9 @@ function PanelMyCollections() {
                             data-target="#addnewcollection"
                             data-toggle="modal"
                           >
-                            افزودن کالکشن
+                            {t(
+                              "content-panel-my-albums.collections.table.add-btn"
+                            )}
                           </button>
                         </div>
                       </div>
@@ -141,11 +148,27 @@ function PanelMyCollections() {
                   <table className="table upload-art dir">
                     <thead>
                       <tr>
-                        <th scope="col">ردیف</th>
-                        <th scope="col">عنوان</th>
-                        <th scope="col">تعداد آثار</th>
-                        <th scope="col">آخرین ویرایش</th>
-                        <th scope="col">جزئیات</th>
+                        <th scope="col">
+                          {t("content-panel-my-albums.collections.table.row")}
+                        </th>
+                        <th scope="col">
+                          {t("content-panel-my-albums.collections.table.title")}
+                        </th>
+                        <th scope="col">
+                          {t(
+                            "content-panel-my-albums.collections.table.artworks-count"
+                          )}
+                        </th>
+                        <th scope="col">
+                          {t(
+                            "content-panel-my-albums.collections.table.latest-updates"
+                          )}
+                        </th>
+                        <th scope="col">
+                          {t(
+                            "content-panel-my-albums.collections.table.details"
+                          )}
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
@@ -189,7 +212,7 @@ function PanelMyCollections() {
                         })
                       ) : (
                         <tr>
-                          <td>هیچ دیتایی وجود ندارد</td>
+                          <td>{t("no-data")}</td>
                         </tr>
                       )}
                     </tbody>

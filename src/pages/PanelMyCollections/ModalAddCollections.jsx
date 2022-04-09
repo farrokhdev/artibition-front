@@ -292,7 +292,9 @@ function ModalAddCollections(props) {
                             </h6>
                             <div className="col-dimension">
                               <span className="col-dimension-title">
-                                ابعاد:
+                                {t(
+                                  "content-panel-my-albums.collections.dimentions"
+                                )}
                               </span>
                               <span className="col-dimension-body">
                                 <span className="dimension-width">
