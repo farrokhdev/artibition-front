@@ -129,6 +129,7 @@ function PanelCollectionsTab() {
                             height="840"
                             alt="آرتیبیشن"
                             className="img-responsive"
+                            style={{width:"100%",height:"200px",objectFit:"cover",objectPosition:"center"}}
                           />
                         </div>
                       </div>
@@ -144,7 +145,7 @@ function PanelCollectionsTab() {
           </tr>
         )}
       </div>
-      {followCollections?.length ? (
+      {followCollections?.length > 1 ? (
         <div className=" row-pagination">
           <Pagination total={50} />
         </div>

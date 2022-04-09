@@ -37,6 +37,20 @@ import ContactUs from "./pages/ContactUs/ContactUs";
 import Content from "./pages/Content/Content";
 import { Exhabitions } from "./pages/Exhabitions/Exhabitions";
 import Promotions from "./pages/Promotions/Promotions";
+import { EmailSuccess } from "./pages/Email/EmailSuccess";
+import { ArtworkRejected } from "./pages/Email/ArtworkRejected";
+import { CongratulationsEmail } from "./pages/Email/CongratulationsEmail";
+import { DiscountFromFavoritedArtist } from "./pages/Email/DiscountFromFavoritedArtist";
+import { IncompleteDataArtistProfile } from "./pages/Email/IncompleteDataArtistProfile.";
+import { InvalidArtwork } from "./pages/Email/InvalidArtwork";
+import { NewArtworkFromFavoritedArtist } from "./pages/Email/NewArtworkFromFavoritedArtist";
+import { NewsLetters } from "./pages/Email/NewsLetters";
+import { OfferPriceAccept } from "./pages/Email/OfferPriceAccept";
+import { PriceOfferEmail } from "./pages/Email/PriceOfferEmail";
+import { SuccessfullPurchaseEmail } from "./pages/Email/SuccessfullPurchaseEmail";
+import { UpgradeToArtistProfile } from "./pages/Email/UpgradeToArtistProfile";
+import { VerifyEmail } from "./pages/Email/VerifyEmail";
+import { SuggestedArtworkToUser } from "./pages/Email/SuggestedArtworkToUser";
 
 ReactGA.initialize("UA-220199370-1");
 
@@ -65,6 +79,24 @@ function App(props) {
           <Route path="/" element={<Home />}>
             <Route index path="home" element={<Home />} />
           </Route>
+          {/* Email routes  */}
+          <Route path="/email" >
+            <Route index path="email-success" element={<EmailSuccess />} />
+            <Route index path="artwork-rejected" element={<ArtworkRejected />} />
+            <Route index path="congratulations-email" element={<CongratulationsEmail />} />
+            <Route index path="discount-from-favorited-artist" element={<DiscountFromFavoritedArtist />} />
+            <Route index path="new-artwork-from-favorited-artist" element={<NewArtworkFromFavoritedArtist />} />
+            <Route index path="incomplete-data-artist-profile" element={<IncompleteDataArtistProfile />} />
+            <Route index path="invalid-artwork" element={<InvalidArtwork />} />
+            <Route index path="newsletter" element={<NewsLetters />} />
+            <Route index path="offer-price-accept" element={<OfferPriceAccept />} />
+            <Route index path="price-offer-email" element={<PriceOfferEmail />} />
+            <Route index path="successfull-purchase-email" element={<SuccessfullPurchaseEmail />} />
+            <Route index path="upgrade-to-artist-profile" element={<UpgradeToArtistProfile />} />
+            <Route index path="verify-email" element={<VerifyEmail />} />
+            <Route index path="suggested-artwork-to-user" element={<SuggestedArtworkToUser />} />
+          </Route>
+          {/* Email routes  */}
         </Routes>
 
         <Routes>

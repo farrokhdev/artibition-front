@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="86" viewBox="0 0 80 86">
+    <defs>
+        <radialGradient id="gin6uh84sb" cx=".5" cy=".5" r=".5" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-opacity=".161"/>
+            <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="52ifzr3nea" x1=".037" x2=".962" y1=".022" y2="1" gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="#e0e5f1"/>
+            <stop offset="1" stop-color="#a6b1c7"/>
+        </linearGradient>
+    </defs>
+    <g transform="translate(-1011 -413)">
+        <path fill="url(#52ifzr3nea)" d="M29.63 58.078a14.815 14.815 0 1 1 14.815 14.891A14.87 14.87 0 0 1 29.63 58.078zm13.1-6.3v6.3a1.714 1.714 0 0 0 1.71 1.718h6.268a1.718 1.718 0 0 0 0-3.436h-4.554v-4.583a1.71 1.71 0 1 0-3.419 0zM22.666 62.546H4a4 4 0 0 1-4-4V4a4 4 0 0 1 4-4h40.888a4 4 0 0 1 4 4v32.187a22.23 22.23 0 0 0-26.666 21.891 22.66 22.66 0 0 0 .445 4.467zM14.765 24.2a8.1 8.1 0 0 0-3.655 6.261.811.811 0 0 0 .808.812h25.051a.81.81 0 0 0 .808-.812c0-2.248-1.348-4.531-3.7-6.261a16.39 16.39 0 0 0-9.677-2.9 16.221 16.221 0 0 0-9.635 2.9zm4.123-11.913A5.556 5.556 0 1 0 24.444 6.7a5.577 5.577 0 0 0-5.556 5.586z" transform="translate(1021.001 413)"/>
+        <ellipse cx="40" cy="2.872" fill="url(#gin6uh84sb)" rx="40" ry="2.872" transform="translate(1011 493.256)"/>
+    </g>
+</svg>
