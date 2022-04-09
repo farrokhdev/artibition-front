@@ -21,7 +21,7 @@ const ArtworkRemoveFilter = (props) => {
               }
               onClick={() => {
                 setParams({});
-                navigate(`/site/artworks`);
+                // navigate(`/site/artworks`);
                 window.location.reload();
               }}
             >

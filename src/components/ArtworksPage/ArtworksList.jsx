@@ -28,7 +28,7 @@ const ArtworksList = (props) => {
     filtersReducer,
   } = props;
   let location = useLocation();
-
+  const { exhibitionId } = props;
   let [searchParams, setSearchParams] = useSearchParams();
 
   const { t, i18n } = useTranslation();
@@ -75,6 +75,7 @@ const ArtworksList = (props) => {
   const [length_min, setLength_min] = useState();
   const [length_max, setLength_max] = useState();
   const [productList, setProductList] = useState();
+
   const [selectedOption, setSelectedOption] = useState("popularity");
 
   const [categorieParams, setCategorieParams] = useState({
@@ -143,20 +144,13 @@ const ArtworksList = (props) => {
     }
     return setParams((state) => ({ ...state, size_id: sizesIdTotal }));
   };
-
-  const getProductList = () => {
+  const fetchProducts = () => {
     const defaultQuery = queryString.stringify(params, {
       arrayFormat: "comma",
       skipNull: true,
       skipEmptyString: true,
     });
-    console.log(
-      "testing",
-      queryString
-        .stringify({ exhibition_id: props?.exhibitionId })
-        .concat("&")
-        .concat(defaultQuery)
-    );
+
     const query = isNil(props?.exhibitionId)
       ? defaultQuery
       : queryString
@@ -164,7 +158,7 @@ const ArtworksList = (props) => {
           .concat("&")
           .concat(defaultQuery);
     apiServices
-      .get(ARTIST_PRODUCTS, query)
+      .get(SEARCH_PRODUCTS, query)
       .then((res) => {
         if (res.data) {
           setProductList(res.data.data);
@@ -174,6 +168,32 @@ const ArtworksList = (props) => {
       .catch((err) => {
         console.log("err", err);
       });
+  };
+  const getProductList = () => {
+    fetchProducts();
+    // const defaultQuery = queryString.stringify(params, {
+    //   arrayFormat: "comma",
+    //   skipNull: true,
+    //   skipEmptyString: true,
+    // });
+    // const query = isNil(props?.exhibitionId)
+    //   ? defaultQuery
+    //   : queryString
+    //       .stringify({ exhibition_id: props?.exhibitionId })
+    //       .concat("&")
+    //       .concat(defaultQuery);
+
+    // apiServices
+    //   .get(ARTIST_PRODUCTS, query)
+    //   .then((res) => {
+    //     if (res.data) {
+    //       setProductList(res.data.data);
+    //       setSuggestionsCount(res.data.data.count);
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     console.log("err", err);
+    //   });
   };
 
   useEffect(() => {
@@ -273,23 +293,24 @@ const ArtworksList = (props) => {
   };
 
   const getDiscount = () => {
-    apiServices
-      .get(
-        SEARCH_PRODUCTS,
-        queryString.stringify(params, {
-          arrayFormat: "comma",
-          skipNull: true,
-          skipEmptyString: true,
-        })
-      )
-      .then((res) => {
-        if (res.data) {
-          setProductList(res.data.data);
-        }
-      })
-      .catch((err) => {
-        console.log("err", err);
-      });
+    fetchProducts();
+    // apiServices
+    //   .get(
+    //     SEARCH_PRODUCTS,
+    //     queryString.stringify(params, {
+    //       arrayFormat: "comma",
+    //       skipNull: true,
+    //       skipEmptyString: true,
+    //     })
+    //   )
+    //   .then((res) => {
+    //     if (res.data) {
+    //       setProductList(res.data.data);
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     console.log("err", err);
+    //   });
   };
 
   useEffect(() => {

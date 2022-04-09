@@ -1,7 +1,11 @@
 import { isNil } from "lodash";
 import React, { useEffect, useRef, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { EXHIBITION_INFO } from "../../../utils";
+import {
+  EXHIBITION_INFO,
+  EXHIBITION_PRODUCT,
+  SINGLE_EXHIBITION,
+} from "../../../utils";
 import apiServices from "../../../utils/api.services";
 import { ArtistsExhibitions } from "./ArtistsExhibitions";
 import { ExhibitionsArtworkList } from "./ExhibitionsArtworkList";
@@ -12,11 +16,14 @@ const ExhibitionsMain = () => {
   const [artworksList, setArtworksList] = useState([]);
   const [artistsList, setArtistsList] = useState([]);
   const [exhibitionInfo, setExhibitionInfo] = useState();
+
   const getData = async (gallery_id, exhibitionId) => {
     apiServices
-      .get(EXHIBITION_INFO(gallery_id, exhibitionId), "")
+      .get(SINGLE_EXHIBITION(exhibitionId), "")
       .then((res) => {
         setExhibitionInfo(res.data.data);
+
+        setArtistsList(res.data.data.artist);
       })
       .catch((err) => {
         console.log(err);
@@ -38,12 +45,15 @@ const ExhibitionsMain = () => {
           reference={artworksRef}
           exhibitionInfo={exhibitionInfo}
         />
-        {/* <ArtistsExhibitions artistsList={artistsList} /> */}
-        <ExhibitionsArtworkList
-          reference={artworksRef}
-          artworksList={artworksList}
-          exhibitionId={exhibitionInfo?.id}
-        />
+        {artistsList?.length > 0 && (
+          <ArtistsExhibitions artistsList={artistsList} />
+        )}
+        {!isNil(exhibitionInfo?.id) && (
+          <ExhibitionsArtworkList
+            reference={artworksRef}
+            exhibitionId={exhibitionInfo?.id}
+          />
+        )}
       </div>
     </>
   );

@@ -17,7 +17,7 @@ const ArtworkCard = ({ product, discountPrice, callBack }) => {
         >
           <div className="col-img">
             {product?.is_special && <div class="tags tags-spacial">ویژه</div>}
-            {console.log("product================>", product)}
+            {/* {console.log("product================>", product)} */}
             {product?.discount?.value ? (
               <div class="tags tags-off persian-num">
                 {" "}
