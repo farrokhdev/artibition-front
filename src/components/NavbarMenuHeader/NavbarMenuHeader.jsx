@@ -203,9 +203,9 @@ export default function NavbarMenuHeader(props) {
                       <a data-toggle="tab">{t("galleries")}</a>
                     </li>
                     <li>
-                      <a data-toggle="tab" href="#nav13">
+                      <Link to="/site/exhibitions" data-toggle="tab">
                         {t("events")}
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
@@ -286,7 +286,18 @@ export default function NavbarMenuHeader(props) {
                     const minutes = tempTime.minutes();
                     return (
                       <div key={exhibition?.id}>
-                        <a href="#" className="cols">
+                        <a
+                          onClick={() => {
+                            navigate("/site/exhibitionDetail", {
+                              state: {
+                                id: exhibition?.id,
+                                gallery_id: exhibition?.gallery?.id,
+                              },
+                              replace: false,
+                            });
+                          }}
+                          className="cols"
+                        >
                           <div className="col-img">
                             <div className="tags tags-events">
                               {Language === "fa-IR" ? "مجازی" : "virtual"}

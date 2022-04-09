@@ -24,10 +24,7 @@ export default function NavbarMenuHeader(props) {
   const Language = GetLanguage();
   const { t, i18n } = useTranslation();
   const [exhibitionList, setExhibitionList] = useState();
-  console.log(
-    "🚀 ~ file: NavbarMenuHeader.jsx ~ line 22 ~ NavbarMenuHeader ~ exhibitionList",
-    exhibitionList
-  );
+
   const [categorys, setCategorys] = useState([]);
   const [categorieParams, setCategorieParams] = useState({
     page: 1,
@@ -230,9 +227,9 @@ export default function NavbarMenuHeader(props) {
                   <a data-toggle="tab">{t("galleries")}</a>
                 </li>
                 <li>
-                  <a data-toggle="tab" href="#nav13">
+                  <Link to="/site/exhibitions" data-toggle="tab">
                     {t("events")}
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

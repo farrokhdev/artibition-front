@@ -5,7 +5,7 @@ import Slider from "react-slick";
 import Artwork1 from "../../assets/img/mainpage/hnrpqkfiup@3x.jpg";
 import { useTranslation } from "react-i18next";
 import { follow } from "../../utils/utils";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SliderSetting = {
   dots: false,
@@ -143,9 +143,9 @@ function Collection({ collectionItem, getArtistCategory }) {
                   <span className="view-icon pull-dir"></span>
                   <span>{t("collections-list.view")}</span>
                 </a>
-                <a href="#" className="btn-sale">
+                <Link to="#" className="btn-sale">
                   {t("collections-list.shop_now")}
-                </a>
+                </Link>
                 {/* <button
                   className={"like-icon " + (item?.likes ? "isLike" : "")}
                   onClick={() =>

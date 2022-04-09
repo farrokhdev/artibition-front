@@ -1518,6 +1518,31 @@
     "upload_resume": "آپلود رزومه(PDF)",
     "submit": "ارسال"
   },
+
+  "exhibitions-page": {
+    "events": "رویدادها",
+    "select-event-date": "تاریخ رویداد را انتخاب کنید",
+    "filter": "فیلتر",
+    "remove-all": "حذف همه",
+    "galleries": "گالری‌های",
+    "search-gallery": "گالری مورد نظر را جستجو کنید",
+    "to-end": "تا پایان",
+    "to-start": "تا شروع",
+    "local": "حضوری",
+    "online": "مجازی",
+    "day": "روز",
+    "min": "دقیقه",
+    "hour": "ساعت",
+    "exhibitions": "نمایشگاه‌ها",
+    "search-exhibition": "نمایشگاه مورد نظر را جستجو کنید",
+    "exhibition-type": "نوع نمایشگاه",
+    "all": "همه رویدادها",
+    "local-exhibition": "نمایشگاه‌های حضوری",
+    "online-exhibition": "نمایشگاه‌های مجازی",
+    "promotions": "فراخوان‌ها",
+    "finished": "پایان یافته"
+  },
+
   "no-data": "هیچ دیتایی وجود ندارد",
   "size": "ابعاد: "
 }

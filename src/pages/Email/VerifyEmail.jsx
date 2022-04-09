@@ -1,5 +1,5 @@
 import React from "react";
-import successLogo from "../../assets/img/email/logo.svg";
+
 import so_twitter from "../../assets/img/email/twitter.svg";
 import so_instagram from "../../assets/img/email/instagram.svg";
 import so_aparat from "../../assets/img/email/aparat.svg";

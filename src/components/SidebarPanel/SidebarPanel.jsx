@@ -406,9 +406,7 @@ function SidebarPanel(props) {
                 </li>
                 <li className="sidebar-icon my-4" id="my-albums">
                   <Link to="/panel/my-collections">
-                    <span className="sidebar-nav-margin">
-                      {t("drawer-panel.nav-my-collections")}
-                    </span>
+                    <span className="sidebar-nav-margin">کالکشن های من</span>
                   </Link>
                 </li>
                 <li className="sidebar-icon my-4" id="mypurchase">

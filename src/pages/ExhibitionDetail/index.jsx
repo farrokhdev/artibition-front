@@ -1,11 +1,12 @@
 import React from "react";
-import { ExhabitionsMain } from "../../components/ExhabitionComponents/ExhabitionsMain";
+
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import Menu from "../../components/Menu/Menu";
 import { useTranslation } from "react-i18next";
+import ExhibitionsMain from "../../components/ExhibitionComponents/ExhibitionDetail/ExhibitionsMain";
 
-export const Exhabitions = () => {
+const ExhibitionDetail = () => {
   const { t, i18n } = useTranslation();
   return (
     <>
@@ -13,10 +14,11 @@ export const Exhabitions = () => {
         <Header />
         <Menu />
         <div className="container">
-          <ExhabitionsMain t={t} i18n={i18n} />
+          <ExhibitionsMain t={t} i18n={i18n} />
         </div>
         <Footer />
       </div>
     </>
   );
 };
+export default ExhibitionDetail;

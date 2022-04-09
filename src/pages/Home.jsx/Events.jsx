@@ -10,6 +10,7 @@ import QueryString from "qs";
 import { useTranslation } from "react-i18next";
 import Countdown from "antd/lib/statistic/Countdown";
 import { timeToStr } from "../../utils/utils";
+import { Link } from "react-router-dom";
 // import Countdown from 'react-countdown';
 
 export default function Events() {
@@ -78,9 +79,9 @@ export default function Events() {
             </h2>
           </div>
           <div className="col-xs-4">
-            <a href="#" className="btn-readmore pull-dir-rev">
+            <Link to="/site/exhibitions" className="btn-readmore pull-dir-rev">
               {t("event-all")}
-            </a>
+            </Link>
           </div>
         </div>
         <div className="clearfix"></div>

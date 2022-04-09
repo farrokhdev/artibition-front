@@ -20,6 +20,7 @@ function PanelArtManagement() {
     const [suggestionsCount, setSuggestionsCount] = useState("");
     const [products, setProducts] = useState({});
 
+    console.log("products", products);
 
     const [params, setParams] = useState({
         page: 1,
@@ -52,8 +53,6 @@ function PanelArtManagement() {
     }
 
 
-
-
     const countStatus = {
         "pending": 0,
         "pending_edition": 0,
@@ -63,6 +62,7 @@ function PanelArtManagement() {
 
     const AllCountStatus = products.active + products['pending_edition'] + products.pending + products.rejected
 
+    console.log("AllCountStatus" , AllCountStatus);
 
     // Get my product list
     const getProductList = () => {
@@ -86,6 +86,7 @@ function PanelArtManagement() {
                     setProductList(resp.data.data.results)
                     setSuggestionsCount(resp.data.data.count)
 
+                    console.log("itemmmmmm" , resp.data.data.results);
                     resp.data.data.results.map((item) => {
                         switch (item.status) {
                             case "pending":
@@ -117,6 +118,7 @@ function PanelArtManagement() {
 
     // This section is for filtering the status of the list of works
     const handleStatus = (e) => {
+        console.log(e , "event");
         if (e === "is_sold") {
 
             setParams({

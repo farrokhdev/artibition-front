@@ -11,7 +11,7 @@ import RouterConfig from "./main/router";
 import { useTranslation } from "react-i18next";
 import Login from "./pages/Login/Login";
 import Signup from "./pages/Singup/Signup";
-import ArtworksPage from "./pages/ArtworksPage/ArtworksPage";
+import ArtworksPage from "./pages/ArtworksPage";
 import DetailsArtwork from "./pages/DetailsArtwork/DetailsArtwork";
 import ArtistsPage from "./pages/ArtistsPage/ArtistsPage";
 import ProfileArtist from "./pages/ProfileArtist/ProfileArtist";
@@ -35,8 +35,9 @@ import WorkWithUs from "./pages/WorkWithUs/WorkWithUs";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import ContactUs from "./pages/ContactUs/ContactUs";
 import Content from "./pages/Content/Content";
-import { Exhabitions } from "./pages/Exhabitions/Exhabitions";
+import ExhibitionDetail from "./pages/ExhibitionDetail";
 import Promotions from "./pages/Promotions/Promotions";
+
 import { EmailSuccess } from "./pages/Email/EmailSuccess";
 import { ArtworkRejected } from "./pages/Email/ArtworkRejected";
 import { CongratulationsEmail } from "./pages/Email/CongratulationsEmail";
@@ -51,6 +52,8 @@ import { SuccessfullPurchaseEmail } from "./pages/Email/SuccessfullPurchaseEmail
 import { UpgradeToArtistProfile } from "./pages/Email/UpgradeToArtistProfile";
 import { VerifyEmail } from "./pages/Email/VerifyEmail";
 import { SuggestedArtworkToUser } from "./pages/Email/SuggestedArtworkToUser";
+import ExhibitionsPage from "./pages/ExhibitionsPage";
+
 
 ReactGA.initialize("UA-220199370-1");
 
@@ -102,7 +105,8 @@ function App(props) {
         <Routes>
           <Route path="site" animate={true}>
             <Route path="artworks" element={<ArtworksPage />} />
-            <Route path="exhabitions" element={<Exhabitions />} />
+            <Route path="exhibitionDetail" element={<ExhibitionDetail />} />
+            <Route path="exhibitions" element={<ExhibitionsPage />} />
             <Route path="promotions" element={<Promotions />} />
 
             <Route path="artworks-detail" element={<DetailsArtwork />} />
