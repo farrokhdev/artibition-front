@@ -1,0 +1,10 @@
+// FOR FAVORITE PAGE
+.user-favorit-artsts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  button {
+    // max-width: 300px !important;
+    padding: 5px 10px;
+  }
+}

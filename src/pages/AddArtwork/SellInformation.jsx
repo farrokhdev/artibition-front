@@ -284,104 +284,105 @@ function SellInformation({ prev, next }) {
                     }
 
 
+                   
+
+                    <div className="row">
                     <div className="col-sm-12">
 
 
-                        {!isValidEdition || isValidSaleInformation ?
+{!isValidEdition || isValidSaleInformation ?
+    <>
+
+
+        <label className="d-flex box-dir-reverse lable-checkbox public-group text-dir pr-0">
+
+            <Form.Item name="remember" valuePropName="checked" noStyle>
+                <Checkbox type="checkbox" checked={isValidSaleInformation} onChange={e => setIsValidSaleInformation(e.target.checked)}></Checkbox>
+            </Form.Item>
+            <span className='mx-2'>{t("content-panel-add-artwork.art_info.multi_edition")}</span>
+        </label>
+
+        <div className="d-flex box-dir-reverse">
+
+            {isValidSaleInformation ?
+
+                <div className="col-sm-12 pt-4">
+
+                    <Form.List name="items">
+                        {(fields, { add, remove }) => (
                             <>
+                                {fields.map(({ key, name, ...restField }) => (
+                                    <Space key={key} style={{ display: 'flex', marginBottom: 8 }} align="baseline">
 
 
-                                <label className="d-flex box-dir-reverse lable-checkbox public-group text-dir pr-0">
+                                        <div className="public-group">
+                                            <Form.Item
+                                                className="w-100"
+                                                {...restField}
+                                                name={[name, 'edition_number']}
+                                                rules={[{ required: true, message: 'Missing first name' }]}
+                                            >
+                                                <Input
+                                                    type="text"
+                                                    id="info-207"
+                                                    className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
+                                                    placeholder={t("content-panel-add-artwork.edition")}
+                                                />
+                                            </Form.Item>
 
-                                    <Form.Item name="remember" valuePropName="checked" noStyle>
-                                        <Checkbox type="checkbox" checked={isValidSaleInformation} onChange={e => setIsValidSaleInformation(e.target.checked)}></Checkbox>
-                                    </Form.Item>
-                                    <span className='mx-2'>{t("content-panel-add-artwork.art_info.multi_edition")}</span>
-                                </label>
-
-                                <div className="d-flex box-dir-reverse">
-
-                                    {isValidSaleInformation ?
-
-                                        <div className="col-sm-12 pt-4">
-
-                                            <Form.List name="items">
-                                                {(fields, { add, remove }) => (
-                                                    <>
-                                                        {fields.map(({ key, name, ...restField }) => (
-                                                            <Space key={key} style={{ display: 'flex', marginBottom: 8 }} align="baseline">
-
-
-                                                                <div className="public-group">
-                                                                    <Form.Item
-                                                                        className="w-100"
-                                                                        {...restField}
-                                                                        name={[name, 'edition_number']}
-                                                                        rules={[{ required: true, message: 'Missing first name' }]}
-                                                                    >
-                                                                        <Input
-                                                                            type="text"
-                                                                            id="info-207"
-                                                                            className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                                                            placeholder={t("content-panel-add-artwork.edition")}
-                                                                        />
-                                                                    </Form.Item>
-
-                                                                </div>
-
-                                                                <div className="public-group">
-                                                                    <Form.Item
-                                                                        className="w-100"
-                                                                        {...restField}
-                                                                        name={[name, 'base_toman_price']}
-                                                                        rules={[{ required: true, message: 'Missing last name' }]}
-                                                                    >
-                                                                        <Input
-                                                                            type="text"
-                                                                            id="info-201"
-                                                                            className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                                                            placeholder={t("content-panel-add-artwork.price_ir")}
-                                                                        />
-                                                                    </Form.Item>
-                                                                </div>
-                                                                <div className="public-group">
-                                                                    <Form.Item
-                                                                        className="w-100"
-                                                                        {...restField}
-                                                                        name={[name, 'base_dollar_price']}
-                                                                        rules={[{ required: true, message: 'Missing last name' }]}
-                                                                    >
-                                                                        <Input
-                                                                            type="text"
-                                                                            id="info-207"
-                                                                            className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                                                            placeholder={t("content-panel-add-artwork.edition_usd")}
-                                                                        />
-                                                                    </Form.Item>
-                                                                </div>
-                                                                <MinusCircleOutlined onClick={() => remove(name)} />
-                                                            </Space>
-                                                        ))}
-                                                        <Form.Item>
-
-                                                            <Button type="dashed" onClick={() => add()} block icon={<PlusOutlined />}>
-                                                                افزودن ادیشن
-                                                            </Button>
-                                                        </Form.Item>
-                                                    </>
-                                                )}
-                                            </Form.List>
                                         </div>
-                                        : ""}
 
-                                </div>
+                                        <div className="public-group">
+                                            <Form.Item
+                                                className="w-100"
+                                                {...restField}
+                                                name={[name, 'base_toman_price']}
+                                                rules={[{ required: true, message: 'Missing last name' }]}
+                                            >
+                                                <Input
+                                                    type="text"
+                                                    id="info-201"
+                                                    className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
+                                                    placeholder={t("content-panel-add-artwork.price_ir")}
+                                                />
+                                            </Form.Item>
+                                        </div>
+                                        <div className="public-group">
+                                            <Form.Item
+                                                className="w-100"
+                                                {...restField}
+                                                name={[name, 'base_dollar_price']}
+                                                rules={[{ required: true, message: 'Missing last name' }]}
+                                            >
+                                                <Input
+                                                    type="text"
+                                                    id="info-207"
+                                                    className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
+                                                    placeholder={t("content-panel-add-artwork.edition_usd")}
+                                                />
+                                            </Form.Item>
+                                        </div>
+                                        <MinusCircleOutlined onClick={() => remove(name)} />
+                                    </Space>
+                                ))}
+                                <Form.Item>
+
+                                    <Button type="dashed" onClick={() => add()} block icon={<PlusOutlined />}>
+                                        افزودن ادیشن
+                                    </Button>
+                                </Form.Item>
                             </>
-                            :
-                            ""
-                        }
-                    </div>
+                        )}
+                    </Form.List>
+                </div>
+                : ""}
 
-                    <div className="row">
+        </div>
+    </>
+    :
+    ""
+}
+</div>
                         {isValidSaleInformation || !isValidEdition ?
                             <>
                                 <div className="col-sm-12">

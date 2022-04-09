@@ -82,7 +82,6 @@ function ArtworksTab({ artistId, translations }) {
                   <Link
                     to={`/site/artworks-detail/?id=${item?.id}&artist_id=${item?.artist_id}`}
                   >
-
                     <div className="col-img">
                       <img
                         src={item.medias[0]?.exact_url}
@@ -131,13 +130,13 @@ function ArtworksTab({ artistId, translations }) {
                         <span className="col-dimension-body mx-2">
                           <div className="d-flex">
                             <span className="dimension-width">
-                              {item?.width}
+                              {item?.width || "نامشخص"}
                             </span>
                             <span className="mx-2">
                               {t("card_artwork.size.in")}
                             </span>
                             <span className="dimension-height ">
-                              {item?.height}
+                              {item?.height || "نامشخص"}
                             </span>
                           </div>
                         </span>
@@ -155,10 +154,9 @@ function ArtworksTab({ artistId, translations }) {
               {/* <div className="clearfix "></div> */}
             </>
           ))}
-
         </div>
       </div>
-    </div >
+    </div>
   );
 }
 

@@ -73,7 +73,7 @@ function Login(props) {
             refresh: res.data.data.refresh,
           });
           getProfile().then((res) => {
-            message.success("به آرتیبیشن خوش آمدید");
+            message.success(t("login_success"));
             console.log(userRole);
             if (userRole !== "user") {
               setTimeout(() => {

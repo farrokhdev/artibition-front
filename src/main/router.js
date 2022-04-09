@@ -44,6 +44,7 @@ import BecomeSeller from "../pages/BecomeSeller/BecomeSeller";
 import PanelBiddingPrice from "../pages/PanelBiddingPrice/PanelBiddingPrice";
 import { useSelector } from "react-redux";
 import GalleryPanelAddArtwork from "../pages/GalleryPanelAddArtwork/GalleryPanelAddArtwork";
+
 import ViewArtwork from "../pages/ViewArtwork/ViewArtwork";
 
 const RouterConfig = (props) => {
@@ -95,6 +96,7 @@ const RouterConfig = (props) => {
             <Route path="contents" element={<PanelContentList />} />
             <Route path="create-content" element={<PanelCreateContent />} />
             <Route path="add-artwork" element={<AddArtwork />} />
+
             <Route path="view-artwork" element={<ViewArtwork />} />
             <Route
               path="*"
@@ -126,6 +128,7 @@ const RouterConfig = (props) => {
               path="*"
               element={<Navigate to="/panel/dashboard" replace />}
             />
+
             <Route path="view-artwork" element={<ViewArtwork />} />
           </>
         )}

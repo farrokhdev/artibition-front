@@ -121,7 +121,7 @@ function PanleMyAlbums() {
                     <div className="d-flex box-dir-reverse">
                       <div className="col p-0">
                         <div className="d-flex pull-dir">
-                          <h2 className="default-title ">مجموعه‌ها</h2>
+                          <h2 className="default-title "></h2>
                         </div>
                       </div>
                       <div className="col p-0">
@@ -134,7 +134,7 @@ function PanleMyAlbums() {
                             data-target="#addnewcollection"
                             data-toggle="modal"
                           >
-                            افزودن مجموعه
+                            {t("content-panel-my-albums.albums.table.add-btn")}
                           </button>
                         </div>
                       </div>
@@ -145,11 +145,26 @@ function PanleMyAlbums() {
                   <table className="table upload-art dir">
                     <thead>
                       <tr>
-                        <th scope="col">ردیف</th>
-                        <th scope="col">عنوان</th>
-                        <th scope="col">تعداد آثار</th>
-                        <th scope="col">آخرین ویرایش</th>
-                        <th scope="col">جزئیات</th>
+                        <th scope="col">
+                          {t("content-panel-my-albums.albums.table.row")}
+                        </th>
+                        <th scope="col">
+                          {t("content-panel-my-albums.albums.table.title")}
+                        </th>
+                        <th scope="col">
+                          {t(
+                            "content-panel-my-albums.albums.table.artworks-count"
+                          )}
+                        </th>
+                        <th scope="col">
+                          {t(
+                            "content-panel-my-albums.albums.table.latest-updates"
+                          )}
+                        </th>
+                        <th scope="col">
+                          {" "}
+                          {t("content-panel-my-albums.albums.table.details")}
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
@@ -202,7 +217,9 @@ function PanleMyAlbums() {
                 <div className="d-flex box-dir-reverse public-header">
                   <div className="col p-0">
                     <div className="d-flex pull-dir">
-                      <h2 className="default-title text-dir">اطلاعات هنری</h2>
+                      <h2 className="default-title text-dir">
+                        {t("content-panel-my-albums.art_info.title")}
+                      </h2>
                     </div>
                   </div>
                   <div className="col p-0">
@@ -226,13 +243,17 @@ function PanleMyAlbums() {
                     })}
                     // className="fa-resume"
                   >
-                    <div className="bolder-title text-dir">رزومه</div>
+                    <div className="bolder-title text-dir">
+                      {t("content-panel-my-albums.art_info.resume")}
+                    </div>
                     <p className="text-justify">
                       {artistDetails?.translations?.fa?.biography}
                     </p>
                   </div>
                   <div className="en-resume en">
-                    <span className="bolder-title">Resume</span>
+                    <span className="bolder-title">
+                      {t("content-panel-my-albums.art_info.resume")}
+                    </span>
                     <p className="text-justify">
                       {artistDetails?.translations?.en?.biography}
                     </p>
@@ -243,7 +264,7 @@ function PanleMyAlbums() {
                     data-toggle="modal"
                     data-target="#exhibition-list"
                   >
-                    لیست نمایشگاه‌ها
+                    {t("content-panel-my-albums.art_info.btn")}
                   </button>
                 </div>
               </div>

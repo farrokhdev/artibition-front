@@ -34,6 +34,7 @@ export default function Collection() {
       .get(ARTIST_CATEGORY, QueryString.stringify(params))
       .then((res) => {
         if (res.data) {
+
           const tempCollections = res.data.data?.results?.filter(
             (item) => item?.products?.length > 2
           );
@@ -105,7 +106,9 @@ export default function Collection() {
               className="owl-carousel d-flex"
               id="tab6"
             >
+
               {artistCategory?.map((item, index) => (
+
                 <div>
                   <Link to="/site/collections-list" className="cols">
                     <div className="col-img mx-4">
@@ -127,6 +130,7 @@ export default function Collection() {
                                 height="280"
                                 className="img-responsive clolection-image w-100"
                               />
+
                             </div>
                           )}
                           {item?.products[2] && (
@@ -139,6 +143,7 @@ export default function Collection() {
                               />
                             </div>
                           )}
+
                         </div>
                       }
                       {/* {item?.products[1] || item?.products[2] && <div className="d-flex collection-secondrow  px-0">
