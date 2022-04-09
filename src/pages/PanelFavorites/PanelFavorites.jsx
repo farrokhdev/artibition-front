@@ -14,47 +14,46 @@ function PanelFavorites() {
 
     function callback(key) {
         console.log(key);
-      }
+    }
 
     return (
         <>
-    <HeaderPanel t={t} />
+            <HeaderPanel t={t} />
 
-    <div className="panel-style margin-top-20">
-        <SidebarPanel />
-        <div className="custom-container " id="main">
-        <div className="box box-2">
-            <div className="sec6">
-                <div className="public-header">
-                    <div className="pull-dir">
-                        <h2 className="default-title">{t("content-panel-favorites.title")}</h2>
+            <div className="panel-style margin-top-20">
+                <SidebarPanel />
+                <div className="custom-container " id="main">
+                    <div className="box box-2">
+                        <div className="sec6">
+                            <div className="public-header">
+                                <div className="pull-dir">
+                                    <h2 className="default-title">{t("content-panel-favorites.title")}</h2>
+                                </div>
+                            </div>
+
+
+                            <div className="default-tab tab-3 tab-interval purchase ">
+
+                                <Tabs className='dir tab-m-0' defaultActiveKey="1" onChange={callback}>
+                                    <TabPane className="mx-4" tab={t("content-panel-favorites.tabs.artworks")} key="1">
+                                        <ArtworksTab />
+                                    </TabPane>
+                                    <TabPane tab={t("content-panel-favorites.tabs.followers")} key="2">
+                                        <FollowersTab />
+                                    </TabPane>
+                                    <TabPane tab={t("content-panel-favorites.tabs.collections")} key="3">
+                                        <PanelCollectionsTab />
+                                    </TabPane>
+                                </Tabs>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
 
-
-                <div className="default-tab tab-3 tab-interval purchase ">
-
-                    <Tabs className='dir' defaultActiveKey="1" onChange={callback}>
-                            <TabPane className="mx-4" tab={t("content-panel-favorites.tabs.artworks")} key="1">
-                                <ArtworksTab/>
-                            </TabPane>
-                            <TabPane tab={t("content-panel-favorites.tabs.followers")} key="2">
-                                <FollowersTab/>
-                            </TabPane>
-                            <TabPane tab={t("content-panel-favorites.tabs.collections")} key="3">
-                                <PanelCollectionsTab/>
-                            </TabPane>   
-                            
-                    </Tabs>
-                </div>
-
+                <BasketFooterPanel />
             </div>
-        </div>
-        </div>
-
-        <BasketFooterPanel />
-    </div>
-</>
+        </>
     )
 }
 

@@ -8,6 +8,7 @@ import { ARTIST_EXHIBITION } from '../../utils';
 import QueryString from 'qs';
 import apiServices from '../../utils/api.services';
 import { useTranslation } from 'react-i18next';
+import { timeToStr } from '../../utils/utils';
 
 function ExhibitionsTab({artistId}) {
 
@@ -18,11 +19,10 @@ function ExhibitionsTab({artistId}) {
     const [params, setParams] = useState({
         // search: "",
         page: 1,
-        artist_content__id: artistId,
   
     })
     const getArtistExhibition = () => {
-        apiServices.get(ARTIST_EXHIBITION, QueryString.stringify(params))
+        apiServices.get(ARTIST_EXHIBITION(artistId), QueryString.stringify(params))
             .then(res => {
                 if (res.data) {
                     setArtistExhibition(res.data.data)
@@ -32,44 +32,53 @@ function ExhibitionsTab({artistId}) {
                 console.log("err", err)
             })
     }
-    useEffect(() => {
-        setParams(state => ({ ...state, artist_content__id: artistId }))
-    }, [artistId]);
-  
+
     useEffect(() => {
         getArtistExhibition()
     }, [params]);
 
     return (
         <div id="artist4" className="tab-pane ">
-                        <div className="d-flex box-dir-reverse row-artist-exhibition">
+            {artistExhibition?.map((item,index) => 
+                        <div key={index} className="d-flex box-dir-reverse row-artist-exhibition">
                             <div className="col-sm-3">
                                 <div className="col-img">
-                                    <div className="tags tags-events">{t("artist_profile.local")}</div>
-                                    <img src={artist20} width="840" height="840" alt=""
+                                    <div className="tags tags-events">
+                                    {i18n.language === 'fa-IR' ?
+                                    item.type === "virtual" ? 'مجازی' : item.type === "real" ? 'حضوری' : 'مجازی-حضوری'
+                                    :item.type === "virtual" ? 'virtual' : item.type === "real" ? 'real' : 'virtual-real'
+                                }</div>
+                                    <img src={item?.poster && item.poster[0]?.exact_url} width="840" height="840" alt=""
                                          className="img-responsive"/>
                                 </div>
                             </div>
                             <div className="col-sm-9">
-                                <h3 className="default-title text-dir">{t("artist_profile.COLLECTION")} ۵</h3>
-                                <div className="text-dir">گالری آرتیبیشن</div>
+                                <h3 className="default-title text-dir">
+                                {i18n.language === 'fa-IR' ?
+                                item.translations?.fa?.name
+                                    :
+                                item.translations?.en?.name
+                            }
+                                    </h3>
+                                <div className="text-dir">
+                                {i18n.language === 'fa-IR' ?
+                                item?.gallery?.translations?.fa?.title
+                                :
+                                item?.gallery?.translations?.en?.title
+                        }
+                                </div>
                                 <div className="col-date text-dir">
-                                    <span className="persian-num">16</span>
+                                    <span className="persian-num">{timeToStr(item.start_date[`${item.type=== 'virtual_real'? 'virtual' : item.type}_start_date`], "jDD")}</span>
                                     <span>الی</span>
-                                    <span className="persian-num">22</span>
-                                    <span>اردیبهشت</span>
+                                    <span className="persian-num">{timeToStr(item.end_date[`${item.type=== 'virtual_real'? 'virtual' : item.type}_end_date`], "jDD")}</span>
+                                    <span>{timeToStr(item.end_date[`${item?.type}_end_date`], "jMM")}</span>
                                 </div>
                                 <p className="text-justify text-dir">
-                                    پنجمین نمایشگاه کلکسیونر با حضور طیف گسترده‌ای از گالری‌داران و مجموعه‌داران هنر در
-                                    گالری آرتیبیشن در اولین سلسله نمایشگاه‌های کلکسیونر بیش از ۵۰ اثر و در دومین و سومین
-                                    دورۀ آن،
-                                    مجموعه‌داران با مشارکت خود، به‌ترتیب با بیش از 70 و 78 اثر از تاثیرگذارترین
-                                    هنرمندان کلاسیک، سرشناس معاصر و جوانان پیشرو را گرد هم آوردند. در کلکسیونر چهارم 41
-                                    اثر از 33هنرمند کلاسیک حضور داشت و اکنون در کلکسیونر پنج با حضور
-                                    جمع گسترده‌تری از مجموعه‌داران و گالری‌داران، تعداد 56 اثر از هنرمندان و مشاهیری چون
-                                    اردشیر محصص، آیدین آغداشلو، ژازه تباتبایی، حسین محجوبی، رضا بانگیز،
-                                    ... توکل اسماعیلی، علی‌اکبر صادقی، مهدی حسینی، محمد احصایی، محمود زنگنه، نیکزاد
-                                    نجومی، علی گلستانه، فرشید ملکی، علی مشهدی‌الاصل، قباد شیوا...
+                                {i18n.language === 'fa-IR' ?
+                                item?.translations?.fa?.statement
+                                :
+                                item?.translations?.en?.statement
+                    }
                                     <a href="#">
                                         <span>{t("artwork.about_artwork.more")}</span>
                                         <img src={arrow_left_icon} width="16" height="16" alt=""/>
@@ -78,7 +87,8 @@ function ExhibitionsTab({artistId}) {
 
                             </div>
                         </div>
-                        <div className="d-flex box-dir-reverse row-artist-exhibition">
+            )}
+                        {/* <div className="d-flex box-dir-reverse row-artist-exhibition">
                             <div className="col-sm-3">
                                 <div className="col-img">
                                     <div className="tags tags-events text-dir">{t("artist_profile.local")}</div>
@@ -96,7 +106,7 @@ function ExhibitionsTab({artistId}) {
                                     <span>اردیبهشت</span>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
     )
 }

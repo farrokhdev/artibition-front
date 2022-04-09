@@ -6,7 +6,7 @@ import pqjkkwfnml from '../../assets/img/mainpage/pqjkkwfnml@3x.jpg';
 export default function News() {
     return (
         <div  className="news">
-        <div  className="row">
+        <div  className="row dir">
             <div className="public-header">
                 <div className="d-flex">
                     <h2 className="default-title">{t("news-and-article-art.title")}</h2>

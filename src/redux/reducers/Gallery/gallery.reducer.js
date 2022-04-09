@@ -2,8 +2,11 @@ import types from './gallery.types';
 
 const initial_state = {
     is_send_invitation: false,
-    id: "",
-    selected_artwork_redux: []
+    gallery_id: "",
+    selected_artwork_redux: [],
+    galleryProfile: null,
+    editGalleryMode: false,
+
 }
 
 const galleryReducer = (state = initial_state, { type, payload }) => {
@@ -13,7 +16,20 @@ const galleryReducer = (state = initial_state, { type, payload }) => {
             console.log("payload=>", payload);
             return {
                 ...state,
-                id: payload,
+                gallery_id: payload,
+            }
+
+        case types.GALLERY_PROFILE:
+            console.log("payload=>", payload);
+            return {
+                ...state,
+                galleryProfile: payload,
+            }
+        case types.EDIT_GALLERY_MODE:
+            console.log("payload=>", payload);
+            return {
+                ...state,
+                editGalleryMode: payload,
             }
         case types.SELECTED_ARTWORKS:
             console.log("payload=>", payload);

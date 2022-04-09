@@ -8,9 +8,10 @@ import { t } from 'i18next';
 import apiServices from '../../utils/api.services';
 import { ACCOUNT_PROFILE } from '../../utils';
 import queryString from 'query-string';
-
+import { useLocation } from 'react-router-dom';
 function RegistrationArtist() {
     const { Step } = Steps;
+    const Location = useLocation();
     const [current, setCurrent] = useState(0);
     const [params, setParams] = useState({});
     const [userProfil, setUserProfil] = useState({});
@@ -25,7 +26,11 @@ function RegistrationArtist() {
         setCurrent(current - 1);
     };
 
-
+    useEffect(() => {
+        if (Location?.state?.current) {
+            setCurrent(Location?.state?.current)
+        }
+    }, []);
 
     const getAccountProfile = () => {
         apiServices.get(ACCOUNT_PROFILE, queryString.stringify(params))

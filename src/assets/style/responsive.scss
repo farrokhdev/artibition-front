@@ -1117,7 +1117,7 @@
     .tab-overly .like-icon:focus {
         position: relative;
         padding: 8px;
-        box-sizing: content-box;
+        box-sizing: border-box;
         left: 0;
         top: 0;
     }
@@ -1308,10 +1308,6 @@
     .promotion-result > .row > .col-sm-4 {
         padding-right: 40px;
         padding-left: 40px;
-    }
-
-    .artwork-imggallery {
-        height: 770px;
     }
 
     .allproducts {
@@ -1507,3 +1503,28 @@
         overflow: visible;
     }
 }
+@media (max-width: 992px) {
+    .addtoalbum p {
+        font-size: 15px;
+    }
+
+    .addtoalbum .btn {
+        padding: 5px 10px;
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 767px) {
+    .select-mainimg {
+        flex-direction: column;
+    }
+
+    .select-mainimg .carousel-indicators {
+        flex-direction: row;
+        width: 100%;
+        margin-top: 16px;
+    }
+
+    .select-mainimg .carousel-indicators li {
+        margin-left: 10px;
+    }}

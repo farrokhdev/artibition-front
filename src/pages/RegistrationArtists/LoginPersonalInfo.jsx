@@ -1,35 +1,40 @@
 import React, { useEffect } from 'react';
 import { Form, Input, Select, Checkbox, message } from 'antd';
-import { t } from 'i18next';
+import { useTranslation } from "react-i18next";
 import apiServices from '../../utils/api.services';
 import { ACCOUNT_PROFILE } from '../../utils';
 import DatePicker, { Calendar } from 'react-datepicker2';
 import moment from 'moment-jalaali';
 import edit_name from '../../assets/img/edit_name.svg';
 
+
 function LoginPersonalInfo({ next, prev, userProfil }) {
 
     const [form] = Form.useForm();
-  
+    const { t, i18n } = useTranslation();
     // Update artist information
     const onFinish = (values) => {
+        let lang = i18n.language === 'fa-IR' ? "fa" : "en"
         let payload = {
             ...values,
             "translations": {
                 "fa": {
                     "first_name": values?.first_name,
                     "last_name": values?.last_name,
+                    "nick_name": lang && values?.nick_name
                 }, "en": {
                     "first_name": values?.first_name_en,
                     "last_name": values?.last_name_en,
+                    "nick_name": lang && values?.nick_name
                 }
             },
             "birth_date": values?.birth_date.format("YYYY-MM-DD"),
             "mobile": values?.mobile,
             "email": values?.email,
-            "join_magazine" : values?.join_magazine,
+            "join_magazine": values?.join_magazine,
 
         }
+
         apiServices.patch(ACCOUNT_PROFILE, payload)
             .then(res => {
                 if (res.data) {
@@ -51,10 +56,10 @@ function LoginPersonalInfo({ next, prev, userProfil }) {
             first_name_en: userProfil?.translations?.en?.first_name,
             last_name: userProfil?.translations?.fa?.last_name,
             last_name_en: userProfil?.translations?.en?.last_name,
-            username: userProfil?.username,
+            nick_name: userProfil?.translations?.fa?.nick_name,
             mobile: userProfil?.mobile,
             email: userProfil?.email,
-            birth_date: moment(userProfil?.birth_date, "YYYY-MM-DD"),
+            birth_date: userProfil?.birth_date && moment(userProfil?.birth_date, "YYYY-MM-DD"),
             join_magazine: userProfil?.join_magazine
 
         })
@@ -85,7 +90,6 @@ function LoginPersonalInfo({ next, prev, userProfil }) {
                             required placeholder="نام"
                             value="" />
                     </Form.Item>
-                  
                 </div>
                 <div class="public-group en">
                     <Form.Item
@@ -101,7 +105,7 @@ function LoginPersonalInfo({ next, prev, userProfil }) {
                             required placeholder="First Name"
                             value="" />
                     </Form.Item>
-                   
+
                 </div>
                 <div class="public-group">
                     <Form.Item
@@ -117,7 +121,7 @@ function LoginPersonalInfo({ next, prev, userProfil }) {
                             required placeholder="نام خانوادگی"
                             value="" />
                     </Form.Item>
-                   
+
                 </div>
                 <div class="public-group en">
                     <Form.Item
@@ -133,12 +137,12 @@ function LoginPersonalInfo({ next, prev, userProfil }) {
                             required placeholder="Last Name"
                             value="" />
                     </Form.Item>
-                  
+
                 </div>
                 <div class="public-group">
                     <Form.Item
                         className="w-100 "
-                        name="username"
+                        name="nick_name"
                         rules={[
                             {
                                 required: true,
@@ -150,22 +154,22 @@ function LoginPersonalInfo({ next, prev, userProfil }) {
                             value="" />
                     </Form.Item>
 
-                   
+
                 </div>
                 <div class="public-group">
-                        <Form.Item
-                            className="w-100 "
-                            name="mobile"
-                            rules={[
-                                {
-                                    required: true,
-                                    message: "تکمیل این فیلد ضروری است",
-                                }
-                            ]}>
-                            <Input className="form-control input-public border-0 px-4  d-flex"
-                                required placeholder="شماره همراه"
-                                value="" />
-                        </Form.Item>
+                    <Form.Item
+                        className="w-100 "
+                        name="mobile"
+                        rules={[
+                            {
+                                required: true,
+                                message: "تکمیل این فیلد ضروری است",
+                            }
+                        ]}>
+                        <Input className="form-control input-public border-0 px-4  d-flex"
+                            required placeholder="شماره همراه"
+                            value="" />
+                    </Form.Item>
                 </div>
                 <div class="public-group">
                     <Form.Item

@@ -6,12 +6,13 @@ import download from '../../assets/img/download.svg'
 import { ARTIST, CORE_CATEGORIS, PRODUCTS_CATEGORIES } from '../../utils';
 import apiServices from '../../utils/api.services';
 import { GetLanguage } from '../../utils/utils'
-
-
+import { useDispatch } from 'react-redux';
+import { artistForm } from '../../redux/reducers/Artwork/artwork.action';
 
 function LoginArtistInfoForm({ next, prev }) {
 
     const [form] = Form.useForm();
+    const dispach = useDispatch();
     const [categorys, setCategorys] = useState([]);
     const Language = GetLanguage();
     const [newArtwork, setNewArtwork] = useState({ category_id: undefined })
@@ -19,8 +20,8 @@ function LoginArtistInfoForm({ next, prev }) {
 
 
     const onFinish = (values) => {
-        let peyload = {
-            "artist_type_id":[newArtwork?.category_id],
+        let payload = {
+            "artist_type_id": [newArtwork?.category_id],
             // "artist_type_id":[2],
             "translations": {
                 "fa": {
@@ -29,17 +30,20 @@ function LoginArtistInfoForm({ next, prev }) {
                     "biography": values.biography_en,
                 }
             },
+
         }
-        apiServices.post(ARTIST,peyload)
-            .then(res=>{
-                if (res.data) {
-                    next()
-                }
-            })
-            .catch(err=>{
-                console.log(err);
-            })
-        console.log('Success:', values);
+        dispach(artistForm(payload))
+        next()
+        // apiServices.post(ARTIST,payload)
+        //     .then(res=>{
+        //         if (res.data) {
+        //             next()
+        //         }
+        //     })
+        //     .catch(err=>{
+        //         console.log(err);
+        //     })
+        // console.log('Success:', values);
     };
 
     // get list of sub category for show to user and select by users in dropdown to create art field
@@ -102,18 +106,18 @@ function LoginArtistInfoForm({ next, prev }) {
                             }
                         ]}> */}
 
-                        {/* -------   input select categories   ------- */}
+                    {/* -------   input select categories   ------- */}
 
-                        <Select
-                            className='form-control input-public text-dir border-0 px-2  d-flex'
-                            placeholder={t("content-panel-add-artwork.art_info.artwork_field")}
-                            options={categorys}
-                            allowClear
-                            onChange={handleSetCategory}
-                            id="info-203"
-                        >
+                    <Select
+                        className='form-control input-public text-dir border-0 px-2  d-flex'
+                        placeholder={t("content-panel-add-artwork.art_info.artwork_field")}
+                        options={categorys}
+                        allowClear
+                        onChange={handleSetCategory}
+                        id="info-203"
+                    >
 
-                        </Select>
+                    </Select>
 
                     {/* </Form.Item> */}
                     <div class="col-xs-6">
@@ -196,7 +200,13 @@ function LoginArtistInfoForm({ next, prev }) {
                 <div class="form-group">
                     <Form.Item
                         className="w-100"
-                        name="biography">
+                        name="biography"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'required',
+                            }
+                        ]}>
                         <TextArea className="default-input"
                             placeholder="رزومه خود را به فارسی وارد نمایید" rows="8" />
                     </Form.Item>
@@ -205,7 +215,13 @@ function LoginArtistInfoForm({ next, prev }) {
                 <div class="form-group">
                     <Form.Item
                         className="w-100"
-                        name="biography_en">
+                        name="biography_en"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'required',
+                            }
+                        ]}>
                         <TextArea className="default-input"
                             placeholder="رزومه خود را به انگلیسی وارد نمایید" rows="8" />
                     </Form.Item>

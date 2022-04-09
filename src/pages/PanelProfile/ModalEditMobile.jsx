@@ -40,9 +40,6 @@ function ModalEditMobile(props) {
                 if (res.data) {
                     setNewField(values?.mobile)
                     setShowNumber(false)
-                    // setTimeout(() => {
-
-                    // }, 500);
                 } else {
                     message.error({ content: "خطا در ثبت اطلاعات", style: { marginTop: '10vh' } })
                 }
@@ -57,6 +54,9 @@ function ModalEditMobile(props) {
                 if (res.data) {
                     setShowNumber(true)
                     getItems();
+                    setvisibleEditMobile(false)
+                } else {
+                    message.error({ content: "مجددا درخواست اعتبار سنجی دهید", style: { marginTop: '10vh' } })
                 }
             })
             .catch(err => {
@@ -137,61 +137,6 @@ function ModalEditMobile(props) {
                                 <Button className="btn-confirm-phone" onClick={() => setShowNumber(true)}>ویرایش شماره همراه</Button>
                             </div>
                         </Form>
-
-
-
-                        // <Form
-                        //     onFinish={onSub}
-                        //     form={form}
-                        //     wrapperCol={{ span: 24 }}>
-                        //     <div className="modal-body">
-                        //         <div>
-                        //             <div className="row">
-                        //                 <div className="row ">
-
-                        //                     <p className="darkgray">
-                        //                         ما یک کد به
-                        //                         <span className="px-2">{newField}</span>
-
-                        //                         ارسال کردیم ، برای تأیید
-                        //                         شماره تلفن خود ، کد را در زیر وارد کنید.
-                        //                     </p>
-                        //                     <div className="col-md-6">
-                        //                         <div className="input-group ">
-                        //                             <label className="default-lable">کد تایید</label>
-                        //                             <Form.Item
-                        //                                 className="w-100"
-                        //                                 name="otp"
-                        //                                 rules={[
-                        //                                     {
-                        //                                         required: true,
-                        //                                         message: "تکمیل این فیلد ضروری است",
-                        //                                     }
-                        //                                 ]}>
-                        //                                 <Input className="default-input"
-                        //                                     type="text"
-                        //                                     placeholder="کد تایید را اینجا وارد نمایید." />
-                        //                             </Form.Item>
-                        //                         </div>
-                        //                     </div>
-                        //                 </div>
-                        //             </div>
-                        //             <div className="row">
-                        //                 <div className="col-md-6 button-group">
-                        //                     <Button className="btn-default" htmlType="submit">
-                        //                         تایید
-                        //                     </Button>
-                        //                     <Button className="btn-gray me-2" onClick={() => setShowNumber(true)}>
-                        //                         ویرایش موبایل
-                        //                     </Button>
-                        //                 </div>
-                        //             </div>
-                        //         </div>
-                        //     </div>
-                        // </Form>
-
-
-
                     }
                 </div>
 

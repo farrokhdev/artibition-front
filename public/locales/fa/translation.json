@@ -123,7 +123,12 @@
   "see-all": "مشاهده همه",
   "event-all": "همه رویدادها",
   "collection-all": "همه کالکشن‌ها",
+  "home-modal-exhibition-sale-title": "حراج بزرگ آرتیبیشن",
+  "home-modal-exhibition-sale-content": "تنها ۳ روز دیگر تا پایان جشنواره پاییزه آرتیبیشن فرصت باقیست. هم اکنون با استفاده از کد زیر از تخفیف ۲۰ درصدی تمام آثار هنری آرتیبیشن بهره‌مند شوید.",
   "deadline-send-artwroks": "مهلت ارسال آثار : ",
+  "day": "روز",
+  "hour": "ساعت",
+  "minute": "دقیقه",
   "upload": "آپلود اثر",
   "toman": "تومان",
   "dollar": "دلار",
@@ -236,7 +241,7 @@
     },
     "veiw_home": "ارسال و بازدید درب منزل در تهران",
     "shipment": "تحویل طی ۱ الی ۳ روز کاری",
-    "show_collector": "ارائه توسط مجموعه دار",
+    "show_collector": "ارائه توسط ",
     "visit_artwork": "امکان مراجعه حضوری قبل از خرید",
     "bidding": "پیشنهاد قیمت",
     "simillar_artworks": "آثار مشابه",
@@ -274,7 +279,8 @@
       "cancel_offer": "رد پیشنهاد"
     },
     "modal_similar_artwork": {
-      "title": "آثار مشابه"
+      "title": "آثار مشابه",
+      "title1": "ایجاد کالکشن"
     },
     "modal_bidding_artwork": {
       "title": "ارسال پیشنهاد به هنرمند",
@@ -375,7 +381,7 @@
         "title": "موضوع"
       },
       "material": {
-        "title": "",
+        "title": "متریال",
         "placeholder": "",
         "rapid": "راپید",
         "watercolor": "آبرنگ",
@@ -470,6 +476,7 @@
     "nav-dashboard-gallery": "داشبورد گالری",
     "nav-art-management": "مدیریت آثار",
     "nav-mypurchases": "خریدهای من",
+    "biding-price": "پیشنهاد قیمت",
     "nav-orders": "سفارشات",
     "nav-wallet": "کیف پول",
     "nav-my-albums": "مجموعه‌های من",
@@ -479,6 +486,7 @@
     "nav-exhibitions": "نمایشگاه ها",
     "nav-artists": "هنرمندان",
     "nav-my-galleries": "گالری‌های من",
+    "nav-my-collections": "کالکشن های من",
     "nav-content": "محتوا",
     "invite": {
       "btn": "دعوت دوستان",
@@ -489,10 +497,16 @@
     "info-box": {
       "register": {
         "title": "ثبت گالری",
-        "text": "اگر صاحب گالری هستید آن را ثبت نمایید"
+        "text": "اگر صاحب گالری هستید آن را ثبت نمایید",
+        "created": "درخواست شما با موفقیت ثبت شد",
+        "pending": "در حال بررسی",
+        "correction": "نیازمند اصلاح",
+        "rejected": "رد شده",
+        "approved": "تایید شده"
       },
       "artists": {
         "title": "ثبت‌نام هنرمندان",
+        "text-success": "درخواست شما تایید شده است",
         "text": "به عنوان هنرمند در آرتیبیشن فعالیت نمایید"
       },
       "seller": {
@@ -526,13 +540,14 @@
     "order": "شماره سفارش",
     "price-artwork": "قیمت اثر",
     "your-bidding": "پیشنهاد شما",
+    "your-price": "پیشنهاد شما",
     "artist-bidding": "پیشنهاد هنرمند",
     "payment-date": "تاریخ پرداخت",
     "status": "وضعیت",
     "order-details": "جزییات بیشتر",
     "x": "در",
     "btn-sell": "فروش در آرتیبیشن",
-    "artwok-return": "خرید اثر",
+    "artwok-return": "ارجاع اثر",
     "paid": {
       "title": "پرداخت شده",
       "empty": {
@@ -643,6 +658,7 @@
       "resume": "رزومه",
       "veiw": "مشاهده",
       "approved_artist": "هنرمند تایید شده",
+      "send": "ارسال شده",
       "not_send": "ارسال نشده",
       "approved_1": "تایید شده"
     },
@@ -708,8 +724,8 @@
   "content-panel-orders": {
     "filters": {
       "all": "همه سفارش‌ها",
-      "Review" : "برسی مجدد",
-      "Active_on_the_site" : "فعال در سایت",
+      "Review": "برسی مجدد",
+      "Active_on_the_site": "فعال در سایت",
       "to_artibition": "منتظر ارسال اثر به آرتیبیشن",
       "artibition_to_customer": "درحال ارسال از آرتیبیشن به مشتری",
       "delivered": "تحویل شده به مشتری"
@@ -790,8 +806,10 @@
       "status": "وضعیت",
       "details": "جزئیات",
       "active": "فعال",
+      "inactive": "غیرفعال",
       "edit": "ویرایش",
-      "video": "ویدیوئی"
+      "video": "ویدیوئی",
+      "other": "سایر"
     }
   },
   "content-panel-create-content": {
@@ -871,7 +889,7 @@
     "table": {
       "row": "ردیف",
       "image": "تصویر",
-      "gallery_name": "نام گالری",
+      "exhibition_name": "نام نمایشگاه",
       "type": "نوع",
       "start": "شروع",
       "end": "پایان",
@@ -947,7 +965,7 @@
       "bio_fa": "بیوگرافی هنرمند",
       "bio_en": "artist`s biography",
       "confirm_btn": "افزودن هنرمند",
-      "upload_artist_picture":"آپلود تصویر هنرمند",
+      "upload_artist_picture": "آپلود تصویر هنرمند",
       "artist_info": "اطلاعات هنرمند"
     },
     "subject_fa": "عنوان",
@@ -1110,6 +1128,8 @@
       "title": "اطلاعات هنری",
       "artwork_name": "Artwork Name",
       "artwork_title": "عنوان اثر",
+      "artwork_titles": "Artwork title",
+      "artist_name": "نام هنرمند",
       "artwork_subject": "موضوع",
       "artwork_field": "رشته هنری",
       "artwork_technique": "تکنیک",
@@ -1127,6 +1147,7 @@
       "tag_en": "افزودن تگ (انگلیسی)",
       "text_tag_en": "تگ‌های انگلیسی به جستجوی آسان‌تر آثار شما توسط علاقه‌مندان خارجی زبان کمک می‌نماید",
       "next_step": "مرحله بعد",
+      "final-step": "ثبت نهایی",
       "cencel": "انصراف"
     },
     "sale_info": "اطلاعات فروش",
@@ -1203,6 +1224,7 @@
       "price": "تومان",
       "spacial": "ویژه",
       "sold_out": "فروخته شد",
+      "not_sold": "فروخته نشده",
       "btn_next": "ادامه",
       "btn_prev": "قبلی"
     },
@@ -1232,6 +1254,10 @@
     "special": "ویژه"
   },
   "cart": {
+    "general": {
+      "login_error": "ابتدا وارد حساب کاربری شوید"
+    },
+    "view-pay": "مشاهده و ثبت سفارش",
     "empty": {
       "title": "سبد خرید خالی است!",
       "description": "تاکنون اثری به سبد خرید اضافه نشده است. جهت خرید آثار آرتیبیشن با زدن دکمه ''درخواست خرید اثر'' اقدام به خرید آن نمایید",
@@ -1241,6 +1267,7 @@
       "cart": "سبد خرید شما",
       "total_price": "مبلغ قابل پرداخت",
       "next": "ادامه فرآیند خرید",
+      "add_order": "ثبت سفارش",
       "price_unit": "تومان",
       "less_price_received_separately": "هزینه سفارش‌های کمتر از ۱ میلیون تومان به صورت جداگانه دریافت می‌شود"
     },
@@ -1288,6 +1315,7 @@
     "address_step": {
       "title": "انتخاب آدرس تحویل اثر",
       "new_address_btn": "افزودن آدرس جدید",
+      "address_select": "لطفا یک آدرس را انتخاب کنید.",
       "back_btn": "بازگشت ",
       "prev_step": "به مرحله قبل",
       "no_address_message": "شما تاکنون آدرسی ثبت نکرده‌اید!",
@@ -1302,6 +1330,7 @@
         "postal_code": "کد پستی",
         "postal_code_description": "کد پستی می‌بایست ۱۰ رقم و بدون خط تیره باشد",
         "receiver_information": "اطلاعات گیرنده",
+        "receiver_select": "انتخاب گیرنده",
         "receiver_fullname": "نام و نام خانوادگی گیرنده",
         "phone_number": "شماره همراه",
         "national_code": "کد ملی",
@@ -1310,7 +1339,11 @@
         "receiver_checkbox": "گیرنده اثر خودم هستم",
         "send_friend_checkbox": "اثر را برای دوستم ارسال می‌کنم",
         "confirm_btn": "ثبت و تأیید آدرس",
-        "select_address_map": "انتخاب آدرس روی نقشه"
+        "select_address_map": "انتخاب آدرس روی نقشه",
+        "enter_recipient_information": "اطلاعات گیرنده را وارد کنید",
+        "enter_the_recipient_name": "نام گیرنده را وارد کنید",
+        "enter_the_mobile_number": "شماره همراه را وارد کنید",
+        "enter_the_national_code": "کد ملی را وارد کنید"
       }
     },
     "pay_step": {
@@ -1411,7 +1444,77 @@
     "visite_select": "پربازدید",
     "sell_select": "پرفروش"
   },
-  "add-new-artist-by-gallery":{
-    "upload_avatar_error":"لطفا یک عکس برای هنرمند آپلود کنید"
+  "add-new-artist-by-gallery": {
+    "upload_avatar_error": "لطفا یک عکس برای هنرمند آپلود کنید"
+  },
+  "page404": {
+    "title": "متأسفانه صفحه مورد نظر یافت نشد",
+    "btn": "بازگشت به صفحه اصلی"
+  },
+  "clipboard": {
+    "success_message": "با موفقیت کپی شد"
+  },
+  "contact-us": {
+    "keep_in_touch": "ارسال پیام",
+    "keep_in_touch_description": "در صورت وجود هرگونه سوال در خصوص آثار و سایت آرتیبیشن و همچنین ارسال پیشنهاد و انتقاد، می‌توانید آن را از طریق فرم زیر ارسال نمایید.",
+    "fullname": "نام و نام خانوادگی",
+    "email_phone": "شماره همراه یا ایمیل",
+    "description": "متن پیام",
+    "write_your_message": " ...پیام خود را بنویسید",
+    "send": "ارسال پیام",
+    "contact_info": "راه‌های ارتباطی",
+    "advice_on_buying_artwork": "مشاوره در خرید آثار هنری",
+    "email": "آدرس ایمیل",
+    "address": "نشانی",
+    "artists-guide": "راهنمای هنرمندان",
+    "support": "شماره تماس پشتیبانی",
+    "messages": {
+      "please_enter_the_information": "لطفا مشخصات را وارد کنید.",
+      "full_name_least_characters_long": "نام و نام خانوادگی باید حداقل 7 کاراکتر باشد.",
+      "email_phone_least_characters_long": "اطلاعات تماس باید حداقل 9 کاراکتر باشد.",
+      "enter_message": "لطفا متن پیام را وارد کنید.",
+      "upload_resume": "لطفا فایل رزومه را آپلود کنید.",
+      "successful_sent": "پیام شما با موفقیت ارسال شد",
+      "send_message_failed": "خطا در ارسال اطلاعات"
+    }
+  },
+  "work-with-us": {
+    "terms_cooperation": "شرایط همکاری با آرتیبیشن",
+    "terms_cooperation_description": "می‌خواهیم برای تعالی هنر سرزمین‌مان قدمی ارزشمند و بزرگ برداریم که این مهم، نیازمند دانش و ذوق هنری است. از این‌رو بر آنیم با ایجاد محیطی صمیمی و حرفه‌ای در جهت خدمت‌رسانی به هنرمندان، هنردوستان و جامعه‌ی هنرهای تجسمی گروهی توانا و قدرتمند گرد هم آوریم :در صورت علاقه‌مندی به همراهی ما می‌توانید رزومه و اطلاعات خود را به ما ارسال نمائید.",
+    "preparation_art_news": "تهیه‌ی خبرهای هنری",
+    "introducing_artists": "معرفی هنرمندان به سایت",
+    "introducing_galleries": "معرفی گالری ها و انجمن ها",
+    "art_education": "آموزش هنر",
+    "interviewing_artists": "مصاحبه با هنرمندان و ساخت کلیپ",
+    "contact_us": "پیشنهاد همکاری با ما",
+    "fullname": "نام و نام خانوادگی",
+    "email": "ایمیل",
+    "phone": "شماره همراه",
+    "description": "متن پیام",
+    "upload_resume": "آپلود رزومه(PDF)",
+    "submit": "ارسال"
+  },
+  "exhibitions-page": {
+    "events": "رویدادها",
+    "select-event-date": "تاریخ رویداد را انتخاب کنید",
+    "filter": "فیلتر",
+    "remove-all": "حذف همه",
+    "galleries": "گالری‌های",
+    "search-gallery": "گالری مورد نظر را جستجو کنید",
+    "to-end": "تا پایان",
+    "to-start": "تا شروع",
+    "local": "حضوری",
+    "online": "مجازی",
+    "day": "روز",
+    "min": "دقیقه",
+    "hour": "ساعت",
+    "exhibitions": "نمایشگاه‌ها",
+    "search-exhibition": "نمایشگاه مورد نظر را جستجو کنید",
+    "exhibition-type": "نوع نمایشگاه",
+    "all": "همه رویدادها",
+    "local-exhibition": "نمایشگاه‌های حضوری",
+    "online-exhibition": "نمایشگاه‌های مجازی",
+    "promotions": "فراخوان‌ها",
+    "finished": "پایان یافته"
   }
 }

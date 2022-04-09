@@ -12,7 +12,7 @@ function GalleryContact({galleryIntroduction}) {
         <div id="gallery6" class="tab-pane fade in active">
             <div class="col-md-6 col-md-offset-3">
                 <ul class="gallery-contact">
-                    <li id="gallery-contact-address">
+                    <li className='text-dir' id="gallery-contact-address">
                     {galleryIntroduction ? i18n.language === 'fa-IR' ?
                          galleryIntroduction?.locations[0]?.translations?.fa?.city + " " + galleryIntroduction?.locations[0]?.translations?.fa?.address
                         :
@@ -22,17 +22,17 @@ function GalleryContact({galleryIntroduction}) {
                         ١٥٦،
                         زيرزمين */}
                     </li>
-                    <li class="persian-num" id="gallery-contact-phone">
+                    <li class="persian-num text-dir" id="gallery-contact-phone">
                         <a href={galleryIntroduction?.phone}>{galleryIntroduction?.phone}</a>
                     </li>
-                    <li class="persian-num" id="gallery-contact-time">
+                    <li class="persian-num text-dir" id="gallery-contact-time">
                     {i18n.language === 'fa-IR' ?
                         galleryIntroduction?.translations?.fa?.work_hours 
                         :
                         galleryIntroduction?.translations?.en?.work_hours
                     }                        
                     </li>
-                    <li id="gallery-contact-mail">
+                    <li className='text-dir' id="gallery-contact-mail">
                         <a href="http://gallery-han.com" target="_blank">{galleryIntroduction?.web_site}</a>
                     </li>
                 </ul>

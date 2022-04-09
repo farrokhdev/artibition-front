@@ -14,47 +14,46 @@ function PanelMessages() {
 
     function callback(key) {
         console.log(key);
-      }
+    }
 
     return (
         <>
-    <HeaderPanel t={t} />
+            <HeaderPanel t={t} />
 
-    <div className="panel-style margin-top-20">
-        <SidebarPanel />
-        <div className="custom-container " id="main">
-        <div className="box box-2 dir">
-            <div className="sec6">
-                <div className="public-header">
-                    <div className="pull-dir">
-                        <h2 className="default-title">{t("content-panel-messages.title")}</h2>
+            <div className="panel-style margin-top-20">
+                <SidebarPanel />
+                <div className="custom-container " id="main">
+                    <div className="box box-2 dir">
+                        <div className="sec6">
+                            <div className="public-header">
+                                <div className="pull-dir">
+                                    <h2 className="default-title">{t("content-panel-messages.title")}</h2>
+                                </div>
+                            </div>
+
+
+                            <div className="default-tab tab-3 tab-interval purchase ">
+
+                                <Tabs className='dir tab-m-0' defaultActiveKey="1" onChange={callback}>
+                                    <TabPane className="mx-4" tab={t("content-panel-messages.tabs.notifications")} key="1">
+                                        <NotificationTab />
+                                    </TabPane>
+                                    <TabPane tab={t("content-panel-messages.tabs.members.title")} key="2">
+                                        <MessageMembersTab />
+                                    </TabPane>
+                                    <TabPane tab={t("content-panel-messages.tabs.tickets.title")} key="3">
+                                        <TicketsTab />
+                                    </TabPane>
+                                </Tabs>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
 
-
-                <div className="default-tab tab-3 tab-interval purchase ">
-
-                    <Tabs className='' defaultActiveKey="1" onChange={callback}>
-                            <TabPane className="mx-4" tab={t("content-panel-messages.tabs.notifications")} key="1">
-                                <NotificationTab/>
-                            </TabPane>
-                            <TabPane tab={t("content-panel-messages.tabs.members.title")} key="2">
-                                <MessageMembersTab/>
-                            </TabPane>
-                            <TabPane tab={t("content-panel-messages.tabs.tickets.title")} key="3">
-                                <TicketsTab/>
-                            </TabPane>   
-                            
-                    </Tabs>
-                </div>
-
+                <BasketFooterPanel />
             </div>
-        </div>
-        </div>
-
-        <BasketFooterPanel />
-    </div>
-</>
+        </>
     )
 }
 

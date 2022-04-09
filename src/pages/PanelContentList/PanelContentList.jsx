@@ -6,37 +6,74 @@ import BasketFooterPanel from '../../components/BasketFooterPanel/BasketFooterPa
 
 import artwork1 from '../../assets/img/artworks/artwork-1.jpg';
 import plus_white_icon from '../../assets/img/plus-white.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import apiServices from '../../utils/api.services';
-import { ARTIST_CONTENT, ARTIST_ME } from '../../utils';
+import { ARTIST_CONTENT, ARTIST_ME, GALLERY_CONTENT } from '../../utils';
 import queryString from 'query-string';
 import { useSelector } from 'react-redux';
 import moment from 'jalali-moment';
 import { GetLanguage } from '../../utils/utils'
+import { editContentModeFunc } from '../../redux/reducers/Exhibition/exhibition.action';
+import { useDispatch } from 'react-redux';
 
 
 function PanelContentList() {
 
-    const { id } = useSelector((state) => state.authReducer)
+    const { gallery_id } = useSelector((state) => state.galleryReducer)
     const Language = GetLanguage();
     const [artistContent, setArtistContent] = useState();
     const [artistProfile, setArtistProfile] = useState({});
 
-    const [params, setParams] = useState({
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
 
+    const { roles } = useSelector((state) => state.authReducer)
+    const getUserRole = () => {
+        let userRole = "user"
+        if (typeof roles === "string") {
+            return roles
+        } else {
+            if (roles && roles.length > 0) {
+                if (roles.includes("seller")) {
+                    userRole = "seller"
+                }
+                if (roles.includes("artist")) {
+                    userRole = "artist"
+                }
+            } else {
+                userRole = 'user'
+            }
+        }
+        return userRole
+    }
+
+    const [params, setParams] = useState({
 
     })
 
     const getArtistContent = () => {
-        apiServices.get(ARTIST_CONTENT, queryString.stringify(params))
-            .then(res => {
-                if (res.data) {
-                    setArtistContent(res.data.data.results)
-                }
-            })
-            .catch(err => {
-                console.log("err", err)
-            })
+        if (getUserRole() === "gallery") {
+            apiServices.get(GALLERY_CONTENT(gallery_id), "")
+                .then(res => {
+                    if (res.data) {
+                        setArtistContent(res.data.data.results)
+                    }
+                })
+                .catch(err => {
+                    console.log("err", err)
+                })
+        } else {
+            apiServices.get(ARTIST_CONTENT, queryString.stringify(params))
+                .then(res => {
+                    if (res.data) {
+                        setArtistContent(res.data.data.results)
+                    }
+                })
+                .catch(err => {
+                    console.log("err", err)
+                })
+        }
+
     }
 
 
@@ -51,9 +88,20 @@ function PanelContentList() {
             })
     }
 
+    const handleEditExhibition = (e, data) => {
+        dispatch(editContentModeFunc(true))
+        navigate(`/panel/create-content?content_id=${data.id}`)
+    }
+
+    const handleGoToContentList = () => {
+        dispatch(editContentModeFunc(false))
+        navigate("/panel/create-content")
+    }
 
     useEffect(() => {
-        setParams({ artist_content__id: artistProfile?.id })
+        if (artistProfile?.id) {
+            setParams({ artist_content__id: artistProfile?.id })
+        }
     }, [artistProfile?.id]);
 
     useEffect(() => {
@@ -76,7 +124,7 @@ function PanelContentList() {
 
 
 
-                    <div className="d-block d-md-flex box-dir-reverse">
+                    <div className="d-block d-md-flex box-dir-reverse dir">
                         <div className="col-md-8">
                             <div className="box artistpanel-5">
                                 <div className="public-header">
@@ -95,21 +143,27 @@ function PanelContentList() {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {artistContent?.map((content) => {
+                                        {artistContent?.map((content, index) => {
                                             return (
                                                 <tr>
-                                                    <td data-label={t("content-panel-contents.table.row")} className="persian-num">1</td>
+                                                    <td data-label={t("content-panel-contents.table.row")} className="persian-num">{index + 1}</td>
                                                     <td data-label={t("content-panel-contents.table.image")}><img
                                                         src={content?.poster?.exact_url}
                                                         width="1776" height="1776"
                                                         alt=""
                                                         className="img-responsive center-block" /></td>
                                                     <td data-label={t("content-panel-contents.table.subject")}>{content?.translations?.fa?.title}</td>
-                                                    <td data-label={t("content-panel-contents.table.type")}>{content?.type}</td>
+                                                    <td data-label={t("content-panel-contents.table.type")}>{t(`content-panel-contents.table.${content?.type}`)}</td>
                                                     <td data-label={t("content-panel-contents.table.date_publish")} className="persian-num">{moment(content?.creation_date).locale(Language === 'fa-IR' ? 'fa' : 'en').format('YYYY/MM/DD')}</td>
-                                                    <td data-label={t("content-panel-contents.table.status")}>{t("content-panel-contents.table.active")}</td>
+                                                    <td data-label={t("content-panel-contents.table.status")}>{content?.is_active ? t("content-panel-contents.table.active") : t("content-panel-contents.table.inactive")}</td>
                                                     <td data-label={t("content-panel-contents.table.details")} className="status">
-                                                        <button type="button" className="btn-outline-blue">{t("content-panel-contents.table.edit")}</button>
+                                                        {/* <button type="button" className="btn-outline-blue">{t("content-panel-contents.table.edit")}</button> */}
+                                                        <button
+                                                            // to={`/panel/create-content?content_id=${content.id}`} 
+                                                            onClick={(e) => { handleEditExhibition(e, content) }}
+                                                            className="btn-outline-blue">
+                                                            {t("content-panel-contents.table.edit")}
+                                                        </button>
                                                     </td>
                                                 </tr>
 
@@ -124,9 +178,12 @@ function PanelContentList() {
                                 <div className="pull-dir">
                                     <span className="bolder-title">{t("content-panel-contents.create_content")}</span>
                                 </div>
-                                <Link to="/panel/create-content" className="btn-box-1 btn-pink pull-left">
+                                <button
+                                    // to="/panel/create-content"
+                                    onClick={() => { handleGoToContentList() }}
+                                    className="btn-box btn-pink pull-left">
                                     <img src={plus_white_icon} width="16" height="16" className="center-block" />
-                                </Link>
+                                </button>
                                 <div className="clearfix"></div>
                             </div>
                         </div>

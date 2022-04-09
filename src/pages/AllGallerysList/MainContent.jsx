@@ -5,6 +5,7 @@ import HanLogo from '../../assets/img/gallery/hanlogo.jpg'
 import { GALLERY_LIST } from '../../utils';
 import apiServices from '../../utils/api.services';
 import queryString from 'query-string'
+import { DEFAULT_URL_IMAGE } from '../../utils/defaultImage';
 
 
 function MainContent() {
@@ -15,7 +16,7 @@ function MainContent() {
     const [search, setSearch] = useState();
     const [galleryList, setGalleryList] = useState();
     const [params, setParams] = useState({
-        search:"",
+        search: "",
         page: 1,
 
     })
@@ -39,7 +40,7 @@ function MainContent() {
     useEffect(() => {
         getGalleryList()
     }, [params]);
-console.log("gallery",galleryList)
+    console.log("gallery", galleryList)
     return (
         <div className="container">
             <div className="banner">
@@ -47,18 +48,18 @@ console.log("gallery",galleryList)
                     <h2 className="content-title">{t("artworkList.box-banner.title")}</h2>
                     <p className="txt-title">{t("artworkList.box-banner.text")}</p>
                     <div className="nl-input">
-                        <input placeholder={t("artworkList.box-banner.placeholder")} onChange={e => setSearch(e.target.value)}/>
+                        <input placeholder={t("artworkList.box-banner.placeholder")} onChange={e => setSearch(e.target.value)} />
                         <button type="button" className="btn-black" onClick={() => setParams(state => ({ ...state, search: search }))}>{t("artworkList.box-banner.btn")}</button>
                     </div>
                 </div>
             </div>
-            <div className="default-content">
+            <div className="default-content dir">
                 <div className="content-header">
                     <div className="row">
                         <div className="col-sm-3 col-xs-6">
                         </div>
-                        <div className="col-xs-6 col-sm-offset-3 ml-auto">
-                            <div className="form-group pull-left">
+                        <div className="col-xs-6 col-sm-offset-3 m-dir-rev-auto">
+                            <div className="form-group pull-dir-rev">
                                 <select className="form-control" id="sel1">
                                     <option>{t("select_province.all_province")}</option>
                                     <option>{t("select_province.tehran_city")}</option>
@@ -77,13 +78,18 @@ console.log("gallery",galleryList)
                                     <div className="col-md-3 col-sm-4 col-xs-6">
                                         <Link to={`/site/gallery-introduction/?id=${gallery?.id}`} className="gallery-logo-block">
                                             <div className="gallery-logo-img">
-                                                <img src={gallery?.media && gallery?.media[0]?.exact_url} width="110" height="110" alt=""
+                                                <img src={gallery?.logo ? gallery?.logo?.exact_url : DEFAULT_URL_IMAGE} width="286"  style={{height:180}} alt=""
                                                     className="img-responsive center-block" />
                                             </div>
-                                            <h3 className="fontbold19">{gallery?.owner?.username}</h3>
+                                            <h3 className="fontbold19">
+                                                {i18n.language === 'fa-IR' ?
+                                                    gallery?.translations?.fa?.title
+                                                    : gallery?.translations?.en?.title
+                                                }
+                                            </h3>
                                             {i18n.language === 'fa-IR' ?
-                                            <span className="font-span">{gallery?.locations && gallery?.locations[0]?.translations?.fa?.city}</span>:
-                                            <span className="font-span">{gallery?.locations && gallery?.locations[0]?.translations?.en?.city}</span>}
+                                                <span className="font-span">{gallery?.locations && gallery?.locations[0]?.translations?.fa?.city}</span> :
+                                                <span className="font-span">{gallery?.locations && gallery?.locations[0]?.translations?.en?.city}</span>}
                                         </Link>
                                     </div>
                                 )

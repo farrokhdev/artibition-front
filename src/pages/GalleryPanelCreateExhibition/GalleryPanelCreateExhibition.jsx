@@ -7,15 +7,19 @@ import { GetLanguage } from '../../utils/utils';
 
 import cloude_upload_icon from '../../assets/img/cloud-upload.svg';
 import { Link } from 'react-router-dom';
-import { Form, Input, Modal, Select, Button, Checkbox, message } from 'antd';
+import { Form, Input, Modal, Select, Button, Checkbox, message, TimePicker } from 'antd';
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
 import { useSelector, useDispatch } from 'react-redux';
 import '../../assets/style/leaflet.scss'
 import apiServices from '../../utils/api.services';
-import { GALLERY_ARTISTS } from '../../utils';
+import { CORE_CATEGORIS, EXHIBITION_INFO, GALLERY_ARTISTS } from '../../utils';
 import MultipleUpload from '../../components/MultiUpload/MultiUpload';
 import { exhibitionForm } from '../../redux/reducers/Exhibition/exhibition.action';
 import { useNavigate } from "react-router-dom";
+import DatePicker, { Calendar } from 'react-datepicker2';
+import moment from 'jalali-moment'
+import queryString from 'query-string';
+import ExhibitionUploadPoster from '../../components/ExhibitionUploadPoster/ExhibitionUploadPoster';
 
 const { Option } = Select;
 const { TextArea } = Input;
@@ -28,13 +32,30 @@ function GalleryPanelCreateExhibition() {
     const [zoom, setZoom] = useState(11)
     const [artistsOption, setArtistOption] = useState([])
     const [posters, setPosters] = useState([])
+    const [categories, setCategories] = useState([])
+    const [categoryDefaultValue, setCategoryDefaultValue] = useState([])
+    const [params, setParams] = useState({
+        page_size: 9999999
+    })
+    const [categoryParams, setCategoryParams] = useState({
+        usage: "exhibition"
+    })
+    const [exhibitionType, setExhibitionType] = useState(undefined)
     const dispatch = useDispatch()
+    const { gallery_id } = useSelector((state) => state.galleryReducer)
+    const { exhibitionId } = useSelector((state) => state.exhibitionReducer)
+    const { editExhibitionMode } = useSelector((state) => state.exhibitionReducer)
     const navigate = useNavigate()
+    const [form] = Form.useForm()
+
+
 
     const onFinish = (form) => {
-        if (posters.length > 0) {
+
+        if (editExhibitionMode || posters.length > 0) {
             if (form.type) {
                 if (form.category && form.category.length > 0) {
+                    console.log(form);
                     const payload = {
                         "translations": {
                             "en": {
@@ -50,13 +71,43 @@ function GalleryPanelCreateExhibition() {
                         },
                         "type": form.type,
                         "category": form.category,
-                        "virtual_start_date": form.virtual_start_date,
-                        "virtual_end_date": form.virtual_end_date,
-                        "real_start_date": form.real_start_date,
-                        "real_end_date": form.real_end_date,
+                        "product_status": "sale",
+                        // "virtual_start_date": form.virtual_start_date ? `${form.virtual_start_date?.format("YYYY-MM-DD")}${form.virtual_start_time?.toISOString().slice(10)}` : null,
+                        // "virtual_end_date": form.virtual_end_date ? `${form.virtual_end_date?.format("YYYY-MM-DD")}${form.virtual_end_time?.toISOString().slice(10)}` : null,
+                        // "real_start_date": form.real_start_date ? `${form.real_start_date?.format("YYYY-MM-DD")}${form.real_start_time?.toISOString().slice(10)}` : null,
+                        // "real_end_date": form.real_end_date ? `${form.real_end_date?.format("YYYY-MM-DD")}${form.real_end_time?.toISOString().slice(10)}` : null,
+                        "virtual_start_date": form.virtual_start_date ? form.virtual_start_date?.set({
+                            hour: form.virtual_start_time?.get('hour'),
+                            minute: form.virtual_start_time?.get('minute'),
+                            second: 0,
+                            millisecond: 0,
+                        }).toISOString() : null,
+
+                        "virtual_end_date": form.virtual_end_date ? form.virtual_end_date?.set({
+                            hour: form.virtual_end_time?.get('hour'),
+                            minute: form.virtual_end_time?.get('minute'),
+                            second: 0,
+                            millisecond: 0,
+                        }).toISOString() : null,
+
+                        "real_start_date": form.real_start_date ? form.real_start_date?.set({
+                            hour: form.real_start_time?.get('hour'),
+                            minute: form.real_start_time?.get('minute'),
+                            second: 0,
+                            millisecond: 0,
+                        }).toISOString() : null,
+
+                        "real_end_date": form.real_end_date ? form.real_end_date?.set({
+                            hour: form.real_end_time?.get('hour'),
+                            minute: form.real_end_time?.get('minute'),
+                            second: 0,
+                            millisecond: 0,
+                        }).toISOString() : null,
+
+
                         "address": [
                             {
-                                "point": point,
+                                // "point": point?.latitude ? point : null,
                                 "translations": {
                                     "fa": {
                                         "address": i18next.language === 'fa-IR' ? form.address_fa : "",
@@ -72,7 +123,7 @@ function GalleryPanelCreateExhibition() {
                                     }
                                 },
                                 "postal_code": "",
-                                "is_default": ""
+                                "is_default": true
                             }
                         ],
                         "phone": form.phone,
@@ -80,21 +131,34 @@ function GalleryPanelCreateExhibition() {
                         "poster": posters,
                         "product": []
                     }
+                    if (form?.type === "virtual") {
+
+                    } else if (form?.type === "real") {
+                        payload.address[0]["point"] = point
+                    } else if (form?.type === "virtual_real") {
+                        payload.address[0]["point"] = point
+                    }
+                    console.log(payload);
                     dispatch(exhibitionForm(payload))
-                    navigate("/gallery-panel/upload-exhibition-artwotk")
+                    navigate("/panel/upload-exhibition-artwotk")
                 } else {
+                    console.log("HERE 1");
                     message.error({
                         content: "حداقل باید یک رشته هنری انتخاب کنید",
                         style: { marginTop: "110px" }
                     })
                 }
             } else {
+                console.log("HERE 2");
+
                 message.error({
                     content: "لطفا نوع نمایشگاه خود را انتخاب کنید",
                     style: { marginTop: "110px" }
                 })
             }
         } else {
+            console.log("HERE 3");
+
             message.error({
                 content: "لطفا پوستر نمایشگاه خود را آپلود کنید",
                 style: { marginTop: "110px" }
@@ -104,26 +168,45 @@ function GalleryPanelCreateExhibition() {
 
 
 
-    const options = [
-        { label: t("gallery-panel-create-exhibition.painting"), value: 1 },
-        { label: t("gallery-panel-create-exhibition.photography"), value: 2 },
-        { label: t("gallery-panel-create-exhibition.sculpture"), value: 3 },
-        { label: t("gallery-panel-create-exhibition.calligram"), value: 4 },
-        { label: t("gallery-panel-create-exhibition.calligraphy"), value: 5 },
-        { label: t("gallery-panel-create-exhibition.printmaking"), value: 6 },
-        { label: t("gallery-panel-create-exhibition.graphic"), value: 7 },
-        { label: t("gallery-panel-create-exhibition.drawing"), value: 8 },
-    ]
+
 
 
 
     useEffect(() => {
-        apiServices.get(GALLERY_ARTISTS(2), "")
+        apiServices.get(CORE_CATEGORIS, queryString.stringify(categoryParams))
+            .then(res => {
+                if (res.data) {
+                    let temp = []
+                    for (let i = 0; i < res.data.data.results.length; i++) {
+                        const element = res.data.data.results[i];
+                        // console.log("map");
+                        // console.log(element);
+                        // console.log({ label: i18next.language === 'fa-IR' ? element.translations?.fa?.title : element.translations?.fa?.title, value: element.id });
+                        temp.push({ label: i18next.language === 'fa-IR' ? element.translations?.fa?.title : element.translations?.fa?.title, value: element.id })
+                    }
+                    // res.data.data.results.map((item, index) => {
+                    //     console.log("map");
+                    //     temp.push({ label: i18next.language === 'fa-IR' ? item.translations.fa.title : item.translations.fa.title, value: item.id })
+                    // })
+                    setCategories(temp)
+                } else {
+                    message.error(res.response.data.message)
+                }
+
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }, [])
+
+
+    useEffect(() => {
+        apiServices.get(GALLERY_ARTISTS(gallery_id), queryString.stringify(params))
             .then(res => {
                 if (res.data) {
                     const options = []
                     res.data.data.results.map((artist, index) => {
-                        options.push({ label: `${artist.translations.fa ? artist.translations.fa.nick_name : ""} | ${artist.translations.en ? artist.translations.en.nick_name : ""}`, value: artist.id })
+                        options.push({ label: `${artist?.owner?.translations?.fa?.first_name} ${artist?.owner?.translations?.fa?.last_name} | ${artist?.owner?.translations?.en?.first_name} ${artist?.owner?.translations?.en?.last_name}`, value: artist.id })
                     })
                     setArtistOption(options)
 
@@ -134,6 +217,49 @@ function GalleryPanelCreateExhibition() {
             })
     }, [])
 
+    useEffect(() => {
+        if (editExhibitionMode && gallery_id) {
+            apiServices.get(EXHIBITION_INFO(gallery_id, exhibitionId), "")
+                .then(res => {
+                    if (res.data) {
+                        const value = res.data.data
+                        setPoint(value.address?.find(e => e.is_default === true)?.point)
+                        setExhibitionType(value.type)
+                        const tempCategory = []
+                        value.category.map((item) => {
+                            tempCategory.push(item?.id)
+                        })
+                        form.setFieldsValue({
+                            exhibition_name_fa: value.translations?.fa?.name,
+                            exhibition_name_en: value.translations?.en?.name,
+                            type: value.type,
+                            virtual_start_time: moment.utc(value.start_date.virtual_start_date).local(),
+                            real_start_time: moment.utc(value.start_date.real_start_date).local(),
+                            virtual_end_time: moment.utc(value.end_date.virtual_end_date).local(),
+                            real_end_time: moment.utc(value.end_date.real_end_date).local(),
+                            virtual_start_date: moment.utc(value.start_date.virtual_start_date).local(),
+                            real_start_date: moment.utc(value.start_date.real_start_date).local(),
+                            virtual_end_date: moment.utc(value.end_date.virtual_end_date).local(),
+                            real_end_date: moment.utc(value.end_date.real_end_date).local(),
+                            activity_time_en: value.translations?.en?.activity_time,
+                            activity_time_fa: value.translations?.fa?.activity_time,
+                            statement_en: value.translations?.en?.statement,
+                            statement_fa: value.translations?.fa?.statement,
+                            address_fa: value.address?.find(e => e.is_default === true)?.translations?.fa?.address,
+                            address_en: value.address?.find(e => e.is_default === true)?.translations?.en?.address,
+                            phone: value.phone,
+                            artists: value.artist,
+                            category: tempCategory
+                        })
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        }
+
+    }, [])
+
 
     return (
         <>
@@ -141,10 +267,13 @@ function GalleryPanelCreateExhibition() {
             <div className="panel-style container mx-auto px-0 w-100 bg-white ">
                 <h2 className="default-title aligncenter mt-3">{t("gallery-panel-create-exhibition.title")}</h2>
                 <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 create-exhibition">
-                    <Form onFinish={onFinish}>
+                    <Form
+                        onFinish={onFinish}
+                        form={form}>
                         <h3 className="info-title mrgt64 require text-dir">{t("gallery-panel-create-exhibition.upload_poster.title")}</h3>
                         <p className="mrgb20 text-dir">{t("gallery-panel-create-exhibition.upload_poster.description")}</p>
-                        <MultipleUpload uploadList={posters} setUploadList={setPosters} defaultName={"عکس اصلی"} />
+                        {/* <MultipleUpload uploadList={posters} setUploadList={setPosters} defaultName={"عکس اصلی"} /> */}
+                        <ExhibitionUploadPoster uploadList={posters} setUploadList={setPosters} defaultName={"عکس اصلی"} />
                         <div className="info-sec">
                             <h3 className="info-title mrgt64 text-dir">{t("gallery-panel-create-exhibition.exhibition_info")}</h3>
                             <div className="row">
@@ -157,8 +286,7 @@ function GalleryPanelCreateExhibition() {
                                 >
                                     <div className="public-group">
                                         <Form.Item name={'exhibition_name_fa'}>
-                                            <Input className="form-control input-public " required={i18next.language === 'fa_IR'} placeholder={t("gallery-panel-create-exhibition.exhibition_name_fa")} />
-                                            {/* <label className="lable-public">{t("gallery-panel-create-exhibition.exhibition_name_fa")}</label> */}
+                                            <Input className="form-control input-public " required={i18next.language === 'fa-IR' ? true : false} placeholder={t("gallery-panel-create-exhibition.exhibition_name_fa")} />
                                         </Form.Item>
                                     </div>
                                 </div>
@@ -172,7 +300,6 @@ function GalleryPanelCreateExhibition() {
                                     <div className="public-group en">
                                         <Form.Item name={'exhibition_name_en'}>
                                             <Input className="form-control input-public en-lang " required placeholder={t("gallery-panel-create-exhibition.exhibition_name_en")} />
-                                            {/* <label className="lable-public en-lang">{t("gallery-panel-create-exhibition.exhibition_name_en")}</label> */}
                                         </Form.Item>
 
                                     </div>
@@ -180,111 +307,205 @@ function GalleryPanelCreateExhibition() {
                                 <div className="col-sm-12">
                                     <div className="public-group">
                                         <Form.Item name={'type'}>
-                                            <Select required className="form-control input-public dir" id="info-203" placeholder={t("gallery-panel-create-exhibition.exhibition_type")}>
+                                            <Select required className="form-control input-public dir" id="info-203" placeholder={t("gallery-panel-create-exhibition.exhibition_type")} value={exhibitionType} onChange={(value) => { setExhibitionType(value) }}>
                                                 <Option value={"virtual_real"}>{t("gallery-panel-create-exhibition.local_online_exhibition")}</Option>
                                                 <Option value={"real"}>{t("gallery-panel-create-exhibition.local_exhibition")}</Option>
                                                 <Option value={"virtual"}>{t("gallery-panel-create-exhibition.online_exhibition")}</Option>
                                             </Select>
-                                            {/* <label for="info-203" className="lable-public">{t("gallery-panel-create-exhibition.exhibition_type")}</label> */}
                                         </Form.Item>
                                     </div>
-                                    <div className="col-sm-3">
-                                        <div className="public-group">
-                                            <Form.Item name={"virtual_start_date"}>
-                                                <Input className="form-control input-public persian-num" required placeholder={t("gallery-panel-create-exhibition.online_start")} />
-                                                {/* <label className="lable-public">{t("gallery-panel-create-exhibition.online_start")}</label> */}
-                                            </Form.Item>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm-3">
-                                        <div className="public-group">
-                                            <Form.Item name={"virtual_end_date"}>
-                                                <Input className="form-control input-public persian-num" required placeholder={t("gallery-panel-create-exhibition.online_end")} />
-                                                {/* <label className="lable-public">{t("gallery-panel-create-exhibition.online_end")}</label> */}
-                                            </Form.Item>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm-3">
-                                        <div className="public-group">
-                                            <Form.Item name={"real_start_date"}>
-                                                <Input className="form-control input-public persian-num" required placeholder={t("gallery-panel-create-exhibition.local_start")} />
-                                                {/* <label className="lable-public">{t("gallery-panel-create-exhibition.local_start")}</label> */}
-                                            </Form.Item>
-                                        </div>
-                                    </div>
-                                    <div className="col-sm-3">
-                                        <div className="public-group">
-                                            <Form.Item name={"real_end_date"}>
-                                                <Input className="form-control input-public persian-num" required placeholder={t("gallery-panel-create-exhibition.local_end")} />
-                                                {/* <label className="lable-public">{t("gallery-panel-create-exhibition.local_end")}</label> */}
-                                            </Form.Item>
-                                        </div>
-                                    </div>
+                                    {/* --------------- date field --------------- */}
+                                    {exhibitionType !== "real" ?
+                                        <>
+                                            <div className="col-sm-3">
+                                                <div className="public-group">
+                                                    <Form.Item name={"virtual_start_date"}
+                                                        rules={[
+                                                            {
+                                                                required: true,
+                                                                message: "تکمیل این فیلد ضروری است",
+                                                            },
+                                                        ]}>
+                                                        {/* <Input className="form-control input-public persian-num" required placeholder={t("gallery-panel-create-exhibition.online_start")} /> */}
+                                                        <DatePicker
+                                                            className="form-control input-public border-0 px-4  d-flex required"
+                                                            placeholder="تاریخ شروع مجازی"
+                                                            timePicker={false}
+                                                            isGregorian={false}
+                                                        />
+                                                    </Form.Item>
+                                                </div>
+                                            </div>
+                                            <div className="col-sm-3">
+                                                <div className="public-group">
+                                                    <Form.Item name={"virtual_end_date"}
+                                                        rules={[
+                                                            {
+                                                                required: true,
+                                                                message: "تکمیل این فیلد ضروری است",
+                                                            },
+                                                        ]}>
+                                                        {/* <Input className="form-control input-public persian-num" required placeholder={t("gallery-panel-create-exhibition.online_end")} /> */}
+                                                        <DatePicker
+                                                            className="form-control input-public border-0 px-4  d-flex required"
+                                                            placeholder="تاریخ پایان مجازی"
+                                                            timePicker={false}
+                                                            isGregorian={false}
+                                                        />
+                                                    </Form.Item>
+                                                </div>
+                                            </div>
+                                        </> :
+                                        <>
+                                        </>
+
+                                    }
+                                    {exhibitionType !== "virtual" ?
+                                        <>
+                                            <div className="col-sm-3">
+                                                <div className="public-group">
+                                                    <Form.Item name={"real_start_date"}
+                                                        rules={[
+                                                            {
+                                                                required: true,
+                                                                message: "تکمیل این فیلد ضروری است",
+                                                            },
+                                                        ]}>
+                                                        {/* <Input className="form-control input-public persian-num" required placeholder={t("gallery-panel-create-exhibition.local_start")} /> */}
+                                                        <DatePicker
+                                                            className="form-control input-public border-0 px-4  d-flex required"
+                                                            placeholder="تاریخ شروع حضوری"
+                                                            timePicker={false}
+                                                            isGregorian={false}
+                                                        />
+                                                    </Form.Item>
+                                                </div>
+                                            </div>
+                                            <div className="col-sm-3">
+                                                <div className="public-group">
+                                                    <Form.Item name={"real_end_date"}
+                                                        rules={[
+                                                            {
+                                                                required: true,
+                                                                message: "تکمیل این فیلد ضروری است",
+                                                            },
+                                                        ]}>
+                                                        {/* <Input className="form-control input-public persian-num" required placeholder={t("gallery-panel-create-exhibition.local_end")} /> */}
+                                                        <DatePicker
+                                                            className="form-control input-public border-0 px-4  d-flex required"
+                                                            placeholder="تاریخ پایان حضوری"
+                                                            timePicker={false}
+                                                            isGregorian={false}
+                                                        />
+                                                    </Form.Item>
+                                                </div>
+                                            </div>
+                                        </> :
+                                        <>
+                                        </>
+                                    }
+                                    {/* --------------- date field --------------- */}
+                                    {/* --------------- time field --------------- */}
+                                    {exhibitionType !== "real" ?
+                                        <>
+                                            <div className="col-sm-3">
+                                                <div className="public-group">
+                                                    <Form.Item name={"virtual_start_time"}
+                                                        rules={[
+                                                            {
+                                                                required: true,
+                                                                message: "تکمیل این فیلد ضروری است",
+                                                            },
+                                                        ]}>
+                                                        {/* <Input className="form-control input-public persian-num" required placeholder={t("gallery-panel-create-exhibition.online_start")} /> */}
+                                                        <TimePicker
+                                                            className="form-control input-public border-0 px-4  d-flex required padding-0"
+                                                            placeholder="ساعت شروع مجازی"
+                                                            format={"HH:mm"}
+                                                            onChange={(r) => { console.log(`2022-10-09${r.toISOString().slice(10)}`) }}
+                                                        />
+                                                    </Form.Item>
+                                                </div>
+                                            </div>
+                                            <div className="col-sm-3">
+                                                <div className="public-group">
+                                                    <Form.Item name={"virtual_end_time"}
+                                                        rules={[
+                                                            {
+                                                                required: true,
+                                                                message: "تکمیل این فیلد ضروری است",
+                                                            },
+                                                        ]}>
+                                                        {/* <Input className="form-control input-public persian-num" required placeholder={t("gallery-panel-create-exhibition.online_end")} /> */}
+                                                        <TimePicker
+                                                            className="form-control input-public border-0 px-4  d-flex required padding-0"
+                                                            placeholder="ساعت پایان مجازی"
+                                                            format={"HH:mm"}
+                                                        />
+                                                    </Form.Item>
+                                                </div>
+                                            </div>
+                                        </> :
+                                        <>
+                                        </>
+
+                                    }
+
+                                    {exhibitionType !== "virtual" ?
+                                        <>
+                                            <div className="col-sm-3">
+                                                <div className="public-group">
+                                                    <Form.Item name={"real_start_time"}
+                                                        rules={[
+                                                            {
+                                                                required: true,
+                                                                message: "تکمیل این فیلد ضروری است",
+                                                            },
+                                                        ]}>
+                                                        {/* <Input className="form-control input-public persian-num" required placeholder={t("gallery-panel-create-exhibition.local_start")} /> */}
+                                                        <TimePicker
+                                                            className="form-control input-public border-0 px-4  d-flex required padding-0"
+                                                            placeholder="ساعت شروع حضوری"
+                                                            format={"HH:mm"}
+                                                        />
+                                                    </Form.Item>
+                                                </div>
+                                            </div>
+                                            <div className="col-sm-3">
+                                                <div className="public-group">
+                                                    <Form.Item name={"real_end_time"}
+                                                        rules={[
+                                                            {
+                                                                required: true,
+                                                                message: "تکمیل این فیلد ضروری است",
+                                                            },
+                                                        ]}>
+                                                        {/* <Input className="form-control input-public persian-num" required placeholder={t("gallery-panel-create-exhibition.local_end")} /> */}
+                                                        <TimePicker
+                                                            className="form-control input-public border-0 px-4  d-flex required padding-0"
+                                                            placeholder="ساعت پایان حضوری"
+                                                            format={"HH:mm"}
+                                                        />
+                                                    </Form.Item>
+                                                </div>
+                                            </div>
+                                        </> :
+                                        <>
+                                        </>
+                                    }
+                                    {/* --------------- time field --------------- */}
                                 </div>
                             </div>
                             <h3 className="info-title mrgt64 text-dir">{t("gallery-panel-create-exhibition.art_categories")}</h3>
                             <div className="row">
                                 <div className="col-sm-12 col-xs-6 text-dir">
-                                    {/* <label className="lable-checkbox">
-                                        <input type="checkbox" checked />
-                                        <span>{t("gallery-panel-create-exhibition.painting")}</span>
-                                        <span className="checkmark"></span>
-                                    </label> */}
                                     <Form.Item name={"category"} className='exhibitionFormCategory'>
-                                        {/* <label className="lable-checkbox"> */}
-                                        <Checkbox.Group required options={options} />
-                                        {/* </label> */}
+                                        <Checkbox.Group required options={categories}
+                                        // defaultValue={categoryDefaultValue} 
+                                        // defaultValue={["2"]}
+                                        />
                                     </Form.Item>
                                 </div>
-                                {/* <div className="col-sm-12 col-xs-6 text-dir">
-                                    <label className="lable-checkbox">
-                                        <input type="checkbox" />
-                                        <span>{t("gallery-panel-create-exhibition.photography")}</span>
-                                        <span className="checkmark"></span>
-                                    </label>
-                                </div>
-                                <div className="col-sm-12 col-xs-6 text-dir">
-                                    <label className="lable-checkbox">
-                                        <input type="checkbox" checked />
-                                        <span>{t("gallery-panel-create-exhibition.sculpture")}</span>
-                                        <span className="checkmark"></span>
-                                    </label>
-                                </div>
-                                <div className="col-sm-12 col-xs-6 text-dir">
-                                    <label className="lable-checkbox">
-                                        <input type="checkbox" />
-                                        <span>{t("gallery-panel-create-exhibition.calligram")}</span>
-                                        <span className="checkmark"></span>
-                                    </label>
-                                </div>
-                                <div className="col-sm-12 col-xs-6 text-dir">
-                                    <label className="lable-checkbox">
-                                        <input type="checkbox" />
-                                        <span>{t("gallery-panel-create-exhibition.calligraphy")}</span>
-                                        <span className="checkmark"></span>
-                                    </label>
-                                </div>
-                                <div className="col-sm-12 col-xs-6 text-dir">
-                                    <label className="lable-checkbox">
-                                        <input type="checkbox" />
-                                        <span>{t("gallery-panel-create-exhibition.printmaking")}</span>
-                                        <span className="checkmark"></span>
-                                    </label>
-                                </div>
-                                <div className="col-sm-12 col-xs-6 text-dir">
-                                    <label className="lable-checkbox">
-                                        <input type="checkbox" />
-                                        <span>{t("gallery-panel-create-exhibition.graphic")}</span>
-                                        <span className="checkmark"></span>
-                                    </label>
-                                </div>
-                                <div className="col-sm-12 col-xs-6 text-dir">
-                                    <label className="lable-checkbox">
-                                        <input type="checkbox" />
-                                        <span>{t("gallery-panel-create-exhibition.drawing")}</span>
-                                        <span className="checkmark"></span>
-                                    </label>
-                                </div> */}
                             </div>
                             <h3 className="info-title mrgt64 text-dir">{t("gallery-panel-create-exhibition.artists")}</h3>
                             <div className="row dir">
@@ -293,28 +514,10 @@ function GalleryPanelCreateExhibition() {
                                     <div className="public-group">
                                         <Form.Item name={"artists"}>
                                             <Select mode="multiple" className='form-control input-public' style={{ height: "100%" }} options={artistsOption} placeholder={t("gallery-panel-create-exhibition.enter_artist_name")} />
-                                            {/* <label className="lable-public">{t("gallery-panel-create-exhibition.enter_artist_name_fa")}</label> */}
                                         </Form.Item>
                                     </div>
                                 </div>
                             </div>
-                            {/* <div className="artist-tags-row text-dir">
-                                <div className="artist-tags">
-                                    <button type="button" className="btn-remove-tag"></button>
-                                    <span className="fa-artist-tag">مسعود کشمیری</span>
-                                    <span className="en-artist-tag en-lang">(Masoud Keshmiri)</span>
-                                </div>
-                                <div className="artist-tags">
-                                    <button type="button" className="btn-remove-tag"></button>
-                                    <span className="fa-artist-tag">شیما خشخاشی</span>
-                                    <span className="en-artist-tag en-lang">(Shima Khashkhashi)</span>
-                                </div>
-                                <div className="artist-tags">
-                                    <button type="button" className="btn-remove-tag"></button>
-                                    <span className="fa-artist-tag">مریم رضوی</span>
-                                    <span className="en-artist-tag en-lang">(Maryam Razavi)</span>
-                                </div>
-                            </div> */}
                             <h3 className="info-title mrgt64 text-dir">{t("gallery-panel-create-exhibition.notice_visiting_hours")}</h3>
                             <div className="row dir">
                                 <div
@@ -326,10 +529,9 @@ function GalleryPanelCreateExhibition() {
                                 >
                                     <div className="form-group">
                                         <Form.Item name={"statement_fa"}>
-                                            <TextArea required={i18next.language === 'fa_IR'} id="info-213" className="form-control "
+                                            <TextArea dir='rtl' required={i18next.language === 'fa-IR'} id="info-213" className="form-control "
                                                 placeholder={t("gallery-panel-create-exhibition.exhibition_contact_placeholder_fa")}
                                                 rows="8"></TextArea>
-                                            {/* <label for="info-213" className="lable-public"></label> */}
                                         </Form.Item>
 
                                     </div>
@@ -342,9 +544,8 @@ function GalleryPanelCreateExhibition() {
                                 >
                                     <div className="form-group ">
                                         <Form.Item name={"statement_en"}>
-                                            <TextArea required className="form-control" placeholder={t("gallery-panel-create-exhibition.exhibition_contact_placeholder_en")}
+                                            <TextArea dir='ltr' required className="form-control" placeholder={t("gallery-panel-create-exhibition.exhibition_contact_placeholder_en")}
                                                 rows="8"></TextArea>
-                                            {/* <label className="lable-public"></label> */}
                                         </Form.Item>
 
                                     </div>
@@ -358,10 +559,9 @@ function GalleryPanelCreateExhibition() {
                                 >
                                     <div className="form-group">
                                         <Form.Item name={"activity_time_fa"}>
-                                            <TextArea required={i18next.language === 'fa_IR'} id="info-213" className="form-control "
+                                            <TextArea dir='rtl' required={i18next.language === 'fa-IR'} id="info-213" className="form-control "
                                                 placeholder={t("gallery-panel-create-exhibition.exhibition_time_work_placeholder_fa")}
                                                 rows="6"></TextArea>
-                                            {/* <label for="info-213" className="lable-public"></label> */}
                                         </Form.Item>
 
                                     </div>
@@ -374,9 +574,8 @@ function GalleryPanelCreateExhibition() {
                                 >
                                     <div className="form-group ">
                                         <Form.Item name={"activity_time_en"}>
-                                            <TextArea required className="form-control" placeholder={t("gallery-panel-create-exhibition.exhibition_time_work_placeholder_en")}
+                                            <TextArea dir='ltr' required className="form-control" placeholder={t("gallery-panel-create-exhibition.exhibition_time_work_placeholder_en")}
                                                 rows="6"></TextArea>
-                                            {/* <label className="lable-public"></label> */}
                                         </Form.Item>
 
                                     </div>
@@ -384,41 +583,47 @@ function GalleryPanelCreateExhibition() {
                             </div>
                             <h3 className="info-title mrgt64 text-dir">{t("gallery-panel-create-exhibition.address_contact_info")}</h3>
                             <div className="row dir">
-                                <div className={classnames("", {
-                                    "col-sm-9": GetLanguage() === 'fa-IR',
-                                    "d-none": GetLanguage() === 'en-US'
-                                })}>
-                                    <div className="public-group ">
-                                        <Form.Item name={"address_fa"}>
-                                            <Input className="form-control input-public " required={i18next.language === 'fa_IR'} placeholder={t("gallery-panel-create-exhibition.address_fa")} />
-                                            {/* <label className="lable-public en-lang">{t("gallery-panel-create-exhibition.address_fa")}</label> */}
-                                        </Form.Item>
+                                {exhibitionType !== "virtual" ?
+                                    <>
+                                        <div className={classnames("", {
+                                            "col-sm-9": i18next.language === 'fa-IR',
+                                            "d-none": i18next.language === 'en-US'
+                                        })}>
+                                            <div className="public-group ">
+                                                <Form.Item name={"address_fa"}>
+                                                    <Input className="form-control input-public " required={i18next.language === 'fa-IR'} placeholder={t("gallery-panel-create-exhibition.address_fa")} />
+                                                </Form.Item>
 
-                                    </div>
-                                </div>
-                                <div className="col-sm-3">
-                                    <button type="button" className="btn-blue" data-toggle="modal" data-target="#show-map" onClick={() => { setShowMap(true) }}>
-                                        {t("gallery-panel-create-exhibition.select_on_map")}
-                                    </button>
-                                </div>
-                                <div className="clearfix"></div>
-                                <div className={classnames("", {
-                                    "col-sm-12": GetLanguage() === 'fa-IR',
-                                    "col-sm-9": GetLanguage() === 'en-US'
-                                })}
-                                >
-                                    <div className="public-group en">
-                                        <Form.Item name={"address_en"}>
-                                            <Input className="form-control input-public en-lang " required placeholder={t("gallery-panel-create-exhibition.address_en")} />
-                                            {/* <label className="lable-public en-lang">{t("gallery-panel-create-exhibition.address_en")}</label> */}
-                                        </Form.Item>
-                                    </div>
-                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="col-sm-3">
+                                            <button type="button" className="btn-blue" data-toggle="modal" data-target="#show-map" onClick={() => { setShowMap(true) }}>
+                                                {t("gallery-panel-create-exhibition.select_on_map")}
+                                            </button>
+                                        </div>
+                                        <div className="clearfix"></div>
+                                        <div className={classnames("", {
+                                            "col-sm-12": i18next.language === 'fa-IR',
+                                            "col-sm-9": i18next.language === 'en-US'
+                                        })}
+                                        >
+                                            <div className="public-group en">
+                                                <Form.Item name={"address_en"}>
+                                                    <Input className="form-control input-public en-lang " required placeholder={t("gallery-panel-create-exhibition.address_en")} />
+                                                </Form.Item>
+                                            </div>
+                                        </div>
+                                    </>
+                                    :
+                                    <>
+
+                                    </>
+
+                                }
                                 <div className="col-sm-6">
                                     <div className="public-group">
                                         <Form.Item name={"phone"}>
-                                            <Input className="form-control input-public  persian-num" required placeholder={t("gallery-panel-create-exhibition.phone_number")} />
-                                            {/* <label className="lable-public">{t("gallery-panel-create-exhibition.phone_number")}</label> */}
+                                            <Input type={"tel"} className="form-control input-public  persian-num" required placeholder={t("gallery-panel-create-exhibition.phone_number")} />
                                         </Form.Item>
 
                                     </div>
@@ -430,290 +635,8 @@ function GalleryPanelCreateExhibition() {
                             <Button htmlType='submit' style={{ backgroundColor: "black", color: "white", display: "flex", alignItems: "center" }}>
                                 {t("gallery-panel-create-exhibition.btn_confirm_next")}
                             </Button>
-                            {/* <Link to={"/gallery-panel/upload-exhibition-artwotk"} className="btn-black center-block">
-                                {t("gallery-panel-create-exhibition.btn_confirm_next")}
-                            </Link> */}
                         </div>
                     </Form>
-
-
-
-
-
-
-
-                    {/* <h3 className="info-title mrgt64 require text-dir">{t("gallery-panel-create-exhibition.upload_poster.title")}</h3>
-                    <p className="mrgb20 text-dir">{t("gallery-panel-create-exhibition.upload_poster.description")}</p>
-                    <div className="upload-img-artwork">
-                        <div className="btn-upload-artwork">
-                            <img src={cloude_upload_icon} width="64" height="57" alt="" className="" />
-                            <p>{t("gallery-panel-create-exhibition.upload.text")}
-                                <br />
-                                {t("gallery-panel-create-exhibition.upload.or")}</p>
-                            <label for="file-upload" className="btn-blue">{t("gallery-panel-create-exhibition.upload.btn")}</label>
-                            <p className="upload-size"> {t("gallery-panel-create-exhibition.upload.tip")}</p>
-                        </div>
-                        <input id="file-upload" type="file" />
-                    </div>
-
-                    <div className="info-sec">
-                        <h3 className="info-title mrgt64 text-dir">{t("gallery-panel-create-exhibition.exhibition_info")}</h3>
-                        <div className="row">
-                            <div
-                                className={classnames("", {
-                                    "col-sm-6": GetLanguage() === 'fa-IR',
-                                    "d-none": GetLanguage() === 'en-US'
-                                })}
-
-                            >
-                                <div className="public-group">
-                                    <input className="form-control input-public " required />
-                                    <label className="lable-public">{t("gallery-panel-create-exhibition.exhibition_name_fa")}</label>
-                                </div>
-                            </div>
-                            <div
-                                className={classnames("", {
-                                    "col-sm-6": GetLanguage() === 'fa-IR',
-                                    "col w-100": GetLanguage() === 'en-US'
-                                })}
-
-                            >
-                                <div className="public-group en">
-                                    <input className="form-control input-public en-lang " required />
-                                    <label className="lable-public en-lang">{t("gallery-panel-create-exhibition.exhibition_name_en")}</label>
-                                </div>
-                            </div>
-                            <div className="col-sm-12">
-                                <div className="public-group">
-                                    <select className="input-public dir" id="info-203">
-                                        <option>{t("gallery-panel-create-exhibition.local_online_exhibition")}</option>
-                                        <option>{t("gallery-panel-create-exhibition.local_exhibition")}</option>
-                                        <option>{t("gallery-panel-create-exhibition.online_exhibition")}</option>
-                                    </select>
-                                    <label for="info-203" className="lable-public">{t("gallery-panel-create-exhibition.exhibition_type")}</label>
-                                </div>
-                                <div className="col-sm-3">
-                                    <div className="public-group">
-                                        <input className="form-control input-public persian-num" required />
-                                        <label className="lable-public">{t("gallery-panel-create-exhibition.online_start")}</label>
-                                    </div>
-                                </div>
-                                <div className="col-sm-3">
-                                    <div className="public-group">
-                                        <input className="form-control input-public persian-num" required />
-                                        <label className="lable-public">{t("gallery-panel-create-exhibition.online_end")}</label>
-                                    </div>
-                                </div>
-                                <div className="col-sm-3">
-                                    <div className="public-group">
-                                        <input className="form-control input-public persian-num" required />
-                                        <label className="lable-public">{t("gallery-panel-create-exhibition.local_start")}</label>
-                                    </div>
-                                </div>
-                                <div className="col-sm-3">
-                                    <div className="public-group">
-                                        <input className="form-control input-public persian-num" required />
-                                        <label className="lable-public">{t("gallery-panel-create-exhibition.local_end")}</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <h3 className="info-title mrgt64 text-dir">{t("gallery-panel-create-exhibition.art_categories")}</h3>
-                        <div className="row">
-                            <div className="col-sm-12 col-xs-6 text-dir">
-                                <label className="lable-checkbox">
-                                    <input type="checkbox" checked />
-                                    <span>{t("gallery-panel-create-exhibition.painting")}</span>
-                                    <span className="checkmark"></span>
-                                </label>
-                            </div>
-                            <div className="col-sm-12 col-xs-6 text-dir">
-                                <label className="lable-checkbox">
-                                    <input type="checkbox" />
-                                    <span>{t("gallery-panel-create-exhibition.photography")}</span>
-                                    <span className="checkmark"></span>
-                                </label>
-                            </div>
-                            <div className="col-sm-12 col-xs-6 text-dir">
-                                <label className="lable-checkbox">
-                                    <input type="checkbox" checked />
-                                    <span>{t("gallery-panel-create-exhibition.sculpture")}</span>
-                                    <span className="checkmark"></span>
-                                </label>
-                            </div>
-                            <div className="col-sm-12 col-xs-6 text-dir">
-                                <label className="lable-checkbox">
-                                    <input type="checkbox" />
-                                    <span>{t("gallery-panel-create-exhibition.calligram")}</span>
-                                    <span className="checkmark"></span>
-                                </label>
-                            </div>
-                            <div className="col-sm-12 col-xs-6 text-dir">
-                                <label className="lable-checkbox">
-                                    <input type="checkbox" />
-                                    <span>{t("gallery-panel-create-exhibition.calligraphy")}</span>
-                                    <span className="checkmark"></span>
-                                </label>
-                            </div>
-                            <div className="col-sm-12 col-xs-6 text-dir">
-                                <label className="lable-checkbox">
-                                    <input type="checkbox" />
-                                    <span>{t("gallery-panel-create-exhibition.printmaking")}</span>
-                                    <span className="checkmark"></span>
-                                </label>
-                            </div>
-                            <div className="col-sm-12 col-xs-6 text-dir">
-                                <label className="lable-checkbox">
-                                    <input type="checkbox" />
-                                    <span>{t("gallery-panel-create-exhibition.graphic")}</span>
-                                    <span className="checkmark"></span>
-                                </label>
-                            </div>
-                            <div className="col-sm-12 col-xs-6 text-dir">
-                                <label className="lable-checkbox">
-                                    <input type="checkbox" />
-                                    <span>{t("gallery-panel-create-exhibition.drawing")}</span>
-                                    <span className="checkmark"></span>
-                                </label>
-                            </div>
-                        </div>
-                        <h3 className="info-title mrgt64 text-dir">{t("gallery-panel-create-exhibition.artists")}</h3>
-                        <div className="row dir">
-                            <div
-                                className={classnames("", {
-                                    "col-sm-5": GetLanguage() === 'fa-IR',
-                                    "d-none": GetLanguage() === 'en-US'
-                                })}>
-                                <div className="public-group">
-                                    <input className="form-control input-public " required />
-                                    <label className="lable-public">{t("gallery-panel-create-exhibition.enter_artist_name_fa")}</label>
-                                </div>
-                            </div>
-
-                            <div
-                                className={classnames("", {
-                                    "col-sm-5": GetLanguage() === 'fa-IR',
-                                    "col w-100": GetLanguage() === 'en-US'
-                                })}>
-                                <div className="public-group en">
-                                    <input className="form-control input-public en-lang " required />
-                                    <label className="lable-public en-lang">{t("gallery-panel-create-exhibition.enter_artist_name_en")}</label>
-                                </div>
-                            </div>
-                            <div className="col-sm-2">
-                                <button type="button" className="btn-blue">{t("gallery-panel-create-exhibition.submit")}</button>
-                            </div>
-                        </div>
-                        <div className="artist-tags-row text-dir">
-                            <div className="artist-tags">
-                                <button type="button" className="btn-remove-tag"></button>
-                                <span className="fa-artist-tag">مسعود کشمیری</span>
-                                <span className="en-artist-tag en-lang">(Masoud Keshmiri)</span>
-                            </div>
-                            <div className="artist-tags">
-                                <button type="button" className="btn-remove-tag"></button>
-                                <span className="fa-artist-tag">شیما خشخاشی</span>
-                                <span className="en-artist-tag en-lang">(Shima Khashkhashi)</span>
-                            </div>
-                            <div className="artist-tags">
-                                <button type="button" className="btn-remove-tag"></button>
-                                <span className="fa-artist-tag">مریم رضوی</span>
-                                <span className="en-artist-tag en-lang">(Maryam Razavi)</span>
-                            </div>
-                        </div>
-                        <h3 className="info-title mrgt64 text-dir">{t("gallery-panel-create-exhibition.notice_visiting_hours")}</h3>
-                        <div className="row dir">
-                            <div
-                                className={classnames("", {
-                                    "col-sm-6": GetLanguage() === 'fa-IR',
-                                    "d-none": GetLanguage() === 'en-US'
-                                })}
-
-                            >
-                                <div className="form-group">
-                                    <textarea id="info-213" className="form-control "
-                                        placeholder={t("gallery-panel-create-exhibition.exhibition_contact_placeholder_fa")}
-                                        rows="8"></textarea>
-                                    <label for="info-213" className="lable-public"></label>
-                                </div>
-                            </div>
-                            <div
-                                className={classnames("", {
-                                    "col-sm-6": GetLanguage() === 'fa-IR',
-                                    "col w-100": GetLanguage() === 'en-US'
-                                })}
-                            >
-                                <div className="form-group ">
-                                    <textarea className="form-control" placeholder={t("gallery-panel-create-exhibition.exhibition_contact_placeholder_en")}
-                                        rows="8"></textarea>
-                                    <label className="lable-public"></label>
-                                </div>
-                            </div>
-                            <div
-                                className={classnames("", {
-                                    "col-sm-6": GetLanguage() === 'fa-IR',
-                                    "d-none": GetLanguage() === 'en-US'
-                                })}
-
-                            >
-                                <div className="form-group">
-                                    <textarea id="info-213" className="form-control "
-                                        placeholder={t("gallery-panel-create-exhibition.exhibition_time_work_placeholder_fa")}
-                                        rows="6"></textarea>
-                                    <label for="info-213" className="lable-public"></label>
-                                </div>
-                            </div>
-                            <div
-                                className={classnames("", {
-                                    "col-sm-6": GetLanguage() === 'fa-IR',
-                                    "col w-100": GetLanguage() === 'en-US'
-                                })}
-                            >
-                                <div className="form-group ">
-                                    <textarea className="form-control" placeholder={t("gallery-panel-create-exhibition.exhibition_time_work_placeholder_en")}
-                                        rows="6"></textarea>
-                                    <label className="lable-public"></label>
-                                </div>
-                            </div>
-                        </div>
-                        <h3 className="info-title mrgt64 text-dir">{t("gallery-panel-create-exhibition.address_contact_info")}</h3>
-                        <div className="row dir">
-                            <div className={"col-sm-9"}>
-                                <div className="public-group ">
-                                    <input className="form-control input-public " required />
-                                    <label className="lable-public en-lang">{t("gallery-panel-create-exhibition.address_fa")}</label>
-                                </div>
-                            </div>
-                            <div className="col-sm-3">
-                                <button type="button" className="btn-blue" data-toggle="modal" data-target="#show-map" onClick={() => { setShowMap(true) }}>
-                                    {t("gallery-panel-create-exhibition.select_on_map")}
-                                </button>
-                            </div>
-                            <div className="clearfix"></div>
-                            <div className={classnames("", {
-                                "col-sm-12": GetLanguage() === 'fa-IR',
-                                "d-none": GetLanguage() === 'en-US'
-                            })}
-                            >
-                                <div className="public-group en">
-                                    <input className="form-control input-public en-lang " required />
-                                    <label className="lable-public en-lang">{t("gallery-panel-create-exhibition.address_en")}</label>
-                                </div>
-                            </div>
-                            <div className="col-sm-6">
-                                <div className="public-group">
-                                    <input className="form-control input-public  persian-num" required />
-                                    <label className="lable-public">{t("gallery-panel-create-exhibition.phone_number")}</label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br />
-                    <div className="adv-btn">
-                        <Link to={"/gallery-panel/upload-exhibition-artwotk"} className="btn-black center-block">
-                            {t("gallery-panel-create-exhibition.btn_confirm_next")}
-                        </Link>
-                    </div> */}
 
                 </div>
             </div>
@@ -747,7 +670,6 @@ function GalleryPanelCreateExhibition() {
                         >
                             <TileLayer
                                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                            // attribution="<a href=http://biithome.com>biit.home.com</a>"
                             />
 
                             <Marker
@@ -755,7 +677,6 @@ function GalleryPanelCreateExhibition() {
                                     [point?.latitude, point?.longitude] :
                                     ["", ""]}
                             >
-                                {/* <Popup>موقعیت خانه حراجی</Popup> */}
                             </Marker>
 
 

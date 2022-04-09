@@ -1,39 +1,58 @@
 import types from './auth.types';
-import {removeToken , Token} from '../../../utils/utils';
+import { removeToken, Token } from '../../../utils/utils';
 
-const initial_state ={
-    pending : false,
+const initial_state = {
+    pending: false,
     error: null,
-    otp : null,
-    is_logged_in : Boolean(Token()),
-    profile: null
+    otp: null,
+    is_logged_in: Boolean(Token()),
+    profile: null,
+    id: null,
+    roles: null,
+    editingLocation:{},
+    showEditProfileVisible:false,
+    is_Open_Modal: false,
+    editMyAulbumMode: false,
+
 }
 
-const authReducer = (state = initial_state , {type , payload})=> {
-    switch(type){
+const authReducer = (state = initial_state, { type, payload }) => {
+    switch (type) {
         case types.LOGIN_START:
             console.log('LOGIN_START')
             return {
                 ...state,
-                pending: true ,
+                pending: true,
 
                 error: null
             }
+        case types.PROFILE_MODAL_VISIBLE :
+            console.log("profile Modal Visible", payload)
+            return{
+                ...state,
+                showEditProfileVisible : payload,
+            }
 
-        case types.SET_PHONENUMBER :
+        case types.OPEN_MODAL :
+            console.log("open Modal" , payload)
+            return {
+                ...state , is_Open_Modal : payload
+            }
+
+        case types.SET_PHONENUMBER:
             console.log('SET_PHONENUMBER')
             return {
-                    ...state, 
-                    mobile : payload.mobile
-                }
+                ...state,
+                mobile: payload.mobile
+            }
 
 
         case types.LOGIN_SUCCESS:
             console.log('LOGIN_SUCCESS')
             return {
-                ...state ,
+                ...state,
                 pending: false,
-                is_logged_in : true
+                is_logged_in: true
             }
 
         case types.LOGIN_ERROR:
@@ -46,31 +65,58 @@ const authReducer = (state = initial_state , {type , payload})=> {
             }
 
         case types.CLEAR_STORAGE:
-        console.log('CLEAR_STORAGE')
-        removeToken()
+            console.log('CLEAR_STORAGE')
+            removeToken()
             return {
                 ...state,
-                profile: null
+                profile: null,
+                is_logged_in: false,
+                roles: null
             }
 
-        case types.SET_PROFILE : 
-        console.log('Set Profile Done', payload)
+        case types.SET_PROFILE:
+            console.log('Set Profile Done', payload)
+            if (payload.id) {
                 return {
                     ...state,
-                    profile : payload.profile,
-                    id: payload.id
+                    profile: payload?.profile,
+                    is_logged_in: true,
+                    id: payload?.id,
+                    roles: payload?.roles
                 }
+            } else {
+                return {
+                    ...state,
+                    profile: payload?.profile,
+                    roles: payload?.roles
+                }
+            }
 
-        case types.GET_OTP : 
-        console.log('Get Otp Code Done', payload)
+
+        case types.GET_OTP:
+            console.log('Get Otp Code Done', payload)
             return {
                 ...state,
-                otp : payload.otp,
-                            
-        }
-            
-        default :
-        return state;
+                otp: payload.otp,
+
+            }
+
+            case types.EDIT_MY_AULBUM_MODE:
+                console.log("payload ==>" , payload);
+                return{
+                    ...state,
+                    editMyAulbumMode:payload,
+                }
+
+        
+        case types.EDITING_LOCATION:
+            console.log('editingLocation' , payload);
+            return{
+                ...state,
+                editingLocation : payload
+            }
+        default:
+            return state;
     }
 }
 

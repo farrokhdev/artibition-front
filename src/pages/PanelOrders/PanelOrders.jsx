@@ -3,12 +3,13 @@ import BasketFooterPanel from '../../components/BasketFooterPanel/BasketFooterPa
 import HeaderPanel from '../../components/HeaderPanel/HeaderPanel';
 import SidebarPanel from '../../components/SidebarPanel/SidebarPanel';
 import { t } from 'i18next';
-import { Pagination } from 'antd';
+import { message, Pagination } from 'antd';
 
 import TableOrders from './TableOrders';
 import apiServices from '../../utils/api.services';
 import { ORDER_SELERS } from '../../utils/index'
 import queryString from 'query-string';
+import { useSelector } from 'react-redux';
 
 function PanelOrders() {
 
@@ -21,19 +22,60 @@ function PanelOrders() {
     });
 
 
+    const { roles } = useSelector((state) => state.authReducer)
+    const { gallery_id } = useSelector((state) => state.galleryReducer)
+    const getUserRole = () => {
+        let userRole = "user"
+        if (typeof roles === "string") {
+            return roles
+        } else {
+            if (roles && roles.length > 0) {
+                if (roles.includes("seller")) {
+                    userRole = "seller"
+                }
+                if (roles.includes("artist")) {
+                    userRole = "artist"
+                }
+            } else {
+                userRole = 'user'
+            }
+        }
+        return userRole
+    }
+
+
+
     // Receive the list of orders
     const getIgetOrdersLisItems = () => {
         setLoading(true)
-        apiServices.get(ORDER_SELERS, queryString.stringify(params))
-            .then(resp => {
-                setLoading(false)
-                setOrderList(resp.data.data.results)
-                setSuggestionsCount(resp.data.data.count)
-            })
-            .catch(err => {
-                setLoading(false)
-                console.error(err);
-            })
+        if (getUserRole() === "gallery") {
+            apiServices.get(`/gallery/${gallery_id}/orders/`, queryString.stringify(params))
+                .then(res => {
+                    if (res.data) {
+                        setLoading(false)
+                        setOrderList(res.data.data.results)
+                        setSuggestionsCount(res.data.data.count)
+                    } else {
+                        message.error(res.response.data.message)
+                    }
+
+                }).catch(err => {
+                    setLoading(false)
+                    console.log(err);
+                })
+        }
+        else {
+            apiServices.get(ORDER_SELERS, queryString.stringify(params))
+                .then(resp => {
+                    setLoading(false)
+                    setOrderList(resp.data.data.results)
+                    setSuggestionsCount(resp.data.data.count)
+                })
+                .catch(err => {
+                    setLoading(false)
+                    console.error(err);
+                })
+        }
     }
 
 
@@ -69,7 +111,7 @@ function PanelOrders() {
                         <div className="public-header mrgb32">
                             <h2 className=" default-title text-dir">{t("content-panel-dashboard.tables.orders")}</h2>
                         </div>
-                        <div className="row box-dir-reverse text-dir">
+                        <div className="row box-dir-reverse text-dir m-0">
                             <div className="col-12 col-sm-6 col-xl-3 px-0">
                                 <label className="container-radio">{t("content-panel-orders.filters.all")}
                                     <input
@@ -115,7 +157,7 @@ function PanelOrders() {
                         </div>
 
 
-                        <TableOrders id orderList={orderList} />
+                        <TableOrders orderList={orderList} />
 
 
                         <div className=" row-pagination">

@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react';
-
 import empty_image from '../../assets/img/empty_list.svg';
-import artwork1 from '../../assets/img/artworks/artwork-1.jpg';
 import go from '../../assets/img/go.svg';
 import { t } from 'i18next';
+import { GetLanguage } from '../../utils/utils'
+import moment from 'jalali-moment';
+import { isStatusPurchases } from '../../utils/converToPersian';
+import { Link } from 'react-router-dom';
+
 
 function Paid({ purchasesProp }) {
 
+    const Language = GetLanguage();
 
-    console.log(purchasesProp);
-    const [purchases, setPurchases] = useState(purchasesProp)
-
-
-    console.log(purchases);
 
     return (
         <React.Fragment>
-            {(purchasesProp && purchasesProp.lenght === 0) &&
+
+            {(purchasesProp && purchasesProp.length === 0) &&
                 <div className="empty-paid">
                     <img src={empty_image} width="72" height="72" alt="empty_pic" className="center-block img-responsive" />
                     <span className="bolder-title">{t("content-panel-mypurchases.paid.empty.title")}</span>
@@ -25,14 +25,15 @@ function Paid({ purchasesProp }) {
                         <br />
                         {t("content-panel-mypurchases.paid.empty.text2")}
                     </p>
-                    <button type="button" className="btn btn-default">
-                        {t("content-panel-mypurchases.paid.empty.btn")}
-                    </button>
+                    <Link to="/site/artworks">
+
+                        <button type="button" className="btn btn-default">
+                            {t("content-panel-mypurchases.paid.empty.btn")}
+                        </button>
+                    </Link>
                 </div>
-            }:{ purchases &&
-                // (purchasesProp && purchasesProp.lenght >= 0) &&
+            }:{purchasesProp &&
                 purchasesProp.map((purchase, index) => {
-                    console.log(purchase)
                     return (
                         <div className="basket-list-row">
                             <div className="d-block d-lg-flex box-dir-reverse">
@@ -40,7 +41,7 @@ function Paid({ purchasesProp }) {
                                     <div className="row box-dir-reverse">
                                         <div className="col-12 col-sm-4 ">
                                             <div className="col-img">
-                                                <img src={artwork1} width="1776" height="1776" alt="artwork-pic"
+                                                <img src={purchase?.product_item?.product?.medias[0]?.exact_url} width="1776" height="1776" alt="artwork-pic"
                                                     className="img-responsive basket-img" />
                                             </div>
                                         </div>
@@ -48,28 +49,34 @@ function Paid({ purchasesProp }) {
                                             <div className="row-listdetail ">
                                                 <div className="d-flex box-dir-reverse">
                                                     <span className="col-xs-5 detail-title text-dir">{t("content-panel-mypurchases.artwork-title")}</span>
-                                                    <span className="col-xs-7 detail-name">بدون عنوان</span>
+                                                    <span className="col-xs-7 detail-name">{
+                                                        Language === 'fa-IR' ? purchase?.product_item?.product?.translations?.fa?.title :
+                                                            purchase?.product_item?.product?.translations?.en?.title
+                                                    }</span>
                                                 </div>
                                             </div>
                                             <div className="row-listdetail">
                                                 <div className="d-flex box-dir-reverse">
                                                     <span className="col-xs-5 detail-title text-dir">{t("content-panel-mypurchases.owner")}</span>
-                                                    <h3 className="col-xs-7 detail-name">ساناز دزفولیان</h3>
+                                                    <h3 className="col-xs-7 detail-name">{
+                                                        Language === 'fa-IR' ? purchase?.product_item?.product?.translations?.fa?.artist_name :
+                                                            purchase?.product_item?.product?.translations?.en?.artist_name
+                                                    }</h3>
                                                 </div>
                                             </div>
                                             <div className="row-listdetail">
                                                 <div className="d-flex box-dir-reverse">
                                                     <span className="col-xs-5 detail-title text-dir">{t("content-panel-mypurchases.code")}</span>
-                                                    <h3 className="col-xs-7 detail-name persian-num">۲۵۷۲۷۰۱۴۸۲</h3>
+                                                    <h3 className="col-xs-7 detail-name persian-num">{purchase?.product_item?.product?.id}</h3>
                                                 </div>
                                             </div>
                                             <div className="row-listdetail">
                                                 <div className="d-flex box-dir-reverse">
                                                     <span className="col-xs-5 detail-title text-dir">{t("content-panel-mypurchases.size")}</span>
                                                     <h3 className="col-xs-7 detail-name">
-                                                        <span className="dimension-width persian-num">60</span>
+                                                        <span className="dimension-width persian-num">{purchase?.product_item?.product?.width}</span>
                                                         <span> {t("content-panel-mypurchases.x")}</span>
-                                                        <span className="dimension-height persian-num">60</span>
+                                                        <span className="dimension-height persian-num">{purchase?.product_item?.product?.height}</span>
                                                     </h3>
                                                 </div>
                                             </div>
@@ -86,15 +93,15 @@ function Paid({ purchasesProp }) {
                                                         <div className="col-xs-6  graycolor text-dir">{t("content-panel-mypurchases.order")}</div>
                                                         <div className="col-xs-6">
                                                             <div className="basket-pricestyle">
-                                                                <span className="persian-num">۶۳۷۱</span>
+                                                                <span className="persian-num">{purchase?.order_tracking_code}</span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div className="d-flex price-row box-dir-reverse">
-                                                        <div className="col-xs-6  graycolor text-dir">{t("content-panel-mypurchases.your-bidding")}</div>
+                                                        <div className="col-xs-6  graycolor text-dir">{t("content-panel-mypurchases.your-price")}</div>
                                                         <div className="col-xs-6">
                                                             <div className="basket-pricestyle">
-                                                                <span className="persian-num">۱,۲۰۰,۰۰۰</span>
+                                                                <span className="persian-num">{Language === 'fa-IR' ? purchase?.toman_price : purchase?.dollar_price}</span>
                                                                 <span>تومان</span>
                                                             </div>
                                                         </div>
@@ -103,7 +110,7 @@ function Paid({ purchasesProp }) {
                                                         <div className="col-xs-6  graycolor text-dir">{t("content-panel-mypurchases.payment-date")}</div>
                                                         <div className="col-xs-6">
                                                             <div className="basket-pricestyle">
-                                                                <span className="persian-num">۱۳۹۹/۰۵/۲۰</span>
+                                                                <span className="persian-num">{Language === 'fa-IR' ? moment(purchase?.creation_date, 'YYYY/MM/DD').locale('fa').format('YYYY/MM/DD') : moment(purchase?.creation_date, 'YYYY/MM/DD').locale('en').format('YYYY/MM/DD')}</span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -111,7 +118,7 @@ function Paid({ purchasesProp }) {
                                                         <div className="col-xs-6 graycolor text-dir">{t("content-panel-mypurchases.status")}</div>
                                                         <div className="col-xs-6">
                                                             <div className="basket-pricestyle">
-                                                                <span className="purchase-status accept bolder-title">پرداخت شده</span>
+                                                                <span className={"purchase-status bolder-title " + (isStatusPurchases(purchase?.status).css)} >{isStatusPurchases(purchase?.status).title}</span>
                                                             </div>
                                                         </div>
                                                     </div>

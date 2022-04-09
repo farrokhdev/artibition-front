@@ -7,6 +7,7 @@ import CreateExhibition from "../GalleryPanelDashboard/CreateExhibition";
 import BasketFooterPanel from "../../components/BasketFooterPanel/BasketFooterPanel";
 
 function GalleryPanelExhibition() {
+    
     return (
         <>
             <HeaderPanel t={t} />

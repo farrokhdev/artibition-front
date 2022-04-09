@@ -7,10 +7,13 @@ import ver_code from '../../assets/img/ver_code.svg';
 import { t } from 'i18next';
 import APIService from "../../utils/api.services";
 import {REGISTER, VERIFY} from "../../utils";
+import { useDispatch, useSelector } from 'react-redux';
+import { setOpenModal } from '../../redux/reducers/auth/auth.actions';
 
 function ModalOtp(props) {
     
-    
+    const dispatch = useDispatch();
+    const { is_Open_Modal } = useSelector((state) => state.authReducer)
     const {visibleOtpModal , setVisibleOtpModal} = props
     const [form] = Form.useForm();
     
@@ -27,6 +30,7 @@ function ModalOtp(props) {
                     message.success("ثبت نام شما با موفقیت انجام شد.")
                     setTimeout(() => {
                         window.location.href = "/"
+                        dispatch(setOpenModal(!is_Open_Modal))
                     }, 200);
                 } else {
                     message.error(res.response.data.message)

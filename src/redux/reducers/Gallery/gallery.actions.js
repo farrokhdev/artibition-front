@@ -8,9 +8,23 @@ export const galleryId = (data) => (
     }
 )
 
+export const galleryProfile = (data) => (
+    {
+        type: types.GALLERY_PROFILE,
+        payload: data
+    }
+)
+
 export const selectedArtworkRedux = (data) => (
     {
-        type: types.SELECTED_ARTWORKS ,
+        type: types.SELECTED_ARTWORKS,
+        payload: data
+    }
+)
+
+export const editGalleryModeFunc = (data) => (
+    {
+        type: types.EDIT_GALLERY_MODE,
         payload: data
     }
 )

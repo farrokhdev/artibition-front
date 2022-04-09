@@ -16,7 +16,7 @@ import artwork10 from '../../assets/img/artworks/hnrpqkfiup@3x.jpg'
 import edit_name from '../../assets/img/edit_name.svg'
 import change_icon from '../../assets/img/change.png'
 import apiServices from "../../utils/api.services";
-import { ARTIST_BY_GALLERY, GALLERY_ARTISTS } from "../../utils";
+import { ARTIST_BY_GALLERY, EXHIBITION, EXHIBITION_INFO, EXHIBITION_PRODUCT, GALLERY_ARTISTS } from "../../utils";
 import { Form, Input, message, Modal, Button, Spin } from "antd";
 import { GetLanguage } from "../../utils/utils";
 import MultipleUpload from "../../components/MultiUpload/MultiUpload";
@@ -24,13 +24,15 @@ import OneUpload from "../../components/OneUpload/OneUpload";
 import queryString from "query-string";
 import Collection from "../CollectionsList/Collection";
 import ExistArtworkCollection from "./ExistArtworkCollection";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { exhibitionForm, reduxSelectedArtworksFunc } from "../../redux/reducers/Exhibition/exhibition.action";
+import OneUploadCircle from "../../components/OneUploadCircle/OneUploadCircle";
 
-let ttemp = []
 const { TextArea } = Input
 
 function GalleryPanelUploadExhibitionArtwork() {
-    const [selectedArtistId, setSelectedArtistId] = useState([1, 2, 3, 4, 5])
+    const { lastform } = useSelector((state) => state.exhibitionReducer)
+    const [selectedArtistId, setSelectedArtistId] = useState(lastform?.artist ? lastform.artist : [])
     const [selectedArtists, setSelectedArtists] = useState([])
     const [selectedArtist, setSelectedArtist] = useState()
     const [showNewArtist, setShowNewArtist] = useState(false)
@@ -39,13 +41,23 @@ function GalleryPanelUploadExhibitionArtwork() {
     const [showChangePrice, setShowChangePrice] = useState(false)
     const [uploadList, setUploadList] = useState([])
     const [selectedArtworks, setSelectedArtworks] = useState([])
-    const [tempSelectedArtowrks, setTempSelectedArtworks] = useState([])
+    const [artworkToChange, setArtworkToChange] = useState({})
+    const [artistToChange, setArtistToChange] = useState({})
+    const [reRender, setReRender] = useState(false)
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const { gallery_id } = useSelector((state) => state.galleryReducer)
+    const { exhibitionId } = useSelector((state) => state.exhibitionReducer)
+    const { editExhibitionMode } = useSelector((state) => state.exhibitionReducer)
+    const { reduxSelectedArtworks } = useSelector((state) => state.exhibitionReducer)
+
+
 
 
 
 
     const [chosenList, setChosenList] = useState([])
-
+    const [changePriceForm] = Form.useForm()
 
 
     const [params, setParams] = useState({
@@ -53,24 +65,120 @@ function GalleryPanelUploadExhibitionArtwork() {
     })
 
     const [form] = Form.useForm()
-    const navigate = useNavigate()
+
+
+    const sendData = () => {
+        let temp = []
+        reduxSelectedArtworks.map((item, index) => {
+            temp.push(...item.selected)
+        })
+        lastform["product"] = temp
+        console.log(editExhibitionMode);
+        console.log(gallery_id);
+
+        if (editExhibitionMode && gallery_id) {
+            apiServices.patch(EXHIBITION_INFO(gallery_id, exhibitionId), lastform)
+                .then(res => {
+                    if (res.data) {
+                        message.success({
+                            content: "نمایشگاه با موفقیت ویرایش شد",
+                            style: { marginTop: "110px" }
+                        })
+                        dispatch(reduxSelectedArtworksFunc([]))
+                        dispatch(exhibitionForm({}))
+                        setTimeout(() => {
+                            navigate("/panel/exhibitions")
+                        }, 500)
+                    }
+                    else {
+                        console.log(res);
+                        // message.error({
+                        //     content: res.message,
+                        //     style: { marginTop: "110px" }
+                        // })
+                    }
+                })
+        }
+        else {
+            apiServices.post(EXHIBITION(gallery_id), lastform)
+                .then(res => {
+                    if (res.data) {
+
+                        message.success({
+                            content: "نمایشگاه با موفقیت ساخته شد",
+                            style: { marginTop: "110px" }
+                        })
+                        dispatch(reduxSelectedArtworksFunc([]))
+                        dispatch(exhibitionForm({}))
+                        setTimeout(() => {
+                            navigate("/panel/exhibitions")
+                        }, 500)
+                    }
+                    else {
+                        message.error({
+                            content: res.response.data.message,
+                            style: { marginTop: "110px" }
+                        })
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+        }
+    }
 
 
 
-    const { selected_artwork_redux } = useSelector((state) => state.galleryReducer)
+    const getExhibitionProduct = () => {
+        editExhibitionMode &&
+            apiServices.get(EXHIBITION_PRODUCT(gallery_id, exhibitionId), queryString.stringify(params))
+                .then(res => {
+                    if (res.data) {
+                        // console.log(res.data.data.results);
+                        const result = res.data.data.results
+                        const temp = []
+                        const artistsTemp = []
+                        result.map((item) => {
+                            const data = {}
+                            data["id"] = item.id;
+                            data["selected"] = []
+                            artistsTemp.push(item.id);
+                            item.product_item.map((product) => {
+                                data.selected.push({
+                                    product_id: product.product.id,
+                                    product_item_id: product.id,
+                                    reserved_dollar_price: product.reserved_dollar_price,
+                                    reserved_toman_price: product.reserved_toman_price
+                                })
+                            })
+                            temp.push(data)
+                        })
+                        // console.log(temp);
+                        // console.log("IIIDDDD", artistsTemp);
+                        // setSelectedArtworks(temp)
+                        dispatch(reduxSelectedArtworksFunc(temp));
+                        // console.log(myObject);
+                        setSelectedArtistId(artistsTemp)
+
+                        // setSelectedArtworks()
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                })
+    }
 
 
 
 
-    useEffect(() => {
-        apiServices.get(GALLERY_ARTISTS(2), queryString.stringify(params))
+    const getGalleryArtists = () => {
+        apiServices.get(GALLERY_ARTISTS(gallery_id), queryString.stringify(params))
             .then(res => {
                 if (res.data) {
                     let filter = []
+                    // console.log(res.data.data.results);
                     res.data.data.results.map((item) => {
-
                         if (selectedArtistId.includes(item.id)) {
-
                             filter.push(item)
                         }
                     })
@@ -83,10 +191,31 @@ function GalleryPanelUploadExhibitionArtwork() {
             .catch((err) => {
                 console.error(err);
             });
+    }
+
+
+
+
+
+
+    useEffect(() => {
+        getExhibitionProduct()
+        getGalleryArtists()
     }, [])
 
+
+    // useEffect(() => {
+    //     console.log(selectedArtists)
+    // }, [selectedArtists])
+
+    // useEffect(() => {
+    //     console.log(selectedArtworks);
+    // }, [selectedArtworks])
+
+
+
     const submitSelectedArtwork = () => {
-        setSelectedArtworks(ttemp)
+        // setSelectedArtworks(ttemp)
     }
 
 
@@ -115,16 +244,23 @@ function GalleryPanelUploadExhibitionArtwork() {
                     "bucket_name": "image"
                 }
             }
-            // console.log(payload);
-            apiServices.post(ARTIST_BY_GALLERY(2), payload)
+
+
+            apiServices.post(ARTIST_BY_GALLERY(gallery_id), payload)
                 .then(res => {
                     if (res.data) {
-                        // console.log(res.data.data);
-                        // console.log(res.data.data);
+                        let temp = lastform
+                        if (!temp.artist) {
+                            temp["artist"] = []
+                        }
+                        temp?.artist?.push(res.data.data.id)
+                        // console.log(temp);
+                        dispatch(exhibitionForm(temp))
                         setSelectedArtists([...selectedArtists, res.data.data])
                         setSelectedArtistId([...selectedArtistId, res.data.data.id])
                         setUploadList([]);
                         form.resetFields();
+                        setShowNewArtist(false)
                     } else {
                         message.error(res.response.data.message)
                     }
@@ -140,19 +276,25 @@ function GalleryPanelUploadExhibitionArtwork() {
     }
 
 
-    // useEffect(() => {
-    //     console.log(selectedArtist);
-    // }, [selectedArtist])
+    const changePriceFinish = (form) => {
+        // let temp = selectedArtworks
+        let temp = reduxSelectedArtworks
 
-    // useEffect(() => {
-    //     console.log(selectedArtowrks);
-    // }, [selectedArtowrks])
-
-
-    useEffect(() => {
-        console.log(chosenList);
-    }, [chosenList])
-
+        for (let i = 0; i < temp.length; i++) {
+            if (temp[i].id === artistToChange.id) {
+                for (let j = 0; j < temp[i].selected.length; j++) {
+                    const element = temp[i].selected[j];
+                    if (element.product_id === artworkToChange.product_id && element.product_item_id === artworkToChange.product_item_id) {
+                        element.reserved_dollar_price = form.dollarPrice
+                        element.reserved_toman_price = form.tomanPrice
+                    }
+                }
+            }
+        }
+        // console.log(temp);
+        // setSelectedArtworks(temp)
+        dispatch(reduxSelectedArtworksFunc(temp));
+    }
 
 
     return (
@@ -161,12 +303,16 @@ function GalleryPanelUploadExhibitionArtwork() {
                 <HeaderPanel t={t} />
                 <div className="upload-exhibition-artist mrgt125">
                     <h2 className="default-title aligncenter">{t("upload-exhibition-artwork.title")}</h2>
+                    {
+                        // console.log("selectedArtists", selectedArtists)
+                    }
                     {selectedArtists.map((artist, artistIndex) => {
+                        // console.log(artist);
                         return (
                             <div className=" artist-upload-row">
                                 <div className="artist-name-row">
                                     <div className="artist-avatar pull-dir">
-                                        <img className="img-responsive" src={artist.bg_image?.exact_url} height="192" width="192" alt="" />
+                                        <img className="img-responsive" src={artist?.bg_image?.exact_url} height="192" width="192" alt="" />
                                     </div>
                                     <h4 className="artists-name text-dir">
                                         <span>
@@ -178,49 +324,59 @@ function GalleryPanelUploadExhibitionArtwork() {
                                 </div>
                                 <div className="clearfix"></div>
                                 <div className="row dir">
-                                    {selectedArtworks.map((artwork, artworkIndex) => {
-                                        if (artwork.id === artist.id) {
-                                            {
-                                                return (
-                                                    artwork.selected.map((showArtwork, showArtworkIndex) => {
-                                                        return (
-                                                            <div className="cols" tabIndex="-1" style={{ padding: "0 5px", cursor: "unset" }}>
-                                                                <div className="col-img">
-                                                                    <div className="tags tags-off persian-num">30 %</div>
-                                                                    <img src="/static/media/hnrpqkfiup@3x.27cdebb9.jpg" width="200" height="200" alt="آرتیبیشن" className="img-responsive" />
-                                                                </div>
-                                                                <div className="col-body text-dir dir">
-                                                                    <h6 className="col-title">
-                                                                        <span className="col-name">آیدین</span>
-                                                                        <span className="col-name">آغداشلو</span>
-                                                                    </h6>
-                                                                    <div className="col-dimension">
-                                                                        <span className="col-dimension-title">ابعاد:</span>
-                                                                        <span className="col-dimension-body">
-                                                                            <span className="dimension-width">60</span>
-                                                                            <span> در </span>
-                                                                            <span className="dimension-height">60</span>
-                                                                        </span>
+                                    {
+                                        // console.log("selectedArtworks", selectedArtworks)
+                                    }
+                                    {
+                                        // selectedArtworks.map((artwork, artworkIndex) => {
+                                        reduxSelectedArtworks.map((artwork, artworkIndex) => {
+                                            // console.log("AAAAAAAAA", artwork);
+
+                                            if (artwork.id === artist.id) {
+                                                {
+                                                    return (
+                                                        artwork.selected.map((showArtwork, showArtworkIndex) => {
+                                                            console.log(showArtwork);
+                                                            return (
+                                                                <div className="cols" tabIndex="-1" style={{ padding: "0 5px", cursor: "unset" }}>
+                                                                    <div className="col-img">
+                                                                        <div className="tags tags-off persian-num">30 %</div>
+                                                                        <img src="/static/media/hnrpqkfiup@3x.27cdebb9.jpg" width="200" height="200" alt="آرتیبیشن" className="img-responsive" />
                                                                     </div>
-                                                                    <div className="col-price">
-                                                                        <span className="col-price-num">22.000.000</span>
-                                                                        <span className="col-price-unit">تومان</span>
-                                                                        <span className="edit-price" data-toggle="modal" data-target="modal-edit-price" style={{ cursor: "pointer" }} onClick={() => {
-                                                                            // console.log(showArtwork)
-                                                                            setShowChangePrice(true)
-                                                                        }}
-                                                                        >
-                                                                            <img src="/static/media/edit_name.952e3f26.svg" width="32" height="32" alt="" />
-                                                                        </span>
+                                                                    <div className="col-body text-dir dir">
+                                                                        {/* <h6 className="col-title">
+                                                                            <span className="col-name">آیدین</span>
+                                                                            <span className="col-name">آغداشلو</span>
+                                                                        </h6> */}
+                                                                        {/* <div className="col-dimension">
+                                                                            <span className="col-dimension-title">ابعاد:</span>
+                                                                            <span className="col-dimension-body">
+                                                                                <span className="dimension-width">60</span>
+                                                                                <span> در </span>
+                                                                                <span className="dimension-height">60</span>
+                                                                            </span>
+                                                                        </div> */}
+                                                                        <div className="col-price">
+                                                                            <span className="col-price-num">{i18next.language === "fa-IR" ? showArtwork?.reserved_toman_price : showArtwork?.reserved_dollar_price}</span>
+                                                                            <span className="col-price-unit">{t("upload-exhibition-artwork.price")}</span>
+                                                                            <span className="edit-price" data-toggle="modal" data-target="modal-edit-price" style={{ cursor: "pointer" }} onClick={() => {
+                                                                                setArtistToChange(artist)
+                                                                                setArtworkToChange(showArtwork)
+                                                                                changePriceForm.resetFields()
+                                                                                setShowChangePrice(true)
+                                                                            }}
+                                                                            >
+                                                                                <img src="/static/media/edit_name.952e3f26.svg" width="32" height="32" alt="" />
+                                                                            </span>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                        )
-                                                    })
-                                                )
+                                                            )
+                                                        })
+                                                    )
+                                                }
                                             }
-                                        }
-                                    })}
+                                        })}
 
                                     <div>
                                         <button style={{ width: "200px", height: "200px" }} className="artist-upload addbtn" onClick={() => {
@@ -229,7 +385,6 @@ function GalleryPanelUploadExhibitionArtwork() {
                                         }}>
                                             <img src={add} width="36" height="36" alt="" className="img-responsive" />
                                         </button>
-                                        {/* <input type={"file"} className="d-none" id="file-upload-1" /> */}
                                     </div>
                                 </div>
                             </div>
@@ -242,7 +397,7 @@ function GalleryPanelUploadExhibitionArtwork() {
                     </button>
                     <div className="adv-btn" style={{ backgroundColor: "white" }}>
                         <div className="container">
-                            <button type="button" className="btn-next pull-dir-rev">{t("upload-exhibition-artwork.confirm_gallery_info")}</button>
+                            <button type="button" className="btn-next pull-dir-rev" onClick={() => { sendData() }}>{t("upload-exhibition-artwork.confirm_gallery_info")}</button>
                         </div>
                     </div>
                 </div>
@@ -254,7 +409,8 @@ function GalleryPanelUploadExhibitionArtwork() {
                 <Modal
                     visible={showNewArtist}
                     width={800}
-                    footer={[]}>
+                    footer={[]}
+                    destroyOnClose={true}>
                     <div className="modal-content">
                         <div className="modal-header">
                             <h5 className="modal-title" id="exampleModalLabel">{t("gallery-panel-create-exhibition.add_new_artist.title")}</h5>
@@ -269,7 +425,7 @@ function GalleryPanelUploadExhibitionArtwork() {
                                 <div className="row-addaddress">
                                     <h3 className="addressform-title text-dir">{t("gallery-panel-create-exhibition.add_new_artist.upload_artist_picture")}</h3>
                                 </div>
-                                <OneUpload uploadList={uploadList} setUploadList={setUploadList} />
+                                <OneUploadCircle uploadList={uploadList} setUploadList={setUploadList} />
                                 <Form form={form} name="add_new_artist"
                                     onFinish={onFinishNewArtist}
                                     className="row dir">
@@ -356,14 +512,19 @@ function GalleryPanelUploadExhibitionArtwork() {
                                 <button type="button" className="btn-black center-block" data-target="#exist-artworks" data-toggle="modal" onClick={() => { setShowExistArtwork(true) }}>
                                     انتخاب از آثار موجود
                                 </button>
-                                <button type="button" className="btn-black center-block mrgt16" data-target="#modal-import { useLocation } from 'react-router-dom';edit-price" data-toggle="modal" onClick={() => {
+                                {/* <button type="button" className="btn-black center-block mrgt16" data-target="#modal-import { useLocation } from 'react-router-dom';edit-price" data-toggle="modal" onClick={() => {
                                     navigate({
                                         pathname: '/panel/add-artwork',
-                                        search: `?artist_id=${selectedArtist}&back=/gallery-panel/upload-exhibition-artwotk`,
+                                        search: `?artist_id=${selectedArtist}&back=/panel/upload-exhibition-artwotk`,
+                                        state: { from: "/panel/upload-exhibition-artwotk" }
                                     });
                                 }}>
                                     افزودن اثر جدید
-                                </button>
+                                </button> */}
+                                <Link to={`/panel/add-artwork?artist_id=${selectedArtist}`} className="btn-black center-block mrgt16"
+                                    state={{ from: "/panel/upload-exhibition-artwotk" }}>
+                                    افزودن اثر جدید
+                                </Link>
                             </div>
                         </div>
 
@@ -379,7 +540,8 @@ function GalleryPanelUploadExhibitionArtwork() {
                     footer={[]}>
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">{t("gallery-panel-create-exhibition.add_new_artist.title")}</h5>
+                            {/* <h5 className="modal-title" id="exampleModalLabel">{t("gallery-panel-create-exhibition.add_new_artist.title")}</h5> */}
+                            <h5 className="modal-title" id="exampleModalLabel">{"انتخاب آثار"}</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={() => { setShowExistArtwork(false) }}>
                                 <span aria-hidden="true">×</span>
                             </button>
@@ -389,51 +551,34 @@ function GalleryPanelUploadExhibitionArtwork() {
                         <div className="modal-body">
                             <div className="container">
                                 {selectedArtists.map((artist, index) => {
-                                    // console.log(index, artist);
+                                    // console.log("ARTIST", artist);
                                     return (
                                         <div className="exist-artwork-row">
                                             <div className="artist-name-row">
                                                 <div className="artist-avatar pull-right">
-                                                    <img className="img-responsive" src="img/Aydin_Aghdashloo_04@3x.jpg" height="192" width="192" alt="" />
+                                                    <img className="img-responsive" src={artist?.bg_image?.exact_url} height="192" width="192" alt="" />
                                                 </div>
-                                                <h4 className="artists-name">
-                                                    <span>آیدین</span>
-                                                    <span>آغداشلو</span>
+                                                <h4 className="artists-name text-dir">
+                                                    <span>{i18next.language === "fa-IR" ? `${artist?.owner?.translations?.fa?.first_name} ${artist?.owner?.translations?.fa?.last_name}` : `${artist?.owner?.translations?.en?.first_name} ${artist?.owner?.translations?.en?.last_name}`}</span>
                                                 </h4>
                                             </div>
                                             <div className="artist-artworks-row advisory-select">
-                                                <ExistArtworkCollection artistID={artist.id} selectedArtwork={selectedArtworks} setSelectedArtwork={setSelectedArtworks} />
+                                                {/* <ExistArtworkCollection artistID={artist.id} selectedArtwork={selectedArtworks} setSelectedArtwork={setSelectedArtworks} /> */}
+                                                <ExistArtworkCollection artistID={artist.id} selectedArtwork={reduxSelectedArtworks} setSelectedArtwork={setSelectedArtworks} />
                                             </div>
                                         </div>
                                     )
                                 })}
-                                {/* <div className="exist-artwork-row">
-                                    <div className="artist-name-row">
-                                        <div className="artist-avatar pull-right">
-                                            <img className="img-responsive" src="img/Aydin_Aghdashloo_04@3x.jpg" height="192" width="192" alt="" />
-                                        </div>
-                                        <h4 className="artists-name">
-                                            <span>آیدین</span>
-                                            <span>آغداشلو</span>
-                                        </h4>
-                                    </div>
-                                    <div className="artist-artworks-row advisory-select">
-                                        <ExistArtworkCollection />
-                                    </div>
-                                </div> */}
                             </div>
                             <div className="adv-btn" style={{ backgroundColor: "white" }}>
                                 <div className="container">
                                     <button type="button" className="btn-next pull-left" onClick={() => {
                                         submitSelectedArtwork()
-                                        // console.log(ttemp);
-                                        // setSelectedArtworks(localStorage.getItem("mySelectedArtworks") ? JSON.parse(localStorage.getItem("mySelectedArtworks")) : [])
-                                    }}
-                                    >تایید و ادامه</button>
-                                    <div className="selected-artwork pull-left">
+                                    }}>تایید و ادامه</button>
+                                    {/* <div className="selected-artwork pull-left">
                                         <span className="persian-num">5</span>
                                         <span>اثر<span className="hidden-xs"> انتخاب شد</span></span>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </div>
                         </div>
@@ -457,49 +602,57 @@ function GalleryPanelUploadExhibitionArtwork() {
 
 
                         <div className="modal-body">
-                            <div className="container w-100">
-                                <div className="block-artworks">
-                                    <img src={artwork10} width="840" height="840" alt="" className="img-responsive center-block" />
-                                    <h6 className="col-title" style={{ justifyContent: "center" }}>
-                                        <span className="col-name">آیدین</span>
-                                        <span className="col-name">آغداشلو</span>
-                                    </h6>
-                                    <span>بدون عنوان</span>
-                                </div>
-                                <div className="block-edit-price dir text-dir">
-                                    <div className="row">
-                                        <div className="col-sm-12">
-                                            <label className="lable-checkbox public-group">
-                                                <input type="checkbox" value="" />
-                                                <span>برای نمایش</span>
-                                                <span className="checkmark"></span>
-                                                <span className="input-help" style={{ position: "block", top: "25px" }}>با انتخاب این گزینه اثر تنها برای نمایش در سایت قرار می‌گیرد</span>
-                                            </label>
-                                        </div>
+                            <Form name="changePrice"
+                                onFinish={changePriceFinish}
+                                form={changePriceForm}>
+                                <div className="container w-100">
+                                    <div className="block-artworks">
+                                        <img src={artwork10} width="840" height="840" alt="" className="img-responsive center-block" />
+                                        <h6 className="col-title" style={{ justifyContent: "center" }}>
+                                            <span className="col-name">آیدین</span>
+                                            <span className="col-name">آغداشلو</span>
+                                        </h6>
+                                        <span>بدون عنوان</span>
                                     </div>
-                                    <div className="row" style={{ marginTop: "40px" }}>
-                                        <div className="col-sm-6">
-                                            <div className="public-group">
-                                                <input className="form-control input-public persian-num " />
-                                                <label className="lable-public">قیمت اثر به تومان</label>
-                                            </div>
-                                            <a href="#" className="btn-change">
-                                                <img src={change_icon} width="24" height="24" alt="" className="" />
-                                            </a>
-                                        </div>
-                                        <div className="col-sm-6">
-                                            <div className="public-group">
-                                                <input className="form-control input-public persian-num " />
-                                                <label className="lable-public">معادل قیمت به دلار</label>
+                                    <div className="block-edit-price dir text-dir">
+                                        <div className="row">
+                                            <div className="col-sm-12">
+                                                <label className="lable-checkbox public-group">
+                                                    <input type="checkbox" value="" />
+                                                    <span>برای نمایش</span>
+                                                    <span className="checkmark"></span>
+                                                    <span className="input-help" style={{ position: "block", top: "25px" }}>با انتخاب این گزینه اثر تنها برای نمایش در سایت قرار می‌گیرد</span>
+                                                </label>
                                             </div>
                                         </div>
+                                        <div className="row" style={{ marginTop: "40px" }}>
+                                            <div className="col-sm-6">
+                                                <div className="public-group">
+                                                    <Form.Item name={"tomanPrice"}>
+                                                        <Input className="form-control input-public persian-num " placeholder="قیمت اثر با تومان" defaultValue={artworkToChange.reserved_toman_price} />
+                                                    </Form.Item>
+                                                </div>
+                                                <a href="#" className="btn-change">
+                                                    <img src={change_icon} width="24" height="24" alt="" className="" />
+                                                </a>
+                                            </div>
+                                            <div className="col-sm-6">
+                                                <div className="public-group">
+                                                    <Form.Item name={"dollarPrice"}>
+                                                        <Input className="form-control input-public persian-num " placeholder="قیمت اثر با دلار" defaultValue={artworkToChange.reserved_dollar_price} />
+                                                    </Form.Item>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div className="modal-footer" style={{ flexDirection: "column", padding: "0 15px" }}>
-                                <button type="button" className="btn btn-black" onClick={() => { setShowChangePrice(false) }}>ثبت تغییرات</button>
-                                <span style={{ margin: "10px 0" }}>تغییرات قیمتی شما در مدت برگزاری نمایشگاه باقی خواهد ماند</span>
-                            </div>
+                                <div className="modal-footer" style={{ flexDirection: "column", padding: "0 15px" }}>
+                                    <Form.Item>
+                                        <Button htmlType="submit" className="btn btn-black" onClick={() => { setShowChangePrice(false) }}>ثبت تغییرات</Button>
+                                    </Form.Item>
+                                    <span style={{ margin: "10px 0" }}>تغییرات قیمتی شما در مدت برگزاری نمایشگاه باقی خواهد ماند</span>
+                                </div>
+                            </Form>
                         </div>
 
                     </div>

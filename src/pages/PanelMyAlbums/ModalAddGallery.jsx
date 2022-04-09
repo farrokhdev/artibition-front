@@ -26,18 +26,18 @@ function ModalAddGallery(props) {
     const [chooseProduct, setchooseProduct] = useState([]);
     const [productList, setProductList] = useState([]);
 
-    // const [params, setParams] = useState({
-    //     page: 1,
-    //     status: "",
+    const [params, setParams] = useState({
+        page_size: 9999999
 
-    // });
+    });
 
 
 
     // Get my product list
     const getProductList = () => {
         // setLoading(true)
-        apiServices.get(PRODUCTS_ME, "")
+        // queryString.stringify(params)
+        apiServices.get(PRODUCTS_ME, queryString.stringify(params))
             .then(resp => {
                 // setLoading(false)
                 setProductList(resp.data.data.results)
@@ -51,8 +51,11 @@ function ModalAddGallery(props) {
     }
 
     useEffect(() => {
-        getProductList();
-    }, []);
+        if(visibleAddGallery === true){
+            getProductList();
+        }
+    }, [visibleAddGallery]);
+    
     const onFinish = (values) => {
         let payload = {
             "translations": {
@@ -74,9 +77,10 @@ function ModalAddGallery(props) {
                             marginTop: '10vh',
                         },
                     })
-                    setTimeout(() => {
-                        navigate('/panel/my-albums')
-                    }, 500);
+                    setVisibleAddGallery(false)
+                    // setTimeout(() => {
+                    // navigate('/panel/my-albums')
+                    // }, 500);
                 } else {
                     console.log(res.response)
                     message.error({
@@ -114,7 +118,7 @@ function ModalAddGallery(props) {
 
                     <div className="modal-content px-0 px-md-0">
                         <div className="d-flex justify-content-end">
-                            <button>
+                            <button type="reset">
                                 <span onClick={handleClose} aria-hidden="true" aria-label="Close">
                                     <img className="btn-close-modal" src={close_icon} alt="close-icon" />
                                 </span>
@@ -241,10 +245,9 @@ function ModalAddGallery(props) {
                                                         }} />
                                                         <span className="checkmark"></span>
                                                         <div className="col-img">
-                                                            <img 
-                                                           src={artworksLike && handleShowImage(artworksLike)}
-                                                           // src={artworksLike?.medias[0]?.exact_url} 
-                                                            width="840" height="1259"
+                                                            <img
+                                                                src={artworksLike && handleShowImage(artworksLike)}
+                                                                width="840" height="1259"
                                                                 alt="آرتیبیشن"
                                                                 className="img-responsive" />
                                                             <div className="tab-overly">
@@ -260,7 +263,6 @@ function ModalAddGallery(props) {
                                                     <div className="col-body">
                                                         <h6 className="col-title">
                                                             <span className="col-name">{Language === 'fa-IR' ? artworksLike?.translations?.fa?.artist_name : artworksLike?.translations?.en?.artist_name}</span>
-                                                            {/* <span className="col-name">آغداشلو</span> */}
                                                         </h6>
                                                         <div className="col-dimension">
 

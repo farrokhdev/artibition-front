@@ -20,14 +20,14 @@ function TableOrders({ orderList }) {
                                 className="img-responsive "
                             />
                         </td>
-                        <td data-label={t("content-panel-dashboard.tables.code")} className="persian-num">{item?.id}</td>
-                        <td data-label={t("content-panel-dashboard.tables.edition")} className="persian-num">{item?.product_item?.edition_number}</td>
-                        <td data-label={t("content-panel-dashboard.tables.price")} className="persian-num">{item?.product_item?.reserved_toman_price}</td>
-                        <td data-label={t("content-panel-dashboard.tables.discount")} className="persian-num">{item?.discount}</td>
-                        <td data-label={t("content-panel-dashboard.tables.paid")} className="persian-num">{item?.toman_price}</td>
-                        <td data-label={t("content-panel-dashboard.tables.status")} className="persian-num status text-dir text-md-center">{isAccept(item?.status).title}</td>
-                        <td data-label={t("content-panel-dashboard.tables.details")} className="">{item?.description} </td>
-                        <td data-label={t("content-panel-dashboard.tables.action")}>
+                        <td data-label={t("content-panel-dashboard.tables.code")} className="persian-num" style={{ minHeight: "38px" }}>{item?.id}</td>
+                        <td data-label={t("content-panel-dashboard.tables.edition")} className="persian-num" style={{ minHeight: "38px" }}>{item?.product_item?.edition_number}</td>
+                        <td data-label={t("content-panel-dashboard.tables.price")} className="persian-num" style={{ minHeight: "38px" }}>{item?.product_item?.reserved_toman_price}</td>
+                        <td data-label={t("content-panel-dashboard.tables.discount")} className="persian-num" style={{ minHeight: "38px" }}>{item?.discount}</td>
+                        <td data-label={t("content-panel-dashboard.tables.paid")} className="persian-num" style={{ minHeight: "38px" }}>{item?.toman_price}</td>
+                        <td data-label={t("content-panel-dashboard.tables.status")} className="persian-num status text-dir text-md-center" style={{ minHeight: "38px" }}>{isAccept(item?.status).title}</td>
+                        <td data-label={t("content-panel-dashboard.tables.details")} className="" style={{ minHeight: "38px" }}>{item?.description} </td>
+                        <td data-label={t("content-panel-dashboard.tables.action")} style={{ minHeight: "38px" }}>
                             <button className="btn-outline-blue" type="button" data-toggle="modal"
                                 data-target="#modal-replied-price">{t("content-panel-dashboard.tables.veiw")}
                             </button>

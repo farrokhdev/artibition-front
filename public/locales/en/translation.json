@@ -123,7 +123,12 @@
   "see-all": "View all",
   "event-all": "View all",
   "collection-all": "View all",
+  "home-modal-exhibition-sale-title": "ARTHIBITION ARTISTS",
+  "home-modal-exhibition-sale-content": "you could access a list of exceptional Iranian artists and all of their artworks at Arthibition. in case you are tthe creator or owner of an artwork, you could present it to our users by becoming a member at Arthibition.",
   "deadline-send-artwroks": ": Deadline",
+  "day": "Day",
+  "hour": "Hour",
+  "minute": "Minute",
   "upload": "Upload",
   "toman": "Toman",
   "dollar": "USD",
@@ -177,7 +182,7 @@
     "action-text": "Register artwork"
   },
   "artibition-events": {
-    "title": "ARTHIBITION ARTISTS"
+    "title": "ARTHIBITION EVENTS"
   },
   "news-and-article-art": {
     "title": "ART NEWS AND EVENTS",
@@ -236,7 +241,7 @@
     },
     "veiw_home": "View at home",
     "shipment": "1 to 3 day shipment",
-    "show_collector": "Show by collector",
+    "show_collector": "Show by",
     "visit_artwork": "Visit artwork at arthibition before buying",
     "bidding": "Bidding",
     "simillar_artworks": "Similar artworks",
@@ -276,7 +281,8 @@
       "cancel_offer": "Cancel the offer"
     },
     "modal_similar_artwork": {
-      "title": "Similar artworks"
+      "title": "Similar artworks",
+      "title1": "Add collections"
     },
     "modal_bidding_artwork": {
       "title": "Send offer",
@@ -433,6 +439,7 @@
     "nav-dashboard-gallery": "Gallery Dashborad",
     "nav-art-management": "Artworks",
     "nav-mypurchases": "My purchases",
+    "biding-price": "Biding price",
     "nav-orders": "Orders",
     "nav-wallet": "Wallet",
     "nav-my-albums": "My albums",
@@ -442,6 +449,7 @@
     "nav-exhibitions": "Exhibitions",
     "nav-artists": "Artists",
     "nav-my-galleries": "My galleries",
+    "nav-my-collections": "My collections",
     "nav-content": "Content",
     "invite": {
       "btn": "Invite friends",
@@ -452,7 +460,12 @@
     "info-box": {
       "register": {
         "title": "Register gallery",
-        "text": ".In case you own a gallery, register it"
+        "text": ".In case you own a gallery, register it",
+        "created": "Your request has been made",
+        "pending": "Pending",
+        "correction": "Needs correction",
+        "rejected": "Rejected",
+        "approved": "Approved"
       },
       "artists": {
         "title": "Register artists",
@@ -530,6 +543,7 @@
     "order": ".Order No",
     "price-artwork": "Price",
     "your-bidding": "Your bidding",
+    "your-price": "Your price",
     "artist-bidding": "Artist bidding",
     "payment-date": "Payment date",
     "status": "Status",
@@ -647,6 +661,7 @@
       "resume": "CV",
       "veiw": "Veiw",
       "approved_artist": "Approved artist",
+      "send": "Send",
       "not_send": "Not send",
       "approved_1": "Approved"
     },
@@ -712,8 +727,8 @@
   "content-panel-orders": {
     "filters": {
       "all": "All",
-      "Review" : "Review",
-      "Active_on_the_site" : "Active on the site",
+      "Review": "Review",
+      "Active_on_the_site": "Active on the site",
       "to_artibition": "To Arthibition",
       "artibition_to_customer": "Arthibition to customer",
       "delivered": "Delivered"
@@ -794,8 +809,10 @@
       "status": "Status",
       "details": "Details",
       "active": "Active",
+      "inactive": "Inactive",
       "edit": "Edit",
-      "video": "Video"
+      "video": "Video",
+      "other": "Other"
     }
   },
   "content-panel-create-content": {
@@ -840,6 +857,7 @@
       "title": "Artwork info",
       "artwork_name": "",
       "artwork_title": "Artwork title",
+      "artist_title": "Artist name",
       "artwork_subject": "Subject",
       "artwork_field": "Category",
       "artwork_technique": "Technique",
@@ -929,7 +947,7 @@
     "table": {
       "row": "#",
       "image": "Image",
-      "gallery_name": "Exhibition name",
+      "exhibition_name": "Exhibition name",
       "type": "Type",
       "start": "Start",
       "end": "End",
@@ -1168,6 +1186,7 @@
         "title": "Artwork info",
         "artwork_name": "",
         "artwork_title": "Artwork title",
+        "artist_title": "Artist name",
         "artwork_subject": "Subject",
         "artwork_field": "Category",
         "artwork_technique": "Technique",
@@ -1185,6 +1204,7 @@
         "tag_en": "Add tag",
         "text_tag_en": ".Adding one or multiple tags facilitates the process of receiving your artworks for your fans and audiences",
         "next_step": "Next",
+        "final-step": "Final step",
         "cencel": "Cancel"
       },
       "sale_info": "Sale info",
@@ -1262,6 +1282,7 @@
       "price": "USD",
       "spacial": "Spacial",
       "sold_out": "Sold out",
+      "not_sold": "Not sold",
       "btn_next": "Next",
       "btn_prev": "Prev"
     },
@@ -1280,7 +1301,7 @@
     "arthibition_address_1": "Tehran, Shariati Ave., Kousha St., Naseri St., Ghandi (Daria) St., No. 6.",
     "arthibition_address_2": "",
     "contact": "Contact",
-    "phone": "+989122121030",
+    "phone": "+98 9122121030",
     "back_home": "Back homepage"
   },
   "collections-list": {
@@ -1291,6 +1312,10 @@
     "special": "Special"
   },
   "cart": {
+    "general": {
+      "login_error": "Log in to your account"
+    },
+    "view-pay": "view and order",
     "empty": {
       "title": "Your cart is empty!",
       "description": "No item has been added to your cart. to buy artworks from Arthibition click on ''buy artwork''",
@@ -1349,6 +1374,7 @@
       "new_address_btn": "New address",
       "back_btn": "Back",
       "prev_step": "",
+      "address_select": "please select an address",
       "no_address_message": "You have registered no address!",
       "modal": {
         "title": "Add new address",
@@ -1368,8 +1394,13 @@
         "foreign_checkbox": "I'm a foreign resident. I have no N.C.",
         "receiver_checkbox": "I'm receiver",
         "send_friend_checkbox": "I'll send the artwork to my friend",
+        "receiver_select": "Select  reciever",
         "confirm_btn": "Confirm",
-        "select_address_map": "Select address on map"
+        "select_address_map": "Select address on map",
+        "enter_recipient_information": "Enter recipient information",
+        "enter_the_recipient_name": "Enter the recipient name",
+        "enter_the_mobile_number": "Enter the mobile number",
+        "enter_the_national_code": "Enter the national code"
       }
     },
     "pay_step": {
@@ -1470,7 +1501,77 @@
     "visite_select": "visite",
     "sell_select": "sell"
   },
-  "add-new-artist-by-gallery":{
-    "upload_avatar_error":"Please upload avatar for artist"
+  "add-new-artist-by-gallery": {
+    "upload_avatar_error": "Please upload avatar for artist"
+  },
+  "page404": {
+    "title": "Oops! Page not found",
+    "btn": "Go back home"
+  },
+  "clipboard": {
+    "success_message": "Copied successfully"
+  },
+  "contact-us": {
+    "keep_in_touch": "KEEP IN TOUCH",
+    "keep_in_touch_description": "If you wish to get in touch please contact us",
+    "fullname": "Full name",
+    "email_phone": "Email or phone number",
+    "description": "Description",
+    "write_your_message": "Write your message...",
+    "send": "Send",
+    "contact_info": "Contact info",
+    "artists-guide": "Artists guide",
+    "advice_on_buying_artwork": "Advice on buying artwork",
+    "email": "Email",
+    "address": "Address",
+    "support": "Support",
+    "messages": {
+      "please_enter_the_information": "Please enter the information.",
+      "full_name_least_characters_long": "Full name must be at least 7 characters long.",
+      "email_phone_least_characters_long": "Email or phone number must be at least 7 characters long.",
+      "enter_message": "Please enter the message text.",
+      "upload_resume": "Please upload your resume file.",
+      "successful_sent": "Your message has been successfully sent",
+      "send_message_failed": "Send message failed"
+    }
+  },
+  "work-with-us": {
+    "terms_cooperation": "Terms of cooperation",
+    "terms_cooperation_description": "We want to take a valuable and great step for the excellence of art in our country, which requires knowledge and artistic taste. Therefore, we intend to bring together a capable and powerful group by creating an intimate and professional environment to serve artists, art lovers and the visual arts community: If you are interested in joining us, you can send us your resume and information.",
+    "preparation_art_news": "Preparation of art news",
+    "introducing_artists": "Introducing artists to the site",
+    "introducing_galleries": "Introducing galleries and forums",
+    "art_education": "Art Education",
+    "interviewing_artists": "Interviewing artists and making music videos",
+    "contact_us": "Contact us",
+    "fullname": "Full name",
+    "email": "Email",
+    "phone": "Phone number",
+    "description": "Description",
+    "upload_resume": "Upload CV (PDF)",
+    "submit": "Submit"
+  },
+  "exhibitions-page": {
+    "events": "EVENTS",
+    "select-event-date": "SELECT EVENT'S DATE",
+    "filter": "Filter",
+    "remove-all": "Remove All",
+    "galleries": "Galleries",
+    "search-gallery": "Search Gallery",
+    "to-end": "to end",
+    "to-start": "to start",
+    "local": "Local",
+    "online": "Online",
+    "day": "Day",
+    "min": "Min",
+    "hour": "Hour",
+    "exhibitions": "Exhibitions",
+    "search-exhibition": "Search exhibition",
+    "exhibition-type": "Exhibition type",
+    "all": "All",
+    "local-exhibition": "Local Exhibition",
+    "online-exhibition": "Online Exhibition",
+    "promotions": "Promotions",
+    "finished": "Finished"
   }
 }

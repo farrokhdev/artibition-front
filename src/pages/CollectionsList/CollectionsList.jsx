@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Footer from '../../components/Footer/Footer';
 import Header from "../../components/Header/Header";
 import Menu from '../../components/Menu/Menu';
@@ -22,8 +22,36 @@ import gbazvsspbk3 from '../../assets/img/artworks/gbazvsspbk@3x.jpg';
 import { Pagination } from 'antd';
 import { t } from 'i18next';
 import Collection from './Collection';
+import apiServices from '../../utils/api.services';
+import { ARTIST_CATEGORY } from '../../utils';
+import QueryString from 'qs';
+import { useTranslation } from 'react-i18next';
 
 function CollectionsList() {
+
+
+    const [artistCategory, setArtistCategory] = useState();
+    const [params, setParams] = useState({
+        // search: "",
+        page: 1,
+        // owner_id: ownerId,
+  
+    })
+    const getArtistCategory = () => {
+        apiServices.get(ARTIST_CATEGORY, QueryString.stringify(params))
+            .then(res => {
+                if (res.data) {
+                    setArtistCategory(res.data.data)
+                }
+            })
+            .catch(err => {
+                console.log("err", err)
+            })
+    }
+    useEffect(() => {
+        getArtistCategory()
+    }, [params]);
+    console.log("artistCategory",artistCategory)
     return (
         <>
             <div className="container mx-auto px-0 w-100 bg-white">
@@ -48,7 +76,7 @@ function CollectionsList() {
                 <div className="default-content">
                     <div className="content-header">
                         <div className="d-flex box-dir-reverse">
-                            <div className="col">
+                            <div className="col p-0">
                                 <div className="d-flex justify-custom">
                                     <div className="form-group pull-left">
                                         <select className="form-control dir" id="sel1">
@@ -62,9 +90,11 @@ function CollectionsList() {
                         </div>
                     </div>
                     <div className="content-body">
-                        <Collection/>
-                        <Collection/>
-                        <Collection/>
+                        {artistCategory?.results?.map((item) => 
+                            <Collection collectionItem={item} getArtistCategory={getArtistCategory}/>
+                        )}
+                        {/* <Collection/>
+                        <Collection/> */}
                         <div className=" row-pagination">
                             <Pagination total={50} />
                         </div>

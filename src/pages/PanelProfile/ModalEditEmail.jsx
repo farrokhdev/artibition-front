@@ -39,9 +39,6 @@ function ModalEditEmail(props) {
                 if (res.data) {
                     setNewField(values?.email)
                     setShowEmail(false)
-                    // setTimeout(() => {
-
-                    // }, 500);
                 } else {
                     message.error({ content: "خطا در ثبت اطلاعات", style: { marginTop: '10vh' } })
                 }
@@ -56,6 +53,10 @@ function ModalEditEmail(props) {
                 if (res.data) {
                     setShowEmail(true)
                     getItems();
+                    setvisibleEditEmail(false)
+                } else {
+                    message.error({ content: "مجددا درخواست اعتبار سنجی دهید", style: { marginTop: '10vh' } })
+
                 }
             })
             .catch(err => {

@@ -12,8 +12,9 @@ import { GALLERY_LIST } from "../../utils";
 import { message } from "antd";
 import queryString from "query-string";
 import moment from "jalali-moment";
-import { galleryId } from "../../redux/reducers/Gallery/gallery.actions";
+import { editGalleryModeFunc, galleryId, galleryProfile } from "../../redux/reducers/Gallery/gallery.actions";
 import { useNavigate } from 'react-router-dom'
+import { setProfile } from "../../redux/reducers/auth/auth.actions";
 
 
 function GalleryPanelMyGalleryList() {
@@ -28,15 +29,26 @@ function GalleryPanelMyGalleryList() {
 
 
 
-    const goToGalleryProfile = (id) => {
-        dispatch(galleryId(id))
-        navigate("/gallery-panel/dashboard")
+    const goToGalleryProfile = (gallery) => {
+        dispatch(galleryId(gallery.id))
+        dispatch(galleryProfile(gallery))
+        dispatch(setProfile({ roles: "gallery" }))
+        navigate("/panel/dashboard")
+    }
+
+    const goToEditGallery = (gallery) => {
+        dispatch(galleryId(gallery.id))
+        dispatch(galleryProfile(gallery))
+        dispatch(editGalleryModeFunc(true))
+        dispatch(setProfile({ roles: "gallery" }))
+        navigate("/panel/gallery-info")
     }
 
 
 
 
     useEffect(() => {
+        console.log(params);
         apiServices.get(GALLERY_LIST, queryString.stringify(params))
             .then(res => {
                 if (res.data) {
@@ -75,21 +87,23 @@ function GalleryPanelMyGalleryList() {
                         return (
                             <tr>
                                 <td data-label={t("gallery-panel-my-gallery.table.row")} className="persian-num">{galleryIndex + 1}</td>
-                                <td data-label={t("gallery-panel-my-gallery.table.logo")}><img src={artwork1} width="1776" height="1776"
+                                <td data-label={t("gallery-panel-my-gallery.table.logo")}><img src={gallery?.logo?.exact_url} width="1776" height="1776"
                                     alt=""
                                     className="img-responsive center-block" /></td>
-                                <td data-label={t("gallery-panel-my-gallery.table.gallery_name")}>{i18next.language === 'fa-IR' ? gallery.translations?.fa?.title : gallery.translations?.en?.title}</td>
-                                <td data-label={t("gallery-panel-my-gallery.table.number_exhibition")}>{gallery.exhibition_num}</td>
-                                <td data-label={t("gallery-panel-my-gallery.table.last_edition")}>{moment(gallery.modified_date).locale(i18next.language === 'fa-IR' ? 'fa' : 'en').format('YYYY/MM/DD')}</td>
+                                <td data-label={t("gallery-panel-my-gallery.table.gallery_name")}>{i18next?.language === 'fa-IR' ? gallery?.translations?.fa?.title : gallery?.translations?.en?.title}</td>
+                                <td data-label={t("gallery-panel-my-gallery.table.number_exhibition")}>{gallery?.exhibition_num}</td>
+                                <td data-label={t("gallery-panel-my-gallery.table.last_edition")}>{moment(gallery?.modified_date).locale(i18next?.language === 'fa-IR' ? 'fa' : 'en').format('YYYY/MM/DD')}</td>
                                 <td data-label={t("gallery-panel-my-gallery.table.profile")} className="status">
                                     <button onClick={() => {
-                                        goToGalleryProfile(gallery.id)
+                                        goToGalleryProfile(gallery)
                                     }}>
                                         <img src={viewBlue} width="18" height="18" alt="" className="" />
                                     </button>
                                 </td>
                                 <td data-label={t("gallery-panel-my-gallery.table.details")} className="status">
-                                    <button className="btn-outline-blue">
+                                    <button className="btn-outline-blue" onClick={() => {
+                                        goToEditGallery(gallery)
+                                    }}>
                                         {t("gallery-panel-my-gallery.table.edit")}
                                     </button>
                                     {/* <button type="button" className="btn-outline-blue">{t("gallery-panel-my-gallery.table.edit")}</button> */}
