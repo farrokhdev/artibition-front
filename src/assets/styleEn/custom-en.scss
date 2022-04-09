@@ -145,7 +145,11 @@ a:hover {
   color: #141414;
   transition: all 0.5s ease 0s;
 }
-
+.menu .nav-header-menu li a {
+  padding: 15px 25px;
+  color: #141414;
+  transition: all 0.5s ease 0s;
+}
 .menu .navbar-nav > li > a,
 .menu .navbar-nav > li > a:hover,
 .menu .navbar-nav > li > a:focus,
@@ -5685,6 +5689,7 @@ input[type="number"] {
   background: #fff;
   z-index: 100;
   top: 62px;
+  direction: ltr;
 }
 
 .filter-dropdown .btn-black {
@@ -8608,7 +8613,7 @@ button.btn-searchfilter.hidden-sm {
 }
 
 .justify-custom {
-  justify-content: start !important;
+  justify-content: end !important;
 }
 
 .min-width-td-1 {

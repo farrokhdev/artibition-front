@@ -8,6 +8,7 @@
   "filter-header": {
     "title": "فیلتر",
     "placeholder-input-search": "جستجوی نام اثر، نام هنرمند، گالری و غیره",
+    "filter-btn": "اعمال فیلتر",
     "category": {
       "title": "رشته هنری",
       "all": "همه رشته‌ها",
@@ -63,6 +64,12 @@
   },
   "login_Title": "وارد شوید",
   "logout_Title": "خروج",
+  "login_success": "به آرتیبیشن خوش آمدید",
+  "login_error": "خطا در وارد کردن اطلاعات",
+  "logout_success": "شما از پنل خارج شدید.",
+  "logout_error": "خطادر هنگام خروج",
+  "login_desc": "جهت استفاده از تمام اطلاعات آرتیبیشن لطفا اطلاعات خود را وارد نمایید",
+
   "placeholder-username": "شماره همراه یا ایمیل",
   "placeholder-password": "رمز عبور",
   "placeholder-confirm-password": "تکرار رمز عبور",
@@ -782,17 +789,33 @@
       "text": ""
     },
     "collections": {
-      "title": "",
-      "btn": "",
-      "row": "",
-      "subject": "",
-      "count_artwork": "",
-      "last_edition": "",
-      "details": ""
+      "title": "کالکشن ها",
+      "table": {
+        "row": "ردیف",
+        "title": "عنوان",
+        "artworks-count": "تعداد آثار",
+        "latest-updates": "آخرین ویرایش",
+        "details": "جزییات",
+        "add-btn": "افزودن کالکشن"
+      },
+      "dimentions": "ابعاد"
+    },
+    "albums": {
+      "title": "مجموعه ها",
+      "table": {
+        "row": "ردیف",
+        "title": "عنوان",
+        "artworks-count": "تعداد آثار",
+        "latest-updates": "آخرین ویرایش",
+        "details": "جزییات",
+        "add-btn": "افزودن مجموعه"
+      },
+      "dimentions": "ابعاد"
     },
     "art_info": {
-      "title": "",
-      "btn": ""
+      "title": "اطلاعات هنری",
+      "btn": "لیست نمایشگاه ها",
+      "resume": "رزومه"
     }
   },
   "content-panel-contents": {
@@ -1474,7 +1497,7 @@
       "full_name_least_characters_long": "نام و نام خانوادگی باید حداقل 7 کاراکتر باشد.",
       "email_phone_least_characters_long": "اطلاعات تماس باید حداقل 9 کاراکتر باشد.",
       "enter_message": "لطفا متن پیام را وارد کنید.",
-      "upload_resume":"لطفا فایل رزومه را آپلود کنید.",
+      "upload_resume": "لطفا فایل رزومه را آپلود کنید.",
       "successful_sent": "پیام شما با موفقیت ارسال شد",
       "send_message_failed": "خطا در ارسال اطلاعات"
     }
@@ -1494,5 +1517,7 @@
     "description": "متن پیام",
     "upload_resume": "آپلود رزومه(PDF)",
     "submit": "ارسال"
-  }
+  },
+  "no-data": "هیچ دیتایی وجود ندارد",
+  "size": "ابعاد: "
 }

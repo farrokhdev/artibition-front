@@ -8,6 +8,7 @@
   "filter-header": {
     "title": "Filter",
     "placeholder-input-search": ".Search artwork, artist, gallery, etc",
+    "filter-btn": "Filter",
     "category": {
       "title": "Category",
       "all": "All",
@@ -63,6 +64,11 @@
   },
   "login_Title": "Login",
   "logout_Title": "Logout",
+  "login_success": "welcome to artibiton",
+  "login_error": "error in auth infos",
+  "logout_success": "you logged out",
+  "logout_error": "error in loggout",
+  "login_desc": "To use all Artibition information, please enter your information",
   "placeholder-username": "Email or mobile number",
   "placeholder-password": "Password",
   "placeholder-confirm-password": "Confirm password",
@@ -101,7 +107,7 @@
   "placeholder-activation-code": "Enter activation code",
   "text-btn-confirm-mobile-number": "Confirm mobile number",
   "text-btn-confirm-email": "Confirm mobile email",
-  "title_lang-header": "فارسی",
+  "title_lang-header": "FA",
   "nav-menu-artworks": "Artworks",
   "nav-menu-showroom": "Showroom",
   "nav-menu-online-exhibition": "Online exhibition",
@@ -785,17 +791,33 @@
       "text": ""
     },
     "collections": {
-      "title": "",
-      "btn": "",
-      "row": "",
-      "subject": "",
-      "count_artwork": "",
-      "last_edition": "",
-      "details": ""
+      "title": "collections",
+      "table": {
+        "row": "row",
+        "title": "title",
+        "artworks-count": "artworks count",
+        "latest-updates": "lateset updates",
+        "details": "details",
+        "add-btn": "Add collection"
+      },
+      "dimentions": "Dimentions"
+    },
+    "albums": {
+      "title": "albums",
+      "table": {
+        "row": "row",
+        "title": "title",
+        "artworks-count": "artworks count",
+        "latest-updates": "lateset updates",
+        "details": "details",
+        "add-btn": "Add album"
+      },
+      "dimentions": "Dimentions"
     },
     "art_info": {
-      "title": "",
-      "btn": ""
+      "title": "artwork infos",
+      "btn": "galleries list",
+      "resume": "Resume"
     }
   },
   "content-panel-contents": {
@@ -1531,7 +1553,7 @@
       "full_name_least_characters_long": "Full name must be at least 7 characters long.",
       "email_phone_least_characters_long": "Email or phone number must be at least 7 characters long.",
       "enter_message": "Please enter the message text.",
-       "upload_resume":"Please upload your resume file.",
+      "upload_resume": "Please upload your resume file.",
       "successful_sent": "Your message has been successfully sent",
       "send_message_failed": "Send message failed"
     }
@@ -1551,5 +1573,7 @@
     "description": "Description",
     "upload_resume": "Upload CV (PDF)",
     "submit": "Submit"
-  }
+  },
+  "no-data": "there is no data",
+  "size": "size: "
 }

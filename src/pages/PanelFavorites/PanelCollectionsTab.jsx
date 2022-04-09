@@ -140,7 +140,7 @@ function PanelCollectionsTab() {
           })
         ) : (
           <tr>
-            <td>هیچ دیتایی وجود ندارد</td>
+            <td>{t("no-data")}</td>
           </tr>
         )}
       </div>
