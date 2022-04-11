@@ -1001,6 +1001,7 @@
     "btn_cancel": "انصراف"
   },
   "gallery-panel-edit-gallery-info": {
+    "add-gallery": "افزودن نمایشگاه",
     "upload_gallery_cover_photo": "آپلود کاور و لوگوی گالری",
     "gallery_info": "اطلاعات گالری",
     "country_name": "نام کشور",
