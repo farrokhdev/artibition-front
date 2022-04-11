@@ -101,7 +101,9 @@ function TableArtworks({ productList }) {
                   data-toggle="modal"
                   data-target="#modal-replied-price"
                 >
-                  {t("content-panel-dashboard.tables.veiw")}
+                  {/* {t("content-panel-dashboard.tables.veiw")} */}
+                  {t("content-panel-dashboard.tables.edit")}
+                  
                 </Link>
               </td>
             </tr>

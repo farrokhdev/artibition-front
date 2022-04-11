@@ -34,6 +34,25 @@ function OneUploadCircle({ uploadList, setUploadList }) {
             setUploadList(uploadList.filter((item) => item.uid !== file.uid));
         },
 
+        beforeUpload : (file)=>{
+           
+            const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
+            if (!isJpgOrPng) {
+            
+              message.error({
+                content: 'شما فقط می توانید فایل JPG / PNG را آپلود کنید! ', style: {
+                    marginTop: '110px',
+                },
+            })
+            }
+            const isLt2M = file.size / 1024 / 1024 < 2;
+            if (!isLt2M) {
+              message.error({content:'تصویر باید کوچکتر از 2 مگابایت باشد!',marginTop:'110px'});
+            }
+            return isJpgOrPng && isLt2M;
+        
+      },
+
         showUploadList: {
             showDownloadIcon: false,
             downloadIcon: "download ",
