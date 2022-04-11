@@ -72,6 +72,7 @@ function SidebarPanel(props) {
         <div className="sidebar-info mb-5">
           {/* <img src={props.auth?.profile?.media?  props.auth?.profile?.media[0]?.exact_url : profile_pic} width="56" height="56" alt=""
                         className="pull-dir sidebar-avatar img-responsive" /> */}
+
           <img
             src={profile_pic}
             width="56"
