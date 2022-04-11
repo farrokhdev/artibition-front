@@ -44,12 +44,15 @@ function Artists(props) {
         {/* <h5 className="artists-title visible-xs">هنرمندان آرتیبشن</h5> */}
         {/* <h5 className="artists-title">هنرمندان آرتیبشن</h5> */}
         <div className="col col-lg-8">
-          <div style={{ overflowY: "hidden" }} className="d-flex">
+          <div style={{ overflowY: "hidden" }} className="d-flex flex-wp">
             {/* <div className="rowdesign "> */}
-            {console.log("artists", artists)}
+
             {artists?.results?.map((item, index) => (
               <div className="col col-sm-3 my-4">
-                <Link to={`/site/artist-profile/?id=${item?.id}`} className="artist-latest">
+                <Link
+                  to={`/site/artist-profile/?id=${item?.id}`}
+                  className="artist-latest"
+                >
                   <img
                     src={item.artworks_images[0]?.exact_url}
                     width="528"

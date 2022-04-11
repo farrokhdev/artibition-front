@@ -127,6 +127,7 @@ function Home() {
         <RecentlyVeiws categories={categories} />
         <Newsletter />
         <Collection />
+
         <Modal
           visible={showPromotion}
           footer={[]}

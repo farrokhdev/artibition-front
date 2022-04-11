@@ -17,14 +17,18 @@ function PromotionArtwork({ item }) {
     <div className="row mrgb60 dir">
       <div className="col-sm-6">
         <div className="col-img">
-          <div className="tags tags-off persian-num">
-            {item?.discount?.value ? item?.discount?.value : 0}
-            {item?.discount?.type === "toman"
-              ? t("toman")
-              : item?.discount?.type === "percentage"
-              ? "%"
-              : "%"}
-          </div>
+          {item?.discount?.value ? (
+            <div className="tags tags-off persian-num">
+              {item?.discount?.value}
+              {item?.discount?.type === "toman"
+                ? t("toman")
+                : item?.discount?.type === "percentage"
+                ? "%"
+                : "%"}
+            </div>
+          ) : (
+            ""
+          )}
           <img
             src={item?.medias && item.medias[0]?.exact_url}
             width="840"

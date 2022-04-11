@@ -1,6 +1,11 @@
-@import './bootstrap-rtl.min.scss';
-@import './bootstrap.min.scss';
-@import './custom-en.scss';
-@import './responsive-en.scss';
-@import './select2.min.scss';
-@import './three-dots.min.scss';
+@import "./bootstrap-rtl.min.scss";
+@import "./bootstrap.min.scss";
+@import "./custom-en.scss";
+@import "./responsive-en.scss";
+@import "./select2.min.scss";
+@import "./three-dots.min.scss";
+@import "../style/newStyles/navbar.scss";
+@import "../style/newStyles/globalScrollbar.scss";
+@import "../style/newStyles/home-custom.scss";
+@import "../style/newStyles/admin-panel.scss";
+@import "../style/newStyles/ant_price_slider.scss";

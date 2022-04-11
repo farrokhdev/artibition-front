@@ -15,7 +15,6 @@ import { isNil } from "lodash";
 export default function Slider() {
   const { t, i18n } = useTranslation();
   const [sliders, setSliders] = useState();
-  console.log("🚀 ~ file: Slider.jsx ~ line 18 ~ Slider ~ sliders", sliders);
   const [activeSlide, setActiveSlide] = useState(5);
   function timeExpire(time) {
     let expire = new Date(time);
