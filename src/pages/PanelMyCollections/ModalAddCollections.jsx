@@ -33,6 +33,13 @@ function ModalAddCollections(props) {
     content_type: "product",
   });
 
+  const [search, setSearch] = useState();
+
+  const handleBannerSearchInputChanged = (text) => setSearch(text);
+  const handleBannerSearchClick = () =>
+      setParams((state) => ({ ...state, search: search }));
+
+
   console.log("chooseFollowProducts", chooseFollowProducts);
 
   const onFinish = (values) => {
@@ -223,9 +230,11 @@ function ModalAddCollections(props) {
                     آثار مورد نظر خود را انتخاب کنید.
                   </h2>
                   <div className="nl-input filter-search">
-                    <input placeholder="جستجوی اثر" />
-                    <button className="noborder" type="button">
-                      <img src={search_icon} width="24" height="24" alt="" />
+                    <input placeholder="جستجوی اثر"
+                      onChange={(e) => handleBannerSearchInputChanged(e.target.value)} />
+                    <button className="noborder" type="button"
+                      onClick={handleBannerSearchClick}><img src={search_icon} width="24"
+                        height="24" alt="" />
                     </button>
                   </div>
                 </div>
