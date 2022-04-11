@@ -344,18 +344,14 @@ function DetailsArtwork() {
                               productDetail?.medias &&
                               productDetail?.medias[0]?.exact_url
                             }
-                            // height={
-                            //   productDetail?.height
-                            //     ? productDetail?.height + "px"
-                            //     : productDetail?.width > 100
-                            //     ? "90px"
-                            //     : "30px"
-                            // }
-                            // width={productDetail?.width}
-                            style={{
-                              height: "8%",
-                              width: "21%",
-                            }}
+                            height={
+                              productDetail?.height
+                                ? productDetail?.height + "px"
+                                : productDetail?.width > 100
+                                ? "90px"
+                                : "30px"
+                            }
+                            width={productDetail?.width}
                             alt="Los Angeles"
                           />
                         </div>
