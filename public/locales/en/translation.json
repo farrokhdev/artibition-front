@@ -769,6 +769,9 @@
       "last_edition": "Last edition",
       "paid": "Paid",
       "status": "Status",
+      "status_state": {
+        "pending": "pending"
+      },
       "details": "Details",
       "suggested": "Suggested",
       "date_registration": "Date of registration",

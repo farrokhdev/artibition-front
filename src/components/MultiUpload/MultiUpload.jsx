@@ -1,28 +1,25 @@
-import React from 'react';
-import { Upload, message } from 'antd';
-import { CloudUploadOutlined } from '@ant-design/icons';
-import { PRE_UPLOAD } from '../../utils/index';
-import UploadAxios from '../../utils/uploadRequest';
-import { t } from 'i18next';
-import apiServices from '../../utils/api.services';
+import React from "react";
+import { Upload, message } from "antd";
+import { CloudUploadOutlined } from "@ant-design/icons";
+import { PRE_UPLOAD } from "../../utils/index";
+import UploadAxios from "../../utils/uploadRequest";
+import { t } from "i18next";
+import apiServices from "../../utils/api.services";
 
 const { Dragger } = Upload;
 
 function MultipleUpload({ uploadList, setUploadList, defaultName }) {
-
   const propsUpload = {
     listType: "picture",
 
     onChange(info) {
       const { status } = info.file;
       if (status !== "uploading") {
-
       }
       if (status === "done") {
-
       } else if (status === "error") {
         info.fileList.filter((item) => item.uid !== info.file.uid);
-        //if status error, image not added to list upload 
+        //if status error, image not added to list upload
         setUploadList(uploadList.filter((item) => item.uid !== info.file.uid));
       }
 
@@ -59,11 +56,13 @@ function MultipleUpload({ uploadList, setUploadList, defaultName }) {
             className="ml-1  mt-2"
             type="radio"
           />
-          <span className="pb-2 mx-2">{defaultName ? defaultName : "عکس کاور"}</span>
+          <span className="pb-2 mx-2">
+            {defaultName ? defaultName : "عکس کاور"}
+          </span>
         </div>,
       ];
     },
-    defaultFileList: []
+    defaultFileList: [],
   };
 
   // function for set default image between images that uploaded
@@ -76,8 +75,6 @@ function MultipleUpload({ uploadList, setUploadList, defaultName }) {
 
     setUploadList(newList);
   };
-
-
 
   return (
     <React.Fragment>
@@ -92,6 +89,7 @@ function MultipleUpload({ uploadList, setUploadList, defaultName }) {
               content_type: "image",
             })
             .then((res) => {
+              console.log(res);
               onSuccess({ status: "success" });
 
               let uploadImage;
@@ -104,26 +102,31 @@ function MultipleUpload({ uploadList, setUploadList, defaultName }) {
                 uid: file.uid,
               };
 
-              if (res.data.data.upload_url && (file?.type.split("/")[0] === "image")) {
+              if (
+                res.data.data.upload_url &&
+                file?.type.split("/")[0] === "image"
+              ) {
                 console.log("putttt");
                 UploadAxios.put(res.data.data.upload_url, file)
                   .then((res) => {
                     console.log("uploadPUTTTT");
                     setUploadList([...uploadList, uploadImage]);
                     message.success({
-                      content: 'با موفقیت بارگذاری شد', style: {
-                        marginTop: '10vh',
+                      content: "با موفقیت بارگذاری شد",
+                      style: {
+                        marginTop: "10vh",
                       },
-                    })
+                    });
                   })
                   .catch((err) => {
                     console.error(err);
                     onError({ status: "error" });
                     message.error({
-                      content: 'بارگذاری  با خطا مواجه شد.', style: {
-                        marginTop: '10vh',
+                      content: "بارگذاری  با خطا مواجه شد.",
+                      style: {
+                        marginTop: "10vh",
                       },
-                    })
+                    });
                   });
               } else {
               }
@@ -135,16 +138,25 @@ function MultipleUpload({ uploadList, setUploadList, defaultName }) {
         }}
       >
         <div className="upload-img-artwork">
-          <div className="btn-upload-artwork" style={{ background: 'none', border: 'none' }}>
-
+          <div
+            className="btn-upload-artwork"
+            style={{ background: "none", border: "none" }}
+          >
             <p className="ant-upload-drag-icon">
               <CloudUploadOutlined className="img-icon-upload-add-new-artwork" />
             </p>
-            <p>{t("content-panel-add-artwork.upload.text")}
+            <p>
+              {t("content-panel-add-artwork.upload.text")}
               <br />
-              {t("content-panel-add-artwork.upload.or")}</p>
-            <label htmlFor="file-upload" className="btn-blue w-25">{t("content-panel-add-artwork.upload.btn")}</label>
-            <p className="upload-size"> {t("content-panel-add-artwork.upload.tip")}</p>
+              {t("content-panel-add-artwork.upload.or")}
+            </p>
+            <label htmlFor="file-upload" className="btn-blue w-25">
+              {t("content-panel-add-artwork.upload.btn")}
+            </label>
+            <p className="upload-size">
+              {" "}
+              {t("content-panel-add-artwork.upload.tip")}
+            </p>
           </div>
         </div>
       </Dragger>

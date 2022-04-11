@@ -765,6 +765,9 @@
       "discount": "تخفیف",
       "paid": "پرداخت شده",
       "status": "وضعیت",
+      "status_state": {
+        "pending": "منتظر تایید"
+      },
       "details": "جزئیات",
       "suggested": "پیشنهاد شده",
       "date_registration": "تاریخ ثبت",

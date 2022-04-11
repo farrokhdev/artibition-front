@@ -61,6 +61,8 @@ import { UPDATE_CART } from "../../redux/reducers/cart/cart.types";
 import { numDiscriminant } from "../../utils/discriminant";
 import { DEFAULT_URL_IMAGE } from "../../utils/defaultImage";
 import ArthibitionProperties from "../../components/ArthibitionProperies/ArthibitionProperties";
+import RoomViewImg from "../../assets/img/artworks/room-view.jpg";
+import ImageGallery from "react-image-gallery";
 
 function DetailsArtwork() {
   let navigate = useNavigate();
@@ -218,6 +220,62 @@ function DetailsArtwork() {
       });
   };
 
+  // Carousel flag
+  const [choosenImg, setChoosenImg] = useState("");
+
+  const chooseHandler = (e) => {
+    console.log(e.target.src);
+    setChoosenImg(e.target.src);
+  };
+
+  let images = [
+    {
+      renderItem: (r) => {
+        return (
+          <div className="artwork_bg">
+            <img
+              className="artwork_bg_inside_img"
+              src={productDetail?.medias[0].exact_url}
+              style={{
+                // width: ` ${productDetail?.width + "rem"}`,
+                height: productDetail?.height
+                  ? productDetail?.height + "px"
+                  : productDetail?.width > 100
+                  ? "90px"
+                  : "30px",
+              }}
+              width={productDetail?.width}
+              alt="Los Angeles"
+            />
+          </div>
+        );
+      },
+    },
+  ];
+
+  productDetail?.medias.map((item) => {
+    const details = {
+      renderItem: () => {
+        return (
+          <img
+            src={item.exact_url}
+            style={{
+              width: "100%",
+              height: "100% ",
+              objectPosition: "center",
+              objectFit: "cover ",
+            }}
+            alt=""
+          />
+        );
+      },
+
+      thumbnail: item.exact_url,
+    };
+    images.push(details);
+  });
+  console.log(images);
+
   return (
     <>
       <div className="container mx-auto px-0 w-100">
@@ -263,19 +321,45 @@ function DetailsArtwork() {
                 >
                   <div className="carousel-inner">
                     <div className="item active">
-                      <img
-                        src={
-                          productDetail?.medias &&
-                          productDetail?.medias[0]?.exact_url
-                        }
-                        alt="Los Angeles"
-                        style={{
-                          maxWidth: "534px",
-                          minWidth: "534px",
-                          maxHeight: "660px",
-                          minHeight: "660px",
-                        }}
-                      />
+                      {choosenImg ? (
+                        <img
+                          className=""
+                          style={{
+                            width: "500px",
+                            height: "500px",
+                            objectFit: "cover",
+                            objectPosition: "center",
+                            display: "block",
+                            transition: "0.3s ease",
+                          }}
+                          src={choosenImg}
+                          alt="Los Angeles"
+                        />
+                      ) : (
+                        <div className="artwork_bg">
+                          {console.log(productDetail)}
+                          <img
+                            className="artwork_bg_inside_img"
+                            src={
+                              productDetail?.medias &&
+                              productDetail?.medias[0]?.exact_url
+                            }
+                            // height={
+                            //   productDetail?.height
+                            //     ? productDetail?.height + "px"
+                            //     : productDetail?.width > 100
+                            //     ? "90px"
+                            //     : "30px"
+                            // }
+                            // width={productDetail?.width}
+                            style={{
+                              height: "8%",
+                              width: "21%",
+                            }}
+                            alt="Los Angeles"
+                          />
+                        </div>
+                      )}
                     </div>
 
                     <div className="item">
@@ -293,18 +377,60 @@ function DetailsArtwork() {
                       productDetail?.medias?.map((item) => (
                         <li
                           data-target="#myCarousel"
-                          data-slide-to="0"
+                          // data-slide-to="0"
                           className="active"
+                          style={{ width: "120px", height: "80px" }}
+                          onClick={(e) => chooseHandler(e)}
                         >
                           <img
                             src={item.exact_url}
-                            height="1776"
-                            width="1776"
+                            style={{
+                              width: "100%",
+                              height: "100%",
+                              objectFit: "cover",
+                              objectPosition: "center",
+                              display: "block",
+                            }}
                             alt=""
                             className="img-responsive"
                           />
                         </li>
                       ))}
+                    <li
+                      // data-target="#myCarousel"
+                      // data-slide-to="0"
+                      className="active"
+                      style={{
+                        width: "120px",
+                        height: "80px",
+                        background: `url(https://api.artibition.gallery/static/img/roomview.jpg)`,
+                        backgroundPosition: "center",
+                        backgroundSize: "cover",
+                        position: "relative",
+                      }}
+                      onClick={(e) => chooseHandler(e)}
+                    >
+                      <img
+                        className="img-responsive"
+                        src={
+                          productDetail?.medias &&
+                          productDetail?.medias[0]?.exact_url
+                        }
+                        style={{
+                          width: "40%",
+                          height: "40%",
+                          position: "absolute",
+                          top: "5px",
+                          left: "50%",
+                          boxShadow: " 0px 0px 2px 1px rgb(0, 0, 0)",
+                          transform: "translateX(-50%)",
+                          objectFit: "cover",
+                          objectPosition: "center",
+                          display: "block",
+                        }}
+                        alt="Los Angeles"
+                      />
+                    </li>
                   </ol>
                   <div className=" artwork-options pull-dir ">
                     <button
@@ -345,6 +471,9 @@ function DetailsArtwork() {
                   </div>
                 </div>
               </div>
+              {/* <div className="artwork-imggallery">
+                <ImageGallery items={images} />
+              </div> */}
             </div>
             <div className="col-md-6 px-0 px-sm-3">
               <div className="artwork-detail artwork-defaultpadding">
