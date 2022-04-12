@@ -109,76 +109,80 @@ function ArtworkInformation({ next, prev }) {
         // console.log('Success:', values);
     };
 
+
     // get list of sub category for show to user and select by users in dropdown to create art field
     const getListCategory = () => {
-        apiServices.get(PRODUCTS_CATEGORIES, "")
-            .then(res => {
-
-                setCategorys(res.data.data.results.map(item => {
-                    if (Language === 'fa-IR') {
-                        return { label: item?.translations?.fa?.title, value: item?.id }
-                    } else {
-                        return { label: item?.translations?.en?.title, value: item?.id }
-                    }
-                }))
+        apiServices
+            .get(PRODUCTS_CATEGORIES, "")
+            .then((res) => {
+                setCategorys(
+                    res.data.data.results.map((item) => {
+                        if (Language === "fa-IR") {
+                            return { label: item?.translations?.fa?.title, value: item?.id };
+                        } else {
+                            return { label: item?.translations?.en?.title, value: item?.id };
+                        }
+                    })
+                );
             })
-            .catch(err => {
+            .catch((err) => {
                 console.log(err);
-            })
-    }
-
+            });
+    };
 
     // function for set categories id
     const handleSetCategory = (value) => {
         setNewArtwork({
             ...newArtwork,
-            category_id: value
-        })
-    }
+            category_id: value,
+        });
+    };
     // function for set subject by categories id
     const handleSetSubject = (value) => {
         setSubjectId({
             ...subjectId,
-            subject_id: value
-        })
-    }
+            subject_id: value,
+        });
+    };
     // function for set technique by categories id
     const handleSetTechnique = (value) => {
         setTechniqueId({
             ...techniqueId,
-            technique_id: value
-        })
-    }
+            technique_id: value,
+        });
+    };
     // function for set material by categories id
     const handleSetMaterial = (value) => {
         setMaterialId({
             ...materialId,
-            material_id: value
-        })
-    }
+            material_id: value,
+        });
+    };
 
     // Get the list of collections and select it as dropdown
     const getCollections = () => {
-        apiServices.get(SOCIAL_NETWORK_COLLECTIONS, queryString.stringify(params))
-            .then(res => {
+        apiServices
+            .get(SOCIAL_NETWORK_COLLECTIONS, queryString.stringify(params))
+            .then((res) => {
                 // setSotialCollection(res.data.data.map(item=>{}))
             })
-            .catch(err => {
+            .catch((err) => {
                 console.log(err);
-            })
-    }
+            });
+    };
 
     const getArtistDetails = () => {
-        apiServices.get(GALLERY_ARTISTS(gallery_id), "")
-            .then(res => {
+        apiServices
+            .get(GALLERY_ARTISTS(gallery_id), "")
+            .then((res) => {
                 if (res.data) {
-                    setArtists(res.data.data.results)
+                    setArtists(res.data.data.results);
                 }
             })
-            .catch(err => {
+            .catch((err) => {
                 console.log(err);
-            })
-    }
+            });
+    };
 
     useEffect(() => {
         getCollections();
@@ -187,59 +191,78 @@ function ArtworkInformation({ next, prev }) {
     useEffect(() => {
         // If there is a device id, its dependent services will be run if selected
         if (newArtwork?.category_id) {
-
-
             // Gets and displays a list of topics by filtering the art field
-            apiServices.get(SUBJECTS_CATEGORISE(newArtwork?.category_id), "")
-                .then(res => {
-                    setSubject(res.data.data.map(item => {
-
-                        if (Language === 'fa-IR') {
-                            return { label: item?.translations?.fa?.title, value: item?.id }
-                        } else {
-                            return { label: item?.translations?.en?.title, value: item?.id }
-                        }
-                    }))
+            apiServices
+                .get(SUBJECTS_CATEGORISE(newArtwork?.category_id), "")
+                .then((res) => {
+                    setSubject(
+                        res.data.data.map((item) => {
+                            if (Language === "fa-IR") {
+                                return {
+                                    label: item?.translations?.fa?.title,
+                                    value: item?.id,
+                                };
+                            } else {
+                                return {
+                                    label: item?.translations?.en?.title,
+                                    value: item?.id,
+                                };
+                            }
+                        })
+                    );
                 })
-                .catch(err => {
+                .catch((err) => {
                     console.log(err);
-                })
-
+                });
 
             // Receives and displays a list of techniques by filtering the art background
-            apiServices.get(TECHNIQUS_CATEGORIES(newArtwork?.category_id), "")
-                .then(res => {
-                    setTechnique(res.data.data.map(item => {
-
-                        if (Language === 'fa-IR') {
-                            return { label: item?.translations?.fa?.title, value: item?.id }
-                        } else {
-                            return { label: item?.translations?.en?.title, value: item?.id }
-                        }
-                    }))
+            apiServices
+                .get(TECHNIQUS_CATEGORIES(newArtwork?.category_id), "")
+                .then((res) => {
+                    setTechnique(
+                        res.data.data.map((item) => {
+                            if (Language === "fa-IR") {
+                                return {
+                                    label: item?.translations?.fa?.title,
+                                    value: item?.id,
+                                };
+                            } else {
+                                return {
+                                    label: item?.translations?.en?.title,
+                                    value: item?.id,
+                                };
+                            }
+                        })
+                    );
                 })
-                .catch(err => {
+                .catch((err) => {
                     console.log(err);
-                })
+                });
 
-            apiServices.get(MATERIALS_CATEGORIES(newArtwork?.category_id), "")
-                .then(res => {
-                    setMaterial(res.data.data.map(item => {
-
-                        if (Language === 'fa-IR') {
-                            return { label: item?.translations?.fa?.title, value: item?.id }
-                        } else {
-                            return { label: item?.translations?.en?.title, value: item?.id }
-                        }
-                    }))
+            apiServices
+                .get(MATERIALS_CATEGORIES(newArtwork?.category_id), "")
+                .then((res) => {
+                    setMaterial(
+                        res.data.data.map((item) => {
+                            if (Language === "fa-IR") {
+                                return {
+                                    label: item?.translations?.fa?.title,
+                                    value: item?.id,
+                                };
+                            } else {
+                                return {
+                                    label: item?.translations?.en?.title,
+                                    value: item?.id,
+                                };
+                            }
+                        })
+                    );
                 })
-                .catch(err => {
+                .catch((err) => {
                     console.log(err);
-                })
+                });
         }
-
     }, [newArtwork]);
-
 
     useEffect(() => {
         getListCategory();
@@ -247,9 +270,9 @@ function ArtworkInformation({ next, prev }) {
 
     useEffect(() => {
         if (searchParams.get("artist_id")) {
-            getArtistDetails()
+            getArtistDetails();
         }
-    }, [])
+    }, []);
 
     // useEffect(() => {
     //     console.log();
@@ -658,6 +681,7 @@ function ArtworkInformation({ next, prev }) {
 
                                         </div>
                                     </div>
+
                                     <div className="col-sm-4 col-xs-6">
                                         <div className="public-group">
 
@@ -682,6 +706,7 @@ function ArtworkInformation({ next, prev }) {
 
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -844,11 +869,11 @@ function ArtworkInformation({ next, prev }) {
                                         name="tags_en"
                                         rules={[
                                             {
-                                                required: true,
+                                                required: false,
                                                 message: 'required',
                                             }
                                         ]}>
-                                            {/* <TagComponent /> */}
+                                        {/* <TagComponent /> */}
                                         <Input
                                             type="text"
                                             id="info-216"
@@ -857,7 +882,6 @@ function ArtworkInformation({ next, prev }) {
                                         />
 
                                     </Form.Item>
-                                    
                                     <span className="input-help text-dir w-100">{t("content-panel-add-artwork.art_info.text_tag_en")}</span>
                                 </div>
                             </div>
@@ -877,7 +901,7 @@ function ArtworkInformation({ next, prev }) {
                 </div>
             </Form>
         </>
-    )
+    );
 }
 
 export default ArtworkInformation;

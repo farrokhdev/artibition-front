@@ -4,6 +4,7 @@ import { numDiscriminant } from "../../utils/discriminant";
 import { follow } from "../../utils/utils";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+
 const ArtworkCard = ({ product, discountPrice, callBack }) => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
@@ -16,7 +17,9 @@ const ArtworkCard = ({ product, discountPrice, callBack }) => {
           })}
         >
           <div className="col-img">
-            {product?.is_special && <div class="tags tags-spacial">ویژه</div>}
+            {product?.is_special && (
+              <div class="tags tags-spacial">{t("card_artwork.spacial")}</div>
+            )}
             {/* {console.log("product================>", product)} */}
             {product?.discount?.value ? (
               <div class="tags tags-off persian-num">

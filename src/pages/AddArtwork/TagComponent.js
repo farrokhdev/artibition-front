@@ -3,7 +3,6 @@
 import React, { useState, useRef } from 'react';
 import 'antd/dist/antd.css';
 import { Tag, Input, Tooltip } from 'antd';
-import { TweenOneGroup } from 'rc-tween-one';
 import { PlusOutlined } from '@ant-design/icons';
 import { t } from 'i18next';
 

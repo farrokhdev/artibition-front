@@ -686,7 +686,7 @@ function GalleryPanelEditGalleryInfo() {
                           block
                           icon={<PlusOutlined />}
                         >
-                          افزودن نمایشگاه
+                          {t("gallery-panel-edit-gallery-info.add-gallery")}
                         </Button>
                       </Form.Item>
                     </>
