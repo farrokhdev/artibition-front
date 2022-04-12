@@ -5,6 +5,7 @@ import queryString from "query-string";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { follow } from "../../utils/utils";
+import Default from "../../assets/img/default.png";
 
 export default function RecentlyNews({ categories }) {
   const [lastProducts, setLast] = useState([]);
@@ -82,7 +83,11 @@ export default function RecentlyNews({ categories }) {
                     <div key={key} className="cols  mx-4">
                       <div className="col-img">
                         <img
-                          src={product.medias && product.medias[0]?.exact_url}
+                          src={
+                            product.medias && product.medias[0]?.exact_url
+                              ? product.medias[0]?.exact_url
+                              : Default
+                          }
                           alt="artibition"
                           className="img-responsive"
                         />

@@ -7,6 +7,7 @@ import { Provider } from "react-redux";
 import store, { persistor } from "./redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 import { BrowserRouter } from "react-router-dom";
+import { GlobalProvider } from "../src/context/GlobalContext";
 
 //create components using React.lazy
 const FaTheme = React.lazy(() => import("../src/pages/FaTheme/FaTheme"));
@@ -36,13 +37,15 @@ const ThemeSelector = ({ children }) => {
 ReactDOM.render(
   <Suspense fallback={null}>
     <ThemeSelector>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <BrowserRouter>
-            <App />
-          </BrowserRouter>
-        </PersistGate>
-      </Provider>
+      <GlobalProvider>
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
+          </PersistGate>
+        </Provider>
+      </GlobalProvider>
     </ThemeSelector>
   </Suspense>,
   document.getElementById("root")

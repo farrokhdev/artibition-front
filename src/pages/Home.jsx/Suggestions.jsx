@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { follow } from "../../utils/utils";
 import apiServices from "../../utils/api.services";
 import { PRODUCTS_LAST, PRODUCTS_SUGGESTION } from "../../utils";
+import Default from "../../assets/img/default.png";
 import queryString from "query-string";
 
 export default function Suggestions({ categories }) {
@@ -82,8 +83,13 @@ export default function Suggestions({ categories }) {
                   {sugProducts?.map((product, key) => (
                     <div key={key} className="cols  mx-4">
                       <div className="col-img">
+                        {console.log(product.medias[0]?.exact_url)}
                         <img
-                          src={product.medias && product.medias[0]?.exact_url}
+                          src={
+                            product.medias && product.medias[0]?.exact_url
+                              ? product.medias && product.medias[0]?.exact_url
+                              : Default
+                          }
                           alt="artibition"
                           className="img-responsive"
                         />
