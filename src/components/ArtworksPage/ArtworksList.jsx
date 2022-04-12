@@ -171,33 +171,9 @@ const ArtworksList = (props) => {
   };
   const getProductList = () => {
     fetchProducts();
-    // const defaultQuery = queryString.stringify(params, {
-    //   arrayFormat: "comma",
-    //   skipNull: true,
-    //   skipEmptyString: true,
-    // });
-    // const query = isNil(props?.exhibitionId)
-    //   ? defaultQuery
-    //   : queryString
-    //       .stringify({ exhibition_id: props?.exhibitionId })
-    //       .concat("&")
-    //       .concat(defaultQuery);
-
-    // apiServices
-    //   .get(ARTIST_PRODUCTS, query)
-    //   .then((res) => {
-    //     if (res.data) {
-    //       setProductList(res.data.data);
-    //       setSuggestionsCount(res.data.data.count);
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     console.log("err", err);
-    //   });
   };
 
   useEffect(() => {
-    // console.log("searchParams" , searchParams.get('category_id'));
     if (searchParams.get("category_id")) {
       // getProductList()
       setParams({
@@ -253,10 +229,6 @@ const ArtworksList = (props) => {
       .catch((err) => {
         console.log("err", err);
       });
-  };
-
-  const callBack = () => {
-    getProductList();
   };
 
   const getProductMaterials = () => {
@@ -405,7 +377,7 @@ const ArtworksList = (props) => {
                     <ArtworkCard
                       product={product}
                       discountPrice={discountPrice}
-                      callBack={callBack}
+                      callBack={getProductList}
                     />
                   );
                 })}
