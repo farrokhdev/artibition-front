@@ -12,8 +12,10 @@ import { Row } from "antd";
 import { PRODUCTS_CATEGORIES, PRODUCTS_SIZES, SEARCH } from "../../utils";
 import queryString from "query-string";
 import apiServices from "../../utils/api.services";
+import { useGlobalContext } from "../../context/GlobalContext";
 
 function Header() {
+  const { showDrawer, onClose, visible } = useGlobalContext();
   const { t, i18n } = useTranslation();
   let navigate = useNavigate();
   let location = useLocation();
@@ -48,6 +50,7 @@ function Header() {
     search: "",
   });
 
+  const [toggleMenu, setToggleMenu] = useState(false);
   const [toggleRoute, setToggleRoute] = useState(false);
   //filters state
   const [categories, setCategories] = useState();
@@ -555,8 +558,9 @@ function Header() {
             <button
               type="button"
               className="navbar-toggle"
-              data-toggle="collapse"
-              data-target="#menu"
+              // data-toggle="collapse"
+              // data-target="#menu"
+              onClick={showDrawer}
             >
               <span className="icon-bar" />
               <span className="icon-bar" />

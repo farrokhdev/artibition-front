@@ -1,5 +1,6 @@
 import React from "react";
 import { t } from "i18next";
+import def_img from "../../assets/img/default.png";
 
 import hnrpqkfiup from "../../assets/img/mainpage/hnrpqkfiup@3x.jpg";
 
@@ -77,7 +78,7 @@ function Suggestions() {
                       <div className="col-img">
                         <div className="tags tags-off persian-num">30 %</div>
                         <img
-                          src={hnrpqkfiup}
+                          src={hnrpqkfiup ? hnrpqkfiup : def_img}
                           alt="آرتیبیشن"
                           className="img-responsive"
                         />
