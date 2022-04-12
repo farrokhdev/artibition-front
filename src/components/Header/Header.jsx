@@ -26,6 +26,17 @@ function Header() {
   const [filters, setFilters] = useState();
   const [visibleResults, setVisibleResults] = useState(false);
   const [searchResult, setSearchResult] = useState([]);
+
+  // FILTER SIZES
+  const [width_min, setWidth_min] = useState();
+  const [width_max, setWidth_max] = useState();
+  const [height_min, setHeight_min] = useState();
+  const [height_max, setHeight_max] = useState();
+  const [length_min, setLength_min] = useState();
+  const [length_max, setLength_max] = useState();
+
+  // FILTER SIZES END
+
   const [visibleSetDimentionModal, setVisibleSetDimentionModal] =
     useState(false);
   const [categoriesParams, setCategoriesParams] = useState({
@@ -77,7 +88,8 @@ function Header() {
     }, 300);
   };
 
-  const getFilterParams = () => {
+  const getFilterParams = (e) => {
+    e.preventDefault();
     filterCategories();
     filterSizes();
     setFilters((state) => ({
@@ -194,6 +206,24 @@ function Header() {
         return "";
     }
   };
+
+  // FILTER SIZE PROPS
+  const sizeFilterProps = {
+    width_min,
+    width_max,
+    height_min,
+    height_max,
+    length_min,
+    length_max,
+    setWidth_min,
+    setWidth_max,
+    setHeight_min,
+    setHeight_max,
+    setLength_min,
+    setLength_max,
+  };
+  // FILTER SIZE PROPS
+
   return (
     <div className="default-header ">
       <div className="row content-header-site">
@@ -453,9 +483,13 @@ function Header() {
                           className="edit-dimention"
                         ></span>
                       </div>
-                      <span className="persian-num">60</span>
+                      <span className="persian-num">
+                        {width_min ? width_min : 60}
+                      </span>
                       <span>{t("filter-header.size.dimention.to")}</span>
-                      <span className="persian-num">90</span>
+                      <span className="persian-num">
+                        {width_max ? width_max : 90}
+                      </span>
                       <span>{t("filter-header.size.dimention.unit")}</span>
                     </div>
                     <div className="add-dimention-row">
@@ -468,9 +502,13 @@ function Header() {
                           className="edit-dimention"
                         ></span>
                       </div>
-                      <span className="persian-num">60</span>
+                      <span className="persian-num">
+                        {length_min ? length_min : 60}
+                      </span>
                       <span>{t("filter-header.size.dimention.to")}</span>
-                      <span className="persian-num">90</span>
+                      <span className="persian-num">
+                        {length_max ? length_max : 90}
+                      </span>
                       <span>{t("filter-header.size.dimention.unit")}</span>
                     </div>
                     <div className="add-dimention-row">
@@ -483,9 +521,13 @@ function Header() {
                           className="edit-dimention"
                         ></span>
                       </div>
-                      <span className="persian-num">60</span>
+                      <span className="persian-num">
+                        {height_min ? height_min : 60}
+                      </span>
                       <span>{t("filter-header.size.dimention.to")}</span>
-                      <span className="persian-num">90</span>
+                      <span className="persian-num">
+                        {height_max ? height_max : 90}
+                      </span>
                       <span>{t("filter-header.size.dimention.unit")}</span>
                     </div>
                   </div>
@@ -499,7 +541,7 @@ function Header() {
               <button
                 type="button"
                 className="btn-black btn-doFilter col-3 mx-auto"
-                onClick={getFilterParams}
+                onClick={(e) => getFilterParams(e)}
                 data-toggle="collapse"
                 data-target="#top-filter"
               >
@@ -551,6 +593,7 @@ function Header() {
       <ModalSetDimention
         visibleSetDimentionModal={visibleSetDimentionModal}
         setVisibleSetDimentionModal={setVisibleSetDimentionModal}
+        {...sizeFilterProps}
         setFilters={setFilters}
         filterSizes={filterSizes}
       />

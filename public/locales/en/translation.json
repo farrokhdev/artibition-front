@@ -770,6 +770,9 @@
       "last_edition": "Last edition",
       "paid": "Paid",
       "status": "Status",
+      "status_state": {
+        "pending": "pending"
+      },
       "details": "Details",
       "suggested": "Suggested",
       "date_registration": "Date of registration",
@@ -1054,6 +1057,7 @@
     "btn_cancel": "Cancel"
   },
   "gallery-panel-edit-gallery-info": {
+    "add-gallery": "add gallery",
     "upload_gallery_cover_photo": "Upload gallery's cover and photo",
     "gallery_info": "Gallery info",
     "country_name": "Country",

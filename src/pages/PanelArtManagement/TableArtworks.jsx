@@ -83,7 +83,14 @@ function TableArtworks({ productList }) {
                 data-label={t("content-panel-dashboard.tables.status")}
                 className="persian-num status text-dir text-md-center"
               >
-                {isAccept(item?.status).title}
+                {/* {isAccept(item?.status).title} */}
+                {isAccept(item?.status).title ===
+                  "منتظر ارسال اثر به آرتیبیشن" ||
+                isAccept(item?.status).title === "To Arthibition"
+                  ? t(
+                      "content-panel-manage-artworks.tables.status_state.pending"
+                    )
+                  : isAccept(item?.status).title}
               </td>
               <td> </td>
               <td data-label={t("content-panel-dashboard.tables.action")}>
