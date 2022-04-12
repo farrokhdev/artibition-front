@@ -157,6 +157,7 @@ const ArtworksList = (props) => {
           .stringify({ exhibition_id: props?.exhibitionId })
           .concat("&")
           .concat(defaultQuery);
+          
     apiServices
       .get(SEARCH_PRODUCTS, query)
       .then((res) => {

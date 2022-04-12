@@ -10,12 +10,22 @@ import { message } from "antd";
 import { GetLanguage } from "../../utils/utils";
 import moment from "jalali-moment";
 import { Link } from "react-router-dom";
+import queryString from 'query-string';
 
 function Promotions() {
+  
+  const timeElapsed = Date.now();
+  const today = new Date(timeElapsed);
+  
   const [promotions, setPromotions] = useState([]);
+  const [params, setParams] = useState({
+    start_date_after :moment(today).locale('en').format('YYYY-MM-DD'),
+  })
+
+
   const translate = GetLanguage() === "fa-IR" ? "fa" : "en";
   useEffect(() => {
-    apiServices.get(PROMOTIONS, "").then((res) => {
+    apiServices.get(PROMOTIONS, queryString.stringify(params)).then((res) => {
       if (res.data) {
         setPromotions(res.data.data.results);
       } else {
