@@ -1166,6 +1166,7 @@
       "create_date": "تاریخ خلق اثر (شمسی)",
       "length": "طول",
       "width": "عرض",
+      "height":"ارتفاع",
       "weight": "وزن اثر",
       "select_gallery": "انتخاب مجموعه",
       "multi_edition": "این اثر دارای چند ادیشن است",
