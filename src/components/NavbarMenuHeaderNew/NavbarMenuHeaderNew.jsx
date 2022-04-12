@@ -4,7 +4,8 @@ import vitrin from "../../assets/img/mainpage/menu-vitrin.jpg";
 import bohmer from "../../assets/img/mainpage/rene-bohmer-YeUVDKZWSZ4-unsplash@3x.jpg";
 import gift from "../../assets/img/gift.svg";
 import { t } from "i18next";
-import { Tabs, Radio, Space, message } from "antd";
+import { Tabs, Radio, Space, message, Drawer, Dropdown } from "antd";
+import { DownOutlined } from "@ant-design/icons";
 import { useNavigate, Link } from "react-router-dom";
 import { isLogin } from "../../utils/utils";
 import {
@@ -18,8 +19,11 @@ import { useTranslation } from "react-i18next";
 import { GetLanguage } from "../../utils/utils";
 import { isNil } from "lodash";
 import moment from "moment-jalaali";
+import { useGlobalContext } from "../../context/GlobalContext";
+import Menu from "../Menu/Menu";
 const { TabPane } = Tabs;
 export default function NavbarMenuHeader(props) {
+  const { visible, onClose } = useGlobalContext();
   let navigate = useNavigate();
   const Language = GetLanguage();
   const { t, i18n } = useTranslation();
@@ -494,28 +498,90 @@ export default function NavbarMenuHeader(props) {
     },
   ];
 
+  const [drop, setDrop] = useState(false);
+
   return (
-    <nav className="navbar w-100">
-      <div className=" collapse navbar-collapse  px-0 w-100" id="menu">
-        <button className="nav-close" type="button"></button>
-        <ul className="nav_new nav-header-menu box-dir-reverse justify-content-center dir">
-          {megaMenuContents.map((item, k) => {
-            return (
-              <li onMouseEnter={() => showNavbar(k)} onMouseLeave={hideNavbar}>
-                <a
-                  className={`mega-dropdown ${activeNavItemClass(k)}`}
-                  href="#"
-                  // className="dropdown-toggle"
-                  data-toggle="dropdown"
+    <>
+      <nav className="navbar w-100">
+        <div className=" collapse navbar-collapse  px-0 w-100" id="menu">
+          <button className="nav-close" type="button"></button>
+          <ul className="nav_new nav-header-menu box-dir-reverse justify-content-center dir">
+            {megaMenuContents.map((item, k) => {
+              return (
+                <li
+                  onMouseEnter={() => showNavbar(k)}
+                  onMouseLeave={hideNavbar}
                 >
-                  {item.title}
-                </a>
-                {item.menu}
-              </li>
-            );
-          })}
+                  <a
+                    className={`mega-dropdown ${activeNavItemClass(k)}`}
+                    href="#"
+                    // className="dropdown-toggle"
+                    data-toggle="dropdown"
+                  >
+                    {item.title}
+                  </a>
+                  {item.menu}
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </nav>
+      <Drawer
+        className="drawer-menu"
+        placement="right"
+        onClose={onClose}
+        visible={visible}
+        closable={false}
+      >
+        <ul className="main-ul">
+          <li onClick={onClose}>
+            <Link to={"/site/artworks"}>{t("nav-menu-artworks")}</Link>
+          </li>
+          <li>
+            <Link onClick={() => setDrop(!drop)} to={"/"}>
+              <DownOutlined /> {t("nav-menu-showroom")}
+            </Link>
+
+            <ul className={"child-ul" + " " + (drop ? "show-sub" : "hide-sub")}>
+              {categorys?.length &&
+                categorys?.map((item) => {
+                  return (
+                    <li>
+                      <Link to={`/site/artists/?artist_type_id=${item?.value}`}>
+                        {item?.label}
+                      </Link>
+                    </li>
+                  );
+                })}
+            </ul>
+          </li>
+
+          <li onClick={onClose}>
+            <Link to={"/"}>{t("nav-menu-online-exhibition")}</Link>
+          </li>
+          <li onClick={onClose}>
+            <Link to={"/"}>{t("nav-menu-blog")}</Link>
+          </li>
+          <li onClick={onClose}>
+            {isLogin() ? (
+              <Link to="/site/advisory" className="sales">
+                {t("nav-menu-sales-advisor")}
+              </Link>
+            ) : (
+              <Link
+                to="/"
+                className="sales"
+                onClick={() => {
+                  message.error("لطفا ابتدا وارد حساب کاربری شوید");
+                }}
+              >
+                {t("nav-menu-sales-advisor")}
+              </Link>
+            )}
+          </li>
         </ul>
-      </div>
-    </nav>
+      </Drawer>
+    </>
   );
 }
