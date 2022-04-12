@@ -12,6 +12,7 @@ import queryString from 'query-string';
 import { ARTIST_PROFILE, GALLERY_ARTISTS, MATERIALS_CATEGORIES, PRODUCTS, PRODUCTS_CATEGORIES, SOCIAL_NETWORK_COLLECTIONS, SUBJECTS_CATEGORISE, TECHNIQUS_CATEGORIES } from '../../utils';
 import { artworkForm } from '../../redux/reducers/Artwork/artwork.action';
 import artist from '../../assets/img/Aydin_Aghdashloo_04@3x.jpg'
+import TagComponent from './TagComponent';
 
 function ArtworkInformation({ next, prev }) {
 
@@ -44,7 +45,10 @@ function ArtworkInformation({ next, prev }) {
 
 
 
-    const { roles } = useSelector((state) => state.authReducer)
+    const { roles, profile } = useSelector((state) => state.authReducer)
+
+    console.log("profile", profile)
+
     const getUserRole = () => {
         let userRole = "user"
         if (typeof roles === "string") {
@@ -71,7 +75,7 @@ function ArtworkInformation({ next, prev }) {
                 "fa": {
                     "title": values.title,
                     "about": values?.discribtion,
-                    "artist_name": values?.artist_name
+                    "artist_name": getUserRole() === "artist" ? profile?.translations?.fa?.first_name + " " + profile?.translations?.fa?.last_name : values?.artist_name
                 }, "en": {
                     "title": values.title_en,
                     "about": values?.discribtion_en,
@@ -86,6 +90,7 @@ function ArtworkInformation({ next, prev }) {
             "width": values?.width,
             "length": values?.length,
             "weight": values?.weight,
+            "height": values?.height,
             "medias": uploadList,
             "is_special": false,
             "view_only": false,
@@ -96,6 +101,7 @@ function ArtworkInformation({ next, prev }) {
 
 
         }
+        console.log(payload, "payload");
 
         dispach(artworkForm(payload))
         next()
@@ -359,26 +365,44 @@ function ArtworkInformation({ next, prev }) {
                                     })}
                                 >
                                     <div className="public-group">
-
-                                        <Form.Item
-                                            className="w-100 "
-                                            name="artist_name"
-                                            rules={[
-                                                {
-                                                    required: true,
-                                                    message: 'required',
-                                                }
-                                            ]}>
-
-                                            <Input
-                                                type="text"
-                                                id="info-201"
-                                                className="form-control input-public border-0 px-2  d-flex"
-                                                placeholder={t("content-panel-add-artwork.art_info.artist_name")}
-                                            />
+                                        {getUserRole() === "artist" ?
+                                            <Form.Item
+                                                className="w-100 "
+                                                name="artist_name"
+                                            >
+                                                {console.log("artist")}
+                                                <Input
+                                                    type="text"
+                                                    id="info-201"
+                                                    className="form-control input-public border-0 px-2  d-flex"
+                                                    placeholder={t("content-panel-add-artwork.art_info.artist_name")}
+                                                    defaultValue={profile?.translations?.fa?.first_name + " " + profile?.translations?.fa?.last_name}
+                                                    disabled
+                                                />
 
 
-                                        </Form.Item>
+
+                                            </Form.Item>
+                                            : <Form.Item
+                                                className="w-100 "
+                                                name="artist_name"
+                                                rules={[
+                                                    {
+                                                        required: true,
+                                                        message: 'required',
+                                                    }
+                                                ]}>
+                                                {console.log("gallery")}
+                                                <Input
+                                                    type="text"
+                                                    id="info-201"
+                                                    className="form-control input-public border-0 px-2  d-flex"
+                                                    placeholder={t("content-panel-add-artwork.art_info.artist_name")}
+                                                />
+
+
+
+                                            </Form.Item>}
                                     </div>
                                 </div>
 
@@ -390,25 +414,48 @@ function ArtworkInformation({ next, prev }) {
                                     })}
                                 >
                                     <div className="public-group en">
+                                        {getUserRole() === "artist" ?
+                                            <Form.Item
+                                                className="w-100"
+                                                name="artist_name_en"
+                                            // rules={[
+                                            //     {
+                                            //         required: true,
+                                            //         message: 'required',
+                                            //     }
+                                            // ]}
+                                            >
 
-                                        <Form.Item
-                                            className="w-100"
-                                            name="artist_name_en"
-                                            rules={[
-                                                {
-                                                    required: true,
-                                                    message: 'required',
-                                                }
-                                            ]}>
+                                                <Input
+                                                    type="text"
+                                                    id="info-202"
+                                                    className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
+                                                    placeholder={t("content-panel-add-artwork.art_info.artwork_name")}
+                                                    defaultValue={profile?.translations?.en?.first_name + " " + profile?.translations?.en?.last_name}
+                                                    disabled
+                                                />
 
-                                            <Input
-                                                type="text"
-                                                id="info-202"
-                                                className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                                placeholder={t("content-panel-add-artwork.art_info.artwork_name")}
-                                            />
+                                            </Form.Item>
+                                            :
+                                            <Form.Item
+                                                className="w-100"
+                                                name="artist_name_en"
+                                                rules={[
+                                                    {
+                                                        required: true,
+                                                        message: 'required',
+                                                    }
+                                                ]}>
 
-                                        </Form.Item>
+                                                <Input
+                                                    type="text"
+                                                    id="info-202"
+                                                    className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
+                                                    placeholder={t("content-panel-add-artwork.art_info.artwork_name")}
+                                                />
+
+                                            </Form.Item>
+                                        }
 
                                     </div>
                                 </div>
@@ -611,6 +658,30 @@ function ArtworkInformation({ next, prev }) {
 
                                         </div>
                                     </div>
+                                    <div className="col-sm-4 col-xs-6">
+                                        <div className="public-group">
+
+                                            <Form.Item
+                                                className="w-100"
+                                                name="height"
+                                                rules={[
+                                                    {
+                                                        required: true,
+                                                        message: 'required',
+                                                    }
+                                                ]}>
+
+                                                <Input
+                                                    type="number"
+                                                    id="info-207"
+                                                    className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
+                                                    placeholder={t("content-panel-add-artwork.art_info.height")}
+                                                />
+
+                                            </Form.Item>
+
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -773,11 +844,11 @@ function ArtworkInformation({ next, prev }) {
                                         name="tags_en"
                                         rules={[
                                             {
-                                                required: false,
+                                                required: true,
                                                 message: 'required',
                                             }
                                         ]}>
-
+                                            {/* <TagComponent /> */}
                                         <Input
                                             type="text"
                                             id="info-216"
@@ -786,6 +857,7 @@ function ArtworkInformation({ next, prev }) {
                                         />
 
                                     </Form.Item>
+                                    
                                     <span className="input-help text-dir w-100">{t("content-panel-add-artwork.art_info.text_tag_en")}</span>
                                 </div>
                             </div>
