@@ -17,18 +17,19 @@ function PanelArtManagement() {
 
     const [loading, setLoading] = useState(false);
     const [productList, setProductList] = useState([]);
-    const [suggestionsCount, setSuggestionsCount] = useState("");
-    const [products, setProducts] = useState({});
-
-    console.log("products", products);
-
+    const [suggestionsCount, setSuggestionsCount] = useState(null);
+    const [products, setProducts] = useState({
+        "pending": 0,
+        "pending_edition": 0,
+        "rejected": 0,
+        "active": 0
+    });
+    
     const [params, setParams] = useState({
         page: 1,
         status: "",
-        is_sold: ""
-
+        is_sold: "",
     });
-
     const { gallery_id } = useSelector((state) => state.galleryReducer)
 
 
@@ -53,25 +54,18 @@ function PanelArtManagement() {
     }
 
 
-    const countStatus = {
-        "pending": 0,
-        "pending_edition": 0,
-        "rejected": 0,
-        "active": 0
-    }
+    // const AllCountStatus = products.active + products['pending_edition'] + products.pending + products.rejected
 
-    const AllCountStatus = products.active + products['pending_edition'] + products.pending + products.rejected
-
-    console.log("AllCountStatus" , AllCountStatus);
 
     // Get my product list
-    const getProductList = () => {
+    const getProductList = (first=false) => {
         setLoading(true)
         if (getUserRole() === "gallery") {
             apiServices.get(GALLERY_PRODUCTS(gallery_id), queryString.stringify(params))
                 .then(res => {
                     setLoading(false)
                     setProductList(res.data.data.results)
+                    if(!suggestionsCount)
                     setSuggestionsCount(res.data.data.count)
                 })
                 .catch(err => {
@@ -84,29 +78,34 @@ function PanelArtManagement() {
                 .then(resp => {
                     setLoading(false)
                     setProductList(resp.data.data.results)
+                    if(!suggestionsCount)
                     setSuggestionsCount(resp.data.data.count)
-
-                    console.log("itemmmmmm" , resp.data.data.results);
+                    let countStatusLocal ={
+                        "pending": 0,
+                        "pending_edition": 0,
+                        "rejected": 0,
+                        "active": 0,           
+                    }
                     resp.data.data.results.map((item) => {
                         switch (item.status) {
                             case "pending":
-                                countStatus.pending += 1
+                                countStatusLocal.pending += 1
                                 break;
                             case "active":
-                                countStatus.active += 1
+                                countStatusLocal.active += 1
                                 break;
                             case "rejected":
-                                countStatus.rejected += 1
+                                countStatusLocal.rejected += 1
                                 break;
                             case "pending_edition":
-                                countStatus['pending_edition'] += 1
+                                countStatusLocal.pending_edition += 1
                                 break;
                             default:
                                 break;
                         }
 
                     })
-                    setProducts(countStatus)
+                    setProducts(countStatusLocal)
                 })
                 .catch(err => {
                     setLoading(false)
@@ -118,16 +117,20 @@ function PanelArtManagement() {
 
     // This section is for filtering the status of the list of works
     const handleStatus = (e) => {
-        console.log(e , "event");
         if (e === "is_sold") {
 
             setParams({
-                ...params, is_sold: true
+                ...params,page: 1, is_sold: true
             })
-        } else {
+        } else if(e === "") {
 
             setParams({
-                ...params, status: e, is_sold: false
+                ...params,page: 1, status: e, is_sold: null
+            })
+        }else {
+
+            setParams({
+                ...params,page: 1, status: e, is_sold: false
             })
         }
     }
@@ -187,7 +190,8 @@ function PanelArtManagement() {
                                 <Radio value={""} style={{ margin: "0 30px" }}>
                                     {t("content-panel-manage-artworks.filters.all")}
                                     <p className='text-dir'>
-                                        {AllCountStatus ? AllCountStatus : 0}
+                                    {suggestionsCount}
+                                        {/* {AllCountStatus ? AllCountStatus : 0} */}
                                     </p>
                                 </Radio>
                                 <Radio value={"active"} style={{ margin: "0 30px" }}>

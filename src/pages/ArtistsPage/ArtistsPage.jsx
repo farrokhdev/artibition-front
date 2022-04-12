@@ -357,7 +357,10 @@ function ArtistsPage(props) {
                   <div className="row box-dir-reverse gap-3">
                     {artistList?.map((item, index) => (
                       <div className="col-sm-4 mb-4">
-                        <a href="#" className="cols">
+                        <Link
+                          to={`/site/artist-profile/?id=${item?.id}`}
+                          className="cols"
+                        >
                           <div className="col-img">
                             <div className="collection-firstrow">
                               {/* <img src={mainpage1_1} className="img-responsive"/> */}
@@ -367,7 +370,11 @@ function ArtistsPage(props) {
                                   item.product[0]?.product_base_info?.medias[0]
                                     ?.exact_url
                                 }
-                                width="280"
+                                style={{
+                                  width: "280px",
+                                  objectFit: "cover",
+                                  objectPosition: "center",
+                                }}
                                 className="img-responsive clolection-image1"
                               />
                             </div>
@@ -380,10 +387,13 @@ function ArtistsPage(props) {
                                     item?.product[1]?.product_base_info
                                       ?.medias[0]?.exact_url
                                   }
-                                  width="280"
-                                  height="280"
                                   className="img-responsive"
-                                  style={{ height: 120, width: 180 }}
+                                  style={{
+                                    height: "120px",
+                                    width: "180px",
+                                    objectFit: "cover",
+                                    objectPosition: "center",
+                                  }}
                                 />
                               </div>
                               <div className="col-6  pad-r2 px-0">
@@ -397,29 +407,34 @@ function ArtistsPage(props) {
                                   width="280"
                                   height="280"
                                   className="img-responsive"
-                                  style={{ height: 120, width: 180 }}
+                                  style={{
+                                    height: "120px",
+                                    width: "180px",
+                                    objectPosition: "center",
+                                    objectFit: "cover",
+                                  }}
                                 />
                               </div>
                             </div>
                           </div>
                           <div className="col-body">
                             <div className="col-image pull-right">
-                              <Link to={`/site/artist-profile/?id=${item?.id}`}>
-                                <img
-                                  src={item.bg_image?.exact_url}
-                                  width="280"
-                                  height="280"
-                                  alt=""
-                                  className="img-responsive"
-                                />
-                                <img
-                                  src={blue_badge_icon}
-                                  width="22"
-                                  height="22"
-                                  alt=""
-                                  className="img-badge"
-                                />
-                              </Link>
+                              {/* <Link to={`/site/artist-profile/?id=${item?.id}`}> */}
+                              <img
+                                src={item.bg_image?.exact_url}
+                                width="280"
+                                height="280"
+                                alt=""
+                                className="img-responsive"
+                              />
+                              <img
+                                src={blue_badge_icon}
+                                width="22"
+                                height="22"
+                                alt=""
+                                className="img-badge"
+                              />
+                              {/* </Link> */}
                               {/* <img src={artist3} width="408" height="408" alt=""
                                                  className="img-responsive"/> */}
                             </div>
@@ -464,7 +479,7 @@ function ArtistsPage(props) {
                                 : t("artwork.follow")}
                             </button>
                           </div>
-                        </a>
+                        </Link>
                       </div>
                     ))}
                   </div>

@@ -31,16 +31,15 @@ function ModalAddCollections(props) {
   const [params, setParams] = useState({
     activity_type: "like",
     content_type: "product",
+    search: "",
   });
 
-  const [search, setSearch] = useState();
-
-  const handleBannerSearchInputChanged = (text) => setSearch(text);
-  const handleBannerSearchClick = () =>
-      setParams((state) => ({ ...state, search: search }));
-
-
-  console.log("chooseFollowProducts", chooseFollowProducts);
+  const handleSearchCollections = (value) => {
+    setParams({
+      ...params,
+      search: value,
+    })
+  }
 
   const onFinish = (values) => {
     if (chooseProduct?.length < 1) {
@@ -99,7 +98,7 @@ function ModalAddCollections(props) {
 
   useEffect(() => {
     getProductsFollow();
-  }, []);
+  }, [params]);
 
   return (
     <React.Fragment>
@@ -231,10 +230,10 @@ function ModalAddCollections(props) {
                   </h2>
                   <div className="nl-input filter-search">
                     <input placeholder="جستجوی اثر"
-                      onChange={(e) => handleBannerSearchInputChanged(e.target.value)} />
-                    <button className="noborder" type="button"
-                      onClick={handleBannerSearchClick}><img src={search_icon} width="24"
-                        height="24" alt="" />
+                      id="product-search"
+                      onChange={(e) => handleSearchCollections(document.querySelector('#product-search').value)} />
+                    <button className="noborder" type="button"><img src={search_icon} width="24"
+                      height="24" alt="" />
                     </button>
                   </div>
                 </div>

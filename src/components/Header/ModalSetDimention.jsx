@@ -7,13 +7,45 @@ function ModalSetDimention(props) {
   const {
     setVisibleSetDimentionModal,
     visibleSetDimentionModal,
+    width_min,
+    width_max,
+    height_min,
+    height_max,
+    length_min,
+    length_max,
+    setWidth_min,
+    setWidth_max,
+    setHeight_min,
+    setHeight_max,
+    setLength_min,
+    setLength_max,
     setFilters,
     filterSizes,
   } = props;
 
   const handleClose = () => {
-    filterSizes();
-    setVisibleSetDimentionModal(false);
+    if (
+      width_min ||
+      width_max ||
+      height_min ||
+      height_max ||
+      length_max ||
+      length_min
+    ) {
+      setFilters((state) => ({
+        ...state,
+        width_min: width_min,
+        width_max: width_max,
+        height_min: height_min,
+        height_max: height_max,
+        length_min: length_min,
+        length_max: length_max,
+      }));
+      setVisibleSetDimentionModal(false);
+    } else {
+      filterSizes();
+      setVisibleSetDimentionModal(false);
+    }
   };
 
   return (
@@ -52,7 +84,11 @@ function ModalSetDimention(props) {
                         "filter-header.size.dimention.select-custom-size.min-width"
                       )}
                     </label>
-                    <input type="text" className=" persian-num" />
+                    <input
+                      type="text"
+                      className=" persian-num"
+                      onChange={(e) => setWidth_min(e.target.value)}
+                    />
                   </div>
                   <span className="unit-dimention">
                     {t("filter-header.size.dimention.select-custom-size.to")}
@@ -65,7 +101,11 @@ function ModalSetDimention(props) {
                         "filter-header.size.dimention.select-custom-size.max-width"
                       )}
                     </label>
-                    <input type="text" className=" persian-num" />
+                    <input
+                      type="text"
+                      className=" persian-num"
+                      onChange={(e) => setWidth_max(e.target.value)}
+                    />
                   </div>
                 </div>
               </div>
@@ -77,7 +117,11 @@ function ModalSetDimention(props) {
                         "filter-header.size.dimention.select-custom-size.min-length"
                       )}
                     </label>
-                    <input type="text" className=" persian-num" />
+                    <input
+                      type="text"
+                      className=" persian-num"
+                      onChange={(e) => setLength_min(e.target.value)}
+                    />
                   </div>
                   <span className="unit-dimention">
                     {t("filter-header.size.dimention.select-custom-size.to")}
@@ -90,7 +134,11 @@ function ModalSetDimention(props) {
                         "filter-header.size.dimention.select-custom-size.max-length"
                       )}
                     </label>
-                    <input type="text" className=" persian-num" />
+                    <input
+                      type="text"
+                      className=" persian-num"
+                      onChange={(e) => setLength_max(e.target.value)}
+                    />
                   </div>
                 </div>
               </div>
@@ -102,7 +150,11 @@ function ModalSetDimention(props) {
                         "filter-header.size.dimention.select-custom-size.min-height"
                       )}
                     </label>
-                    <input type="text" className=" persian-num" />
+                    <input
+                      type="text"
+                      className=" persian-num"
+                      onChange={(e) => setHeight_min(e.target.value)}
+                    />
                   </div>
                   <span className="unit-dimention">
                     {t("filter-header.size.dimention.select-custom-size.to")}
@@ -115,7 +167,11 @@ function ModalSetDimention(props) {
                         "filter-header.size.dimention.select-custom-size.max-length"
                       )}
                     </label>
-                    <input type="text" className=" persian-num" />
+                    <input
+                      type="text"
+                      className=" persian-num"
+                      onChange={(e) => setHeight_max(e.target.value)}
+                    />
                   </div>
                 </div>
               </div>

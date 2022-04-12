@@ -72,7 +72,7 @@ function BiographyTab({ artistBio, artistId }) {
           <h5 className="custom-title text-dir">
             {t("artist_profile.introduction")}
           </h5>
-          <p className="text-justify">
+          <p className="text-justify" style={{ fontSize: "18px" }}>
             {i18n.language === "fa-IR"
               ? artistBio?.fa?.biography
               : artistBio?.en?.biography}
