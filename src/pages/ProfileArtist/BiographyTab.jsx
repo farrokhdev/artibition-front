@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { t } from "i18next";
-import { ARTIST_CATEGORY, ARTIST_EXHIBITION } from "../../utils";
+import { ARTIST_CATEGORY, ARTIST_EXHIBITION, ARTIST_RESUME } from "../../utils";
 import QueryString from "qs";
 import apiServices from "../../utils/api.services";
 import { useTranslation } from "react-i18next";
 import moment from "jalali-moment";
 import { isNil } from "lodash";
+import { Link } from "react-router-dom";
 function BiographyTab({ artistBio, artistId }) {
   const { t, i18n } = useTranslation();
   const [artistExhibition, setArtistExhibition] = useState();
@@ -17,25 +18,23 @@ function BiographyTab({ artistBio, artistId }) {
   });
   const getArtistExhibition = () => {
     apiServices
-      .get(ARTIST_EXHIBITION(artistId), QueryString.stringify(params))
+      .get(ARTIST_RESUME(artistId), QueryString.stringify(params))
       .then((res) => {
         if (res.data) {
           const tempYears = new Set();
+          console.log(
+            "🚀 ~ file: BiographyTab.jsx ~ line 25 ~ tempArtistExhibition ~ res.data.data",
+            res.data.data
+          );
           const tempArtistExhibition = res.data.data.map((item) => {
             let tempDate;
             if (i18n.language === "fa-IR") {
-              tempDate = moment(
-                Object.values(item?.start_date)[0],
-                "YYYY-MM-DD"
-              )
+              tempDate = moment(item?.start_date, "YYYY-MM-DD")
                 .locale("fa")
                 .format("YYYY-MMMM-DD")
                 .split("-");
             } else {
-              tempDate = moment(
-                Object.values(item?.start_date)[0],
-                "YYYY-MM-DD"
-              )
+              tempDate = moment(item?.start_date, "YYYY-MM-DD")
                 .format("YYYY-MMMM-DD")
                 .split("-");
             }
@@ -98,8 +97,7 @@ function BiographyTab({ artistBio, artistId }) {
                     ?.filter((item) => item.date.year === year)
                     .sort(
                       (a, b) =>
-                        new Date(Object.values(b?.start_date)[0]) -
-                        new Date(Object.values(a?.start_date)[0])
+                        new Date(b?.start_date) - new Date(a?.start_date)
                     )
                     ?.map((exhibition) => {
                       return (
@@ -109,10 +107,23 @@ function BiographyTab({ artistBio, artistId }) {
                               ? exhibition?.translations?.fa?.name
                               : exhibition?.translations?.en?.name}
                           </h6>
-                          <div
-                            className="text-dir"
-                            style={{ fontSize: "18px" }}
-                          >
+                          {console.log({ artistExhibition })}
+                          {exhibition?.has_profile && (
+                            <button className="btn-readmore">
+                              <Link
+                                to={{
+                                  pathname: "/site/exhibitionDetail",
+                                }}
+                                state={{
+                                  id: exhibition?.id,
+                                }}
+                                replace={false}
+                              >
+                                {t("artist_profile.veiw")}
+                              </Link>
+                            </button>
+                          )}
+                          <div className="text-dir">
                             {i18n.language === "fa-IR"
                               ? exhibition?.gallery?.translations?.fa?.title
                               : exhibition?.gallery?.translations?.en?.title}

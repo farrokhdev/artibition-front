@@ -2,8 +2,16 @@ import React from "react";
 import filter_icon from "../../assets/img/Filter.svg";
 import clear_icon from "../../assets/img/clear.svg";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+/**
+ * @param setParams
+ * @param params @param setSelectedOption @param selectedOption
+ *
+ */
 const ArtworkRemoveFilter = (props) => {
-  const { setParams, t, params, setSelectedOption, selectedOption } = props;
+  const { setParams, params, setSelectedOption, selectedOption } = props;
+  const { t, i18n } = useTranslation();
+
   const navigate = useNavigate();
   return (
     <div className="d-flex box-dir-reverse dir">

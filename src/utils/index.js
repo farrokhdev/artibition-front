@@ -131,3 +131,4 @@ export const NEWS_LETTER_MEMBERSHIP = "/account/membership/";
 export const CONTACT_US = "/management/contact_us/";
 export const WORK_WITH_US = "/management/work_with_us/";
 export const SINGLE_EXHIBITION = (id) => `/exhibition/${id}`;
+export const ARTIST_RESUME = (id) => `/artist/${id}/resume/`;
