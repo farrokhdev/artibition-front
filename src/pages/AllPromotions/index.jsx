@@ -50,7 +50,7 @@ const AllPromotions = () => {
                   </div>
                   <div id="collapse11" className="panel-collapse collapse in">
                     <div className="panel-body">
-                      <div className="caleander-event side-bar">
+                      {/* <div className="caleander-event side-bar">
                         <div className="caleander-month">
                           <ul>
                             <li className="next">&#10095;</li>
@@ -100,12 +100,12 @@ const AllPromotions = () => {
                           <li>30</li>
                           <li>31</li>
                         </ul>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
                 <div className="panel panel-default">
-                  <div className="panel-heading">
+                  {/* <div className="panel-heading">
                     <h4 className="panel-title">
                       <a
                         data-toggle="collapse"
@@ -115,9 +115,9 @@ const AllPromotions = () => {
                         نوع
                       </a>
                     </h4>
-                  </div>
+                  </div> */}
                   <div id="collapse10" className="panel-collapse collapse in">
-                    <div className="panel-body">
+                    {/* <div className="panel-body">
                       <label className="lable-checkbox">
                         <input type="checkbox" value="" />
                         <span>فراخوان</span>
@@ -128,7 +128,7 @@ const AllPromotions = () => {
                         <span>پروموشن</span>
                         <span className="checkmark"></span>
                       </label>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>

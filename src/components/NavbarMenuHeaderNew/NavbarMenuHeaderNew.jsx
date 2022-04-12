@@ -231,6 +231,11 @@ export default function NavbarMenuHeader(props) {
                     {t("events")}
                   </Link>
                 </li>
+                <li>
+                  <Link to="/site/all-promotions" data-toggle="tab">
+                    {t("promotions")}
+                  </Link>
+                </li>
               </ul>
             </div>
             <div className="col-sm-9">
