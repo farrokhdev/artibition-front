@@ -27,16 +27,20 @@ function ModalAddGallery(props) {
     const [productList, setProductList] = useState([]);
 
     const [params, setParams] = useState({
-        page_size: 9999999
-
+        page_size: 9999999,
+        search: "",
     });
 
-    const [search, setSearch] = useState();
 
-    const handleBannerSearchInputChanged = (text) => setSearch(text);
-    const handleBannerSearchClick = () =>
-        setParams((state) => ({ ...state, search: search }));
+    const handleSearchProducts = (value) => {
+        console.log("values" , value)
+        setParams({
+            ...params,
+            search: value,
+        });
 
+        console.log(params, "parametrs");
+    };
 
     // Get my product list
     const getProductList = () => {
@@ -59,7 +63,7 @@ function ModalAddGallery(props) {
         if (visibleAddGallery === true) {
             getProductList();
         }
-    }, [visibleAddGallery]);
+    }, [visibleAddGallery,params]);
 
     const onFinish = (values) => {
         let payload = {
@@ -227,10 +231,11 @@ function ModalAddGallery(props) {
                                     <h2 className="adv-title">آثار مورد نظر خود را انتخاب کنید.</h2>
                                     <div className="nl-input filter-search">
                                         <input placeholder="جستجوی اثر"
-                                            onChange={(e) => handleBannerSearchInputChanged(e.target.value)} />
+                                            id="product-search"
+                                            onChange={(e) => handleSearchProducts(document.querySelector('#product-search').value)} />
                                         <button className="noborder" type="button"
-                                            onClick={handleBannerSearchClick}><img src={search_icon} width="24"
-                                                height="24" alt="" />
+                                        ><img src={search_icon} width="24"
+                                            height="24" alt="" />
                                         </button>
                                     </div>
                                 </div>
