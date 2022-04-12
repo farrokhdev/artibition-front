@@ -738,7 +738,8 @@
       "Active_on_the_site": "فعال در سایت",
       "to_artibition": "منتظر ارسال اثر به آرتیبیشن",
       "artibition_to_customer": "درحال ارسال از آرتیبیشن به مشتری",
-      "delivered": "تحویل شده به مشتری"
+      "delivered": "تحویل شده به مشتری",
+      "pending_edition": "نیازمند اصلاح"
     }
   },
   "content-panel-manage-artworks": {
