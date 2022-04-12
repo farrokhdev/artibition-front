@@ -5,9 +5,9 @@ import SidebarPanel from "../../components/SidebarPanel/SidebarPanel";
 import { t } from "i18next";
 import { alertNotice, alertSuccess } from "../../utils/alerts";
 
-import financial_reports_orange from '../../assets/img/financial_reports-orange.svg';
-import new_artwork from '../../assets/img/new-artwork.png';
-import done_icon from '../../assets/img/done.svg';
+import financial_reports_orange from "../../assets/img/financial_reports-orange.svg";
+import new_artwork from "../../assets/img/new-artwork.png";
+import done_icon from "../../assets/img/done.svg";
 import TableOrders from "./TableOrders";
 import TableActiveOrders from "./TableActiveOrders";
 import TableSuggestionToYourArtworks from "./TableSuggestionToYourArtworks";
@@ -22,38 +22,36 @@ import { useSelector } from "react-redux";
 import CounterStatus from "../GalleryPanelDashboard/CounterStatus";
 import CreateExhibition from "../GalleryPanelDashboard/CreateExhibition";
 
-
 function DashboardPanel() {
-    const { roles } = useSelector((state) => state.authReducer)
-    const getUserRole = () => {
-        let userRole = "user"
-        if (typeof roles === "string") {
-            return roles
-        } else {
-            if (roles && roles.length > 0) {
-                if (roles.includes("seller")) {
-                    userRole = "seller"
-                }
-                if (roles.includes("artist")) {
-                    userRole = "artist"
-                }
-            } else {
-                userRole = 'user'
-            }
+  const { roles } = useSelector((state) => state.authReducer);
+  const getUserRole = () => {
+    let userRole = "user";
+    if (typeof roles === "string") {
+      return roles;
+    } else {
+      if (roles && roles.length > 0) {
+        if (roles.includes("seller")) {
+          userRole = "seller";
         }
-        return userRole
+        if (roles.includes("artist")) {
+          userRole = "artist";
+        }
+      } else {
+        userRole = "user";
+      }
     }
+    return userRole;
+  };
 
-    return (
-        <>
-            <HeaderPanel t={t} />
+  return (
+    <>
+      <HeaderPanel t={t} />
 
-            <div className="panel-style margin-top-20">
-                <SidebarPanel />
+      <div className="panel-style margin-top-20">
+        <SidebarPanel />
 
-                <div className="custom-container ">
-
-                    {/* {alertNotice(
+        <div className="custom-container ">
+          {/* {alertNotice(
                         //className
                         "d-flex box-dir-reverse  alert alert-notice text-dir",
                         //icon
@@ -85,54 +83,41 @@ function DashboardPanel() {
                         true
                     )} */}
 
+          {getUserRole() !== "gallery" && roles.includes("gallery") && (
+            <BoxGallery />
+          )}
 
-                    {
-                        (getUserRole() !== "gallery" && roles.includes("gallery")) &&
-                        <BoxGallery />
-
-                    }
-
-
-                    <div className="row box-dir-reverse dir">
-                        <div className="col-lg-8 ">
-                            {
-                                (getUserRole() === "artist" || getUserRole() === "seller") ?
-                                    <BoxStatusArtwork />
-                                    :
-                                    <CounterStatus />
-                            }
-
-
-                        </div>
-                        <div className="col-lg-4">
-                            <StatusSection />
-                        </div>
-                        <div className="col-lg-8 ">
-                            {/* <TableOrders/> */}
-                            <OrderStatus />
-                            {/* <TableActiveOrders/> */}
-                            <TableSuggestionToYourArtworks />
-                            {/* <VeiwArtworks /> */}
-                        </div>
-                        <div className="col-lg-4">
-                            {/* <MyIncome/> */}
-                            {getUserRole() === "gallery" &&
-                                <CreateExhibition />
-                            }
-
-                            {
-                                getUserRole() === "artist" &&
-                                <Promotions />
-                            }
-
-                        </div>
-                    </div>
-                </div>
-
-                <BasketFooterPanel />
+          <div className="row box-dir-reverse dir">
+            <div className="col-lg-8 ">
+              {getUserRole() === "artist" || getUserRole() === "seller" ? (
+                <BoxStatusArtwork />
+              ) : (
+                <CounterStatus />
+              )}
             </div>
-        </>
-    );
+            <div className="col-lg-4">
+              <StatusSection />
+            </div>
+            <div className="col-lg-8 ">
+              {/* <TableOrders/> */}
+              <OrderStatus />
+              {/* <TableActiveOrders/> */}
+              <TableSuggestionToYourArtworks />
+              {/* <VeiwArtworks /> */}
+            </div>
+            <div className="col-lg-4">
+              {/* <MyIncome/> */}
+              {getUserRole() === "gallery" && <CreateExhibition />}
+
+              {getUserRole() === "artist" && <Promotions />}
+            </div>
+          </div>
+        </div>
+
+        <BasketFooterPanel />
+      </div>
+    </>
+  );
 }
 
 export default DashboardPanel;
