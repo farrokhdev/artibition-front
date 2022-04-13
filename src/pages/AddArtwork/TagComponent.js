@@ -6,7 +6,15 @@ import { Tag, Input, Tooltip } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
 import { t } from 'i18next';
 
-const TagComponent = () => {
+const TagComponent = ({
+    //     state,
+    // setState,
+    // tags,
+    // inputVisible,
+    // inputValue,
+    // editInputIndex,
+    // editInputValue,
+}) => {
 
     const [state, setState] = useState({
         tags: [],
@@ -71,33 +79,12 @@ const TagComponent = () => {
     const saveEditInputRef = input => {
         editInput.current = input;
     };
-    const { tags, inputVisible, inputValue, editInputIndex, editInputValue } =
-        state;
+    const { tags, inputVisible, inputValue, editInputIndex, editInputValue } = state;
+
+    console.log(tags, "tags")
 
     return (
         <>
-
-            {inputVisible && (
-                <Input
-                    ref={saveInputRef}
-                    type="text"
-                    size="small"
-                    className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                    // className="tag-input"
-                    value={inputValue}
-                    onChange={handleInputChange}
-                    onBlur={handleInputConfirm}
-                    onPressEnter={handleInputConfirm}
-                />
-            )}
-
-            
-            {!inputVisible && (
-                <Tag className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2" onClick={showInput}>
-                    <PlusOutlined />{t("content-panel-add-artwork.art_info.tag_en")}
-                </Tag>
-            )}
-
 
             {tags.map((tag, index) => {
                 if (editInputIndex === index) {
@@ -149,6 +136,30 @@ const TagComponent = () => {
                     tagElem
                 );
             })}
+
+            {inputVisible && (
+                <Input
+                    ref={saveInputRef}
+                    type="text"
+                    size="small"
+                    className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
+                    // className="tag-input"
+                    value={inputValue}
+                    onChange={handleInputChange}
+                    onBlur={handleInputConfirm}
+                    onPressEnter={handleInputConfirm}
+                />
+            )}
+
+
+            {!inputVisible && (
+                <Tag className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2" onClick={showInput}>
+                    <PlusOutlined />{t("content-panel-add-artwork.art_info.tag_en")}
+                </Tag>
+            )}
+
+
+
         </>
     )
 };
