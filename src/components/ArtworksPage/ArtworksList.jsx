@@ -17,6 +17,7 @@ import apiServices from "../../utils/api.services";
 import { useLocation, useSearchParams } from "react-router-dom";
 import { numDiscriminant } from "../../utils/discriminant";
 import { isNil } from "lodash";
+import FilterArtworks from "../FilterArtworks";
 
 const ArtworksList = (props) => {
   const {
@@ -157,7 +158,7 @@ const ArtworksList = (props) => {
           .stringify({ exhibition_id: props?.exhibitionId })
           .concat("&")
           .concat(defaultQuery);
-          
+
     apiServices
       .get(SEARCH_PRODUCTS, query)
       .then((res) => {
@@ -368,7 +369,8 @@ const ArtworksList = (props) => {
       </div>
       <div className="content-body">
         <div className="d-flex box-dir-reverse dir">
-          <ArtworksFilter {...filterProps} />
+          {/* <ArtworksFilter {...filterProps} />  */}
+          <FilterArtworks {...filterProps} />
 
           <div className="col-md-9 ">
             <div className="row-gridimg">

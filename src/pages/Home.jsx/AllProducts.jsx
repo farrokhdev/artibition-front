@@ -12,6 +12,7 @@ import apiServices from "../../utils/api.services";
 import QueryString from "qs";
 import { follow } from "../../utils/utils";
 import { Link } from "react-router-dom";
+import { numDiscriminant } from "../../utils/discriminant";
 
 export default function AllProducts({ categories }) {
   let navigate = useNavigate();
@@ -119,7 +120,8 @@ export default function AllProducts({ categories }) {
                         <img
                           src={product.medias && product.medias[0]?.exact_url}
                           alt="artibition"
-                          className="img-responsive"  style={{objectFit : 'contain'}}
+                          className="img-responsive"
+                          style={{ objectFit: "contain" }}
                         />
                         <div className="tab-overly">
                           <Link
@@ -184,7 +186,9 @@ export default function AllProducts({ categories }) {
                         </div>
                         <div className="col-price">
                           <span className="col-price-num">
-                            {product.toman_price}
+                            {i18n.language === "fa-IR"
+                              ? numDiscriminant(product.toman_price)
+                              : numDiscriminant(product.dollar_price)}
                           </span>
                           <span className="col-price-unit">{t("toman")}</span>
                         </div>

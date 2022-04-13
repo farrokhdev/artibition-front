@@ -48,11 +48,10 @@ export const GlobalProvider = ({ children, props }) => {
 
         // }));
         setItems(resp.data.data);
-        setlocations(
-          resp.data.data.locations.map((item) => {
-            return { value: item?.id };
-          })
-        );
+        setlocations();
+        // resp.data.data.locations.map((item) => {
+        //   return { value: item?.id };
+        // })
       })
       .catch((err) => {
         setLoading(false);
@@ -61,8 +60,8 @@ export const GlobalProvider = ({ children, props }) => {
   };
 
   useEffect(() => {
-    getItems();
-  }, [params]);
+    // getItems();
+  }, []);
 
   console.log(items);
 

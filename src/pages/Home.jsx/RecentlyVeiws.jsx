@@ -6,6 +6,7 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { follow } from "../../utils/utils";
 import Default from "../../assets/img/default.png";
+import { numDiscriminant } from "../../utils/discriminant";
 
 export default function RecentlyNews({ categories }) {
   const [lastProducts, setLast] = useState([]);
@@ -86,7 +87,7 @@ export default function RecentlyNews({ categories }) {
                           src={
                             product.medias && product.medias[0]?.exact_url
                               ? product.medias[0]?.exact_url
-                              : Default
+                              : "https://api.artibition.gallery/static/img/default.png"
                           }
                           alt="artibition"
                           className="img-responsive"
@@ -154,7 +155,9 @@ export default function RecentlyNews({ categories }) {
                         </div>
                         <div className="col-price">
                           <span className="col-price-num">
-                            {product.toman_price}
+                            {i18n.language === "fa-IR"
+                              ? numDiscriminant(product.toman_price)
+                              : numDiscriminant(product.dollar_price)}
                           </span>
                           <span className="col-price-unit">{t("toman")}</span>
                         </div>

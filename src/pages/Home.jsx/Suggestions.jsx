@@ -8,6 +8,7 @@ import apiServices from "../../utils/api.services";
 import { PRODUCTS_LAST, PRODUCTS_SUGGESTION } from "../../utils";
 import Default from "../../assets/img/default.png";
 import queryString from "query-string";
+import { numDiscriminant } from "../../utils/discriminant";
 
 export default function Suggestions({ categories }) {
   const { t, i18n } = useTranslation();
@@ -35,7 +36,7 @@ export default function Suggestions({ categories }) {
   };
 
   return (
-    <div className="suggestions">
+    <div className={"suggestions"}>
       <div className="row dir">
         <div className="col-sm-12">
           <h2 className="default-title text-dir">
@@ -88,7 +89,7 @@ export default function Suggestions({ categories }) {
                           src={
                             product.medias && product.medias[0]?.exact_url
                               ? product.medias && product.medias[0]?.exact_url
-                              : Default
+                              : "https://api.artibition.gallery/static/img/default.png"
                           }
                           alt="artibition"
                           className="img-responsive"
@@ -156,7 +157,9 @@ export default function Suggestions({ categories }) {
                         </div>
                         <div className="col-price">
                           <span className="col-price-num">
-                            {product.toman_price}
+                            {i18n.language === "fa-IR"
+                              ? numDiscriminant(product.toman_price)
+                              : numDiscriminant(product.dollar_price)}
                           </span>
                           <span className="col-price-unit">{t("toman")}</span>
                         </div>

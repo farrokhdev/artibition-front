@@ -123,7 +123,7 @@ a:hover {
 
 .search-container input::placeholder {
   color: #adafb3;
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .btn-searchfilter:hover {
@@ -3883,7 +3883,7 @@ select.input-public:valid {
 .dropdown-menu.mega-dropdown-menu {
   border: 0;
   padding: 15px !important;
-  background-color: rgb(247, 247, 247) !important;
+  background-color: #fff !important;
 }
 
 .dropdown-menu {
@@ -5697,7 +5697,7 @@ input[type="number"] {
 .filter-dropdown {
   border: 0;
   border-radius: 0;
-  box-shadow: 0 0 0 transparent;
+  box-shadow: 0 2px 5px 2px #0000000a;
   padding: 32px 0;
   position: absolute;
   width: 100%;
@@ -6695,6 +6695,7 @@ span.unit-dimention {
   position: absolute;
   left: 0;
   right: 0;
+  top: 100%;
   z-index: 100;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
 }
@@ -6702,6 +6703,7 @@ span.unit-dimention {
 .autocomplete .predict {
   max-height: 350px;
   overflow-y: scroll;
+  overflow-x: hidden;
   padding: 16px 32px;
 }
 
@@ -6842,6 +6844,7 @@ body {
   font-size: 13px;
   border: solid #f1f2f4;
   border-width: 0 0 2px 0;
+  display: flex;
 }
 
 .btn-searchfilter span {
@@ -9155,6 +9158,6 @@ iframe {
   border: none !important;
   box-shadow: none !important;
 }
-.caleander-event .rmdp-wrapper .rmdp-shadow .custom-calendar{
+.caleander-event .rmdp-wrapper .rmdp-shadow .custom-calendar {
   margin: 0 auto !important;
 }
