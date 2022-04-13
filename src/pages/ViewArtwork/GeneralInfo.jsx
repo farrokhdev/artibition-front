@@ -6,10 +6,7 @@ import classnames from "classnames";
 import { GetLanguage } from "../../utils/utils";
 import { isNil } from "lodash";
 import { LoadingOutlined } from "@ant-design/icons";
-const GeneralInfo = ({ next, prev, data }) => {
-  console.log("🚀 ~ file: GeneralInfo.jsx ~ line 9 ~ GeneralInfo ~ data", data);
-
-  //   if (isNil(data)) return <></>;
+const GeneralInfo = ({ next, prev, data, setData }) => {
   return (
     <>
       <HeaderPanel t={t} />
@@ -54,6 +51,18 @@ const GeneralInfo = ({ next, prev, data }) => {
                             fontSize: "16px",
                           }}
                           value={data?.translations?.fa?.title}
+                          onChange={(e) =>
+                            setData({
+                              ...data,
+                              translations: {
+                                ...data.translations,
+                                fa: {
+                                  ...data.translations.fa,
+                                  title: e.target.value,
+                                },
+                              },
+                            })
+                          }
                           disabled
                         />
                       </Form.Item>
@@ -83,6 +92,18 @@ const GeneralInfo = ({ next, prev, data }) => {
                             fontSize: "16px",
                           }}
                           value={data?.translations?.en?.title}
+                          onChange={(e) =>
+                            setData({
+                              ...data,
+                              translations: {
+                                ...data.translations,
+                                en: {
+                                  ...data.translations.en,
+                                  title: e.target.value,
+                                },
+                              },
+                            })
+                          }
                           disabled
                         />
                       </Form.Item>
@@ -177,6 +198,7 @@ const GeneralInfo = ({ next, prev, data }) => {
                               ? data?.category?.translations?.fa?.title
                               : data?.category?.translations?.en?.title
                           }
+                          onChange={setData}
                           disabled
                         ></Input>
                       </Form.Item>

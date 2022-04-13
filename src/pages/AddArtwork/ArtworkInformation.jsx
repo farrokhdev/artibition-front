@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Form, Input, Select, Checkbox, message } from "antd";
+import { Form, Input, Select, Checkbox, message, Spin, Image } from "antd";
 import cloud_upload from "../../assets/img/cloud-upload.svg";
 import i18next, { t, use } from "i18next";
 import classnames from "classnames";
@@ -21,8 +21,9 @@ import {
 } from "../../utils";
 import { artworkForm } from "../../redux/reducers/Artwork/artwork.action";
 import artist from "../../assets/img/Aydin_Aghdashloo_04@3x.jpg";
-
-function ArtworkInformation({ next, prev }) {
+import { isNil } from "lodash";
+import { LoadingOutlined } from "@ant-design/icons";
+function ArtworkInformation({ next, prev, artwork }) {
   const [form] = Form.useForm();
   const { Option } = Select;
   const dispach = useDispatch();
@@ -40,13 +41,13 @@ function ArtworkInformation({ next, prev }) {
   const [material, setMaterial] = useState([]);
   const [materialId, setMaterialId] = useState({ material_id: [] });
   const [sotialCollection, setSotialCollection] = useState([]);
+  // const [initialValues, setInitialValues] = useState();
+
   let [searchParams, setSearchParams] = useSearchParams();
   const Language = GetLanguage();
   const [params, setParams] = useState({
     owner_id: id,
   });
-
-  console.log("categorys", categorys);
 
   const { roles } = useSelector((state) => state.authReducer);
   const getUserRole = () => {
@@ -128,11 +129,16 @@ function ArtworkInformation({ next, prev }) {
 
   // function for set categories id
   const handleSetCategory = (value) => {
+    console.log("handleSetCategory");
     setNewArtwork({
       ...newArtwork,
       category_id: value,
     });
   };
+  console.log(
+    "🚀 ~ file: ArtworkInformation.jsx ~ line 137 ~ handleSetCategory ~ newArtwork",
+    newArtwork
+  );
   // function for set subject by categories id
   const handleSetSubject = (value) => {
     setSubjectId({
@@ -270,9 +276,37 @@ function ArtworkInformation({ next, prev }) {
     }
   }, []);
 
-  // useEffect(() => {
-  //     console.log();
-  // }, [])
+  const initialValues = {
+    title: artwork?.translations?.fa?.title,
+    title_en: artwork?.translations?.en?.title,
+    artist_name: artwork?.translations?.fa?.artist_name,
+    artist_name_en: artwork?.translations?.en?.artist_name,
+    discribtion: artwork?.translations?.fa?.about,
+    discribtion_en: artwork?.translations?.en?.about,
+    jalali_creation_year: artwork?.jalali_creation_year,
+    width: artwork?.width,
+    height: artwork?.height,
+    length: artwork?.length,
+    weight: artwork?.weight,
+    tags_en: artwork?.tags
+      ?.filter((item) => item.language === "en")
+      ?.map((item) => item.title),
+    tags_fa: artwork?.tags
+      ?.filter((item) => item.language === "fa")
+      ?.map((item) => item.title),
+  };
+  useEffect(() => {
+    if (!isNil(artwork)) {
+      setUploadList(artwork?.medias);
+      setSubjectId(artwork?.subject?.id);
+      setTechniqueId(artwork?.technique?.id);
+      setMaterialId(artwork?.material?.id);
+    }
+  }, [artwork]);
+  console.log(
+    "🚀 ~ file: ArtworkInformation.jsx ~ line 292 ~ ArtworkInformation ~ artwork",
+    artwork
+  );
 
   return (
     <>
@@ -308,8 +342,15 @@ function ArtworkInformation({ next, prev }) {
 
       {/* -------   this component is to upload several photos simultaneously   ------- */}
       <MultipleUpload uploadList={uploadList} setUploadList={setUploadList} />
-
-      <Form className="" form={form} onFinish={onFinish}>
+      {uploadList?.map((item) => (
+        <Image src={item?.exact_url} key={item?.id} />
+      ))}
+      <Form
+        className=""
+        // form={form}
+        onFinish={onFinish}
+        initialValues={initialValues}
+      >
         <div className="info-sec dir">
           <h3 className="infotitle-default require text-dir">
             {t("content-panel-add-artwork.art_info.title")}
@@ -459,6 +500,7 @@ function ArtworkInformation({ next, prev }) {
                       )}
                       options={categorys}
                       allowClear
+                      defaultValue={artwork?.category?.translations?.fa?.title}
                       onChange={handleSetCategory}
                       id="info-203"
                     ></Select>
@@ -483,6 +525,7 @@ function ArtworkInformation({ next, prev }) {
                         "content-panel-add-artwork.art_info.artwork_subject"
                       )}
                       allowClear
+                      defaultValue={artwork?.subject?.translations?.fa?.title}
                       options={subject}
                       onChange={handleSetSubject}
                       id="info-204"
@@ -511,6 +554,7 @@ function ArtworkInformation({ next, prev }) {
                       )}
                       allowClear
                       options={technique}
+                      defaultValue={artwork?.technique?.translations?.fa?.title}
                       onChange={handleSetTechnique}
                       id="info-205"
                     ></Select>
@@ -536,6 +580,7 @@ function ArtworkInformation({ next, prev }) {
                       )}
                       allowClear
                       options={material}
+                      defaultValue={artwork?.material?.translations?.fa?.title}
                       onChange={handleSetMaterial}
                       id="info-206"
                     ></Select>
@@ -716,12 +761,6 @@ function ArtworkInformation({ next, prev }) {
                     name="description_en"
                     // label="Intro"
                     className=""
-                    rules={[
-                      {
-                        required: true,
-                        message: "required",
-                      },
-                    ]}
                   >
                     <Input.TextArea
                       className=""
@@ -818,6 +857,7 @@ function ArtworkInformation({ next, prev }) {
           </button>
         </div>
       </Form>
+      {/* )} */}
     </>
   );
 }

@@ -13,10 +13,6 @@ function TableArtworks({ productList }) {
     return (
       productList?.length >= 1 &&
       productList.map((item, key) => {
-        console.log(
-          "🚀 ~ file: TableArtworks.jsx ~ line 16 ~ productList.map ~ item",
-          item
-        );
         return (
           <tr key={key} className={isAccept(item?.status).css}>
             <td
@@ -109,7 +105,8 @@ function TableArtworks({ productList }) {
               <td>
                 <Link
                   className="btn-outline-blue"
-                  to={`/panel/view-artwork/?id=${item?.id}`}
+                  to={"/panel/add-artwork/"}
+                  state={{ id: item?.id }}
                   type="button"
                   data-toggle="modal"
                   data-target="#modal-replied-price"
