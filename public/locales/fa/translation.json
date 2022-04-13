@@ -127,6 +127,7 @@
   "category": "دسته‌بندی",
   "galleries": "گالری‌ها",
   "events": "رویدادها",
+  "promotions": "پروموشن ها",
   "see-all": "مشاهده همه",
   "event-all": "همه رویدادها",
   "collection-all": "همه کالکشن‌ها",
@@ -690,7 +691,7 @@
       "suggestion_artwork": "پیشنهاد قیمت به آثار شما",
       "veiw_artworks": "بازدید آثار",
       "veiw": "مشاهده",
-      "edit" :"ویرایش",
+      "edit": "ویرایش",
       "row": "ردیف",
       "image": "تصویر",
       "code": "کد اثر",
@@ -737,7 +738,8 @@
       "Active_on_the_site": "فعال در سایت",
       "to_artibition": "منتظر ارسال اثر به آرتیبیشن",
       "artibition_to_customer": "درحال ارسال از آرتیبیشن به مشتری",
-      "delivered": "تحویل شده به مشتری"
+      "delivered": "تحویل شده به مشتری",
+      "pending_edition": "نیازمند اصلاح"
     }
   },
   "content-panel-manage-artworks": {

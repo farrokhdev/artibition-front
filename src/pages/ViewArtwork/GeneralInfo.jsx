@@ -481,9 +481,9 @@ const GeneralInfo = ({ next, prev, data }) => {
                             color: "#787878",
                             fontSize: "16px",
                           }}
-                          value={data?.tags?.filter?.(
-                            (item) => item.language === "fa"
-                          )}
+                          value={data?.tags
+                            ?.filter?.((item) => item.language === "fa")
+                            ?.map((item) => item?.title)}
                           disabled
                         />
                       </Form.Item>
@@ -509,9 +509,9 @@ const GeneralInfo = ({ next, prev, data }) => {
                             color: "#787878",
                             fontSize: "16px",
                           }}
-                          value={data?.tags?.filter?.(
-                            (item) => item.language === "en"
-                          )}
+                          value={data?.tags
+                            ?.filter?.((item) => item.language === "en")
+                            ?.map((item) => item?.title)}
                           disabled
                         />
                       </Form.Item>
