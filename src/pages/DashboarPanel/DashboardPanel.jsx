@@ -109,7 +109,7 @@ function DashboardPanel() {
               {/* <MyIncome/> */}
               {getUserRole() === "gallery" && <CreateExhibition />}
 
-              {getUserRole() === "artist" && <Promotions />}
+              {/* {getUserRole() === "artist" && <Promotions />} */}
             </div>
           </div>
         </div>

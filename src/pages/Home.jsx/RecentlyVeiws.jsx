@@ -91,6 +91,13 @@ export default function RecentlyNews({ categories }) {
                           }
                           alt="artibition"
                           className="img-responsive"
+                          style={{
+                            objectFit: "cover",
+                            width: "100%",
+                            height: "100%",
+                            objectPosition: "center",
+                            display: "block",
+                          }}
                         />
                         <div className="tab-overly">
                           <Link

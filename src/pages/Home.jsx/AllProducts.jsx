@@ -121,7 +121,13 @@ export default function AllProducts({ categories }) {
                           src={product.medias && product.medias[0]?.exact_url}
                           alt="artibition"
                           className="img-responsive"
-                          style={{ objectFit: "contain" }}
+                          style={{
+                            objectFit: "cover",
+                            width: "100%",
+                            height: "100%",
+                            objectPosition: "center",
+                            display: "block",
+                          }}
                         />
                         <div className="tab-overly">
                           <Link

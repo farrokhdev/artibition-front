@@ -37,7 +37,12 @@ const ArtworkCard = ({ product, discountPrice, callBack }) => {
               width="280"
               alt="آرتیبیشن"
               className="img-responsive"
-              style={{ height: 280, objectFit: "contain" }}
+              style={{
+                height: 280,
+                objectFit: "cover",
+                objectPosition: "center",
+                display: "block",
+              }}
             />
             <div className="tab-overly">
               <a
