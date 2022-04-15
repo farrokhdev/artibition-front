@@ -9,13 +9,15 @@ import shipping_1 from "../../assets/img/shipping-1.svg";
 import box from "../../assets/img/box.svg";
 import { useTranslation } from "react-i18next";
 import { numDiscriminant } from "../../utils/discriminant";
+import { Link } from "react-router-dom";
+import { follow } from "../../utils/utils";
 
-function PromotionArtwork({ item }) {
+function PromotionArtwork({ callBack, item }) {
   const { t, i18n } = useTranslation();
 
   return (
     <div className="row mrgb60 dir">
-      <div className="col-sm-6">
+      <div className="cols col-sm-6">
         <div className="col-img">
           {item?.discount?.value ? (
             <div className="tags tags-off persian-num">
@@ -36,6 +38,35 @@ function PromotionArtwork({ item }) {
             alt="آرتیبیشن"
             className="img-responsive"
           />
+          <div className="tab-overly">
+            <Link
+              to={`/site/artworks-detail/?id=${item.id}&artist_id=${item.artist_id}`}
+              className="btn-see hidden-xs hidden-sm"
+            >
+              <span className="view-icon pull-right"></span>
+              <span>{t("artwork.view-artwork")}</span>
+            </Link>
+            <button type="button" className="btn-sale">
+              <span className="hidden-xs hidden-sm">
+                {t("artwork.btn-action-to-shop")}
+              </span>
+              <span className="shopping-cart-xs visible-xs visible-sm"></span>
+            </button>
+            <button
+              type="button"
+              className={`like-icon ${item?.likes ? "isLike" : ""}`}
+              // onClick={() => follow({activity:'like',content:'artist',object_id:item.artist_id})}
+              onClick={() =>
+                follow({
+                  activity: "like",
+                  content: "product",
+                  object_id: item.id,
+                  action: item?.likes,
+                  callBack,
+                })
+              }
+            ></button>
+          </div>
         </div>
       </div>
       <div className="col-sm-6 text-dir">
