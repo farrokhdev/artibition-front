@@ -1225,6 +1225,7 @@
         "length": "Length",
         "width": "Width",
         "weight": "Weight",
+        "height": "Height",
         "select_gallery": "Select album",
         "multi_edition": "This artwork has multiple edition",
         "description_fa": "",
@@ -1581,7 +1582,6 @@
     "upload_resume": "Upload CV (PDF)",
     "submit": "Submit"
   },
-
   "exhibitions-page": {
     "events": "EVENTS",
     "select-event-date": "SELECT EVENT'S DATE",
@@ -1605,7 +1605,6 @@
     "promotions": "Promotions",
     "finished": "Finished"
   },
-
   "no-data": "there is no data",
   "size": "size: "
 }
