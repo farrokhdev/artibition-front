@@ -16,6 +16,10 @@ const ViewArtwork = () => {
     apiServices
       .get(PRODUCT_DETAIL(id), "")
       .then((res) => {
+        console.log(
+          "🚀 ~ file: ViewArtwork.jsx ~ line 21 ~ .then ~ res.data.data",
+          res.data.data
+        );
         setData(res.data.data);
       })
       .catch((err) => {
@@ -44,16 +48,12 @@ const ViewArtwork = () => {
   const steps = [
     {
       title: t("content-panel-add-artwork.step4"),
-      content: (
-        <GeneralInfo prev={prev} next={next} data={data} setData={setData} />
-      ),
+      content: <GeneralInfo prev={prev} next={next} data={data} />,
       icon: false,
     },
     {
       title: t("content-panel-add-artwork.step5"),
-      content: (
-        <PriceInfo prev={prev} next={next} data={data} setData={setData} />
-      ),
+      content: <PriceInfo prev={prev} next={next} data={data} />,
       icon: false,
     },
   ];

@@ -80,134 +80,68 @@ function SellInformation({ prev, next }) {
             },
 
         }
-      } else {
-        userRole = "user";
-      }
-    }
-    return userRole;
-  };
 
-  const onFinish = (values) => {
-    let payload = {
-      ...lastform,
-      ...values,
-      items: [
-        {
-          edition_number: null,
-          base_toman_price: values?.base_toman_price,
-          base_dollar_price: values?.base_dollar_price,
-        },
-      ],
-      discount: {
-        type: values?.discount_price ? values?.discount_price : "toman",
-        value:
-          i18next.language === "fa-IR"
-            ? values?.percent_discount_rial
-            : values?.percent_discount_dolar,
-        duration: moment(values?.duration)
-          .hour(0)
-          .minute(0)
-          .second(0)
-          .diff(moment(Date.now()), "seconds"),
-      },
-    };
+        // If the information is empty, read the values ​​without the edition number
+        if (isValidSaleInformation) {
+            payload.items = values.items
+        }
 
-    // If the information is empty, read the values ​​without the edition number
-    if (isValidSaleInformation) {
-      payload.items = values.items;
-    }
 
-    if (getUserRole() === "gallery") {
-      if (searchParams.get("artist_id")) {
-        apiServices
-          .post(
-            ARTWORK_BY_GALLERY(gallery_id, searchParams.get("artist_id")),
-            payload
-          )
-          .then((res) => {
-            if (res.data) {
-              message.success({
-                content: "اثر با موفقیت ثبت شد",
-                style: {
-                  marginTop: "110px",
-                },
-              });
-              setTimeout(() => {
-                console.log(Location);
-                navigate(Location?.state?.from);
-              }, 500);
+
+        if (getUserRole() === "gallery") {
+            if (searchParams.get("artist_id")) {
+                apiServices.post(ARTWORK_BY_GALLERY(gallery_id, searchParams.get("artist_id")), payload)
+                    .then(res => {
+                        if (res.data) {
+                            message.success({
+                                content: 'اثر با موفقیت ثبت شد', style: {
+                                    marginTop: '110px',
+                                },
+                            })
+                            setTimeout(() => {
+                                console.log(Location);
+                                navigate(Location?.state?.from)
+                            }, 500);
+                        } else {
+                            message.error({
+                                content: 'خطا در ثبت اطلاعات',
+                                style: { marginTop: '110px' }
+                            })
+                        }
+
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+
             } else {
-              message.error({
-                content: "خطا در ثبت اطلاعات",
-                style: { marginTop: "110px" },
-              });
+                apiServices.post(GALLERY_PRODUCTS(gallery_id), payload)
+                    .then(res => {
+                        if (res.data) {
+
+                            message.success({
+                                content: 'اثر با موفقیت ثبت شد', style: {
+                                    marginTop: '110px',
+                                },
+                            })
+                            setTimeout(() => {
+                                // navigate(searchParams.get("back"))
+                                console.log(Location);
+                                navigate(Location?.state?.from)
+                            }, 500);
+                        } else {
+                            message.error({
+                                content: 'خطا در ثبت اطلاعات', style: {
+                                    marginTop: '110px'
+                                }
+                            })
+                        }
+
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
             }
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      } else {
-        apiServices
-          .post(GALLERY_PRODUCTS(gallery_id), payload)
-          .then((res) => {
-            if (res.data) {
-              message.success({
-                content: "اثر با موفقیت ثبت شد",
-                style: {
-                  marginTop: "110px",
-                },
-              });
-              setTimeout(() => {
-                // navigate(searchParams.get("back"))
-                console.log(Location);
-                navigate(Location?.state?.from);
-              }, 500);
-            } else {
-              message.error({
-                content: "خطا در ثبت اطلاعات",
-                style: {
-                  marginTop: "110px",
-                },
-              });
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      }
-    } else {
-      apiServices
-        .post(PRODUCTS, payload)
-        .then((res) => {
-          if (res.data) {
-            message.success({
-              content: "اثر با موفقیت ثبت شد",
-              style: {
-                marginTop: "10vh",
-              },
-            });
-            setTimeout(() => {
-              navigate(Location?.state?.from, { state: { current: 2 } });
-              // next()
-              // navigate(next())
-            }, 500);
-          } else {
-            console.log(res.response);
-            message.error({
-              content: "خطا در ثبت اطلاعات",
-              style: {
-                marginTop: "10vh",
-              },
-            });
-            // message.error(res.response.data.message)
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      console.log("Success:", values);
-    }
-  };
 
         } else {
             apiServices.post(PRODUCTS, payload)
@@ -483,297 +417,169 @@ function SellInformation({ prev, next }) {
                         </div>
                         {isValidSaleInformation || !isValidEdition ?
                             <>
-                              {fields.map(({ key, name, ...restField }) => (
-                                <Space
-                                  key={key}
-                                  style={{ display: "flex", marginBottom: 8 }}
-                                  align="baseline"
-                                >
-                                  <div className="public-group">
-                                    <Form.Item
-                                      className="w-100"
-                                      {...restField}
-                                      name={[name, "edition_number"]}
-                                      rules={[
-                                        {
-                                          required: true,
-                                          message: "Missing first name",
-                                        },
-                                      ]}
-                                    >
-                                      <Input
-                                        type="text"
-                                        id="info-207"
-                                        className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                        placeholder={t(
-                                          "content-panel-add-artwork.edition"
-                                        )}
-                                      />
-                                    </Form.Item>
-                                  </div>
+                                <div className="col-sm-12">
+                                    <label className="d-flex box-dir-reverse lable-checkbox public-group text-dir pr-0">
+                                        <Form.Item name="is_sold" valuePropName="checked" noStyle>
+                                            <Checkbox type="checkbox"></Checkbox>
+                                        </Form.Item>
 
-                                  <div className="public-group">
-                                    <Form.Item
-                                      className="w-100"
-                                      {...restField}
-                                      name={[name, "base_toman_price"]}
-                                      rules={[
-                                        {
-                                          required: true,
-                                          message: "Missing last name",
-                                        },
-                                      ]}
-                                    >
-                                      <Input
-                                        type="text"
-                                        id="info-201"
-                                        className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                        placeholder={t(
-                                          "content-panel-add-artwork.price_ir"
-                                        )}
-                                      />
-                                    </Form.Item>
-                                  </div>
-                                  <div className="public-group">
-                                    <Form.Item
-                                      className="w-100"
-                                      {...restField}
-                                      name={[name, "base_dollar_price"]}
-                                      rules={[
-                                        {
-                                          required: true,
-                                          message: "Missing last name",
-                                        },
-                                      ]}
-                                    >
-                                      <Input
-                                        type="text"
-                                        id="info-207"
-                                        className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                        placeholder={t(
-                                          "content-panel-add-artwork.edition_usd"
-                                        )}
-                                      />
-                                    </Form.Item>
-                                  </div>
-                                  <MinusCircleOutlined
-                                    onClick={() => remove(name)}
-                                  />
-                                </Space>
-                              ))}
-                              <Form.Item>
-                                <Button
-                                  type="dashed"
-                                  onClick={() => add()}
-                                  block
-                                  icon={<PlusOutlined />}
-                                >
-                                  افزودن ادیشن
-                                </Button>
-                              </Form.Item>
+                                        <span className='mx-2'>{t("content-panel-add-artwork.artwork_sold")}</span>
+
+                                    </label>
+                                </div>
+
+                                <div className="col-sm-12">
+                                    <label className="d-flex box-dir-reverse lable-checkbox public-group text-dir pr-0">
+
+                                        <Form.Item name="can_bid" valuePropName="checked" noStyle>
+                                            <Checkbox type="checkbox"></Checkbox>
+                                        </Form.Item>
+                                        <span className='mx-2'>{t("content-panel-add-artwork.could_offer")}</span>
+
+                                        <span className="input-help">{t("content-panel-add-artwork.could_offer_text")}</span>
+                                    </label>
+                                </div>
+                                <div className="col-sm-12">
+                                    <label className=" lable-checkbox public-group text-dir pr-0  mt-5">
+
+                                        <Form.Item valuePropName="checked">
+                                            <Switch type="checkbox" checked={isValidation} onChange={e => setisValidation(e)}></Switch>
+                                        </Form.Item>
+
+                                        <span className="label-switchbtn">{t("content-panel-add-artwork.discount_price")}</span>
+                                    </label>
+                                </div>
                             </>
-                          )}
-                        </Form.List>
-                      </div>
-                    ) : (
-                      ""
-                    )}
-                  </div>
-                </>
-              ) : (
-                ""
-              )}
-            </div>
-            {isValidSaleInformation || !isValidEdition ? (
-              <>
-                <div className="col-sm-12">
-                  <label className="d-flex box-dir-reverse lable-checkbox public-group text-dir pr-0">
-                    <Form.Item name="is_sold" valuePropName="checked" noStyle>
-                      <Checkbox type="checkbox"></Checkbox>
-                    </Form.Item>
+                            : ""}
 
-                    <span className="mx-2">
-                      {t("content-panel-add-artwork.artwork_sold")}
-                    </span>
-                  </label>
-                </div>
-
-                <div className="col-sm-12">
-                  <label className="d-flex box-dir-reverse lable-checkbox public-group text-dir pr-0">
-                    <Form.Item name="can_bid" valuePropName="checked" noStyle>
-                      <Checkbox type="checkbox"></Checkbox>
-                    </Form.Item>
-                    <span className="mx-2">
-                      {t("content-panel-add-artwork.could_offer")}
-                    </span>
-
-                    <span className="input-help">
-                      {t("content-panel-add-artwork.could_offer_text")}
-                    </span>
-                  </label>
-                </div>
-                <div className="col-sm-12">
-                  <label className=" lable-checkbox public-group text-dir pr-0  mt-5">
-                    <Form.Item valuePropName="checked">
-                      <Switch
-                        type="checkbox"
-                        checked={isValidation}
-                        onChange={(e) => setisValidation(e)}
-                      ></Switch>
-                    </Form.Item>
-
-                    <span className="label-switchbtn">
-                      {t("content-panel-add-artwork.discount_price")}
-                    </span>
-                  </label>
-                </div>
-              </>
-            ) : (
-              ""
-            )}
-
-            {
-              // isValidSaleInformation || !isValidEdition
-              isValidation ? (
-                <div className="col-sm-12  ">
-                  <div
-                    className={classnames("d-flex  form-group public-group", {
-                      "justify-content-start": Language === "fa-IR",
-                      "justify-content-end": Language === "en-US",
-                    })}
-                  >
-                    <Form.Item
-                      name="discount_price"
-                      rules={[
                         {
-                          required: true,
-                        },
-                      ]}
-                    >
-                      <Select
-                        className="form-control"
-                        id="sel1"
-                        placeholder={t(
-                          "content-panel-add-artwork.discount_base"
-                        )}
-                        options={listinvestmentType}
-                        allowClear
-                      ></Select>
-                    </Form.Item>
-                  </div>
-                </div>
-              ) : (
-                ""
-              )
-            }
-          </div>
 
-          {
-            // isValidSaleInformation || !isValidEdition
-            isValidation ? (
-              <>
-                <div className="d-flex box-dir-reverse">
-                  <div className="col-sm-6">
-                    <div className="public-group">
-                      <Form.Item
-                        className="w-100"
-                        name="percent_discount_rial"
-                        rules={[
-                          {
-                            required: true,
-                            message: "required",
-                          },
-                        ]}
-                      >
-                        <Input
-                          type="text"
-                          id="info-207"
-                          className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                          placeholder={t(
-                            "content-panel-add-artwork.discount_percent_ir"
-                          )}
-                        />
-                      </Form.Item>
-                    </div>
-                    <a href="#" className="btn-change">
-                      <img
-                        src={change_icon}
-                        width="24"
-                        height="24"
-                        alt=""
-                        className=""
-                      />
-                    </a>
-                  </div>
-                  <div className="col-sm-6">
-                    <div className="public-group">
-                      <Form.Item
-                        className="w-100"
-                        name="percent_discount_dolar"
-                        rules={[
-                          {
-                            required: true,
-                            message: "required",
-                          },
-                        ]}
-                      >
-                        <Input
-                          type="text"
-                          id="info-207"
-                          className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                          placeholder={t(
-                            "content-panel-add-artwork.discount_percent_usd"
-                          )}
-                        />
-                      </Form.Item>
-                    </div>
-                  </div>
-                </div>
+                            // isValidSaleInformation || !isValidEdition 
+                            isValidation ?
 
-                <div className="d-flex box-dir-reverse">
-                  <div className="col-sm-4">
-                    <h4 className="bolder-title mrgt10">
-                      {t("content-panel-add-artwork.discount_period")}
-                    </h4>
-                    <div className="public-group">
-                      <Form.Item
-                        className="w-100"
-                        name="duration"
-                        rules={[
-                          {
-                            required: true,
-                            message: "required",
-                          },
-                        ]}
-                      >
-                        <DatePicker
-                          className="form-control input-public "
-                          placeholder={t("content-panel-add-artwork.date")}
-                          timePicker={false}
-                          isGregorian={false}
-                        />
-                      </Form.Item>
+                                <div className="col-sm-12  ">
+                                    <div
+                                        className={classnames("d-flex  form-group public-group", {
+                                            "justify-content-start": Language === 'fa-IR',
+                                            "justify-content-end": Language === 'en-US'
+                                        })}
+
+                                    >
+                                        <Form.Item
+                                            name="discount_price"
+                                            rules={[
+                                                {
+                                                    required: true,
+                                                },
+                                            ]}
+                                        >
+                                            <Select
+                                                className='form-control'
+                                                id="sel1"
+                                                placeholder={t("content-panel-add-artwork.discount_base")}
+                                                options={listinvestmentType}
+                                                allowClear
+                                            >
+                                            </Select>
+                                        </Form.Item>
+
+                                    </div>
+                                </div>
+                                : ""}
                     </div>
-                  </div>
-                </div>
-              </>
-            ) : (
-              ""
-            )
-          }
-          <div className="clearfix"></div>
-          <div className="adv-btn">
-            <button onClick={() => prev()} type="button" className="btn-prev ">
-              {t("content-panel-add-artwork.previous_step")}
-            </button>
-            <button htmlType="submit" className="btn-next pull-left">
-              {t("content-panel-add-artwork.art_info.final-step")}
-            </button>
-          </div>
-        </Form>
-      </div>
-    </>
-  );
+
+                    {
+                        // isValidSaleInformation || !isValidEdition
+                        isValidation ?
+                            <>
+                                <div className="d-flex box-dir-reverse">
+                                    <div className="col-sm-6">
+                                        <div className="public-group">
+                                            <Form.Item
+                                                className="w-100"
+                                                name="percent_discount_rial"
+                                                rules={[
+                                                    {
+                                                        required: true,
+                                                        message: 'required',
+                                                    }
+                                                ]}>
+
+                                                <Input
+                                                    type="text"
+                                                    id="info-207"
+                                                    className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
+                                                    placeholder={t("content-panel-add-artwork.discount_percent_ir")}
+                                                />
+
+                                            </Form.Item>
+
+                                        </div>
+                                        <a href="#" className="btn-change">
+                                            <img src={change_icon} width="24" height="24" alt="" className="" />
+                                        </a>
+                                    </div>
+                                    <div className="col-sm-6">
+                                        <div className="public-group">
+                                            <Form.Item
+                                                className="w-100"
+                                                name="percent_discount_dolar"
+                                                rules={[
+                                                    {
+                                                        required: true,
+                                                        message: 'required',
+                                                    }
+                                                ]}>
+
+                                                <Input
+                                                    type="text"
+                                                    id="info-207"
+                                                    className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
+                                                    placeholder={t("content-panel-add-artwork.discount_percent_usd")}
+                                                />
+
+                                            </Form.Item>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="d-flex box-dir-reverse">
+                                    <div className="col-sm-4">
+                                        <h4 className="bolder-title mrgt10">{t("content-panel-add-artwork.discount_period")}</h4>
+                                        <div className="public-group">
+                                            <Form.Item
+                                                className="w-100"
+                                                name="duration"
+                                                rules={[
+                                                    {
+                                                        required: true,
+                                                        message: 'required',
+                                                    }
+                                                ]}>
+
+                                                <DatePicker
+                                                    className="form-control input-public "
+                                                    placeholder={t("content-panel-add-artwork.date")}
+                                                    timePicker={false}
+                                                    isGregorian={false}
+                                                />
+                                            </Form.Item>
+                                        </div>
+                                    </div>
+                                </div>
+                            </>
+                            : ""}
+                    <div className="clearfix"></div>
+                    <div className="adv-btn">
+                        <button onClick={() => prev()} type="button" className="btn-prev ">{t("content-panel-add-artwork.previous_step")}</button>
+                        <button htmlType="submit" className="btn-next pull-left">
+                            {t("content-panel-add-artwork.art_info.final-step")}
+                        </button>
+                    </div>
+                </Form>
+            </div>
+        </>
+    )
 }
 
 export default SellInformation;
