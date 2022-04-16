@@ -58,7 +58,7 @@ import { follow, isLogin, Token } from "../../utils/utils";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { UPDATE_CART } from "../../redux/reducers/cart/cart.types";
-import { numDiscriminant } from "../../utils/discriminant";
+import { discountPrice, numDiscriminant } from "../../utils/discriminant";
 import { DEFAULT_URL_IMAGE } from "../../utils/defaultImage";
 import ArthibitionProperties from "../../components/ArthibitionProperies/ArthibitionProperties";
 import RoomViewImg from "../../assets/img/artworks/room-view.jpg";
@@ -89,6 +89,7 @@ function DetailsArtwork() {
   const [visibleBiddingModal, setVisibleBiddingModal] = useState(false);
   const [productDetail, setProductDetail] = useState();
   const [editionValue, setEditionValue] = useState({});
+  
   const [artistProduct, setArtistProduct] = useState();
   const [showShare, setShowShare] = useState(false);
   const [showSendMessage, setShowSendMessage] = useState(false);
@@ -351,12 +352,11 @@ function DetailsArtwork() {
                             }
                             height={
                               productDetail?.height
-                                ? productDetail?.height + "px"
-                                : productDetail?.width > 100
-                                ? "90px"
-                                : "30px"
+                                ? productDetail?.height/150 * 172 + "px"
+                                
+                                : "500px"
                             }
-                            width={productDetail?.width}
+                            width={productDetail?.width ? productDetail?.width /180 * 216 : "500px"}
                             alt="Los Angeles"
                           />
                         </div>
@@ -742,7 +742,14 @@ function DetailsArtwork() {
                           <div className="d-flex justify-content-center artwork-price">
                             <span className="artwork-pricenum persian-num">
                               {i18n.language === "fa-IR"
-                                ? numDiscriminant(productDetail?.toman_price)
+                                ? productDetail?.discount ? discountPrice(
+                                  productDetail.toman_price,
+                                  productDetail?.discount?.value,
+                                  productDetail?.discount?.type,
+                                  productDetail?.dollar_price
+                                )
+                                
+                               : numDiscriminant(productDetail?.toman_price)
                                 : numDiscriminant(productDetail?.dollar_price)}
                             </span>
                             <span>{t("toman")}</span>

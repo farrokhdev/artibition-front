@@ -418,6 +418,7 @@
     }
   },
   "artists": {
+    "text-to-artist-auth":"لطفا ابتدا وارد شوید",
     "filter": {
       "expert": {
         "title": "تخصص هنرمند",

@@ -20,8 +20,22 @@ const ArtworkCard = ({ product, discountPrice, callBack }) => {
             {product?.is_special && (
               <div class="tags tags-spacial">{t("card_artwork.spacial")}</div>
             )}
-            {/* {console.log("product================>", product)} */}
-            {product?.discount?.value ? (
+{
+  product?.discount?.value && (
+
+              <div class="tags tags-off persian-num">
+              {
+                discountPrice(
+                  product?.toman_price,
+                  product?.discount?.value,
+                  product?.discount?.type,
+                  product?.dollar_price
+                )
+              }
+              </div>
+  )
+}
+            {/* {product?.discount?.value ? (
               <div class="tags tags-off persian-num">
                 {" "}
                 {numDiscriminant(product?.discount?.value)}
@@ -31,7 +45,7 @@ const ArtworkCard = ({ product, discountPrice, callBack }) => {
               </div>
             ) : (
               ""
-            )}
+            )} */}
             <img
               src={product.medias && product.medias[0]?.exact_url}
               width="280"
@@ -117,17 +131,18 @@ const ArtworkCard = ({ product, discountPrice, callBack }) => {
                 <span className="col-price-num">
                   {product?.discount
                     ? discountPrice(
-                        product.toman_price,
+                        product?.toman_price,
                         product?.discount?.value,
-                        product?.discount?.type
+                        product?.discount?.type,
+                        product?.dollar_price
                       )
-                    : numDiscriminant(product.toman_price)}
-                  {product?.discount || product?.toman_price ? t("toman") : ""}
+                    : numDiscriminant(product?.toman_price)}
+   
                 </span>
                 {/* <span className="col-price-unit">
                                       {t("toman")}
                                     </span> */}
-                {product?.discount?.value && (
+                {/* {product?.discount?.value && (
                   <span
                     className={`persian-num ${
                       product?.discount ? "col-price-off" : ""
@@ -136,7 +151,7 @@ const ArtworkCard = ({ product, discountPrice, callBack }) => {
                     {numDiscriminant(product.toman_price)}{" "}
                     {product?.toman_price ? t("toman") : ""}
                   </span>
-                )}
+                )} */}
 
                 {/* <span className="tag-gift  w-100">
                                       <div className="d-flex text-dir position-gift-card-artwork">

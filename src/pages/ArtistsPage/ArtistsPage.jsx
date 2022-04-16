@@ -13,7 +13,7 @@ import mainpage1_3 from "../../assets/img/mainpage/1-3.jpg";
 import artist3 from "../../assets/img/artist-3.jpg";
 import blue_badge_icon from "../../assets/img/blue_badge.svg";
 import gold_badge_icon from "../../assets/img/gold_badge.svg";
-import { Pagination } from "antd";
+import { Pagination, Checkbox } from "antd";
 import {
   ARTIST_BY_PRODUCT,
   ARTIST_PRODUCTS,
@@ -119,6 +119,25 @@ function ArtistsPage(props) {
     getArtistList();
     getProductCategories();
   }, [params]);
+
+  // FOR FILTERING ARTISTS BY IS OFFICALL
+  const filterArtists = () => {
+    const filtered = artistList.filter((artist) => {
+      return artist?.is_official;
+    });
+
+    setArtistList(filtered);
+  };
+
+  const onChangeCheckbox = (e) => {
+    if (e.target.checked) {
+      filterArtists();
+    } else {
+      getArtistList();
+    }
+  };
+
+  // FOR FILTERING ARTISTS BY IS OFFICALL END
 
   // useEffect(() => {
   //   setParams((state) => ({
@@ -306,12 +325,28 @@ function ArtistsPage(props) {
                     >
                       <div className="panel-body">
                         <div className="checkbox-row">
-                          <label className="lable-checkbox text-dir">
-                            <input type="checkbox" value="" />
+                          <Checkbox
+                            className="lable-checkbox text-dir"
+                            onChange={getArtistList}
+                          >
+                            {t("artists.filter.artist.all")}
+                          </Checkbox>
+                          <Checkbox
+                            className="lable-checkbox text-dir"
+                            onChange={onChangeCheckbox}
+                          >
+                            {t("artists.filter.artist.special")}
+                          </Checkbox>
+                          {/* <label className="lable-checkbox text-dir">
+                            <input
+                              type="checkbox"
+                              value=""
+                              onClick={(e) => onChangeCheckbox(e)}
+                            />
                             <span>{t("artists.filter.artist.all")}</span>
                             <span className="checkmark"></span>
-                          </label>
-                          <label className="lable-checkbox text-dir">
+                          </label> */}
+                          {/* <label className="lable-checkbox text-dir">
                             <input
                               type="checkbox"
                               // value={false}
@@ -322,6 +357,7 @@ function ArtistsPage(props) {
                               //     [e.target.name]: e.target.checked,
                               //   });
                               // }}
+                              onChange={()=>filterArtists(true)}
                             />
                             <span>{t("artists.filter.artist.special")}</span>
                             <span className="checkmark"></span>
@@ -332,11 +368,18 @@ function ArtistsPage(props) {
                               alt=""
                               className="filter-badge"
                             />
-                          </label>
-                          <label className="lable-checkbox text-dir">
-                            <input type="checkbox" value="" />
+                          </label> */}
+                          {/* <label className="lable-checkbox text-dir">
+                            <input
+                              type="checkbox"
+                              value=""
+                              onClick={(e) => onChangeCheckbox(e)}
+                            />
                             <span>{t("artists.filter.artist.verified")}</span>
-                            <span className="checkmark"></span>
+                            <span
+                              className="checkmark"
+                          
+                            ></span>
                             <img
                               src={blue_badge_icon}
                               width="22"
@@ -344,7 +387,7 @@ function ArtistsPage(props) {
                               alt=""
                               className="filter-badge"
                             />
-                          </label>
+                          </label> */}
                         </div>
                       </div>
                     </div>
@@ -427,13 +470,16 @@ function ArtistsPage(props) {
                                 alt=""
                                 className="img-responsive"
                               />
-                              <img
-                                src={blue_badge_icon}
-                                width="22"
-                                height="22"
-                                alt=""
-                                className="img-badge"
-                              />
+
+                              {item?.is_official && (
+                                <img
+                                  src={blue_badge_icon}
+                                  width="22"
+                                  height="22"
+                                  alt=""
+                                  className="img-badge"
+                                />
+                              )}
                               {/* </Link> */}
                               {/* <img src={artist3} width="408" height="408" alt=""
                                                  className="img-responsive"/> */}

@@ -33,13 +33,23 @@ function MainContent() {
     }
 
     // for (let i = 1; i < (galleryList.results.length / galleryList?.page_size); i++) {
-    for (let i = 1; i < ([1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3].length / galleryList?.page_size); i++) {
-        pages.push(<li className={galleryList.current_page_no === i ? "active" : null}><Link to="">{i}</Link></li>)
-    }
 
     useEffect(() => {
         getGalleryList()
     }, [params]);
+
+
+    const changePages = (value)=>{
+        setParams({...params,page:value})
+    }
+
+    for (let i = 1; i < ([1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3].length / galleryList?.page_size); i++) {
+        pages.push(<li className={galleryList.current_page_no === i ? "active" : null} onClick={()=>changePages(i)}><Link to="">
+            
+            {i}</Link></li>)
+    }
+    
+   
     console.log("gallery", galleryList)
     return (
         <div className="container">
@@ -96,11 +106,15 @@ function MainContent() {
                             })}
                         </div>
                     </div>
+
+                    {/* {galleryList?.results?.length > galleryList?.count && ( */}
+                        
                     <div className="row-pagination">
                         <ul className="pagination">
                             {pages}
                         </ul>
                     </div>
+                    {/* )} */}
                 </div>
             </div>
         </div>

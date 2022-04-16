@@ -29,6 +29,8 @@ function AlbumsTab({ownerId , setVisibleShowAlbums}) {
       artist_id : ownerId
 
   })
+
+  console.log(setArtistCategory)
   const getArtistCategory = () => {
     // ARTIST_ALBUMS
       apiServices.get(ARTIST_ALBUMS, queryString.stringify(params))
@@ -58,22 +60,22 @@ function AlbumsTab({ownerId , setVisibleShowAlbums}) {
           {artistCategory?.results?.map((item,index) =>
           <>
             <h3 className="artist-title text-dir">{i18n.language === 'fa-IR' ? item.translations?.fa?.title : item.translations?.en?.title}</h3>
-            {/* <button onClick={() => setVisibleShowAlbums(true)} type="button" className="d-flex box-dir-reverse align-items-center btn-more pull-dir" >
+            <button onClick={() => setVisibleShowAlbums(true)} type="button" className="d-flex box-dir-reverse align-items-center btn-more pull-dir" >
                     <span>{t("artist_profile.veiw")}</span>
-                    <i 
+                    {/* <i 
                         className={classnames("glyphicon", {
                           "glyphicon-chevron-left": GetLanguage() === 'fa-IR',
                           "glyphicon-chevron-right": GetLanguage() === 'en-US'
                         })}
-                    ></i>
-            </button> */}
+                    ></i> */}
+            </button>
             <div className="clearfix"></div>
             <div style={{overflow : 'auto'}} className="owl-carousel d-flex">
-              {item.products?.map((itm,inx) => 
+              {item?.products?.map((itm,inx) => 
                 <div className="cols mx-4">
                   {console.log("iteeeemmmm" , item)}
                     <div className="col-img">
-                        <img src={item?.artist?.media[0]?.exact_url} width="840" height="840"
+                        <img src={item?.artist?.bg_image?.exact_url} width="840" height="840"
                              alt="آرتیبیشن"
                              className="img-responsive"/>
                         <div className="tab-overly">

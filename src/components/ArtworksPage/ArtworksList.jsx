@@ -18,6 +18,7 @@ import { useLocation, useSearchParams } from "react-router-dom";
 import { numDiscriminant } from "../../utils/discriminant";
 import { isNil } from "lodash";
 import FilterArtworks from "../FilterArtworks";
+import { discountPrice } from "../../utils/discriminant";
 
 const ArtworksList = (props) => {
   const {
@@ -192,13 +193,7 @@ const ArtworksList = (props) => {
     });
   };
 
-  const discountPrice = (price, discount, type) => {
-    if (type === "percentage") {
-      return numDiscriminant(((100 - discount) * price) / 100);
-    } else {
-      return numDiscriminant(price - discount);
-    }
-  };
+
 
   const getProductCategories = () => {
     apiServices
