@@ -103,9 +103,7 @@ function BiographyTab({ artistBio, artistId }) {
                       return (
                         <div className="sec-timeline">
                           <h6 className="title-timeline text-dir">
-                            {i18n.language === "fa-IR"
-                              ? exhibition?.translations?.fa?.name
-                              : exhibition?.translations?.en?.name}
+                            {exhibition?.exhibition_name}
                           </h6>
                           {console.log({ artistExhibition })}
                           {exhibition?.has_profile && (
@@ -124,9 +122,7 @@ function BiographyTab({ artistBio, artistId }) {
                             </button>
                           )}
                           <div className="text-dir">
-                            {i18n.language === "fa-IR"
-                              ? exhibition?.gallery?.translations?.fa?.title
-                              : exhibition?.gallery?.translations?.en?.title}
+                            {exhibition?.gallery_name}
                           </div>
                           <div className="date-timeline text-dir">
                             <span className="persian-num">

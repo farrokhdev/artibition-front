@@ -126,6 +126,7 @@
   "category": "Category",
   "galleries": "Galleries",
   "events": "Events",
+  "promotions": "Promotions",
   "see-all": "View all",
   "event-all": "View all",
   "collection-all": "View all",
@@ -739,7 +740,8 @@
       "Active_on_the_site": "Active on the site",
       "to_artibition": "To Arthibition",
       "artibition_to_customer": "Arthibition to customer",
-      "delivered": "Delivered"
+      "delivered": "Delivered",
+      "pending_edition": "Require modification"
     }
   },
   "content-panel-manage-artworks": {

@@ -3,6 +3,11 @@ import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import Menu from "../../components/Menu/Menu";
 import { ArtworkRemoveFilter, Banner } from "../../components/ArtworksPage";
+import { Calendar } from "react-multi-date-picker";
+import persian from "react-date-object/calendars/persian";
+import gregorian from "react-date-object/calendars/gregorian";
+import persian_fa from "react-date-object/locales/persian_fa";
+import gregorian_en from "react-date-object/locales/gregorian_en";
 
 const AllPromotions = () => {
   const [search, setSearch] = useState();
@@ -13,6 +18,10 @@ const AllPromotions = () => {
   const handleBannerSearchInputChanged = (text) => setSearch(text);
   const handleBannerSearchClick = () =>
     setParams((state) => ({ ...state, search: search }));
+  const [selectedDates, setSelectedDates] = useState([]);
+  const date = selectedDates.map((item) =>
+    item.convert(gregorian, gregorian_en).format("YYYY-MM-DD hh:mm:ss")
+  );
 
   return (
     <div className="container">
@@ -51,6 +60,17 @@ const AllPromotions = () => {
                   <div id="collapse11" className="panel-collapse collapse in">
                     <div className="panel-body">
                       <div className="caleander-event side-bar">
+                        <Calendar
+                          multiple
+                          value={selectedDates}
+                          onChange={setSelectedDates}
+                          calendar={persian}
+                          locale={persian_fa}
+                          calendarPosition="bottom-right"
+                          style={{ fontSize: "1rem" }}
+                        />
+                      </div>
+                      {/* <div className="caleander-event side-bar">
                         <div className="caleander-month">
                           <ul>
                             <li className="next">&#10095;</li>
@@ -100,12 +120,12 @@ const AllPromotions = () => {
                           <li>30</li>
                           <li>31</li>
                         </ul>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
                 <div className="panel panel-default">
-                  <div className="panel-heading">
+                  {/* <div className="panel-heading">
                     <h4 className="panel-title">
                       <a
                         data-toggle="collapse"
@@ -115,9 +135,9 @@ const AllPromotions = () => {
                         نوع
                       </a>
                     </h4>
-                  </div>
+                  </div> */}
                   <div id="collapse10" className="panel-collapse collapse in">
-                    <div className="panel-body">
+                    {/* <div className="panel-body">
                       <label className="lable-checkbox">
                         <input type="checkbox" value="" />
                         <span>فراخوان</span>
@@ -128,7 +148,7 @@ const AllPromotions = () => {
                         <span>پروموشن</span>
                         <span className="checkmark"></span>
                       </label>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>

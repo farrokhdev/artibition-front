@@ -9151,3 +9151,10 @@ iframe {
   flex-direction: row-reverse;
   gap: 5px;
 }
+.custom-calendar {
+  border: none !important;
+  box-shadow: none !important;
+}
+.caleander-event .rmdp-wrapper .rmdp-shadow .custom-calendar{
+  margin: 0 auto !important;
+}
