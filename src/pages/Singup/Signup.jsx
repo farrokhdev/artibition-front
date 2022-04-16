@@ -11,41 +11,68 @@ import BasketFooter from "../../components/BasketFooter/BasketFooter";
 import HeaderAuthPages from "../../components/HeaderAuthPages/HeaderAuthPages";
 import { t } from "i18next";
 import APIService from "../../utils/api.services";
-import { REGISTER } from "../../utils";
+
+import { REGISTER, OPT } from "../../utils";
 import GoogleLoginButton from "../../components/GoogleLoginButton/GoogleLoginButton";
-import { useSelector, useDispatch } from "react-redux";
-import authTypes from "../../redux/reducers/auth/auth.types";
-import { registerSuccess } from "../../redux/reducers/auth/auth.actions";
+
 export default function Signup() {
-  const { is_Open_Modal, is_registered } = useSelector(
-    (state) => state.authReducer
-  );
-  const dispatch = useDispatch();
   const [visibleOtpModal, setVisibleOtpModal] = useState(false);
   const [mobile, setMobile] = useState();
 
   const [form] = Form.useForm();
 
-  const onFinish = (values) => {
-    values["confirmed_password"] = values["password"];
+  function validateUserName(mail) {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+      return true;
+    }
+    if (/^[0]?[789]\d{9}$/.test(mail)) {
+      return true;
+    }
+    message.error(t("empty-error.invalid-username"));
 
+    return false;
+  }
+  function validatePassword(password) {
+    if (/^[\u0600-\u06FF\s]+$/.test(password)) {
+      message.error(t("empty-error.invalid-password"));
+      return false;
+    }
+    return true;
+  }
+  const sendSignUpInfo = (values) => {
     APIService.post(REGISTER, values).then((res) => {
       if (res.data) {
         setTimeout(() => {
           setVisibleOtpModal(true);
           setMobile(values["username"]);
-          dispatch(
-            registerSuccess({
-              pending: false,
-              is_registered: true,
-              is_Open_Modal: true,
-            })
-          );
-          message.success(res.response.data.message);
         }, 200);
       } else {
         message.error(res.response.data.message);
       }
+    });
+  };
+
+  const onFinish = (values) => {
+    if (!validateUserName(values.username)) {
+      return;
+    }
+    if (!validatePassword(values.password)) {
+      return;
+    }
+
+    values["confirmed_password"] = values["password"];
+    sendSignUpInfo(values);
+  };
+  const resendOTP = () => {
+    return new Promise((resolve, reject) => {
+      APIService.post(OPT, { user_name: mobile }).then((res) => {
+        if (res.data) {
+          resolve({ success: true });
+        } else {
+          // message.error(res.response.data.message);
+          reject({ success: false, msg: res.response.data.message });
+        }
+      });
     });
   };
 
@@ -105,7 +132,7 @@ export default function Signup() {
                 <p className="login-term">
                   {t("describtion-low.text-info-part1")}
                   <Link className="mx-2" to="#">
-                    {t("describtion-low.text-link")}
+                    {t("describtion-low.text-link")}{" "}
                   </Link>
                   {t("describtion-low.text-info-part2")}
                 </p>
@@ -146,6 +173,7 @@ export default function Signup() {
       <ModalOtp
         visibleOtpModal={visibleOtpModal}
         setVisibleOtpModal={setVisibleOtpModal}
+        resendOTP={resendOTP}
         phone={mobile}
       />
     </div>

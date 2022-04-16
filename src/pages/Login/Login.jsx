@@ -137,7 +137,7 @@ function Login(props) {
           } else {
             console.log(res);
             message.error({
-              content: "res",
+              content: res,
               style: { marginTop: "110px" },
             });
           }

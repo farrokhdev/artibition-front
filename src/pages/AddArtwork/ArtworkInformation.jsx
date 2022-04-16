@@ -40,7 +40,7 @@ function ArtworkInformation({ next, prev }) {
     });
 
 
-    console.log("categorys", categorys);
+  console.log("categorys", categorys);
 
 
 
@@ -103,8 +103,17 @@ function ArtworkInformation({ next, prev }) {
         }
         console.log(payload, "payload");
 
-        dispach(artworkForm(payload))
-        next()
+        if (uploadList.length) {
+            dispach(artworkForm(payload))
+            next()
+
+        } else {
+            message.error({
+                content: 'آپلود تصویر اجباری می باشد', style: {
+                    marginTop: '10vh',
+                },
+            })
+        }
 
         // console.log('Success:', values);
     };
@@ -873,7 +882,15 @@ function ArtworkInformation({ next, prev }) {
                                                 message: 'required',
                                             }
                                         ]}>
-                                        {/* <TagComponent /> */}
+                                        {/* <TagComponent
+                                            // state={state}
+                                            // setState={setState}
+                                            // tags={tags}
+                                            // inputVisible={inputVisible}
+                                            // inputValue={inputValue}
+                                            // editInputIndex={editInputIndex}
+                                            // editInputValue={editInputValue}
+                                             /> */}
                                         <Input
                                             type="text"
                                             id="info-216"

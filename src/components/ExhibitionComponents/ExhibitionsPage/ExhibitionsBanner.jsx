@@ -5,21 +5,11 @@ import { useNavigate } from "react-router-dom";
 import { EXHIBITION_LIST } from "../../../utils";
 import apiServices from "../../../utils/api.services";
 import queryString from "query-string";
-import { Calendar } from "react-multi-date-picker";
-import persian from "react-date-object/calendars/persian";
-import gregorian from "react-date-object/calendars/gregorian";
-import persian_fa from "react-date-object/locales/persian_fa";
-import gregorian_en from "react-date-object/locales/gregorian_en";
+
 const ExhibitionsBanner = () => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const [exhibitions, setExhibitions] = useState([]);
-  const [selectedDates, setSelectedDates] = useState([]);
-  const date = selectedDates.map(
-    (item) => item.format("dddd DD MMMM YYYY")
-    // item.convert(gregorian, gregorian_en).format("YYYY-MMMM-DD hh:mm:ss dddd")
-  );
-
   const getData = () => {
     apiServices
       .get(EXHIBITION_LIST, queryString.stringify({ page_size: 12 }))
@@ -89,20 +79,60 @@ const ExhibitionsBanner = () => {
                 {t("exhibitions-page.select-event-date")}
               </h3>
               <div className="event-select">
-                {selectedDates?.map((item) => (
-                  <span>{item.format("dddd DD MMMM YYYY")}</span>
-                ))}
+                <span>پنجشنبه ۱۶ تیر ۹۹</span>
+                <span>دوشنبه ۲۰ تیر ۹۹</span>
+                <span>جمعه ۲۴ تیر ۹۹</span>
               </div>
               <div className="caleander-event">
-                <Calendar
-                  multiple
-                  value={selectedDates}
-                  onChange={setSelectedDates}
-                  calendar={i18n.language === "fa-IR" ? persian : gregorian}
-                  locale={i18n.language === "fa-IR" ? persian_fa : gregorian_en}
-                  calendarPosition="bottom-right"
-                  className="custom-calendar"
-                />
+                <div className="caleander-month">
+                  <ul>
+                    <li className="next">&#10095;</li>
+                    <li className="prev">&#10094;</li>
+                    <li className="limonth">تیر</li>
+                  </ul>
+                </div>
+                <ul className="caleander-weekdays">
+                  <li>ش</li>
+                  <li>ی</li>
+                  <li>د</li>
+                  <li>س</li>
+                  <li>چ</li>
+                  <li>پ</li>
+                  <li>ج</li>
+                </ul>
+                <ul className="caleander-days">
+                  <li>1</li>
+                  <li>2</li>
+                  <li>3</li>
+                  <li>4</li>
+                  <li>5</li>
+                  <li>6</li>
+                  <li>7</li>
+                  <li>8</li>
+                  <li>9</li>
+                  <li className="active">10</li>
+                  <li>11</li>
+                  <li>12</li>
+                  <li>13</li>
+                  <li>14</li>
+                  <li>15</li>
+                  <li>16</li>
+                  <li>17</li>
+                  <li className="active">18</li>
+                  <li>19</li>
+                  <li>20</li>
+                  <li className="active">21</li>
+                  <li>22</li>
+                  <li>23</li>
+                  <li>24</li>
+                  <li>25</li>
+                  <li>26</li>
+                  <li>27</li>
+                  <li>28</li>
+                  <li>29</li>
+                  <li>30</li>
+                  <li>31</li>
+                </ul>
               </div>
             </div>
             <div className="col-md-6 hidden-sm hidden-xs">
