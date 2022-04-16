@@ -1378,7 +1378,11 @@
         "enter_recipient_information": "اطلاعات گیرنده را وارد کنید",
         "enter_the_recipient_name": "نام گیرنده را وارد کنید",
         "enter_the_mobile_number": "شماره همراه را وارد کنید",
-        "enter_the_national_code": "کد ملی را وارد کنید"
+        "enter_the_national_code": "کد ملی را وارد کنید",
+        "enter_the_state": "استان را وارد کنید",
+        "enter_the_city": "شهر را وارد کنید÷",
+        "enter_the_address": "نشانی پستی را وارد کنید",
+        "enter_the_postal_code": "کد پستی را وارد کنید"
       }
     },
     "pay_step": {

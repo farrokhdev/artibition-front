@@ -118,6 +118,14 @@ function ModalEditProfile(props) {
                   className="public-group text-right"
                   label={t("content-panel-profile.personal-info.first_name")}
                   name={"first_name"}
+                  rules={[
+                    {
+                      required: true,
+                      message: t(
+                        "content-panel-profile.personal-info.missing-lastname"
+                      ),
+                    },
+                  ]}
                 >
                   <Input className="form-control input-public " />
                 </Form.Item>

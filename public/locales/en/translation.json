@@ -1434,7 +1434,11 @@
         "enter_recipient_information": "Enter recipient information",
         "enter_the_recipient_name": "Enter the recipient name",
         "enter_the_mobile_number": "Enter the mobile number",
-        "enter_the_national_code": "Enter the national code"
+        "enter_the_national_code": "Enter the national code",
+        "enter_the_state": "Enter the state",
+        "enter_the_city": "Enter the city",
+        "enter_the_address": "Enter the address",
+        "enter_the_postal_code": "Enter the postal_code"
       }
     },
     "pay_step": {
