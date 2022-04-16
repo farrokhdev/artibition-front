@@ -6,7 +6,10 @@ import classnames from "classnames";
 import { GetLanguage } from "../../utils/utils";
 import { isNil } from "lodash";
 import { LoadingOutlined } from "@ant-design/icons";
-const GeneralInfo = ({ next, prev, data, setData }) => {
+const GeneralInfo = ({ next, prev, data }) => {
+  console.log("🚀 ~ file: GeneralInfo.jsx ~ line 9 ~ GeneralInfo ~ data", data);
+
+  //   if (isNil(data)) return <></>;
   return (
     <>
       <HeaderPanel t={t} />
@@ -51,18 +54,6 @@ const GeneralInfo = ({ next, prev, data, setData }) => {
                             fontSize: "16px",
                           }}
                           value={data?.translations?.fa?.title}
-                          onChange={(e) =>
-                            setData({
-                              ...data,
-                              translations: {
-                                ...data.translations,
-                                fa: {
-                                  ...data.translations.fa,
-                                  title: e.target.value,
-                                },
-                              },
-                            })
-                          }
                           disabled
                         />
                       </Form.Item>
@@ -92,18 +83,6 @@ const GeneralInfo = ({ next, prev, data, setData }) => {
                             fontSize: "16px",
                           }}
                           value={data?.translations?.en?.title}
-                          onChange={(e) =>
-                            setData({
-                              ...data,
-                              translations: {
-                                ...data.translations,
-                                en: {
-                                  ...data.translations.en,
-                                  title: e.target.value,
-                                },
-                              },
-                            })
-                          }
                           disabled
                         />
                       </Form.Item>
@@ -198,7 +177,6 @@ const GeneralInfo = ({ next, prev, data, setData }) => {
                               ? data?.category?.translations?.fa?.title
                               : data?.category?.translations?.en?.title
                           }
-                          onChange={setData}
                           disabled
                         ></Input>
                       </Form.Item>
@@ -503,9 +481,9 @@ const GeneralInfo = ({ next, prev, data, setData }) => {
                             color: "#787878",
                             fontSize: "16px",
                           }}
-                          value={data?.tags
-                            ?.filter?.((item) => item.language === "fa")
-                            ?.map((item) => item?.title)}
+                          value={data?.tags?.filter?.(
+                            (item) => item.language === "fa"
+                          )}
                           disabled
                         />
                       </Form.Item>
@@ -531,9 +509,9 @@ const GeneralInfo = ({ next, prev, data, setData }) => {
                             color: "#787878",
                             fontSize: "16px",
                           }}
-                          value={data?.tags
-                            ?.filter?.((item) => item.language === "en")
-                            ?.map((item) => item?.title)}
+                          value={data?.tags?.filter?.(
+                            (item) => item.language === "en"
+                          )}
                           disabled
                         />
                       </Form.Item>
