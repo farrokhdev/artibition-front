@@ -421,6 +421,7 @@
     }
   },
   "artists": {
+    "text-to-artist-auth":"please login first",
     "filter": {
       "expert": {
         "title": "Artist's expertise",

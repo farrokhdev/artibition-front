@@ -24,7 +24,9 @@ import { PRODUCTS_CATEGORIES } from "../../utils";
 
 function Home() {
   const dispatch = useDispatch();
-  const { is_Open_Modal } = useSelector((state) => state.authReducer);
+  const { is_Open_Modal, is_registered } = useSelector(
+    (state) => state.authReducer
+  );
   const { t, i18n } = useTranslation();
 
   const [showPromotion, setShowPromotion] = useState(false);
@@ -53,7 +55,7 @@ function Home() {
 
   return (
     <>
-      {!!is_Open_Modal ? (
+      {!!is_Open_Modal && !!is_registered ? (
         <div class="notification-signup ">
           <button type="button" class="remove-noti">
             <img

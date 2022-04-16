@@ -11,6 +11,7 @@ import BasketFooter from "../../components/BasketFooter/BasketFooter";
 import HeaderAuthPages from "../../components/HeaderAuthPages/HeaderAuthPages";
 import { t } from "i18next";
 import APIService from "../../utils/api.services";
+
 import { REGISTER, OPT } from "../../utils";
 import GoogleLoginButton from "../../components/GoogleLoginButton/GoogleLoginButton";
 
@@ -19,6 +20,7 @@ export default function Signup() {
   const [mobile, setMobile] = useState();
 
   const [form] = Form.useForm();
+
   function validateUserName(mail) {
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
       return true;
@@ -49,6 +51,7 @@ export default function Signup() {
       }
     });
   };
+
   const onFinish = (values) => {
     if (!validateUserName(values.username)) {
       return;
@@ -72,6 +75,7 @@ export default function Signup() {
       });
     });
   };
+
   return (
     <div className="page-fixed">
       <div className="container container-fixed">

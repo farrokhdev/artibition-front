@@ -34,7 +34,6 @@ export default function Collection() {
       .get(ARTIST_CATEGORY, QueryString.stringify(params))
       .then((res) => {
         if (res.data) {
-
           const tempCollections = res.data.data?.results?.filter(
             (item) => item?.products?.length > 2
           );
@@ -106,9 +105,7 @@ export default function Collection() {
               className="owl-carousel d-flex"
               id="tab6"
             >
-
               {artistCategory?.map((item, index) => (
-
                 <div>
                   <Link to="/site/collections-list" className="cols">
                     <div className="col-img mx-4">
@@ -118,6 +115,13 @@ export default function Collection() {
                           width="280"
                           height="280"
                           className="img-responsive clolection-image1 w-100"
+                          style={{
+                            objectFit: "cover",
+                            // width: "100%",
+                            // height: "100%",
+                            objectPosition: "center",
+                            display: "block",
+                          }}
                         />
                       </div>
                       {
@@ -129,8 +133,14 @@ export default function Collection() {
                                 width="280"
                                 height="280"
                                 className="img-responsive clolection-image w-100"
+                                style={{
+                                  objectFit: "cover",
+                                  // width: "100%",
+                                  // height: "100%",
+                                  objectPosition: "center",
+                                  display: "block",
+                                }}
                               />
-
                             </div>
                           )}
                           {item?.products[2] && (
@@ -143,7 +153,6 @@ export default function Collection() {
                               />
                             </div>
                           )}
-
                         </div>
                       }
                       {/* {item?.products[1] || item?.products[2] && <div className="d-flex collection-secondrow  px-0">

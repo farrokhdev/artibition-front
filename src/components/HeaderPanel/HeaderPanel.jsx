@@ -11,11 +11,17 @@ import search from "../../assets/img/search.svg";
 import shopping_basket from "../../assets/img/shopping_basket.svg";
 import { removeToken } from "../../utils/utils";
 import { connect } from "react-redux";
+import { Drawer } from "antd";
 import { clearStorage } from "../../redux/reducers/auth/auth.actions";
 import { useSelector, useDispatch } from "react-redux";
 import { UPDATE_CART } from "../../redux/reducers/cart/cart.types";
 import { galleryId } from "../../redux/reducers/Gallery/gallery.actions";
+import { useGlobalContext } from "../../context/GlobalContext";
+
+import SidebarPanelMobile from "../SidebarPanel/SidebarPanelMobile";
 function HeaderPanel(props) {
+  const { sidebarVisible, showAdminDrawer, onCloseAdminDrawer, items } =
+    useGlobalContext();
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
   const { count } = useSelector((state) => state.cartReducer);
@@ -77,7 +83,7 @@ function HeaderPanel(props) {
       </div>
       <div className="col col-lg-2  px-0">
         <div className="d-flex box-dir-reverse ">
-          <div className="d-flex box-dir-reverse">
+          <div className="d-flex box-dir-reverse head-contents">
             <a href="/panel/cart" className="btn-panel-header btn-shoppingcard">
               <img src={shopping_basket} width="24" height="24" alt="" />
               <div className="basket-notification ">
@@ -138,6 +144,7 @@ function HeaderPanel(props) {
               className="navbar-toggle"
               data-toggle="collapse"
               data-target="#panel-navbar"
+              onClick={showAdminDrawer}
             >
               <span className="icon-bar" />
               <span className="icon-bar" />
@@ -146,7 +153,13 @@ function HeaderPanel(props) {
           </div>
         </div>
       </div>
-
+      <Drawer
+        visible={sidebarVisible}
+        onClose={onCloseAdminDrawer}
+        closable={false}
+      >
+        <SidebarPanelMobile items={items} />
+      </Drawer>
       {/* <div className="col col-md-9 pl-0 ">
                 <div className="d-flex box-dir-reverse">
                     <div className="col-2 ">

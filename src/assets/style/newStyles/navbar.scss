@@ -8,25 +8,12 @@
   }
 }
 
-.mobile-menu {
-  display: none !important;
+.dropdown-menu.show {
+  display: block !important;
 }
 
-@media (max-width: 765px) {
-  .nav_new {
-    display: none;
-  }
-  .mobile-menu {
-    display: flex;
-    flex-direction: column !important;
-    gap: 3rem !important;
-    padding: 32px;
-    text-align: right;
-    direction: rtl;
-    a {
-      cursor: pointer;
-    }
-  }
+.mobile-menu {
+  display: none !important;
 }
 
 .drawer-menu
@@ -80,4 +67,31 @@
 
   height: 0;
   opacity: 0;
+}
+
+// RESPONSIVE QUERIES
+.sidebar_mobile {
+  padding-top: 60px;
+}
+
+@media (max-width: 765px) {
+  .nav_new {
+    display: none;
+  }
+  .mobile-menu {
+    display: flex;
+    flex-direction: column !important;
+    gap: 3rem !important;
+    padding: 32px;
+    text-align: right;
+    direction: rtl;
+    a {
+      cursor: pointer;
+    }
+  }
+
+  // For admin panel
+  .head-contents {
+    display: none;
+  }
 }

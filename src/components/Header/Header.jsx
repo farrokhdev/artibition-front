@@ -262,76 +262,83 @@ function Header() {
               <span>{t("filter-header.title")}</span>
             </button>
           </div>
-          <div
-            className="autocomplete"
-            style={visibleResults ? { display: "unset" } : { display: "none" }}
-          >
-            <ul className="predict">
-              {searchResult.map((item, key) => (
-                <li key={key}>
-                  <a href={strToLink(item.type_result, item.id)}>
-                    {i18n.language === "fa-IR"
-                      ? item.title[0].language_code === "fa"
+          {params?.search && (
+            <div
+              className="autocomplete"
+              style={
+                visibleResults ? { display: "unset" } : { display: "none" }
+              }
+            >
+              <ul className="predict">
+                {searchResult.map((item, key) => (
+                  <li key={key}>
+                    <a href={strToLink(item.type_result, item.id)}>
+                      {i18n.language === "fa-IR"
+                        ? item.title[0].language_code === "fa"
+                          ? item.title[0].title
+                          : item.title[1].title
+                        : item.title[0].language_code === "en"
                         ? item.title[0].title
-                        : item.title[1].title
-                      : item.title[0].language_code === "en"
-                      ? item.title[0].title
-                      : item.title[1].title}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <div className="predict-cat">
-              <span className="graycolor">فیلتر نتایج بر اساس:</span>
-              <ul>
-                <li>
-                  <a
-                    onClick={() =>
-                      setParams((state) => ({ ...state, object: "artist" }))
-                    }
-                  >
-                    هنرمند
-                  </a>
-                </li>
-                <li>
-                  <a
-                    onClick={() =>
-                      setParams((state) => ({ ...state, object: "product" }))
-                    }
-                  >
-                    نام اثر
-                  </a>
-                </li>
-                <li>
-                  <a
-                    onClick={() =>
-                      setParams((state) => ({ ...state, object: "exhibition" }))
-                    }
-                  >
-                    نمایشگاه
-                  </a>
-                </li>
-                <li>
-                  <a
-                    onClick={() =>
-                      setParams((state) => ({ ...state, object: "gallery" }))
-                    }
-                  >
-                    گالری
-                  </a>
-                </li>
-                <li>
-                  <a
-                    onClick={() =>
-                      setParams((state) => ({ ...state, object: "" }))
-                    }
-                  >
-                    حذف فیلتر
-                  </a>
-                </li>
+                        : item.title[1].title}
+                    </a>
+                  </li>
+                ))}
               </ul>
+              <div className="predict-cat">
+                <span className="graycolor">فیلتر نتایج بر اساس:</span>
+                <ul>
+                  <li>
+                    <a
+                      onClick={() =>
+                        setParams((state) => ({ ...state, object: "artist" }))
+                      }
+                    >
+                      هنرمند
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      onClick={() =>
+                        setParams((state) => ({ ...state, object: "product" }))
+                      }
+                    >
+                      نام اثر
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      onClick={() =>
+                        setParams((state) => ({
+                          ...state,
+                          object: "exhibition",
+                        }))
+                      }
+                    >
+                      نمایشگاه
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      onClick={() =>
+                        setParams((state) => ({ ...state, object: "gallery" }))
+                      }
+                    >
+                      گالری
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      onClick={() =>
+                        setParams((state) => ({ ...state, object: "" }))
+                      }
+                    >
+                      حذف فیلتر
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
-          </div>
+          )}
         </div>
         <div
           className="collapse filter-dropdown hidden-sm bg-filter-header"
