@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import Menu from "../../components/Menu/Menu";
@@ -8,6 +8,8 @@ import persian from "react-date-object/calendars/persian";
 import gregorian from "react-date-object/calendars/gregorian";
 import persian_fa from "react-date-object/locales/persian_fa";
 import gregorian_en from "react-date-object/locales/gregorian_en";
+import apiServices from "../../utils/api.services";
+import { PROMOTIONS_ALL_PRODUCTS } from "../../utils";
 
 const AllPromotions = () => {
   const [search, setSearch] = useState();
@@ -15,6 +17,7 @@ const AllPromotions = () => {
     status: "active",
   });
   const [selectedOption, setSelectedOption] = useState("popularity");
+  const [artworks, setArtworks] = useState();
   const handleBannerSearchInputChanged = (text) => setSearch(text);
   const handleBannerSearchClick = () =>
     setParams((state) => ({ ...state, search: search }));
@@ -22,7 +25,23 @@ const AllPromotions = () => {
   const date = selectedDates.map((item) =>
     item.convert(gregorian, gregorian_en).format("YYYY-MM-DD hh:mm:ss")
   );
-
+  console.log("🚀 ~ file: index.jsx ~ line 25 ~ AllPromotions ~ date", date);
+  const getData = async () => {
+    apiServices
+      .get(PROMOTIONS_ALL_PRODUCTS)
+      .then((res) => {
+        if (res.data) {
+          setArtworks(res.data.data.results);
+          console.log("res.data.data.results", res.data.data.results);
+        }
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
+  };
+  useEffect(() => {
+    getData();
+  }, []);
   return (
     <div className="container">
       <Header />
@@ -70,72 +89,10 @@ const AllPromotions = () => {
                           style={{ fontSize: "1rem" }}
                         />
                       </div>
-                      {/* <div className="caleander-event side-bar">
-                        <div className="caleander-month">
-                          <ul>
-                            <li className="next">&#10095;</li>
-                            <li className="prev">&#10094;</li>
-                            <li className="limonth">تیر</li>
-                          </ul>
-                        </div>
-                        <ul className="caleander-weekdays">
-                          <li>ش</li>
-                          <li>ی</li>
-                          <li>د</li>
-                          <li>س</li>
-                          <li>چ</li>
-                          <li>پ</li>
-                          <li>ج</li>
-                        </ul>
-                        <ul className="caleander-days">
-                          <li>1</li>
-                          <li>2</li>
-                          <li>3</li>
-                          <li>4</li>
-                          <li>5</li>
-                          <li>6</li>
-                          <li>7</li>
-                          <li>8</li>
-                          <li>9</li>
-                          <li className="active">10</li>
-                          <li>11</li>
-                          <li>12</li>
-                          <li>13</li>
-                          <li>14</li>
-                          <li>15</li>
-                          <li>16</li>
-                          <li>17</li>
-                          <li className="active">18</li>
-                          <li>19</li>
-                          <li>20</li>
-                          <li className="active">21</li>
-                          <li>22</li>
-                          <li>23</li>
-                          <li>24</li>
-                          <li>25</li>
-                          <li>26</li>
-                          <li>27</li>
-                          <li>28</li>
-                          <li>29</li>
-                          <li>30</li>
-                          <li>31</li>
-                        </ul>
-                      </div> */}
                     </div>
                   </div>
                 </div>
                 <div className="panel panel-default">
-                  {/* <div className="panel-heading">
-                    <h4 className="panel-title">
-                      <a
-                        data-toggle="collapse"
-                        aria-expanded="true"
-                        href="#collapse10"
-                      >
-                        نوع
-                      </a>
-                    </h4>
-                  </div> */}
                   <div id="collapse10" className="panel-collapse collapse in">
                     {/* <div className="panel-body">
                       <label className="lable-checkbox">
@@ -157,46 +114,56 @@ const AllPromotions = () => {
               <div className="row-gridimg">
                 <div className="row">
                   <div className="col-sm-4">
-                    <div className="cols">
-                      <div className="col-img">
-                        <img
-                          src="img/artworks/jpaytrkase@3x.jpg"
-                          width="840"
-                          height="1259"
-                          alt="آرتیبیشن"
-                          className="img-responsive"
-                        />
-                        <div className="tab-overly">
-                          <a href="#" className="btn-see">
-                            <span className="view-icon pull-right"></span>
-                            <span>مشاهده اثر</span>
-                          </a>
-                          <a href="#" className="btn-sale">
-                            درخواست خرید
-                          </a>
-                          <a href="#" className="like-icon isLike"></a>
+                    {artworks?.map((artwork) => (
+                      <div className="cols">
+                        <div className="col-img">
+                          <img
+                            src={artwork?.product?.medias[0]?.exact_url}
+                            width="840"
+                            height="1259"
+                            alt="آرتیبیشن"
+                            className="img-responsive"
+                          />
+                          <div className="tab-overly">
+                            <a href="#" className="btn-see">
+                              <span className="view-icon pull-right"></span>
+                              <span>مشاهده اثر</span>
+                            </a>
+                            <a href="#" className="btn-sale">
+                              درخواست خرید
+                            </a>
+                            <a href="#" className="like-icon isLike"></a>
+                          </div>
+                        </div>
+                        <div className="col-body">
+                          <h6 className="col-title">
+                            <span className="col-name">
+                              artwork?.product?.translations?.fa?.artist_name
+                            </span>
+                            {/* <span className="col-name">آغداشلو</span> */}
+                          </h6>
+                          <div className="col-dimension">
+                            <span className="col-dimension-title">ابعاد:</span>
+                            <span className="col-dimension-body">
+                              <span className="dimension-width">
+                                {artwork?.product?.width}
+                              </span>
+                              <span> در </span>
+                              <span className="dimension-height">
+                                {artwork?.product?.height}
+                              </span>
+                            </span>
+                          </div>
+                          <div className="col-price">
+                            <span className="col-price-num">
+                              {artwork?.product?.toman_price}
+                            </span>
+                            <span className="col-price-unit">تومان</span>
+                          </div>
                         </div>
                       </div>
-                      <div className="col-body">
-                        <h6 className="col-title">
-                          <span className="col-name">آیدین</span>
-                          <span className="col-name">آغداشلو</span>
-                        </h6>
-                        <div className="col-dimension">
-                          <span className="col-dimension-title">ابعاد:</span>
-                          <span className="col-dimension-body">
-                            <span className="dimension-width">60</span>
-                            <span> در </span>
-                            <span className="dimension-height">60</span>
-                          </span>
-                        </div>
-                        <div className="col-price">
-                          <span className="col-price-num">22.000.000</span>
-                          <span className="col-price-unit">تومان</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="cols">
+                    ))}
+                    {/* <div className="cols">
                       <div className="col-img">
                         <img
                           src="img/artworks/hnrpqkfiup@3x.jpg"
@@ -758,7 +725,7 @@ const AllPromotions = () => {
                           <span className="col-price-unit">تومان</span>
                         </div>
                       </div>
-                    </div>
+                    </div>*/}
                   </div>
                 </div>
               </div>
