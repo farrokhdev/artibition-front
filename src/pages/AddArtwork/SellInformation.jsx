@@ -18,12 +18,10 @@ import apiServices from "../../utils/api.services";
 import {
   ARTIST_BY_GALLERY,
   ARTWORK_BY_GALLERY,
-  CORE_EXCHANGE,
   GALLERY_PRODUCTS,
   PRODUCTS,
 } from "../../utils";
 import { artworkForm } from "../../redux/reducers/Artwork/artwork.action";
-import imgChange from "../../assets/img/change.png";
 import { MinusCircleOutlined, PlusOutlined } from "@ant-design/icons";
 import { useNavigate, useSearchParams, useLocation } from "react-router-dom";
 import DatePicker, { Calendar } from "react-datepicker2";
@@ -39,9 +37,6 @@ function SellInformation({ prev, next }) {
   const [isValidation, setisValidation] = useState(false);
   const [isValidEdition, setIsValidEdition] = useState(false);
   const [isValidSaleInformation, setIsValidSaleInformation] = useState(false);
-  const [isValidduration, setIsValidduration] = useState(false);
-  const [exchangePrice, setExchangePrice] = useState("");
-  const [base_dollar_price, setBase_dollar_price] = useState(true);
   const Language = GetLanguage();
   const { gallery_id } = useSelector((state) => state.galleryReducer);
 
@@ -90,13 +85,11 @@ function SellInformation({ prev, next }) {
           i18next.language === "fa-IR"
             ? values?.percent_discount_rial
             : values?.percent_discount_dolar,
-        duration:
-          values?.duration &&
-          moment(values?.duration)
-            .hour(0)
-            .minute(0)
-            .second(0)
-            .diff(moment(Date.now()), "seconds"),
+        duration: moment(values?.duration)
+          .hour(0)
+          .minute(0)
+          .second(0)
+          .diff(moment(Date.now()), "seconds"),
       },
     };
 
@@ -197,26 +190,6 @@ function SellInformation({ prev, next }) {
     }
   };
 
-  const onSubmit = (value) => {
-    setBase_dollar_price(false);
-    let payload = {
-      toman_price: value,
-    };
-
-    apiServices
-      .post(CORE_EXCHANGE, payload)
-      .then((res) => {
-        setExchangePrice(res.data.data.dollar_price);
-        form.setFieldsValue({
-          base_dollar_price: res.data.data.dollar_price,
-        });
-        setBase_dollar_price(true);
-      })
-      .catch((err) => {
-        console.log(err, "error");
-      });
-  };
-
   // If there is no user information, it redirects the user to the previous page
   useEffect(() => {
     if (Object.keys(lastform)?.length === 0) {
@@ -280,26 +253,12 @@ function SellInformation({ prev, next }) {
                       >
                         <Input
                           type="text"
-                          id="search-price"
+                          id="info-215"
                           className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
                           placeholder="قیمت اثر به تومان"
                         />
                       </Form.Item>
                     </div>
-                    <Button
-                      className="btn-change border-0"
-                      onClick={(e) =>
-                        onSubmit(form.getFieldValue("base_toman_price"))
-                      }
-                    >
-                      <img
-                        src={imgChange}
-                        width="24"
-                        height="24"
-                        alt=""
-                        class=""
-                      />
-                    </Button>
                   </div>
                   <div
                     className={classnames("", {
@@ -308,28 +267,23 @@ function SellInformation({ prev, next }) {
                     })}
                   >
                     <div className="public-group">
-                      {base_dollar_price && (
-                        <Form.Item
-                          className="w-100"
-                          name="base_dollar_price"
-                          rules={[
-                            {
-                              required: false,
-                              message: "required",
-                            },
-                          ]}
-                        >
-                          {console.log(base_dollar_price, "exchangePrice")}
-
-                          <Input
-                            type="text"
-                            defaultValue={exchangePrice}
-                            id="info-216"
-                            className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                            placeholder="معادل قیمت به دلار"
-                          />
-                        </Form.Item>
-                      )}
+                      <Form.Item
+                        className="w-100"
+                        name="base_dollar_price"
+                        rules={[
+                          {
+                            required: false,
+                            message: "required",
+                          },
+                        ]}
+                      >
+                        <Input
+                          type="text"
+                          id="info-216"
+                          className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
+                          placeholder="معادل قیمت به دلار"
+                        />
+                      </Form.Item>
                     </div>
                   </div>
                 </div>
