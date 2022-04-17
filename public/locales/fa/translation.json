@@ -3,7 +3,9 @@
     "username": "شماره همراه یا ایمیل وارد نشده است!",
     "password": "رمز عبور وارد نشده است!",
     "repeat-password": "تکرار رمز عبور وارد نشده است!",
-    "activation-code": "کد فعالسازی وارد نشده است!"
+    "activation-code": "کد فعالسازی وارد نشده است!",
+    "invalid-username": "شماره همراه یا ایمیل معتبر نیست",
+    "invalid-password": "استفاده از حروف فارسی مجاز نمی باشد"
   },
   "filter-header": {
     "title": "فیلتر",
@@ -127,7 +129,6 @@
   "category": "دسته‌بندی",
   "galleries": "گالری‌ها",
   "events": "رویدادها",
-  "promotions": "پروموشن ها",
   "see-all": "مشاهده همه",
   "event-all": "همه رویدادها",
   "collection-all": "همه کالکشن‌ها",
@@ -538,7 +539,10 @@
         "title": "آدرس",
         "btn": "افزودن آدرس جدید",
         "default": "(آدرس پیش‌فرض)"
-      }
+      },
+      "invalid-national": "کد ملی باید 10 رقم باشد",
+      "invalid-firstname": "نام نمی تواند خالی باشد",
+      "invalid-lastname": "نام خانوادگی نمی تواند خالی باشد"
     }
   },
   "content-panel-mypurchases": {
@@ -739,8 +743,7 @@
       "Active_on_the_site": "فعال در سایت",
       "to_artibition": "منتظر ارسال اثر به آرتیبیشن",
       "artibition_to_customer": "درحال ارسال از آرتیبیشن به مشتری",
-      "delivered": "تحویل شده به مشتری",
-      "pending_edition": "نیازمند اصلاح"
+      "delivered": "تحویل شده به مشتری"
     }
   },
   "content-panel-manage-artworks": {
@@ -1169,7 +1172,7 @@
       "create_date": "تاریخ خلق اثر (شمسی)",
       "length": "طول",
       "width": "عرض",
-      "height":"ارتفاع",
+      "height": "ارتفاع",
       "weight": "وزن اثر",
       "select_gallery": "انتخاب مجموعه",
       "multi_edition": "این اثر دارای چند ادیشن است",

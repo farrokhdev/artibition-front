@@ -3,7 +3,9 @@
     "username": "Please input your username!",
     "password": "Please input your password!",
     "repeat-password": "Please input your confirm password!",
-    "activation-code": "Please input your activation code!"
+    "activation-code": "Please input your activation code!",
+    "invalid-username": "Invalid username",
+    "invalid-password": "Using Persian letters is not allowed"
   },
   "filter-header": {
     "title": "Filter",
@@ -126,7 +128,6 @@
   "category": "Category",
   "galleries": "Galleries",
   "events": "Events",
-  "promotions": "Promotions",
   "see-all": "View all",
   "event-all": "View all",
   "collection-all": "View all",
@@ -500,7 +501,10 @@
         "btn": "New address",
         "default": "(Default address)"
       }
-    }
+    },
+    "invalid-national": "The national code must be 10 digits",
+    "invalid-firstname": "Please enter First name",
+    "invalid-lastname": "please enter Last name"
   },
   "artist_profile": {
     "artists": "Artists",
@@ -741,8 +745,7 @@
       "Active_on_the_site": "Active on the site",
       "to_artibition": "To Arthibition",
       "artibition_to_customer": "Arthibition to customer",
-      "delivered": "Delivered",
-      "pending_edition": "Require modification"
+      "delivered": "Delivered"
     }
   },
   "content-panel-manage-artworks": {

@@ -6,8 +6,9 @@ import { GetLanguage } from '../../utils/utils'
 import i18next, { t } from 'i18next';
 import { useSelector, useDispatch } from 'react-redux';
 import apiServices from '../../utils/api.services';
-import { ARTIST_BY_GALLERY, ARTWORK_BY_GALLERY, GALLERY_PRODUCTS, PRODUCTS } from '../../utils';
+import { ARTIST_BY_GALLERY, ARTWORK_BY_GALLERY, CORE_EXCHANGE, GALLERY_PRODUCTS, PRODUCTS } from '../../utils';
 import { artworkForm } from '../../redux/reducers/Artwork/artwork.action';
+import imgChange from '../../assets/img/change.png'
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import { useNavigate, useSearchParams, useLocation } from 'react-router-dom';
 import DatePicker, { Calendar } from 'react-datepicker2';
@@ -24,6 +25,9 @@ function SellInformation({ prev, next }) {
     const [isValidation, setisValidation] = useState(false);
     const [isValidEdition, setIsValidEdition] = useState(false);
     const [isValidSaleInformation, setIsValidSaleInformation] = useState(false);
+    const [isValidduration, setIsValidduration] = useState(false)
+    const [exchangePrice, setExchangePrice] = useState("")
+    const [base_dollar_price, setBase_dollar_price] = useState(true)
     const Language = GetLanguage();
     const { gallery_id } = useSelector((state) => state.galleryReducer)
 
@@ -72,7 +76,7 @@ function SellInformation({ prev, next }) {
             "discount": {
                 "type": values?.discount_price ? values?.discount_price : "toman",
                 "value": i18next.language === 'fa-IR' ? values?.percent_discount_rial : values?.percent_discount_dolar,
-                "duration": moment(values?.duration).hour(0).minute(0).second(0).diff(moment(Date.now()), 'seconds')
+                "duration": values?.duration && moment(values?.duration).hour(0).minute(0).second(0).diff(moment(Date.now()), 'seconds')
             },
 
         }
@@ -172,6 +176,27 @@ function SellInformation({ prev, next }) {
         }
     };
 
+
+    const onSubmit = (value) => {
+        setBase_dollar_price(false)
+        let payload = {
+            "toman_price": value
+        }
+
+        apiServices.post(CORE_EXCHANGE, payload)
+            .then(res => {
+                setExchangePrice(res.data.data.dollar_price)
+                form.setFieldsValue({
+                    base_dollar_price: res.data.data.dollar_price
+                })
+                setBase_dollar_price(true)
+            })
+            .catch(err => {
+                console.log(err, "error");
+            })
+    }
+
+
     // If there is no user information, it redirects the user to the previous page
     useEffect(() => {
         if (Object.keys(lastform)?.length === 0) {
@@ -237,13 +262,16 @@ function SellInformation({ prev, next }) {
 
                                                     <Input
                                                         type="text"
-                                                        id="info-215"
+                                                        id="search-price"
                                                         className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
                                                         placeholder="قیمت اثر به تومان"
                                                     />
 
                                                 </Form.Item>
                                             </div>
+                                            <Button className="btn-change border-0" onClick={(e) => onSubmit(form.getFieldValue('base_toman_price'))}  >
+                                                <img src={imgChange} width="24" height="24" alt="" class="" />
+                                            </Button>
                                         </div>
                                         <div
                                             className={classnames("", {
@@ -255,28 +283,32 @@ function SellInformation({ prev, next }) {
                                             <div className="public-group">
 
 
-                                                <Form.Item
+                                                {base_dollar_price && <Form.Item
                                                     className="w-100"
                                                     name="base_dollar_price"
+
                                                     rules={[
                                                         {
                                                             required: false,
                                                             message: 'required',
                                                         }
                                                     ]}>
+                                                    {console.log(base_dollar_price, "exchangePrice")}
 
                                                     <Input
                                                         type="text"
+                                                        defaultValue={exchangePrice}
                                                         id="info-216"
                                                         className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
                                                         placeholder="معادل قیمت به دلار"
                                                     />
 
                                                 </Form.Item>
+                                                }
+
                                             </div>
                                         </div>
                                     </div>
-
                                 }
 
 
@@ -284,105 +316,105 @@ function SellInformation({ prev, next }) {
                     }
 
 
-                   
+
 
                     <div className="row">
-                    <div className="col-sm-12">
+                        <div className="col-sm-12">
 
 
-{!isValidEdition || isValidSaleInformation ?
-    <>
+                            {!isValidEdition || isValidSaleInformation ?
+                                <>
 
 
-        <label className="d-flex box-dir-reverse lable-checkbox public-group text-dir pr-0">
+                                    <label className="d-flex box-dir-reverse lable-checkbox public-group text-dir pr-0">
 
-            <Form.Item name="remember" valuePropName="checked" noStyle>
-                <Checkbox type="checkbox" checked={isValidSaleInformation} onChange={e => setIsValidSaleInformation(e.target.checked)}></Checkbox>
-            </Form.Item>
-            <span className='mx-2'>{t("content-panel-add-artwork.art_info.multi_edition")}</span>
-        </label>
+                                        <Form.Item name="remember" valuePropName="checked" noStyle>
+                                            <Checkbox type="checkbox" checked={isValidSaleInformation} onChange={e => setIsValidSaleInformation(e.target.checked)}></Checkbox>
+                                        </Form.Item>
+                                        <span className='mx-2'>{t("content-panel-add-artwork.art_info.multi_edition")}</span>
+                                    </label>
 
-        <div className="d-flex box-dir-reverse">
+                                    <div className="d-flex box-dir-reverse">
 
-            {isValidSaleInformation ?
+                                        {isValidSaleInformation ?
 
-                <div className="col-sm-12 pt-4">
+                                            <div className="col-sm-12 pt-4">
 
-                    <Form.List name="items">
-                        {(fields, { add, remove }) => (
-                            <>
-                                {fields.map(({ key, name, ...restField }) => (
-                                    <Space key={key} style={{ display: 'flex', marginBottom: 8 }} align="baseline">
+                                                <Form.List name="items">
+                                                    {(fields, { add, remove }) => (
+                                                        <>
+                                                            {fields.map(({ key, name, ...restField }) => (
+                                                                <Space key={key} style={{ display: 'flex', marginBottom: 8 }} align="baseline">
 
 
-                                        <div className="public-group">
-                                            <Form.Item
-                                                className="w-100"
-                                                {...restField}
-                                                name={[name, 'edition_number']}
-                                                rules={[{ required: true, message: 'Missing first name' }]}
-                                            >
-                                                <Input
-                                                    type="text"
-                                                    id="info-207"
-                                                    className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                                    placeholder={t("content-panel-add-artwork.edition")}
-                                                />
-                                            </Form.Item>
+                                                                    <div className="public-group">
+                                                                        <Form.Item
+                                                                            className="w-100"
+                                                                            {...restField}
+                                                                            name={[name, 'edition_number']}
+                                                                            rules={[{ required: true, message: 'Missing first name' }]}
+                                                                        >
+                                                                            <Input
+                                                                                type="text"
+                                                                                id="info-207"
+                                                                                className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
+                                                                                placeholder={t("content-panel-add-artwork.edition")}
+                                                                            />
+                                                                        </Form.Item>
 
-                                        </div>
+                                                                    </div>
 
-                                        <div className="public-group">
-                                            <Form.Item
-                                                className="w-100"
-                                                {...restField}
-                                                name={[name, 'base_toman_price']}
-                                                rules={[{ required: true, message: 'Missing last name' }]}
-                                            >
-                                                <Input
-                                                    type="text"
-                                                    id="info-201"
-                                                    className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                                    placeholder={t("content-panel-add-artwork.price_ir")}
-                                                />
-                                            </Form.Item>
-                                        </div>
-                                        <div className="public-group">
-                                            <Form.Item
-                                                className="w-100"
-                                                {...restField}
-                                                name={[name, 'base_dollar_price']}
-                                                rules={[{ required: true, message: 'Missing last name' }]}
-                                            >
-                                                <Input
-                                                    type="text"
-                                                    id="info-207"
-                                                    className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                                    placeholder={t("content-panel-add-artwork.edition_usd")}
-                                                />
-                                            </Form.Item>
-                                        </div>
-                                        <MinusCircleOutlined onClick={() => remove(name)} />
-                                    </Space>
-                                ))}
-                                <Form.Item>
+                                                                    <div className="public-group">
+                                                                        <Form.Item
+                                                                            className="w-100"
+                                                                            {...restField}
+                                                                            name={[name, 'base_toman_price']}
+                                                                            rules={[{ required: true, message: 'Missing last name' }]}
+                                                                        >
+                                                                            <Input
+                                                                                type="text"
+                                                                                id="info-201"
+                                                                                className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
+                                                                                placeholder={t("content-panel-add-artwork.price_ir")}
+                                                                            />
+                                                                        </Form.Item>
+                                                                    </div>
+                                                                    <div className="public-group">
+                                                                        <Form.Item
+                                                                            className="w-100"
+                                                                            {...restField}
+                                                                            name={[name, 'base_dollar_price']}
+                                                                            rules={[{ required: true, message: 'Missing last name' }]}
+                                                                        >
+                                                                            <Input
+                                                                                type="text"
+                                                                                id="info-207"
+                                                                                className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
+                                                                                placeholder={t("content-panel-add-artwork.edition_usd")}
+                                                                            />
+                                                                        </Form.Item>
+                                                                    </div>
+                                                                    <MinusCircleOutlined onClick={() => remove(name)} />
+                                                                </Space>
+                                                            ))}
+                                                            <Form.Item>
 
-                                    <Button type="dashed" onClick={() => add()} block icon={<PlusOutlined />}>
-                                        افزودن ادیشن
-                                    </Button>
-                                </Form.Item>
-                            </>
-                        )}
-                    </Form.List>
-                </div>
-                : ""}
+                                                                <Button type="dashed" onClick={() => add()} block icon={<PlusOutlined />}>
+                                                                    افزودن ادیشن
+                                                                </Button>
+                                                            </Form.Item>
+                                                        </>
+                                                    )}
+                                                </Form.List>
+                                            </div>
+                                            : ""}
 
-        </div>
-    </>
-    :
-    ""
-}
-</div>
+                                    </div>
+                                </>
+                                :
+                                ""
+                            }
+                        </div>
                         {isValidSaleInformation || !isValidEdition ?
                             <>
                                 <div className="col-sm-12">
