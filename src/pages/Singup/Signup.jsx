@@ -46,7 +46,6 @@ export default function Signup() {
         setTimeout(() => {
           setVisibleOtpModal(true);
           setMobile(values["username"]);
-
         }, 200);
       } else {
         message.error(res.response.data.message);
