@@ -157,7 +157,7 @@ const ArtworksList = (props) => {
           .stringify({ exhibition_id: props?.exhibitionId })
           .concat("&")
           .concat(defaultQuery);
-          
+
     apiServices
       .get(SEARCH_PRODUCTS, query)
       .then((res) => {
@@ -189,14 +189,6 @@ const ArtworksList = (props) => {
       ...params,
       page: e,
     });
-  };
-
-  const discountPrice = (price, discount, type) => {
-    if (type === "percentage") {
-      return numDiscriminant(((100 - discount) * price) / 100);
-    } else {
-      return numDiscriminant(price - discount);
-    }
   };
 
   const getProductCategories = () => {
@@ -377,7 +369,7 @@ const ArtworksList = (props) => {
                   return (
                     <ArtworkCard
                       product={product}
-                      discountPrice={discountPrice}
+                      // discountPrice={discountPrice}
                       callBack={getProductList}
                     />
                   );
