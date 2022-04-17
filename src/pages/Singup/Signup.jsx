@@ -16,6 +16,7 @@ import { REGISTER, OPT } from "../../utils";
 import GoogleLoginButton from "../../components/GoogleLoginButton/GoogleLoginButton";
 
 export default function Signup() {
+
   const [visibleOtpModal, setVisibleOtpModal] = useState(false);
   const [mobile, setMobile] = useState();
 
@@ -132,7 +133,9 @@ export default function Signup() {
                 <p className="login-term">
                   {t("describtion-low.text-info-part1")}
                   <Link className="mx-2" to="#">
+
                     {t("describtion-low.text-link")}{" "}
+
                   </Link>
                   {t("describtion-low.text-info-part2")}
                 </p>
