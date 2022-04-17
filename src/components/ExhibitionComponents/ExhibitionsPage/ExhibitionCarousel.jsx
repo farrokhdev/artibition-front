@@ -13,15 +13,6 @@ const ExhibitionDetail = (exhibition) => {
         id: exhibition?.id,
         gallery_id: exhibition?.gallery?.id,
       }}
-      //   onClick={() =>
-      //     navigate("/site/exhibitionDetail", {
-      //       state: {
-      //         id: exhibition?.id,
-      //         gallery_id: exhibition?.gallery?.id,
-      //       },
-      //       replace: false,
-      //     })
-      //   }
     >
       <div className="event-img pull-right">
         <img
@@ -96,25 +87,6 @@ const ExhibitionCarousel = ({ exhibitionsList }) => {
             );
           })}
       </div>
-      {/* <div className="carousel-inner">
-                  {!isNil(exhibitionsList) &&
-                    new Array(Math.ceil(exhibitionsList?.length / 3))
-                      .fill()
-                      .map((_) => exhibitionsList?.splice(0, 3))
-                      .map((innerListExhibitions, index) => {
-                        return (
-                          <div
-                            className={`${
-                              index === 3 ? "carousel-item" : "carousel-item"
-                            }`}
-                          >
-                            {innerListExhibitions?.map((exhibition) => {
-                              return <ExhibitionDetail {...exhibition} />;
-                            })}
-                          </div>
-                        );
-                      })}
-                </div> */}
 
       <div className="event-control">
         <ol className="carousel-indicators">
@@ -125,24 +97,6 @@ const ExhibitionCarousel = ({ exhibitionsList }) => {
           ></li>
           {indicators}
         </ol>
-        {/* {getCarouselIndicators()} */}
-        {/* <ol className="carousel-indicators">
-          <li
-            data-target="#myCarousel"
-            data-slide-to="0"
-            className="active"
-          ></li>
-
-          {exhibitionsList?.length > 2 && (
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-          )}
-          {exhibitionsList?.length > 5 && (
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-          )}
-          {exhibitionsList?.length > 8 && (
-            <li data-target="#myCarousel" data-slide-to="3"></li>
-          )}
-        </ol> */}
       </div>
     </div>
   );
