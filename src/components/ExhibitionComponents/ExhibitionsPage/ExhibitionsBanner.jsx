@@ -11,7 +11,8 @@ import gregorian_en from "react-date-object/locales/gregorian_en";
 import moment from "moment-jalaali";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import ExhibitionCarousel from "./ExhibitionCarousel";
-const ExhibitionsBanner = () => {
+
+const ExhibitionsBanner = ({ dateFilter, setDateFilter }) => {
   const { t, i18n } = useTranslation();
   const [exhibitions, setExhibitions] = useState([]);
   const [selectedDates, setSelectedDates] = useState([]);
@@ -20,6 +21,12 @@ const ExhibitionsBanner = () => {
     (item) => item.format("dddd DD MMMM YYYY")
     // item.convert(gregorian, gregorian_en).format("YYYY-MMMM-DD hh:mm:ss dddd")
   );
+  useEffect(() => {
+    const date = selectedDates.map((item) =>
+      item.convert(gregorian, gregorian_en).format("YYYY-MM-DD")
+    );
+    setDateFilter(date);
+  }, [selectedDates]);
 
   const getData = () => {
     apiServices
@@ -58,9 +65,21 @@ const ExhibitionsBanner = () => {
                 {t("exhibitions-page.select-event-date")}
               </h3>
               <div className="event-select">
-                {selectedDates?.map((item) => (
-                  <span>{item.format("dddd DD MMMM YYYY")}</span>
-                ))}
+                {selectedDates?.map((item) => {
+                  return i18n.language === "fa-IR" ? (
+                    <span>
+                      {item
+                        .convert(persian, persian_fa)
+                        .format("dddd DD MMMM YYYY")}
+                    </span>
+                  ) : (
+                    <span>
+                      {item
+                        .convert(gregorian, gregorian_en)
+                        .format("dddd DD MMMM YYYY")}
+                    </span>
+                  );
+                })}
               </div>
               <div className="caleander-event">
                 <Calendar

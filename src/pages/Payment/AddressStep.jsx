@@ -23,10 +23,6 @@ function AddressStep({ next, prev, order }) {
   const [showAddress, setShowAddress] = useState(false);
   const [showMap, setShowMap] = useState(false);
   const [point, setPoint] = useState({});
-  console.log(
-    "🚀 ~ file: AddressStep.jsx ~ line 26 ~ AddressStep ~ point",
-    point
-  );
   const { t, i18n } = useTranslation();
   const [addresses, setAddresses] = useState();
   const [isEditAddress, setIsEditAddress] = useState(false);
@@ -55,7 +51,7 @@ function AddressStep({ next, prev, order }) {
     ?.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   const getData = () => {
     apiServices
-      .get(ADDRESSES)
+      .get(ADDRESSES, "")
       .then((res) => {
         if (res?.data?.code === 200) {
           setAddresses(res?.data?.data?.results);
@@ -119,7 +115,6 @@ function AddressStep({ next, prev, order }) {
       translations,
     };
     if (!isNil(point)) tempPayload = { ...tempPayload, point };
-    console.log("postAddress --------- tempPayload", tempPayload);
     if (isEditAddress) {
       apiServices
         .patch(ADDRESSES_EDIT(formFields?.id), tempPayload)

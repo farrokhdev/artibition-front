@@ -33,7 +33,7 @@ function Payment() {
   const getData = (id) => {
     try {
       apiServices
-        .get(ORDER(id))
+        .get(ORDER(id), "")
         .then((res) => {
           if (res?.data?.code === 200) {
             setOrder(res?.data?.data);
@@ -58,18 +58,6 @@ function Payment() {
       getData(id);
     }
   }, []);
-
-  // const customDot = (dot, { status, index }) => (
-  //     <Popover
-  //         content={
-  //             <span>
-  //                 مرحله {index} وضعیت: {status}
-  //             </span>
-  //         }
-  //     >
-  //         {dot}
-  //     </Popover>
-  // );
 
   const steps = [
     {

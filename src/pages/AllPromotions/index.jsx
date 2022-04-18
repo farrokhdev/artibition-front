@@ -20,25 +20,51 @@ const AllPromotions = () => {
   });
   const [selectedOption, setSelectedOption] = useState("popularity");
   const [artworks, setArtworks] = useState();
+  const [paginationConfig, setPaginationConfig] = useState();
+  const [selectedPage, setSelectedPage] = useState();
+
   const handleBannerSearchInputChanged = (text) => setSearch(text);
   const handleBannerSearchClick = () =>
     setParams((state) => ({ ...state, search: search }));
   const [selectedDates, setSelectedDates] = useState([
     new DateObject({ calendar: persian, locale: persian_fa }),
   ]);
-
+  const createPagination = () => {
+    var elements = [];
+    for (let i = 1; i <= paginationConfig?.last_page; i++) {
+      elements.push(
+        <li
+          className={`${
+            i === paginationConfig?.current_page_no ? "active" : ""
+          } `}
+        >
+          <a onClick={() => setSelectedPage(i)}>{i}</a>
+        </li>
+      );
+    }
+    return elements;
+  };
   useEffect(() => {
-    const date = selectedDates.map((item) =>
-      item.convert(gregorian, gregorian_en).format("YYYY-MM-DD")
-    );
-    const filterDate = queryString.stringify(
-      {
-        active_promotion_product: [...date],
-      },
-      { arrayFormat: "comma", skipNull: true, skipEmptyString: true }
-    );
-    getData(filterDate);
-  }, [selectedDates]);
+    const filter = [
+      "page_size=12",
+      queryString.stringify({
+        page: selectedPage,
+      }),
+    ];
+    if (selectedDates?.length > 0) {
+      const date = selectedDates.map((item) =>
+        item.convert(gregorian, gregorian_en).format("YYYY-MM-DD")
+      );
+      const filterDate = queryString.stringify(
+        {
+          active_promotion_product: [...date],
+        },
+        { arrayFormat: "comma", skipNull: true, skipEmptyString: true }
+      );
+      filter.push(filterDate);
+    }
+    getData(filter.join("&"));
+  }, [selectedDates, selectedPage]);
   const getData = async (filter = "") => {
     //! filter is passed with queryString format
     apiServices
@@ -46,6 +72,10 @@ const AllPromotions = () => {
       .then((res) => {
         if (res.data) {
           setArtworks(res.data.data.results);
+          setPaginationConfig({
+            current_page_no: res.data.data.current_page_no,
+            last_page: res.data.data.last_page,
+          });
         }
       })
       .catch((err) => {
@@ -140,7 +170,8 @@ const AllPromotions = () => {
                 </div>
               </div>
               <div className="row-pagination">
-                <ul className="pagination">
+                <ul className="pagination">{createPagination()}</ul>
+                {/* <ul className="pagination">
                   <li>
                     <a href="#">1</a>
                   </li>
@@ -156,7 +187,7 @@ const AllPromotions = () => {
                   <li>
                     <a href="#">5</a>
                   </li>
-                </ul>
+                </ul> */}
               </div>
             </div>
           </div>

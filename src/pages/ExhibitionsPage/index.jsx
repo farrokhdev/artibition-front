@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   ExhibitionsBanner,
   ExhibitionsList,
@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 
 const ExhibitionsPage = () => {
   const { t, i18n } = useTranslation();
-
+  const [dateFilter, setDateFilter] = useState([]);
   return (
     <>
       <div className="container mx-auto px-0 w-100">
@@ -18,8 +18,14 @@ const ExhibitionsPage = () => {
         <Menu />
       </div>
       <div className={`${i18n.language === "fa-IR" ? "fa-page" : "en-page"} `}>
-        <ExhibitionsBanner />
-        <ExhibitionsList />
+        <ExhibitionsBanner
+          dateFilter={dateFilter}
+          setDateFilter={setDateFilter}
+        />
+        <ExhibitionsList
+          dateFilter={dateFilter}
+          setDateFilter={setDateFilter}
+        />
       </div>
       <Footer />
     </>
