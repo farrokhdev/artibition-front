@@ -134,3 +134,4 @@ export const SINGLE_EXHIBITION = (id) => `/exhibition/${id}`;
 export const ARTIST_RESUME = (id) => `/artist/${id}/resume/`;
 export const CORE_EXCHANGE = "/core/exchange/";
 export const PROMOTIONS_ALL_PRODUCTS = "/events/promotions/all_products/";
+export const TRANSLATE = "/core/translate/";

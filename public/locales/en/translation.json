@@ -878,6 +878,7 @@
     "step3": "Upload 3 artworks",
     "step4": "Artwork info",
     "step5": "Purchase info",
+    "please-fill-out-this-fiels": "Please fill out this field",
     "upload": {
       "title": "Upload photo",
       "text": "Select one or more pictures and drag them here",
