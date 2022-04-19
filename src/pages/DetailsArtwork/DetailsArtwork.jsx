@@ -63,8 +63,10 @@ import { DEFAULT_URL_IMAGE } from "../../utils/defaultImage";
 import ArthibitionProperties from "../../components/ArthibitionProperies/ArthibitionProperties";
 import RoomViewImg from "../../assets/img/artworks/room-view.jpg";
 import ImageGallery from "react-image-gallery";
+import { isNil } from "lodash";
 import Suggestions from "../Home.jsx/Suggestions";
 import RecentlyNews from "../Home.jsx/RecentlyVeiws";
+
 
 function DetailsArtwork() {
   let navigate = useNavigate();
@@ -82,6 +84,7 @@ function DetailsArtwork() {
   var query = useQuery();
   id = query.get("id");
   artist_id = query.get("artist_id");
+
   const dispatch = useDispatch();
   const [visibleEditOfferModal, setVisibleEditOfferModal] = useState(false);
   const [visibleSimilarArtworksModal, setVisibleSimilarArtworksModal] =
@@ -101,7 +104,7 @@ function DetailsArtwork() {
     page: 1,
   });
   const [artistParams, setArtistParams] = useState({
-    artist_id: artist_id,
+    ...(artist_id !== "undefined" && { artist_id: artist_id }),
     status: "active",
     search: "",
     page: 1,
@@ -152,6 +155,7 @@ function DetailsArtwork() {
     getProductDetail();
   };
   const getArtistProduct = () => {
+   
     apiServices
       .get(ARTIST_PRODUCTS, QueryString.stringify(artistParams))
       .then((res) => {
@@ -184,7 +188,6 @@ function DetailsArtwork() {
     }
   }, [params, toggle]);
 
-  console.log("detail", productDetail);
   const handleAddToCart = () => {
     //post productDetail.id and editionValue to a simple
     if (!Token()) {
@@ -280,7 +283,6 @@ function DetailsArtwork() {
     };
     images.push(details);
   });
-  console.log(images);
 
   return (
     <>
@@ -343,7 +345,6 @@ function DetailsArtwork() {
                         />
                       ) : (
                         <div className="artwork_bg">
-                          {console.log(productDetail)}
                           <img
                             className="artwork_bg_inside_img"
                             src={
@@ -437,15 +438,11 @@ function DetailsArtwork() {
                     <button
                       className="share-option"
                       onClick={() => {
-                        console.log(
-                          "pfpjkweifjewhu hewuh dfuiewhfiuhebbcieh fehwh8hewf iefdheiao f buwefnhcoiwehf i"
-                        );
                         setShowShare(true);
                       }}
                     >
                       <img src={share_icon} height="31" width="31" alt="" />
                     </button>
-                    {console.log("productDetail?.likes", productDetail)}
                     <div
                       className="like-option"
                       onClick={() =>
@@ -1018,7 +1015,6 @@ function DetailsArtwork() {
               style={{ overflow: "auto" }}
               className="d-flex owl-carousel dir"
             >
-              {/* {console.log("artistProduct",artistProduct)} */}
               {artistProduct?.results?.map((item, index) => (
                 <div className="cols mx-4 pb-3">
                   <div className="col-img">

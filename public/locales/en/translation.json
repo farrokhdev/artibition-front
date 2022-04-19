@@ -879,6 +879,8 @@
     "step3": "Upload 3 artworks",
     "step4": "Artwork info",
     "step5": "Purchase info",
+    "please-fill-out-this-field": "Please fill out this field",
+    "please-select-category": "Please select category",
     "upload": {
       "title": "Upload photo",
       "text": "Select one or more pictures and drag them here",
@@ -1060,7 +1062,8 @@
     "placeholder_en": "Enter details",
     "link": "Link",
     "btn_create_content": "Create content",
-    "btn_cancel": "Cancel"
+    "btn_cancel": "Cancel",
+    "please-fill-out-this-field": "Please fill out this field"
   },
   "gallery-panel-edit-gallery-info": {
     "add-gallery": "add gallery",
@@ -1111,7 +1114,11 @@
     "placeholder_en": "Enter details",
     "link": "Link",
     "btn_create_content": "Create content",
-    "btn_cancel": "Cancel"
+    "btn_cancel": "Cancel",
+    "please-fill-out-this-field": "Please fill out this field",
+    "successfully_sent": "Your information was successfully registered",
+    "required-logo-image": "Please upload a poster image",
+    "required-cover-image": "Please upload a cover image"
   },
   "gallery-panel-create-artist-artwork": {
     "title": "Upload artist's artworks",
@@ -1435,7 +1442,11 @@
         "enter_recipient_information": "Enter recipient information",
         "enter_the_recipient_name": "Enter the recipient name",
         "enter_the_mobile_number": "Enter the mobile number",
-        "enter_the_national_code": "Enter the national code"
+        "enter_the_national_code": "Enter the national code",
+        "enter_the_state": "Enter the state",
+        "enter_the_city": "Enter the city",
+        "enter_the_address": "Enter the address",
+        "enter_the_postal_code": "Enter the postal_code"
       }
     },
     "pay_step": {

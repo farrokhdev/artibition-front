@@ -374,7 +374,7 @@ const ArtworksList = (props) => {
                   return (
                     <ArtworkCard
                       product={product}
-                      discountPrice={discountPrice}
+                      // discountPrice={discountPrice}
                       callBack={getProductList}
                     />
                   );

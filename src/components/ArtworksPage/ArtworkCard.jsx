@@ -5,9 +5,16 @@ import { follow } from "../../utils/utils";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-const ArtworkCard = ({ product, discountPrice, callBack }) => {
+const ArtworkCard = ({ product, callBack = () => console.log("") }) => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
+  const discountPrice = (price, discount, type) => {
+    if (type === "percentage") {
+      return numDiscriminant(((100 - discount) * price) / 100);
+    } else {
+      return numDiscriminant(price - discount);
+    }
+  };
   return (
     <>
       <div className="col-sm-4 ">
@@ -18,7 +25,9 @@ const ArtworkCard = ({ product, discountPrice, callBack }) => {
         >
           <div className="col-img">
             {product?.is_special && (
-              <div class="tags tags-spacial">{t("card_artwork.spacial")}</div>
+              <div className="tags tags-spacial">
+                {t("card_artwork.spacial")}
+              </div>
             )}
 {
   product?.discount?.value && (
@@ -97,7 +106,7 @@ const ArtworkCard = ({ product, discountPrice, callBack }) => {
           </div>
           <div className="col-body ">
             {product?.is_sold ? (
-              <div class="finished-tag">{t("card_artwork.sold")}</div>
+              <div className="finished-tag">{t("card_artwork.sold")}</div>
             ) : (
               ""
             )}

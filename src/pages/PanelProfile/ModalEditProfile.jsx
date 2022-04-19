@@ -107,7 +107,14 @@ function ModalEditProfile(props) {
                   className="public-group text-right"
                   label={t("content-panel-profile.personal-info.last_name")}
                   name={"last_name"}
-                  rules={[{ required: true, message: t("Missing last name") }]}
+                  rules={[
+                    {
+                      required: true,
+                      message: t(
+                        "content-panel-profile.personal-info.invalid-lastname"
+                      ),
+                    },
+                  ]}
                 >
                   <Input className="form-control input-public " />
                 </Form.Item>
@@ -118,6 +125,14 @@ function ModalEditProfile(props) {
                   className="public-group text-right"
                   label={t("content-panel-profile.personal-info.first_name")}
                   name={"first_name"}
+                  rules={[
+                    {
+                      required: true,
+                      message: t(
+                        "content-panel-profile.personal-info.invalid-firstname"
+                      ),
+                    },
+                  ]}
                 >
                   <Input className="form-control input-public " />
                 </Form.Item>
@@ -131,6 +146,12 @@ function ModalEditProfile(props) {
                   rules={[
                     {
                       pattern: /^(?!(\d)\1{9})\d{10}$/,
+                      message: t(
+                        "content-panel-profile.personal-info.invalid-national"
+                      ),
+                    },
+                    {
+                      required: true,
                       message: t(
                         "content-panel-profile.personal-info.invalid-national"
                       ),
