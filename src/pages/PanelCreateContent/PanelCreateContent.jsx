@@ -5,6 +5,7 @@ import BasketFooterPanel from '../../components/BasketFooterPanel/BasketFooterPa
 import classnames from 'classnames';
 import { GetLanguage } from '../../utils/utils';
 import OneUpload from '../../components/OneUpload/OneUpload';
+import MultiUpload from '../../components/MultiUpload/MultiUpload';
 import cloude_upload_icon from '../../assets/img/cloud-upload.svg';
 import { Form, Input, Select, Checkbox, message, Radio } from 'antd';
 import apiServices from '../../utils/api.services';
@@ -12,6 +13,7 @@ import { ARTIST_CONTENT_DETAILS, ARTIST_ME, CORE_CONTENT, CORE_CONTENT_ID, GALLE
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import TextArea from 'antd/es/input/TextArea';
 import { useSelector } from 'react-redux';
+
 
 
 function PanelCreateContent() {
@@ -22,7 +24,7 @@ function PanelCreateContent() {
     const [poster, setPoster] = useState([])
     const [imageOrVideo, setImageOrVideo] = useState()
     const [artistId, setArtistId] = useState()
-    
+
     const { editContentMode } = useSelector((state) => state.exhibitionReducer)
     const [isSelected, setIsSelected] = useState(false);
     const [isSelectedVideo, setIsSelectedVideo] = useState(false);
@@ -51,7 +53,6 @@ function PanelCreateContent() {
     }
 
     const onFinish = (values) => {
-        console.log(values);
         if (editContentMode) {
             let payload = {
                 "translations": {
@@ -72,7 +73,6 @@ function PanelCreateContent() {
                 "content_file": uploadList,
                 "poster": poster[0]
             }
-            console.log(payload);
 
             apiServices.patch(CORE_CONTENT_ID(searchParams.get("content_id")), payload)
                 .then(res => {
@@ -93,7 +93,7 @@ function PanelCreateContent() {
                         })
                     }
                 })
-        }else{
+        } else {
             let payload = {
                 "translations": {
                     "en": {
@@ -113,7 +113,6 @@ function PanelCreateContent() {
                 "content_file": uploadList,
                 "poster": poster[0]
             }
-            console.log(payload);
 
             apiServices.post(CORE_CONTENT, payload)
                 .then(res => {
@@ -151,51 +150,51 @@ function PanelCreateContent() {
 
     useEffect(() => {
         // const getContentDetails = () => {
-            if (searchParams.get("content_id")) {
-                if (getUserRole() === "gallery") {
-                    apiServices.get(GALLERY_CONTENT_DETAILS(gallery_id, searchParams.get("content_id")), "")
-                        .then(res => {
-                            if (res.data) {
-                                const value = res.data.data;
-                                form.setFieldsValue({
-                                    title_en: value?.translations?.en?.title,
-                                    description_en: value?.translations?.en?.description,
-                                    title: value?.translations?.fa?.title,
-                                    description: value?.translations?.fa?.description,
-                                    link: value?.content_video_url
-                                })
-                                setImageOrVideo(value.type)
-                            }
-                        })
-                        .catch(err => {
-                            console.log(err);
-                        })
-                }
-                else if (getUserRole() === "artist") {
-                    apiServices.get(ARTIST_CONTENT_DETAILS(searchParams.get("content_id")), "")
-                        .then(res => {
-                            if (res.data) {
-                                console.log(res.data);
-                                const value = res.data.data;
-                                form.setFieldsValue({
-                                    title_en: value?.translations?.en?.title,
-                                    description_en: value?.translations?.en?.description,
-                                    title: value?.translations?.fa?.title,
-                                    description: value?.translations?.fa?.description,
-                                    link: value?.content_video_url
-                                })
-                                setImageOrVideo(value.type)
-                            }
-                        })
-                        .catch(err => {
-                            console.log(err);
-                        })
-                }
+        if (searchParams.get("content_id")) {
+            if (getUserRole() === "gallery") {
+                apiServices.get(GALLERY_CONTENT_DETAILS(gallery_id, searchParams.get("content_id")), "")
+                    .then(res => {
+                        if (res.data) {
+                            const value = res.data.data;
+                            form.setFieldsValue({
+                                title_en: value?.translations?.en?.title,
+                                description_en: value?.translations?.en?.description,
+                                title: value?.translations?.fa?.title,
+                                description: value?.translations?.fa?.description,
+                                link: value?.content_video_url
+                            })
+                            setImageOrVideo(value.type)
+                        }
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
             }
+            else if (getUserRole() === "artist") {
+                apiServices.get(ARTIST_CONTENT_DETAILS(searchParams.get("content_id")), "")
+                    .then(res => {
+                        if (res.data) {
+
+                            const value = res.data.data;
+                            form.setFieldsValue({
+                                title_en: value?.translations?.en?.title,
+                                description_en: value?.translations?.en?.description,
+                                title: value?.translations?.fa?.title,
+                                description: value?.translations?.fa?.description,
+                                link: value?.content_video_url
+                            })
+                            setImageOrVideo(value.type)
+                        }
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+            }
+        }
         // }
-        
+
     }, []);
-    
+
 
     // useEffect(() => {
     //     getContentDetails()
@@ -211,6 +210,68 @@ function PanelCreateContent() {
                 onFinish={onFinish}
             >
                 <div className="panel-style container mx-auto px-0 w-100 bg-white ">
+                    <div className="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 create-exhibition">
+                        <h3 className="info-title mrgt64 require text-dir">{t("content-panel-create-content.upload.title")}</h3>
+                        <ul className="content-type ">
+                            <div className="d-block d-md-flex text-dir ">
+                                {/* <div className="col  px-0">
+                                    <div className="d-flex box-dir-reverse">
+                                        <li>
+                                            <label className="container-radio text-dir">{t("content-panel-create-content.upload_poster.image")}
+                                            </label>
+                                            <Form.Item valuePropName="checked" noStyle>
+                                                <Checkbox type="checkbox"
+                                                    checked={isSelected}
+                                                    onChange={e => setIsSelected(e.target.checked)}
+                                                ></Checkbox>
+                                            </Form.Item>
+                                        </li>
+                                    </div>
+                                </div> */}
+                                <div className="col  px-0">
+                                    <Radio.Group onChange={(e) => { setImageOrVideo(e.target.value) }} value={imageOrVideo}>
+                                        <Radio value={"video"} style={{ margin: "0 30px" }}>{t("content-panel-create-content.upload_poster.video")}</Radio>
+                                        <Radio value={"image"} style={{ margin: "0 30px" }}>{t("content-panel-create-content.upload_poster.image")}</Radio>
+                                    </Radio.Group>
+                                </div>
+
+                            </div>
+                        </ul>
+                        {imageOrVideo === "image" ?
+
+                            <MultiUpload
+                                uploadList={uploadList}
+                                setUploadList={setUploadList}
+                            />
+                            : ""}
+                        {imageOrVideo === "video" ?
+                            <div className="col-sm-12">
+                                <div className="public-group en">
+                                    <Form.Item
+                                        className="w-100"
+                                        name="link"
+                                        rules={[
+                                            {
+                                                required: false,
+                                                message: 'required',
+                                            }
+                                        ]}>
+
+                                        <Input
+                                            type="text"
+                                            id="info-215"
+                                            className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
+                                            placeholder={t("content-panel-create-content.link")}
+                                        />
+                                    </Form.Item>
+                                </div>
+                            </div>
+                            : ""
+                        }
+
+                        <br />
+
+                    </div>
 
 
                     <h2 className="default-title aligncenter mt-3">{t("content-panel-create-content.title")}</h2>
@@ -328,65 +389,7 @@ function PanelCreateContent() {
                             </div>
                         </div>
 
-                        <h3 className="info-title mrgt64 require text-dir">{t("content-panel-create-content.upload.title")}</h3>
-                        <ul className="content-type ">
-                            <div className="d-block d-md-flex text-dir ">
-                                {/* <div className="col  px-0">
-                                    <div className="d-flex box-dir-reverse">
-                                        <li>
-                                            <label className="container-radio text-dir">{t("content-panel-create-content.upload_poster.image")}
-                                            </label>
-                                            <Form.Item valuePropName="checked" noStyle>
-                                                <Checkbox type="checkbox"
-                                                    checked={isSelected}
-                                                    onChange={e => setIsSelected(e.target.checked)}
-                                                ></Checkbox>
-                                            </Form.Item>
-                                        </li>
-                                    </div>
-                                </div> */}
-                                <div className="col  px-0">
-                                    <Radio.Group onChange={(e) => { setImageOrVideo(e.target.value) }} value={imageOrVideo}>
-                                        <Radio value={"video"} style={{ margin: "0 30px" }}>{t("content-panel-create-content.upload_poster.video")}</Radio>
-                                        <Radio value={"image"} style={{ margin: "0 30px" }}>{t("content-panel-create-content.upload_poster.image")}</Radio>
-                                    </Radio.Group>
-                                </div>
 
-                            </div>
-                        </ul>
-                        {imageOrVideo === "image" ?
-
-                            <OneUpload
-                                uploadList={uploadList}
-                                setUploadList={setUploadList}
-                            />
-                            : ""}
-                        {imageOrVideo === "video" ?
-                            <div className="col-sm-12">
-                                <div className="public-group en">
-                                    <Form.Item
-                                        className="w-100"
-                                        name="link"
-                                        rules={[
-                                            {
-                                                required: false,
-                                                message: 'required',
-                                            }
-                                        ]}>
-
-                                        <Input
-                                            type="text"
-                                            id="info-215"
-                                            className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                            placeholder={t("content-panel-create-content.link")}
-                                        />
-                                    </Form.Item>
-                                </div>
-                            </div>
-                            : ""
-                        }
-
-                        <br />
                         <div className="adv-btn">
                             {/* <button type="button" className="btn-default pull-dir graycolor">{t("content-panel-create-content.btn_cancel")}</button> */}
                             <button htmlType="submit" className="btn-black pull-dir">{t("content-panel-create-content.btn_create_content")}</button>

@@ -63,6 +63,14 @@ function SellInformation({ prev, next }) {
 
 
     const onFinish = (values) => {
+        if (values?.base_toman_price <= values?.percent_discount_rial) {
+            message.error({
+                content: 'مقدار تخفیف از قیمت فعلی نمی تواند بزرگتر باشد.', style: {
+                    marginTop: '10vh',
+                },
+            })
+            return
+        }
         let payload = {
             ...lastform,
             ...values,
@@ -99,7 +107,6 @@ function SellInformation({ prev, next }) {
                                 },
                             })
                             setTimeout(() => {
-                                console.log(Location);
                                 navigate(Location?.state?.from)
                             }, 500);
                         } else {
@@ -126,7 +133,6 @@ function SellInformation({ prev, next }) {
                             })
                             setTimeout(() => {
                                 // navigate(searchParams.get("back"))
-                                console.log(Location);
                                 navigate(Location?.state?.from)
                             }, 500);
                         } else {
@@ -159,7 +165,6 @@ function SellInformation({ prev, next }) {
                             // navigate(next())
                         }, 500);
                     } else {
-                        console.log(res.response)
                         message.error({
                             content: 'خطا در ثبت اطلاعات', style: {
                                 marginTop: '10vh'
@@ -172,7 +177,6 @@ function SellInformation({ prev, next }) {
                 .catch(err => {
                     console.log(err);
                 })
-            console.log('Success:', values);
         }
     };
 
@@ -293,7 +297,6 @@ function SellInformation({ prev, next }) {
                                                             message: 'required',
                                                         }
                                                     ]}>
-                                                    {console.log(base_dollar_price, "exchangePrice")}
 
                                                     <Input
                                                         type="text"

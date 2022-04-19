@@ -255,12 +255,13 @@ function GalleryContentPage() {
                                             </WhatsappShareButton>
                                         </ul>
                                         <div className="clearfix"></div>
-                                        <span className="bolder-title pull-dir" style={{ marginTop: "11px" }}>{t("artwork.tags.title")}:</span>
+                                        {/* <span className="bolder-title pull-dir" style={{ marginTop: "11px" }}>{t("artwork.tags.title")}:</span>
+
                                         <ul className="content-tags shares" style={{ marginTop: "15px" }}>
                                             <li><a href="#">{t("artwork.artibition")}</a></li>
                                             <li><a href="#">{t("gallery-panel-dashboard.counter_status.exhibition")}</a></li>
                                             <li><a href="#">{t("filter-header.category.painting")}</a></li>
-                                        </ul>
+                                        </ul> */}
                                     </div>
                                 </div>
                                 <div className="col-sm-4">

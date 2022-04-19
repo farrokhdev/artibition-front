@@ -54,10 +54,12 @@ import { VerifyEmail } from "./pages/Email/VerifyEmail";
 import { SuggestedArtworkToUser } from "./pages/Email/SuggestedArtworkToUser";
 import ExhibitionsPage from "./pages/ExhibitionsPage";
 import AllPromotions from "./pages/AllPromotions";
+import { useSelector } from "react-redux";
 
 ReactGA.initialize("UA-220199370-1");
 
 function App(props) {
+  const { is_logged_in } = useSelector((state) => state.authReducer);
   const { t, i18n } = useTranslation();
   let location = useLocation();
 
@@ -82,7 +84,7 @@ function App(props) {
           <Route path="/" element={<Home />}>
             <Route index path="home" element={<Home />} />
           </Route>
-          {/* Email routes  */}
+
           <Route path="/email">
             <Route index path="email-success" element={<EmailSuccess />} />
             <Route
@@ -139,10 +141,11 @@ function App(props) {
               element={<SuggestedArtworkToUser />}
             />
           </Route>
-          {/* Email routes  */}
-        </Routes>
 
-        <Routes>
+
+
+
+
           <Route path="site" animate={true}>
             <Route path="artworks" element={<ArtworksPage />} />
             <Route path="exhibitionDetail" element={<ExhibitionDetail />} />
@@ -186,7 +189,12 @@ function App(props) {
             <Route path="*" element={<Page404 />} />
           </Route>
         </Routes>
-        {isLogin() ? (
+
+
+
+
+
+        {is_logged_in ? (
           <RouterConfig />
         ) : (
           <Routes>
@@ -195,7 +203,7 @@ function App(props) {
               <Route path="login" element={<Login />} />
               <Route path="confirm-mobile" element={<ConfirmMobile />} />
               <Route path="recovery-password" element={<SetPassword />} />
-              <Route path="*" element={<Navigate to="/auth/login" replace />} />
+            <Route path="*" element={<Navigate to="/auth/login" />} />
             </Route>
           </Routes>
         )}

@@ -48,7 +48,7 @@ import GalleryPanelAddArtwork from "../pages/GalleryPanelAddArtwork/GalleryPanel
 import ViewArtwork from "../pages/ViewArtwork/ViewArtwork";
 
 const RouterConfig = (props) => {
-  const { roles } = useSelector((state) => state.authReducer);
+  const { roles, is_logged_in } = useSelector((state) => state.authReducer);
   const getUserRole = () => {
     let userRole = "user";
     if (typeof roles === "string") {

@@ -36,7 +36,6 @@ function GalleryPanelEditGalleryInfo() {
     (state) => state.galleryReducer
   );
 
-  // console.log(editGalleryMode);
 
   const Language = GetLanguage();
   const dispatch = useDispatch();
@@ -77,7 +76,6 @@ function GalleryPanelEditGalleryInfo() {
   }, []);
 
   const onFinish = (values) => {
-    console.log(values);
     let payload = {
       translations: {
         en: {
@@ -115,7 +113,7 @@ function GalleryPanelEditGalleryInfo() {
               country: Language === "fa-IR" ? values?.country : null,
             },
           },
-          // point,
+          point,
         },
       ],
       phone: values?.phone,
@@ -133,7 +131,6 @@ function GalleryPanelEditGalleryInfo() {
         .patch(GALLERY(gallery_id), payload)
         .then((res) => {
           if (res.data) {
-            console.log(res);
             dispatch(editGalleryModeFunc(false));
             // setTimeout(() => {
             message.success({
@@ -152,7 +149,6 @@ function GalleryPanelEditGalleryInfo() {
     } else {
       apiServices.post(GALLERY_LIST, payload).then((res) => {
         if (res.data) {
-          console.log(res);
           // setTimeout(() => {
           message.success({
             content: "اطلاعات شما با موفقیت ثبت شد",

@@ -32,6 +32,11 @@ function ExtraDescriptionStep({ prev, next }) {
             "products_id": chooseProducts
         }
 
+        if (payload?.category_id) {
+            payload["category_id"] = [payload?.category_id]
+        }
+
+
         // apiServices.post(ADVISOR, payload)
         //     .then(res => {
         //         if (res.data) {
@@ -98,7 +103,7 @@ function ExtraDescriptionStep({ prev, next }) {
                         <div className="mrgt64 col-md-6 mx-auto">
                             <div className="form-group">
                                 <Form.Item name="describtion">
-                                    <TextArea required={GetLanguage() === 'fa-IR' ? true : false} rows={"8"} className="form-control text-align-dir" rows="8" placeholder={t("advisory.extra_description_step.description_placeholder")} />
+                                    <TextArea required={GetLanguage() === 'fa-IR' ? true : false} rows={"8"} className="form-control text-align-dir" placeholder={t("advisory.extra_description_step.description_placeholder")} />
                                 </Form.Item>
                                 {/* <textarea className="form-control text-align-dir" rows="8" placeholder={t("advisory.extra_description_step.description_placeholder")}></textarea> */}
                             </div>
@@ -108,7 +113,7 @@ function ExtraDescriptionStep({ prev, next }) {
                 <div className="adv-btn" style={{ backgroundColor: "white" }}>
                     <div className="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 d-flex justify-content-space-between">
                         <button type="button" className="btn-prev dir-rtl" onClick={() => { prev() }}>{t("advisory.extra_description_step.btn_prev")}</button>
-                        <button htmlType="submit"  className="btn-next dir-rtl">{t("advisory.extra_description_step.btn_submit")}</button>
+                        <button htmlType="submit" className="btn-next dir-rtl">{t("advisory.extra_description_step.btn_submit")}</button>
                     </div>
                 </div>
             </Form>

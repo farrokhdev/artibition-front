@@ -7,22 +7,29 @@ function GoogleMap({ lat, long }) {
   const [zoom, setZoom] = useState(11)
 
 
+
   return (
     // Important! Always set the container height explicitly
     <div style={{ height: '100vh', width: '100%' }}>
 
       <Map
-        center={(point?.latitude && point?.longitude) ?
-          [point?.latitude, point?.longitude] :
-          [lat, long]}
 
+        doubleClickZoom={false}
+        attributionControl={false}
+        center={(point?.latitude && point?.longitude) ?
+          [point?.longitude, point?.latitude]
+          :
+          [long, lat]}
         zoom={zoom}
-        onzoomend={e => setZoom(e.target._zoom)}
+        onzoomend={e => setZoom(e?.target?._zoom)}
         style={{ width: "100%", height: "500px" }}
 
-        onclick={e => {
-          setPoint({ latitude: e.latlng.lat, longitude: e.latlng.lng })
-        }}
+      // dragging={false}
+      // scrollWheelZoom={false}
+      // zoomControl={false}
+      // onclick={e => {
+      //   setPoint({ latitude: e?.latlng?.lat, longitude: e?.latlng?.lng })
+      // }}
 
       >
         <TileLayer
@@ -30,9 +37,11 @@ function GoogleMap({ lat, long }) {
         />
 
         <Marker
+          scrollWheelZoom={false}
           position={(point?.latitude && point?.longitude) ?
-            [point?.latitude, point?.longitude] :
-            [lat, long]}
+            [point?.longitude, point?.latitude] :
+            [long, lat]}
+
         >
         </Marker>
 

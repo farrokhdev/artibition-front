@@ -32,6 +32,10 @@ function WelcomeToAdvistoryStep({ prev, next }) {
     ]
 
     const onFinish = (values) => {
+
+        console.log("value" , values)
+
+
         let payload = {
             "is_investment": values?.is_investment,
             "investment_type": values?.investment_type,
@@ -39,11 +43,10 @@ function WelcomeToAdvistoryStep({ prev, next }) {
             "investment_range": values?.investment_range
         }
         if (values?.category_id) {
-            // payload["category_id"] = 2
-            payload["category_id"] = [values?.category_id]
+            payload["category_id"] = values?.category_id
         }
         dispach(EditingAdvistoryForm(payload))
-        console.log("payload", payload);
+
     }
 
 
@@ -139,11 +142,12 @@ function WelcomeToAdvistoryStep({ prev, next }) {
                                             className={classnames("", {
                                                 "ant-select-rtl": i18next.language === 'fa-IR',
                                             })}
-                                            style={{ border: "1px solid #ccc" }} id="adv1"
+                                            style={{ border: "1px solid #ccc" }}
+                                             id="adv1"
                                             placeholder={t("content-panel-add-artwork.art_info.artwork_field")}
                                             options={categorys}
                                             allowClear
-                                            id="info-203"
+                                            
                                         >
 
                                         </Select>
