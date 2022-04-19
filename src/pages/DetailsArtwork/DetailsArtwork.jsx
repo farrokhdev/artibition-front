@@ -40,6 +40,7 @@ import ArthibitionProperties from "../../components/ArthibitionProperies/Arthibi
 import Suggestions from "../Home.jsx/Suggestions";
 import RecentlyNews from "../Home.jsx/RecentlyVeiws";
 import ModalShare from "../../components/DetailArtwork/ModalShare";
+import { isNil } from "lodash";
 
 function DetailsArtwork() {
   let navigate = useNavigate();
@@ -589,9 +590,13 @@ function DetailsArtwork() {
                             {productDetail?.width}
                           </span>
                           <span> در </span>
-                          <span className="dimension-height persian-num">
-                            {productDetail?.height}
-                          </span>
+                          {isNil(productDetail?.height) ? (
+                            t("undefined")
+                          ) : (
+                            <span className="dimension-height persian-num">
+                              {productDetail?.height}
+                            </span>
+                          )}
                         </h3>
                       </div>
                       <div className="d-flex box-dir-reverse row-listdetail">
@@ -1034,7 +1039,13 @@ function DetailsArtwork() {
                       <span className="col-dimension-body">
                         <span className="dimension-width">{item.width}</span>
                         <span> در </span>
-                        <span className="dimension-height">{item.height}</span>
+                        {isNil(item?.height) ? (
+                          t("undefined")
+                        ) : (
+                          <span className="dimension-height">
+                            {item.height}
+                          </span>
+                        )}
                       </span>
                     </div>
                     <div className="col-price text-dir">

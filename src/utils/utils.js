@@ -11,6 +11,7 @@ import { message } from "antd";
 import { useTranslation } from "react-i18next";
 import momentJalaali from "moment-jalaali";
 import apiServices from "./api.services";
+import { isNil } from "lodash";
 export function Arraify(data) {
   if (!data) return [];
 
@@ -124,7 +125,7 @@ export const follow = ({ activity, content, object_id, callBack, action }) => {
       .delete(DELETE_FOLLOW(object_id), "")
       .then((res) => {
         if (res.status === 204) {
-          callBack();
+          !isNil(callBack) && callBack();
           message.success({
             content: "اثر با موفقیت حذف شد",
             style: {
@@ -146,7 +147,7 @@ export const follow = ({ activity, content, object_id, callBack, action }) => {
       .post(GALLERY_FOLLOW, payload)
       .then((res) => {
         if (res.data) {
-          callBack();
+          !isNil(callBack) && callBack();
           message.success({
             content: "درخواست شما با موفقیت ثبت شد",
             style: {
