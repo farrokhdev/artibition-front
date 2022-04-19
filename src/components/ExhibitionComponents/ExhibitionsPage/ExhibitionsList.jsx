@@ -6,7 +6,7 @@ import queryString from "query-string";
 import ExhibitionRemoveFilters from "./ExhibitionRemoveFilters";
 import ExhibitionCard from "./ExhibitionCard";
 import ExhibitionSidebar from "./ExhibitionSidebar";
-const ExhibitionsList = () => {
+const ExhibitionsList = ({ dateFilter, setDateFilter }) => {
   const { t, i18n } = useTranslation();
   const [exhibitions, setExhibitions] = useState();
   const [allExhibitions, setAllExhibitions] = useState([]);
@@ -97,21 +97,39 @@ const ExhibitionsList = () => {
         queryString.stringify({
           page: selectedPage,
         }),
-        queryString.stringify(
-          {
-            gallery_id: [...selectedGalleries],
-          },
-          { arrayFormat: "comma", skipNull: true, skipEmptyString: true }
-        ),
-        queryString.stringify(
-          {
-            type: [...selectedExhibitionsType],
-          },
-          { arrayFormat: "comma", skipNull: true, skipEmptyString: true }
-        ),
-      ].join("&");
+      ];
+      if (selectedGalleries?.length > 0) {
+        filter.push(
+          queryString.stringify(
+            {
+              gallery_id: [...selectedGalleries],
+            },
+            { arrayFormat: "comma", skipNull: true, skipEmptyString: true }
+          )
+        );
+      }
+      if (selectedExhibitionsType?.length > 0) {
+        filter.push(
+          queryString.stringify(
+            {
+              type: [...selectedExhibitionsType],
+            },
+            { arrayFormat: "comma", skipNull: true, skipEmptyString: true }
+          )
+        );
+      }
+      if (dateFilter?.length > 0) {
+        filter.push(
+          queryString.stringify(
+            {
+              active_exhibitions: [...dateFilter],
+            },
+            { arrayFormat: "comma", skipNull: true, skipEmptyString: true }
+          )
+        );
+      }
 
-      getExhibitionsForCards(filter);
+      getExhibitionsForCards(filter.join("&"));
     };
     filterExhibitionCards();
   }, [
@@ -119,6 +137,7 @@ const ExhibitionsList = () => {
     selectedExhibitions,
     selectedExhibitionsType,
     selectedPage,
+    dateFilter,
   ]);
   useEffect(() => {
     getAllExhibitions();

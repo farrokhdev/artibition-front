@@ -15,6 +15,7 @@ import { ARTIST_PRODUCTS } from "../../utils";
 import queryString from "query-string";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import { numDiscriminant } from "../../utils/discriminant";
 
 function ArtworksTab({ artistId, translations }) {
   const { t, i18n } = useTranslation();
@@ -74,7 +75,10 @@ function ArtworksTab({ artistId, translations }) {
         </div>
       </div>
       <div className="content-body">
-        <div className="d-flex">
+        <div
+          className="d-flex d-flex owl-carousel dir"
+          style={{ overflow: "auto" }}
+        >
           {artistArts?.results?.map((item, index) => (
             <>
               <div className="col-6 col-md-4 col-lg-3">
@@ -130,23 +134,78 @@ function ArtworksTab({ artistId, translations }) {
                         <span className="col-dimension-body mx-2">
                           <div className="d-flex">
                             <span className="dimension-width">
-                              {item?.width || "نامشخص"}
+                              {item?.width ? item?.width : "نامشخص"}
                             </span>
                             <span className="mx-2">
                               {t("card_artwork.size.in")}
                             </span>
                             <span className="dimension-height ">
-                              {item?.height || "نامشخص"}
+                              {item?.height ? item?.height : "نامشخص"}
                             </span>
                           </div>
                         </span>
                       </div>
                     </div>
                     <div className="col-price text-dir">
-                      <div className="d-flex box-dir-reverse">
-                        <span className="col-price-num">22.000.000</span>
-                        <span className="col-price-unit">{t("toman")}</span>
-                      </div>
+                      {i18n.language === "fa-IR" ? (
+                        <div className="d-flex box-dir-reverse">
+                          {item?.toman_price ? (
+                            <>
+                              <span className="col-price-num">
+                                {numDiscriminant(item?.toman_price)}
+                              </span>
+                              <span className="col-price-unit">
+                                {t("toman")}
+                              </span>
+                              <span className="persian-num col-price-off">
+                                {item?.discount?.value &&
+                                  (i18n.language === "fa-IR"
+                                    ? item?.discount?.type === "percentage"
+                                      ? (Number(item?.toman_price) *
+                                          Math.floor(item?.discount?.value)) /
+                                          100 +
+                                        "تومان"
+                                      : item?.discount?.type === "toman"
+                                      ? numDiscriminant(
+                                          Math.floor(item?.discount?.value)
+                                        ) + "تومان"
+                                      : ""
+                                    : numDiscriminant(item.dollar_price))}
+                              </span>
+                            </>
+                          ) : (
+                            <span className="col-price-unit">
+                              این اثر قیمت ندارد
+                            </span>
+                          )}
+                        </div>
+                      ) : (
+                        <div className="d-flex box-dir-reverse">
+                          {item?.dollar_price ? (
+                            <>
+                              <span className="col-price-num">
+                                {numDiscriminant(item?.dollar_price)}
+                              </span>
+                              <span className="col-price-unit">{t("$")}</span>
+                              <span className="persian-num col-price-off">
+                                {i18n.language === "fa-IR"
+                                  ? item?.discount?.type === "percentage"
+                                    ? numDiscriminant(
+                                        (item.toman_price *
+                                          Math.floor(item?.discount?.type)) /
+                                          100
+                                      ) + "تومان"
+                                    : ""
+                                  : numDiscriminant(item.dollar_price)}
+                              </span>
+                            </>
+                          ) : (
+                            <span className="col-price-unit">
+                              this artwork has no price
+                            </span>
+                          )}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>

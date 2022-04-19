@@ -17,11 +17,6 @@ import { useSelector } from "react-redux";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import { useDispatch } from "react-redux";
 import { editGalleryModeFunc } from "../../redux/reducers/Gallery/gallery.actions";
-// import add_icon from '../../assets/img/add_pic.svg';
-// import logo_icon from '../../assets/img/logo-icon.png';
-// import edit_name from '../../assets/img/edit_name.svg';
-// import add_white from '../../assets/img/add-white@2x.png';
-// import delete_icon from '../../assets/img/delete.svg';
 
 function GalleryPanelEditGalleryInfo() {
   const [form] = Form.useForm();
@@ -35,7 +30,6 @@ function GalleryPanelEditGalleryInfo() {
   const { gallery_id, editGalleryMode } = useSelector(
     (state) => state.galleryReducer
   );
-
 
   const Language = GetLanguage();
   const dispatch = useDispatch();
@@ -76,6 +70,27 @@ function GalleryPanelEditGalleryInfo() {
   }, []);
 
   const onFinish = (values) => {
+    if (uploadListCover?.length < 1) {
+      // message.error();
+      message.error({
+        content: t("gallery-panel-edit-gallery-info.required-cover-image"),
+        className: "custom-class",
+        style: {
+          marginTop: "20vh",
+        },
+      });
+      return;
+    }
+    if (uploadListLogo?.length < 1) {
+      message.error({
+        content: t("gallery-panel-edit-gallery-info.required-logo-image"),
+        className: "custom-class",
+        style: {
+          marginTop: "20vh",
+        },
+      });
+      return;
+    }
     let payload = {
       translations: {
         en: {
@@ -132,7 +147,6 @@ function GalleryPanelEditGalleryInfo() {
         .then((res) => {
           if (res.data) {
             dispatch(editGalleryModeFunc(false));
-            // setTimeout(() => {
             message.success({
               content: "اطلاعات شما با موفقیت ویرایش شد",
               style: {
@@ -140,7 +154,6 @@ function GalleryPanelEditGalleryInfo() {
               },
             });
             navigate("/panel/profile");
-            // }, 500);
           }
         })
         .catch((err) => {
@@ -149,15 +162,13 @@ function GalleryPanelEditGalleryInfo() {
     } else {
       apiServices.post(GALLERY_LIST, payload).then((res) => {
         if (res.data) {
-          // setTimeout(() => {
           message.success({
-            content: "اطلاعات شما با موفقیت ثبت شد",
+            content: t("gallery-panel-edit-gallery-info.successfully_sent"),
             style: {
               marginTop: "110px",
             },
           });
           navigate("/panel/profile");
-          // }, 500);
         } else {
           message.error(res.response.data.message);
         }
@@ -178,25 +189,13 @@ function GalleryPanelEditGalleryInfo() {
                 uploadList={uploadListCover}
                 setUploadList={setUploadListCover}
               />
-              {/* <div class="btn-upload-artwork no-cursor">
-                                <label for="file-upload" class="btn-outline-blue addcover dir">
-                                    <img src={add_icon} width="20" height="18" alt="" class="" />
-                                    {t("gallery-panel-edit-gallery-info.add_cover_photo")}
-                                </label>
-                            </div> */}
-              {/* <input id="file-upload" type="file" /> */}
+              <h3 className="info-title mrgt64 require text-dir">
+                {t("gallery-panel-edit-gallery-info.upload_gallery_logo_photo")}
+              </h3>{" "}
               <CoverUploadLogo
                 uploadList={uploadListLogo}
                 setUploadList={setUploadListLogo}
               />
-
-              {/* <div class="add-logo">
-                                <img src={logo_icon} width="1079" height="1079" alt="" class="img-responsive" />
-                                <label for="file-upload1" class="btn-add-logo pull-dir">
-                                    <img src={edit_name} width="32" height="32" alt="" class="" />
-                                </label>
-                            </div>
-                            <input id="file-upload1" type="file" /> */}
               <span class="require graycolor dir">
                 {t("gallery-panel-edit-gallery-info.select_logo")}
               </span>
@@ -220,7 +219,9 @@ function GalleryPanelEditGalleryInfo() {
                       rules={[
                         {
                           required: true,
-                          message: "required",
+                          message: t(
+                            "gallery-panel-edit-gallery-info.please-fill-out-this-field"
+                          ),
                         },
                       ]}
                     >
@@ -233,9 +234,6 @@ function GalleryPanelEditGalleryInfo() {
                         )}
                       />
                     </Form.Item>
-                    {/* <input className="form-control input-public " required
-                                            placeholder="" value="" />
-                                        <label className="lable-public">{t("gallery-panel-edit-gallery-info.gallery_name_fa")}</label> */}
                   </div>
                 </div>
                 <div
@@ -251,7 +249,9 @@ function GalleryPanelEditGalleryInfo() {
                       rules={[
                         {
                           required: true,
-                          message: "required",
+                          message: t(
+                            "gallery-panel-edit-gallery-info.please-fill-out-this-field"
+                          ),
                         },
                       ]}
                     >
@@ -264,11 +264,6 @@ function GalleryPanelEditGalleryInfo() {
                         )}
                       />
                     </Form.Item>
-
-                    {/* <input className="form-control input-public en-lang " required
-                                            placeholder=""
-                                            value="" />
-                                        <label className="lable-public en-lang">{t("gallery-panel-edit-gallery-info.gallery_name_en")}</label> */}
                   </div>
                 </div>
                 <div className={"col-sm-6"}>
@@ -279,7 +274,9 @@ function GalleryPanelEditGalleryInfo() {
                       rules={[
                         {
                           required: true,
-                          message: "required",
+                          message: t(
+                            "gallery-panel-edit-gallery-info.please-fill-out-this-field"
+                          ),
                         },
                       ]}
                     >
@@ -305,7 +302,9 @@ function GalleryPanelEditGalleryInfo() {
                       rules={[
                         {
                           required: true,
-                          message: "required",
+                          message: t(
+                            "gallery-panel-edit-gallery-info.please-fill-out-this-field"
+                          ),
                         },
                       ]}
                     >
@@ -337,7 +336,9 @@ function GalleryPanelEditGalleryInfo() {
                       rules={[
                         {
                           required: true,
-                          message: "required",
+                          message: t(
+                            "gallery-panel-edit-gallery-info.please-fill-out-this-field"
+                          ),
                         },
                       ]}
                     >
@@ -349,11 +350,6 @@ function GalleryPanelEditGalleryInfo() {
                         rows="8"
                       />
                     </Form.Item>
-
-                    {/* <textarea id="info-213" className="form-control "
-                                            placeholder={t("gallery-panel-edit-gallery-info.exhibition_contact_placeholder_fa")}
-                                            rows="8"></textarea>
-                                        <label for="info-213" className="lable-public"></label> */}
                   </div>
                 </div>
                 <div
@@ -369,7 +365,9 @@ function GalleryPanelEditGalleryInfo() {
                       rules={[
                         {
                           required: true,
-                          message: "required",
+                          message: t(
+                            "gallery-panel-edit-gallery-info.please-fill-out-this-field"
+                          ),
                         },
                       ]}
                     >
@@ -381,10 +379,6 @@ function GalleryPanelEditGalleryInfo() {
                         rows="8"
                       />
                     </Form.Item>
-
-                    {/* <textarea className="form-control" placeholder={t("gallery-panel-edit-gallery-info.exhibition_contact_placeholder_en")}
-                                            rows="8"></textarea>
-                                        <label className="lable-public"></label> */}
                   </div>
                 </div>
                 <div
@@ -400,7 +394,9 @@ function GalleryPanelEditGalleryInfo() {
                       rules={[
                         {
                           required: true,
-                          message: "required",
+                          message: t(
+                            "gallery-panel-edit-gallery-info.please-fill-out-this-field"
+                          ),
                         },
                       ]}
                     >
@@ -412,11 +408,6 @@ function GalleryPanelEditGalleryInfo() {
                         rows="8"
                       />
                     </Form.Item>
-
-                    {/* <textarea id="info-213" className="form-control "
-                                            placeholder={t("gallery-panel-edit-gallery-info.exhibition_time_work_placeholder_fa")}
-                                            rows="6"></textarea>
-                                        <label for="info-213" className="lable-public"></label> */}
                   </div>
                 </div>
                 <div
@@ -432,7 +423,9 @@ function GalleryPanelEditGalleryInfo() {
                       rules={[
                         {
                           required: true,
-                          message: "required",
+                          message: t(
+                            "gallery-panel-edit-gallery-info.please-fill-out-this-field"
+                          ),
                         },
                       ]}
                     >
@@ -444,10 +437,6 @@ function GalleryPanelEditGalleryInfo() {
                         rows="8"
                       />
                     </Form.Item>
-
-                    {/* <textarea className="form-control" placeholder={t("gallery-panel-edit-gallery-info.exhibition_time_work_placeholder_en")}
-                                            rows="6"></textarea>
-                                        <label className="lable-public"></label> */}
                   </div>
                 </div>
               </div>
@@ -463,7 +452,9 @@ function GalleryPanelEditGalleryInfo() {
                       rules={[
                         {
                           required: true,
-                          message: "required",
+                          message: t(
+                            "gallery-panel-edit-gallery-info.please-fill-out-this-field"
+                          ),
                         },
                       ]}
                     >
@@ -476,9 +467,6 @@ function GalleryPanelEditGalleryInfo() {
                         )}
                       />
                     </Form.Item>
-
-                    {/* <input class="form-control input-public " required placeholder="" value="" />
-                                        <label class="lable-public en-lang">{t("gallery-panel-edit-gallery-info.address_fa")}</label> */}
                   </div>
                 </div>
                 <div class="col-sm-3">
@@ -508,7 +496,9 @@ function GalleryPanelEditGalleryInfo() {
                       rules={[
                         {
                           required: true,
-                          message: "required",
+                          message: t(
+                            "gallery-panel-edit-gallery-info.please-fill-out-this-field"
+                          ),
                         },
                       ]}
                     >
@@ -521,9 +511,6 @@ function GalleryPanelEditGalleryInfo() {
                         )}
                       />
                     </Form.Item>
-
-                    {/* <input class="form-control input-public en-lang " required placeholder="" value="" />
-                                        <label class="lable-public en-lang">{t("gallery-panel-edit-gallery-info.address_en")}</label> */}
                   </div>
                 </div>
                 <div class="col-sm-6">
@@ -534,7 +521,9 @@ function GalleryPanelEditGalleryInfo() {
                       rules={[
                         {
                           required: true,
-                          message: "required",
+                          message: t(
+                            "gallery-panel-edit-gallery-info.please-fill-out-this-field"
+                          ),
                         },
                       ]}
                     >
@@ -547,37 +536,12 @@ function GalleryPanelEditGalleryInfo() {
                         )}
                       />
                     </Form.Item>
-                    {/* <input class="form-control input-public  persian-num" required placeholder="" value="" />
-                                        <label class="lable-public">{t("gallery-panel-edit-gallery-info.phone_number")}</label> */}
                   </div>
                 </div>
               </div>
               <h3 className="info-title mrgt64 text-dir">
                 {t("gallery-panel-edit-gallery-info.exhibitions")}
               </h3>
-              {/* <div class="row dir">
-                                <div class="col-sm-6">
-                                    <div class="public-group">
-                                        <input class="form-control input-public " required placeholder value="" />
-                                        <label class="lable-public">{t("gallery-panel-edit-gallery-info.exhibition_name")}</label>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3 col-xs-6">
-                                    <div class="public-group">
-                                        <input class="form-control input-public persian-num " required placeholder="" value="" />
-                                        <label class="lable-public">{t("gallery-panel-edit-gallery-info.from_date")}</label>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3 col-xs-6">
-                                    <div class="public-group">
-                                        <input class="form-control input-public persian-num " required placeholder="" value="" />
-                                        <label class="lable-public">{t("gallery-panel-edit-gallery-info.to_date")}</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <button class="btn-blue pull-left add-row" type="button">
-                                <img src={add_white} width="24" height="24" alt="" class="" />
-                            </button> */}
 
               <div className="col-sm-12 pt-4">
                 <Form.List name="items">
@@ -634,12 +598,6 @@ function GalleryPanelEditGalleryInfo() {
                                 name="birth_date"
                                 id="birth_date"
                               />
-                              {/* <Input
-                                                                type="text"
-                                                                id="info-201"
-                                                                className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                                                placeholder={t("gallery-panel-edit-gallery-info.from_date")}
-                                                            /> */}
                             </Form.Item>
                           </div>
                           <div className="public-group">
@@ -664,12 +622,6 @@ function GalleryPanelEditGalleryInfo() {
                                 name="birth_date"
                                 id="birth_date"
                               />
-                              {/* <Input
-                                                                type="text"
-                                                                id="info-207"
-                                                                className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
-                                                                placeholder={t("gallery-panel-edit-gallery-info.to_date")}
-                                                            /> */}
                             </Form.Item>
                           </div>
                           <MinusCircleOutlined onClick={() => remove(name)} />
@@ -677,57 +629,26 @@ function GalleryPanelEditGalleryInfo() {
                       ))}
                       <Form.Item>
                         <Button
-                          type="dashed"
                           onClick={() => add()}
-                          block
+                          shape="circle"
+                          type="primary"
+                          className="btn-blue add-row pull-left"
                           icon={<PlusOutlined />}
-                        >
-                          {t("gallery-panel-edit-gallery-info.add-gallery")}
-                        </Button>
+                        />
                       </Form.Item>
                     </>
                   )}
                 </Form.List>
               </div>
             </div>
-            {/* <div class="clearfix"></div>
-                    <table class="table table-responsive mrgt64 d-table dir">
-                        <tbody>
-                            <tr>
-                                <td data-label={t("gallery-panel-edit-gallery-info.exhibition_name")}>من</td>
-                                <td data-label={t("gallery-panel-edit-gallery-info.start_date")} class="persian-num">8 بهمن 1398</td>
-                                <td data-label={t("gallery-panel-edit-gallery-info.end_date")} class="persian-num">20 بهمن 1398</td>
-                                <td data-label={t("gallery-panel-edit-gallery-info.details")}>
-                                    <button class="btn-remove" type="button">
-                                        <img src={delete_icon} width="32" height="32" alt="" class="" />
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td data-label={t("gallery-panel-edit-gallery-info.exhibition_name")}>من</td>
-                                <td data-label={t("gallery-panel-edit-gallery-info.start_date")} class="persian-num">8 بهمن 1398</td>
-                                <td data-label={t("gallery-panel-edit-gallery-info.end_date")} class="persian-num">20 بهمن 1398</td>
-                                <td data-label={t("gallery-panel-edit-gallery-info.details")}>
-                                    <button class="btn-remove" type="button">
-                                        <img src={delete_icon} width="32" height="32" alt="" class="" />
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td data-label={t("gallery-panel-edit-gallery-info.exhibition_name")}>من</td>
-                                <td data-label={t("gallery-panel-edit-gallery-info.start_date")} class="persian-num">8 بهمن 1398</td>
-                                <td data-label={t("gallery-panel-edit-gallery-info.end_date")} class="persian-num">20 بهمن 1398</td>
-                                <td data-label={t("gallery-panel-edit-gallery-info.details")}>
-                                    <button class="btn-remove" type="button">
-                                        <img src={delete_icon} width="32" height="32" alt="" class="" />
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table> */}
+
             <br />
             <div className="adv-btn">
-              <button htmlType="submit" className="btn-black center-block">
+              <button
+                htmlType="submit"
+                className="btn-black center-block"
+                style={{ width: "400px" }}
+              >
                 {t("gallery-panel-edit-gallery-info.btn_confirm_info")}
               </button>
             </div>

@@ -14,7 +14,6 @@ function CartItem({ removeProduct, singleProduct }) {
     discountCash,
     paymentPrice,
   } = singleProduct;
-  console.log("CartItem --------- singleProduct", singleProduct);
 
   const { product } = singleProduct;
   const {
@@ -47,7 +46,6 @@ function CartItem({ removeProduct, singleProduct }) {
   ownerName = ownerName.replace(/null/g, "");
   ownerName = ownerName.replace(/undefined/g, "");
   const price = i18n.language === "fa-IR" ? toman_price : dollar_price;
-  console.log("CartItem --------- price", price);
   const categoryName = category?.translations?.[index]?.title;
   const materialName = material?.translations?.[index]?.title;
   const techniqueName = technique?.translations?.[index]?.title;

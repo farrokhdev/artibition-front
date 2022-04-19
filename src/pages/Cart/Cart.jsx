@@ -181,7 +181,10 @@ function Cart() {
             });
         }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+        message.error(err?.response?.data?.message);
+      });
   };
   return (
     <>

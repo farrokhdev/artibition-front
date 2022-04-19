@@ -38,7 +38,7 @@ export default function NavbarMenuHeader(props) {
   const [categories, setCategories] = useState();
   const getVirtualExhibitions = () => {
     apiServices
-      .get(EXHIBITION_LIST, { type: "virtual" })
+      .get(EXHIBITION_LIST, queryString.stringify({ type: "virtual" }))
       .then((res) => {
         if (res.data) {
           setExhibitionList(res.data.data.results);
@@ -233,6 +233,11 @@ export default function NavbarMenuHeader(props) {
                 <li>
                   <Link to="/site/exhibitions" data-toggle="tab">
                     {t("events")}
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/site/all-promotions" data-toggle="tab">
+                    {t("promotions")}
                   </Link>
                 </li>
               </ul>

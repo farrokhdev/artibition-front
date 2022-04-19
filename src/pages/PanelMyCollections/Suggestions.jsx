@@ -78,7 +78,11 @@ function Suggestions() {
                       <div className="col-img">
                         <div className="tags tags-off persian-num">30 %</div>
                         <img
-                          src={hnrpqkfiup ? hnrpqkfiup : def_img}
+                          src={
+                            hnrpqkfiup
+                              ? hnrpqkfiup
+                              : "https://api.artibition.gallery/static/img/default.png"
+                          }
                           alt="آرتیبیشن"
                           className="img-responsive"
                         />

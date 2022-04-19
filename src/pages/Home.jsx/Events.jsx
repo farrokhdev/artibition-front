@@ -117,6 +117,13 @@ export default function Events() {
                         height="270"
                         alt="آرتیبیشن"
                         className="img-responsive"
+                        style={{
+                          objectFit: "cover",
+                          width: "100%",
+                          height: "100%",
+                          objectPosition: "center",
+                          display: "block",
+                        }}
                       />
                     </div>
                     <div className="col-body" style={{ position: "relative" }}>

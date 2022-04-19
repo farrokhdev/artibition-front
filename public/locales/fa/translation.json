@@ -3,7 +3,9 @@
     "username": "شماره همراه یا ایمیل وارد نشده است!",
     "password": "رمز عبور وارد نشده است!",
     "repeat-password": "تکرار رمز عبور وارد نشده است!",
-    "activation-code": "کد فعالسازی وارد نشده است!"
+    "activation-code": "کد فعالسازی وارد نشده است!",
+    "invalid-username": "شماره همراه یا ایمیل معتبر نیست",
+    "invalid-password": "استفاده از حروف فارسی مجاز نمی باشد"
   },
   "filter-header": {
     "title": "فیلتر",
@@ -417,6 +419,7 @@
     }
   },
   "artists": {
+    "text-to-artist-auth":"لطفا ابتدا وارد شوید",
     "filter": {
       "expert": {
         "title": "تخصص هنرمند",
@@ -536,7 +539,10 @@
         "title": "آدرس",
         "btn": "افزودن آدرس جدید",
         "default": "(آدرس پیش‌فرض)"
-      }
+      },
+      "invalid-national": "کد ملی باید 10 رقم باشد",
+      "invalid-firstname": "نام نمی تواند خالی باشد",
+      "invalid-lastname": "نام خانوادگی نمی تواند خالی باشد"
     }
   },
   "content-panel-mypurchases": {
@@ -690,7 +696,7 @@
       "suggestion_artwork": "پیشنهاد قیمت به آثار شما",
       "veiw_artworks": "بازدید آثار",
       "veiw": "مشاهده",
-      "edit" :"ویرایش",
+      "edit": "ویرایش",
       "row": "ردیف",
       "image": "تصویر",
       "code": "کد اثر",
@@ -1002,11 +1008,13 @@
     "placeholder_en": "توضیحات محتوا را به انگلیسی وارد نمایید",
     "link": "لینک",
     "btn_create_content": "ایجاد محتوا",
-    "btn_cancel": "انصراف"
+    "btn_cancel": "انصراف",
+    "please-fill-out-this-field": "تکمیل این فیلد ضروری است"
   },
   "gallery-panel-edit-gallery-info": {
     "add-gallery": "افزودن نمایشگاه",
-    "upload_gallery_cover_photo": "آپلود کاور و لوگوی گالری",
+    "upload_gallery_logo_photo": "آپلود لوگوی گالری",
+    "upload_gallery_cover_photo": "آپلود کاور گالری",
     "gallery_info": "اطلاعات گالری",
     "country_name": "نام کشور",
     "city_name": "نام شهر",
@@ -1057,7 +1065,11 @@
     "placeholder_en": "توضیحات محتوا را به انگلیسی وارد نمایید",
     "link": "لینک",
     "btn_create_content": "ایجاد محتوا",
-    "btn_cancel": "انصراف"
+    "btn_cancel": "انصراف",
+    "please-fill-out-this-field": "تکمیل این فیلد ضروری است",
+    "successfully_sent": "اطلاعات شما با موفقیت ثبت شد",
+    "required-logo-image": "لطفا تصویر پوستر را آپلود کنید",
+    "required-cover-image": "لطفا تصویر کاور را آپلود کنید"
   },
   "gallery-panel-create-artist-artwork": {
     "title": "آپلود اثر هنرمند",
@@ -1146,6 +1158,8 @@
     "step3": "آپلود ۳ اثر",
     "step4": "تکمیل اطلاعات اثر",
     "step5": "تکمیل اطلاعات فروش",
+    "please-fill-out-this-field": "تکمیل این فیلد ضروری است",
+    "please-select-category": "انتخاب حوزه هنری ضروری است",
     "upload": {
       "title": "آپلود تصویر اثر",
       "text": "یک یا چند عکس را بگیرید و در اینجا بیاندازید",
@@ -1166,7 +1180,7 @@
       "create_date": "تاریخ خلق اثر (شمسی)",
       "length": "طول",
       "width": "عرض",
-      "height":"ارتفاع",
+      "height": "ارتفاع",
       "weight": "وزن اثر",
       "select_gallery": "انتخاب مجموعه",
       "multi_edition": "این اثر دارای چند ادیشن است",
@@ -1373,7 +1387,11 @@
         "enter_recipient_information": "اطلاعات گیرنده را وارد کنید",
         "enter_the_recipient_name": "نام گیرنده را وارد کنید",
         "enter_the_mobile_number": "شماره همراه را وارد کنید",
-        "enter_the_national_code": "کد ملی را وارد کنید"
+        "enter_the_national_code": "کد ملی را وارد کنید",
+        "enter_the_state": "استان را وارد کنید",
+        "enter_the_city": "شهر را وارد کنید÷",
+        "enter_the_address": "نشانی پستی را وارد کنید",
+        "enter_the_postal_code": "کد پستی را وارد کنید"
       }
     },
     "pay_step": {

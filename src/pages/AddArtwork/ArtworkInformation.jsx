@@ -432,7 +432,7 @@ function ArtworkInformation({ next, prev }) {
                                             </Form.Item>
                                             : <Form.Item
                                                 className="w-100 "
-                                                name="artist_name"
+                                                name="artist_name_en"
                                                 rules={[
                                                     {
                                                         required: true,

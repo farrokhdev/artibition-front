@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import HeaderPanel from "../../components/HeaderPanel/HeaderPanel";
-import { t } from 'i18next';
+import { t } from "i18next";
 import SidebarPanel from "../../components/SidebarPanel/SidebarPanel";
 import CounterStatus from "./CounterStatus";
 import ContractStatus from "./ContractStatus";
@@ -17,36 +17,34 @@ import SidebarGalleryPanel from "../../components/SidebarGalleryPanel/SidebarGal
 import apiServices from "../../utils/api.services";
 
 function GalleryPanelDashboard() {
-
-   
-    return (
-        <>
-            <HeaderPanel t={t} />
-            <div className="panel-style margin-top-20">
-                <SidebarGalleryPanel />
-                <div className="custom-container">
-                    <div className="row box-dir-reverse dir">
-                        <div className="col-md-8">
-                            <CounterStatus />
-                        </div>
-                        <div className="col-md-4">
-                            <StatusSection/>
-                        </div>
-                        <div className="col-md-8">
-                            <OrderStatus />
-                            <VisitStatus />
-                        </div>
-                        <div className="col-md-4">
-                            <CreateExhibition />
-                            {/* <MyIncome/> */}
-                            <Promotions/>
-                        </div>
-                    </div>
-                </div>
-                <BasketFooterPanel/>
+  return (
+    <>
+      <HeaderPanel t={t} />
+      <div className="panel-style margin-top-20">
+        <SidebarGalleryPanel />
+        <div className="custom-container">
+          <div className="row box-dir-reverse dir">
+            <div className="col-md-8">
+              <CounterStatus />
             </div>
-        </>
-    )
+            <div className="col-md-4">
+              <StatusSection />
+            </div>
+            <div className="col-md-8">
+              <OrderStatus />
+              <VisitStatus />
+            </div>
+            <div className="col-md-4">
+              <CreateExhibition />
+              {/* <MyIncome/> */}
+              <Promotions />
+            </div>
+          </div>
+        </div>
+        <BasketFooterPanel />
+      </div>
+    </>
+  );
 }
 
-export default GalleryPanelDashboard
+export default GalleryPanelDashboard;

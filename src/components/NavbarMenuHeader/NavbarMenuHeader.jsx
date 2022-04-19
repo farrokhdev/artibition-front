@@ -33,7 +33,7 @@ export default function NavbarMenuHeader(props) {
   const [categories, setCategories] = useState();
   const getVirtualExhibitions = () => {
     apiServices
-      .get(EXHIBITION_LIST, { type: "virtual" })
+      .get(EXHIBITION_LIST, queryString.stringify({ type: "virtual" }))
       .then((res) => {
         if (res.data) {
           setExhibitionList(res.data.data.results);

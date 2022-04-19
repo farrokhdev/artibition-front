@@ -48,14 +48,15 @@ function Advisory() {
             <HeaderPanel t={t} />
 
             <div className="panel-style container mx-auto px-0 w-100 bg-white">
+                
                 <Steps
-                    className="site-navigation-steps advisory-step-antd dir"
+                    className="site-navigation-steps advisory-step-antd dir steps-costum"
                     type="navigation"
                     current={current}
                     responsive={false}
                 >
                     {steps.map(item => (
-                        <Step key={item.title} title={item.title} className="step-perisan-num" />
+                        <Step size="small" key={item.title} title={item.title} className="step-perisan-num" />
                     ))}
                 </Steps>
 

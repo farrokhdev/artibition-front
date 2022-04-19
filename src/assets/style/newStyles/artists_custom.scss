@@ -1,0 +1,9 @@
+.lable-checkbox.ant-checkbox-wrapper{
+    display: flex !important;
+    padding-right: 0 !important;
+}
+
+.ant-checkbox-wrapper .ant-checkbox-checked .ant-checkbox-inner {
+    background-color: #141414 !important;
+    border-color: #141414 !important;
+  }

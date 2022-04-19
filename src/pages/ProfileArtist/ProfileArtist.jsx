@@ -3,12 +3,13 @@ import React, { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import Menu from "../../components/Menu/Menu";
 import Footer from "../../components/Footer/Footer";
-import { Breadcrumb, Tabs } from "antd";
+import { Breadcrumb, message, Tabs } from "antd";
 import ArtworksTab from "./ArtworksTab";
 import AlbumsTab from "./AlbumsTab";
 import BiographyTab from "./BiographyTab";
 import ExhibitionsTab from "./ExhibitionsTab";
 import ContentTab from "./ContentTab";
+import { useSelector, useDispatch } from "react-redux";
 
 import Aydin_Aghdashloo_04 from "../../assets/img/Aydin_Aghdashloo_04@3x.jpg";
 import message_icon from "../../assets/img/message.svg";
@@ -24,6 +25,7 @@ import i18next from "i18next";
 import { follow } from "../../utils/utils";
 
 function ProfileArtist() {
+  const { is_logged_in } = useSelector((state) => state.authReducer);
   const { TabPane } = Tabs;
   const [activeKey, setActiveKey] = useState("1");
 
@@ -78,7 +80,12 @@ function ProfileArtist() {
   // }
 
   const handleShowModalSendMessage = () => {
-    setVisibleShowSendMessage(true);
+    if(is_logged_in){
+
+      setVisibleShowSendMessage(true);
+    }else {
+      message.error(t("artists.text-to-artist-auth"))
+    }
   };
 
   const getArtistProfile = () => {
@@ -230,6 +237,8 @@ function ProfileArtist() {
                         </div>
                         <div className="col px-0">
                           <div className="d-flex pull-dir-rev">
+                            {/* {is_logged_in && ( */}
+
                             <div
                               className="artist-msg "
                               style={{ cursor: "pointer" }}
@@ -241,6 +250,7 @@ function ProfileArtist() {
                                 height="24"
                               />
                             </div>
+                            {/* )} */}
                           </div>
                         </div>
                       </div>

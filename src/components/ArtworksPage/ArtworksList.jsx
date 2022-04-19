@@ -17,6 +17,8 @@ import apiServices from "../../utils/api.services";
 import { useLocation, useSearchParams } from "react-router-dom";
 import { numDiscriminant } from "../../utils/discriminant";
 import { isNil } from "lodash";
+import FilterArtworks from "../FilterArtworks";
+import { discountPrice } from "../../utils/discriminant";
 
 const ArtworksList = (props) => {
   const {
@@ -157,7 +159,7 @@ const ArtworksList = (props) => {
           .stringify({ exhibition_id: props?.exhibitionId })
           .concat("&")
           .concat(defaultQuery);
-          
+
     apiServices
       .get(SEARCH_PRODUCTS, query)
       .then((res) => {
@@ -191,13 +193,7 @@ const ArtworksList = (props) => {
     });
   };
 
-  const discountPrice = (price, discount, type) => {
-    if (type === "percentage") {
-      return numDiscriminant(((100 - discount) * price) / 100);
-    } else {
-      return numDiscriminant(price - discount);
-    }
-  };
+
 
   const getProductCategories = () => {
     apiServices
@@ -368,7 +364,8 @@ const ArtworksList = (props) => {
       </div>
       <div className="content-body">
         <div className="d-flex box-dir-reverse dir">
-          <ArtworksFilter {...filterProps} />
+          {/* <ArtworksFilter {...filterProps} />  */}
+          <FilterArtworks {...filterProps} />
 
           <div className="col-md-9 ">
             <div className="row-gridimg">
@@ -377,7 +374,7 @@ const ArtworksList = (props) => {
                   return (
                     <ArtworkCard
                       product={product}
-                      discountPrice={discountPrice}
+                      // discountPrice={discountPrice}
                       callBack={getProductList}
                     />
                   );
