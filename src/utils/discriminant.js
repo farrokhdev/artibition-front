@@ -20,6 +20,32 @@ export const numDiscriminantInput = (input) => {
         
     }
 }
+
+export  const discountPrice = (price, discount,type,dollar) => {
+
+    console.log(price)
+if(discount){
+    
+    if (type === "percentage") {
+        return numDiscriminant(((100 - discount) * price) / 100) + " " + "%"
+      }
+      if (type === "dollar") {
+        return numDiscriminant(dollar) + " " + "doller"
+      }
+      if (type === "toman") {
+          if(discount?.value){
+              return (price - discount?.value)  + " " + "toman";
+          }else{
+              return 
+  
+          }
+      }
+}else {
+      return numDiscriminant(price - discount);
+    }
+  };
+
+
 export const clearDiscriminant = (input) => {
     if (input) {
         return input.toString().replace(/,/g, "");

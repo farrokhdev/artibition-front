@@ -29,8 +29,23 @@ const ArtworkCard = ({ product, callBack = () => console.log("") }) => {
                 {t("card_artwork.spacial")}
               </div>
             )}
-            {product?.discount?.value ? (
-              <div className="tags tags-off persian-num">
+{
+  product?.discount?.value && (
+
+              <div class="tags tags-off persian-num">
+              {
+                discountPrice(
+                  product?.toman_price,
+                  product?.discount?.value,
+                  product?.discount?.type,
+                  product?.dollar_price
+                )
+              }
+              </div>
+  )
+}
+            {/* {product?.discount?.value ? (
+              <div class="tags tags-off persian-num">
                 {" "}
                 {numDiscriminant(product?.discount?.value)}
                 {product?.discount?.type === "percentage"
@@ -39,13 +54,18 @@ const ArtworkCard = ({ product, callBack = () => console.log("") }) => {
               </div>
             ) : (
               ""
-            )}
+            )} */}
             <img
               src={product.medias && product.medias[0]?.exact_url}
               width="280"
               alt="آرتیبیشن"
               className="img-responsive"
-              style={{ height: 280, objectFit: "contain" }}
+              style={{
+                height: 280,
+                objectFit: "cover",
+                objectPosition: "center",
+                display: "block",
+              }}
             />
             <div className="tab-overly">
               <a
@@ -120,17 +140,18 @@ const ArtworkCard = ({ product, callBack = () => console.log("") }) => {
                 <span className="col-price-num">
                   {product?.discount
                     ? discountPrice(
-                        product.toman_price,
+                        product?.toman_price,
                         product?.discount?.value,
-                        product?.discount?.type
+                        product?.discount?.type,
+                        product?.dollar_price
                       )
-                    : numDiscriminant(product.toman_price)}
-                  {product?.discount || product?.toman_price ? t("toman") : ""}
+                    : numDiscriminant(product?.toman_price)}
+   
                 </span>
                 {/* <span className="col-price-unit">
                                       {t("toman")}
                                     </span> */}
-                {product?.discount?.value && (
+                {/* {product?.discount?.value && (
                   <span
                     className={`persian-num ${
                       product?.discount ? "col-price-off" : ""
@@ -139,7 +160,7 @@ const ArtworkCard = ({ product, callBack = () => console.log("") }) => {
                     {numDiscriminant(product.toman_price)}{" "}
                     {product?.toman_price ? t("toman") : ""}
                   </span>
-                )}
+                )} */}
 
                 {/* <span className="tag-gift  w-100">
                                       <div className="d-flex text-dir position-gift-card-artwork">
