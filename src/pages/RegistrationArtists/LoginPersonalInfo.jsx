@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Form, Input, Select, Checkbox, message } from "antd";
+import { Form, Input, Checkbox, message } from "antd";
 import { useTranslation } from "react-i18next";
 import apiServices from "../../utils/api.services";
-import { ACCOUNT_PROFILE, TRANSLATE } from "../../utils";
-import DatePicker, { Calendar } from "react-datepicker2";
+import { ACCOUNT_PROFILE } from "../../utils";
+import DatePicker from "react-datepicker2";
 import moment from "moment-jalaali";
-import edit_name from "../../assets/img/edit_name.svg";
 import { getTranslation } from "../../utils/fetchTranslation";
 
 function LoginPersonalInfo({ next, prev, userProfil }) {
@@ -107,7 +106,7 @@ function LoginPersonalInfo({ next, prev, userProfil }) {
                   t("content-panel-add-artwork.please-fill-out-this-field")
                 )
               }
-              onChange={async (e) => {
+              onChange={(e) => {
                 applyTranslation(e.target.value, setFirstNameEn);
               }}
             />
@@ -165,9 +164,7 @@ function LoginPersonalInfo({ next, prev, userProfil }) {
                 )
               }
               value=""
-              onChange={async (e) =>
-                applyTranslation(e.target.value, setLastNameEn)
-              }
+              onChange={(e) => applyTranslation(e.target.value, setLastNameEn)}
             />
           </Form.Item>
         </div>
