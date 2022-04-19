@@ -878,7 +878,8 @@
     "step3": "Upload 3 artworks",
     "step4": "Artwork info",
     "step5": "Purchase info",
-    "please-fill-out-this-fiels": "Please fill out this field",
+    "please-fill-out-this-field": "Please fill out this field",
+    "please-select-category": "Please select category",
     "upload": {
       "title": "Upload photo",
       "text": "Select one or more pictures and drag them here",
@@ -1060,7 +1061,8 @@
     "placeholder_en": "Enter details",
     "link": "Link",
     "btn_create_content": "Create content",
-    "btn_cancel": "Cancel"
+    "btn_cancel": "Cancel",
+    "please-fill-out-this-field": "Please fill out this field"
   },
   "gallery-panel-edit-gallery-info": {
     "add-gallery": "add gallery",
@@ -1111,7 +1113,11 @@
     "placeholder_en": "Enter details",
     "link": "Link",
     "btn_create_content": "Create content",
-    "btn_cancel": "Cancel"
+    "btn_cancel": "Cancel",
+    "please-fill-out-this-field": "Please fill out this field",
+    "successfully_sent": "Your information was successfully registered",
+    "required-logo-image": "Please upload a poster image",
+    "required-cover-image": "Please upload a cover image"
   },
   "gallery-panel-create-artist-artwork": {
     "title": "Upload artist's artworks",

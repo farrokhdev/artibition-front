@@ -6,31 +6,13 @@ import { ACCOUNT_PROFILE, TRANSLATE } from "../../utils";
 import DatePicker, { Calendar } from "react-datepicker2";
 import moment from "moment-jalaali";
 import edit_name from "../../assets/img/edit_name.svg";
+import { getTranslation } from "../../utils/fetchTranslation";
 
 function LoginPersonalInfo({ next, prev, userProfil }) {
   const [firstNameEn, setFirstNameEn] = useState("");
   const [lastNameEn, setLastNameEn] = useState("");
   const [form] = Form.useForm();
-  const getTranslation = async (value) => {
-    return new Promise((resolve, reject) => {
-      apiServices
-        .post(TRANSLATE, {
-          target_language: "en",
-          text: value,
-        })
-        .then((res) => {
-          if (res.data) {
-            resolve(res.data.data);
-          } else {
-            resolve("");
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-          resolve("");
-        });
-    });
-  };
+
   const { t, i18n } = useTranslation();
   // Update artist information
   const onFinish = (values) => {
@@ -71,7 +53,6 @@ function LoginPersonalInfo({ next, prev, userProfil }) {
   };
   const applyTranslation = async (name, fn) => {
     if (name?.length < 1) return;
-
     const tempFirstNameEn = await getTranslation(name);
     fn(tempFirstNameEn);
   };
@@ -89,8 +70,8 @@ function LoginPersonalInfo({ next, prev, userProfil }) {
         userProfil?.birth_date && moment(userProfil?.birth_date, "YYYY-MM-DD"),
       join_magazine: userProfil?.join_magazine,
     });
-    applyTranslation(userProfil?.translations?.fa?.first_name, setFirstNameEn);
-    applyTranslation(userProfil?.translations?.fa?.last_name, setLastNameEn);
+    setFirstNameEn(userProfil?.translations?.en?.first_name);
+    setLastNameEn(userProfil?.translations?.en?.last_name);
   }, [userProfil]);
 
   return (
@@ -111,7 +92,7 @@ function LoginPersonalInfo({ next, prev, userProfil }) {
               {
                 required: true,
                 message: t(
-                  "content-panel-add-artwork.please-fill-out-this-fiels"
+                  "content-panel-add-artwork.please-fill-out-this-field"
                 ),
               },
             ]}
@@ -123,7 +104,7 @@ function LoginPersonalInfo({ next, prev, userProfil }) {
               onInput={(e) => e.target.setCustomValidity("")}
               onInvalid={(e) =>
                 e.target.setCustomValidity(
-                  t("content-panel-add-artwork.please-fill-out-this-fiels")
+                  t("content-panel-add-artwork.please-fill-out-this-field")
                 )
               }
               onChange={async (e) => {
@@ -140,7 +121,7 @@ function LoginPersonalInfo({ next, prev, userProfil }) {
               {
                 required: true,
                 message: t(
-                  "content-panel-add-artwork.please-fill-out-this-fiels"
+                  "content-panel-add-artwork.please-fill-out-this-field"
                 ),
               },
             ]}
@@ -151,7 +132,7 @@ function LoginPersonalInfo({ next, prev, userProfil }) {
               onInput={(e) => e.target.setCustomValidity("")}
               onInvalid={(e) =>
                 e.target.setCustomValidity(
-                  t("content-panel-add-artwork.please-fill-out-this-fiels")
+                  t("content-panel-add-artwork.please-fill-out-this-field")
                 )
               }
               placeholder="First Name"
@@ -168,7 +149,7 @@ function LoginPersonalInfo({ next, prev, userProfil }) {
               {
                 required: true,
                 message: t(
-                  "content-panel-add-artwork.please-fill-out-this-fiels"
+                  "content-panel-add-artwork.please-fill-out-this-field"
                 ),
               },
             ]}
@@ -180,7 +161,7 @@ function LoginPersonalInfo({ next, prev, userProfil }) {
               onInput={(e) => e.target.setCustomValidity("")}
               onInvalid={(e) =>
                 e.target.setCustomValidity(
-                  t("content-panel-add-artwork.please-fill-out-this-fiels")
+                  t("content-panel-add-artwork.please-fill-out-this-field")
                 )
               }
               value=""
@@ -199,7 +180,7 @@ function LoginPersonalInfo({ next, prev, userProfil }) {
               onInput={(e) => e.target.setCustomValidity("")}
               onInvalid={(e) =>
                 e.target.setCustomValidity(
-                  t("content-panel-add-artwork.please-fill-out-this-fiels")
+                  t("content-panel-add-artwork.please-fill-out-this-field")
                 )
               }
               value={lastNameEn}
@@ -215,7 +196,7 @@ function LoginPersonalInfo({ next, prev, userProfil }) {
               {
                 required: true,
                 message: t(
-                  "content-panel-add-artwork.please-fill-out-this-fiels"
+                  "content-panel-add-artwork.please-fill-out-this-field"
                 ),
               },
             ]}
@@ -226,7 +207,7 @@ function LoginPersonalInfo({ next, prev, userProfil }) {
               onInput={(e) => e.target.setCustomValidity("")}
               onInvalid={(e) =>
                 e.target.setCustomValidity(
-                  t("content-panel-add-artwork.please-fill-out-this-fiels")
+                  t("content-panel-add-artwork.please-fill-out-this-field")
                 )
               }
               placeholder="نام کاربری"
@@ -242,7 +223,7 @@ function LoginPersonalInfo({ next, prev, userProfil }) {
               {
                 required: true,
                 message: t(
-                  "content-panel-add-artwork.please-fill-out-this-fiels"
+                  "content-panel-add-artwork.please-fill-out-this-field"
                 ),
               },
             ]}
@@ -263,7 +244,7 @@ function LoginPersonalInfo({ next, prev, userProfil }) {
               {
                 required: true,
                 message: t(
-                  "content-panel-add-artwork.please-fill-out-this-fiels"
+                  "content-panel-add-artwork.please-fill-out-this-field"
                 ),
               },
             ]}
@@ -274,7 +255,7 @@ function LoginPersonalInfo({ next, prev, userProfil }) {
               onInput={(e) => e.target.setCustomValidity("")}
               onInvalid={(e) =>
                 e.target.setCustomValidity(
-                  t("content-panel-add-artwork.please-fill-out-this-fiels")
+                  t("content-panel-add-artwork.please-fill-out-this-field")
                 )
               }
               placeholder="آدرس ایمیل"
@@ -290,7 +271,7 @@ function LoginPersonalInfo({ next, prev, userProfil }) {
               {
                 required: true,
                 message: t(
-                  "content-panel-add-artwork.please-fill-out-this-fiels"
+                  "content-panel-add-artwork.please-fill-out-this-field"
                 ),
               },
             ]}

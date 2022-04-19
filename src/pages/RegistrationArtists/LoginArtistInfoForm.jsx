@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Form, Input, Select, Checkbox } from "antd";
+import { Form, Input, Select, Checkbox, message } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import { t } from "i18next";
 import download from "../../assets/img/download.svg";
@@ -9,17 +9,21 @@ import { GetLanguage } from "../../utils/utils";
 import { useDispatch } from "react-redux";
 import { artistForm } from "../../redux/reducers/Artwork/artwork.action";
 import queryString from "query-string";
-
+import { isNil } from "lodash";
 function LoginArtistInfoForm({ next, prev }) {
   const [form] = Form.useForm();
   const dispach = useDispatch();
   const [categorys, setCategorys] = useState([]);
   const Language = GetLanguage();
-  const [newArtwork, setNewArtwork] = useState({ category_id: undefined });
-
+  const [categoryId, setCategoryId] = useState();
+  const [showCategoryError, setShowCategoryError] = useState(false);
   const onFinish = (values) => {
+    if (isNil(categoryId)) {
+      setShowCategoryError(true);
+      return;
+    }
     let payload = {
-      artist_type_id: [newArtwork?.category_id],
+      artist_type_id: [categoryId],
       // "artist_type_id":[2],
       translations: {
         fa: {
@@ -73,14 +77,6 @@ function LoginArtistInfoForm({ next, prev }) {
       });
   };
 
-  // function for set categories id
-  const handleSetCategory = (value) => {
-    setNewArtwork({
-      ...newArtwork,
-      category_id: value,
-    });
-  };
-
   useEffect(() => {
     getListCategory();
   }, []);
@@ -119,10 +115,17 @@ function LoginArtistInfoForm({ next, prev }) {
             placeholder={t("content-panel-add-artwork.art_info.artwork_field")}
             options={categorys}
             allowClear
-            onChange={handleSetCategory}
+            onChange={(e) => {
+              setCategoryId(e);
+              if (showCategoryError) setShowCategoryError(false);
+            }}
             id="info-203"
           ></Select>
-
+          {showCategoryError && (
+            <span className="text-danger">
+              {t("content-panel-add-artwork.please-select-category")}
+            </span>
+          )}
           {/* </Form.Item> */}
           <div class="col-xs-6">
             {/* <label className="d-flex box-dir-reverse lable-checkbox public-group text-dir">
@@ -208,7 +211,9 @@ function LoginArtistInfoForm({ next, prev }) {
             rules={[
               {
                 required: true,
-                message: "required",
+                message: t(
+                  "content-panel-add-artwork.please-fill-out-this-field"
+                ),
               },
             ]}
           >
@@ -227,7 +232,9 @@ function LoginArtistInfoForm({ next, prev }) {
             rules={[
               {
                 required: true,
-                message: "required",
+                message: t(
+                  "content-panel-add-artwork.please-fill-out-this-field"
+                ),
               },
             ]}
           >

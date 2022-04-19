@@ -1007,11 +1007,13 @@
     "placeholder_en": "توضیحات محتوا را به انگلیسی وارد نمایید",
     "link": "لینک",
     "btn_create_content": "ایجاد محتوا",
-    "btn_cancel": "انصراف"
+    "btn_cancel": "انصراف",
+    "please-fill-out-this-field": "تکمیل این فیلد ضروری است"
   },
   "gallery-panel-edit-gallery-info": {
     "add-gallery": "افزودن نمایشگاه",
-    "upload_gallery_cover_photo": "آپلود کاور و لوگوی گالری",
+    "upload_gallery_logo_photo": "آپلود لوگوی گالری",
+    "upload_gallery_cover_photo": "آپلود کاور گالری",
     "gallery_info": "اطلاعات گالری",
     "country_name": "نام کشور",
     "city_name": "نام شهر",
@@ -1062,7 +1064,11 @@
     "placeholder_en": "توضیحات محتوا را به انگلیسی وارد نمایید",
     "link": "لینک",
     "btn_create_content": "ایجاد محتوا",
-    "btn_cancel": "انصراف"
+    "btn_cancel": "انصراف",
+    "please-fill-out-this-field": "تکمیل این فیلد ضروری است",
+    "successfully_sent": "اطلاعات شما با موفقیت ثبت شد",
+    "required-logo-image": "لطفا تصویر پوستر را آپلود کنید",
+    "required-cover-image": "لطفا تصویر کاور را آپلود کنید"
   },
   "gallery-panel-create-artist-artwork": {
     "title": "آپلود اثر هنرمند",
@@ -1151,7 +1157,8 @@
     "step3": "آپلود ۳ اثر",
     "step4": "تکمیل اطلاعات اثر",
     "step5": "تکمیل اطلاعات فروش",
-    "please-fill-out-this-fiels": "تکمیل این فیلد ضروری است",
+    "please-fill-out-this-field": "تکمیل این فیلد ضروری است",
+    "please-select-category": "انتخاب حوزه هنری ضروری است",
     "upload": {
       "title": "آپلود تصویر اثر",
       "text": "یک یا چند عکس را بگیرید و در اینجا بیاندازید",
