@@ -7,22 +7,23 @@ import { PlusOutlined } from '@ant-design/icons';
 import { t } from 'i18next';
 
 const TagComponent = ({
-    //     state,
-    // setState,
-    // tags,
-    // inputVisible,
-    // inputValue,
-    // editInputIndex,
-    // editInputValue,
+        state,
+    setState,
+    tags,
+    inputVisible,
+    inputValue,
+    editInputIndex,
+    editInputValue,
+    name
 }) => {
 
-    const [state, setState] = useState({
-        tags: [],
-        inputVisible: false,
-        inputValue: "",
-        editInputIndex: -1,
-        editInputValue: ""
-    });
+    // const [state, setState] = useState({
+    //     tags: [],
+    //     inputVisible: false,
+    //     inputValue: "",
+    //     editInputIndex: -1,
+    //     editInputValue: ""
+    // });
     const handleClose = (removedTag) => {
         const tags = state.tags.filter((tag) => tag !== removedTag);
         setState((state) => ({ ...state, tags })); // <-- shallow copy previous state
@@ -79,7 +80,7 @@ const TagComponent = ({
     const saveEditInputRef = input => {
         editInput.current = input;
     };
-    const { tags, inputVisible, inputValue, editInputIndex, editInputValue } = state;
+    // const { tags, inputVisible, inputValue, editInputIndex, editInputValue } = state;
 
     console.log(tags, "tags")
 
@@ -107,22 +108,23 @@ const TagComponent = ({
 
                 const tagElem = (
                     <Tag
+
                         className="edit-tag px-3 font-weight-bold  en-lang"
                         key={tag}
-                        closable={index !== 0}
+                        closable
                         onClose={() => handleClose(tag)}
                     >
                         <span
-                            onDoubleClick={e => {
-                                if (index !== 0) {
-                                    setState(
-                                        { editInputIndex: index, editInputValue: tag },
-                                        () => {
-                                            editInput.focus();
-                                        });
-                                    e.preventDefault();
-                                }
-                            }}
+                            // onDoubleClick={e => {
+                            //     if (index !== 0) {
+                            //         setState(
+                            //             { editInputIndex: index, editInputValue: tag },
+                            //             () => {
+                            //                 editInput.focus();
+                            //             });
+                            //         e.preventDefault();
+                            //     }
+                            // }}
                         >
                             {isLongTag ? `${tag.slice(0, 20)}...` : tag}
                         </span>

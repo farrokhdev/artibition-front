@@ -5,7 +5,7 @@ import apiServices from '../../utils/api.services';
 import { PRODUCTS } from '../../utils';
 import queryString from 'query-string';
 import { GetLanguage } from '../../utils/utils'
-import { Form, Input, Select } from 'antd';
+import { Form, Input, message, Select } from 'antd';
 import { chooseProduct as EditingchooseProduct } from '../../redux/reducers/advistory/advistory.action';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -84,7 +84,13 @@ function SelectFavoriteArtworkStep({ prev, next }) {
                                                 </div>
                                             </label>
                                             <div className="col-body">
-                                                <div className="finished-tag">{item?.is_sold ? t("advisory.select_favorite_artwork_step.sold_out") : t("advisory.select_favorite_artwork_step.not_sold")}</div>
+                                                {/* <div className="finished-tag">{item?.is_sold ? t("advisory.select_favorite_artwork_step.sold_out") : t("advisory.select_favorite_artwork_step.not_sold")}</div> */}
+                                                {item?.is_sold ?
+                                                    <div className="finished-tag">
+                                                        {t("advisory.select_favorite_artwork_step.sold_out")}
+                                                    </div>
+                                                    : ""
+                                                }
 
                                                 <h6 className="col-title">
                                                     <span className="col-name">{Language === 'fa-IR' ? item?.translations?.fa?.artist_name : item?.translations?.en?.artist_name}</span>
@@ -118,7 +124,17 @@ function SelectFavoriteArtworkStep({ prev, next }) {
                         <button className="btn-next dir-rtl"
                             onClick={() => {
                                 form.submit()
-                                next()
+                                if (chooseProduct.length <= 0) {
+                                    message.error({
+                                        content: 'شما اثری انتخاب نکردید.', style: {
+                                            marginTop: '10vh',
+                                        },
+                                    })
+                                    return
+                                } else {
+                                    next()
+
+                                }
                             }}
                         >{t("advisory.select_favorite_artwork_step.btn_next")}</button>
                     </div>

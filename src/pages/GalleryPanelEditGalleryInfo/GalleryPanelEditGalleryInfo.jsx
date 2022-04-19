@@ -128,7 +128,7 @@ function GalleryPanelEditGalleryInfo() {
               country: Language === "fa-IR" ? values?.country : null,
             },
           },
-          // point,
+          point,
         },
       ],
       phone: values?.phone,

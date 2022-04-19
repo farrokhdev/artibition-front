@@ -24,40 +24,21 @@ function Advisory() {
         setCurrent(current - 1);
     };
 
-
-    // const customDot = (dot, { status, index }) => (
-    //     <Popover
-    //         content={
-    //             <span>
-    //                 مرحله {index} وضعیت: {status}
-    //             </span>
-    //         }
-    //     >
-    //         {dot}
-    //     </Popover>
-    // );
-
-
     const steps = [
         {
-            //   title: t("content-panel-add-artwork.step1"),
+           
             title: "",
             content: <WelcomeToAdvistoryStep next={next} prev={prev} />,
-            // content: <div style={{ width: "20px", height: "20px", backgroundColor: "red" }} onClick={() => { next() }} />,
             icon: false
         },
         {
-            //   title: t("content-panel-add-artwork.step2"),
             title: "",
             content: <SelectFavoriteArtworkStep prev={prev} next={next} />,
-            // content: <div style={{ width: "20px", height: "20px", backgroundColor: "red" }} onClick={() => { next() }} />,
             icon: false
         },
         {
-            //   title: t("content-panel-add-artwork.step2"),
             title: "",
             content: <ExtraDescriptionStep prev={prev} next={next} />,
-            // content: <div style={{ width: "20px", height: "20px", backgroundColor: "red" }} onClick={() => { next() }} />,
             icon: false
         },
     ];

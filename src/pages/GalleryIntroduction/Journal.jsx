@@ -44,9 +44,11 @@ function Journal({ id }) {
                         <div className="col-sm-4">
                             <Link to={`/site/gallery-content/${id}/${journal.id}`} className="cols">
                                 <div className="col-img">
-                                    <div className="video-prev"><img src={video} width="36" height="36"
-                                        alt="" />
-                                    </div>
+                                    {journal?.type === "video" &&
+                                        <div className="video-prev"><img src={video} width="36" height="36"
+                                            alt="" />
+                                        </div>
+                                    }
                                     <img src={journal.poster?.exact_url} width="1000" height="1000"
                                         alt="آرتیبیشن" className="img-responsive" />
                                 </div>

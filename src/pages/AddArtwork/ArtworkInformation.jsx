@@ -40,9 +40,22 @@ function ArtworkInformation({ next, prev }) {
     });
 
 
-  console.log("categorys", categorys);
+    const [state, setState] = useState({
+        tags: [],
+        inputVisible: false,
+        inputValue: "",
+        editInputIndex: -1,
+        editInputValue: ""
+    });
 
-
+    
+    const [state_fa, setState_fa] = useState({
+        tags: [],
+        inputVisible: false,
+        inputValue: "",
+        editInputIndex: -1,
+        editInputValue: ""
+    });
 
 
     const { roles, profile } = useSelector((state) => state.authReducer)
@@ -95,13 +108,15 @@ function ArtworkInformation({ next, prev }) {
             "is_special": false,
             "view_only": false,
             "is_sold": false,
+            // "tags_en": [values.tags_en],
+            // "tags_fa": [values.tags_fa],
+            "tags_en": state.tags,
+            "tags_fa": state_fa.tags,
 
-            "tags_en": [values.tags_en],
-            "tags_fa": [values.tags_fa],
 
 
         }
-        console.log(payload, "payload");
+        // console.log({payload});
 
         if (uploadList.length) {
             dispach(artworkForm(payload))
@@ -852,15 +867,25 @@ function ArtworkInformation({ next, prev }) {
                                             }
                                         ]}>
 
-                                        <Input
+                                        <TagComponent
+                                            state={state_fa}
+                                            setState={setState_fa}
+                                            tags={state_fa.tags}
+                                            inputVisible={state_fa.inputVisible}
+                                            inputValue={state_fa.inputValue}
+                                            editInputIndex={state_fa.editInputIndex}
+                                            editInputValue={state_fa.editInputValue}
+                                        />
+
+                                        {/* <Input
                                             type="text"
                                             id="info-215"
                                             className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
                                             placeholder={t("content-panel-add-artwork.art_info.tag_fa")}
-                                        />
+                                        /> */}
 
                                     </Form.Item>
-                                    <span className="input-help text-dir">{t("content-panel-add-artwork.art_info.text_tag_fa")} </span>
+                                    <span className="input-help text-dir mt-5">{t("content-panel-add-artwork.art_info.text_tag_fa")} </span>
                                 </div>
                             </div>
                             <div
@@ -882,24 +907,24 @@ function ArtworkInformation({ next, prev }) {
                                                 message: 'required',
                                             }
                                         ]}>
-                                        {/* <TagComponent
-                                            // state={state}
-                                            // setState={setState}
-                                            // tags={tags}
-                                            // inputVisible={inputVisible}
-                                            // inputValue={inputValue}
-                                            // editInputIndex={editInputIndex}
-                                            // editInputValue={editInputValue}
-                                             /> */}
-                                        <Input
+                                        <TagComponent
+                                            state={state}
+                                            setState={setState}
+                                            tags={state.tags}
+                                            inputVisible={state.inputVisible}
+                                            inputValue={state.inputValue}
+                                            editInputIndex={state.editInputIndex}
+                                            editInputValue={state.editInputValue}
+                                        />
+                                        {/* <Input
                                             type="text"
                                             id="info-216"
                                             className="d-flex box-dir-reverse form-control input-public en-lang border-0 px-2"
                                             placeholder={t("content-panel-add-artwork.art_info.tag_en")}
-                                        />
+                                        /> */}
 
                                     </Form.Item>
-                                    <span className="input-help text-dir w-100">{t("content-panel-add-artwork.art_info.text_tag_en")}</span>
+                                    <span className="input-help text-dir w-100  mt-5">{t("content-panel-add-artwork.art_info.text_tag_en")}</span>
                                 </div>
                             </div>
                         </div>
