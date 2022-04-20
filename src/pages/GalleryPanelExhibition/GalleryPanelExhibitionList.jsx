@@ -15,7 +15,6 @@ import { useDispatch } from "react-redux";
 import queryString from 'query-string';
 import { editExhibitionModeFunc, exhibitionId } from "../../redux/reducers/Exhibition/exhibition.action";
 
-
 function GalleryPanelExhibitionList() {
 
     const [galleries, setGalleries] = useState([])
@@ -23,18 +22,26 @@ function GalleryPanelExhibitionList() {
         page_size: 999999
     })
 
+
     const dispatch = useDispatch()
     const navigate = useNavigate()
 
     const { gallery_id } = useSelector((state) => state.galleryReducer)
 
-    
+
 
 
     const handleEditExhibition = (e, data) => {
         dispatch(exhibitionId(data.id))
         dispatch(editExhibitionModeFunc(true))
         navigate("/panel/create-exhibition")
+    }
+
+    const handleUploadArtworks = (e, data) => {
+        console.log("data.id", data.id)
+        dispatch(exhibitionId(data.id))
+        dispatch(editExhibitionModeFunc(true))
+        navigate("/panel/upload-exhibition-artwotk")
     }
 
     useEffect(() => {
@@ -92,7 +99,15 @@ function GalleryPanelExhibitionList() {
                                         <button onClick={(e) => { handleEditExhibition(e, gallery) }} className="btn-outline-blue">
                                             {t("gallery-panel-exhibition.table.edit")}
                                         </button>
-                                        <button type="button" className="btn-outline-blue">{t("gallery-panel-exhibition.table.upload_artwotk")}</button>
+
+                                        <button
+                                            onClick={(e) => { handleUploadArtworks(e, gallery) }}
+                                            className="btn-outline-blue"
+
+                                        >
+                                            {t("gallery-panel-exhibition.table.upload_artwotk")}
+                                        </button>
+
                                     </td>
                                 </tr>
                             )
