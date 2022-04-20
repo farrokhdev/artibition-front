@@ -32,6 +32,7 @@ export const CORE_CONTENT = "/core/content/";
 export const CORE_CONTENT_ID = (id) => `/core/content/${id}/`;
 export const CORE_CATEGORIS = "/core/category/";
 export const PRODUCTS_CATEGORIES = "/products/categories/";
+export const PRODUCTS_DISCOUNT = "/products/filters/";
 export const PRODUCTS_TECHNIQUES = "/products/techniques/";
 export const PRODUCTS_MATERIALS = "/products/materials/";
 export const PRODUCTS_SIZES = "/products/sizes/";

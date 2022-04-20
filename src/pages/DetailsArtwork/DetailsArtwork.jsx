@@ -587,16 +587,13 @@ function DetailsArtwork() {
                         </span>
                         <h3 className="col-xs-8 detail-name text-dir">
                           <span className="dimension-width persian-num">
-                            {productDetail?.width}
+                            {productDetail?.width ? productDetail?.width : t("artworkList.filter.size.no_width") }
                           </span>
-                          <span> در </span>
-                          {isNil(productDetail?.height) ? (
-                            t("undefined")
-                          ) : (
+                          <span> در </span> 
                             <span className="dimension-height persian-num">
-                              {productDetail?.height}
+                              {productDetail?.height ? productDetail?.height : t("artworkList.filter.size.no_height")}
                             </span>
-                          )}
+                         
                         </h3>
                       </div>
                       <div className="d-flex box-dir-reverse row-listdetail">

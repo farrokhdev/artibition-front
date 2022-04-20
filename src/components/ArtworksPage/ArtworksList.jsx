@@ -8,6 +8,7 @@ import queryString from "query-string";
 import {
   ARTIST_PRODUCTS,
   PRODUCTS_CATEGORIES,
+  PRODUCTS_DISCOUNT,
   PRODUCTS_MATERIALS,
   PRODUCTS_SIZES,
   PRODUCTS_TECHNIQUES,
@@ -83,6 +84,7 @@ const ArtworksList = (props) => {
   const [categorieParams, setCategorieParams] = useState({
     page: 1,
   });
+
   const [materialParams, setMaterialParams] = useState({
     search: "",
   });
@@ -101,8 +103,15 @@ const ArtworksList = (props) => {
         categoriesIdTotal.push(parseInt(key));
       }
     }
+
     setParams((state) => ({ ...state, category_id: categoriesIdTotal }));
     return null;
+  };
+
+  // const [discounts, setDiscounts] = useState();
+  const [discountsId, setDiscountsId] = useState();
+  const filterDiscounts = (disId) => {
+    setParams((state) => ({ ...state, discount: disId }));
   };
 
   const [techniques, setTechniques] = useState();
@@ -146,11 +155,13 @@ const ArtworksList = (props) => {
     }
     return setParams((state) => ({ ...state, size_id: sizesIdTotal }));
   };
+
   const fetchProducts = () => {
     const defaultQuery = queryString.stringify(params, {
       arrayFormat: "comma",
       skipNull: true,
       skipEmptyString: true,
+  
     });
 
     const query = isNil(props?.exhibitionId)
@@ -193,7 +204,20 @@ const ArtworksList = (props) => {
     });
   };
 
+  // FILTER WITHOUT BUTTON
+  useEffect(() => {
+    filterCategories();
+    filterTechniques();
+    filterMaterials();
+    // filterDiscounts();
+  }, [categoriesId, techniquesId, materialsId]);
 
+  useEffect(()=>{
+    filterDiscounts(discountsId);
+  },[discountsId])
+
+  // console.log(discountsId)
+  // FILTER WITHOUT BUTTON END
 
   const getProductCategories = () => {
     apiServices
@@ -313,10 +337,14 @@ const ArtworksList = (props) => {
     toman_price_range_max,
     dollar_price_range_min,
     dollar_price_range_max,
-    setDiscount,
-    discount,
-    setDiscountRange,
-    discountRange,
+    // setDiscount,
+    // discount,
+    // setDiscountRange,
+    // discountRange,
+    // discounts,
+    // setDiscounts,
+    discountsId,
+    setDiscountsId,
     setTechniqueSearch,
     setTechniquesetParams,
     techniqueSearch,

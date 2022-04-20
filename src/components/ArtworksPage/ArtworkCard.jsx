@@ -128,9 +128,9 @@ const ArtworkCard = ({ product, callBack = () => console.log("") }) => {
                 </span>
                 <span className="col-dimension-body mx-2">
                   <div className="d-flex">
-                    <span className="dimension-width">{product.width}</span>
+                    <span className="dimension-width">{product.width ? product.width : t("artworkList.filter.size.no_width")}</span>
                     <span className="mx-2">{t("card_artwork.size.in")}</span>
-                    <span className="dimension-height ">{product.height}</span>
+                    <span className="dimension-height ">{product.height ? product.height : t("artworkList.filter.size.no_height")}</span>
                   </div>
                 </span>
               </div>
