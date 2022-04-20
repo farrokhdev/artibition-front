@@ -1,7 +1,8 @@
 import { message } from "antd";
+import axios from "axios";
 import { t } from "i18next";
 import { isNil } from "lodash";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import newsletter from "../../assets/img/newsletter.svg";
@@ -12,6 +13,11 @@ import { isLogin } from "../../utils/utils";
 export default function Newslatter() {
   const [userEmail, setUserEmail] = useState();
   const { i18n } = useTranslation();
+
+
+
+
+
 
   const addToNewsLetter = () => {
     if (isNil(userEmail) || userEmail?.length < 1) return;
