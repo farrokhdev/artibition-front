@@ -10,17 +10,29 @@ import apiServices from "../../utils/api.services";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import queryString from "query-string";
+import { isNil } from "lodash";
 
 function DetailsPromotion() {
   const { t, i18n } = useTranslation();
   const [promotions, setPromotions] = useState();
-  const [categories, setCats] = useState([]);
   const [params, setParams] = useState({
-    status: "active",
-    for_gifting: true,
-    page: 1,
-    category_id: "",
+  // for_gifting:true
+    // order: selectedOption,
+    // page: 1,
+    // size_id: size_id,
+    // category_id: category_id,
+    // toman_price_range_min: toman_price_range_min,
+    // toman_price_range_max: toman_price_range_max,
+    // dollar_price_range_min: dollar_price_range_min,
+    // dollar_price_range_max: dollar_price_range_max,
+    // discount: discountو
   });
+
+
+
+
+  const [categories, setCats] = useState([]);
+
 
   useEffect(() => {
     apiServices
@@ -62,6 +74,35 @@ function DetailsPromotion() {
     });
   };
 
+
+  // SET PRICE RANGE 
+
+  const [toman_price_range_max,setToman_price_range_max]=useState(2000);
+  const [dollar_price_range_max,setDollar_price_range_max]=useState(2000);
+  const [activeC,setActiveC]=useState(2000)
+
+  const filterPriceToman= (max)=>{
+    setToman_price_range_max(max)
+    setParams({...params,toman_price_range_min:0,toman_price_range_max:max})
+  }
+  const filterPriceDollar= (max)=>{
+    setDollar_price_range_max(max)
+    setParams({...params,dollar_price_range_min:0,dollar_price_range_max:max})
+  }
+
+  useEffect(()=>{
+    setActiveC( toman_price_range_max )
+  },[toman_price_range_max,dollar_price_range_max])
+  const activeClass=(actNum)=>{
+if(actNum==activeC){
+  return"active"
+}
+  }
+
+
+
+  // SET PRICE RANGE END
+
   return (
     <>
       <div className="container mx-auto px-0 w-100">
@@ -87,25 +128,20 @@ function DetailsPromotion() {
             </div>
             <div className="select-price">
               <ul className="nav nav-justified d-block dir">
-                <li>
-                  <a href="#">
-                    {t("promotion.banner.price_1_btn")}
-                    {t("promotion.price_unit")}
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
+                
+                <li className={activeClass(1000)}  onClick={()=>filterPriceToman(1000) } >
+                  <a href="#" >
                     {t("promotion.banner.price_2_btn")}
                     {t("promotion.price_unit")}
                   </a>
                 </li>
-                <li className="active">
+                <li className={activeClass(2000)} onClick={()=>filterPriceToman(2000)}>
                   <a href="#">
                     {t("promotion.banner.price_3_btn")}
                     {t("promotion.price_unit")}
                   </a>
                 </li>
-                <li>
+                <li className={activeClass(3000)}  onClick={()=>filterPriceToman(3000)}>
                   <a href="#">
                     {t("promotion.banner.price_4_btn")}
                     {t("promotion.price_unit")}
@@ -154,6 +190,7 @@ function DetailsPromotion() {
                         callBack={callBack}
                         key={index}
                         item={item}
+                        
                       />
                     </div>
                   ))}
