@@ -1,7 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Input, message } from "antd";
-import google_icon from "../../assets/img/google.jpg";
-import signup from "../../assets/img/login.jpg";
 import { Link } from "react-router-dom";
 import ModalOtp from "./ModalOtp";
 import user_icon from "../../assets/img/username.png";
@@ -11,17 +9,31 @@ import BasketFooter from "../../components/BasketFooter/BasketFooter";
 import HeaderAuthPages from "../../components/HeaderAuthPages/HeaderAuthPages";
 import { t } from "i18next";
 import APIService from "../../utils/api.services";
-
-import { REGISTER, OPT } from "../../utils";
+import { REGISTER, OPT, SIGNUP_IMAGE } from "../../utils";
 import GoogleLoginButton from "../../components/GoogleLoginButton/GoogleLoginButton";
+import apiServices from "../../utils/api.services";
+import { isNil } from "lodash";
 
 export default function Signup() {
-
   const [visibleOtpModal, setVisibleOtpModal] = useState(false);
   const [mobile, setMobile] = useState();
-
+  const [signUpImage, setSignUpImage] = useState();
   const [form] = Form.useForm();
-
+  const getSignUpImage = () => {
+    //! api must be changed after backend implementation
+    apiServices
+      .get(SIGNUP_IMAGE, "")
+      .then((res) => {
+        if (res.data.code === 200) {
+          const data = res.data.data;
+          if (!isNil(data?.exact_url)) {
+            setSignUpImage(data?.exact_url);
+          }
+        }
+      })
+      .catch((err) => console.log("GET_LOGIN_IMAGE_FAILED", err));
+  };
+  useEffect(getSignUpImage, []);
   function validateUserName(mail) {
     if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
       return true;
@@ -133,9 +145,7 @@ export default function Signup() {
                 <p className="login-term">
                   {t("describtion-low.text-info-part1")}
                   <Link className="mx-2" to="#">
-
                     {t("describtion-low.text-link")}{" "}
-
                   </Link>
                   {t("describtion-low.text-info-part2")}
                 </p>
@@ -157,7 +167,7 @@ export default function Signup() {
             </div>
             <div className="col-lg-5  hidden-sm hidden-xs px-0">
               <img
-                src={signup}
+                src={signUpImage}
                 width="730"
                 height="902"
                 alt=""
