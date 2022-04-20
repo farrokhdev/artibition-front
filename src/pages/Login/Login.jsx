@@ -1,11 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Input } from "antd";
-import login from "../../assets/img/login.jpg";
-import google_icon from "../../assets/img/google.jpg";
 import { Link } from "react-router-dom";
 import user_icon from "../../assets/img/username.png";
 import lock_icon from "../../assets/img/password.png";
-import Statistics from "../../components/Statistics/Statistics";
 import BasketFooter from "../../components/BasketFooter/BasketFooter";
 import { useTranslation } from "react-i18next";
 import HeaderAuthPages from "../../components/HeaderAuthPages/HeaderAuthPages";
@@ -18,7 +15,6 @@ import { connect } from "react-redux";
 import { setProfile } from "../../redux/reducers/auth/auth.actions";
 import { useSelector, useDispatch } from "react-redux";
 import { UPDATE_CART } from "../../redux/reducers/cart/cart.types";
-import { GoogleLogin } from "react-google-login";
 import * as axios from "axios";
 import GoogleLoginButton from "../../components/GoogleLoginButton/GoogleLoginButton";
 import { isNil } from "lodash";
@@ -27,9 +23,7 @@ function Login(props) {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { roles } = useSelector((state) => state.authReducer);
-  const [loading, setLoading] = useState(true);
-  const [loginImage, setLoginImage] = useState(login);
-  const [statisticImage, setStatisticImage] = useState();
+  const [loginImage, setLoginImage] = useState();
 
   let userRole = "user";
   const getLoginImage = () => {
@@ -45,23 +39,9 @@ function Login(props) {
       })
       .catch((err) => console.log("GET_LOGIN_IMAGE_FAILED", err));
   };
-  const getStatisticImage = () => {
-    axios
-      .get(`${BASE_URL}/management/content/get_state_pic/`)
-      .then((res) => {
-        if (res.data.code === 200) {
-          const data = res.data.data;
-          if (!isNil(data?.exact_url)) {
-            setStatisticImage(data?.exact_url);
-          }
-        }
-      })
-      .catch((err) => console.log("GET_LOGIN_IMAGE_FAILED", err));
-  };
 
   useEffect(() => {
     getLoginImage();
-    getStatisticImage();
   }, []);
   const handleGoogleLogin = (result) => {
     axios
@@ -252,7 +232,7 @@ function Login(props) {
           {/* Statistics was commented because product owner wants to upload an image
            instead of this component */}
           {/* <Statistics /> */}
-          <div className="col-lg-5   hidden-sm hidden-xs ">
+          {/* <div className="col-lg-5   hidden-sm hidden-xs ">
             <img
               src={statisticImage}
               width="810"
@@ -260,7 +240,7 @@ function Login(props) {
               alt=""
               className="img-responsive"
             />
-          </div>
+          </div> */}
         </div>
       </div>
 

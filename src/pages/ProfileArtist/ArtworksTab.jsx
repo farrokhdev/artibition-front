@@ -23,7 +23,6 @@ function ArtworksTab({ artistId, translations }) {
   const [search, setSearch] = useState();
   const [artistArts, setArtistArts] = useState();
 
-  console.log("artistId", artistId);
   const [params, setParams] = useState({
     // search: "",
     page: 1,
@@ -55,7 +54,6 @@ function ArtworksTab({ artistId, translations }) {
       setParams((state) => ({ ...state, artist_id: artistId }));
     }
   }, [artistId]);
-  console.log("iddddd", artistArts?.results);
 
   return (
     <div id="artist1" className="tab-pane fade in active">

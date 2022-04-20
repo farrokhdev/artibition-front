@@ -5,7 +5,7 @@ import Clear from "../../assets/img/clear.svg";
 import FilterSidBarInArtworks from "./FilterSidBarInArtworks";
 import { t } from "i18next";
 import apiServices from "../../utils/api.services";
-import { ARTIST_PRODUCTS } from "../../utils";
+import { ARTIST_PRODUCTS, GALLERY_ALL_PRODUCT_LIST } from "../../utils";
 import QueryString from "qs";
 import { useTranslation } from "react-i18next";
 import { follow } from "../../utils/utils";
@@ -14,19 +14,19 @@ function Artworks({ id }) {
   const { t, i18n } = useTranslation();
   let navigate = useNavigate();
   const [galleryProducts, setGalleryProducts] = useState();
-  const [params, setParams] = useState({
-    status: "active",
-    search: "",
-    page: 1,
-    // gallery_id:id
-  });
+  // const [params, setParams] = useState({
+  //   page: 1,
+  //   // status: "active",
+  //   // search: "",
+  //   // gallery_id:id
+  // });
   function callback(key) {
     console.log(key);
   }
 
   const getGalleryProducts = () => {
     apiServices
-      .get(ARTIST_PRODUCTS, QueryString.stringify(params))
+      .get(GALLERY_ALL_PRODUCT_LIST(id), "")
       .then((res) => {
         if (res.data) {
           setGalleryProducts(res.data.data);
@@ -39,7 +39,7 @@ function Artworks({ id }) {
 
   useEffect(() => {
     getGalleryProducts();
-  }, [params]);
+  }, []);
 
   console.log("product", galleryProducts);
 

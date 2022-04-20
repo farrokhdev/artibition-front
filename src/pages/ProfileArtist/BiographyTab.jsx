@@ -22,10 +22,6 @@ function BiographyTab({ artistBio, artistId }) {
       .then((res) => {
         if (res.data) {
           const tempYears = new Set();
-          console.log(
-            "🚀 ~ file: BiographyTab.jsx ~ line 25 ~ tempArtistExhibition ~ res.data.data",
-            res.data.data
-          );
           const tempArtistExhibition = res.data.data.map((item) => {
             let tempDate;
             if (i18n.language === "fa-IR") {
@@ -58,7 +54,6 @@ function BiographyTab({ artistBio, artistId }) {
         console.log("err", err);
       });
   };
-
   useEffect(() => {
     getArtistExhibition();
   }, []);
@@ -107,7 +102,6 @@ function BiographyTab({ artistBio, artistId }) {
                               ? exhibition?.translations?.fa?.name
                               : exhibition?.translations?.en?.name}
                           </h6>
-                          {console.log({ artistExhibition })}
                           {exhibition?.has_profile && (
                             <button className="btn-readmore">
                               <Link
@@ -142,100 +136,9 @@ function BiographyTab({ artistBio, artistId }) {
                         </div>
                       );
                     })}
-
-                  {/* <div className="sec-timeline">
-                    <h6 className="title-timeline text-dir">
-                      {t("artist_profile.versions")}
-                    </h6>
-                    <div className="text-dir">
-                      {t("artist_profile.aknon_gallery")}
-                    </div>
-                    <div className="date-timeline text-dir">
-                      <span className="persian-num">22</span>
-                      <span>خرداد</span>
-                      <span className="persian-num">1399</span>
-                    </div>
-                  </div> */}
                 </div>
               );
             })}
-
-          {/* <div className="row-timeline">
-            <div className="pull-dir">
-              <h5 className="persian-num year-timeline">1398</h5>
-            </div>
-            <div className="sec-timeline">
-              <h6 className="title-timeline text-dir">
-                {t("artist_profile.man")}
-              </h6>
-              <div className="text-dir">
-                {t("artist_profile.aknon_gallery")}
-              </div>
-              <div className="date-timeline text-dir">
-                <span className="persian-num">22</span>
-                <span>خرداد</span>
-                <span className="persian-num">1398</span>
-              </div>
-            </div>
-            <a className="sec-timeline" href="#">
-              <h6 className="title-timeline text-dir">
-                {t("artist_profile.collection")} ۵
-              </h6>
-              <button className="d-flex align-items-center  box-dir-reverse d-flex align-items-center  box-dir-reverse btn-readmore">
-                {t("artist_profile.veiw")}
-              </button>
-              <div className="text-dir">
-                {t("artist_profile.aknon_gallery")}
-              </div>
-              <div className="date-timeline text-dir">
-                <span className="persian-num">22</span>
-                <span>خرداد</span>
-                <span className="persian-num">1399</span>
-              </div>
-            </a>
-            <div className="sec-timeline">
-              <h6 className="title-timeline text-dir">
-                {t("artist_profile.versions")}
-              </h6>
-              <div className="text-dir">
-                {t("artist_profile.aknon_gallery")}
-              </div>
-              <div className="date-timeline text-dir">
-                <span className="persian-num">22</span>
-                <span>خرداد</span>
-                <span className="persian-num">1399</span>
-              </div>
-            </div>
-            <div className="sec-timeline">
-              <h6 className="title-timeline text-dir">
-                {t("artist_profile.versions")}
-              </h6>
-              <div className="text-dir">
-                {t("artist_profile.aknon_gallery")}
-              </div>
-              <div className="date-timeline text-dir">
-                <span className="persian-num">22</span>
-                <span>خرداد</span>
-                <span className="persian-num">1399</span>
-              </div>
-            </div>
-            <a className="sec-timeline" href="#">
-              <h6 className="title-timeline text-dir">
-                {t("artist_profile.collection")} 3
-              </h6>
-              <button className="d-flex align-items-center  box-dir-reverse btn-readmore">
-                {t("artist_profile.veiw")}
-              </button>
-              <div className="text-dir">
-                {t("artist_profile.aknon_gallery")}
-              </div>
-              <div className="date-timeline text-dir">
-                <span className="persian-num">22</span>
-                <span>خرداد</span>
-                <span className="persian-num">1399</span>
-              </div>
-            </a>
-          </div> */}
         </div>
       </div>
     </div>

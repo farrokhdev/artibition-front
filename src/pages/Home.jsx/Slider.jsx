@@ -68,8 +68,6 @@ export default function Slider() {
       >
         <div className="carousel-inner">
           {sliders?.map((slider, index) => {
-            console.log("index", index, slider);
-            console.log("activeSlide", activeSlide);
             let timerInMilliSeconds = 0;
 
             if (

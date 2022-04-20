@@ -49,6 +49,7 @@ export const SOCIAL_NETWORK_COLLECTIONS_ID = (id) =>
   `/social-network/collections/${id}/`;
 export const GALLERY_LIST = "/gallery/";
 export const GALLERY = (id) => `/gallery/${id}/`;
+export const GALLERY_ALL_PRODUCT_LIST = (id)=> `/gallery/${id}/products/all_product/`;
 export const GALLERY_COUNT_PENDING = "/gallery/count_pending_orders/";
 export const GALLERY_EXHIBITION = (id) => `/${id}/exhibition/`;
 export const GALLERY_ARTISTS = (id) => `/${id}/artists/`;
@@ -136,3 +137,4 @@ export const ARTIST_RESUME = (id) => `/artist/${id}/resume/`;
 export const CORE_EXCHANGE = "/core/exchange/";
 export const PROMOTIONS_ALL_PRODUCTS = "/events/promotions/all_products/";
 export const TRANSLATE = "/core/translate/";
+export const SIGNUP_IMAGE = "/management/content/get_state_pic/";
