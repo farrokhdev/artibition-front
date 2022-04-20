@@ -408,6 +408,8 @@
         "small": "Small",
         "medium": "Medium",
         "large": "Large",
+        "no_width":"no width",
+        "no_height":"no height",
         "custom": "Custom size",
         "min_width": "Min width (cm)",
         "max_width": "Max width (cm)",

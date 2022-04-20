@@ -179,14 +179,14 @@ export default function AllProducts({ categories }) {
                           </span>
                           <span className="col-dimension-body">
                             <span className="dimension-width">
-                              {product.width}
+                              {product.width ? product.width : t("artworkList.filter.size.no_width")}
                             </span>
                             <span className="mx-2">
                               {" "}
                               {t("card_artwork.size.in")}{" "}
                             </span>
                             <span className="dimension-height">
-                              {product.height}
+                              {product.height ? product.height : t("artworkList.filter.size.no_height")}
                             </span>
                           </span>
                         </div>

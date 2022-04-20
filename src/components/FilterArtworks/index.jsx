@@ -18,6 +18,10 @@ const FilterArtworks = (props) => {
     dollar_price_range_min,
     setDollar_price_range_min,
     dollar_price_range_max,
+    // discounts,
+    // setDiscounts,
+    discountsId,
+    setDiscountsId,
     setDollar_price_range_max,
     setTechniqueSearch,
     setTechniquesetParams,
@@ -94,18 +98,28 @@ const FilterArtworks = (props) => {
             <div className="panel-body">
               <div className="checkbox-row">
                 <label className="lable-checkbox text-dir">
-                  <input type="checkbox" checked value="" />
+                  <input
+                    type="checkbox"
+                    defaultChecked
+                    value=""
+                    onChange={(e) => {
+                      setCategoriesId({
+                        ...categoriesId,
+                        [e.target.name]: e.target.checked,
+                      });
+                    }}
+                  />
                   <span>{t("artworkList.filter.artField.all")}</span>
                   <span className="checkmark"></span>
                 </label>
                 {categories?.results?.map((item, index) => (
-                  <label className="lable-checkbox text-dir">
+                  <label className="lable-checkbox text-dir" key={index}>
                     <input
                       id="category_id"
                       name={item.id}
                       type="checkbox"
                       value={item.id}
-                      onClick={(e) => {
+                      onChange={(e) => {
                         setCategoriesId({
                           ...categoriesId,
                           [e.target.name]: e.target.checked,
@@ -121,15 +135,15 @@ const FilterArtworks = (props) => {
                   </label>
                 ))}
               </div>
-              <div className="d-flex pull-dir-rev">
+              {/* <div className="d-flex pull-dir-rev">
                 <button
                   type="button"
                   className="btn btn-ok pull-dir"
-                  onClick={filterCategories}
+               
                 >
                   {t("artworkList.filter.size.submit")}
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -229,17 +243,31 @@ const FilterArtworks = (props) => {
               <div className="clearfix"></div>
               <div className="md-mrgt30">
                 <label className="lable-checkbox text-dir">
-                  <input type="checkbox" value="" />
+                  <input
+                    type="checkbox"
+                    value={20}
+                    onChange={(e) =>
+                      e.target.checked ? setDiscountsId(e.target.value) : setDiscountsId("")
+                    }
+                  />
                   <span>{t("artworkList.filter.discount.up20")}</span>
                   <span className="checkmark"></span>
                 </label>
                 <label className="lable-checkbox text-dir">
-                  <input type="checkbox" value="" />
+                  <input
+                    type="checkbox"
+                    value={30}
+                    onChange={(e) =>  e.target.checked ? setDiscountsId(e.target.value) : setDiscountsId("")}
+                  />
                   <span>{t("artworkList.filter.discount.up30")}</span>
                   <span className="checkmark"></span>
                 </label>
                 <label className="lable-checkbox text-dir">
-                  <input type="checkbox" value="" />
+                  <input
+                    type="checkbox"
+                    value={50}
+                    onChange={(e) =>  e.target.checked ? setDiscountsId(e.target.value) : setDiscountsId("")}
+                  />
                   <span>{t("artworkList.filter.discount.up50")}</span>
                   <span className="checkmark"></span>
                 </label>
@@ -317,7 +345,7 @@ const FilterArtworks = (props) => {
                     </label>
                   ))}
                 </div>
-                <div className="d-flex pull-dir-rev">
+                {/* <div className="d-flex pull-dir-rev">
                   <button
                     type="button"
                     className="btn btn-ok pull-dir"
@@ -326,7 +354,7 @@ const FilterArtworks = (props) => {
                   >
                     {t("artworkList.filter.size.submit")}
                   </button>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -393,7 +421,7 @@ const FilterArtworks = (props) => {
                     </label>
                   ))}
                 </div>
-                <div className="d-flex pull-dir-rev">
+                {/* <div className="d-flex pull-dir-rev">
                   <button
                     type="button"
                     className="btn btn-ok pull-dir"
@@ -402,7 +430,7 @@ const FilterArtworks = (props) => {
                   >
                     {t("artworkList.filter.size.submit")}
                   </button>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
