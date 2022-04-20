@@ -421,7 +421,7 @@
     }
   },
   "artists": {
-    "text-to-artist-auth":"please login first",
+    "text-to-artist-auth": "please login first",
     "filter": {
       "expert": {
         "title": "Artist's expertise",
@@ -1621,5 +1621,6 @@
     "finished": "Finished"
   },
   "no-data": "there is no data",
-  "size": "size: "
+  "size": "size: ",
+  "undefined": "undefined"
 }
