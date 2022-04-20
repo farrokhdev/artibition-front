@@ -194,7 +194,7 @@ function App(props) {
 
 
 
-        {is_logged_in ? (
+        {isLogin() ? (
           <RouterConfig />
         ) : (
           <Routes>

@@ -47,6 +47,8 @@ function GalleryPanelUploadExhibitionArtwork() {
   const { editExhibitionMode } = useSelector(
     (state) => state.exhibitionReducer
   );
+
+
   const { reduxSelectedArtworks } = useSelector(
     (state) => state.exhibitionReducer
   );
@@ -121,6 +123,7 @@ function GalleryPanelUploadExhibitionArtwork() {
         .then((res) => {
           if (res.data) {
             const result = res.data.data.results;
+            console.log("result", result)
             const temp = [];
             const artistsTemp = [];
             result.map((item) => {
@@ -159,6 +162,7 @@ function GalleryPanelUploadExhibitionArtwork() {
               filter.push(item);
             }
           });
+
           setSelectedArtists(filter);
         } else {
           message.error(res.response.data.message);
@@ -170,11 +174,21 @@ function GalleryPanelUploadExhibitionArtwork() {
   };
 
   useEffect(() => {
-    getExhibitionProduct();
-    getGalleryArtists();
-  }, []);
+    if (exhibitionId) {
+      getExhibitionProduct();
+    }
+  }, [exhibitionId]);
 
-  const submitSelectedArtwork = () => {};
+  useEffect(() => {
+    if (gallery_id) {
+      getGalleryArtists();
+
+    }
+  }, [gallery_id,selectedArtistId]);
+
+  console.log("selectedArtists", selectedArtists);
+
+  const submitSelectedArtwork = () => { };
 
   const onFinishNewArtist = (value) => {
     if (uploadList.length > 0) {
