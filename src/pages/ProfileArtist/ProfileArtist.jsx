@@ -30,7 +30,6 @@ function ProfileArtist() {
   const [activeKey, setActiveKey] = useState("1");
 
   function callback(key) {
-    console.log(key);
     setActiveKey(key);
   }
 
@@ -80,11 +79,10 @@ function ProfileArtist() {
   // }
 
   const handleShowModalSendMessage = () => {
-    if(is_logged_in){
-
+    if (is_logged_in) {
       setVisibleShowSendMessage(true);
-    }else {
-      message.error(t("artists.text-to-artist-auth"))
+    } else {
+      message.error(t("artists.text-to-artist-auth"));
     }
   };
 
@@ -93,7 +91,6 @@ function ProfileArtist() {
       .get(ARTIST_PROFILE(id), queryString.stringify(params))
       .then((res) => {
         if (res.data) {
-          console.log(res.data.data);
           setArtistProfile(res.data.data);
           setMessageReceiverId(res?.data?.data?.owner?.id);
         }
