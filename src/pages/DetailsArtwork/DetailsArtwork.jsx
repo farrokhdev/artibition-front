@@ -20,6 +20,7 @@ import ModalSendMessage from "../ProfileArtist/ModalSendMessage";
 
 import {
   ARTIST_PRODUCTS,
+  ARTIST_PROFILE,
   CART_ME_ADD_ITEM,
   ORDER_BUYER_ME,
   PRODUCT_DETAIL,
@@ -72,6 +73,7 @@ function DetailsArtwork() {
   const [showSendMessage, setShowSendMessage] = useState(false);
   const [offerValue, setOfferValue] = useState();
   const [messageReceiverId, setMessageReceiverId] = useState(null);
+  const [artistBiography, setArtistBiography] = useState("");
   const [toggle, setToggle] = useState(false);
   const [params, setParams] = useState({
     search: "",
@@ -83,7 +85,23 @@ function DetailsArtwork() {
     search: "",
     page: 1,
   });
-
+  const getArtistProfile = () => {
+    apiServices
+      .get(ARTIST_PROFILE(artist_id), "")
+      .then((res) => {
+        if (res.data) {
+          i18n.language === "fa-IR"
+            ? setArtistBiography(res?.data?.data?.translations?.fa?.biography)
+            : setArtistBiography(res?.data?.data?.translations?.en?.biography);
+        }
+      })
+      .catch((err) => {
+        console.log("err", err);
+      });
+  };
+  useEffect(() => {
+    getArtistProfile();
+  }, []);
   const handleShowModalEditOffer = () => {
     setVisibleEditOfferModal(true);
   };
@@ -99,7 +117,7 @@ function DetailsArtwork() {
   const { TabPane } = Tabs;
 
   function callback(key) {
-    console.log(key);
+    // console.log(key);
   }
 
   const getProductDetail = () => {
@@ -195,7 +213,6 @@ function DetailsArtwork() {
   const [choosenImg, setChoosenImg] = useState("");
 
   const chooseHandler = (e) => {
-    console.log(e.target.src);
     setChoosenImg(e.target.src);
   };
 
@@ -225,9 +242,6 @@ function DetailsArtwork() {
   ];
 
   productDetail?.medias.map((item) => {
-    {
-      console.log(productDetail);
-    }
     const details = {
       renderItem: () => {
         return (
@@ -578,7 +592,23 @@ function DetailsArtwork() {
                         <h3 className="col-xs-8 detail-name persian-num text-dir">
                           {i18n.language === "fa-IR"
                             ? productDetail?.jalali_creation_year
-                            : productDetail?.christian_creation_year}
+                            : !isNil(productDetail?.christian_creation_year)
+                            ? productDetail?.christian_creation_year
+                            : moment(
+                                productDetail?.jalali_creation_year,
+                                "jYYYY"
+                              ).format("YYYY") === "Invalid date"
+                            ? ""
+                            : moment(
+                                productDetail?.jalali_creation_year,
+                                "jYYYY"
+                              ).format("YYYY")}
+                          {console.log(
+                            "test",
+                            productDetail,
+                            productDetail?.christian_creation_year,
+                            isNil(productDetail?.christian_creation_year)
+                          )}
                         </h3>
                       </div>
                       <div className="d-flex box-dir-reverse row-listdetail">
@@ -652,7 +682,7 @@ function DetailsArtwork() {
                 </div>
 
                 <div className="artwork-seller text-dir">
-                  {!productDetail?.view_only ? (
+                  {!productDetail?.view_only && (
                     <div className="d-flex box-dir-reverse">
                       <img src={alert_icon} width="20" height="20" alt="" />
                       <span className="orangecolor">
@@ -666,8 +696,6 @@ function DetailsArtwork() {
                         این اثر قیمت گذاری شده است
                       </span>
                     </div>
-                  ) : (
-                    ""
                   )}
                 </div>
 
@@ -742,44 +770,45 @@ function DetailsArtwork() {
                 )}
 
                 <div className="artwork-offer">
-                  {offerValue?.results?.map((item) =>
-                    item.product_item_id === editionValue?.id ? (
-                      <div className="d-block d-lg-flex box-dir-reverse justify-content-between">
-                        <div className="col px-0">
-                          <p className="pull-dir">
-                            {t("artwork.bid_artwork.text1")}
-                            <strong className="persian-num px-1">
-                              {i18n.language === "fa-IR"
-                                ? numDiscriminant(item.toman_price) +
-                                  t("toman") +
-                                  " "
-                                : numDiscriminant(item.dollar_price) +
-                                  t("toman") +
-                                  " "}
-                            </strong>
-                            {t("artwork.bid_artwork.text2")}
-                          </p>
+                  {offerValue?.results?.map(
+                    (item) =>
+                      item.product_item_id === editionValue?.id && (
+                        <div className="d-block d-lg-flex box-dir-reverse justify-content-between">
+                          <div className="col px-0">
+                            <p className="pull-dir">
+                              {t("artwork.bid_artwork.text1")}
+                              <strong className="persian-num px-1">
+                                {i18n.language === "fa-IR"
+                                  ? numDiscriminant(item.toman_price) +
+                                    t("toman") +
+                                    " "
+                                  : numDiscriminant(item.dollar_price) +
+                                    t("toman") +
+                                    " "}
+                              </strong>
+                              {t("artwork.bid_artwork.text2")}
+                            </p>
+                          </div>
+                          <div className="col-2 px-0">
+                            <a
+                              href="#"
+                              data-toggle="modal"
+                              data-target="#modal-edit-offer"
+                            >
+                              {item.status === "modified" && (
+                                <img
+                                  onClick={handleShowModalEditOffer}
+                                  src={edit_icon}
+                                  width="32"
+                                  height="32"
+                                  alt=""
+                                  className="pull-dir"
+                                />
+                              )}
+                            </a>
+                          </div>
                         </div>
-                        <div className="col-2 px-0">
-                          <a
-                            href="#"
-                            data-toggle="modal"
-                            data-target="#modal-edit-offer"
-                          >
-                            {item.status === "modified" ? (
-                              <img
-                                onClick={handleShowModalEditOffer}
-                                src={edit_icon}
-                                width="32"
-                                height="32"
-                                alt=""
-                                className="pull-dir"
-                              />
-                            ) : null}
-                          </a>
-                        </div>
-                      </div>
-                    ) : null
+                      )
                   )}
                 </div>
                 <div className="artwork-property">
@@ -907,29 +936,34 @@ function DetailsArtwork() {
               key="1"
             >
               <p className="text-dir">
-                {/* {t("artwork.about_artwork.text")} */}
                 {i18n.language === "fa-IR"
                   ? productDetail?.translations?.fa?.about
                   : productDetail?.translations?.en?.about}
-                <button type="button" className="btn-moredown">
-                  <span>{t("artwork.about_artwork.more")}</span>
-                  <img
-                    src={more_icon}
-                    width="16"
-                    height="16"
-                    alt=""
-                    className="pull-dir px-2"
-                  />
-                </button>
+                {((i18n.language === "fa-IR" &&
+                  productDetail?.translations?.fa?.about?.length > 0) ||
+                  (i18n.language !== "fa-IR" &&
+                    productDetail?.translations?.en?.about)) && (
+                  <button type="button" className="btn-moredown">
+                    <span>{t("artwork.about_artwork.more")}</span>
+                    <img
+                      src={more_icon}
+                      width="16"
+                      height="16"
+                      alt=""
+                      className="pull-dir px-2"
+                    />
+                  </button>
+                )}
               </p>
             </TabPane>
             <TabPane tab={t("artwork.about_artist.tab_title")} key="2">
               <div className="text-dir">
-                <h3>Menu 1</h3>
-                <p>
-                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                  laboris nisi ut aliquip ex ea commodo consequat.
-                </p>
+                <h3>
+                  {i18n.language === "fa-IR"
+                    ? productDetail?.translations?.fa?.artist_name
+                    : productDetail?.translations?.en?.artist_name}
+                </h3>
+                <p>{artistBiography}</p>
               </div>
             </TabPane>
           </Tabs>
@@ -947,8 +981,6 @@ function DetailsArtwork() {
                     <a href="#">{item.title}</a>
                   </li>
                 ))}
-                {/* <li><a href="#">{t("artwork.tags.composition")}</a></li>
-                                <li><a href="#">{t("artwork.tags.canvas")}</a></li> */}
               </ul>
             </div>
           </div>
@@ -958,7 +990,7 @@ function DetailsArtwork() {
                 <div className="col-xs-8 text-dir">
                   <h2 className="default-title text-dir">
                     {" "}
-                    {t("artwork.other_artworks")}
+                    {t("artwork.other_artworks")}{" "}
                     {i18n.language === "fa-IR"
                       ? productDetail?.translations?.fa?.artist_name
                       : productDetail?.translations?.en?.artist_name}
@@ -966,7 +998,6 @@ function DetailsArtwork() {
                 </div>
                 <div className="col-xs-4">
                   <div className="d-flex box-dir-reverse pull-dir-rev">
-                    {/* <a href="#" className="btn-readmore pull-dir">همه آثار<span className="hidden-xs">هنرمند</span></a> */}
                     <Link
                       to={`/site/artist-profile/?id=${artist_id}`}
                       className="btn-readmore pull-left "
@@ -1068,9 +1099,9 @@ function DetailsArtwork() {
                 </div>
               ))}
             </div>
-            <div className="clearfix"></div>
-            <Suggestions />
           </div>
+          <div className="clearfix"></div>
+          <Suggestions />
 
           <RecentlyNews />
         </div>
