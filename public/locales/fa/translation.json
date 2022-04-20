@@ -24,6 +24,7 @@
       "drawing": "طراحی"
     },
     "size": {
+
       "title": "ابعاد",
       "small": "کوچک",
       "medium": "متوسط",
@@ -145,6 +146,7 @@
   "nav-submenu": {
     "artworks": {
       "artField": {
+        
         "title": "رشته هنری",
         "all": "همه آثار",
         "all_artworks": "همه آثار",
@@ -406,6 +408,8 @@
         "small": "کوچک",
         "medium": "متوسط",
         "large": "بزرگ",
+        "no_width":"عرض ندارد",
+        "no_height":"ارتفاع ندارد",
         "custom": "ابعاد دلخواه",
         "min_width": "حداقل عرض(cm)",
         "max_width": "حداکثر عرض(cm)",
@@ -419,7 +423,7 @@
     }
   },
   "artists": {
-    "text-to-artist-auth":"لطفا ابتدا وارد شوید",
+    "text-to-artist-auth": "لطفا ابتدا وارد شوید",
     "filter": {
       "expert": {
         "title": "تخصص هنرمند",
@@ -1568,5 +1572,6 @@
   },
 
   "no-data": "هیچ دیتایی وجود ندارد",
-  "size": "ابعاد: "
+  "size": "ابعاد: ",
+  "undefined": "نامشخص"
 }

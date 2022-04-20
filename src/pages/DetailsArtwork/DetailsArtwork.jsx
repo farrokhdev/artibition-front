@@ -2,55 +2,31 @@ import React, { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Menu from "../../components/Menu/Menu";
-import { Breadcrumb, message, Modal, Tabs } from "antd";
-import { t } from "i18next";
-
-import artwork1 from "../../assets/img/artworks/artwork-1.jpg";
-import live_veiw_icon from "../../assets/img/artworks/live_view.svg";
+import { Breadcrumb, message, Tabs } from "antd";
 import share_icon from "../../assets/img/share.svg";
 import like_selected_icon from "../../assets/img/liked_selected.svg";
 import liked_icon from "../../assets/img/Liked.svg";
-import artist4 from "../../assets/img/artist-4.jpg";
 import circle_plus from "../../assets/img/circle-plus-1.png";
 import ask_me_icon from "../../assets/img/ask_me.svg";
 import alert_icon from "../../assets/img/alert.svg";
 import auction_black_icon from "../../assets/img/auction-black.svg";
 import similar_icon from "../../assets/img/similar.svg";
-import shiping_icon from "../../assets/img/shipping.svg";
-import refund_icon from "../../assets/img/refund.svg";
-import secure_payment_icon from "../../assets/img/secure_payment.svg";
-import original_icon from "../../assets/img/original.svg";
 import more_icon from "../../assets/img/more.svg";
-import rdbewaopdm840 from "../../assets/img/mainpage/rdbewaopdm840.jpg";
-import hyxvpfinm840 from "../../assets/img/mainpage/hyxvpfinm840.jpg";
-import mainpage_3 from "../../assets/img/mainpage/3.jpg";
-import hezvtaokhv840 from "../../assets/img/mainpage/hezvtaokhv840.jpg";
-import ayvglbkdfo3 from "../../assets/img/mainpage/ayvglbkdfo@3x.jpg";
 import edit_icon from "../../assets/img/edit_name.svg";
-import telegram from "../../assets/img/telegram.svg";
-import whatsapp from "../../assets/img/whatsapp.svg";
-import copy_icon from "../../assets/img/copy-share.png";
 import ModalEditOffer from "./ModalEditOffer";
 import ModalSimilarArtworks from "./ModalSimilarArtworks";
 import ModalBidding from "./ModalBidding";
 import ModalSendMessage from "../ProfileArtist/ModalSendMessage";
-import { TelegramShareButton, WhatsappShareButton } from "react-share";
+
 import {
   ARTIST_PRODUCTS,
   CART_ME_ADD_ITEM,
-  GALLERY_FOLLOW,
   ORDER_BUYER_ME,
   PRODUCT_DETAIL,
 } from "../../utils";
-import {
-  Link,
-  useLocation,
-  useNavigate,
-  useSearchParams,
-} from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import apiServices from "../../utils/api.services";
 import QueryString from "qs";
-import queryString from "query-string";
 import { useTranslation } from "react-i18next";
 import moment from "moment-jalaali";
 import momentJalaali from "moment-jalaali";
@@ -61,12 +37,10 @@ import { UPDATE_CART } from "../../redux/reducers/cart/cart.types";
 import { discountPrice, numDiscriminant } from "../../utils/discriminant";
 import { DEFAULT_URL_IMAGE } from "../../utils/defaultImage";
 import ArthibitionProperties from "../../components/ArthibitionProperies/ArthibitionProperties";
-import RoomViewImg from "../../assets/img/artworks/room-view.jpg";
-import ImageGallery from "react-image-gallery";
-import { isNil } from "lodash";
 import Suggestions from "../Home.jsx/Suggestions";
 import RecentlyNews from "../Home.jsx/RecentlyVeiws";
-
+import ModalShare from "../../components/DetailArtwork/ModalShare";
+import { isNil } from "lodash";
 
 function DetailsArtwork() {
   let navigate = useNavigate();
@@ -92,7 +66,7 @@ function DetailsArtwork() {
   const [visibleBiddingModal, setVisibleBiddingModal] = useState(false);
   const [productDetail, setProductDetail] = useState();
   const [editionValue, setEditionValue] = useState({});
-  
+
   const [artistProduct, setArtistProduct] = useState();
   const [showShare, setShowShare] = useState(false);
   const [showSendMessage, setShowSendMessage] = useState(false);
@@ -122,14 +96,6 @@ function DetailsArtwork() {
     setVisibleSimilarArtworksModal(true);
   };
 
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(window.location.href);
-    message.success({
-      content: "با موفقیت کپی شد",
-      style: { marginTop: "110px" },
-    });
-  };
-
   const { TabPane } = Tabs;
 
   function callback(key) {
@@ -155,7 +121,6 @@ function DetailsArtwork() {
     getProductDetail();
   };
   const getArtistProduct = () => {
-   
     apiServices
       .get(ARTIST_PRODUCTS, QueryString.stringify(artistParams))
       .then((res) => {
@@ -353,11 +318,14 @@ function DetailsArtwork() {
                             }
                             height={
                               productDetail?.height
-                                ? productDetail?.height/150 * 172 + "px"
-                                
+                                ? (productDetail?.height / 150) * 172 + "px"
                                 : "500px"
                             }
-                            width={productDetail?.width ? productDetail?.width /180 * 216 : "500px"}
+                            width={
+                              productDetail?.width
+                                ? (productDetail?.width / 180) * 216
+                                : "500px"
+                            }
                             alt="Los Angeles"
                           />
                         </div>
@@ -619,12 +587,13 @@ function DetailsArtwork() {
                         </span>
                         <h3 className="col-xs-8 detail-name text-dir">
                           <span className="dimension-width persian-num">
-                            {productDetail?.width}
+                            {productDetail?.width ? productDetail?.width : t("artworkList.filter.size.no_width") }
                           </span>
-                          <span> در </span>
-                          <span className="dimension-height persian-num">
-                            {productDetail?.height}
-                          </span>
+                          <span> در </span> 
+                            <span className="dimension-height persian-num">
+                              {productDetail?.height ? productDetail?.height : t("artworkList.filter.size.no_height")}
+                            </span>
+                         
                         </h3>
                       </div>
                       <div className="d-flex box-dir-reverse row-listdetail">
@@ -739,14 +708,14 @@ function DetailsArtwork() {
                           <div className="d-flex justify-content-center artwork-price">
                             <span className="artwork-pricenum persian-num">
                               {i18n.language === "fa-IR"
-                                ? productDetail?.discount ? discountPrice(
-                                  productDetail.toman_price,
-                                  productDetail?.discount?.value,
-                                  productDetail?.discount?.type,
-                                  productDetail?.dollar_price
-                                )
-                                
-                               : numDiscriminant(productDetail?.toman_price)
+                                ? productDetail?.discount
+                                  ? discountPrice(
+                                      productDetail.toman_price,
+                                      productDetail?.discount?.value,
+                                      productDetail?.discount?.type,
+                                      productDetail?.dollar_price
+                                    )
+                                  : numDiscriminant(productDetail?.toman_price)
                                 : numDiscriminant(productDetail?.dollar_price)}
                             </span>
                             <span>{t("toman")}</span>
@@ -1067,7 +1036,13 @@ function DetailsArtwork() {
                       <span className="col-dimension-body">
                         <span className="dimension-width">{item.width}</span>
                         <span> در </span>
-                        <span className="dimension-height">{item.height}</span>
+                        {isNil(item?.height) ? (
+                          t("undefined")
+                        ) : (
+                          <span className="dimension-height">
+                            {item.height}
+                          </span>
+                        )}
                       </span>
                     </div>
                     <div className="col-price text-dir">
@@ -1132,117 +1107,7 @@ function DetailsArtwork() {
       </div>
 
       <Footer />
-      <Modal visible={showShare} width={600} footer={[]}>
-        <div className="modal-content">
-          <div className="modal-header">
-            <h5 className="modal-title" id="exampleModalLabel">
-              اشتراک گذاری
-            </h5>
-            <button
-              type="button"
-              className="close"
-              data-dismiss="modal"
-              aria-label="Close"
-              onClick={() => {
-                setShowShare(false);
-              }}
-            >
-              <span aria-hidden="true">×</span>
-            </button>
-          </div>
-
-          <div className="modal-body">
-            <div className="d-flex">
-              <p
-                style={{
-                  fontSize: "18px",
-                  marginBottom: "30px",
-                  textAlign: "center",
-                }}
-              >
-                شما می توانید با استفاده از روش های زیر صفحه مورد نطر خود را با
-                دوستان خود به اشتراک بگذارید
-              </p>
-            </div>
-            <div
-              className="row"
-              style={{ marginBottom: "50px", justifyContent: "center" }}
-            >
-              <div className="col-6 col-sm-3 mt-3 mt-sm-0">
-                <div className="d-flex justify-content-end justify-content-sm-center">
-                  <TelegramShareButton url={window.location.href}>
-                    <img
-                      src={telegram}
-                      alt="icon_Telegram"
-                      style={{ width: "50px" }}
-                    />
-                  </TelegramShareButton>
-                </div>
-              </div>
-              <div className="col-6 col-sm-3 mt-3 mt-sm-0">
-                <div className="d-flex justify-content-start justify-content-sm-center">
-                  <WhatsappShareButton url={window.location.href}>
-                    <img
-                      src={whatsapp}
-                      alt="icon_Whatsapp"
-                      style={{ width: "50px" }}
-                    />
-                  </WhatsappShareButton>
-                </div>
-              </div>
-            </div>
-            <div className="mt-4">
-              <p
-                style={{
-                  fontSize: "18px",
-                  marginBottom: "20px",
-                  textAlign: "center",
-                }}
-              >
-                یا از طریق دکمه زیر لینک صفحه مورد نظر را کپی کنید
-              </p>
-            </div>
-            <div className="row justify-content-center">
-              <div
-                id="box_copyLink"
-                className="col-3 px-0"
-                style={{ textAlign: "center" }}
-              >
-                <button
-                  onClick={() => {
-                    copyToClipboard();
-                  }}
-                  style={{
-                    padding: "15px 15px !important",
-                    border: "1px solid black",
-                    borderRadius: "5px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    margin: "0 auto",
-                  }}
-                >
-                  <p
-                    className="mb-0"
-                    style={{ fontSize: "18px", display: "inline-block" }}
-                  >
-                    کپی لینک
-                  </p>
-                  <img
-                    src={copy_icon}
-                    alt="icon_CopyLink_share"
-                    style={{
-                      width: "20px",
-                      display: "inline-block",
-                      margin: "0 7px",
-                    }}
-                  />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Modal>
+      <ModalShare showShare={showShare} setShowShare={setShowShare} />
     </>
   );
 }

@@ -12,6 +12,7 @@ import apiServices from "../../utils/api.services";
 import { SLIDER_PIC } from "../../utils";
 import { isNil } from "lodash";
 import moment from "jalali-moment";
+import { Link } from "react-router-dom";
 const timeFormat = "YYYY-MM-DD HH:mm";
 export default function Slider() {
   const { t, i18n } = useTranslation();
@@ -38,9 +39,14 @@ export default function Slider() {
       });
   };
 
+
+
   useEffect(() => {
     getSlider();
   }, []);
+
+
+  console.log(sliders)
   const gotoPrevSlider = () => {
     const tempSlider =
       activeSlide !== 0 ? activeSlide - 1 : sliders?.length - 1;
@@ -62,8 +68,6 @@ export default function Slider() {
       >
         <div className="carousel-inner">
           {sliders?.map((slider, index) => {
-            console.log("index", index, slider);
-            console.log("activeSlide", activeSlide);
             let timerInMilliSeconds = 0;
 
             if (
@@ -160,15 +164,15 @@ export default function Slider() {
                   </div>
                   <div className="clearfix"></div>
                   {!isNil(slider?.link) && (
-                    <a
+                    <Link
                       type="button"
                       className="btn btn-default"
-                      href={slider.link}
+                      to={slider.link}
                       target="_blank"
                       rel="noreferrer"
                     >
                       {t("show-details")}
-                    </a>
+                    </Link>
                   )}
                 </div>
               </div>
