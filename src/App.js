@@ -142,10 +142,6 @@ function App(props) {
             />
           </Route>
 
-
-
-
-
           <Route path="site" animate={true}>
             <Route path="artworks" element={<ArtworksPage />} />
             <Route path="exhibitionDetail" element={<ExhibitionDetail />} />
@@ -190,10 +186,6 @@ function App(props) {
           </Route>
         </Routes>
 
-
-
-
-
         {isLogin() ? (
           <RouterConfig />
         ) : (
@@ -203,7 +195,7 @@ function App(props) {
               <Route path="login" element={<Login />} />
               <Route path="confirm-mobile" element={<ConfirmMobile />} />
               <Route path="recovery-password" element={<SetPassword />} />
-            <Route path="*" element={<Navigate to="/auth/login" />} />
+              <Route path="*" element={<Navigate to="/auth/login" />} />
             </Route>
           </Routes>
         )}

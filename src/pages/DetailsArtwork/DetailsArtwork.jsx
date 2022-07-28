@@ -2,32 +2,55 @@ import React, { useEffect, useState } from "react";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Menu from "../../components/Menu/Menu";
-import { Breadcrumb, message, Tabs } from "antd";
+import { Breadcrumb, message, Modal, Tabs } from "antd";
+import { t } from "i18next";
+
+import artwork1 from "../../assets/img/artworks/artwork-1.jpg";
+import live_veiw_icon from "../../assets/img/artworks/live_view.svg";
 import share_icon from "../../assets/img/share.svg";
 import like_selected_icon from "../../assets/img/liked_selected.svg";
 import liked_icon from "../../assets/img/Liked.svg";
+import artist4 from "../../assets/img/artist-4.jpg";
 import circle_plus from "../../assets/img/circle-plus-1.png";
 import ask_me_icon from "../../assets/img/ask_me.svg";
 import alert_icon from "../../assets/img/alert.svg";
 import auction_black_icon from "../../assets/img/auction-black.svg";
 import similar_icon from "../../assets/img/similar.svg";
+import shiping_icon from "../../assets/img/shipping.svg";
+import refund_icon from "../../assets/img/refund.svg";
+import secure_payment_icon from "../../assets/img/secure_payment.svg";
+import original_icon from "../../assets/img/original.svg";
 import more_icon from "../../assets/img/more.svg";
+import rdbewaopdm840 from "../../assets/img/mainpage/rdbewaopdm840.jpg";
+import hyxvpfinm840 from "../../assets/img/mainpage/hyxvpfinm840.jpg";
+import mainpage_3 from "../../assets/img/mainpage/3.jpg";
+import hezvtaokhv840 from "../../assets/img/mainpage/hezvtaokhv840.jpg";
+import ayvglbkdfo3 from "../../assets/img/mainpage/ayvglbkdfo@3x.jpg";
 import edit_icon from "../../assets/img/edit_name.svg";
+import telegram from "../../assets/img/telegram.svg";
+import whatsapp from "../../assets/img/whatsapp.svg";
+import copy_icon from "../../assets/img/copy-share.png";
 import ModalEditOffer from "./ModalEditOffer";
 import ModalSimilarArtworks from "./ModalSimilarArtworks";
 import ModalBidding from "./ModalBidding";
 import ModalSendMessage from "../ProfileArtist/ModalSendMessage";
-
+import { TelegramShareButton, WhatsappShareButton } from "react-share";
 import {
   ARTIST_PRODUCTS,
-  ARTIST_PROFILE,
   CART_ME_ADD_ITEM,
+  GALLERY_FOLLOW,
   ORDER_BUYER_ME,
   PRODUCT_DETAIL,
 } from "../../utils";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import {
+  Link,
+  useLocation,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
 import apiServices from "../../utils/api.services";
 import QueryString from "qs";
+import queryString from "query-string";
 import { useTranslation } from "react-i18next";
 import moment from "moment-jalaali";
 import momentJalaali from "moment-jalaali";
@@ -38,10 +61,11 @@ import { UPDATE_CART } from "../../redux/reducers/cart/cart.types";
 import { discountPrice, numDiscriminant } from "../../utils/discriminant";
 import { DEFAULT_URL_IMAGE } from "../../utils/defaultImage";
 import ArthibitionProperties from "../../components/ArthibitionProperies/ArthibitionProperties";
+import RoomViewImg from "../../assets/img/artworks/room-view.jpg";
+import ImageGallery from "react-image-gallery";
+import { isNil } from "lodash";
 import Suggestions from "../Home.jsx/Suggestions";
 import RecentlyNews from "../Home.jsx/RecentlyVeiws";
-import ModalShare from "../../components/DetailArtwork/ModalShare";
-import { isNil } from "lodash";
 
 function DetailsArtwork() {
   let navigate = useNavigate();
@@ -73,7 +97,6 @@ function DetailsArtwork() {
   const [showSendMessage, setShowSendMessage] = useState(false);
   const [offerValue, setOfferValue] = useState();
   const [messageReceiverId, setMessageReceiverId] = useState(null);
-  const [artistBiography, setArtistBiography] = useState("");
   const [toggle, setToggle] = useState(false);
   const [params, setParams] = useState({
     search: "",
@@ -85,23 +108,7 @@ function DetailsArtwork() {
     search: "",
     page: 1,
   });
-  const getArtistProfile = () => {
-    apiServices
-      .get(ARTIST_PROFILE(artist_id), "")
-      .then((res) => {
-        if (res.data) {
-          i18n.language === "fa-IR"
-            ? setArtistBiography(res?.data?.data?.translations?.fa?.biography)
-            : setArtistBiography(res?.data?.data?.translations?.en?.biography);
-        }
-      })
-      .catch((err) => {
-        console.log("err", err);
-      });
-  };
-  useEffect(() => {
-    getArtistProfile();
-  }, []);
+
   const handleShowModalEditOffer = () => {
     setVisibleEditOfferModal(true);
   };
@@ -114,21 +121,51 @@ function DetailsArtwork() {
     setVisibleSimilarArtworksModal(true);
   };
 
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(window.location.href);
+    message.success({
+      content: "با موفقیت کپی شد",
+      style: { marginTop: "110px" },
+    });
+  };
+
   const { TabPane } = Tabs;
 
   function callback(key) {
-    // console.log(key);
+    console.log(key);
   }
 
-  const getProductDetail = () => {
-    apiServices
+  // FOR GALLERY
+  const [images, setImages] = useState([
+    {
+      original: "https://api.artibition.gallery/static/img/roomview.jpg",
+      thumbnail: "https://api.artibition.gallery/static/img/roomview.jpg",
+    },
+  ]);
+
+  const getProductDetail = async () => {
+    await apiServices
       .get(PRODUCT_DETAIL(id), QueryString.stringify(params))
       .then((res) => {
         if (res.data) {
           setProductDetail(res.data.data);
+          setTimeout(() => {
+            setImages([
+              ...res.data.data.medias.map((media) => {
+                return {
+                  original: media.exact_url,
+                  thumbnail: media.exact_url,
+                };
+              }),
+            ]);
+          }, 200);
+
           setEditionValue(res.data.data?.items[0]);
           setMessageReceiverId(res?.data?.data?.owner?.id);
         }
+      })
+      .then(() => {
+        setToggle(false);
       })
       .catch((err) => {
         console.log("err", err);
@@ -164,12 +201,19 @@ function DetailsArtwork() {
   };
 
   useEffect(() => {
-    getProductDetail();
     getArtistProduct();
     if (isLogin()) {
       getOfferValue();
     }
   }, [params, toggle]);
+
+  //seprated because this called twice !!!
+
+  useEffect(() => {
+    getProductDetail();
+  }, [params, id]);
+
+  //seprated because this called twice !!!
 
   const handleAddToCart = () => {
     //post productDetail.id and editionValue to a simple
@@ -209,60 +253,6 @@ function DetailsArtwork() {
       });
   };
 
-  // Carousel flag
-  const [choosenImg, setChoosenImg] = useState("");
-
-  const chooseHandler = (e) => {
-    setChoosenImg(e.target.src);
-  };
-
-  let images = [
-    {
-      renderItem: (r) => {
-        return (
-          <div className="artwork_bg">
-            <img
-              className="artwork_bg_inside_img"
-              src={productDetail?.medias[0].exact_url}
-              style={{
-                // width: ` ${productDetail?.width + "rem"}`,
-                height: productDetail?.height
-                  ? productDetail?.height + "px"
-                  : productDetail?.width > 100
-                  ? "90px"
-                  : "30px",
-              }}
-              width={productDetail?.width}
-              alt="Los Angeles"
-            />
-          </div>
-        );
-      },
-    },
-  ];
-
-  productDetail?.medias.map((item) => {
-    const details = {
-      renderItem: () => {
-        return (
-          <img
-            src={item.exact_url}
-            style={{
-              width: "100%",
-              height: "100% ",
-              objectPosition: "center",
-              objectFit: "cover ",
-            }}
-            alt=""
-          />
-        );
-      },
-
-      thumbnail: item.exact_url,
-    };
-    images.push(details);
-  });
-
   return (
     <>
       <div className="container mx-auto px-0 w-100">
@@ -299,162 +289,143 @@ function DetailsArtwork() {
 
           <div className="clearfix"></div>
           <div className="d-block d-md-flex box-dir-reverse dir">
-            <div className="col-md-6 px-0 px-sm-3">
-              <div className="artwork-imggallery">
-                <div
-                  id="myCarousel"
-                  className="carousel slide"
-                  data-ride="carousel"
-                >
-                  <div className="carousel-inner">
-                    <div className="item active">
-                      {choosenImg ? (
+            {/* <div className="col-md-6 px-0 px-sm-3"> */}
+            <div className="artwork-imggallery">
+              {console.log(images)}
+              <ImageGallery items={images} />
+              {/* <div
+                id="myCarousel"
+                className="carousel slide"
+                data-ride="carousel"
+              >
+                <div className="carousel-inner">
+                  <div className="item active">
+                    <div className="artwork_bg">
+                      <img
+                        className="artwork_bg_inside_img"
+                        src={
+                          productDetail?.medias &&
+                          productDetail?.medias[0]?.exact_url
+                        }
+                        height={
+                          productDetail?.height
+                            ? (productDetail?.height / 150) * 172 + "px"
+                            : "500px"
+                        }
+                        width={
+                          productDetail?.width
+                            ? (productDetail?.width / 180) * 216
+                            : "500px"
+                        }
+                        alt="Los Angeles"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="item">
+                    <img
+                      src={
+                        productDetail?.medias &&
+                        productDetail?.medias[0]?.exact_url
+                      }
+                      alt="Chicago"
+                    />
+                  </div>
+                </div>
+                <ol className="carousel-indicators">
+                  {productDetail?.medias &&
+                    productDetail?.medias?.map((item) => (
+                      <li
+                        data-target="#myCarousel"
+                        // data-slide-to="0"
+                        className="active"
+                        style={{ width: "120px", height: "80px" }}
+                      >
                         <img
-                          className=""
+                          src={item.exact_url}
                           style={{
-                            width: "500px",
-                            height: "500px",
+                            width: "100%",
+                            height: "100%",
                             objectFit: "cover",
                             objectPosition: "center",
                             display: "block",
-                            transition: "0.3s ease",
                           }}
-                          src={choosenImg}
-                          alt="Los Angeles"
-                        />
-                      ) : (
-                        <div className="artwork_bg">
-                          <img
-                            className="artwork_bg_inside_img"
-                            src={
-                              productDetail?.medias &&
-                              productDetail?.medias[0]?.exact_url
-                            }
-                            height={
-                              productDetail?.height
-                                ? (productDetail?.height / 150) * 172 + "px"
-                                : "500px"
-                            }
-                            width={
-                              productDetail?.width
-                                ? (productDetail?.width / 180) * 216
-                                : "500px"
-                            }
-                            alt="Los Angeles"
-                          />
-                        </div>
-                      )}
-                    </div>
-
-                    <div className="item">
-                      <img
-                        src={
-                          productDetail?.medias &&
-                          productDetail?.medias[0]?.exact_url
-                        }
-                        alt="Chicago"
-                      />
-                    </div>
-                  </div>
-                  <ol className="carousel-indicators">
-                    {productDetail?.medias &&
-                      productDetail?.medias?.map((item) => (
-                        <li
-                          data-target="#myCarousel"
-                          // data-slide-to="0"
-                          className="active"
-                          style={{ width: "120px", height: "80px" }}
-                          onClick={(e) => chooseHandler(e)}
-                        >
-                          <img
-                            src={item.exact_url}
-                            style={{
-                              width: "100%",
-                              height: "100%",
-                              objectFit: "cover",
-                              objectPosition: "center",
-                              display: "block",
-                            }}
-                            alt=""
-                            className="img-responsive"
-                          />
-                        </li>
-                      ))}
-                    <li
-                      // data-target="#myCarousel"
-                      // data-slide-to="0"
-                      className="active"
-                      style={{
-                        width: "120px",
-                        height: "80px",
-                        background: `url(https://api.artibition.gallery/static/img/roomview.jpg)`,
-                        backgroundPosition: "center",
-                        backgroundSize: "cover",
-                        position: "relative",
-                      }}
-                      onClick={(e) => chooseHandler(e)}
-                    >
-                      <img
-                        className="img-responsive"
-                        src={
-                          productDetail?.medias &&
-                          productDetail?.medias[0]?.exact_url
-                        }
-                        style={{
-                          width: "40%",
-                          height: "40%",
-                          position: "absolute",
-                          top: "5px",
-                          left: "50%",
-                          boxShadow: " 0px 0px 2px 1px rgb(0, 0, 0)",
-                          transform: "translateX(-50%)",
-                          objectFit: "cover",
-                          objectPosition: "center",
-                          display: "block",
-                        }}
-                        alt="Los Angeles"
-                      />
-                    </li>
-                  </ol>
-                  <div className=" artwork-options pull-dir ">
-                    <button
-                      className="share-option"
-                      onClick={() => {
-                        setShowShare(true);
-                      }}
-                    >
-                      <img src={share_icon} height="31" width="31" alt="" />
-                    </button>
-                    <div
-                      className="like-option"
-                      onClick={() =>
-                        follow({
-                          content: "product",
-                          activity: "like",
-                          object_id: productDetail?.id,
-                          action: productDetail?.likes,
-                          callBack,
-                        })
-                      }
-                    >
-                      {productDetail?.likes ? (
-                        <img src={liked_icon} height="31" width="31" alt="" />
-                      ) : (
-                        <img
-                          src={like_selected_icon}
-                          height="31"
-                          width="31"
                           alt=""
+                          className="img-responsive"
                         />
-                      )}
-                    </div>
+                      </li>
+                    ))}
+                  <li
+                    // data-target="#myCarousel"
+                    // data-slide-to="0"
+                    className="active"
+                    style={{
+                      width: "120px",
+                      height: "80px",
+                      background: `url(https://api.artibition.gallery/static/img/roomview.jpg)`,
+                      backgroundPosition: "center",
+                      backgroundSize: "cover",
+                      position: "relative",
+                    }}
+                  >
+                    <img
+                      className="img-responsive"
+                      src={
+                        productDetail?.medias &&
+                        productDetail?.medias[0]?.exact_url
+                      }
+                      style={{
+                        width: "40%",
+                        height: "40%",
+                        position: "absolute",
+                        top: "5px",
+                        left: "50%",
+                        boxShadow: " 0px 0px 2px 1px rgb(0, 0, 0)",
+                        transform: "translateX(-50%)",
+                        objectFit: "cover",
+                        objectPosition: "center",
+                        display: "block",
+                      }}
+                      alt="Los Angeles"
+                    />
+                  </li>
+                </ol>
+                <div className=" artwork-options pull-dir ">
+                  <button
+                    className="share-option"
+                    onClick={() => {
+                      setShowShare(true);
+                    }}
+                  >
+                    <img src={share_icon} height="31" width="31" alt="" />
+                  </button>
+                  <div
+                    className="like-option"
+                    onClick={() =>
+                      follow({
+                        content: "product",
+                        activity: "like",
+                        object_id: productDetail?.id,
+                        action: productDetail?.likes,
+                        callBack,
+                      })
+                    }
+                  >
+                    {productDetail?.likes ? (
+                      <img src={liked_icon} height="31" width="31" alt="" />
+                    ) : (
+                      <img
+                        src={like_selected_icon}
+                        height="31"
+                        width="31"
+                        alt=""
+                      />
+                    )}
                   </div>
                 </div>
-              </div>
-              {/* <div className="artwork-imggallery">
-                <ImageGallery items={images} />
               </div> */}
             </div>
+
             <div className="col-md-6 px-0 px-sm-3">
               <div className="artwork-detail artwork-defaultpadding">
                 <div className="d-flex box-dir-reverse ">
@@ -592,23 +563,7 @@ function DetailsArtwork() {
                         <h3 className="col-xs-8 detail-name persian-num text-dir">
                           {i18n.language === "fa-IR"
                             ? productDetail?.jalali_creation_year
-                            : !isNil(productDetail?.christian_creation_year)
-                            ? productDetail?.christian_creation_year
-                            : moment(
-                                productDetail?.jalali_creation_year,
-                                "jYYYY"
-                              ).format("YYYY") === "Invalid date"
-                            ? ""
-                            : moment(
-                                productDetail?.jalali_creation_year,
-                                "jYYYY"
-                              ).format("YYYY")}
-                          {console.log(
-                            "test",
-                            productDetail,
-                            productDetail?.christian_creation_year,
-                            isNil(productDetail?.christian_creation_year)
-                          )}
+                            : productDetail?.christian_creation_year}
                         </h3>
                       </div>
                       <div className="d-flex box-dir-reverse row-listdetail">
@@ -617,13 +572,16 @@ function DetailsArtwork() {
                         </span>
                         <h3 className="col-xs-8 detail-name text-dir">
                           <span className="dimension-width persian-num">
-                            {productDetail?.width ? productDetail?.width : t("artworkList.filter.size.no_width") }
+                            {productDetail?.width
+                              ? productDetail?.width
+                              : t("artwork.no_width")}
                           </span>
-                          <span> در </span> 
-                            <span className="dimension-height persian-num">
-                              {productDetail?.height ? productDetail?.height : t("artworkList.filter.size.no_height")}
-                            </span>
-                         
+                          <span> در </span>
+                          <span className="dimension-height persian-num">
+                            {productDetail?.height
+                              ? productDetail?.height
+                              : t("artwork.no_height")}
+                          </span>
                         </h3>
                       </div>
                       <div className="d-flex box-dir-reverse row-listdetail">
@@ -682,7 +640,7 @@ function DetailsArtwork() {
                 </div>
 
                 <div className="artwork-seller text-dir">
-                  {!productDetail?.view_only && (
+                  {!productDetail?.view_only ? (
                     <div className="d-flex box-dir-reverse">
                       <img src={alert_icon} width="20" height="20" alt="" />
                       <span className="orangecolor">
@@ -696,6 +654,8 @@ function DetailsArtwork() {
                         این اثر قیمت گذاری شده است
                       </span>
                     </div>
+                  ) : (
+                    ""
                   )}
                 </div>
 
@@ -770,45 +730,44 @@ function DetailsArtwork() {
                 )}
 
                 <div className="artwork-offer">
-                  {offerValue?.results?.map(
-                    (item) =>
-                      item.product_item_id === editionValue?.id && (
-                        <div className="d-block d-lg-flex box-dir-reverse justify-content-between">
-                          <div className="col px-0">
-                            <p className="pull-dir">
-                              {t("artwork.bid_artwork.text1")}
-                              <strong className="persian-num px-1">
-                                {i18n.language === "fa-IR"
-                                  ? numDiscriminant(item.toman_price) +
-                                    t("toman") +
-                                    " "
-                                  : numDiscriminant(item.dollar_price) +
-                                    t("toman") +
-                                    " "}
-                              </strong>
-                              {t("artwork.bid_artwork.text2")}
-                            </p>
-                          </div>
-                          <div className="col-2 px-0">
-                            <a
-                              href="#"
-                              data-toggle="modal"
-                              data-target="#modal-edit-offer"
-                            >
-                              {item.status === "modified" && (
-                                <img
-                                  onClick={handleShowModalEditOffer}
-                                  src={edit_icon}
-                                  width="32"
-                                  height="32"
-                                  alt=""
-                                  className="pull-dir"
-                                />
-                              )}
-                            </a>
-                          </div>
+                  {offerValue?.results?.map((item) =>
+                    item.product_item_id === editionValue?.id ? (
+                      <div className="d-block d-lg-flex box-dir-reverse justify-content-between">
+                        <div className="col px-0">
+                          <p className="pull-dir">
+                            {t("artwork.bid_artwork.text1")}
+                            <strong className="persian-num px-1">
+                              {i18n.language === "fa-IR"
+                                ? numDiscriminant(item.toman_price) +
+                                  t("toman") +
+                                  " "
+                                : numDiscriminant(item.dollar_price) +
+                                  t("toman") +
+                                  " "}
+                            </strong>
+                            {t("artwork.bid_artwork.text2")}
+                          </p>
                         </div>
-                      )
+                        <div className="col-2 px-0">
+                          <a
+                            href="#"
+                            data-toggle="modal"
+                            data-target="#modal-edit-offer"
+                          >
+                            {item.status === "modified" ? (
+                              <img
+                                onClick={handleShowModalEditOffer}
+                                src={edit_icon}
+                                width="32"
+                                height="32"
+                                alt=""
+                                className="pull-dir"
+                              />
+                            ) : null}
+                          </a>
+                        </div>
+                      </div>
+                    ) : null
                   )}
                 </div>
                 <div className="artwork-property">
@@ -936,34 +895,29 @@ function DetailsArtwork() {
               key="1"
             >
               <p className="text-dir">
+                {/* {t("artwork.about_artwork.text")} */}
                 {i18n.language === "fa-IR"
                   ? productDetail?.translations?.fa?.about
                   : productDetail?.translations?.en?.about}
-                {((i18n.language === "fa-IR" &&
-                  productDetail?.translations?.fa?.about?.length > 0) ||
-                  (i18n.language !== "fa-IR" &&
-                    productDetail?.translations?.en?.about)) && (
-                  <button type="button" className="btn-moredown">
-                    <span>{t("artwork.about_artwork.more")}</span>
-                    <img
-                      src={more_icon}
-                      width="16"
-                      height="16"
-                      alt=""
-                      className="pull-dir px-2"
-                    />
-                  </button>
-                )}
+                <button type="button" className="btn-moredown">
+                  <span>{t("artwork.about_artwork.more")}</span>
+                  <img
+                    src={more_icon}
+                    width="16"
+                    height="16"
+                    alt=""
+                    className="pull-dir px-2"
+                  />
+                </button>
               </p>
             </TabPane>
             <TabPane tab={t("artwork.about_artist.tab_title")} key="2">
               <div className="text-dir">
-                <h3>
-                  {i18n.language === "fa-IR"
-                    ? productDetail?.translations?.fa?.artist_name
-                    : productDetail?.translations?.en?.artist_name}
-                </h3>
-                <p>{artistBiography}</p>
+                <h3>Menu 1</h3>
+                <p>
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
               </div>
             </TabPane>
           </Tabs>
@@ -981,6 +935,8 @@ function DetailsArtwork() {
                     <a href="#">{item.title}</a>
                   </li>
                 ))}
+                {/* <li><a href="#">{t("artwork.tags.composition")}</a></li>
+                                <li><a href="#">{t("artwork.tags.canvas")}</a></li> */}
               </ul>
             </div>
           </div>
@@ -990,7 +946,7 @@ function DetailsArtwork() {
                 <div className="col-xs-8 text-dir">
                   <h2 className="default-title text-dir">
                     {" "}
-                    {t("artwork.other_artworks")}{" "}
+                    {t("artwork.other_artworks")}
                     {i18n.language === "fa-IR"
                       ? productDetail?.translations?.fa?.artist_name
                       : productDetail?.translations?.en?.artist_name}
@@ -998,6 +954,7 @@ function DetailsArtwork() {
                 </div>
                 <div className="col-xs-4">
                   <div className="d-flex box-dir-reverse pull-dir-rev">
+                    {/* <a href="#" className="btn-readmore pull-dir">همه آثار<span className="hidden-xs">هنرمند</span></a> */}
                     <Link
                       to={`/site/artist-profile/?id=${artist_id}`}
                       className="btn-readmore pull-left "
@@ -1067,13 +1024,7 @@ function DetailsArtwork() {
                       <span className="col-dimension-body">
                         <span className="dimension-width">{item.width}</span>
                         <span> در </span>
-                        {isNil(item?.height) ? (
-                          t("undefined")
-                        ) : (
-                          <span className="dimension-height">
-                            {item.height}
-                          </span>
-                        )}
+                        <span className="dimension-height">{item.height}</span>
                       </span>
                     </div>
                     <div className="col-price text-dir">
@@ -1099,9 +1050,9 @@ function DetailsArtwork() {
                 </div>
               ))}
             </div>
+            <div className="clearfix"></div>
+            <Suggestions />
           </div>
-          <div className="clearfix"></div>
-          <Suggestions />
 
           <RecentlyNews />
         </div>
@@ -1138,7 +1089,117 @@ function DetailsArtwork() {
       </div>
 
       <Footer />
-      <ModalShare showShare={showShare} setShowShare={setShowShare} />
+      <Modal visible={showShare} width={600} footer={[]}>
+        <div className="modal-content">
+          <div className="modal-header">
+            <h5 className="modal-title" id="exampleModalLabel">
+              اشتراک گذاری
+            </h5>
+            <button
+              type="button"
+              className="close"
+              data-dismiss="modal"
+              aria-label="Close"
+              onClick={() => {
+                setShowShare(false);
+              }}
+            >
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+
+          <div className="modal-body">
+            <div className="d-flex">
+              <p
+                style={{
+                  fontSize: "18px",
+                  marginBottom: "30px",
+                  textAlign: "center",
+                }}
+              >
+                شما می توانید با استفاده از روش های زیر صفحه مورد نطر خود را با
+                دوستان خود به اشتراک بگذارید
+              </p>
+            </div>
+            <div
+              className="row"
+              style={{ marginBottom: "50px", justifyContent: "center" }}
+            >
+              <div className="col-6 col-sm-3 mt-3 mt-sm-0">
+                <div className="d-flex justify-content-end justify-content-sm-center">
+                  <TelegramShareButton url={window.location.href}>
+                    <img
+                      src={telegram}
+                      alt="icon_Telegram"
+                      style={{ width: "50px" }}
+                    />
+                  </TelegramShareButton>
+                </div>
+              </div>
+              <div className="col-6 col-sm-3 mt-3 mt-sm-0">
+                <div className="d-flex justify-content-start justify-content-sm-center">
+                  <WhatsappShareButton url={window.location.href}>
+                    <img
+                      src={whatsapp}
+                      alt="icon_Whatsapp"
+                      style={{ width: "50px" }}
+                    />
+                  </WhatsappShareButton>
+                </div>
+              </div>
+            </div>
+            <div className="mt-4">
+              <p
+                style={{
+                  fontSize: "18px",
+                  marginBottom: "20px",
+                  textAlign: "center",
+                }}
+              >
+                یا از طریق دکمه زیر لینک صفحه مورد نظر را کپی کنید
+              </p>
+            </div>
+            <div className="row justify-content-center">
+              <div
+                id="box_copyLink"
+                className="col-3 px-0"
+                style={{ textAlign: "center" }}
+              >
+                <button
+                  onClick={() => {
+                    copyToClipboard();
+                  }}
+                  style={{
+                    padding: "15px 15px !important",
+                    border: "1px solid black",
+                    borderRadius: "5px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    margin: "0 auto",
+                  }}
+                >
+                  <p
+                    className="mb-0"
+                    style={{ fontSize: "18px", display: "inline-block" }}
+                  >
+                    کپی لینک
+                  </p>
+                  <img
+                    src={copy_icon}
+                    alt="icon_CopyLink_share"
+                    style={{
+                      width: "20px",
+                      display: "inline-block",
+                      margin: "0 7px",
+                    }}
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Modal>
     </>
   );
 }
